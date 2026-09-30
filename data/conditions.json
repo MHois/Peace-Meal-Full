@@ -365,7 +365,7 @@
           "per": "day",
           "tier": 1,
           "strength": "must",
-          "text": "Keep sodium under 2,300 mg a day, moving toward an ideal under 1,500 mg (Class 1, Level A). Contraindicated in severe symptomatic orthostatic hypotension.",
+          "text": "Keep sodium under 2,300 mg a day, moving toward an ideal under 1,500 mg (Class 1, Level A). Do not follow this limit if you have severe symptomatic orthostatic hypotension (blood pressure that drops when you stand up, making you very dizzy or faint); your doctor sets your sodium then.",
           "why": "Sodium raises blood pressure in most people, potassium from food lowers it, and the overall eating pattern matters more than any single food.",
           "sources": [
             "aha-acc-htn-2025",
@@ -382,7 +382,7 @@
           "per": "day",
           "tier": 1,
           "strength": "must",
-          "text": "Potassium 3,500 to 5,000 mg/day, preferably from food (Class 1, Level A). Exception: chronic kidney disease or drugs that reduce potassium excretion (ACE inhibitors, ARBs, spironolactone, potassium-sparing diuretics), where serum potassium must be monitored.",
+          "text": "Potassium 3,500 to 5,000 mg a day, preferably from food (Class 1, Level A). Exception: if you have chronic kidney disease, or take a medicine that makes your body keep potassium (an ACE inhibitor, an ARB, spironolactone, or a potassium-sparing water pill), your blood potassium must be checked. Once the app knows, it sets no potassium target.",
           "why": "Sodium raises blood pressure in most people, potassium from food lowers it, and the overall eating pattern matters more than any single food.",
           "sources": [
             "aha-acc-htn-2025"
@@ -1083,7 +1083,7 @@
           "hard": false,
           "tier": 1,
           "strength": "should",
-          "text": "Elimination, 2 to 6 weeks: restrict high-FODMAP foods (oligosaccharides: wheat, rye, onion, garlic, legumes; disaccharides: lactose; monosaccharides: excess fructose in honey, apples, mango, high-fructose corn syrup; polyols: sorbitol, mannitol, stone fruits, sugar-free gum).",
+          "text": "Elimination, 2 to 6 weeks: restrict high-FODMAP foods: wheat, rye, onion, garlic, and legumes; lactose (milk sugar); excess fructose in honey, apples, mango, and high-fructose corn syrup; and the sugar alcohols sorbitol and mannitol, in stone fruits and sugar-free gum.",
           "sources": [
             "acg-ibs-2021",
             "halmos-2014",
@@ -1331,7 +1331,7 @@
           "kind": "info",
           "tier": 1,
           "strength": "should",
-          "text": "The 2025 AGA update says low-histamine, low-FODMAP, gluten-free, and dairy-free elimination diets can be considered for GI symptoms when MCAS is suspected, delivered with nutrition counseling to avoid the harms of restrictive eating. That is permissive language, not a recommendation.",
+          "text": "The 2025 update from the American Gastroenterological Association (AGA) says low-histamine, low-FODMAP, gluten-free, and dairy-free elimination diets can be considered for stomach and bowel (GI) symptoms when mast cell activation syndrome (MCAS) is suspected, with nutrition counseling to avoid the harms of cutting out too many foods. That is permission, not a recommendation.",
           "sources": [
             "aga-heds-2025"
           ]
@@ -3949,7 +3949,7 @@
           "kind": "behavior",
           "tier": 1,
           "strength": "must",
-          "text": "Contraindications and cautions to check with your clinician before starting: SGLT2 inhibitor use (euglycemic ketoacidosis risk), insulin or sulfonylurea use (hypoglycemia; dose adjustment needed), pregnancy and breastfeeding, kidney disease, history of pancreatitis, certain rare metabolic disorders, and history of disordered eating. The app asks about these medicines and about pregnancy, and flags kidney disease if it is on your list; it cannot check for the rest.",
+          "text": "Check with your doctor before starting if any of these apply: you take an SGLT2 inhibitor (risk of ketoacidosis, a dangerous build-up of acid in the blood, even when blood sugar is normal); you take insulin or a sulfonylurea (risk of low blood sugar; your doses need adjusting); you are pregnant or breastfeeding; you have kidney disease; you have had pancreatitis; you have certain rare metabolic disorders; or you have a history of disordered eating. The app asks about these medicines and about pregnancy, and flags kidney disease if it is on your list; it cannot check for the rest.",
           "sources": [
             "ada-soc-2026"
           ]
@@ -7011,7 +7011,7 @@
           "tier": 1,
           "strength": "must",
           "applies_when": "medication.warfarin",
-          "text": "Warfarin: keep vitamin K steady rather than low. Eat about the same amount of leafy greens and other vitamin K foods from week to week, and tell the clinic that manages your INR before a big change in diet, a new supplement, or regular cranberry or grapefruit juice. Do not cut greens out; a sudden drop swings the INR as much as a sudden rise.",
+          "text": "Warfarin: keep vitamin K steady rather than low. Eat about the same amount of leafy greens and other vitamin K foods from week to week. Do not cut greens out: a sudden drop swings your INR (the blood test that checks warfarin) as much as a sudden rise. Tell the clinic that manages your INR before a big change in diet, a new supplement, or drinking cranberry or grapefruit juice regularly.",
           "sources": [
             "violi-2016",
             "holbrook-2005"
