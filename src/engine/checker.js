@@ -96,7 +96,16 @@ export function foodNameKey(s) {
   while (i < words.length && (FOOD_KEY_LEAD.has(words[i]) || /^[\d.,\/½¼¾⅓⅔⅛⅜⅝⅞x×-]+%?$/.test(words[i]) || /^\d+(g|ml|oz|lb|kg|l)$/.test(words[i]))) i++;
   return words.slice(i).join(' ');
 }
-// key -> { foods, tags (carried by every food with that name), mayContain (carried by only some) }
+// A commercial or mixed product (several ingredients; brands differ) cannot vouch for every brand's ingredients, so its
+// name adds its tags but does not make unknown words known: USDA's "Salad dressing, italian dressing, commercial,
+// regular" has no milk, and some brands have cheese. A single-ingredient food ("Spices, saffron") is known by its name.
+// Composite: a USDA food group of mixed products, or the food data's ultra-processed tag.
+const FOOD_COMPOSITE_GROUPS = new Set(['Baked Products', 'Snacks', 'Sweets', 'Breakfast Cereals', 'Fast Foods', 'Meals, Entrees, and Side Dishes', 'Soups, Sauces, and Gravies', 'Sausages and Luncheon Meats', 'Restaurant Foods', 'Baby Foods']);
+export function foodIsComposite(food) {
+  return FOOD_COMPOSITE_GROUPS.has(food.group) || (food.tags || []).includes('ultra-processed');
+}
+// key -> { foods, tags (carried by every food with that name), mayContain (carried by only some), whole (every food
+// with that name is a single-ingredient food) }
 export function indexFoodNames(foods) {
   const byKey = new Map();
   for (const f of foods || []) for (const n of [f.name, f.short]) {
@@ -110,7 +119,7 @@ export function indexFoodNames(foods) {
   for (const [k, list] of byKey) {
     const all = list.map(f => new Set(foodTags(f)));
     const union = [...new Set(list.flatMap(f => foodTags(f)))];
-    out.set(k, { foods: list, tags: union.filter(t => all.every(s => s.has(t))), mayContain: union.filter(t => !all.every(s => s.has(t))) });
+    out.set(k, { foods: list, tags: union.filter(t => all.every(s => s.has(t))), mayContain: union.filter(t => !all.every(s => s.has(t))), whole: list.every(f => !foodIsComposite(f)) });
   }
   return out;
 }
@@ -135,9 +144,10 @@ export function checkText(text, plan, matcher, person = {}) {
     for (const t of hit.tags) r.tags[t] = [...new Set([...(r.tags[t] || []), label])];
     for (const t of hit.mayContain) if (!r.tags[t]) r.mayContain[t] = [...new Set([...(r.mayContain[t] || []), label])];
   }
-  // A piece that is exactly a food's name is known from the food data, even when the dictionary cannot place a word in it.
-  if (named.length) {
-    const keys = new Set(named.map(n => foodNameKey(n.piece)));
+  // A piece that is exactly a single-ingredient food's name is known from the food data, even when the dictionary cannot
+  // place a word in it. A commercial product's name stays not recognized (foodIsComposite).
+  if (named.some(n => n.hit.whole)) {
+    const keys = new Set(named.filter(n => n.hit.whole).map(n => foodNameKey(n.piece)));
     r.unrecognized = (r0.unrecognized || []).filter(u => !keys.has(foodNameKey(u)));
     r.unplaced = (r0.unplaced || []).filter(u => !keys.has(foodNameKey(u.segment)));
   }
@@ -235,8 +245,16 @@ export function checkRecipe(recipe, plan, matcher, foodsById, person = {}) {
       for (const tag of Object.keys(r.tags)) addTag(tag, label);
       for (const [tag, terms] of Object.entries(r.mayContain || {})) (mayContain[tag] ||= []).push(...terms);
       for (const u of r.unknownRisk) unknownRisk.push(u);
-      if (!food && r.unrecognized.length) unrecognized.push(label);
-      if (!food && !imported) { if (r.tags['sodium-high']) saltUncounted.push(label); else if ((r.mayContain || {})['sodium-high']) saltMayUncounted.push(label); }
+      // P0-3 follow-up: a line that is a food's plain name ("Ranch dressing", "2 Tablespoons (16g) Bran Flakes") carries
+      // that food's tags, as the same words do on the Check screen; a single-ingredient food's name is also not
+      // "not recognized".
+      const named = foodsNamedIn(ing.display, matcher);
+      const namedTags = new Set(named.flatMap(n => n.hit.tags)), namedMay = new Set(named.flatMap(n => n.hit.mayContain));
+      for (const tag of namedTags) addTag(tag, label);
+      for (const tag of namedMay) (mayContain[tag] ||= []).push(label);
+      const namedKeys = new Set(named.filter(n => n.hit.whole).map(n => foodNameKey(n.piece)));
+      if (!food && r.unrecognized.some(u => !namedKeys.has(foodNameKey(u)))) unrecognized.push(label);
+      if (!food && !imported) { if (r.tags['sodium-high'] || namedTags.has('sodium-high')) saltUncounted.push(label); else if ((r.mayContain || {})['sodium-high'] || namedMay.has('sodium-high')) saltMayUncounted.push(label); }
     }
     if (!food && !ing.display) unrecognized.push(ing.food);
   }
