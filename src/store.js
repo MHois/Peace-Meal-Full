@@ -55,7 +55,7 @@ export function newPerson(name = 'Me') {
   const id = 'p' + Math.random().toString(36).slice(2, 8);
   return {
     id, name, adult: true, sex: '', age: null, weight_kg: null, height_cm: null, activity: 'light',
-    modules: [], allergens: [], preferences: { avoid_tags: [], avoid_terms: [], patterns: [] },
+    modules: [], allergens: [], allergens_other: [], preferences: { avoid_tags: [], avoid_terms: [], patterns: [] },
     variants: {}, flags: {}, optional_rules: [], rule_settings: {}, confirmations: [], custom_modules: [],
     goals: { calorie_target: 'off', deficit: 500 },   // calorie_target: 'off' | 'maintain' | 'loss' | 'manual'; manual_kcal when manual
     manual_kcal: null,

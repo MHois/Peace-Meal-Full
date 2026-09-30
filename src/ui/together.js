@@ -20,6 +20,7 @@ export function togetherGroupPerson(selected, eaters, seed) {
     ...JSON.parse(JSON.stringify(first)),
     id: 'group', name: selected.map(p => p.name).join(' and '),
     allergens: [...new Set(selected.flatMap(p => p.allergens || []))],
+    allergens_other: [...new Set(selected.flatMap(p => p.allergens_other || []))],
     preferences: { avoid_tags: union('avoid_tags'), avoid_terms: union('avoid_terms'), patterns: union('patterns') },
     servings_by_day: {}, mealOverrides: {}, favorites: { recipes: [], foods: [] },
     cooking: { ...(first.cooking || {}), household: Math.max(1, Number(eaters) || selected.length) },

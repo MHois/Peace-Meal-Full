@@ -110,7 +110,7 @@ function learnRenderHow(root) {
       <h2>Stacked restrictions</h2>
       <p>Running several diets that each cut out whole food groups at the same time makes it harder to get enough fiber, calcium, protein, and variety. When three or more are active at once the plan says so and suggests running one at a time where you can.</p>
       <h2>Where this comes from</h2>
-      <p>The evidence review behind every module is <strong>docs/PHASE-1-evidence-and-regulatory-foundation.md</strong> (Phase 1: Evidence and Regulatory Foundation), and the build decisions are in <strong>docs/PHASE-2-prd-and-architecture.md</strong>. Items marked VERIFY in Phase 1 are shown with that flag in the app until they are cleared in docs/VERIFY-log.md.</p>
+      <p>The evidence review behind every module is <strong>docs/PHASE-1-evidence-and-regulatory-foundation.md</strong> (Phase 1: Evidence and Regulatory Foundation), and the build decisions are in <strong>docs/PHASE-2-prd-and-architecture.md</strong>. Every source the evidence review could not confirm was marked VERIFY, and each has since been checked against the original publication by the app's maintainer, not by you; the checks and what they found are in docs/VERIFY-log.md. If a new source ever needs that check, it shows a VERIFY label until it is done.</p>
       <p class="small muted">This app is for general wellness and education. It does not diagnose or treat any condition. Any medical targets, like a sodium or protein limit, come from your doctor or dietitian, never from the app.</p>
     </article>`;
 }

@@ -96,8 +96,8 @@ const lite = build({
       'Open the text message with the link in it.',
       'Tap the link. It opens in **Safari**, the iPhone web browser with the blue compass.',
       'Wait a few seconds. You will see the words **Peace Meal for one** with a small **LITE** tag next to them.',
-      'Find the **Share** button. It looks like a square with an arrow pointing up.',
-      'Can\'t find it? Look at the bottom of the screen for three dots (**•••**). Tap the dots, then tap **Share**.',
+      'At the bottom of the screen, tap the three dots (**•••**).',
+      'Tap **Share**. It looks like a square with an arrow pointing up. On an iPad, Share is at the top of the screen. On some iPhones Share is right on the bottom bar, with no dots to tap first.',
       'A menu slides up. Move your finger up on the menu to scroll down. Tap **Add to Home Screen**.',
       'Tap **Add** in the top right corner.',
       'Press the Home button, or swipe up from the bottom of the screen. You will see a new green bowl picture called **Peace Meal for one**. That is your app.'
@@ -107,6 +107,15 @@ const lite = build({
       'From now on, always open the app by tapping the **green bowl picture** on your home screen.',
       'Do not open the old text link again. The link opens a separate copy that does not have your information in it. It will look empty, and that is scary for no reason.'
     ], 'FFF4E5'),
+    H2('Using an Android phone instead?'),
+    steps([
+      'Tap the link. It opens in **Chrome**.',
+      'Tap the three dots (**⋮**) at the top right.',
+      'Tap **Add to Home screen**. On some phones it says **Install app**.',
+      'Tap **Install** or **Add**. Tap **Add** again if your phone asks where to put it.',
+      'Open **Peace Meal for one** from its new icon on your home screen.'
+    ]),
+    P('Using Samsung Internet instead of Chrome? Tap the three lines (**≡**) at the bottom right, then **Add page to**, then **Home screen**. On Android the icon and the browser keep the same information, so nothing looks empty.'),
 
     H1('Part 2: Tell the app about you'),
     P('The app asks you some questions, one page at a time. You can always go back and change an answer later.'),
@@ -224,13 +233,20 @@ const full = build({
     H1('Step 1: Put the app on your iPhone'),
     steps([
       'Tap the link. It opens in **Safari**.',
-      'Tap the **Share** button (a square with an arrow pointing up). On newer iPhones, tap the three dots **•••** at the bottom first, then **Share**.',
+      'Tap the three dots (**•••**) at the bottom of Safari, then **Share** (a square with an arrow pointing up). On an iPad, Share is at the top of the screen; on some iPhones it is right on the bottom bar.',
       'Scroll down and tap **Add to Home Screen**.',
       'Tap **Add**. A green bowl icon named **Peace Meal** appears on your home screen.'
     ]),
     box('Important', [
       'Always open the app from the home screen icon. On iPhone, Safari and the icon keep separate storage. If you set up in one and open the other, the app looks empty. Your data is not gone. You are just in the other one.'
     ], 'FFF4E5'),
+    H2('On an Android phone'),
+    steps([
+      'Tap the link. It opens in **Chrome**.',
+      'Tap the three dots (**⋮**) at the top right, then **Add to Home screen** (some phones say **Install app**).',
+      'Tap **Install** or **Add**, and **Add** again if your phone asks where to put it.'
+    ]),
+    P('Samsung Internet: tap the three lines (**≡**) at the bottom right, then **Add page to**, then **Home screen**. On Android the icon and the browser keep the same information.'),
 
     H1('Step 2: Set up the first person'),
     steps([

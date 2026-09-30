@@ -261,6 +261,7 @@ export function uiEnsurePerson(person) {
   if (!person.rule_settings || typeof person.rule_settings !== 'object') person.rule_settings = {};
   if (!Array.isArray(person.confirmations)) person.confirmations = [];
   if (!Array.isArray(person.acknowledged)) person.acknowledged = [];
+  if (!Array.isArray(person.allergens_other)) person.allergens_other = [];
   if (!person.preferences) person.preferences = { avoid_tags: [], avoid_terms: [], patterns: [] };
   person.preferences.avoid_tags = person.preferences.avoid_tags || [];
   person.preferences.avoid_terms = person.preferences.avoid_terms || [];

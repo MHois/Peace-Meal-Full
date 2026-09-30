@@ -4,7 +4,7 @@ import { appCollectionCounts } from '../app.js';
 import { uiState, uiEsc, uiPersist, uiDownload, uiToast, uiNavigate, uiIsoDate, uiCopyText, uiEnsurePerson, uiPageHeader, uiSection, uiSwitch, uiSegmented, uiChip, uiIcon, uiLoadUiPrefs, uiSaveUiPrefs, uiNoticeHTML, uiModal } from './common.js';
 import { claimOwner, registerDevice, sealOwnerBackup, restoreOwnerBackup, forgetDeviceIdentity, removePerson } from '../engine/sync.js';
 import { sharingState, sharingLocalHTML, sharingPendingHTML, sharingSafe, sharingPublishIfShared, sharingShortFingerprint } from './sharing.js';
-import { installInSafariTab, installShowGuide } from './install.js';
+import { installInSafariTab, installInBrowserTab, installShowGuide } from './install.js';
 
 export function renderSettingsScreen(root) {
   const profile = uiState.profile;
@@ -22,7 +22,7 @@ export function renderSettingsScreen(root) {
       <div class="btn-row"><button class="btn primary lite-big" type="button" id="set-share">${uiIcon('share')}Send a backup</button><button class="btn" type="button" id="set-export">${uiIcon('share')}Export JSON</button><button class="btn" type="button" id="set-copy">${uiIcon('copy')}Copy JSON to clipboard</button></div>
       <p class="small muted">Send a backup opens your phone's share sheet: mail it to yourself, save it to Files or iCloud Drive, or AirDrop it. To restore on a new phone, open the app there and import the file below.</p>
       <p class="small">${profile.last_backup_at ? `Last backup: ${uiEsc(new Date(profile.last_backup_at).toLocaleDateString(undefined, { month: 'long', day: 'numeric', year: 'numeric' }))}. A reminder comes up a month after each one.` : 'No backup sent from this app yet. A reminder comes up once a month.'}</p>
-      ${installInSafariTab() ? `<p class="small">This is open in a Safari tab. <button class="btn link small" type="button" id="set-home-screen">How to add it to the Home Screen and move your data</button></p>` : ''}
+      ${installInSafariTab() ? `<p class="small">This is open in a Safari tab. <button class="btn link small" type="button" id="set-home-screen">How to add it to the Home Screen and move your data</button></p>` : installInBrowserTab() ? `<p class="small">This is open in your browser. <button class="btn link small" type="button" id="set-home-screen">How to add it to the Home screen</button></p>` : ''}
     </div>`, { id: 'set-backup-h' })}
     ${uiSection('Import', `<div class="card">
       <p>Importing replaces everything on this device with the contents of the file. You will be asked to confirm.</p>

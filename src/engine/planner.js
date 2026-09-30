@@ -113,7 +113,7 @@ export function scoreRecipe({ recipe, check, cooking, dayIdx, canCook, minutes, 
   }
   // soft avoid
   for (const h of check.hits) { score -= 25; reasons.push(`contains ${h.label} (avoid)`); }
-  for (const t of check.termHits || []) { score -= 15; reasons.push(`contains "${t.term}" (your preference)`); }
+  for (const t of (check.termHits || []).filter(t => !t.hard)) { score -= 15; reasons.push(`contains "${t.term}" (your preference)`); }
   if (check.unknownRisk.length) { score -= 5; }
   // prefer
   score += Math.min(30, check.preferHits.length * 6);

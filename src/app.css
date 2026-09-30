@@ -479,7 +479,9 @@ td.num, th.num { text-align: right; white-space: nowrap; }
 .stepper .stepper-bar span { flex: 1; border-radius: 999px; background: var(--track); }
 .stepper .stepper-bar span.done { background: var(--primary); }
 .stepper .stepper-bar span.current { background: var(--accent); }
-.stepper .stepper-names { display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; padding-bottom: 2px; }
+/* The step names wrap onto more lines instead of scrolling sideways: in one hidden-scrollbar row, steps 3 to 7 sat
+   off the edge of a phone screen with nothing to show they were there. */
+.stepper .stepper-names { display: flex; flex-wrap: wrap; gap: 4px 6px; padding-bottom: 2px; }
 .stepper .stepper-names::-webkit-scrollbar { display: none; }
 .stepper button { flex: none; min-height: 40px; padding: 4px 12px; border-radius: 999px; border: 1px solid transparent; background: none; color: var(--muted); font: inherit; font-size: var(--fs-15); font-weight: 700; cursor: pointer; }
 .stepper button.done { color: var(--ink); }

@@ -102,7 +102,7 @@ export function renderHomeScreen(root) {
   const blocks = notices.filter(n => n.level === 'block');
   const warns = notices.filter(n => n.level === 'warn');
   const infos = notices.filter(n => n.level === 'info');
-  const hard = Object.values(plan.avoid || {}).filter(v => v.hard).length;
+  const hard = Object.values(plan.avoid || {}).filter(v => v.hard).length + (plan.otherAllergies || []).length;
   const numbers = Object.keys(plan.limits || {}).length + Object.keys(plan.targets || {}).length;
   const missing = (plan.tier2 && plan.tier2.missing || []).length;
   const dateLine = uiToday().toLocaleDateString(undefined, { weekday: 'long', month: 'long', day: 'numeric' });

@@ -3,7 +3,7 @@
 import { symptomEpisodes, foodsBeforeSymptoms, weightTrend, reportDays, intakeAverages, unintendedWeightLoss } from '../engine/report.js';
 import { lbToKg, kgToLb } from '../engine/energy.js';
 import { uiState, uiEsc, uiActivePerson, uiPlanFor, uiPersist, uiToast, uiModal, uiIsoDate, uiToday, uiFmtDate, uiFmtNum, uiPageHeader, uiSection, uiChip, uiIcon, uiEmptyState, uiNoticeHTML, uiTagLabel, uiSourcesHTML, uiDownload, uiSegmented, uiUndoToast } from './common.js';
-import { todayAddDiaryEntry, todayAddModal, todayLatestWeightKg, todayChartSVG, todayShiftDate, todayEntryName, todayWeightLossNoticeHTML, todayMealStackingHTML } from './today.js';
+import { todayAddDiaryEntry, todayAddModal, todayLatestWeightKg, todayChartSVG, todayShiftDate, todayEntryName, todayWeightLossNoticeHTML, todayMealStackingHTML, todayBindHistoryButtons, todayAmountModal } from './today.js';
 import { weekGet } from './week.js';
 import { LOG_SYMPTOMS } from './log.js';
 import { SLOT_LABEL } from '../engine/planner.js';
@@ -45,15 +45,18 @@ export function renderLiteTodayScreen(root) {
         ${planned && planned.recipe ? `<p class="lite-planned">Planned: <strong>${uiEsc(planned.name)}</strong></p>` : '<p class="small muted">Nothing planned for this slot.</p>'}
         ${logged.length ? `<ul class="lite-logged">${logged.map(e => `<li class="lite-logged-row"><span>${uiEsc(todayEntryName(e))}</span>${removeBtn(uiState.profile.diary, e, todayEntryName(e))}</li>`).join('')}</ul>` : ''}
         ${todayMealStackingHTML(plan, logged)}
-        <div class="btn-row">${planned && planned.recipe && !logged.some(e => e.ref === planned.recipe) ? `<button class="btn primary lite-big" type="button" data-ate="${uiEsc(slot)}">${uiIcon('check')}I ate this</button>` : ''}<button class="btn lite-big" type="button" data-other="${uiEsc(slot)}">${uiIcon('plus')}Something else</button></div>
-      </div>`; }).join('')}</div>`, { id: 'lite-eat-h' })}
+        <div class="btn-row">${planned && planned.recipe && !logged.some(e => e.ref === planned.recipe) ? `<button class="btn primary lite-big" type="button" data-ate="${uiEsc(slot)}">${uiIcon('check')}I ate this</button><button class="btn lite-big" type="button" data-ate-part="${uiEsc(slot)}">Only part of it</button>` : ''}<button class="btn lite-big" type="button" data-other="${uiEsc(slot)}">${uiIcon('plus')}Something else</button></div>
+      </div>`; }).join('')}</div>
+      <div class="btn-row"><button class="btn lite-big" type="button" data-food-history>${uiIcon('list')}Past days: food and symptoms</button></div>`, { id: 'lite-eat-h' })}
     ${uiSection('How do you feel?', `<div class="card">
       ${symEntries.length ? `<ul class="lite-logged">${symEntries.map(e => { const words = Object.entries(e.symptoms).filter(([, v]) => v > 0).map(([k, v]) => `${liteSymptomLabel(k)} (${LITE_LEVELS.find(l => l.value === Number(v)) ? LITE_LEVELS.find(l => l.value === Number(v)).label.toLowerCase() : v})`).join(', '); return `<li class="lite-logged-row"><span><strong>${uiEsc(words)}</strong>${e.at && e.at.length > 10 ? ` <span class="muted small">at ${new Date(e.at).toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' })}</span>` : ''}${e.notes ? `<span class="small muted lite-note">${uiEsc(e.notes)}</span>` : ''}</span>${removeBtn(uiState.profile.log, e, words)}</li>`; }).join('')}</ul>` : fineToday ? '' : '<p class="small muted">Nothing logged today. If something comes on, tap the button and say what and how bad.</p>'}
       ${fineToday ? `<ul class="lite-logged"><li class="lite-logged-row"><span><strong>Feeling fine today</strong> <span class="muted small">noted</span></span>${removeBtn(uiState.profile.log, fineToday, 'feeling fine today')}</li></ul>` : ''}
       <div class="btn-row"><button class="btn primary lite-big" type="button" id="lite-feel">${uiIcon('note')}Log a symptom</button><button class="btn lite-big" type="button" id="lite-fine" ${fineToday ? 'disabled aria-disabled="true"' : ''}>${uiIcon('check-circle')}${fineToday ? 'Noted' : 'Feeling fine today'}</button></div>
+      <div class="btn-row"><button class="btn lite-big" type="button" data-food-history>${uiIcon('list')}Past days: symptoms and food</button></div>
     </div>`, { id: 'lite-feel-h' })}
     ${uiSection('Weight', `<div class="card"><div class="today-row"><div class="field"><label for="lite-weight">Today's weight (lb)</label><input id="lite-weight" type="number" inputmode="decimal" min="50" max="900" step="0.1" placeholder="${latestKg ? kgToLb(latestKg) : '150'}"></div><button class="btn primary lite-big" type="button" id="lite-weight-save">Save</button></div>
-      <p class="small muted">${latestKg ? `Last logged: ${kgToLb(latestKg)} lb.` : 'No weight logged yet.'} ${person.goals && person.goals.calorie_target === 'gain' ? 'Your goal is to gain; the Report shows the trend.' : ''}</p></div>`, { id: 'lite-weight-h' })}
+      <p class="small muted">${latestKg ? `Last logged: ${kgToLb(latestKg)} lb.` : 'No weight logged yet.'} ${person.goals && person.goals.calorie_target === 'gain' ? 'Your goal is to gain; the Report shows the trend.' : ''}</p>
+      ${latestKg ? `<div class="btn-row"><button class="btn lite-big" type="button" data-weight-history>${uiIcon('list')}Weight history</button></div>` : ''}</div>`, { id: 'lite-weight-h' })}
     ${uiSection('Also', `<div class="quick-actions">
       <a class="quick-action" href="#/check">${uiIcon('check-circle')}<span>Check a label</span><small>Is this product okay?</small></a>
       <a class="quick-action" href="#/report">${uiIcon('cite')}<span>Doctor report</span><small>Food, symptoms, weight</small></a>
@@ -69,6 +72,11 @@ export function renderLiteTodayScreen(root) {
     uiToast(`Logged ${planned.name}.`); uiState.rerender();
   }));
   root.querySelectorAll('[data-other]').forEach(b => b.addEventListener('click', () => todayAddModal(person, plan, date, LITE_SLOT_TO_DIARY[b.dataset.other] || b.dataset.other)));
+  // Only part of the planned meal: the recipe's amount sheet with its parts list open.
+  root.querySelectorAll('[data-ate-part]').forEach(b => b.addEventListener('click', () => {
+    const planned = day.meals.find(m => m.slot === b.dataset.atePart);
+    if (planned && planned.recipe) todayAmountModal(person, plan, { date, meal: LITE_SLOT_TO_DIARY[b.dataset.atePart] || b.dataset.atePart, kind: 'recipe', ref: planned.recipe, partsOpen: true });
+  }));
   root.querySelector('#lite-feel').addEventListener('click', () => liteSymptomModal(person, date));
   root.querySelector('#lite-backup').addEventListener('click', () => settingsShareBackup());
   root.querySelector('#lite-fine').addEventListener('click', () => {
@@ -89,6 +97,7 @@ export function renderLiteTodayScreen(root) {
     uiUndoToast(`Removed: ${r.what}.`, () => { if (!r.list.includes(r.obj)) r.list.splice(Math.min(i, r.list.length), 0, r.obj); uiPersist(); uiState.rerender(); uiToast('Put back.'); });
   }));
   settingsBindBackupReminder(root);
+  todayBindHistoryButtons(root, person);
   root.querySelector('#lite-weight-save').addEventListener('click', () => {
     const lb = Number(root.querySelector('#lite-weight').value);
     const kg = lbToKg(lb);
@@ -211,7 +220,7 @@ export function renderLiteReportScreen(root) {
       <h1 class="report-title">Food and symptom report</h1>
       <p class="report-meta">${uiEsc(person.name)}${person.age ? `, age ${person.age}` : ''}. ${uiFmtDate(from)} to ${uiFmtDate(to)} (${liteReportUi.days} days)${onlySym ? ', days with symptoms only' : ', full diary'}. Printed from Peace Meal on ${uiFmtDate(to)}. Self-reported by the patient; the app records, it does not diagnose.</p>
       <h2>Current restrictions</h2>
-      ${(person.allergens || []).length ? `<p class="small"><strong>Allergies (never):</strong> ${person.allergens.map(uiTagLabel).map(uiEsc).join(', ')}.</p>` : ''}
+      ${(person.allergens || []).length || (plan.otherAllergies || []).length ? `<p class="small"><strong>Allergies (never):</strong> ${[...(person.allergens || []).map(uiTagLabel), ...(plan.otherAllergies || [])].map(uiEsc).join(', ')}.</p>` : ''}
       ${plan.modules.length ? `<ul class="report-list">${plan.modules.map(m => { const mod = uiState.conditionsById.get(m.id); const hard = avoid.filter(([, a]) => a.hard && a.rules.some(r => r.module === m.id)).map(([t]) => uiTagLabel(t)); const soft = avoid.filter(([, a]) => !a.hard && a.rules.some(r => r.module === m.id)).map(([t]) => uiTagLabel(t)); const srcs = [...new Set(avoid.flatMap(([, a]) => a.rules.filter(r => r.module === m.id).flatMap(r => r.sources || [])).concat((mod && mod.sources) || []))].slice(0, 2); return `<li><strong>${uiEsc(m.name)}</strong>${hard.length ? `. Never: ${hard.map(uiEsc).join(', ')}` : ''}${soft.length ? `. Avoid: ${soft.map(uiEsc).join(', ')}` : ''}${!hard.length && !soft.length ? '. Guidance only, no foods excluded' : ''}.${srcs.length ? ` <span class="small muted">${uiSourcesHTML(srcs)}</span>` : ''}</li>`; }).join('')}</ul>` : '<p class="small muted">No conditions selected.</p>'}
       ${Object.keys(plan.limits || {}).length ? `<p class="small"><strong>Daily limits:</strong> ${Object.entries(plan.limits).map(([n, l]) => `${uiEsc(n.replace(/_/g, ' '))} at most ${uiFmtNum(l.value, 1)}`).join('; ')}.</p>` : ''}
       <h2>Weight</h2>
