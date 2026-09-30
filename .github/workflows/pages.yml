@@ -1,0 +1,57 @@
+name: Deploy to GitHub Pages
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: true
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm run validate
+      - run: npm test
+      - run: npm run bundle
+      - run: node tools/bundle.mjs --lite
+      # No build copies are uploaded: on a public repository anyone could download them.
+  deploy:
+    # Publishes to GitHub Pages. On the free plan Pages needs a public repository; Settings, Pages, Source must be
+    # "GitHub Actions". If Pages is off, this job fails while the check job above still proves the build.
+    needs: check
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      # The website holds only what people use: a plain landing page (site/index.html) and the two finished apps,
+      # each with its manifest, icons, and service worker, at /full/ and /lite/. Nothing else from the repository
+      # (docs, tests, tools, source files) is published.
+      - name: Assemble site
+        run: |
+          node tools/bundle.mjs --lite --pages
+          node tools/bundle.mjs --pages
+          mkdir -p _site
+          cp site/index.html _site/index.html
+          cp icon-180.png _site/icon-180.png
+          cp -r dist/pages/lite _site/lite
+          cp -r dist/pages/full _site/full
+          sed -i "s/__BUILD__/${GITHUB_SHA::12}/" _site/lite/sw.js _site/full/sw.js
+          find _site -type f | sort
+      - uses: actions/configure-pages@v5
+        with: { enablement: true }
+      - uses: actions/upload-pages-artifact@v3
+        with: { path: _site }
+      - id: deployment
+        uses: actions/deploy-pages@v4

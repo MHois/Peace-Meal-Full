@@ -1,0 +1,1782 @@
+{
+ "version": "fixture",
+ "tags": {
+  "added-sugar": {
+   "label": "Added sugar",
+   "description": "",
+   "hard": false,
+   "sources": [
+    "dga-2025-2030"
+   ]
+  },
+  "alcohol": {
+   "label": "Alcohol",
+   "description": "",
+   "hard": false,
+   "sources": [
+    "dga-2025-2030"
+   ]
+  },
+  "allergen-crustacean": {
+   "label": "Crustacean shellfish",
+   "description": "FDA major allergen. Hard exclusion when selected.",
+   "hard": true,
+   "sources": [
+    "fda-falcpa-2004"
+   ]
+  },
+  "allergen-egg": {
+   "label": "Egg",
+   "description": "FDA major allergen. Hard exclusion when selected.",
+   "hard": true,
+   "sources": [
+    "fda-falcpa-2004"
+   ]
+  },
+  "allergen-fish": {
+   "label": "Fish (allergen)",
+   "description": "FDA major allergen. Hard exclusion when selected.",
+   "hard": true,
+   "sources": [
+    "fda-falcpa-2004"
+   ]
+  },
+  "allergen-milk": {
+   "label": "Milk",
+   "description": "FDA major allergen. Hard exclusion when selected.",
+   "hard": true,
+   "sources": [
+    "fda-falcpa-2004"
+   ]
+  },
+  "allergen-peanut": {
+   "label": "Peanuts",
+   "description": "FDA major allergen. Hard exclusion when selected.",
+   "hard": true,
+   "sources": [
+    "fda-falcpa-2004"
+   ]
+  },
+  "allergen-sesame": {
+   "label": "Sesame",
+   "description": "FDA major allergen. Hard exclusion when selected.",
+   "hard": true,
+   "sources": [
+    "fda-falcpa-2004"
+   ]
+  },
+  "allergen-soy": {
+   "label": "Soybeans",
+   "description": "FDA major allergen. Hard exclusion when selected.",
+   "hard": true,
+   "sources": [
+    "fda-falcpa-2004"
+   ]
+  },
+  "allergen-tree-nut": {
+   "label": "Tree nuts",
+   "description": "FDA major allergen. Hard exclusion when selected.",
+   "hard": true,
+   "sources": [
+    "fda-falcpa-2004"
+   ]
+  },
+  "allergen-wheat": {
+   "label": "Wheat",
+   "description": "FDA major allergen. Hard exclusion when selected.",
+   "hard": true,
+   "sources": [
+    "fda-falcpa-2004"
+   ]
+  },
+  "aspartame": {
+   "label": "Aspartame",
+   "description": "",
+   "hard": false,
+   "sources": [
+    "dga-2025-2030"
+   ]
+  },
+  "bezoar-risk": {
+   "label": "Bezoar risk",
+   "description": "",
+   "hard": false,
+   "sources": [
+    "dga-2025-2030"
+   ]
+  },
+  "caffeine": {
+   "label": "Caffeine",
+   "description": "",
+   "hard": false,
+   "sources": [
+    "dga-2025-2030"
+   ]
+  },
+  "calcium-rich": {
+   "label": "Calcium rich",
+   "description": "",
+   "hard": false,
+   "sources": [
+    "dga-2025-2030"
+   ]
+  },
+  "carbonated": {
+   "label": "Carbonated",
+   "description": "",
+   "hard": false,
+   "sources": [
+    "dga-2025-2030"
+   ]
+  },
+  "chocolate": {
+   "label": "Chocolate",
+   "description": "",
+   "hard": false,
+   "sources": [
+    "dga-2025-2030"
+   ]
+  },
+  "citrus": {
+   "label": "Citrus",
+   "description": "",
+   "hard": false,
+   "sources": [
+    "dga-2025-2030"
+   ]
+  },
+  "coffee": {
+   "label": "Coffee",
+   "description": "",
+   "hard": false,
+   "sources": [
+    "dga-2025-2030"
+   ]
+  },
+  "deli-meat": {
+   "label": "Deli meat",
+   "description": "",
+   "hard": false,
+   "sources": [
+    "dga-2025-2030"
+   ]
+  },
+  "emulsifier-additive": {
+   "label": "Emulsifier additive",
+   "description": "",
+   "hard": false,
+   "sources": [
+    "dga-2025-2030"
+   ]
+  },
+  "fermented-live-culture": {
+   "label": "Fermented live culture",
+   "description": "",
+   "hard": false,
+   "sources": [
+    "dga-2025-2030"
+   ]
+  },
+  "fish": {
+   "label": "Fish",
+   "description": "",
+   "hard": false,
+   "sources": [
+    "dga-2025-2030"
+   ]
+  },
+  "fodmap-fructan": {
+   "label": "Fructans (FODMAP)",
+   "description": "Assigned from published studies; not Monash-verified. Portion matters.",
+   "hard": false,
+   "sources": [
+    "halmos-2014"
+   ]
+  },
+  "fodmap-fructose": {
+   "label": "Excess fructose (FODMAP)",
+   "description": "Assigned from published studies; not Monash-verified. Portion matters.",
+   "hard": false,
+   "sources": [
+    "halmos-2014"
+   ]
+  },
+  "fodmap-gos": {
+   "label": "GOS (FODMAP)",
+   "description": "Assigned from published studies; not Monash-verified. Portion matters.",
+   "hard": false,
+   "sources": [
+    "halmos-2014"
+   ]
+  },
+  "fodmap-lactose": {
+   "label": "Lactose (FODMAP)",
+   "description": "Assigned from published studies; not Monash-verified. Portion matters.",
+   "hard": false,
+   "sources": [
+    "halmos-2014"
+   ]
+  },
+  "fodmap-mannitol": {
+   "label": "Mannitol (FODMAP)",
+   "description": "Assigned from published studies; not Monash-verified. Portion matters.",
+   "hard": false,
+   "sources": [
+    "halmos-2014"
+   ]
+  },
+  "fodmap-sorbitol": {
+   "label": "Sorbitol (FODMAP)",
+   "description": "Assigned from published studies; not Monash-verified. Portion matters.",
+   "hard": false,
+   "sources": [
+    "halmos-2014"
+   ]
+  },
+  "fried": {
+   "label": "Fried",
+   "description": "",
+   "hard": false,
+   "sources": [
+    "dga-2025-2030"
+   ]
+  },
+  "fruit": {
+   "label": "Fruit",
+   "description": "",
+   "hard": false,
+   "sources": [
+    "dga-2025-2030"
+   ]
+  },
+  "full-fat-dairy": {
+   "label": "Full-fat dairy",
+   "description": "",
+   "hard": false,
+   "sources": [
+    "dga-2025-2030"
+   ]
+  },
+  "gluten": {
+   "label": "Gluten",
+   "description": "",
+   "hard": false,
+   "sources": [
+    "dga-2025-2030"
+   ]
+  },
+  "gluten-hidden": {
+   "label": "Hidden gluten",
+   "description": "",
+   "hard": false,
+   "sources": [
+    "dga-2025-2030"
+   ]
+  },
+  "high-fiber": {
+   "label": "High fiber",
+   "description": "",
+   "hard": false,
+   "sources": [
+    "dga-2025-2030"
+   ]
+  },
+  "high-fiber-insoluble": {
+   "label": "High fiber insoluble",
+   "description": "",
+   "hard": false,
+   "sources": [
+    "dga-2025-2030"
+   ]
+  },
+  "histamine-aged": {
+   "label": "Aged (histamine)",
+   "description": "",
+   "hard": false,
+   "sources": [
+    "dga-2025-2030"
+   ]
+  },
+  "histamine-fermented": {
+   "label": "Fermented (histamine)",
+   "description": "",
+   "hard": false,
+   "sources": [
+    "dga-2025-2030"
+   ]
+  },
+  "histamine-high": {
+   "label": "High histamine",
+   "description": "",
+   "hard": false,
+   "sources": [
+    "dga-2025-2030"
+   ]
+  },
+  "iron-rich": {
+   "label": "Iron rich",
+   "description": "",
+   "hard": false,
+   "sources": [
+    "dga-2025-2030"
+   ]
+  },
+  "iron-supplement": {
+   "label": "Iron supplement",
+   "description": "",
+   "hard": false,
+   "sources": [
+    "dga-2025-2030"
+   ]
+  },
+  "lactose-hidden": {
+   "label": "Lactose hidden",
+   "description": "",
+   "hard": false,
+   "sources": [
+    "dga-2025-2030"
+   ]
+  },
+  "lactose-high": {
+   "label": "Lactose high",
+   "description": "",
+   "hard": false,
+   "sources": [
+    "dga-2025-2030"
+   ]
+  },
+  "lactose-low": {
+   "label": "Lactose low",
+   "description": "",
+   "hard": false,
+   "sources": [
+    "dga-2025-2030"
+   ]
+  },
+  "large-particle": {
+   "label": "Large particle",
+   "description": "",
+   "hard": false,
+   "sources": [
+    "dga-2025-2030"
+   ]
+  },
+  "legume": {
+   "label": "Legume",
+   "description": "",
+   "hard": false,
+   "sources": [
+    "dga-2025-2030"
+   ]
+  },
+  "low-fat-dairy": {
+   "label": "Low-fat dairy",
+   "description": "",
+   "hard": false,
+   "sources": [
+    "dga-2025-2030"
+   ]
+  },
+  "may-contain": {
+   "label": "May contain / shared facility",
+   "description": "",
+   "hard": false,
+   "sources": [
+    "dga-2025-2030"
+   ]
+  },
+  "mercury-high": {
+   "label": "Mercury high",
+   "description": "",
+   "hard": false,
+   "sources": [
+    "dga-2025-2030"
+   ]
+  },
+  "mercury-low-fish": {
+   "label": "Mercury low fish",
+   "description": "",
+   "hard": false,
+   "sources": [
+    "dga-2025-2030"
+   ]
+  },
+  "mint": {
+   "label": "Mint",
+   "description": "",
+   "hard": false,
+   "sources": [
+    "dga-2025-2030"
+   ]
+  },
+  "msg": {
+   "label": "Msg",
+   "description": "",
+   "hard": false,
+   "sources": [
+    "dga-2025-2030"
+   ]
+  },
+  "non-nutritive-sweetener": {
+   "label": "Non nutritive sweetener",
+   "description": "",
+   "hard": false,
+   "sources": [
+    "dga-2025-2030"
+   ]
+  },
+  "nut": {
+   "label": "Nut",
+   "description": "",
+   "hard": false,
+   "sources": [
+    "dga-2025-2030"
+   ]
+  },
+  "oats-certified-gf": {
+   "label": "Oats certified gf",
+   "description": "",
+   "hard": false,
+   "sources": [
+    "dga-2025-2030"
+   ]
+  },
+  "oats-regular": {
+   "label": "Oats regular",
+   "description": "",
+   "hard": false,
+   "sources": [
+    "dga-2025-2030"
+   ]
+  },
+  "olive-oil": {
+   "label": "Olive oil",
+   "description": "",
+   "hard": false,
+   "sources": [
+    "dga-2025-2030"
+   ]
+  },
+  "oxalate-high": {
+   "label": "High oxalate",
+   "description": "",
+   "hard": false,
+   "sources": [
+    "dga-2025-2030"
+   ]
+  },
+  "phosphate-additive": {
+   "label": "Phosphate additive",
+   "description": "",
+   "hard": false,
+   "sources": [
+    "dga-2025-2030"
+   ]
+  },
+  "potassium-additive": {
+   "label": "Potassium additive",
+   "description": "",
+   "hard": false,
+   "sources": [
+    "dga-2025-2030"
+   ]
+  },
+  "potassium-high-food": {
+   "label": "Potassium high food",
+   "description": "",
+   "hard": false,
+   "sources": [
+    "dga-2025-2030"
+   ]
+  },
+  "poultry": {
+   "label": "Poultry",
+   "description": "",
+   "hard": false,
+   "sources": [
+    "dga-2025-2030"
+   ]
+  },
+  "processed-meat": {
+   "label": "Processed meat",
+   "description": "",
+   "hard": false,
+   "sources": [
+    "dga-2025-2030"
+   ]
+  },
+  "purine-high": {
+   "label": "High purine",
+   "description": "",
+   "hard": false,
+   "sources": [
+    "dga-2025-2030"
+   ]
+  },
+  "purine-moderate": {
+   "label": "Moderate purine",
+   "description": "",
+   "hard": false,
+   "sources": [
+    "dga-2025-2030"
+   ]
+  },
+  "raw-animal": {
+   "label": "Raw animal",
+   "description": "",
+   "hard": false,
+   "sources": [
+    "dga-2025-2030"
+   ]
+  },
+  "raw-sprouts": {
+   "label": "Raw sprouts",
+   "description": "",
+   "hard": false,
+   "sources": [
+    "dga-2025-2030"
+   ]
+  },
+  "raw-vegetable": {
+   "label": "Raw vegetable",
+   "description": "",
+   "hard": false,
+   "sources": [
+    "dga-2025-2030"
+   ]
+  },
+  "red-meat": {
+   "label": "Red meat",
+   "description": "",
+   "hard": false,
+   "sources": [
+    "dga-2025-2030"
+   ]
+  },
+  "refined-grain": {
+   "label": "Refined grain",
+   "description": "",
+   "hard": false,
+   "sources": [
+    "dga-2025-2030"
+   ]
+  },
+  "seed": {
+   "label": "Seed",
+   "description": "",
+   "hard": false,
+   "sources": [
+    "dga-2025-2030"
+   ]
+  },
+  "skin-or-seed": {
+   "label": "Skins or seeds",
+   "description": "",
+   "hard": false,
+   "sources": [
+    "dga-2025-2030"
+   ]
+  },
+  "small-particle-friendly": {
+   "label": "Small particle friendly",
+   "description": "",
+   "hard": false,
+   "sources": [
+    "dga-2025-2030"
+   ]
+  },
+  "smoked-seafood-refrigerated": {
+   "label": "Smoked seafood refrigerated",
+   "description": "",
+   "hard": false,
+   "sources": [
+    "dga-2025-2030"
+   ]
+  },
+  "soy": {
+   "label": "Soy",
+   "description": "",
+   "hard": false,
+   "sources": [
+    "dga-2025-2030"
+   ]
+  },
+  "soy-lecithin": {
+   "label": "Soy lecithin",
+   "description": "",
+   "hard": false,
+   "sources": [
+    "dga-2025-2030"
+   ]
+  },
+  "soy-refined-oil": {
+   "label": "Soy refined oil",
+   "description": "",
+   "hard": false,
+   "sources": [
+    "dga-2025-2030"
+   ]
+  },
+  "spicy": {
+   "label": "Spicy",
+   "description": "",
+   "hard": false,
+   "sources": [
+    "dga-2025-2030"
+   ]
+  },
+  "sugar-sweetened-beverage": {
+   "label": "Sugar-sweetened beverage",
+   "description": "",
+   "hard": false,
+   "sources": [
+    "dga-2025-2030"
+   ]
+  },
+  "tea": {
+   "label": "Tea",
+   "description": "",
+   "hard": false,
+   "sources": [
+    "dga-2025-2030"
+   ]
+  },
+  "tomato": {
+   "label": "Tomato",
+   "description": "",
+   "hard": false,
+   "sources": [
+    "dga-2025-2030"
+   ]
+  },
+  "tough-meat": {
+   "label": "Tough meat",
+   "description": "",
+   "hard": false,
+   "sources": [
+    "dga-2025-2030"
+   ]
+  },
+  "ultra-processed": {
+   "label": "Ultra-processed",
+   "description": "",
+   "hard": false,
+   "sources": [
+    "dga-2025-2030"
+   ]
+  },
+  "unpasteurized": {
+   "label": "Unpasteurized",
+   "description": "",
+   "hard": false,
+   "sources": [
+    "dga-2025-2030"
+   ]
+  },
+  "vegetable": {
+   "label": "Vegetable",
+   "description": "",
+   "hard": false,
+   "sources": [
+    "dga-2025-2030"
+   ]
+  },
+  "vitamin-c-rich": {
+   "label": "Vitamin c rich",
+   "description": "",
+   "hard": false,
+   "sources": [
+    "dga-2025-2030"
+   ]
+  },
+  "whole-grain": {
+   "label": "Whole grain",
+   "description": "",
+   "hard": false,
+   "sources": [
+    "dga-2025-2030"
+   ]
+  }
+ },
+ "entries": [
+  {
+   "term": "peanut",
+   "tags": [
+    "allergen-peanut",
+    "nut"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "peanuts",
+   "tags": [
+    "allergen-peanut",
+    "nut"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "peanut butter",
+   "tags": [
+    "allergen-peanut",
+    "nut"
+   ],
+   "match": "phrase"
+  },
+  {
+   "term": "groundnut",
+   "tags": [
+    "allergen-peanut"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "almond",
+   "tags": [
+    "allergen-tree-nut",
+    "nut"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "walnut",
+   "tags": [
+    "allergen-tree-nut",
+    "nut"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "cashew",
+   "tags": [
+    "allergen-tree-nut",
+    "nut"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "pecan",
+   "tags": [
+    "allergen-tree-nut",
+    "nut"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "pistachio",
+   "tags": [
+    "allergen-tree-nut",
+    "nut"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "hazelnut",
+   "tags": [
+    "allergen-tree-nut",
+    "nut"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "milk",
+   "tags": [
+    "allergen-milk",
+    "lactose-high"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "whey",
+   "tags": [
+    "allergen-milk"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "casein",
+   "tags": [
+    "allergen-milk"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "caseinate",
+   "tags": [
+    "allergen-milk"
+   ],
+   "match": "substring"
+  },
+  {
+   "term": "butter",
+   "tags": [
+    "allergen-milk"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "cheese",
+   "tags": [
+    "allergen-milk"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "cheddar",
+   "tags": [
+    "allergen-milk",
+    "histamine-aged"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "parmesan",
+   "tags": [
+    "allergen-milk",
+    "histamine-aged"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "yogurt",
+   "tags": [
+    "allergen-milk",
+    "fermented-live-culture"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "cream",
+   "tags": [
+    "allergen-milk",
+    "full-fat-dairy"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "lactose",
+   "tags": [
+    "allergen-milk",
+    "lactose-high"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "egg",
+   "tags": [
+    "allergen-egg"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "eggs",
+   "tags": [
+    "allergen-egg"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "albumin",
+   "tags": [
+    "allergen-egg"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "mayonnaise",
+   "tags": [
+    "allergen-egg"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "wheat",
+   "tags": [
+    "allergen-wheat",
+    "gluten"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "wheat flour",
+   "tags": [
+    "allergen-wheat",
+    "gluten"
+   ],
+   "match": "phrase"
+  },
+  {
+   "term": "flour",
+   "tags": [
+    "allergen-wheat",
+    "gluten"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "bread",
+   "tags": [
+    "allergen-wheat",
+    "gluten"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "pasta",
+   "tags": [
+    "allergen-wheat",
+    "gluten"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "barley",
+   "tags": [
+    "gluten"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "rye",
+   "tags": [
+    "gluten"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "malt",
+   "tags": [
+    "gluten-hidden"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "seitan",
+   "tags": [
+    "gluten",
+    "allergen-wheat"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "couscous",
+   "tags": [
+    "allergen-wheat",
+    "gluten"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "semolina",
+   "tags": [
+    "allergen-wheat",
+    "gluten"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "soy",
+   "tags": [
+    "allergen-soy",
+    "soy"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "soybean",
+   "tags": [
+    "allergen-soy",
+    "soy"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "soy sauce",
+   "tags": [
+    "allergen-soy",
+    "allergen-wheat",
+    "gluten",
+    "histamine-fermented"
+   ],
+   "match": "phrase"
+  },
+  {
+   "term": "tofu",
+   "tags": [
+    "allergen-soy",
+    "soy",
+    "legume"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "edamame",
+   "tags": [
+    "allergen-soy",
+    "soy",
+    "legume"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "tamari",
+   "tags": [
+    "allergen-soy",
+    "soy",
+    "histamine-fermented"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "miso",
+   "tags": [
+    "allergen-soy",
+    "soy",
+    "histamine-fermented"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "soy lecithin",
+   "tags": [
+    "soy-lecithin"
+   ],
+   "match": "phrase"
+  },
+  {
+   "term": "sesame",
+   "tags": [
+    "allergen-sesame",
+    "seed"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "tahini",
+   "tags": [
+    "allergen-sesame",
+    "seed"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "fish",
+   "tags": [
+    "allergen-fish",
+    "fish"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "salmon",
+   "tags": [
+    "allergen-fish",
+    "fish",
+    "mercury-low-fish"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "tuna",
+   "tags": [
+    "allergen-fish",
+    "fish"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "cod",
+   "tags": [
+    "allergen-fish",
+    "fish",
+    "mercury-low-fish"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "anchovy",
+   "tags": [
+    "allergen-fish",
+    "fish",
+    "histamine-high"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "sardine",
+   "tags": [
+    "allergen-fish",
+    "fish",
+    "histamine-high"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "fish sauce",
+   "tags": [
+    "allergen-fish",
+    "histamine-fermented"
+   ],
+   "match": "phrase"
+  },
+  {
+   "term": "shrimp",
+   "tags": [
+    "allergen-crustacean"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "prawn",
+   "tags": [
+    "allergen-crustacean"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "crab",
+   "tags": [
+    "allergen-crustacean"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "lobster",
+   "tags": [
+    "allergen-crustacean"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "crawfish",
+   "tags": [
+    "allergen-crustacean"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "garlic",
+   "tags": [
+    "fodmap-fructan"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "onion",
+   "tags": [
+    "fodmap-fructan"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "onions",
+   "tags": [
+    "fodmap-fructan"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "shallot",
+   "tags": [
+    "fodmap-fructan"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "leek",
+   "tags": [
+    "fodmap-fructan"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "inulin",
+   "tags": [
+    "fodmap-fructan"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "chicory root",
+   "tags": [
+    "fodmap-fructan"
+   ],
+   "match": "phrase"
+  },
+  {
+   "term": "honey",
+   "tags": [
+    "fodmap-fructose",
+    "added-sugar"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "apple",
+   "tags": [
+    "fodmap-fructose",
+    "fodmap-sorbitol",
+    "fruit"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "mushroom",
+   "tags": [
+    "fodmap-mannitol",
+    "vegetable"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "cauliflower",
+   "tags": [
+    "fodmap-mannitol",
+    "vegetable"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "chickpea",
+   "tags": [
+    "fodmap-gos",
+    "legume"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "chickpeas",
+   "tags": [
+    "fodmap-gos",
+    "legume"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "lentil",
+   "tags": [
+    "fodmap-gos",
+    "legume"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "lentils",
+   "tags": [
+    "fodmap-gos",
+    "legume"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "black beans",
+   "tags": [
+    "fodmap-gos",
+    "legume"
+   ],
+   "match": "phrase"
+  },
+  {
+   "term": "kidney beans",
+   "tags": [
+    "fodmap-gos",
+    "legume"
+   ],
+   "match": "phrase"
+  },
+  {
+   "term": "sugar",
+   "tags": [
+    "added-sugar"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "cane sugar",
+   "tags": [
+    "added-sugar"
+   ],
+   "match": "phrase"
+  },
+  {
+   "term": "high fructose corn syrup",
+   "tags": [
+    "added-sugar",
+    "fodmap-fructose"
+   ],
+   "match": "phrase"
+  },
+  {
+   "term": "corn syrup",
+   "tags": [
+    "added-sugar"
+   ],
+   "match": "phrase"
+  },
+  {
+   "term": "dextrose",
+   "tags": [
+    "added-sugar"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "maltodextrin",
+   "tags": [
+    "added-sugar"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "brown sugar",
+   "tags": [
+    "added-sugar"
+   ],
+   "match": "phrase"
+  },
+  {
+   "term": "agave",
+   "tags": [
+    "added-sugar",
+    "fodmap-fructose"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "sucralose",
+   "tags": [
+    "non-nutritive-sweetener"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "aspartame",
+   "tags": [
+    "non-nutritive-sweetener",
+    "aspartame"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "stevia",
+   "tags": [
+    "non-nutritive-sweetener"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "salt",
+   "tags": [],
+   "match": "word"
+  },
+  {
+   "term": "sea salt",
+   "tags": [],
+   "match": "phrase"
+  },
+  {
+   "term": "sodium",
+   "tags": [],
+   "match": "word"
+  },
+  {
+   "term": "monosodium glutamate",
+   "tags": [
+    "msg"
+   ],
+   "match": "phrase"
+  },
+  {
+   "term": "msg",
+   "tags": [
+    "msg"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "natural flavors",
+   "tags": [],
+   "match": "phrase",
+   "note": "Does not say what it contains. Can hide milk, soy, or wheat derivatives. Check with the maker if you have an allergy."
+  },
+  {
+   "term": "natural flavor",
+   "tags": [],
+   "match": "phrase",
+   "note": "Does not say what it contains. Can hide milk, soy, or wheat derivatives."
+  },
+  {
+   "term": "artificial flavors",
+   "tags": [],
+   "match": "phrase",
+   "note": "Unspecified flavorings."
+  },
+  {
+   "term": "spices",
+   "tags": [],
+   "match": "word",
+   "note": "Unspecified spice blend. Can include celery, mustard, or sesame."
+  },
+  {
+   "term": "seasoning",
+   "tags": [],
+   "match": "word",
+   "note": "Unspecified seasoning. Can include wheat or soy."
+  },
+  {
+   "term": "modified food starch",
+   "tags": [],
+   "match": "phrase",
+   "note": "Source not stated; usually corn, sometimes wheat."
+  },
+  {
+   "term": "vegetable oil",
+   "tags": [],
+   "match": "phrase",
+   "note": "Source not stated; may be soybean oil."
+  },
+  {
+   "term": "may contain",
+   "tags": [
+    "may-contain"
+   ],
+   "match": "phrase"
+  },
+  {
+   "term": "shared facility",
+   "tags": [
+    "may-contain"
+   ],
+   "match": "phrase"
+  },
+  {
+   "term": "processed in a facility",
+   "tags": [
+    "may-contain"
+   ],
+   "match": "phrase"
+  },
+  {
+   "term": "beef",
+   "tags": [
+    "red-meat"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "pork",
+   "tags": [
+    "red-meat"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "lamb",
+   "tags": [
+    "red-meat"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "bacon",
+   "tags": [
+    "processed-meat",
+    "red-meat",
+    "histamine-aged"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "ham",
+   "tags": [
+    "processed-meat",
+    "deli-meat"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "sausage",
+   "tags": [
+    "processed-meat"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "salami",
+   "tags": [
+    "processed-meat",
+    "histamine-aged"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "hot dog",
+   "tags": [
+    "processed-meat"
+   ],
+   "match": "phrase"
+  },
+  {
+   "term": "deli turkey",
+   "tags": [
+    "processed-meat",
+    "deli-meat"
+   ],
+   "match": "phrase"
+  },
+  {
+   "term": "chicken",
+   "tags": [
+    "poultry"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "turkey",
+   "tags": [
+    "poultry"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "rotisserie chicken",
+   "tags": [
+    "poultry"
+   ],
+   "match": "phrase"
+  },
+  {
+   "term": "spinach",
+   "tags": [
+    "vegetable",
+    "oxalate-high",
+    "histamine-high"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "tomato",
+   "tags": [
+    "vegetable",
+    "histamine-high",
+    "tomato"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "tomatoes",
+   "tags": [
+    "vegetable",
+    "histamine-high",
+    "tomato"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "broccoli",
+   "tags": [
+    "vegetable"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "carrot",
+   "tags": [
+    "vegetable"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "carrots",
+   "tags": [
+    "vegetable"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "zucchini",
+   "tags": [
+    "vegetable"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "sweet potato",
+   "tags": [
+    "vegetable"
+   ],
+   "match": "phrase"
+  },
+  {
+   "term": "potato",
+   "tags": [
+    "vegetable"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "avocado",
+   "tags": [
+    "fruit",
+    "fodmap-sorbitol",
+    "histamine-high"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "banana",
+   "tags": [
+    "fruit"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "blueberries",
+   "tags": [
+    "fruit"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "strawberries",
+   "tags": [
+    "fruit"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "lemon",
+   "tags": [
+    "fruit",
+    "citrus"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "orange",
+   "tags": [
+    "fruit",
+    "citrus"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "oats",
+   "tags": [
+    "whole-grain",
+    "oats-regular"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "rolled oats",
+   "tags": [
+    "whole-grain",
+    "oats-regular"
+   ],
+   "match": "phrase"
+  },
+  {
+   "term": "brown rice",
+   "tags": [
+    "whole-grain"
+   ],
+   "match": "phrase"
+  },
+  {
+   "term": "quinoa",
+   "tags": [
+    "whole-grain"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "whole wheat",
+   "tags": [
+    "whole-grain",
+    "allergen-wheat",
+    "gluten"
+   ],
+   "match": "phrase"
+  },
+  {
+   "term": "white rice",
+   "tags": [
+    "refined-grain"
+   ],
+   "match": "phrase"
+  },
+  {
+   "term": "olive oil",
+   "tags": [
+    "olive-oil"
+   ],
+   "match": "phrase"
+  },
+  {
+   "term": "sauerkraut",
+   "tags": [
+    "histamine-fermented",
+    "histamine-high",
+    "fermented-live-culture"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "kimchi",
+   "tags": [
+    "histamine-fermented",
+    "histamine-high",
+    "fermented-live-culture"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "vinegar",
+   "tags": [
+    "histamine-fermented"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "wine",
+   "tags": [
+    "alcohol",
+    "histamine-fermented"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "beer",
+   "tags": [
+    "alcohol",
+    "gluten"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "coffee",
+   "tags": [
+    "caffeine",
+    "coffee"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "chocolate",
+   "tags": [
+    "chocolate",
+    "caffeine"
+   ],
+   "match": "word"
+  },
+  {
+   "term": "cocoa",
+   "tags": [
+    "chocolate",
+    "caffeine"
+   ],
+   "match": "word"
+  }
+ ]
+}

@@ -1,0 +1,35 @@
+{
+  "hypertension": {
+    "title": "Eating for high blood pressure",
+    "summary": [
+      "Sodium under 2,300 mg a day, and under 1,500 mg if you can, lowers blood pressure.",
+      "The DASH pattern (vegetables, fruit, whole grains, beans, nuts, fish, low-fat dairy) has the strongest trial evidence.",
+      "Potassium from food helps, unless you have kidney disease or take a potassium-retaining medicine."
+    ],
+    "sections": [
+      { "heading": "Why sodium matters", "paragraphs": ["Sodium pulls water into the blood vessels and raises pressure. Most sodium in the American diet comes from packaged and restaurant food, not the salt shaker.", "Reading labels is the single most useful habit: a serving with more than 400 mg is high."] },
+      { "heading": "What DASH looks like on a plate", "paragraphs": ["Half the plate vegetables and fruit, a quarter whole grains, a quarter beans, fish, or poultry, with a small amount of nuts and low-fat dairy through the day."] }
+    ],
+    "links": [
+      { "label": "DASH eating plan (NHLBI)", "url": "https://www.nhlbi.nih.gov/education/dash-eating-plan", "kind": "patient guide" }
+    ],
+    "references": [
+      { "id": "aha-acc-htn-2025", "citation": "Whelton PK, et al. 2025 AHA/ACC guideline for the prevention, detection, evaluation, and management of high blood pressure in adults.", "url": "https://www.ahajournals.org/", "verify": false },
+      { "id": "dash-1997", "citation": "Appel LJ, et al. A clinical trial of the effects of dietary patterns on blood pressure. N Engl J Med 1997;336:1117-24.", "url": "https://www.nejm.org/doi/full/10.1056/NEJM199704173361601", "verify": true }
+    ]
+  },
+  "dash": {
+    "title": "The DASH eating pattern",
+    "summary": [
+      "DASH lowered blood pressure in controlled feeding trials, not just surveys.",
+      "It is a pattern, not a rule list: more vegetables, fruit, whole grains, beans, nuts, fish, and low-fat dairy; less sodium, sweets, and red meat."
+    ],
+    "sections": [
+      { "heading": "Where the evidence comes from", "paragraphs": ["The 1997 DASH trial fed people the pattern for eight weeks and measured a drop of about 5.5 mmHg overall and 11 mmHg in people with hypertension. DASH-Sodium in 2001 added sodium reduction and saw further drops."] }
+    ],
+    "links": [],
+    "references": [
+      { "id": "dash-1997", "citation": "Appel LJ, et al. N Engl J Med 1997;336:1117-24.", "url": "https://www.nejm.org/doi/full/10.1056/NEJM199704173361601" }
+    ]
+  }
+}

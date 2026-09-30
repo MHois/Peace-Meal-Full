@@ -1,0 +1,449 @@
+{
+  "version": 1,
+  "notes": [
+    "Substitutions the planner may apply to a recipe that is blocked only by ingredients on this list, producing an adapted copy for one diet family.",
+    "Every swap cites its source. A swap either replaces the ingredient (to.food, to.display) or removes it (to: null) with instructions in how.",
+    "Adapted copies of recipes whose ingredients are linked to USDA foods get exact nutrition recomputed from the new ingredients. Adapted copies of recipes that only carry published per-serving numbers keep those numbers and are marked approximate.",
+    "match is a regular expression tested against the ingredient text (lower-case); except stops a swap when the text already names the safe form."
+  ],
+  "families": {
+    "low-fodmap": {
+      "label": "low FODMAP",
+      "tags": [
+        "fodmap-fructan",
+        "fodmap-gos",
+        "fodmap-lactose",
+        "fodmap-fructose",
+        "fodmap-sorbitol",
+        "fodmap-mannitol"
+      ],
+      "sources": [
+        "monash-fodmap",
+        "varney-2017",
+        "halmos-2014"
+      ],
+      "module": "ibs-low-fodmap"
+    },
+    "low-histamine": {
+      "label": "low histamine",
+      "tags": [
+        "histamine-high",
+        "histamine-aged",
+        "histamine-fermented"
+      ],
+      "sources": [
+        "sighi-list",
+        "comas-baste-2020"
+      ],
+      "module": "mcas"
+    }
+  },
+  "swaps": [
+    {
+      "id": "garlic-to-infused-oil",
+      "family": "low-fodmap",
+      "match": "\\bgarlic\\b",
+      "except": "infused",
+      "to": {
+        "food": "fdc-171413",
+        "display": "garlic-infused olive oil",
+        "grams_per_gram": 2,
+        "grams_min": 10,
+        "amount_text": "1 to 2 teaspoons per clove"
+      },
+      "how": "Use garlic-infused olive oil instead of garlic. Fructans do not dissolve in oil, so the flavour comes through without the FODMAP load; strain out any garlic pieces and add the oil where the garlic went.",
+      "sources": [
+        "varney-2017"
+      ]
+    },
+    {
+      "id": "onion-to-chives",
+      "family": "low-fodmap",
+      "match": "\\b(onions?|shallots?|leeks?)\\b",
+      "except": "(green tops|greens|chives|tops of|green part)",
+      "to": {
+        "food": "fdc-169994",
+        "display": "chives or spring onion green tops",
+        "grams_per_gram": 0.4,
+        "grams_min": 10,
+        "amount_text": "a small handful per onion"
+      },
+      "how": "Swap onion, shallot, or leek for chives or the green tops of spring onions, added near the end. The green leaves are low FODMAP; the white bulb carries the fructans.",
+      "sources": [
+        "varney-2017",
+        "halmos-2014"
+      ]
+    },
+    {
+      "id": "wheat-pasta-to-gf",
+      "family": "low-fodmap",
+      "match": "\\b(pasta|spaghetti|penne|fusilli|macaroni|linguine|fettuccine|tagliatelle|rigatoni|farfalle|orzo|lasagne|lasagna sheets|noodles?)\\b",
+      "except": "(gluten-free|gluten free|rice noodle|corn|buckwheat|soba)",
+      "to": {
+        "food": "fdc-168899",
+        "display": "gluten-free corn and rice pasta",
+        "grams_per_gram": 1,
+        "amount_text": "same amount"
+      },
+      "how": "Use a gluten-free corn and rice pasta in the same amount. Wheat pasta carries fructans; the corn and rice kind does not. Cook it a minute less than the packet says so it holds its shape.",
+      "sources": [
+        "varney-2017"
+      ]
+    },
+    {
+      "id": "wheat-flour-to-rice-flour",
+      "family": "low-fodmap",
+      "match": "\\b(plain|all-purpose|all purpose|self-raising|self raising|wholemeal|whole wheat|whole-wheat|bread|wheat|white)?\\s*flour\\b",
+      "except": "(rice|corn|maize|almond|coconut|buckwheat|gluten-free|gluten free|chickpea|gram|oat|potato|tapioca|quinoa|sorghum|millet|teff)",
+      "to": {
+        "food": "fdc-790214",
+        "display": "white rice flour",
+        "grams_per_gram": 1,
+        "amount_text": "same amount"
+      },
+      "how": "Use white rice flour one for one to thicken sauces, coat, or dust. For baking, use a gluten-free flour blend instead and expect a slightly different texture.",
+      "sources": [
+        "varney-2017"
+      ]
+    },
+    {
+      "id": "couscous-to-quinoa",
+      "family": "low-fodmap",
+      "match": "\\b(couscous|bulgur|bulghur|pearl barley|barley|freekeh|spelt)\\b",
+      "to": {
+        "food": "fdc-168874",
+        "display": "quinoa",
+        "grams_per_gram": 1,
+        "amount_text": "same amount"
+      },
+      "how": "Use quinoa in the same amount and cook it the same way. Couscous, bulgur, and barley are wheat or barley and carry fructans; quinoa does not.",
+      "sources": [
+        "varney-2017"
+      ]
+    },
+    {
+      "id": "milk-to-lactose-free-lowfat",
+      "family": "low-fodmap",
+      "match": "\\b(skimmed|skim|semi-skimmed|semi skimmed|1%|2%|low-fat|lowfat|low fat|reduced-fat|reduced fat)\\b[^,;]*\\bmilk\\b|\\bmilk\\b[^,;]*\\b(skimmed|skim|semi-skimmed|1%|2%|low-fat|low fat)\\b",
+      "except": "(lactose-free|lactose free|coconut|almond|oat|rice|soy|soya|hemp|cashew|goat|sheep|sweetened condensed|evaporated|powder|buttermilk)",
+      "to": {
+        "food": "lf-milk-lowfat",
+        "display": "lactose-free low-fat milk",
+        "grams_per_gram": 1,
+        "amount_text": "same amount"
+      },
+      "how": "Use lactose-free milk in the same amount. The lactose is already split, so the taste and nutrients are the same and the FODMAP load is gone.",
+      "sources": [
+        "nih-lactose-consensus-2010",
+        "halmos-2014"
+      ]
+    },
+    {
+      "id": "milk-to-lactose-free",
+      "family": "low-fodmap",
+      "match": "\\bmilk\\b",
+      "except": "(lactose-free|lactose free|coconut|almond|oat|rice|soy|soya|hemp|cashew|goat|sheep|sweetened condensed|evaporated|powder|buttermilk|chocolate)",
+      "to": {
+        "food": "lf-milk-whole",
+        "display": "lactose-free whole milk",
+        "grams_per_gram": 1,
+        "amount_text": "same amount"
+      },
+      "how": "Use lactose-free milk in the same amount. The lactose is already split, so the taste and nutrients are the same and the FODMAP load is gone.",
+      "sources": [
+        "nih-lactose-consensus-2010",
+        "halmos-2014"
+      ]
+    },
+    {
+      "id": "yogurt-to-lactose-free",
+      "family": "low-fodmap",
+      "match": "\\b(yogh?urt|yoghourt)\\b",
+      "except": "(lactose-free|lactose free|coconut|almond|oat|soy|soya|plant)",
+      "to": {
+        "food": "lf-yogurt-plain",
+        "display": "lactose-free plain yogurt",
+        "grams_per_gram": 1,
+        "amount_text": "same amount"
+      },
+      "how": "Use lactose-free yogurt in the same amount.",
+      "sources": [
+        "nih-lactose-consensus-2010",
+        "halmos-2014"
+      ]
+    },
+    {
+      "id": "cream-to-lactose-free",
+      "family": "low-fodmap",
+      "match": "\\b(double|single|heavy|light|whipping|pouring)?\\s*cream\\b|\\bhalf[- ]and[- ]half\\b",
+      "except": "(lactose-free|lactose free|coconut|cream cheese|ice cream|sour cream|creamed|cream of|creamy)",
+      "to": {
+        "food": "lf-cream-light",
+        "display": "lactose-free cream",
+        "grams_per_gram": 1,
+        "amount_text": "same amount"
+      },
+      "how": "Use lactose-free cream in the same amount.",
+      "sources": [
+        "nih-lactose-consensus-2010"
+      ]
+    },
+    {
+      "id": "honey-to-maple",
+      "family": "low-fodmap",
+      "match": "\\b(honey|agave|agave nectar|agave syrup|high-fructose corn syrup|high fructose corn syrup)\\b",
+      "to": {
+        "food": "fdc-169661",
+        "display": "pure maple syrup",
+        "grams_per_gram": 1,
+        "amount_text": "same amount"
+      },
+      "how": "Use pure maple syrup in the same amount. Honey and agave carry excess fructose; maple syrup is balanced sugar.",
+      "sources": [
+        "varney-2017"
+      ]
+    },
+    {
+      "id": "cauliflower-to-broccoli",
+      "family": "low-fodmap",
+      "match": "\\bcauliflower\\b",
+      "to": {
+        "food": "fdc-747447",
+        "display": "broccoli florets",
+        "grams_per_gram": 1,
+        "amount_text": "same amount"
+      },
+      "how": "Use broccoli florets in the same amount and cook them the same way. Cauliflower carries mannitol; broccoli heads are low FODMAP at a normal serve.",
+      "sources": [
+        "varney-2017"
+      ]
+    },
+    {
+      "id": "mushrooms-to-oyster",
+      "family": "low-fodmap",
+      "match": "\\b(button|white|chestnut|cremini|crimini|portobello|portabella|shiitake|field|mixed)?\\s*mushrooms?\\b",
+      "except": "oyster",
+      "to": {
+        "food": "fdc-168580",
+        "display": "oyster mushrooms",
+        "grams_per_gram": 1,
+        "amount_text": "same amount"
+      },
+      "how": "Use oyster mushrooms in the same amount. Button and most other mushrooms carry mannitol; oyster mushrooms are low FODMAP in the Monash-group data.",
+      "sources": [
+        "varney-2017"
+      ]
+    },
+    {
+      "id": "cashews-to-macadamia",
+      "family": "low-fodmap",
+      "match": "\\b(cashews?|pistachios?)\\b",
+      "to": {
+        "food": "fdc-2515378",
+        "display": "macadamia nuts",
+        "grams_per_gram": 1,
+        "amount_text": "same amount"
+      },
+      "how": "Use macadamia nuts in the same amount. Cashews and pistachios carry galacto-oligosaccharides; macadamias do not.",
+      "sources": [
+        "varney-2017"
+      ]
+    },
+    {
+      "id": "flour-tortilla-to-corn",
+      "family": "low-fodmap",
+      "match": "\\b(flour|wheat)\\s+tortillas?\\b|\\btortillas?\\b",
+      "except": "(corn|maize)",
+      "to": {
+        "food": "fdc-173241",
+        "display": "corn tortillas",
+        "grams_per_gram": 1,
+        "amount_text": "same number"
+      },
+      "how": "Use corn tortillas, the same number. Wheat tortillas carry fructans.",
+      "sources": [
+        "varney-2017"
+      ]
+    },
+    {
+      "id": "tomato-paste-to-pumpkin",
+      "family": "low-histamine",
+      "match": "\\btomato\\s+(paste|pur[eé]e|concentrate)\\b|\\bpassata\\b|\\bketchup\\b|\\btomato\\s+ketchup\\b",
+      "to": {
+        "food": "fdc-168450",
+        "display": "pumpkin purée",
+        "grams_per_gram": 1,
+        "amount_text": "same amount"
+      },
+      "how": "Use pumpkin purée in the same amount for body and colour, with a pinch of paprika if you want warmth. Tomato is a commonly reported histamine trigger; pumpkin is on the well-tolerated side of the SIGHI list.",
+      "sources": [
+        "sighi-list"
+      ]
+    },
+    {
+      "id": "tomato-to-red-pepper",
+      "family": "low-histamine",
+      "match": "\\btomato(es)?\\b",
+      "to": {
+        "food": "fdc-170110",
+        "display": "fresh-roasted red bell pepper",
+        "grams_per_gram": 1,
+        "amount_text": "same amount"
+      },
+      "how": "Roast red bell peppers yourself (under the grill or in a hot oven until the skins char, then peel) and use them in the same amount, chopped or blended where the tomato went. Not jarred roasted peppers: they are packed in vinegar or brine, which the SIGHI leaflet lists under To avoid. Tomato is a commonly reported histamine trigger; fresh sweet red pepper is well tolerated on the SIGHI list.",
+      "sources": [
+        "sighi-list",
+        "sighi-leaflet-2021"
+      ]
+    },
+    {
+      "id": "spinach-to-kale",
+      "family": "low-histamine",
+      "match": "\\bspinach\\b",
+      "to": {
+        "food": "fdc-323505",
+        "display": "young kale or chard leaves",
+        "grams_per_gram": 1,
+        "amount_text": "same amount"
+      },
+      "how": "Use young kale or chard leaves in the same amount, cooked a minute or two longer. Spinach is on the SIGHI list as a histamine-rich vegetable.",
+      "sources": [
+        "sighi-list"
+      ]
+    },
+    {
+      "id": "eggplant-to-zucchini",
+      "family": "low-histamine",
+      "match": "\\b(eggplant|aubergine)s?\\b",
+      "to": {
+        "food": "fdc-169291",
+        "display": "zucchini",
+        "grams_per_gram": 1,
+        "amount_text": "same amount"
+      },
+      "how": "Use zucchini in the same amount; it cooks faster, so add it a few minutes later. Eggplant is on the SIGHI list as histamine-rich.",
+      "sources": [
+        "sighi-list"
+      ]
+    },
+    {
+      "id": "aged-cheese-to-mozzarella",
+      "family": "low-histamine",
+      "match": "\\b(parmesan|parmigiano|pecorino|cheddar|gouda|gruy[eè]re|emmental|swiss cheese|edam|manchego|blue cheese|stilton|gorgonzola|roquefort|brie|camembert|aged cheese|mature cheese|hard cheese)\\b|\\bcheese\\b",
+      "except": "(mozzarella|ricotta|cream cheese|cottage|mascarpone|paneer|halloumi|goat|quark|fresh cheese)",
+      "to": {
+        "food": "fdc-170845",
+        "display": "fresh mozzarella",
+        "grams_per_gram": 1,
+        "amount_text": "same amount"
+      },
+      "how": "Use fresh mozzarella in the same amount. Histamine builds as cheese ages; young, fresh cheeses are the low end of the SIGHI list.",
+      "sources": [
+        "sighi-list",
+        "comas-baste-2020"
+      ]
+    },
+    {
+      "id": "cured-meat-to-chicken",
+      "family": "low-histamine",
+      "match": "\\b(bacon|ham|salami|chorizo|pepperoni|prosciutto|pancetta|speck|bresaola|pastrami|smoked (chicken|turkey|meat|ham)|cured meat|deli meat|luncheon meat)\\b",
+      "to": {
+        "food": "fdc-171052",
+        "display": "fresh chicken, diced",
+        "grams_per_gram": 1,
+        "amount_text": "same amount"
+      },
+      "how": "Use fresh chicken in the same amount, seasoned with paprika and a little salt for the smoky note. Cured, smoked, and aged meats are the highest-histamine meats on the SIGHI list; fresh meat is the lowest.",
+      "sources": [
+        "sighi-list",
+        "comas-baste-2020"
+      ]
+    },
+    {
+      "id": "preserved-fish-to-cod",
+      "family": "low-histamine",
+      "match": "\\b(tuna|sardines?|anchov(y|ies)|mackerel|herring|smoked salmon|smoked fish|smoked haddock|kippers?|shrimp|prawns?|crab|lobster|mussels?|clams?|scallops?|squid|calamari|shellfish)\\b",
+      "to": {
+        "food": "fdc-174191",
+        "display": "fresh or frozen cod",
+        "grams_per_gram": 1,
+        "amount_text": "same amount"
+      },
+      "how": "Use fresh or quickly frozen white fish such as cod in the same amount. Canned, smoked, and scombroid fish and shellfish are the highest-histamine foods on the SIGHI list; fresh white fish is among the lowest.",
+      "sources": [
+        "sighi-list",
+        "comas-baste-2020"
+      ]
+    },
+    {
+      "id": "strawberries-to-blueberries",
+      "family": "low-histamine",
+      "match": "\\bstrawberr(y|ies)\\b",
+      "to": {
+        "food": "fdc-2346411",
+        "display": "blueberries",
+        "grams_per_gram": 1,
+        "amount_text": "same amount"
+      },
+      "how": "Use blueberries in the same amount. Strawberries are a listed histamine liberator; blueberries are well tolerated on the SIGHI list.",
+      "sources": [
+        "sighi-list"
+      ]
+    },
+    {
+      "id": "nuts-to-macadamia",
+      "family": "low-histamine",
+      "match": "\\b(walnuts?|cashews?|peanuts?)\\b",
+      "except": "butter",
+      "to": {
+        "food": "fdc-2515378",
+        "display": "macadamia nuts",
+        "grams_per_gram": 1,
+        "amount_text": "same amount"
+      },
+      "how": "Use macadamia nuts in the same amount. Walnuts, cashews, and peanuts are listed histamine triggers; macadamias are well tolerated.",
+      "sources": [
+        "sighi-list"
+      ]
+    },
+    {
+      "id": "vinegar-out",
+      "family": "low-histamine",
+      "match": "\\bvinegar\\b|\\bpickled\\b|\\bpickles?\\b|\\bsauerkraut\\b|\\bkimchi\\b",
+      "to": null,
+      "how": "Leave it out. Wine, balsamic, rice, and malt vinegar and pickled or fermented vegetables are fermented foods. For brightness, use a splash of distilled white vinegar or apple cider vinegar (both well tolerated in the SIGHI leaflet), apple juice, or a pinch of sugar and salt instead.",
+      "sources": [
+        "sighi-list",
+        "sighi-leaflet-2021"
+      ],
+      "except": "\\b(distilled( white)?|white|spirit|apple cider|cider)[\\s-]+vinegar\\b"
+    },
+    {
+      "id": "soy-sauce-out",
+      "family": "low-histamine",
+      "match": "\\b(soy sauce|soya sauce|tamari|shoyu|fish sauce|oyster sauce|worcestershire|miso|hoisin)\\b",
+      "to": null,
+      "how": "Leave it out and season with salt, a little ground ginger, and fresh herbs. These are fermented sauces, the top of the histamine list.",
+      "sources": [
+        "sighi-list"
+      ]
+    },
+    {
+      "id": "wine-to-stock",
+      "family": "low-histamine",
+      "match": "\\b(red wine|white wine|wine|beer|lager|cider|sherry|port|brandy|rum|vermouth)\\b",
+      "except": "vinegar",
+      "to": {
+        "food": "fdc-173647",
+        "display": "water or quick homemade vegetable stock",
+        "grams_per_gram": 1,
+        "amount_text": "same amount"
+      },
+      "how": "Use water, or a vegetable stock you simmered under 30 minutes, in the same amount. Wine and beer are fermented and carry histamine; cooking does not remove it.",
+      "sources": [
+        "sighi-list",
+        "comas-baste-2020"
+      ]
+    }
+  ]
+}

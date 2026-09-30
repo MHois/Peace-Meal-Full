@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Peace Meal</title>
+<meta name="description" content="Peace Meal: one table, everyone's funky dietary needs, every recommendation cited. Data stays on this device.">
+<meta name="color-scheme" content="light dark">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#FBFAF7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#141816" media="(prefers-color-scheme: dark)">
+<!-- The fonts ship with the app (src/fonts/, SIL Open Font License 1.1), so no request goes to Google and they work offline.
+     They were loaded from Google Fonts until the 2026-09 audit (owner question 14). -->
+<link rel="stylesheet" href="src/fonts/fonts.css">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="stylesheet" href="src/app.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div id="app" class="app">
+  <header class="topbar" id="topbar"></header>
+  <nav class="sidenav" id="sidenav" aria-label="Main"></nav>
+  <main id="main" class="main" tabindex="-1">
+    <div class="boot" id="boot">
+      <p>Loading...</p>
+      <noscript><p>This app needs JavaScript. Nothing is sent anywhere; it runs entirely on this device.</p></noscript>
+    </div>
+  </main>
+  <nav class="tabbar" id="tabbar" aria-label="Main"></nav>
+</div>
+<div id="modal-root"></div>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script>
+if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol)) {
+  window.__pmSwReg = new Promise(function (done) { window.addEventListener('load', function () { navigator.serviceWorker.register('sw.js').then(done, function () { done(null); }); }); });
+}
+</script>
+<script type="module" src="src/app.js"></script>
+</body>
+</html>

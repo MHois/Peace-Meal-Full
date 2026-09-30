@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Peace Meal</title>
+<meta name="description" content="Peace Meal: nutrition planning where every recommendation is cited. What you enter stays on your device.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="icon-180.png" type="image/png">
+<link rel="apple-touch-icon" href="icon-180.png">
+<!-- The website's front page: links to the two apps. No scripts and no outside requests. Published by
+     .github/workflows/pages.yml together with /full/ and /lite/ and nothing else from the repository. -->
+<style>
+  :root {
+    --ground: #FBFAF7; --surface: #FFFFFF; --ink: #1E2321; --muted: #5B615D; --hairline: #E3E1DA;
+    --primary: #3D5A3C; --primary-strong: #2E4A2E; --tint: #E8EEE5;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --ground: #141816; --surface: #1C211E; --ink: #ECEAE2; --muted: #A9AFA9; --hairline: #2E3531;
+      --primary: #9DBE97; --primary-strong: #B9D3B3; --tint: rgba(157, 190, 151, 0.14); }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--ground); color: var(--ink); font: 17px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; }
+  main { max-width: 560px; margin: 0 auto; padding: 40px 16px calc(40px + env(safe-area-inset-bottom)); }
+  .brand { display: flex; align-items: center; gap: 12px; }
+  .brand img { width: 48px; height: 48px; border-radius: 12px; }
+  h1 { margin: 0; font-size: 1.9rem; font-weight: 600; letter-spacing: -0.01em; }
+  .lede { color: var(--muted); margin: 12px 0 24px; }
+  .apps { display: grid; gap: 12px; }
+  a.app { display: block; padding: 18px 20px; border: 1px solid var(--hairline); border-radius: 14px; background: var(--surface); color: var(--ink); text-decoration: none; min-height: 44px; }
+  a.app:hover, a.app:focus-visible { border-color: var(--primary); background: var(--tint); }
+  a.app:focus-visible { outline: 3px solid var(--primary); outline-offset: 2px; }
+  .app-name { display: block; font-weight: 700; font-size: 1.15rem; color: var(--primary-strong); }
+  .app-what { display: block; color: var(--muted); margin-top: 2px; }
+  .note { color: var(--muted); font-size: 0.95rem; margin-top: 24px; }
+  .note strong { color: var(--ink); }
+</style>
+</head>
+<body>
+<main>
+  <div class="brand"><img src="icon-180.png" alt=""><h1>Peace Meal</h1></div>
+  <p class="lede">Nutrition planning where every recommendation cites its source.</p>
+  <nav class="apps" aria-label="Apps">
+    <a class="app" href="full/"><span class="app-name">Peace Meal</span><span class="app-what">For a household: everyone's needs, one table, one grocery list.</span></a>
+    <a class="app" href="lite/"><span class="app-name">Peace Meal for one</span><span class="app-what">Your meals, your symptoms, your doctor report.</span></a>
+  </nav>
+  <p class="note"><strong>Your information stays on your device.</strong> The apps have no accounts and no server, and nothing you enter is sent anywhere.</p>
+  <p class="note">To keep an app on your iPhone: open it in Safari, tap Share, then Add to Home Screen.</p>
+</main>
+</body>
+</html>

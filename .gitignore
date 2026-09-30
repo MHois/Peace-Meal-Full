@@ -1,0 +1,9 @@
+tools/usda/*.zip
+tools/usda/*/
+node_modules/
+dist/
+.DS_Store
+tools/open-recipes/
+tools/usda-recipes/
+# Screenshots of the running app show profile names; take them with made-up people and keep them out of the repo.
+docs/screenshots/

@@ -1,0 +1,3607 @@
+{
+  "version": 1,
+  "notes": [
+    "Approved-food lists for the two elimination diets the app plans for. In strict mode (the default when a plan restricts one of these families) a recipe is safe only when every ingredient is on the list or on the person's own tolerated list.",
+    "Low FODMAP: foods that the Monash-group composition papers and the Halmos 2014 trial diet list as low FODMAP at a usual serve. Where a serving threshold is published only in the Monash app it is not reproduced here; the portion field then says 'usual serve' and the item note says so. Foods whose safe serve is small are marked 'small serve' with the published basis.",
+    "Low histamine: foods that the SIGHI compatibility list rates as well tolerated (0), as encoded in this app's dictionary from the SIGHI list and Comas-Baste 2020. The SIGHI leaflet could not be machine-read in this build, so items whose rating was not re-checked against the leaflet carry verified: false and a note. Freshness matters more than the list: fresh or quickly frozen, cooked and eaten the same day.",
+    "Every item carries sources. A person can add foods they tolerate and remove foods they react to; those live on the person, never in this file."
+  ],
+  "families": {
+    "low-fodmap": {
+      "label": "low FODMAP",
+      "module": "ibs-low-fodmap",
+      "tags": [
+        "fodmap-fructan",
+        "fodmap-gos",
+        "fodmap-lactose",
+        "fodmap-fructose",
+        "fodmap-sorbitol",
+        "fodmap-mannitol"
+      ],
+      "sources": [
+        "halmos-2014",
+        "varney-2017",
+        "muir-2007",
+        "muir-2009",
+        "biesiekierski-2011"
+      ],
+      "intro": "Foods that are low FODMAP at a usual serve during the elimination phase. Amounts matter: a few items are safe only in a small serve, and stacking several 'small serve' foods in one meal adds up. Portion thresholds published only in the Monash app are not reproduced here.",
+      "stacking": {
+        "marker": "small serve",
+        "caution_at": 2,
+        "text": "Amounts matter: a few items are safe only in a small serve, and stacking several 'small serve' foods in one meal adds up.",
+        "sources": [
+          "varney-2017",
+          "shepherd-2008"
+        ],
+        "note": "2026-09 audit. Recipes and labels show the portion for each food this list allows only in a limited amount, and a meal with two or more foods marked 'small serve' is a caution. Set amounts such as 'ten nuts' or 'half a cup dry' show a note but do not count (owner question 7, answered September 30, 2026): they are ordinary serving sizes at which the food is low FODMAP, and the Monash team sets those cut-offs conservatively so foods can be combined in a meal, while 'small serve' foods are fine only below an ordinary serve. Varney 2017: cut-offs were set from the FODMAP content of typical serving sizes. Shepherd 2008: symptoms came on in a dose-dependent manner, with fructose and fructans alone or combined. See docs/VERIFY-log.md.",
+        "counts": "marker"
+      },
+      "groups": [
+        {
+          "name": "Vegetables",
+          "items": [
+            {
+              "term": "carrot",
+              "portion": "usual serve",
+              "sources": [
+                "muir-2009"
+              ]
+            },
+            {
+              "term": "cucumber",
+              "portion": "usual serve",
+              "sources": [
+                "muir-2009"
+              ]
+            },
+            {
+              "term": "lettuce",
+              "aliases": [
+                "romaine",
+                "iceberg",
+                "butterhead",
+                "cos lettuce",
+                "rocket",
+                "arugula",
+                "endive",
+                "radicchio",
+                "mixed salad leaves",
+                "salad leaves",
+                "mixed leaves",
+                "salad greens"
+              ],
+              "portion": "usual serve",
+              "sources": [
+                "muir-2009"
+              ]
+            },
+            {
+              "term": "zucchini",
+              "aliases": [
+                "courgette"
+              ],
+              "portion": "usual serve",
+              "note": "large amounts carry some fructan",
+              "sources": [
+                "muir-2009",
+                "varney-2017"
+              ]
+            },
+            {
+              "term": "bell pepper",
+              "aliases": [
+                "red pepper",
+                "green pepper",
+                "yellow pepper",
+                "capsicum",
+                "sweet pepper",
+                "roasted red pepper",
+                "roasted peppers"
+              ],
+              "portion": "usual serve",
+              "sources": [
+                "muir-2009"
+              ]
+            },
+            {
+              "term": "tomato",
+              "aliases": [
+                "tomatoes",
+                "cherry tomatoes",
+                "tomato paste",
+                "tomato puree",
+                "passata",
+                "chopped tomatoes"
+              ],
+              "portion": "usual serve",
+              "note": "fresh and canned tomato are low FODMAP at a usual serve; very large amounts add fructose",
+              "sources": [
+                "muir-2009",
+                "halmos-2014"
+              ]
+            },
+            {
+              "term": "potato",
+              "aliases": [
+                "potatoes",
+                "new potatoes",
+                "baby potatoes"
+              ],
+              "portion": "usual serve",
+              "sources": [
+                "muir-2009"
+              ]
+            },
+            {
+              "term": "spinach",
+              "aliases": [
+                "baby spinach"
+              ],
+              "portion": "usual serve",
+              "sources": [
+                "muir-2009"
+              ]
+            },
+            {
+              "term": "kale",
+              "portion": "usual serve",
+              "sources": [
+                "muir-2009"
+              ]
+            },
+            {
+              "term": "chard",
+              "aliases": [
+                "swiss chard",
+                "silverbeet"
+              ],
+              "portion": "usual serve",
+              "sources": [
+                "muir-2009"
+              ]
+            },
+            {
+              "term": "bok choy",
+              "aliases": [
+                "pak choi",
+                "pak choy"
+              ],
+              "portion": "usual serve",
+              "sources": [
+                "muir-2009"
+              ]
+            },
+            {
+              "term": "cabbage",
+              "aliases": [
+                "white cabbage",
+                "red cabbage",
+                "chinese cabbage",
+                "napa cabbage"
+              ],
+              "portion": "usual serve",
+              "note": "savoy cabbage carries more; keep to a usual serve",
+              "sources": [
+                "muir-2009"
+              ]
+            },
+            {
+              "term": "broccoli",
+              "aliases": [
+                "broccoli florets",
+                "broccolini",
+                "tenderstem"
+              ],
+              "portion": "usual serve of the heads",
+              "note": "the stalks carry more fructan than the heads",
+              "sources": [
+                "muir-2009",
+                "varney-2017"
+              ]
+            },
+            {
+              "term": "eggplant",
+              "aliases": [
+                "aubergine"
+              ],
+              "portion": "usual serve",
+              "sources": [
+                "muir-2009"
+              ]
+            },
+            {
+              "term": "pumpkin",
+              "aliases": [
+                "pumpkin puree",
+                "kabocha",
+                "japanese pumpkin"
+              ],
+              "portion": "usual serve",
+              "sources": [
+                "muir-2009"
+              ]
+            },
+            {
+              "term": "butternut squash",
+              "aliases": [
+                "butternut"
+              ],
+              "portion_except": [
+                "butternuts"
+              ],
+              "portion": "small serve",
+              "note": "carries some GOS and mannitol; keep the serve small",
+              "sources": [
+                "muir-2009"
+              ]
+            },
+            {
+              "term": "parsnip",
+              "portion": "usual serve",
+              "sources": [
+                "muir-2009"
+              ]
+            },
+            {
+              "term": "turnip",
+              "aliases": [
+                "swede",
+                "rutabaga"
+              ],
+              "portion": "usual serve",
+              "sources": [
+                "muir-2009"
+              ]
+            },
+            {
+              "term": "radish",
+              "portion": "usual serve",
+              "sources": [
+                "muir-2009"
+              ]
+            },
+            {
+              "term": "corn",
+              "aliases": [
+                "sweetcorn",
+                "sweet corn",
+                "corn kernels"
+              ],
+              "portion_except": [
+                "corn oil",
+                "corn syrup",
+                "corn meal",
+                "corn flakes",
+                "popping corn"
+              ],
+              "portion": "small serve",
+              "note": "half a cob; larger serves carry sorbitol",
+              "sources": [
+                "muir-2009"
+              ]
+            },
+            {
+              "term": "green beans",
+              "aliases": [
+                "string beans",
+                "french beans"
+              ],
+              "portion": "small serve",
+              "note": "about 15 beans; more carries sorbitol. The dictionary treats green beans as a caution, so recipes with them still show caution",
+              "sources": [
+                "muir-2009"
+              ]
+            },
+            {
+              "term": "olives",
+              "aliases": [
+                "olive"
+              ],
+              "portion": "usual serve",
+              "sources": [
+                "muir-2009"
+              ]
+            },
+            {
+              "term": "ginger",
+              "aliases": [
+                "fresh ginger",
+                "ginger root"
+              ],
+              "portion": "usual serve",
+              "sources": [
+                "muir-2009"
+              ]
+            },
+            {
+              "term": "chives",
+              "portion": "usual serve",
+              "sources": [
+                "muir-2009"
+              ]
+            },
+            {
+              "term": "spring onion green tops",
+              "aliases": [
+                "spring onion greens",
+                "scallion greens",
+                "scallion tops",
+                "green onion tops",
+                "green tops of spring onions",
+                "spring onion tops"
+              ],
+              "portion": "usual serve",
+              "note": "green leaves only; the white bulb is high in fructan",
+              "sources": [
+                "muir-2007"
+              ]
+            },
+            {
+              "term": "leek greens",
+              "aliases": [
+                "leek tops",
+                "green tops of leeks"
+              ],
+              "portion": "usual serve",
+              "note": "green leaves only",
+              "sources": [
+                "muir-2007"
+              ]
+            },
+            {
+              "term": "chilli",
+              "aliases": [
+                "chili",
+                "red chilli",
+                "green chilli",
+                "chili flakes",
+                "chilli flakes"
+              ],
+              "portion": "usual serve",
+              "sources": [
+                "muir-2009"
+              ]
+            },
+            {
+              "term": "bean sprouts",
+              "portion": "usual serve",
+              "sources": [
+                "muir-2009"
+              ],
+              "aliases": [
+                "beansprouts",
+                "mung bean sprouts"
+              ]
+            },
+            {
+              "term": "bamboo shoots",
+              "portion": "usual serve",
+              "sources": [
+                "muir-2009"
+              ]
+            },
+            {
+              "term": "water chestnuts",
+              "portion": "usual serve",
+              "sources": [
+                "muir-2009"
+              ]
+            },
+            {
+              "term": "seaweed",
+              "aliases": [
+                "nori",
+                "kelp"
+              ],
+              "portion": "usual serve",
+              "sources": [
+                "muir-2009"
+              ]
+            },
+            {
+              "term": "fennel bulb",
+              "aliases": [
+                "fennel"
+              ],
+              "portion": "small serve",
+              "note": "carries fructan in larger serves",
+              "sources": [
+                "muir-2009"
+              ]
+            },
+            {
+              "term": "edamame",
+              "portion": "small serve",
+              "sources": [
+                "biesiekierski-2011"
+              ]
+            },
+            {
+              "term": "okra",
+              "portion": "usual serve",
+              "sources": [
+                "muir-2009"
+              ]
+            },
+            {
+              "term": "lemongrass",
+              "portion": "usual serve",
+              "sources": [
+                "muir-2009"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Fruit",
+          "items": [
+            {
+              "term": "banana",
+              "aliases": [
+                "firm banana",
+                "bananas"
+              ],
+              "portion": "one firm banana",
+              "note": "ripe bananas carry more fructan; choose firm",
+              "sources": [
+                "muir-2009",
+                "varney-2017"
+              ]
+            },
+            {
+              "term": "blueberries",
+              "aliases": [
+                "blueberry"
+              ],
+              "portion": "usual serve",
+              "sources": [
+                "muir-2009"
+              ]
+            },
+            {
+              "term": "strawberries",
+              "aliases": [
+                "strawberry"
+              ],
+              "portion": "usual serve",
+              "sources": [
+                "muir-2009"
+              ]
+            },
+            {
+              "term": "raspberries",
+              "aliases": [
+                "raspberry"
+              ],
+              "portion": "small serve",
+              "note": "about 30 berries; more carries fructan",
+              "sources": [
+                "muir-2009"
+              ]
+            },
+            {
+              "term": "grapes",
+              "aliases": [
+                "grape"
+              ],
+              "portion": "usual serve",
+              "sources": [
+                "muir-2009"
+              ]
+            },
+            {
+              "term": "kiwi",
+              "aliases": [
+                "kiwifruit",
+                "kiwi fruit"
+              ],
+              "portion": "usual serve",
+              "sources": [
+                "muir-2009"
+              ]
+            },
+            {
+              "term": "orange",
+              "aliases": [
+                "oranges",
+                "mandarin",
+                "clementine",
+                "tangerine",
+                "orange juice"
+              ],
+              "portion_except": [
+                "orange oil",
+                "orange extract",
+                "orange blossom water",
+                "orange flower water",
+                "orange marmalade"
+              ],
+              "portion": "one fruit",
+              "note": "juice in small amounts only",
+              "sources": [
+                "muir-2009"
+              ]
+            },
+            {
+              "term": "lemon",
+              "aliases": [
+                "lemon juice",
+                "lemon zest"
+              ],
+              "portion": "usual serve",
+              "sources": [
+                "muir-2009"
+              ]
+            },
+            {
+              "term": "lime",
+              "aliases": [
+                "lime juice",
+                "lime zest"
+              ],
+              "portion": "usual serve",
+              "sources": [
+                "muir-2009"
+              ]
+            },
+            {
+              "term": "pineapple",
+              "portion": "usual serve",
+              "sources": [
+                "muir-2009"
+              ]
+            },
+            {
+              "term": "cantaloupe",
+              "aliases": [
+                "rockmelon"
+              ],
+              "portion": "usual serve",
+              "sources": [
+                "muir-2009"
+              ]
+            },
+            {
+              "term": "honeydew",
+              "aliases": [
+                "honeydew melon"
+              ],
+              "portion": "usual serve",
+              "sources": [
+                "muir-2009"
+              ]
+            },
+            {
+              "term": "papaya",
+              "aliases": [
+                "pawpaw"
+              ],
+              "portion": "usual serve",
+              "sources": [
+                "muir-2009"
+              ]
+            },
+            {
+              "term": "passionfruit",
+              "aliases": [
+                "passion fruit"
+              ],
+              "portion": "usual serve",
+              "sources": [
+                "muir-2009"
+              ]
+            },
+            {
+              "term": "dragon fruit",
+              "portion": "usual serve",
+              "sources": [
+                "muir-2009"
+              ]
+            },
+            {
+              "term": "rhubarb",
+              "portion": "usual serve",
+              "sources": [
+                "muir-2009"
+              ]
+            },
+            {
+              "term": "cranberries",
+              "aliases": [
+                "cranberry"
+              ],
+              "portion_except": [
+                "cranberry bean",
+                "cranberry beans"
+              ],
+              "portion": "small serve",
+              "sources": [
+                "muir-2009"
+              ]
+            },
+            {
+              "term": "starfruit",
+              "portion": "usual serve",
+              "sources": [
+                "muir-2009"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Grains and starches",
+          "items": [
+            {
+              "term": "rice",
+              "aliases": [
+                "white rice",
+                "brown rice",
+                "basmati",
+                "jasmine rice",
+                "wild rice",
+                "rice flour",
+                "rice noodles",
+                "rice noodle",
+                "rice cakes",
+                "rice paper",
+                "rice milk",
+                "rice bran",
+                "rice malt syrup",
+                "rice crackers"
+              ],
+              "portion": "usual serve",
+              "sources": [
+                "biesiekierski-2011"
+              ]
+            },
+            {
+              "term": "oats",
+              "aliases": [
+                "rolled oats",
+                "oatmeal",
+                "porridge oats",
+                "oat bran"
+              ],
+              "portion": "half a cup dry",
+              "note": "larger serves carry GOS and fructan",
+              "sources": [
+                "biesiekierski-2011",
+                "varney-2017"
+              ]
+            },
+            {
+              "term": "quinoa",
+              "portion": "usual serve",
+              "sources": [
+                "biesiekierski-2011"
+              ]
+            },
+            {
+              "term": "buckwheat",
+              "aliases": [
+                "buckwheat flour",
+                "buckwheat groats",
+                "soba"
+              ],
+              "portion": "usual serve",
+              "sources": [
+                "biesiekierski-2011"
+              ]
+            },
+            {
+              "term": "millet",
+              "portion": "usual serve",
+              "sources": [
+                "biesiekierski-2011"
+              ]
+            },
+            {
+              "term": "polenta",
+              "aliases": [
+                "cornmeal",
+                "corn flour",
+                "cornflour",
+                "corn tortillas",
+                "corn tortilla",
+                "popcorn",
+                "corn chips",
+                "tortilla chips"
+              ],
+              "portion": "usual serve",
+              "sources": [
+                "biesiekierski-2011"
+              ]
+            },
+            {
+              "term": "gluten-free pasta",
+              "aliases": [
+                "gluten free pasta",
+                "corn and rice pasta",
+                "rice pasta",
+                "corn pasta",
+                "quinoa pasta"
+              ],
+              "portion": "usual serve",
+              "note": "corn, rice, or quinoa based; not chickpea or lentil pasta",
+              "sources": [
+                "biesiekierski-2011"
+              ]
+            },
+            {
+              "term": "gluten-free bread",
+              "aliases": [
+                "gluten free bread"
+              ],
+              "portion": "two slices",
+              "note": "check the flour base; some are made with apple or honey",
+              "sources": [
+                "biesiekierski-2011"
+              ]
+            },
+            {
+              "term": "sourdough spelt bread",
+              "aliases": [
+                "spelt sourdough",
+                "sourdough spelt",
+                "spelt sourdough bread"
+              ],
+              "portion": "two slices",
+              "note": "the long ferment lowers fructan; ordinary spelt bread is not the same",
+              "sources": [
+                "biesiekierski-2011",
+                "varney-2017"
+              ]
+            },
+            {
+              "term": "teff",
+              "portion": "usual serve",
+              "sources": [
+                "biesiekierski-2011"
+              ]
+            },
+            {
+              "term": "sorghum",
+              "portion": "usual serve",
+              "sources": [
+                "biesiekierski-2011"
+              ]
+            },
+            {
+              "term": "tapioca",
+              "aliases": [
+                "tapioca starch",
+                "tapioca flour",
+                "cassava"
+              ],
+              "portion": "usual serve",
+              "sources": [
+                "biesiekierski-2011"
+              ]
+            },
+            {
+              "term": "cornstarch",
+              "aliases": [
+                "corn starch",
+                "potato starch",
+                "arrowroot"
+              ],
+              "portion": "usual serve",
+              "sources": [
+                "biesiekierski-2011"
+              ]
+            },
+            {
+              "term": "baking powder",
+              "aliases": [
+                "baking soda",
+                "bicarbonate of soda",
+                "cream of tartar",
+                "yeast",
+                "dried yeast"
+              ],
+              "portion": "usual serve",
+              "sources": [
+                "halmos-2014"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Meat, fish, eggs, and plant protein",
+          "items": [
+            {
+              "term": "chicken",
+              "aliases": [
+                "chicken breast",
+                "chicken thighs",
+                "chicken thigh",
+                "turkey",
+                "ground turkey",
+                "turkey mince",
+                "duck"
+              ],
+              "portion": "usual serve",
+              "note": "plain meat is FODMAP free; check marinades and stuffing",
+              "sources": [
+                "halmos-2014"
+              ]
+            },
+            {
+              "term": "beef",
+              "aliases": [
+                "ground beef",
+                "beef mince",
+                "steak",
+                "lamb",
+                "lamb mince",
+                "pork",
+                "pork loin",
+                "pork chops",
+                "veal",
+                "bacon",
+                "ham",
+                "prosciutto"
+              ],
+              "portion": "usual serve",
+              "note": "plain meat is FODMAP free; cured meats can carry garlic or onion in the seasoning",
+              "sources": [
+                "halmos-2014"
+              ]
+            },
+            {
+              "term": "fish",
+              "aliases": [
+                "cod",
+                "haddock",
+                "salmon",
+                "trout",
+                "tuna",
+                "tilapia",
+                "halibut",
+                "hake",
+                "pollock",
+                "sardines",
+                "mackerel",
+                "sea bass",
+                "snapper",
+                "white fish",
+                "smoked salmon",
+                "canned tuna"
+              ],
+              "portion": "usual serve",
+              "note": "plain fish is FODMAP free",
+              "sources": [
+                "halmos-2014"
+              ]
+            },
+            {
+              "term": "shellfish",
+              "aliases": [
+                "shrimp",
+                "prawns",
+                "prawn",
+                "crab",
+                "lobster",
+                "mussels",
+                "clams",
+                "scallops",
+                "squid",
+                "calamari"
+              ],
+              "portion": "usual serve",
+              "sources": [
+                "halmos-2014"
+              ]
+            },
+            {
+              "term": "egg",
+              "aliases": [
+                "eggs",
+                "egg whites",
+                "egg white",
+                "egg yolk"
+              ],
+              "portion": "usual serve",
+              "sources": [
+                "halmos-2014"
+              ]
+            },
+            {
+              "term": "firm tofu",
+              "aliases": [
+                "tofu"
+              ],
+              "portion": "usual serve",
+              "note": "firm tofu, pressed; silken tofu carries GOS",
+              "sources": [
+                "biesiekierski-2011",
+                "varney-2017"
+              ]
+            },
+            {
+              "term": "tempeh",
+              "portion": "usual serve",
+              "sources": [
+                "biesiekierski-2011"
+              ]
+            },
+            {
+              "term": "peanuts",
+              "aliases": [
+                "peanut",
+                "peanut butter"
+              ],
+              "portion": "usual serve",
+              "sources": [
+                "biesiekierski-2011"
+              ]
+            },
+            {
+              "term": "walnuts",
+              "aliases": [
+                "walnut"
+              ],
+              "portion_except": [
+                "walnut oil"
+              ],
+              "portion": "small handful",
+              "sources": [
+                "biesiekierski-2011"
+              ]
+            },
+            {
+              "term": "pecans",
+              "aliases": [
+                "pecan"
+              ],
+              "portion": "small handful",
+              "sources": [
+                "biesiekierski-2011"
+              ]
+            },
+            {
+              "term": "macadamia",
+              "aliases": [
+                "macadamia nuts",
+                "macadamias"
+              ],
+              "portion": "small handful",
+              "sources": [
+                "biesiekierski-2011"
+              ]
+            },
+            {
+              "term": "pine nuts",
+              "aliases": [
+                "pine nut"
+              ],
+              "portion": "one tablespoon",
+              "sources": [
+                "biesiekierski-2011"
+              ]
+            },
+            {
+              "term": "brazil nuts",
+              "aliases": [
+                "brazil nut"
+              ],
+              "portion": "small handful",
+              "sources": [
+                "biesiekierski-2011"
+              ]
+            },
+            {
+              "term": "hazelnuts",
+              "aliases": [
+                "hazelnut"
+              ],
+              "portion_except": [
+                "hazelnut oil",
+                "hazelnut liqueur",
+                "hazelnut syrup",
+                "hazelnut flavored syrup",
+                "hazelnut flavoured syrup"
+              ],
+              "portion": "ten nuts",
+              "note": "more carries GOS",
+              "sources": [
+                "biesiekierski-2011"
+              ]
+            },
+            {
+              "term": "almonds",
+              "aliases": [
+                "almond",
+                "almond milk",
+                "almond butter",
+                "almond flour",
+                "ground almonds"
+              ],
+              "portion_except": [
+                "almond oil",
+                "almond extract",
+                "almond essence"
+              ],
+              "portion": "ten nuts",
+              "note": "more carries GOS; almond milk is low FODMAP at a cup",
+              "sources": [
+                "biesiekierski-2011",
+                "varney-2017"
+              ]
+            },
+            {
+              "term": "chia seeds",
+              "aliases": [
+                "chia"
+              ],
+              "portion": "two tablespoons",
+              "sources": [
+                "biesiekierski-2011"
+              ]
+            },
+            {
+              "term": "flaxseed",
+              "aliases": [
+                "flax",
+                "linseed",
+                "linseeds",
+                "ground flaxseed"
+              ],
+              "portion_except": [
+                "flaxseed oil",
+                "linseed oil",
+                "flax oil"
+              ],
+              "portion": "one tablespoon",
+              "sources": [
+                "biesiekierski-2011"
+              ]
+            },
+            {
+              "term": "hemp seeds",
+              "aliases": [
+                "hemp",
+                "hemp hearts"
+              ],
+              "portion_except": [
+                "hemp oil",
+                "hemp seed oil"
+              ],
+              "portion": "two tablespoons",
+              "sources": [
+                "biesiekierski-2011"
+              ]
+            },
+            {
+              "term": "pumpkin seeds",
+              "aliases": [
+                "pepitas",
+                "pumpkin seed"
+              ],
+              "portion": "two tablespoons",
+              "sources": [
+                "biesiekierski-2011"
+              ]
+            },
+            {
+              "term": "sunflower seeds",
+              "aliases": [
+                "sunflower seed"
+              ],
+              "portion": "two tablespoons",
+              "sources": [
+                "biesiekierski-2011"
+              ]
+            },
+            {
+              "term": "sesame seeds",
+              "aliases": [
+                "sesame",
+                "tahini"
+              ],
+              "portion_except": [
+                "sesame seed oil"
+              ],
+              "portion": "one tablespoon",
+              "sources": [
+                "biesiekierski-2011"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Dairy and alternatives",
+          "items": [
+            {
+              "term": "lactose-free milk",
+              "aliases": [
+                "lactose free milk",
+                "lactose-free whole milk",
+                "lactose-free low-fat milk",
+                "lactose-free skim milk"
+              ],
+              "portion": "usual serve",
+              "sources": [
+                "halmos-2014"
+              ]
+            },
+            {
+              "term": "lactose-free yogurt",
+              "aliases": [
+                "lactose-free yoghurt",
+                "lactose-free plain yogurt",
+                "lactose-free greek yogurt"
+              ],
+              "portion": "usual serve",
+              "sources": [
+                "halmos-2014"
+              ]
+            },
+            {
+              "term": "lactose-free cream",
+              "aliases": [
+                "lactose-free light cream"
+              ],
+              "portion": "usual serve",
+              "sources": [
+                "halmos-2014"
+              ]
+            },
+            {
+              "term": "hard cheese",
+              "aliases": [
+                "cheddar",
+                "parmesan",
+                "parmigiano",
+                "pecorino",
+                "swiss cheese",
+                "gruyere",
+                "gruyère",
+                "gouda",
+                "edam",
+                "manchego",
+                "emmental",
+                "colby",
+                "monterey jack",
+                "havarti"
+              ],
+              "portion": "usual serve",
+              "note": "aged cheeses are almost lactose free",
+              "sources": [
+                "halmos-2014"
+              ]
+            },
+            {
+              "term": "mozzarella",
+              "aliases": [
+                "fresh mozzarella"
+              ],
+              "portion": "usual serve",
+              "sources": [
+                "halmos-2014"
+              ]
+            },
+            {
+              "term": "feta",
+              "portion": "usual serve",
+              "sources": [
+                "halmos-2014"
+              ]
+            },
+            {
+              "term": "brie",
+              "aliases": [
+                "camembert"
+              ],
+              "portion": "usual serve",
+              "sources": [
+                "halmos-2014"
+              ]
+            },
+            {
+              "term": "goat cheese",
+              "aliases": [
+                "goat's cheese",
+                "chevre"
+              ],
+              "portion": "usual serve",
+              "sources": [
+                "halmos-2014"
+              ]
+            },
+            {
+              "term": "butter",
+              "aliases": [
+                "ghee",
+                "clarified butter"
+              ],
+              "portion": "usual serve",
+              "note": "butter is fat; lactose is negligible",
+              "sources": [
+                "halmos-2014"
+              ]
+            },
+            {
+              "term": "coconut milk",
+              "aliases": [
+                "coconut cream",
+                "canned coconut milk"
+              ],
+              "portion": "half a cup",
+              "note": "larger serves carry sorbitol",
+              "sources": [
+                "varney-2017"
+              ]
+            },
+            {
+              "term": "macadamia milk",
+              "portion": "usual serve",
+              "sources": [
+                "varney-2017"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Fats, sweeteners, and pantry",
+          "items": [
+            {
+              "term": "olive oil",
+              "aliases": [
+                "extra virgin olive oil"
+              ],
+              "portion": "usual serve",
+              "sources": [
+                "halmos-2014"
+              ]
+            },
+            {
+              "term": "garlic-infused olive oil",
+              "aliases": [
+                "garlic-infused oil",
+                "garlic infused oil",
+                "garlic oil"
+              ],
+              "portion": "usual serve",
+              "note": "strained; fructans do not dissolve in oil",
+              "sources": [
+                "varney-2017"
+              ]
+            },
+            {
+              "term": "canola oil",
+              "aliases": [
+                "rapeseed oil",
+                "vegetable oil",
+                "sunflower oil",
+                "coconut oil",
+                "sesame oil",
+                "avocado oil",
+                "peanut oil"
+              ],
+              "portion": "usual serve",
+              "sources": [
+                "halmos-2014"
+              ]
+            },
+            {
+              "term": "sugar",
+              "aliases": [
+                "white sugar",
+                "caster sugar",
+                "granulated sugar",
+                "brown sugar",
+                "icing sugar",
+                "powdered sugar",
+                "raw sugar"
+              ],
+              "portion": "usual serve",
+              "sources": [
+                "halmos-2014"
+              ]
+            },
+            {
+              "term": "maple syrup",
+              "aliases": [
+                "pure maple syrup"
+              ],
+              "portion": "usual serve",
+              "sources": [
+                "halmos-2014"
+              ]
+            },
+            {
+              "term": "rice malt syrup",
+              "aliases": [
+                "brown rice syrup"
+              ],
+              "portion": "usual serve",
+              "sources": [
+                "halmos-2014"
+              ]
+            },
+            {
+              "term": "golden syrup",
+              "portion": "small serve",
+              "sources": [
+                "varney-2017"
+              ]
+            },
+            {
+              "term": "stevia",
+              "portion": "usual serve",
+              "sources": [
+                "halmos-2014"
+              ]
+            },
+            {
+              "term": "dark chocolate",
+              "aliases": [
+                "cocoa",
+                "cocoa powder",
+                "cacao"
+              ],
+              "portion": "small serve",
+              "note": "about 30 g of dark chocolate; milk chocolate carries lactose",
+              "sources": [
+                "varney-2017"
+              ]
+            },
+            {
+              "term": "vanilla extract",
+              "aliases": [
+                "vanilla"
+              ],
+              "portion": "usual serve",
+              "sources": [
+                "halmos-2014"
+              ]
+            },
+            {
+              "term": "salt",
+              "aliases": [
+                "sea salt",
+                "table salt",
+                "kosher salt"
+              ],
+              "portion": "usual serve",
+              "sources": [
+                "halmos-2014"
+              ]
+            },
+            {
+              "term": "black pepper",
+              "aliases": [
+                "pepper",
+                "white pepper",
+                "peppercorns"
+              ],
+              "portion": "usual serve",
+              "sources": [
+                "halmos-2014"
+              ]
+            },
+            {
+              "term": "herbs",
+              "aliases": [
+                "basil",
+                "parsley",
+                "cilantro",
+                "coriander",
+                "dill",
+                "mint",
+                "oregano",
+                "rosemary",
+                "thyme",
+                "sage",
+                "tarragon",
+                "bay leaf",
+                "bay leaves",
+                "marjoram",
+                "lemongrass",
+                "curry leaves"
+              ],
+              "portion": "usual serve",
+              "sources": [
+                "halmos-2014"
+              ]
+            },
+            {
+              "term": "spices",
+              "aliases": [
+                "cumin",
+                "turmeric",
+                "paprika",
+                "smoked paprika",
+                "cinnamon",
+                "ground ginger",
+                "nutmeg",
+                "cardamom",
+                "cloves",
+                "allspice",
+                "coriander seed",
+                "ground coriander",
+                "fennel seed",
+                "mustard seed",
+                "star anise",
+                "saffron",
+                "caraway",
+                "five spice",
+                "garam masala",
+                "sumac",
+                "za'atar"
+              ],
+              "portion": "usual serve",
+              "note": "check spice blends for onion or garlic powder",
+              "sources": [
+                "halmos-2014"
+              ]
+            },
+            {
+              "term": "vinegar",
+              "aliases": [
+                "white wine vinegar",
+                "red wine vinegar",
+                "cider vinegar",
+                "apple cider vinegar",
+                "rice vinegar",
+                "balsamic vinegar",
+                "malt vinegar"
+              ],
+              "portion": "usual serve",
+              "note": "balsamic in small amounts",
+              "sources": [
+                "varney-2017"
+              ]
+            },
+            {
+              "term": "soy sauce",
+              "aliases": [
+                "tamari",
+                "fish sauce",
+                "oyster sauce",
+                "worcestershire sauce"
+              ],
+              "portion": "usual serve",
+              "sources": [
+                "varney-2017"
+              ]
+            },
+            {
+              "term": "mustard",
+              "aliases": [
+                "dijon mustard",
+                "wholegrain mustard"
+              ],
+              "portion": "usual serve",
+              "sources": [
+                "varney-2017"
+              ]
+            },
+            {
+              "term": "mayonnaise",
+              "portion": "usual serve",
+              "note": "check for onion or garlic",
+              "sources": [
+                "varney-2017"
+              ]
+            },
+            {
+              "term": "miso",
+              "portion": "small serve",
+              "sources": [
+                "varney-2017"
+              ]
+            },
+            {
+              "term": "capers",
+              "portion": "usual serve",
+              "sources": [
+                "varney-2017"
+              ]
+            },
+            {
+              "term": "jam",
+              "aliases": [
+                "strawberry jam",
+                "raspberry jam",
+                "marmalade"
+              ],
+              "portion": "small serve",
+              "note": "from low FODMAP fruit, without high-fructose corn syrup",
+              "sources": [
+                "varney-2017"
+              ]
+            },
+            {
+              "term": "homemade stock without onion or garlic",
+              "aliases": [
+                "homemade chicken stock",
+                "homemade stock",
+                "homemade vegetable stock",
+                "stock without onion or garlic",
+                "water"
+              ],
+              "portion": "usual serve",
+              "note": "shop stock cubes almost always carry onion and garlic",
+              "sources": [
+                "halmos-2014"
+              ]
+            },
+            {
+              "term": "coffee",
+              "aliases": [
+                "espresso",
+                "black tea",
+                "green tea",
+                "peppermint tea",
+                "white tea"
+              ],
+              "portion": "usual serve",
+              "note": "chamomile, fennel, and oolong teas carry fructan",
+              "sources": [
+                "varney-2017"
+              ]
+            },
+            {
+              "term": "wine",
+              "aliases": [
+                "red wine",
+                "white wine"
+              ],
+              "portion_except": [
+                "wine vinegar",
+                "rice wine vinegar"
+              ],
+              "portion": "one glass",
+              "sources": [
+                "varney-2017"
+              ]
+            },
+            {
+              "term": "beer",
+              "portion": "one can",
+              "sources": [
+                "varney-2017"
+              ]
+            },
+            {
+              "term": "cooking spray",
+              "aliases": [
+                "nonstick cooking spray",
+                "oil spray"
+              ],
+              "portion": "usual serve",
+              "note": "plain oil spray",
+              "sources": [
+                "halmos-2014"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "low-histamine": {
+      "label": "low histamine",
+      "module": "mcas",
+      "tags": [
+        "histamine-high",
+        "histamine-aged",
+        "histamine-fermented"
+      ],
+      "sources": [
+        "sighi-list",
+        "comas-baste-2020"
+      ],
+      "intro": "Foods the SIGHI leaflet rates as well tolerated, for a short elimination trial. Freshness matters as much as the food: fresh or quickly frozen, cooked and eaten the same day, no leftovers, no stocks except a quick homemade vegetable stock. Foods the leaflet rates as risky are left out during the trial. Every item was checked against the leaflet (version 2021-11-17) except the few marked 'not re-checked' (seeds, cinnamon, and nutmeg), which it does not rate. Later, what you tolerate matters more than any list: add foods you tolerate under your own list.",
+      "basis_legend": {
+        "measured histamine": "Lab measurements of the food explain its place: histamine found in foods to leave out, none or little in foods on the list (Sánchez-Pérez 2021: foods sold in Spain, Table 1).",
+        "other amines": "No histamine was found, but other amines were, mainly putrescine, which may slow the breakdown of histamine in the gut. Sánchez-Pérez 2021 calls the evidence for that scarce.",
+        "proposed liberator": "Said to make the body release its own histamine. Sánchez-Pérez 2021: the mechanism has not been shown, and no clinical studies in humans support it.",
+        "SIGHI rating only": "No measurement in the cited sources; the rating rests on the SIGHI list and leaflet (a patient organization, from experience reports and the literature)."
+      },
+      "basis_sources": [
+        "sanchez-perez-2021",
+        "sighi-leaflet-2021"
+      ],
+      "groups": [
+        {
+          "name": "Vegetables",
+          "items": [
+            {
+              "term": "carrot",
+              "portion": "usual serve",
+              "basis": "SIGHI rating only",
+              "basis_sources": [
+                "sighi-list"
+              ],
+              "sources": [
+                "sighi-list"
+              ]
+            },
+            {
+              "term": "zucchini",
+              "aliases": [
+                "courgette"
+              ],
+              "portion": "usual serve",
+              "basis": "other amines",
+              "basis_note": "Not in the Sánchez-Pérez 2021 lab data. Sánchez-Pérez 2021 names zucchini among foods that can carry relevant putrescine (25 to 150 mg/kg at most, across zucchini, peas, green peppers, and sweet corn) that low histamine diets do not exclude.",
+              "basis_sources": [
+                "sanchez-perez-2021"
+              ],
+              "sources": [
+                "sighi-list"
+              ]
+            },
+            {
+              "term": "cucumber",
+              "portion": "usual serve",
+              "basis": "SIGHI rating only",
+              "basis_sources": [
+                "sighi-list"
+              ],
+              "sources": [
+                "sighi-list"
+              ]
+            },
+            {
+              "term": "lettuce",
+              "aliases": [
+                "romaine",
+                "iceberg",
+                "butterhead",
+                "cos lettuce",
+                "lamb's lettuce",
+                "mixed salad leaves",
+                "salad leaves",
+                "mixed leaves",
+                "salad greens"
+              ],
+              "portion": "usual serve",
+              "basis": "SIGHI rating only",
+              "basis_sources": [
+                "sighi-list"
+              ],
+              "sources": [
+                "sighi-list"
+              ]
+            },
+            {
+              "term": "kale",
+              "portion": "usual serve",
+              "verified": true,
+              "note": "checked against the SIGHI leaflet, September 30, 2026: vegetables not on its avoid list are well tolerated, fresh or frozen",
+              "basis": "SIGHI rating only",
+              "basis_sources": [
+                "sighi-list",
+                "sighi-leaflet-2021"
+              ],
+              "sources": [
+                "sighi-list"
+              ],
+              "basis_note": "The SIGHI leaflet rates \"All vegetables except the left called (fresh or frozen)\" as well tolerated; kale is not on its avoid or risky lists."
+            },
+            {
+              "term": "chard",
+              "aliases": [
+                "swiss chard"
+              ],
+              "portion": "usual serve",
+              "verified": true,
+              "note": "checked against the SIGHI leaflet, September 30, 2026: vegetables not on its avoid list are well tolerated, fresh or frozen",
+              "basis": "SIGHI rating only",
+              "basis_sources": [
+                "sighi-list",
+                "sighi-leaflet-2021"
+              ],
+              "sources": [
+                "sighi-list"
+              ],
+              "basis_note": "The SIGHI leaflet rates \"All vegetables except the left called (fresh or frozen)\" as well tolerated; chard is not on its avoid or risky lists."
+            },
+            {
+              "term": "bok choy",
+              "aliases": [
+                "pak choi",
+                "chinese cabbage",
+                "napa cabbage"
+              ],
+              "portion": "usual serve",
+              "basis": "SIGHI rating only",
+              "basis_sources": [
+                "sighi-list"
+              ],
+              "sources": [
+                "sighi-list"
+              ]
+            },
+            {
+              "term": "cabbage",
+              "aliases": [
+                "white cabbage",
+                "red cabbage"
+              ],
+              "portion": "usual serve",
+              "note": "fresh, not fermented",
+              "basis": "SIGHI rating only",
+              "basis_sources": [
+                "sighi-list"
+              ],
+              "sources": [
+                "sighi-list"
+              ]
+            },
+            {
+              "term": "broccoli",
+              "aliases": [
+                "broccoli florets"
+              ],
+              "portion": "usual serve",
+              "basis": "SIGHI rating only",
+              "basis_sources": [
+                "sighi-list"
+              ],
+              "sources": [
+                "sighi-list"
+              ]
+            },
+            {
+              "term": "cauliflower",
+              "portion": "usual serve",
+              "basis": "SIGHI rating only",
+              "basis_sources": [
+                "sighi-list"
+              ],
+              "sources": [
+                "sighi-list"
+              ]
+            },
+            {
+              "term": "potato",
+              "aliases": [
+                "potatoes",
+                "new potatoes"
+              ],
+              "portion": "usual serve",
+              "basis": "SIGHI rating only",
+              "basis_sources": [
+                "sighi-list"
+              ],
+              "sources": [
+                "sighi-list"
+              ]
+            },
+            {
+              "term": "sweet potato",
+              "portion": "usual serve",
+              "basis": "SIGHI rating only",
+              "basis_sources": [
+                "sighi-list"
+              ],
+              "sources": [
+                "sighi-list"
+              ]
+            },
+            {
+              "term": "pumpkin",
+              "aliases": [
+                "pumpkin puree",
+                "butternut squash",
+                "butternut",
+                "squash"
+              ],
+              "portion": "usual serve",
+              "basis": "other amines",
+              "basis_note": "Sánchez-Pérez 2021 lab data (pumpkin, 13 samples): no histamine found; putrescine 9.87 mg/kg. The paper lists pumpkins among foods with relevant putrescine.",
+              "basis_sources": [
+                "sanchez-perez-2021"
+              ],
+              "sources": [
+                "sighi-list"
+              ]
+            },
+            {
+              "term": "beetroot",
+              "aliases": [
+                "beets",
+                "beet"
+              ],
+              "portion": "usual serve",
+              "basis": "SIGHI rating only",
+              "basis_sources": [
+                "sighi-list"
+              ],
+              "sources": [
+                "sighi-list"
+              ]
+            },
+            {
+              "term": "radish",
+              "portion": "usual serve",
+              "basis": "SIGHI rating only",
+              "basis_sources": [
+                "sighi-list"
+              ],
+              "sources": [
+                "sighi-list"
+              ]
+            },
+            {
+              "term": "celery",
+              "portion": "usual serve",
+              "basis": "SIGHI rating only",
+              "basis_sources": [
+                "sighi-list"
+              ],
+              "sources": [
+                "sighi-list"
+              ]
+            },
+            {
+              "term": "fennel",
+              "aliases": [
+                "fennel bulb"
+              ],
+              "portion": "usual serve",
+              "basis": "SIGHI rating only",
+              "basis_sources": [
+                "sighi-list"
+              ],
+              "sources": [
+                "sighi-list"
+              ]
+            },
+            {
+              "term": "leek",
+              "aliases": [
+                "leeks"
+              ],
+              "portion": "usual serve",
+              "basis": "SIGHI rating only",
+              "basis_sources": [
+                "sighi-list"
+              ],
+              "sources": [
+                "sighi-list"
+              ]
+            },
+            {
+              "term": "onion",
+              "aliases": [
+                "onions",
+                "shallot",
+                "shallots",
+                "spring onion",
+                "spring onions",
+                "scallion",
+                "scallions",
+                "green onion",
+                "spring onion green tops"
+              ],
+              "portion": "usual serve",
+              "basis": "SIGHI rating only",
+              "basis_sources": [
+                "sighi-list"
+              ],
+              "sources": [
+                "sighi-list"
+              ]
+            },
+            {
+              "term": "garlic",
+              "aliases": [
+                "garlic clove",
+                "garlic cloves",
+                "garlic-infused olive oil"
+              ],
+              "portion": "usual serve",
+              "basis": "SIGHI rating only",
+              "basis_note": "The SIGHI leaflet names garlic, fresh or powdered, as well tolerated.",
+              "basis_sources": [
+                "sighi-leaflet-2021"
+              ],
+              "sources": [
+                "sighi-list"
+              ]
+            },
+            {
+              "term": "chives",
+              "portion": "usual serve",
+              "basis": "SIGHI rating only",
+              "basis_sources": [
+                "sighi-list"
+              ],
+              "sources": [
+                "sighi-list"
+              ]
+            },
+            {
+              "term": "asparagus",
+              "portion": "usual serve",
+              "basis": "SIGHI rating only",
+              "basis_sources": [
+                "sighi-list"
+              ],
+              "sources": [
+                "sighi-list"
+              ]
+            },
+            {
+              "term": "corn",
+              "aliases": [
+                "sweetcorn",
+                "sweet corn"
+              ],
+              "portion": "usual serve",
+              "basis": "other amines",
+              "basis_note": "Not in the Sánchez-Pérez 2021 lab data. Sánchez-Pérez 2021 names sweet corn among foods that can carry relevant putrescine that low histamine diets do not exclude. The SIGHI leaflet rates canned corn as risky.",
+              "basis_sources": [
+                "sanchez-perez-2021",
+                "sighi-leaflet-2021"
+              ],
+              "sources": [
+                "sighi-list"
+              ]
+            },
+            {
+              "term": "parsnip",
+              "portion": "usual serve",
+              "basis": "SIGHI rating only",
+              "basis_sources": [
+                "sighi-list"
+              ],
+              "sources": [
+                "sighi-list"
+              ]
+            },
+            {
+              "term": "turnip",
+              "aliases": [
+                "swede",
+                "rutabaga",
+                "kohlrabi"
+              ],
+              "portion": "usual serve",
+              "basis": "SIGHI rating only",
+              "basis_sources": [
+                "sighi-list"
+              ],
+              "sources": [
+                "sighi-list"
+              ]
+            },
+            {
+              "term": "artichoke",
+              "portion": "usual serve",
+              "basis": "SIGHI rating only",
+              "basis_sources": [
+                "sighi-list"
+              ],
+              "sources": [
+                "sighi-list"
+              ]
+            },
+            {
+              "term": "okra",
+              "portion": "usual serve",
+              "verified": true,
+              "note": "checked against the SIGHI leaflet, September 30, 2026: vegetables not on its avoid list are well tolerated, fresh or frozen",
+              "basis": "SIGHI rating only",
+              "basis_sources": [
+                "sighi-list",
+                "sighi-leaflet-2021"
+              ],
+              "sources": [
+                "sighi-list"
+              ],
+              "basis_note": "The SIGHI leaflet rates \"All vegetables except the left called (fresh or frozen)\" as well tolerated; okra is not on its avoid or risky lists."
+            },
+            {
+              "term": "bell pepper",
+              "aliases": [
+                "red pepper",
+                "green pepper",
+                "yellow pepper",
+                "capsicum",
+                "sweet pepper",
+                "roasted red pepper",
+                "roasted red bell pepper",
+                "roasted peppers"
+              ],
+              "portion": "usual serve",
+              "verified": true,
+              "note": "fresh, or roasted fresh at home; jarred peppers are left out (vinegar or brine). checked against the SIGHI leaflet, September 30, 2026",
+              "basis": "other amines",
+              "basis_note": "Not in the Sánchez-Pérez 2021 lab data. Sánchez-Pérez 2021 names green peppers among foods that can carry relevant putrescine that low histamine diets do not exclude. The SIGHI leaflet does not list sweet peppers to avoid, so fresh ones are well tolerated there.",
+              "basis_sources": [
+                "sanchez-perez-2021",
+                "sighi-leaflet-2021"
+              ],
+              "sources": [
+                "sighi-list"
+              ]
+            },
+            {
+              "term": "ginger",
+              "aliases": [
+                "fresh ginger",
+                "ginger root"
+              ],
+              "portion": "usual serve",
+              "basis": "SIGHI rating only",
+              "basis_sources": [
+                "sighi-list"
+              ],
+              "sources": [
+                "sighi-list"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Fruit",
+          "items": [
+            {
+              "term": "apple",
+              "aliases": [
+                "apples"
+              ],
+              "portion": "usual serve",
+              "basis": "SIGHI rating only",
+              "basis_sources": [
+                "sighi-list"
+              ],
+              "sources": [
+                "sighi-list"
+              ]
+            },
+            {
+              "term": "blueberries",
+              "aliases": [
+                "blueberry"
+              ],
+              "portion": "usual serve",
+              "basis": "SIGHI rating only",
+              "basis_sources": [
+                "sighi-list"
+              ],
+              "sources": [
+                "sighi-list"
+              ]
+            },
+            {
+              "term": "cantaloupe",
+              "aliases": [
+                "rockmelon",
+                "honeydew",
+                "honeydew melon",
+                "melon",
+                "watermelon"
+              ],
+              "portion": "usual serve",
+              "basis": "SIGHI rating only",
+              "basis_sources": [
+                "sighi-list"
+              ],
+              "sources": [
+                "sighi-list"
+              ]
+            },
+            {
+              "term": "mango",
+              "portion": "usual serve",
+              "basis": "SIGHI rating only",
+              "basis_sources": [
+                "sighi-list"
+              ],
+              "sources": [
+                "sighi-list"
+              ]
+            },
+            {
+              "term": "peach",
+              "aliases": [
+                "nectarine",
+                "apricot"
+              ],
+              "portion": "usual serve",
+              "basis": "SIGHI rating only",
+              "basis_note": "Sánchez-Pérez 2021 measured apricot, an alias here: no histamine or putrescine found (4 samples).",
+              "basis_sources": [
+                "sanchez-perez-2021"
+              ],
+              "sources": [
+                "sighi-list"
+              ]
+            },
+            {
+              "term": "cherries",
+              "aliases": [
+                "cherry",
+                "sweet cherries"
+              ],
+              "portion": "usual serve",
+              "basis": "measured histamine",
+              "basis_note": "Sánchez-Pérez 2021 lab data (cherry, 5 samples): no histamine found; putrescine 3.42 mg/kg.",
+              "basis_sources": [
+                "sanchez-perez-2021"
+              ],
+              "sources": [
+                "sighi-list"
+              ]
+            },
+            {
+              "term": "pomegranate",
+              "portion": "usual serve",
+              "basis": "SIGHI rating only",
+              "basis_sources": [
+                "sighi-list"
+              ],
+              "sources": [
+                "sighi-list"
+              ]
+            },
+            {
+              "term": "lychee",
+              "portion": "usual serve",
+              "basis": "SIGHI rating only",
+              "basis_sources": [
+                "sighi-list"
+              ],
+              "sources": [
+                "sighi-list"
+              ]
+            },
+            {
+              "term": "persimmon",
+              "portion": "usual serve",
+              "basis": "SIGHI rating only",
+              "basis_sources": [
+                "sighi-list"
+              ],
+              "sources": [
+                "sighi-list"
+              ]
+            },
+            {
+              "term": "grapes",
+              "aliases": [
+                "grape"
+              ],
+              "portion": "usual serve",
+              "verified": true,
+              "note": "checked against the SIGHI leaflet, September 30, 2026: fruits not on its avoid list are well tolerated",
+              "basis": "measured histamine",
+              "basis_note": "Sánchez-Pérez 2021 lab data (grapes, 10 samples): no histamine found; putrescine 2.69 mg/kg.",
+              "basis_sources": [
+                "sanchez-perez-2021",
+                "sighi-leaflet-2021"
+              ],
+              "sources": [
+                "sighi-list"
+              ]
+            },
+            {
+              "term": "blackberries",
+              "aliases": [
+                "blackberry",
+                "cranberries",
+                "cranberry",
+                "gooseberries"
+              ],
+              "portion": "usual serve",
+              "verified": true,
+              "note": "checked against the SIGHI leaflet, September 30, 2026: it names blackberries and cranberries as well tolerated; gooseberries are not on its avoid list",
+              "basis": "SIGHI rating only",
+              "basis_sources": [
+                "sighi-list",
+                "sighi-leaflet-2021"
+              ],
+              "sources": [
+                "sighi-list"
+              ],
+              "basis_note": "The SIGHI leaflet names blackberries and cranberries among well tolerated fruits."
+            },
+            {
+              "term": "coconut",
+              "aliases": [
+                "coconut milk",
+                "coconut cream",
+                "desiccated coconut",
+                "coconut flakes"
+              ],
+              "portion": "usual serve",
+              "basis": "SIGHI rating only",
+              "basis_sources": [
+                "sighi-list"
+              ],
+              "sources": [
+                "sighi-list"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Grains and starches",
+          "items": [
+            {
+              "term": "rice",
+              "aliases": [
+                "white rice",
+                "brown rice",
+                "basmati",
+                "jasmine rice",
+                "rice flour",
+                "rice noodles",
+                "rice noodle",
+                "rice cakes",
+                "rice paper",
+                "puffed rice",
+                "rice crackers"
+              ],
+              "portion": "usual serve",
+              "basis": "SIGHI rating only",
+              "basis_note": "The SIGHI leaflet rates rice milk as risky.",
+              "basis_sources": [
+                "sighi-leaflet-2021"
+              ],
+              "sources": [
+                "sighi-list"
+              ]
+            },
+            {
+              "term": "oats",
+              "aliases": [
+                "rolled oats",
+                "oatmeal",
+                "porridge oats"
+              ],
+              "portion": "usual serve",
+              "basis": "SIGHI rating only",
+              "basis_note": "The SIGHI leaflet rates any grain as well tolerated; it rates oat milk as risky, so oat milk is on the leave-out list.",
+              "basis_sources": [
+                "sighi-leaflet-2021"
+              ],
+              "sources": [
+                "sighi-list"
+              ]
+            },
+            {
+              "term": "quinoa",
+              "portion": "usual serve",
+              "basis": "SIGHI rating only",
+              "basis_sources": [
+                "sighi-list"
+              ],
+              "sources": [
+                "sighi-list"
+              ]
+            },
+            {
+              "term": "millet",
+              "portion": "usual serve",
+              "basis": "SIGHI rating only",
+              "basis_sources": [
+                "sighi-list"
+              ],
+              "sources": [
+                "sighi-list"
+              ]
+            },
+            {
+              "term": "corn",
+              "aliases": [
+                "polenta",
+                "cornmeal",
+                "cornflour",
+                "corn flour",
+                "corn tortillas",
+                "corn tortilla",
+                "popcorn",
+                "corn chips"
+              ],
+              "portion": "usual serve",
+              "basis": "SIGHI rating only",
+              "basis_note": "The SIGHI leaflet rates corn and any kind of grain as well tolerated, and canned corn as risky.",
+              "basis_sources": [
+                "sighi-leaflet-2021"
+              ],
+              "sources": [
+                "sighi-list"
+              ]
+            },
+            {
+              "term": "buckwheat",
+              "aliases": [
+                "buckwheat flour",
+                "buckwheat groats"
+              ],
+              "portion": "usual serve",
+              "verified": true,
+              "note": "peeled (hulled) buckwheat; the leaflet rates unpeeled buckwheat as possibly risky. checked against the SIGHI leaflet, September 30, 2026",
+              "basis": "SIGHI rating only",
+              "basis_note": "The SIGHI leaflet rates unpeeled buckwheat as possibly risky.",
+              "basis_sources": [
+                "sighi-leaflet-2021"
+              ],
+              "sources": [
+                "sighi-list"
+              ]
+            },
+            {
+              "term": "amaranth",
+              "aliases": [
+                "teff"
+              ],
+              "portion": "usual serve",
+              "basis": "SIGHI rating only",
+              "basis_sources": [
+                "sighi-list"
+              ],
+              "sources": [
+                "sighi-list"
+              ]
+            },
+            {
+              "term": "wheat flour",
+              "aliases": [
+                "plain flour",
+                "all-purpose flour",
+                "flour",
+                "spelt",
+                "spelt flour",
+                "pasta",
+                "spaghetti",
+                "penne",
+                "fusilli",
+                "macaroni",
+                "couscous",
+                "barley",
+                "bulgur",
+                "semolina"
+              ],
+              "portion": "usual serve",
+              "note": "plain wheat is tolerated; the histamine problem in bread is yeast and long ferments, not the grain",
+              "basis": "SIGHI rating only",
+              "basis_sources": [
+                "sighi-list"
+              ],
+              "sources": [
+                "sighi-list"
+              ]
+            },
+            {
+              "term": "bread",
+              "aliases": [
+                "whole-wheat bread",
+                "white bread",
+                "toast",
+                "flatbread",
+                "tortilla",
+                "tortillas",
+                "crispbread",
+                "crackers"
+              ],
+              "portion": "usual serve",
+              "note": "plain bread; sourdough and rye are less tolerated because of the ferment",
+              "basis": "SIGHI rating only",
+              "basis_sources": [
+                "sighi-list"
+              ],
+              "sources": [
+                "sighi-list"
+              ]
+            },
+            {
+              "term": "gluten-free pasta",
+              "aliases": [
+                "gluten free pasta",
+                "corn and rice pasta",
+                "rice pasta"
+              ],
+              "portion": "usual serve",
+              "basis": "SIGHI rating only",
+              "basis_sources": [
+                "sighi-list"
+              ],
+              "sources": [
+                "sighi-list"
+              ]
+            },
+            {
+              "term": "cornstarch",
+              "aliases": [
+                "corn starch",
+                "potato starch",
+                "tapioca",
+                "tapioca starch",
+                "arrowroot"
+              ],
+              "portion": "usual serve",
+              "basis": "SIGHI rating only",
+              "basis_sources": [
+                "sighi-list"
+              ],
+              "sources": [
+                "sighi-list"
+              ]
+            },
+            {
+              "term": "baking powder",
+              "aliases": [
+                "baking soda",
+                "bicarbonate of soda"
+              ],
+              "portion": "usual serve",
+              "note": "baking powder, not yeast",
+              "basis": "SIGHI rating only",
+              "basis_sources": [
+                "sighi-list"
+              ],
+              "sources": [
+                "sighi-list"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Meat, fish, eggs, and plant protein",
+          "items": [
+            {
+              "term": "fresh chicken",
+              "aliases": [
+                "chicken",
+                "chicken breast",
+                "chicken thighs",
+                "chicken thigh",
+                "turkey"
+              ],
+              "portion": "usual serve",
+              "note": "fresh or quickly frozen; never marinated for days, never leftover",
+              "basis": "measured histamine",
+              "basis_note": "Sánchez-Pérez 2021 lab data (fresh meat, 199 samples): no histamine found, as long as freshness and hygiene are guaranteed.",
+              "basis_sources": [
+                "sanchez-perez-2021"
+              ],
+              "sources": [
+                "sighi-list",
+                "comas-baste-2020"
+              ]
+            },
+            {
+              "term": "fresh beef",
+              "aliases": [
+                "beef",
+                "steak",
+                "lamb",
+                "veal",
+                "fresh pork",
+                "pork loin",
+                "pork chops",
+                "pork"
+              ],
+              "portion": "usual serve",
+              "note": "fresh or quickly frozen; not cured, smoked, or aged",
+              "basis": "measured histamine",
+              "basis_note": "Sánchez-Pérez 2021 lab data (fresh meat, 199 samples): no histamine found, as long as freshness and hygiene are guaranteed. The SIGHI leaflet rates prepacked minced meat as risky and finely chopped meat as to avoid.",
+              "basis_sources": [
+                "sanchez-perez-2021",
+                "sighi-leaflet-2021"
+              ],
+              "sources": [
+                "sighi-list",
+                "comas-baste-2020"
+              ]
+            },
+            {
+              "term": "fresh white fish",
+              "aliases": [
+                "cod",
+                "haddock",
+                "hake",
+                "pollock",
+                "plaice",
+                "sole",
+                "halibut",
+                "tilapia",
+                "trout",
+                "rainbow trout",
+                "perch",
+                "pike",
+                "white fish",
+                "fresh fish",
+                "frozen fish"
+              ],
+              "portion": "usual serve",
+              "note": "fresh or frozen straight after catch; not canned, smoked, or scombroid (tuna, mackerel, sardines)",
+              "basis": "measured histamine",
+              "basis_note": "Sánchez-Pérez 2021 lab data (fresh white fish, 31 samples): histamine 1.14 mg/kg on average, most samples none, highest 36.55.",
+              "basis_sources": [
+                "sanchez-perez-2021"
+              ],
+              "sources": [
+                "sighi-list",
+                "comas-baste-2020"
+              ]
+            },
+            {
+              "term": "salmon",
+              "portion": "usual serve",
+              "verified": true,
+              "note": "freshly caught, or frozen straight after the catch and cooked from frozen or thawed quickly; not smoked. The leaflet rates shop-counter \"fresh fish\" as risky. checked against the SIGHI leaflet, September 30, 2026",
+              "basis": "measured histamine",
+              "basis_note": "Sánchez-Pérez 2021 lab data (fresh oily fish, 49 samples): histamine 3.27 mg/kg on average, highest 111.26; the paper notes 111 mg/kg in a fresh salmon sample. The SIGHI leaflet rates absolutely fresh or frozen fish as well tolerated and lists only scombroid fish (tuna, mackerel, herring, sardines, anchovies, mahi mahi) to avoid.",
+              "basis_sources": [
+                "sanchez-perez-2021",
+                "sighi-leaflet-2021"
+              ],
+              "sources": [
+                "sighi-list"
+              ]
+            },
+            {
+              "term": "egg",
+              "aliases": [
+                "eggs",
+                "egg yolk",
+                "egg yolks"
+              ],
+              "portion": "usual serve, cooked",
+              "note": "cooked through; raw egg white is a histamine liberator",
+              "basis": "measured histamine",
+              "basis_note": "Sánchez-Pérez 2021 lab data (eggs, 14 samples): no histamine or putrescine found.",
+              "basis_sources": [
+                "sanchez-perez-2021"
+              ],
+              "sources": [
+                "sighi-list"
+              ]
+            },
+            {
+              "term": "macadamia",
+              "aliases": [
+                "macadamia nuts",
+                "macadamias"
+              ],
+              "portion": "small handful",
+              "basis": "SIGHI rating only",
+              "basis_note": "The SIGHI leaflet names macadamias as well tolerated.",
+              "basis_sources": [
+                "sighi-leaflet-2021"
+              ],
+              "sources": [
+                "sighi-list"
+              ]
+            },
+            {
+              "term": "pumpkin seeds",
+              "aliases": [
+                "pepitas",
+                "pumpkin seed"
+              ],
+              "portion": "two tablespoons",
+              "basis": "SIGHI rating only",
+              "basis_sources": [
+                "sighi-list"
+              ],
+              "sources": [
+                "sighi-list"
+              ]
+            },
+            {
+              "term": "chia seeds",
+              "aliases": [
+                "chia",
+                "flaxseed",
+                "flax",
+                "linseed",
+                "hemp seeds",
+                "hemp"
+              ],
+              "portion": "two tablespoons",
+              "verified": false,
+              "note": "not re-checked against the leaflet",
+              "basis": "SIGHI rating only",
+              "basis_sources": [
+                "sighi-list"
+              ],
+              "sources": [
+                "sighi-list"
+              ]
+            },
+            {
+              "term": "sunflower seeds",
+              "aliases": [
+                "sunflower seed",
+                "sesame seeds",
+                "sesame",
+                "tahini"
+              ],
+              "portion": "small serve",
+              "verified": false,
+              "note": "seeds are not rated by the leaflet; often tolerated in small amounts. Not re-checked against the leaflet",
+              "basis": "SIGHI rating only",
+              "basis_note": "The SIGHI leaflet does not rate seeds. Not in the Sánchez-Pérez 2021 lab data.",
+              "basis_sources": [
+                "sighi-leaflet-2021"
+              ],
+              "sources": [
+                "sighi-list"
+              ]
+            },
+            {
+              "term": "chestnuts",
+              "aliases": [
+                "chestnut",
+                "chestnut flour",
+                "roasted chestnuts"
+              ],
+              "portion": "usual serve",
+              "verified": true,
+              "note": "checked against the SIGHI leaflet, September 30, 2026",
+              "basis": "SIGHI rating only",
+              "basis_note": "The SIGHI leaflet names chestnuts, with macadamias, as the nuts that are well tolerated.",
+              "basis_sources": [
+                "sighi-leaflet-2021"
+              ],
+              "sources": [
+                "sighi-leaflet-2021"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Dairy and alternatives",
+          "items": [
+            {
+              "term": "milk",
+              "aliases": [
+                "whole milk",
+                "skim milk",
+                "semi-skimmed milk",
+                "lactose-free milk",
+                "lactose-free low-fat milk",
+                "lactose-free whole milk"
+              ],
+              "portion": "usual serve",
+              "note": "fresh pasteurised milk",
+              "basis": "measured histamine",
+              "basis_note": "Sánchez-Pérez 2021 lab data (milk, 5 samples): no histamine or other amines found.",
+              "basis_sources": [
+                "sanchez-perez-2021"
+              ],
+              "sources": [
+                "sighi-list"
+              ]
+            },
+            {
+              "term": "cream",
+              "aliases": [
+                "light cream",
+                "double cream",
+                "heavy cream",
+                "whipping cream",
+                "lactose-free cream"
+              ],
+              "portion": "usual serve",
+              "basis": "SIGHI rating only",
+              "basis_sources": [
+                "sighi-list"
+              ],
+              "sources": [
+                "sighi-list"
+              ]
+            },
+            {
+              "term": "butter",
+              "aliases": [
+                "ghee",
+                "clarified butter"
+              ],
+              "portion": "usual serve",
+              "basis": "SIGHI rating only",
+              "basis_sources": [
+                "sighi-list"
+              ],
+              "sources": [
+                "sighi-list"
+              ]
+            },
+            {
+              "term": "fresh mozzarella",
+              "aliases": [
+                "mozzarella"
+              ],
+              "portion": "usual serve",
+              "note": "young cheese; histamine builds with ageing",
+              "basis": "SIGHI rating only",
+              "basis_note": "The SIGHI leaflet names mozzarella and other cream cheeses as well tolerated.",
+              "basis_sources": [
+                "sighi-leaflet-2021"
+              ],
+              "sources": [
+                "sighi-list",
+                "comas-baste-2020"
+              ]
+            },
+            {
+              "term": "ricotta",
+              "aliases": [
+                "cottage cheese",
+                "cream cheese",
+                "quark",
+                "mascarpone",
+                "paneer",
+                "fresh cheese",
+                "young cheese"
+              ],
+              "portion": "usual serve",
+              "basis": "SIGHI rating only",
+              "basis_note": "The SIGHI leaflet names ricotta, cottage cheese, and mascarpone as well tolerated.",
+              "basis_sources": [
+                "sighi-leaflet-2021"
+              ],
+              "sources": [
+                "sighi-list",
+                "comas-baste-2020"
+              ]
+            },
+            {
+              "term": "almond milk",
+              "aliases": [
+                "unsweetened almond milk",
+                "coconut milk"
+              ],
+              "portion": "usual serve",
+              "verified": true,
+              "note": "checked against the SIGHI leaflet, September 30, 2026",
+              "basis": "SIGHI rating only",
+              "basis_note": "The SIGHI leaflet rates almond milk and coconut milk as well tolerated.",
+              "basis_sources": [
+                "sighi-leaflet-2021"
+              ],
+              "sources": [
+                "sighi-leaflet-2021"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Fats, sweeteners, and pantry",
+          "items": [
+            {
+              "term": "olive oil",
+              "aliases": [
+                "extra virgin olive oil"
+              ],
+              "portion": "usual serve",
+              "basis": "SIGHI rating only",
+              "basis_sources": [
+                "sighi-list"
+              ],
+              "sources": [
+                "sighi-list"
+              ]
+            },
+            {
+              "term": "canola oil",
+              "aliases": [
+                "rapeseed oil",
+                "sunflower oil",
+                "coconut oil",
+                "vegetable oil",
+                "sesame oil",
+                "soybean oil",
+                "soy oil"
+              ],
+              "portion": "usual serve",
+              "basis": "SIGHI rating only",
+              "basis_sources": [
+                "sighi-list",
+                "sighi-leaflet-2021"
+              ],
+              "sources": [
+                "sighi-list"
+              ],
+              "basis_note": "The SIGHI leaflet rates vegetable oils and vegetable fats as well tolerated (walnut oil as risky)."
+            },
+            {
+              "term": "sugar",
+              "aliases": [
+                "white sugar",
+                "caster sugar",
+                "granulated sugar",
+                "brown sugar",
+                "icing sugar"
+              ],
+              "portion": "usual serve",
+              "basis": "SIGHI rating only",
+              "basis_sources": [
+                "sighi-list"
+              ],
+              "sources": [
+                "sighi-list"
+              ]
+            },
+            {
+              "term": "maple syrup",
+              "aliases": [
+                "pure maple syrup",
+                "honey",
+                "rice malt syrup"
+              ],
+              "portion": "usual serve",
+              "basis": "SIGHI rating only",
+              "basis_sources": [
+                "sighi-list"
+              ],
+              "sources": [
+                "sighi-list"
+              ]
+            },
+            {
+              "term": "vanilla extract",
+              "aliases": [
+                "vanilla"
+              ],
+              "portion": "usual serve",
+              "basis": "SIGHI rating only",
+              "basis_sources": [
+                "sighi-list"
+              ],
+              "sources": [
+                "sighi-list"
+              ]
+            },
+            {
+              "term": "distilled white vinegar",
+              "aliases": [
+                "white vinegar",
+                "distilled vinegar",
+                "spirit vinegar",
+                "apple cider vinegar",
+                "cider vinegar"
+              ],
+              "portion": "usual serve",
+              "verified": true,
+              "note": "distilled white (spirit) vinegar or apple cider vinegar only; wine, balsamic, rice, sherry, and malt vinegar are left out. checked against the SIGHI leaflet, September 30, 2026",
+              "basis": "SIGHI rating only",
+              "basis_note": "The SIGHI leaflet rates \"spirit vinegar = distilled white vinegar, apple cider vinegar\" as well tolerated, and lists vinegar, especially wine and balsamic vinegar, under To avoid.",
+              "basis_sources": [
+                "sighi-leaflet-2021"
+              ],
+              "sources": [
+                "sighi-leaflet-2021"
+              ]
+            },
+            {
+              "term": "salt",
+              "aliases": [
+                "sea salt",
+                "table salt"
+              ],
+              "portion": "usual serve",
+              "basis": "SIGHI rating only",
+              "basis_sources": [
+                "sighi-list"
+              ],
+              "sources": [
+                "sighi-list"
+              ]
+            },
+            {
+              "term": "herbs",
+              "aliases": [
+                "parsley",
+                "basil",
+                "dill",
+                "oregano",
+                "thyme",
+                "rosemary",
+                "sage",
+                "mint",
+                "bay leaf",
+                "bay leaves",
+                "coriander",
+                "cilantro",
+                "tarragon",
+                "marjoram"
+              ],
+              "portion": "usual serve",
+              "basis": "SIGHI rating only",
+              "basis_sources": [
+                "sighi-list"
+              ],
+              "sources": [
+                "sighi-list"
+              ]
+            },
+            {
+              "term": "mild spices",
+              "aliases": [
+                "cumin",
+                "ground coriander",
+                "coriander seed",
+                "turmeric",
+                "cardamom",
+                "ground ginger",
+                "caraway",
+                "fennel seed",
+                "saffron",
+                "sweet paprika",
+                "paprika"
+              ],
+              "portion": "usual serve",
+              "note": "mild spices; hot spices (chilli, cayenne, hot paprika) and mixes like curry powder are liberators",
+              "basis": "SIGHI rating only",
+              "basis_note": "The SIGHI leaflet names mild spices as well tolerated and hot spices as to avoid.",
+              "basis_sources": [
+                "sighi-leaflet-2021"
+              ],
+              "sources": [
+                "sighi-list"
+              ]
+            },
+            {
+              "term": "cinnamon",
+              "aliases": [
+                "nutmeg"
+              ],
+              "portion": "small serve",
+              "verified": false,
+              "note": "a pinch is usual on low histamine plans; larger amounts are questioned. The leaflet does not rate cinnamon or nutmeg. Not re-checked against the leaflet",
+              "basis": "SIGHI rating only",
+              "basis_note": "The SIGHI leaflet rates mild spices as well tolerated and does not name cinnamon or nutmeg.",
+              "basis_sources": [
+                "sighi-leaflet-2021"
+              ],
+              "sources": [
+                "sighi-list"
+              ]
+            },
+            {
+              "term": "water",
+              "aliases": [
+                "sparkling water",
+                "quick vegetable stock",
+                "homemade vegetable stock"
+              ],
+              "portion": "usual serve",
+              "note": "a homemade vegetable stock from vegetables on this list, simmered under 30 minutes and used the same day, counts as water; meat, bone, and fish stocks and all shop stocks and cubes are left out",
+              "basis": "SIGHI rating only",
+              "basis_note": "The SIGHI leaflet lists bouillon and broth under To avoid, and rates fresh vegetables (except the ones it names) as well tolerated. A vegetable stock made the same day from vegetables on this list is fresh vegetables cooked in water; meat and fish stocks are left out (docs/VERIFY-log.md, A2 and A17).",
+              "basis_sources": [
+                "sighi-leaflet-2021"
+              ],
+              "sources": [
+                "sighi-list",
+                "comas-baste-2020"
+              ]
+            },
+            {
+              "term": "herbal tea",
+              "aliases": [
+                "chamomile tea",
+                "rooibos",
+                "peppermint tea"
+              ],
+              "portion": "usual serve",
+              "basis": "SIGHI rating only",
+              "basis_sources": [
+                "sighi-list"
+              ],
+              "sources": [
+                "sighi-list"
+              ]
+            },
+            {
+              "term": "cooking spray",
+              "aliases": [
+                "nonstick cooking spray",
+                "oil spray"
+              ],
+              "portion": "usual serve",
+              "note": "plain oil spray",
+              "basis": "SIGHI rating only",
+              "basis_sources": [
+                "sighi-list"
+              ],
+              "sources": [
+                "sighi-list"
+              ]
+            }
+          ]
+        }
+      ],
+      "avoid_examples": [
+        {
+          "term": "tomato",
+          "why": "commonly reported trigger",
+          "basis": "measured histamine",
+          "basis_note": "Sánchez-Pérez 2021 lab data (tomato, 53 samples): histamine 2.51 mg/kg on average, highest 17.07; putrescine 16.48. Also named as a proposed liberator.",
+          "basis_sources": [
+            "sanchez-perez-2021"
+          ]
+        },
+        {
+          "term": "spinach",
+          "why": "histamine-rich",
+          "basis": "measured histamine",
+          "basis_note": "Sánchez-Pérez 2021 lab data (spinach, 18 samples): histamine 31.77 mg/kg on average, highest 69.72. Also named as a proposed liberator.",
+          "basis_sources": [
+            "sanchez-perez-2021"
+          ]
+        },
+        {
+          "term": "eggplant",
+          "why": "histamine-rich",
+          "basis": "measured histamine",
+          "basis_note": "Sánchez-Pérez 2021 lab data (eggplant, 23 samples): histamine 39.42 mg/kg on average, highest 100.64.",
+          "basis_sources": [
+            "sanchez-perez-2021"
+          ]
+        },
+        {
+          "term": "avocado",
+          "why": "histamine-rich",
+          "basis": "SIGHI rating only",
+          "basis_note": "Sánchez-Pérez 2021 lab data (avocado, 5 samples): no histamine or putrescine found. The SIGHI leaflet lists avocado among histamine-containing foods; the measurements do not show that. Kept on the leave-out list (owner question 9, September 30, 2026): five samples in one country are too few to overrule the leaflet during an elimination trial.",
+          "basis_sources": [
+            "sanchez-perez-2021",
+            "sighi-leaflet-2021"
+          ]
+        },
+        {
+          "term": "aged cheese",
+          "why": "histamine builds with ageing",
+          "basis": "measured histamine",
+          "basis_note": "Sánchez-Pérez 2021 lab data (cured, semi-cured, and grated cheese, 80 samples): histamine 33.10 mg/kg on average, highest 389.86.",
+          "basis_sources": [
+            "sanchez-perez-2021"
+          ]
+        },
+        {
+          "term": "cured meat",
+          "why": "cured, smoked, aged",
+          "basis": "measured histamine",
+          "basis_note": "Sánchez-Pérez 2021 lab data: dry-fermented sausages (424 samples) histamine 21.57 mg/kg on average, highest 474.82; cured meat (23 samples) 4.89, highest 150.",
+          "basis_sources": [
+            "sanchez-perez-2021"
+          ]
+        },
+        {
+          "term": "canned fish",
+          "why": "scombroid and canned fish",
+          "basis": "measured histamine",
+          "basis_note": "Sánchez-Pérez 2021 lab data (preserved and semi-preserved fish, 151 samples): histamine 10.03 mg/kg on average, highest 657.05 (canned sardines).",
+          "basis_sources": [
+            "sanchez-perez-2021"
+          ]
+        },
+        {
+          "term": "shellfish",
+          "why": "high histamine",
+          "basis": "proposed liberator",
+          "basis_note": "Sánchez-Pérez 2021 lab data (seafood, 7 samples): no histamine found; putrescine 3.02 mg/kg. Both sources name seafood as a proposed liberator; Sánchez-Pérez 2021 finds no clinical studies in humans that show foods releasing histamine. Kept on the leave-out list (owner question 9, September 30, 2026): the leaflet lists shellfish under To avoid, shellfish spoil quickly, and seven samples are too few to overrule that.",
+          "basis_sources": [
+            "sanchez-perez-2021"
+          ],
+          "aliases": [
+            "shrimp",
+            "shrimps",
+            "prawns",
+            "prawn",
+            "crab",
+            "crabs",
+            "lobster",
+            "lobsters",
+            "mussels",
+            "clams",
+            "oysters",
+            "scallops",
+            "squid",
+            "calamari",
+            "octopus",
+            "crayfish",
+            "crawfish",
+            "seafood"
+          ]
+        },
+        {
+          "term": "vinegar",
+          "why": "fermented; the SIGHI leaflet lists vinegar, especially wine and balsamic vinegar, under To avoid (distilled white vinegar and apple cider vinegar are on the list)",
+          "basis": "SIGHI rating only",
+          "basis_note": "Not in the Sánchez-Pérez 2021 lab data. The SIGHI leaflet lists vinegar, especially wine and balsamic vinegar, under To avoid, and distilled white (spirit) vinegar and apple cider vinegar as well tolerated.",
+          "basis_sources": [
+            "sanchez-perez-2021",
+            "sighi-leaflet-2021"
+          ],
+          "unless": "\\b(distilled( white)?|white|spirit|apple cider|cider)[\\s-]+vinegar\\b"
+        },
+        {
+          "term": "soy sauce",
+          "why": "fermented",
+          "basis": "measured histamine",
+          "basis_note": "Sánchez-Pérez 2021 lab data (soy-fermented products, 21 samples): histamine 73.95 mg/kg on average, highest 730.06.",
+          "basis_sources": [
+            "sanchez-perez-2021"
+          ]
+        },
+        {
+          "term": "wine",
+          "why": "fermented; alcohol also blocks the enzyme that clears histamine",
+          "basis": "measured histamine",
+          "basis_note": "Sánchez-Pérez 2021 lab data (wine, 299 samples): histamine 3.63 mg/kg on average, highest 34.25. The paper adds that alcohol makes histamine more harmful.",
+          "basis_sources": [
+            "sanchez-perez-2021"
+          ]
+        },
+        {
+          "term": "sauerkraut",
+          "why": "fermented",
+          "basis": "measured histamine",
+          "basis_note": "Sánchez-Pérez 2021 lab data (sauerkraut, 5 samples): histamine 43.74 mg/kg on average, highest 80.12; putrescine 232.66.",
+          "basis_sources": [
+            "sanchez-perez-2021"
+          ]
+        },
+        {
+          "term": "strawberries",
+          "why": "liberator",
+          "basis": "proposed liberator",
+          "basis_note": "Sánchez-Pérez 2021 lab data (strawberries, 9 samples): no histamine found; putrescine 3.77 mg/kg. Both sources name strawberries as a proposed liberator.",
+          "basis_sources": [
+            "sanchez-perez-2021"
+          ]
+        },
+        {
+          "term": "citrus",
+          "why": "liberator",
+          "basis": "other amines",
+          "basis_note": "Sánchez-Pérez 2021 lab data (citrus fruits, 38 samples): no histamine found; putrescine 79.75 mg/kg on average, highest 173.81. Also named as a proposed liberator.",
+          "basis_sources": [
+            "sanchez-perez-2021"
+          ]
+        },
+        {
+          "term": "pineapple",
+          "why": "liberator",
+          "basis": "proposed liberator",
+          "basis_note": "Sánchez-Pérez 2021 lab data (pineapple, 5 samples): no histamine found; putrescine 2.69 mg/kg. Sánchez-Pérez 2021 names it as a proposed liberator; the SIGHI leaflet lists it under other biogenic amines.",
+          "basis_sources": [
+            "sanchez-perez-2021",
+            "sighi-leaflet-2021"
+          ]
+        },
+        {
+          "term": "chocolate",
+          "why": "liberator",
+          "basis": "proposed liberator",
+          "basis_note": "Sánchez-Pérez 2021 lab data (chocolate, 15 samples): no histamine found; putrescine 0.41, tyramine 3.70 mg/kg. Both sources name chocolate as a proposed liberator; the SIGHI leaflet also names theobromine (in cocoa) as a DAO blocker.",
+          "basis_sources": [
+            "sanchez-perez-2021",
+            "sighi-leaflet-2021"
+          ]
+        },
+        {
+          "term": "walnuts",
+          "why": "liberator",
+          "basis": "other amines",
+          "basis_note": "Sánchez-Pérez 2021 lab data (nuts, 47 samples): no histamine found; putrescine 4.40 mg/kg on average, highest 39.51; the paper lists nuts among foods with relevant putrescine. Also named as a proposed liberator.",
+          "basis_sources": [
+            "sanchez-perez-2021"
+          ]
+        },
+        {
+          "term": "peanuts",
+          "why": "liberator",
+          "basis": "other amines",
+          "basis_note": "The SIGHI leaflet lists peanuts under other biogenic amines. Sánchez-Pérez 2021 measured nuts as one group (no histamine found, putrescine 4.40 mg/kg) without saying whether peanuts were in it.",
+          "basis_sources": [
+            "sanchez-perez-2021",
+            "sighi-leaflet-2021"
+          ]
+        },
+        {
+          "term": "yeast extract",
+          "why": "high histamine",
+          "basis": "SIGHI rating only",
+          "basis_note": "Not in the Sánchez-Pérez 2021 lab data. The SIGHI leaflet lists yeast extract among histamine-containing foods.",
+          "basis_sources": [
+            "sanchez-perez-2021",
+            "sighi-leaflet-2021"
+          ]
+        },
+        {
+          "term": "stock cube",
+          "why": "yeast extract and long-cooked",
+          "basis": "SIGHI rating only",
+          "basis_note": "Not in the Sánchez-Pérez 2021 lab data. The SIGHI leaflet lists yeast extract, bouillon, and broth under To avoid.",
+          "basis_sources": [
+            "sanchez-perez-2021",
+            "sighi-leaflet-2021"
+          ]
+        },
+        {
+          "term": "leftovers",
+          "why": "histamine rises in stored cooked food",
+          "basis": "SIGHI rating only",
+          "basis_note": "The SIGHI leaflet: kept warm or reheated food and products with a long storage time. Sánchez-Pérez 2021 describes histamine forming during storage (spinach, fish that is not fresh) but did not measure cooked leftovers.",
+          "basis_sources": [
+            "sanchez-perez-2021",
+            "sighi-leaflet-2021"
+          ]
+        },
+        {
+          "term": "meat stock",
+          "aliases": [
+            "meat broth",
+            "chicken stock",
+            "chicken broth",
+            "beef stock",
+            "beef broth",
+            "bone broth",
+            "turkey stock",
+            "turkey broth",
+            "lamb stock",
+            "lamb broth",
+            "pork stock",
+            "ham stock",
+            "veal stock",
+            "chicken bouillon",
+            "beef bouillon",
+            "fish stock",
+            "fish broth",
+            "seafood stock",
+            "bone stock"
+          ],
+          "why": "the SIGHI leaflet lists bouillon and broth under To avoid, with no homemade exception; histamine in meat and fish rises with time, and a recipe cannot show how fresh a stock is",
+          "basis": "SIGHI rating only",
+          "basis_note": "Not in the Sánchez-Pérez 2021 lab data. The SIGHI leaflet lists bouillon and broth under To avoid.",
+          "basis_sources": [
+            "sanchez-perez-2021",
+            "sighi-leaflet-2021"
+          ],
+          "sources": [
+            "sighi-leaflet-2021",
+            "sighi-list"
+          ],
+          "unless_retired": "\\bhomemade\\b.*\\b(quick|short[- ]simmered|simmered (for )?(under|less than) 30 minutes)\\b|\\b(quick|short[- ]simmered)\\b.*\\bhomemade\\b",
+          "retired_note": "The homemade, short-simmered exception (VERIFY-log A2) was dropped on September 30, 2026 (owner question 6): the SIGHI leaflet lists broth under To avoid with no homemade exception, and a recipe's words cannot show how fresh a meat stock is."
+        },
+        {
+          "term": "stock",
+          "aliases": [
+            "stocks",
+            "broth",
+            "broths",
+            "bouillon",
+            "stock cube",
+            "stock pot",
+            "stock powder",
+            "gravy mix",
+            "gravy granules",
+            "gravy powder",
+            "instant gravy"
+          ],
+          "unless": "\\b(quick|homemade|quick homemade)[\\s-]+vegetable[\\s-]+(stock|broth)\\b",
+          "why": "shop stocks, stock cubes, bouillon, and gravy mixes (yeast extract, long-cooked), and meat or fish stock however it is made; this list approves only a quick homemade vegetable stock, simmered under 30 minutes and used the same day",
+          "basis": "SIGHI rating only",
+          "basis_note": "Not in the Sánchez-Pérez 2021 lab data. The SIGHI leaflet lists yeast extract, bouillon, and broth under To avoid.",
+          "basis_sources": [
+            "sanchez-perez-2021",
+            "sighi-leaflet-2021"
+          ],
+          "sources": [
+            "sighi-leaflet-2021",
+            "sighi-list"
+          ],
+          "unless_retired": "\\bquick vegetable stock\\b|\\bhomemade vegetable stock\\b|\\bquick homemade (vegetable |chicken |fish |beef )?stock\\b|\\bhomemade\\b.*\\b(short[- ]simmered|simmered (for )?(under|less than) 30 minutes)\\b|\\bshort[- ]simmered\\b.*\\bhomemade\\b"
+        },
+        {
+          "term": "jarred",
+          "aliases": [
+            "jar",
+            "jars",
+            "in brine",
+            "brined",
+            "packed in brine"
+          ],
+          "why": "jarred vegetables are packed in vinegar or brine; the SIGHI leaflet lists vinegar, pickled vegetables, and canned or finished products under To avoid",
+          "basis": "SIGHI rating only",
+          "basis_note": "Not in the Sánchez-Pérez 2021 lab data. The SIGHI leaflet lists vinegar, pickled vegetables, and canned or finished products under To avoid.",
+          "basis_sources": [
+            "sanchez-perez-2021",
+            "sighi-leaflet-2021"
+          ],
+          "sources": [
+            "sighi-leaflet-2021",
+            "sighi-list"
+          ]
+        },
+        {
+          "term": "banana",
+          "aliases": [
+            "bananas",
+            "firm banana"
+          ],
+          "why": "the SIGHI leaflet lists banana under To avoid and among other biogenic amines",
+          "basis": "other amines",
+          "basis_note": "Sánchez-Pérez 2021 lab data (banana, 8 samples): no histamine found; putrescine 37.94 mg/kg. The SIGHI leaflet lists banana under To avoid and under other biogenic amines.",
+          "basis_sources": [
+            "sanchez-perez-2021",
+            "sighi-leaflet-2021"
+          ],
+          "moved_from_list": "September 30, 2026 (owner questions 8 and 9)"
+        },
+        {
+          "term": "almonds",
+          "aliases": [
+            "almond",
+            "almond butter",
+            "almond flour",
+            "ground almonds",
+            "flaked almonds",
+            "cashews",
+            "cashew",
+            "cashew butter",
+            "hazelnuts",
+            "hazelnut",
+            "pecans",
+            "pecan",
+            "pistachios",
+            "pistachio",
+            "pine nuts",
+            "pine nut",
+            "brazil nuts",
+            "mixed nuts"
+          ],
+          "why": "the SIGHI leaflet lists nuts under To avoid, except macadamias and chestnuts",
+          "basis": "other amines",
+          "basis_note": "Sánchez-Pérez 2021 lab data (nuts, 47 samples): no histamine found; putrescine 4.40 mg/kg on average. The SIGHI leaflet lists nuts under To avoid (\"especially walnuts, cashews, peanuts\"), except macadamias and chestnuts, and rates almond milk as well tolerated.",
+          "basis_sources": [
+            "sanchez-perez-2021",
+            "sighi-leaflet-2021"
+          ],
+          "moved_from_list": "September 30, 2026 (owner questions 8 and 9)",
+          "unless": "\\balmond[\\s-]+(milk|drink|beverage)\\b"
+        },
+        {
+          "term": "legumes",
+          "aliases": [
+            "chickpeas",
+            "chickpea",
+            "chickpea flour",
+            "gram flour",
+            "besan",
+            "hummus",
+            "houmous",
+            "lentils",
+            "lentil",
+            "red lentils",
+            "black beans",
+            "kidney beans",
+            "white beans",
+            "cannellini beans",
+            "butter beans",
+            "navy beans",
+            "pinto beans",
+            "borlotti beans",
+            "haricot beans",
+            "baked beans",
+            "broad beans",
+            "fava beans",
+            "lima beans",
+            "mung beans",
+            "split peas",
+            "black-eyed peas",
+            "tofu",
+            "tempeh",
+            "edamame",
+            "soybeans",
+            "soya beans",
+            "soy milk",
+            "soya milk"
+          ],
+          "why": "the SIGHI leaflet lists legumes (lentils, beans, soy, and soy products such as tofu) and soy milk under To avoid, and legumes among other biogenic amines",
+          "basis": "other amines",
+          "basis_note": "Sánchez-Pérez 2021 lab data (soybeans, 5 samples): no histamine found; putrescine 19.07 mg/kg. The SIGHI leaflet lists legumes (lentils, beans, soy, tofu) under To avoid and under other biogenic amines.",
+          "basis_sources": [
+            "sanchez-perez-2021",
+            "sighi-leaflet-2021"
+          ],
+          "moved_from_list": "September 30, 2026 (owner questions 8 and 9)",
+          "unless": "\\bsoya?(bean)?[\\s-]+oil\\b"
+        },
+        {
+          "term": "pears",
+          "aliases": [
+            "pear",
+            "pear juice",
+            "asian pear",
+            "nashi"
+          ],
+          "why": "the SIGHI leaflet lists pears under To avoid and among other biogenic amines",
+          "basis": "SIGHI rating only",
+          "basis_note": "Not in the Sánchez-Pérez 2021 lab data. The SIGHI leaflet lists pears under To avoid and under other biogenic amines, while this list rates pear well tolerated.",
+          "basis_sources": [
+            "sanchez-perez-2021",
+            "sighi-leaflet-2021"
+          ],
+          "moved_from_list": "September 30, 2026 (owner questions 8 and 9)"
+        },
+        {
+          "term": "green beans",
+          "aliases": [
+            "string beans",
+            "french beans",
+            "runner beans",
+            "bush beans",
+            "haricots verts"
+          ],
+          "why": "the SIGHI leaflet rates green bush beans as possibly risky; risky foods are left out during the trial",
+          "basis": "SIGHI rating only",
+          "basis_note": "The SIGHI leaflet rates green bush beans as possibly risky (\"Possibly green bush beans, peas?\").",
+          "basis_sources": [
+            "sighi-leaflet-2021"
+          ],
+          "moved_from_list": "September 30, 2026 (owner questions 8 and 9)"
+        },
+        {
+          "term": "peas",
+          "aliases": [
+            "green peas",
+            "garden peas",
+            "petits pois",
+            "snow peas",
+            "sugar snap peas",
+            "mangetout"
+          ],
+          "why": "the SIGHI leaflet rates peas as possibly risky; risky foods are left out during the trial",
+          "basis": "other amines",
+          "basis_note": "Sánchez-Pérez 2021 names peas among foods that can carry relevant putrescine; the SIGHI leaflet rates peas as possibly risky.",
+          "basis_sources": [
+            "sanchez-perez-2021",
+            "sighi-leaflet-2021"
+          ],
+          "moved_from_list": "September 30, 2026 (owner questions 8 and 9)"
+        },
+        {
+          "term": "canned corn",
+          "aliases": [
+            "tinned corn",
+            "canned sweetcorn",
+            "tinned sweetcorn",
+            "canned sweet corn",
+            "creamed corn"
+          ],
+          "why": "the SIGHI leaflet rates canned corn as risky, and canned products in general under To avoid",
+          "basis": "SIGHI rating only",
+          "basis_note": "Not in the Sánchez-Pérez 2021 lab data. The SIGHI leaflet rates \"Canned corn?\" as risky and lists canned, finished, or semi-finished products under To avoid. Fresh or frozen corn stays on the list.",
+          "basis_sources": [
+            "sanchez-perez-2021",
+            "sighi-leaflet-2021"
+          ],
+          "moved_from_list": "September 30, 2026 (owner question 9)"
+        },
+        {
+          "term": "rice milk",
+          "aliases": [
+            "oat milk",
+            "rice drink",
+            "oat drink",
+            "rice beverage",
+            "oat beverage"
+          ],
+          "why": "the SIGHI leaflet rates rice milk and oat milk as risky; risky foods are left out during the trial",
+          "basis": "SIGHI rating only",
+          "basis_note": "The SIGHI leaflet rates rice milk and oat milk as risky and coconut milk as well tolerated.",
+          "basis_sources": [
+            "sighi-leaflet-2021"
+          ],
+          "moved_from_list": "September 30, 2026 (owner question 9)"
+        },
+        {
+          "term": "minced meat",
+          "aliases": [
+            "mince",
+            "ground beef",
+            "beef mince",
+            "minced beef",
+            "ground turkey",
+            "turkey mince",
+            "minced turkey",
+            "ground chicken",
+            "chicken mince",
+            "minced chicken",
+            "ground pork",
+            "pork mince",
+            "minced pork",
+            "ground lamb",
+            "lamb mince",
+            "minced lamb",
+            "meatballs",
+            "meatloaf",
+            "burger patties",
+            "hamburger patties",
+            "sausage meat"
+          ],
+          "why": "the SIGHI leaflet lists finely chopped meat under To avoid (\"Histamine content tends to rise with the degree of comminution\") and rates prepacked minced meat as risky",
+          "basis": "SIGHI rating only",
+          "basis_note": "The SIGHI leaflet: \"Finely chopped / pureed meat (meatloaf, spreads, cold cuts,...). Histamine content tends to rise with the degree of comminution.\" under To avoid; \"Prepacked minced meat\" as risky. Sánchez-Pérez 2021 expects no histamine in fresh meat \"so long as freshness and correct hygienic conditions ... are guaranteed\", which mince makes harder.",
+          "basis_sources": [
+            "sighi-leaflet-2021",
+            "sanchez-perez-2021"
+          ],
+          "moved_from_list": "September 30, 2026 (owner question 9)"
+        },
+        {
+          "term": "hot spices",
+          "aliases": [
+            "chili",
+            "chilli",
+            "chile",
+            "chilies",
+            "chillies",
+            "chili powder",
+            "chilli powder",
+            "chili flakes",
+            "chilli flakes",
+            "red pepper flakes",
+            "crushed red pepper",
+            "cayenne",
+            "cayenne pepper",
+            "hot paprika",
+            "curry powder",
+            "curry paste",
+            "jalapeno",
+            "chipotle",
+            "hot sauce",
+            "sriracha",
+            "tabasco",
+            "harissa"
+          ],
+          "why": "the SIGHI leaflet lists hot spices under To avoid: they let more histamine through the gut wall",
+          "basis": "SIGHI rating only",
+          "basis_note": "Not in the Sánchez-Pérez 2021 lab data. The SIGHI leaflet lists \"Soy sauce, hot spices\" under To avoid and says \"Hot spices (pepper, chili, curry, etc.) are able to increase the intestinal permeability for histamine\".",
+          "basis_sources": [
+            "sanchez-perez-2021",
+            "sighi-leaflet-2021"
+          ],
+          "moved_from_list": "September 30, 2026 (owner question 8)"
+        },
+        {
+          "term": "black pepper",
+          "aliases": [
+            "pepper",
+            "ground pepper",
+            "cracked pepper",
+            "white pepper",
+            "peppercorns",
+            "szechuan pepper",
+            "lemon pepper"
+          ],
+          "unless": "\\b(bell|sweet|red|green|yellow|orange|roasted|roast|stuffed|mini|romano|padron)[\\s-]+peppers?\\b|\\bpeppers\\b|\\bcapsicums?\\b",
+          "why": "the SIGHI leaflet names pepper among the hot spices to avoid",
+          "basis": "SIGHI rating only",
+          "basis_note": "Not in the Sánchez-Pérez 2021 lab data. The SIGHI leaflet: \"Hot spices (pepper, chili, curry, etc.) are able to increase the intestinal permeability for histamine, which enhances histamine uptake.\" Sweet (bell) peppers are vegetables and stay on the list.",
+          "basis_sources": [
+            "sanchez-perez-2021",
+            "sighi-leaflet-2021"
+          ],
+          "moved_from_list": "September 30, 2026 (owner question 8)"
+        }
+      ],
+      "stacking": {
+        "notes_only": true,
+        "text": "Amounts matter: tolerance depends on how much you eat, so a few items are listed for a limited amount.",
+        "sources": [
+          "sighi-leaflet-2021"
+        ],
+        "note": "Owner question 7, September 30, 2026: recipes and labels show the portion for each low histamine item listed for a limited amount. There is no stacking caution: the leaflet gives no count. SIGHI leaflet, page 1: \"The compatibility is highly dependent on the individual sensitivity and the amount consumed.\""
+      }
+    }
+  }
+}

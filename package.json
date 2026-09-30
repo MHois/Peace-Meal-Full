@@ -1,0 +1,16 @@
+{
+  "name": "peace-meal",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Peace Meal: an evidence-based family nutrition planner. Every rule cites its source.",
+  "type": "module",
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "validate": "node tools/validate.mjs",
+    "build:foods": "node tools/build-foods.mjs",
+    "bundle": "node tools/bundle.mjs",
+    "serve": "python3 -m http.server 8123",
+    "check": "npm run validate && npm test && npm run bundle"
+  },
+  "engines": { "node": ">=20" }
+}

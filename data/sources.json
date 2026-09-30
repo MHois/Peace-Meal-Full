@@ -1,0 +1,1122 @@
+[
+  {
+    "id": "ada-soc-2026",
+    "citation": "ADA. Standards of Care in Diabetes 2026. Diabetes Care 2026;49(Suppl 1). Section 5 (nutrition), Section 4 (liver), Section 14 (children), Section 15 (pregnancy).",
+    "type": "guideline",
+    "year": 2026,
+    "url": "https://doi.org/10.2337/dc26-S005"
+  },
+  {
+    "id": "ada-nutrition-consensus-2019",
+    "citation": "Evert AB et al. Nutrition Therapy for Adults With Diabetes or Prediabetes: A Consensus Report. Diabetes Care 2019;42:731-754.",
+    "type": "consensus",
+    "year": 2019,
+    "url": "https://doi.org/10.2337/dci19-0014"
+  },
+  {
+    "id": "ada-nutrition-consensus-2026-expected",
+    "citation": "ADA nutrition therapy consensus report said to be expected in 2026: none published as of September 30, 2026 (PubMed); the 2026 Standards of Care, Section 5, still refer readers to the 2019 report (Evert et al.). Not cited by any rule.",
+    "type": "other",
+    "year": 2026,
+    "url": "https://pubmed.ncbi.nlm.nih.gov/?term=American+Diabetes+Association+nutrition+therapy+consensus+report+2026",
+    "verify": true,
+    "verify_note": "Checked September 30, 2026 (VERIFY-log item 1): no successor on PubMed. Stays open until a new report is published; then add it and retire this entry."
+  },
+  {
+    "id": "dpp-2002",
+    "citation": "Knowler WC et al. (Diabetes Prevention Program Research Group). Reduction in the incidence of type 2 diabetes with lifestyle intervention or metformin. NEJM 2002;346:393-403, with 10 and 15 year follow-ups.",
+    "type": "rct",
+    "year": 2002,
+    "url": "https://doi.org/10.1056/NEJMoa012512"
+  },
+  {
+    "id": "and-diabetes-ebnpg",
+    "citation": "Academy of Nutrition and Dietetics. Evidence-Based Nutrition Practice Guideline for Type 1 and Type 2 Diabetes.",
+    "type": "guideline",
+    "year": null,
+    "url": "https://www.andeal.org"
+  },
+  {
+    "id": "aha-acc-htn-2025",
+    "citation": "2025 AHA/ACC Multisociety Guideline for the Prevention, Detection, Evaluation, and Management of High Blood Pressure in Adults. JACC 2025; doi:10.1016/j.jacc.2025.05.007. Replaces the 2017 guideline.",
+    "type": "guideline",
+    "year": 2025,
+    "url": "https://doi.org/10.1016/j.jacc.2025.05.007"
+  },
+  {
+    "id": "dash-1997",
+    "citation": "Appel LJ et al. A clinical trial of the effects of dietary patterns on blood pressure (DASH). NEJM 1997;336:1117-1124.",
+    "type": "rct",
+    "year": 1997,
+    "url": "https://doi.org/10.1056/NEJM199704173361601"
+  },
+  {
+    "id": "dash-sodium-2001",
+    "citation": "Sacks FM et al. Effects on blood pressure of reduced dietary sodium and the DASH diet (DASH-Sodium). NEJM 2001;344:3-10.",
+    "type": "rct",
+    "year": 2001,
+    "url": "https://doi.org/10.1056/NEJM200101043440101"
+  },
+  {
+    "id": "ssass-2021",
+    "citation": "Neal B et al. Effect of Salt Substitution on Cardiovascular Events and Death (SSaSS). NEJM 2021;385:1067-1077.",
+    "type": "rct",
+    "year": 2021,
+    "url": "https://doi.org/10.1056/NEJMoa2105675"
+  },
+  {
+    "id": "aha-acc-cholesterol-2018",
+    "citation": "Grundy SM et al. 2018 AHA/ACC Multisociety Guideline on the Management of Blood Cholesterol. Circulation 2019;139:e1082-e1143.",
+    "type": "guideline",
+    "year": 2018,
+    "url": "https://doi.org/10.1161/CIR.0000000000000625"
+  },
+  {
+    "id": "aha-dietary-guidance-2021",
+    "citation": "Lichtenstein AH et al. 2021 Dietary Guidance to Improve Cardiovascular Health: A Scientific Statement From the American Heart Association. Circulation 2021;144:e472-e487.",
+    "type": "guideline",
+    "year": 2021,
+    "url": "https://doi.org/10.1161/CIR.0000000000001031"
+  },
+  {
+    "id": "aha-dietary-cholesterol-2020",
+    "citation": "Carson JAS et al. Dietary Cholesterol and Cardiovascular Risk: A Science Advisory From the American Heart Association. Circulation 2020;141:e39-e53 (advisory issued 2019).",
+    "type": "guideline",
+    "year": 2020,
+    "url": "https://doi.org/10.1161/CIR.0000000000000743"
+  },
+  {
+    "id": "cochrane-satfat-2020",
+    "citation": "Hooper L et al. Reduction in saturated fat intake for cardiovascular disease. Cochrane Database Syst Rev 2020;5:CD011737.",
+    "type": "review",
+    "year": 2020,
+    "url": "https://doi.org/10.1002/14651858.CD011737.pub2"
+  },
+  {
+    "id": "predimed-2018",
+    "citation": "Estruch R et al. Primary Prevention of Cardiovascular Disease with a Mediterranean Diet Supplemented with Extra-Virgin Olive Oil or Nuts (PREDIMED, corrected re-analysis). NEJM 2018;378:e34.",
+    "type": "rct",
+    "year": 2018,
+    "url": "https://doi.org/10.1056/NEJMoa1800389"
+  },
+  {
+    "id": "acg-celiac-2023",
+    "citation": "Rubio-Tapia A et al. ACG Clinical Guidelines Update: Diagnosis and Management of Celiac Disease. Am J Gastroenterol 2023;118:59-76.",
+    "type": "guideline",
+    "year": 2023,
+    "url": "https://doi.org/10.14309/ajg.0000000000002075"
+  },
+  {
+    "id": "and-celiac-ebnpg",
+    "citation": "Academy of Nutrition and Dietetics. Celiac Disease Evidence-Based Nutrition Practice Guideline.",
+    "type": "guideline",
+    "year": null,
+    "url": "https://www.andeal.org"
+  },
+  {
+    "id": "fda-gluten-free-labeling",
+    "citation": "FDA. 21 CFR 101.91 Gluten-free labeling of foods (under 20 ppm gluten).",
+    "type": "regulation",
+    "year": null,
+    "url": "https://www.ecfr.gov/current/title-21/section-101.91"
+  },
+  {
+    "id": "celiac-patient-materials",
+    "citation": "Celiac Disease Foundation and Beyond Celiac patient materials (practical food lists).",
+    "type": "patient-material",
+    "year": null,
+    "url": "https://celiac.org"
+  },
+  {
+    "id": "nih-lactose-consensus-2010",
+    "citation": "NIH Consensus Development Conference Statement: Lactose Intolerance and Health. 2010.",
+    "type": "consensus",
+    "year": 2010,
+    "url": "https://doi.org/10.7326/0003-4819-152-12-201006150-00248"
+  },
+  {
+    "id": "niddk-lactose",
+    "citation": "NIDDK patient materials on lactose intolerance.",
+    "type": "patient-material",
+    "year": null,
+    "url": "https://www.niddk.nih.gov/health-information/digestive-diseases/lactose-intolerance"
+  },
+  {
+    "id": "and-practice-materials",
+    "citation": "Academy of Nutrition and Dietetics practice materials (lactose intolerance; kidney stones).",
+    "type": "other",
+    "year": null,
+    "url": "https://www.eatright.org"
+  },
+  {
+    "id": "acg-ibs-2021",
+    "citation": "Lacy BE et al. ACG Clinical Guideline: Management of Irritable Bowel Syndrome. Am J Gastroenterol 2021;116:17-44.",
+    "type": "guideline",
+    "year": 2021,
+    "url": "https://doi.org/10.14309/ajg.0000000000001036"
+  },
+  {
+    "id": "monash-fodmap",
+    "citation": "Monash University FODMAP program and app (primary lab-tested food-composition database; proprietary, licensed). Not used for v1 data.",
+    "type": "other",
+    "year": null,
+    "url": "https://www.monashfodmap.com"
+  },
+  {
+    "id": "bda-ibs-2016",
+    "citation": "McKenzie YA et al. British Dietetic Association systematic review and evidence-based practice guidelines for the dietary management of irritable bowel syndrome in adults. 2016.",
+    "type": "guideline",
+    "year": 2016,
+    "url": "https://doi.org/10.1111/jhn.12385"
+  },
+  {
+    "id": "aga-ibs-diet-2022",
+    "citation": "Chey WD et al. AGA Clinical Practice Update on the Role of Diet in Irritable Bowel Syndrome: Expert Review. Gastroenterology 2022;162:1737-1745.",
+    "type": "consensus",
+    "year": 2022,
+    "url": "https://doi.org/10.1053/j.gastro.2021.12.248"
+  },
+  {
+    "id": "halmos-2014",
+    "citation": "Halmos EP et al. A diet low in FODMAPs reduces symptoms of irritable bowel syndrome. Gastroenterology 2014;146:67-75.",
+    "type": "rct",
+    "year": 2014,
+    "url": "https://doi.org/10.1053/j.gastro.2013.09.046"
+  },
+  {
+    "id": "aga-heds-2025",
+    "citation": "Aziz Q et al. AGA Clinical Practice Update on GI Manifestations and Autonomic or Immune Dysfunction in Hypermobile Ehlers-Danlos Syndrome: Expert Review. Clin Gastroenterol Hepatol 2025;23:1291-1302. Best Practice Advice statements, not graded recommendations.",
+    "type": "consensus",
+    "year": 2025,
+    "url": "https://doi.org/10.1016/j.cgh.2025.02.015"
+  },
+  {
+    "id": "comas-baste-2020",
+    "citation": "Comas-Baste O et al. Histamine Intolerance: The Current State of the Art. Biomolecules 2020;10:1181.",
+    "type": "review",
+    "year": 2020,
+    "url": "https://doi.org/10.3390/biom10081181"
+  },
+  {
+    "id": "sanchez-perez-2021",
+    "citation": "Sánchez-Pérez S, Comas-Basté O, Veciana-Nogués MT, Latorre-Moratalla ML, Vidal-Carou MC. Low-Histamine Diets: Is the Exclusion of Foods Justified by Their Histamine Content? Nutrients 2021;13(5):1395.",
+    "type": "review",
+    "year": 2021,
+    "url": "https://doi.org/10.3390/nu13051395",
+    "note": "Open access, CC BY 4.0. Added in the 2026-09 audit as the basis for the low histamine list tags (Table 1: histamine and other amines measured in foods sold in Spain). DOI checked against Crossref; full text read on PubMed Central (PMC8143338)."
+  },
+  {
+    "id": "histamine-diet-review-2025",
+    "citation": "Evidence for Dietary Management of Histamine Intolerance (review, 2025; PMC12470264).",
+    "type": "review",
+    "year": 2025,
+    "url": "https://doi.org/10.3390/ijms26189198"
+  },
+  {
+    "id": "sighi-list",
+    "citation": "Swiss Interest Group Histamine Intolerance (SIGHI) food compatibility list. Not peer-reviewed; based on clinical experience and food-chemistry data.",
+    "type": "other",
+    "year": null,
+    "url": "https://www.histaminintoleranz.ch/en/introduction_outline.html"
+  },
+  {
+    "id": "valent-mcas-2019",
+    "citation": "Valent P et al. Proposed Diagnostic Algorithm for Patients with Suspected Mast Cell Activation Syndrome. J Allergy Clin Immunol Pract 2019;7:1125-1133 (2019 and 2020 criteria variants; two competing sets of criteria exist).",
+    "type": "consensus",
+    "year": 2019,
+    "url": "https://doi.org/10.1016/j.jaip.2019.01.006"
+  },
+  {
+    "id": "reese-histamine-2017",
+    "citation": "Reese I et al. German guideline for the management of adverse reactions to ingested histamine. Allergo J Int 2017;26:72-79.",
+    "type": "guideline",
+    "year": 2017,
+    "url": "https://doi.org/10.1007/s40629-017-0011-5"
+  },
+  {
+    "id": "hrs-pots-2015",
+    "citation": "Sheldon RS et al. 2015 Heart Rhythm Society Expert Consensus Statement on the Diagnosis and Treatment of Postural Tachycardia Syndrome, Inappropriate Sinus Tachycardia, and Vasovagal Syncope. Heart Rhythm 2015;12:e41-e63.",
+    "type": "consensus",
+    "year": 2015,
+    "url": ""
+  },
+  {
+    "id": "ccs-pots-2020",
+    "citation": "Raj SR et al. Canadian Cardiovascular Society Position Statement on Postural Orthostatic Tachycardia Syndrome (POTS) and Related Disorders of Chronic Orthostatic Intolerance. Can J Cardiol 2020;36:357-372.",
+    "type": "consensus",
+    "year": 2020,
+    "url": ""
+  },
+  {
+    "id": "vernino-pots-2021",
+    "citation": "Vernino S et al. Postural orthostatic tachycardia syndrome (POTS): State of the science and clinical care from a 2019 National Institutes of Health Expert Consensus Meeting. Auton Neurosci 2021;235:102828.",
+    "type": "consensus",
+    "year": 2021,
+    "url": ""
+  },
+  {
+    "id": "garland-2021",
+    "citation": "Garland EM et al. Effect of High Dietary Sodium Intake in Patients With Postural Tachycardia Syndrome. JACC 2021;77:2174-2184. Randomized crossover, 14 women, 6 days of 300 mmol/day sodium.",
+    "type": "rct",
+    "year": 2021,
+    "url": ""
+  },
+  {
+    "id": "nct05924646",
+    "citation": "NCT05924646, Calgary Salt for POTS trial (ongoing).",
+    "type": "other",
+    "year": null,
+    "url": ""
+  },
+  {
+    "id": "pen-pots-2023",
+    "citation": "PEN (Practice-based Evidence in Nutrition) 2023 knowledge pathway on POTS diet. Grades the sodium recommendation as fair evidence and everything else as limited.",
+    "type": "other",
+    "year": 2023,
+    "url": ""
+  },
+  {
+    "id": "crps-sr-2025",
+    "citation": "Systematic review of analgesic efficacy of CRPS therapies, RCTs 2003-2025 (PMC12413907).",
+    "type": "review",
+    "year": 2025,
+    "url": ""
+  },
+  {
+    "id": "zhu-crps-2024",
+    "citation": "Zhu H et al. Pharmacological Treatment in Complex Regional Pain Syndrome: Systematic Review and Meta-Analysis. Pharmaceuticals 2024;17:811.",
+    "type": "review",
+    "year": 2024,
+    "url": ""
+  },
+  {
+    "id": "vitamin-c-crps-2021",
+    "citation": "Seth I, Bulloch G, Seth N, et al. Effect of Perioperative Vitamin C on the Incidence of Complex Regional Pain Syndrome: A Systematic Review and Meta-Analysis. J Foot Ankle Surg 2022;61(4):748-754 (online November 2021). Not cited by any rule since the CRPS module was removed on September 9, 2026; kept for the record.",
+    "type": "review",
+    "year": 2022,
+    "url": "https://doi.org/10.1053/j.jfas.2021.11.008",
+    "verify_note": "Citation corrected September 30, 2026 (VERIFY-log item 2): the paper is in the Journal of Foot and Ankle Surgery (PMID 34961681), not a hand surgery journal. Unused; left in place rather than deleted."
+  },
+  {
+    "id": "rsdsa-budapest",
+    "citation": "RSDSA patient materials and the Budapest diagnostic criteria for CRPS (background).",
+    "type": "patient-material",
+    "year": null,
+    "url": ""
+  },
+  {
+    "id": "dii-shivappa",
+    "citation": "Dietary Inflammatory Index literature (Shivappa N et al.). Observational; concept only.",
+    "type": "cohort",
+    "year": null,
+    "url": "https://doi.org/10.1017/S1368980013002115"
+  },
+  {
+    "id": "cochrane-mediterranean-2019",
+    "citation": "Rees K et al. Mediterranean-style diet for the primary and secondary prevention of cardiovascular disease. Cochrane Database Syst Rev 2019;3:CD009825.",
+    "type": "review",
+    "year": 2019,
+    "url": "https://doi.org/10.1002/14651858.CD009825.pub3"
+  },
+  {
+    "id": "aha-added-sugars-2009",
+    "citation": "Johnson RK et al. Dietary Sugars Intake and Cardiovascular Health: A Scientific Statement From the American Heart Association. Circulation 2009;120:1011-1020 (children's statement 2016).",
+    "type": "guideline",
+    "year": 2009,
+    "url": "https://doi.org/10.1161/CIRCULATIONAHA.109.192627"
+  },
+  {
+    "id": "who-sugars-2015",
+    "citation": "WHO Guideline: Sugars intake for adults and children. 2015.",
+    "type": "guideline",
+    "year": 2015,
+    "url": "https://www.who.int/publications/i/item/9789241549028"
+  },
+  {
+    "id": "who-nss-2023",
+    "citation": "WHO Guideline: Use of non-sugar sweeteners. 2023.",
+    "type": "guideline",
+    "year": 2023,
+    "url": "https://www.who.int/publications/i/item/9789240073616"
+  },
+  {
+    "id": "fda-added-sugars-label-2016",
+    "citation": "FDA Nutrition Facts label final rule (2016): Added Sugars line.",
+    "type": "regulation",
+    "year": 2016,
+    "url": "https://www.fda.gov/food/nutrition-facts-label/added-sugars-nutrition-facts-label"
+  },
+  {
+    "id": "skodje-2018",
+    "citation": "Skodje GI et al. Fructan, Rather Than Gluten, Induces Symptoms in Patients With Self-Reported Non-Celiac Gluten Sensitivity. Gastroenterology 2018;154:529-539.",
+    "type": "rct",
+    "year": 2018,
+    "url": ""
+  },
+  {
+    "id": "biesiekierski-2013",
+    "citation": "Biesiekierski JR et al. No effects of gluten in patients with self-reported non-celiac gluten sensitivity after dietary reduction of fermentable, poorly absorbed, short-chain carbohydrates. Gastroenterology 2013;145:320-328.",
+    "type": "rct",
+    "year": 2013,
+    "url": ""
+  },
+  {
+    "id": "catassi-2017",
+    "citation": "Catassi C et al. The Salerno Experts' Criteria for non-celiac gluten sensitivity. Nutrients 2017.",
+    "type": "consensus",
+    "year": 2017,
+    "url": ""
+  },
+  {
+    "id": "lebwohl-2017",
+    "citation": "Lebwohl B et al. Long term gluten consumption in adults without celiac disease and risk of coronary heart disease: prospective cohort study. BMJ 2017;357:j1892.",
+    "type": "cohort",
+    "year": 2017,
+    "url": ""
+  },
+  {
+    "id": "aaaai-acaai-food-allergy-2014",
+    "citation": "Sampson HA et al. Food allergy: a practice parameter update. J Allergy Clin Immunol 2014;134:1016-1025 (AAAAI and ACAAI).",
+    "type": "guideline",
+    "year": 2014,
+    "url": "https://doi.org/10.1016/j.jaci.2014.05.013"
+  },
+  {
+    "id": "aaaai-acaai-anaphylaxis-2023",
+    "citation": "AAAAI and ACAAI anaphylaxis practice parameter, 2023.",
+    "type": "guideline",
+    "year": 2023,
+    "url": "https://doi.org/10.1016/j.anai.2023.09.015"
+  },
+  {
+    "id": "fda-falcpa-2004",
+    "citation": "FDA. Food Allergen Labeling and Consumer Protection Act (FALCPA), 2004. Highly refined soybean oil exempt from allergen labeling.",
+    "type": "regulation",
+    "year": 2004,
+    "url": "https://www.fda.gov/food/food-allergensgluten-free-guidance-documents-regulatory-information/food-allergen-labeling-and-consumer-protection-act-2004-falcpa"
+  },
+  {
+    "id": "faster-act-2021",
+    "citation": "FASTER Act, 2021 (adds sesame as the ninth major allergen).",
+    "type": "regulation",
+    "year": 2021,
+    "url": "https://www.fda.gov/food/nutrition-food-labeling-and-critical-foods/food-allergies"
+  },
+  {
+    "id": "niaid-food-allergy-2010",
+    "citation": "NIAID-sponsored Guidelines for the Diagnosis and Management of Food Allergy in the United States. 2010.",
+    "type": "guideline",
+    "year": 2010,
+    "url": "https://doi.org/10.1016/j.jaci.2010.10.007"
+  },
+  {
+    "id": "reynolds-2019",
+    "citation": "Reynolds A et al. Carbohydrate quality and human health: a series of systematic reviews and meta-analyses (commissioned by WHO). Lancet 2019;393:434-445.",
+    "type": "review",
+    "year": 2019,
+    "url": "https://doi.org/10.1016/S0140-6736(18)31809-9"
+  },
+  {
+    "id": "wastyk-2021",
+    "citation": "Wastyk HC et al. Gut-microbiota-targeted diets modulate human immune status. Cell 2021;184:4137-4153. 10 week RCT, n=36.",
+    "type": "rct",
+    "year": 2021,
+    "url": "https://doi.org/10.1016/j.cell.2021.06.019"
+  },
+  {
+    "id": "american-gut-2018",
+    "citation": "McDonald D et al. American Gut: an Open Platform for Citizen Science Microbiome Research. mSystems 2018;3:e00031-18. Observational.",
+    "type": "cohort",
+    "year": 2018,
+    "url": "https://doi.org/10.1128/mSystems.00031-18"
+  },
+  {
+    "id": "aga-probiotics-2020",
+    "citation": "Su GL et al. AGA Clinical Practice Guidelines on the Role of Probiotics in the Management of Gastrointestinal Disorders. Gastroenterology 2020;159:697-705.",
+    "type": "guideline",
+    "year": 2020,
+    "url": "https://doi.org/10.1053/j.gastro.2020.05.059"
+  },
+  {
+    "id": "isapp-consensus",
+    "citation": "ISAPP consensus statements on prebiotics, probiotics, and fermented foods.",
+    "type": "consensus",
+    "year": null,
+    "url": "https://isappscience.org"
+  },
+  {
+    "id": "iom-fiber-dri",
+    "citation": "Institute of Medicine Dietary Reference Intakes: fiber 25 to 38 g/day depending on sex and age.",
+    "type": "other",
+    "year": null,
+    "url": "https://doi.org/10.17226/10490"
+  },
+  {
+    "id": "fda-general-wellness-2026",
+    "citation": "FDA. General Wellness: Policy for Low Risk Devices. Guidance revised and reissued January 6, 2026.",
+    "type": "regulation",
+    "year": 2026,
+    "url": "https://www.fda.gov/regulatory-information/search-fda-guidance-documents/general-wellness-policy-low-risk-devices"
+  },
+  {
+    "id": "fda-cds-2026",
+    "citation": "FDA. Clinical Decision Support Software. Guidance revised January 6, 2026.",
+    "type": "regulation",
+    "year": 2026,
+    "url": ""
+  },
+  {
+    "id": "fda-whoop-warning-2025",
+    "citation": "FDA. Warning Letter to WHOOP, Inc. July 14, 2025.",
+    "type": "regulation",
+    "year": 2025,
+    "url": ""
+  },
+  {
+    "id": "fda-tempo-pilot-2025",
+    "citation": "FDA. TEMPO pilot for digital health devices, 90 Fed Reg 56768 (Dec 8, 2025).",
+    "type": "regulation",
+    "year": 2025,
+    "url": ""
+  },
+  {
+    "id": "colorado-hb25-1220",
+    "citation": "Colorado HB25-1220 (medical nutrition therapy licensure, effective Sept 1, 2026).",
+    "type": "regulation",
+    "year": 2025,
+    "url": ""
+  },
+  {
+    "id": "michigan-mnt-licensure-2026",
+    "citation": "Michigan MNT licensure rules filed April 16, 2026; licensure required Oct 27, 2027.",
+    "type": "regulation",
+    "year": 2026,
+    "url": ""
+  },
+  {
+    "id": "california-bpc-2586",
+    "citation": "California Business and Professions Code 2586 (physician referral and written prescription before an RD provides MNT in private office settings).",
+    "type": "regulation",
+    "year": null,
+    "url": ""
+  },
+  {
+    "id": "aha-acc-tos-obesity-2013",
+    "citation": "Jensen MD et al. 2013 AHA/ACC/TOS Guideline for the Management of Overweight and Obesity in Adults.",
+    "type": "guideline",
+    "year": 2013,
+    "url": "https://doi.org/10.1161/01.cir.0000437739.71477.ee"
+  },
+  {
+    "id": "oma-clinical-practice-statements",
+    "citation": "Obesity Medicine Association Clinical Practice Statements.",
+    "type": "consensus",
+    "year": null,
+    "url": "https://obesitymedicine.org"
+  },
+  {
+    "id": "glp1-nutrition-advisory-2025",
+    "citation": "Mozaffarian D et al. Nutritional Priorities to Support GLP-1 Therapy for Obesity: joint advisory from ACLM, ASN, OMA, and TOS. Am J Clin Nutr 2025;122:344-367, with corrigendum. Drew published letters criticizing it for calling itself evidence-based when much is extrapolated; authors acknowledge the evidence gap.",
+    "type": "consensus",
+    "year": 2025,
+    "url": "https://doi.org/10.1016/j.ajcnut.2025.04.023"
+  },
+  {
+    "id": "sievenpiper-glp1-2026",
+    "citation": "Sievenpiper JL et al. Expert consensus (modified Delphi) on nutritional and lifestyle supportive care with GLP-1 based therapies. Obesity Pillars 2026 (doi 10.1016/j.obpill.2025.100228). 52 statements, primarily from indirect evidence and bariatric nutrition guidelines.",
+    "type": "consensus",
+    "year": 2026,
+    "url": "https://doi.org/10.1016/j.obpill.2025.100228"
+  },
+  {
+    "id": "dietfits-2018",
+    "citation": "Gardner CD et al. Effect of Low-Fat vs Low-Carbohydrate Diet on 12-Month Weight Loss in Overweight Adults (DIETFITS). JAMA 2018.",
+    "type": "rct",
+    "year": 2018,
+    "url": "https://doi.org/10.1001/jama.2018.0245"
+  },
+  {
+    "id": "kdigo-ckd-2024",
+    "citation": "KDIGO 2024 Clinical Practice Guideline for the Evaluation and Management of Chronic Kidney Disease. Kidney Int 2024;105:S117-S314.",
+    "type": "guideline",
+    "year": 2024,
+    "url": "https://doi.org/10.1016/j.kint.2023.10.018"
+  },
+  {
+    "id": "kdoqi-nutrition-2020",
+    "citation": "Ikizler TA et al. KDOQI Clinical Practice Guideline for Nutrition in CKD: 2020 Update. Am J Kidney Dis 2020;76:S1-S107.",
+    "type": "guideline",
+    "year": 2020,
+    "url": "https://doi.org/10.1053/j.ajkd.2020.05.006"
+  },
+  {
+    "id": "kdigo-diabetes-ckd-2022",
+    "citation": "KDIGO 2022 Clinical Practice Guideline for Diabetes Management in Chronic Kidney Disease.",
+    "type": "guideline",
+    "year": 2022,
+    "url": "https://doi.org/10.1016/j.kint.2022.06.008"
+  },
+  {
+    "id": "aasld-nafld-2023",
+    "citation": "Rinella ME et al. AASLD Practice Guidance on the clinical assessment and management of nonalcoholic fatty liver disease. Hepatology 2023;77:1797-1835.",
+    "type": "guideline",
+    "year": 2023,
+    "url": "https://doi.org/10.1097/HEP.0000000000000323"
+  },
+  {
+    "id": "acg-gerd-2022",
+    "citation": "Katz PO et al. ACG Clinical Guideline for the Diagnosis and Management of Gastroesophageal Reflux Disease. Am J Gastroenterol 2022;117:27-56.",
+    "type": "guideline",
+    "year": 2022,
+    "url": "https://doi.org/10.14309/ajg.0000000000001538"
+  },
+  {
+    "id": "aga-ibd-diet-2024",
+    "citation": "Hashash JG et al. AGA Clinical Practice Update on Diet and Nutritional Therapies in Patients With Inflammatory Bowel Disease: Expert Review. Gastroenterology 2024;166:521-532.",
+    "type": "consensus",
+    "year": 2024,
+    "url": "https://doi.org/10.1053/j.gastro.2023.11.303"
+  },
+  {
+    "id": "ioibd-diet-2020",
+    "citation": "Levine A et al. Dietary Guidance From the International Organization for the Study of Inflammatory Bowel Diseases. Clin Gastroenterol Hepatol 2020.",
+    "type": "consensus",
+    "year": 2020,
+    "url": "https://doi.org/10.1016/j.cgh.2020.01.046"
+  },
+  {
+    "id": "dine-cd-2021",
+    "citation": "Lewis JD et al. A Randomized Trial Comparing the Specific Carbohydrate Diet to a Mediterranean Diet in Adults With Crohn's Disease (DINE-CD). Gastroenterology 2021.",
+    "type": "rct",
+    "year": 2021,
+    "url": "https://doi.org/10.1053/j.gastro.2021.05.047"
+  },
+  {
+    "id": "pcos-guideline-2023",
+    "citation": "Teede HJ et al. International Evidence-based Guideline for the Assessment and Management of Polycystic Ovary Syndrome 2023. Published jointly in J Clin Endocrinol Metab, Fertil Steril, Hum Reprod, Eur J Endocrinol 2023.",
+    "type": "guideline",
+    "year": 2023,
+    "url": "https://doi.org/10.1210/clinem/dgad463"
+  },
+  {
+    "id": "acr-gout-2020",
+    "citation": "FitzGerald JD et al. 2020 American College of Rheumatology Guideline for the Management of Gout. Arthritis Care Res 2020;72:744-760.",
+    "type": "guideline",
+    "year": 2020,
+    "url": "https://doi.org/10.1002/acr.24180"
+  },
+  {
+    "id": "aha-acc-hfsa-hf-2022",
+    "citation": "Heidenreich PA et al. 2022 AHA/ACC/HFSA Guideline for the Management of Heart Failure. Circulation 2022;145:e895-e1032.",
+    "type": "guideline",
+    "year": 2022,
+    "url": "https://doi.org/10.1161/CIR.0000000000001063"
+  },
+  {
+    "id": "sodium-hf-2022",
+    "citation": "Ezekowitz JA et al. Reduction of dietary sodium to less than 100 mmol in heart failure (SODIUM-HF). Lancet 2022. Restricting sodium below 1,500 mg did not reduce clinical events versus usual care; improved quality-of-life measures.",
+    "type": "rct",
+    "year": 2022,
+    "url": "https://doi.org/10.1016/S0140-6736(22)00369-5"
+  },
+  {
+    "id": "scoff-questionnaire",
+    "citation": "Morgan JF, Reid F, Lacey JH. The SCOFF questionnaire: assessment of a new screening tool for eating disorders. BMJ 1999;319(7223):1467-1468. US wording: West J Med 2000;172(3):164-165. Copyright BMJ; not public domain. Not shown in the app since the eating-disorder screen was removed on September 9, 2026.",
+    "type": "other",
+    "year": 1999,
+    "url": "https://doi.org/10.1136/bmj.319.7223.1467",
+    "verify_note": "Checked September 30, 2026 (VERIFY-log item 5): no public-domain grant found. Before the questions are shown again, get permission from BMJ and use a published wording exactly."
+  },
+  {
+    "id": "national-alliance-eating-disorders",
+    "citation": "National Alliance for Eating Disorders. Free helpline run by licensed therapists who specialize in eating disorders: (866) 662-1235, 9:00 am to 7:00 pm Eastern, Monday to Friday; treatment finder findEDhelp.com (read September 29, 2026). For a crisis, or outside those hours, the 988 Suicide and Crisis Lifeline (call, text, or chat, any time). NEDA's helpline is discontinued and must not be listed.",
+    "type": "patient-material",
+    "year": null,
+    "url": "https://www.allianceforeatingdisorders.com"
+  },
+  {
+    "id": "and-vegetarian-position-2016",
+    "citation": "Melina V et al. Position of the Academy of Nutrition and Dietetics: Vegetarian Diets. J Acad Nutr Diet 2016;116:1970-1980. Retired by the Academy in 2021 and replaced for adults in 2025 (and-vegetarian-position-2025). Still cited for zinc, fortified foods as a B12 source, and iron absorption inhibitors, which the 2025 paper does not cover in the same detail.",
+    "type": "consensus",
+    "year": 2016,
+    "url": "https://doi.org/10.1016/j.jand.2016.09.025",
+    "verify_note": "Replacement confirmed September 30, 2026 (VERIFY-log item 4)."
+  },
+  {
+    "id": "and-vegetarian-position-2025",
+    "citation": "Raj S, Guest NS, Landry MJ, Mangels AR, Pawlak R, Rozga M. Vegetarian Dietary Patterns for Adults: A Position Paper of the Academy of Nutrition and Dietetics. J Acad Nutr Diet 2025;125(6):831-846.e2. Covers adults 18 and older who are not pregnant or breastfeeding; in effect until December 31, 2032.",
+    "type": "consensus",
+    "year": 2025,
+    "url": "https://doi.org/10.1016/j.jand.2025.02.002"
+  },
+  {
+    "id": "epic-oxford",
+    "citation": "EPIC-Oxford cohort.",
+    "type": "cohort",
+    "year": null,
+    "url": "https://doi.org/10.1136/bmj.l4897"
+  },
+  {
+    "id": "adventist-health-study-2",
+    "citation": "Adventist Health Study 2 cohort.",
+    "type": "cohort",
+    "year": null,
+    "url": "https://doi.org/10.1001/jamainternmed.2013.6473"
+  },
+  {
+    "id": "cochrane-keto-epilepsy-2020",
+    "citation": "Martin-McGill KJ et al. Ketogenic diets for drug-resistant epilepsy. Cochrane Database Syst Rev 2020.",
+    "type": "review",
+    "year": 2020,
+    "url": "https://doi.org/10.1002/14651858.CD001903.pub5"
+  },
+  {
+    "id": "prot-age-2013",
+    "citation": "Bauer J et al. Evidence-based recommendations for optimal dietary protein intake in older people: a position paper from the PROT-AGE Study Group. J Am Med Dir Assoc 2013.",
+    "type": "consensus",
+    "year": 2013,
+    "url": "https://doi.org/10.1016/j.jamda.2013.05.021"
+  },
+  {
+    "id": "espen-geriatrics-2022",
+    "citation": "Volkert D et al. ESPEN practical guideline: Clinical nutrition and hydration in geriatrics. Clin Nutr 2022.",
+    "type": "guideline",
+    "year": 2022,
+    "url": "https://doi.org/10.1016/j.clnu.2022.01.024"
+  },
+  {
+    "id": "ajh-dash-delivery-2026",
+    "citation": "DASH grocery-delivery study, American Journal of Hypertension (2026): curated delivery beat self-directed shopping for blood pressure and sodium outcomes.",
+    "type": "rct",
+    "year": 2026,
+    "url": ""
+  },
+  {
+    "id": "acog-nutrition-pregnancy",
+    "citation": "ACOG Committee Opinion and Practice Bulletins on nutrition in pregnancy.",
+    "type": "guideline",
+    "year": null,
+    "url": "https://www.acog.org/womens-health/faqs/nutrition-during-pregnancy"
+  },
+  {
+    "id": "acog-pb-230-2021",
+    "citation": "ACOG Practice Bulletin 230: Obesity in Pregnancy. 2021.",
+    "type": "guideline",
+    "year": 2021,
+    "url": "https://doi.org/10.1097/AOG.0000000000004395"
+  },
+  {
+    "id": "acog-pb-190-2018",
+    "citation": "ACOG Practice Bulletin No. 190: Gestational Diabetes Mellitus. Obstet Gynecol 2018;131(2):e49-e64. Reaffirmed 2026 (ACOG List of Titles, September 2026); a 2024 Clinical Practice Update revises screening and diagnosis only.",
+    "type": "guideline",
+    "year": 2018,
+    "url": "https://doi.org/10.1097/AOG.0000000000002501",
+    "verify_note": "Checked September 30, 2026 (VERIFY-log item 6): current, not replaced. The bulletin text itself could not be opened, so the four rules that cite it were not re-read against it."
+  },
+  {
+    "id": "iom-pregnancy-weight-gain-2009",
+    "citation": "Institute of Medicine / National Academies. Weight Gain During Pregnancy: Reexamining the Guidelines. 2009. Gain targets by pre-pregnancy BMI.",
+    "type": "guideline",
+    "year": 2009,
+    "url": "https://doi.org/10.17226/12584"
+  },
+  {
+    "id": "fda-epa-fish-advice-2021",
+    "citation": "FDA and EPA Advice About Eating Fish (2021 update) for mercury.",
+    "type": "patient-material",
+    "year": 2021,
+    "url": "https://www.fda.gov/food/consumers/advice-about-eating-fish"
+  },
+  {
+    "id": "and-pregnancy-position-2014",
+    "citation": "Procter SB, Campbell CG. Position of the Academy of Nutrition and Dietetics: Nutrition and Lifestyle for a Healthy Pregnancy Outcome. J Acad Nutr Diet 2014;114:1099-1103. Not a current Academy position (absent from the Academy's list of current positions, September 2026); no rule cites it.",
+    "type": "consensus",
+    "year": 2014,
+    "url": "https://doi.org/10.1016/j.jand.2014.05.005",
+    "verify_note": "Checked September 30, 2026 (VERIFY-log item 7): kept in the pregnancy module's source list for the record only."
+  },
+  {
+    "id": "acs-survivors-2022",
+    "citation": "Rock CL et al. American Cancer Society nutrition and physical activity guideline for cancer survivors. CA Cancer J Clin 2022;72:230-262.",
+    "type": "guideline",
+    "year": 2022,
+    "url": "https://doi.org/10.3322/caac.21719"
+  },
+  {
+    "id": "espen-cancer-2021",
+    "citation": "Muscaritoli M et al. ESPEN practical guideline: Clinical Nutrition in cancer. Clin Nutr 2021;40:2898-2913.",
+    "type": "guideline",
+    "year": 2021,
+    "url": "https://doi.org/10.1016/j.clnu.2021.02.005"
+  },
+  {
+    "id": "wcrf-aicr-2018",
+    "citation": "World Cancer Research Fund / AICR Continuous Update Project and Cancer Prevention Recommendations (2018, updated online).",
+    "type": "guideline",
+    "year": 2018,
+    "url": "https://www.wcrf.org/diet-activity-and-cancer/"
+  },
+  {
+    "id": "and-oncology-ebnpg",
+    "citation": "Academy of Nutrition and Dietetics Oncology Evidence-Based Nutrition Practice Guideline.",
+    "type": "guideline",
+    "year": null,
+    "url": "https://www.andeal.org"
+  },
+  {
+    "id": "asco-diet-2022",
+    "citation": "Ligibel JA et al. Exercise, Diet, and Weight Management During Cancer Treatment: ASCO Guideline. J Clin Oncol 2022.",
+    "type": "guideline",
+    "year": 2022,
+    "url": "https://doi.org/10.1200/JCO.22.00687"
+  },
+  {
+    "id": "nkf-patient-materials",
+    "citation": "National Kidney Foundation patient materials (dialysis).",
+    "type": "patient-material",
+    "year": null,
+    "url": "https://www.kidney.org"
+  },
+  {
+    "id": "aua-kidney-stones-2014",
+    "citation": "Pearle MS et al. AUA / Endourological Society Guideline: Medical Management of Kidney Stones. J Urol 2014, amended 2019.",
+    "type": "guideline",
+    "year": 2014,
+    "url": "https://doi.org/10.1016/j.juro.2014.05.006"
+  },
+  {
+    "id": "bhof-clinicians-guide-2022",
+    "citation": "LeBoff MS et al. The clinician's guide to prevention and treatment of osteoporosis (Bone Health and Osteoporosis Foundation). Osteoporos Int 2022;33:2049-2102.",
+    "type": "guideline",
+    "year": 2022,
+    "url": "https://doi.org/10.1007/s00198-021-05900-y"
+  },
+  {
+    "id": "uspstf-endocrine-vitamin-d",
+    "citation": "USPSTF and Endocrine Society statements on vitamin D.",
+    "type": "guideline",
+    "year": null,
+    "url": "https://doi.org/10.1210/clinem/dgae290"
+  },
+  {
+    "id": "bsg-ida-2021",
+    "citation": "Snook J et al. British Society of Gastroenterology guidelines for the management of iron deficiency anaemia in adults. Gut 2021;70:2030-2051.",
+    "type": "guideline",
+    "year": 2021,
+    "url": "https://doi.org/10.1136/gutjnl-2021-325210"
+  },
+  {
+    "id": "ash-cdc-iron-materials",
+    "citation": "American Society of Hematology and CDC materials on iron deficiency.",
+    "type": "patient-material",
+    "year": null,
+    "url": "https://www.hematology.org/education/patients/anemia/iron-deficiency"
+  },
+  {
+    "id": "acg-gastroparesis-2022",
+    "citation": "Camilleri M et al. ACG Clinical Guideline: Gastroparesis. Am J Gastroenterol 2022;117:1197-1220.",
+    "type": "guideline",
+    "year": 2022,
+    "url": "https://doi.org/10.14309/ajg.0000000000001874"
+  },
+  {
+    "id": "olausson-2014",
+    "citation": "Olausson EA et al. A small particle size diet reduces upper gastrointestinal symptoms in patients with diabetic gastroparesis: a randomized controlled trial. Am J Gastroenterol 2014.",
+    "type": "rct",
+    "year": 2014,
+    "url": "https://doi.org/10.1038/ajg.2013.453"
+  },
+  {
+    "id": "ahs-ihs-materials",
+    "citation": "American Headache Society and International Headache Society materials. No formal dietary guideline exists.",
+    "type": "other",
+    "year": null,
+    "url": ""
+  },
+  {
+    "id": "ramsden-2021",
+    "citation": "Ramsden CE et al. Dietary alteration of n-3 and n-6 fatty acids for headache reduction in adults with migraine: randomized controlled trial. BMJ 2021.",
+    "type": "rct",
+    "year": 2021,
+    "url": ""
+  },
+  {
+    "id": "hindiyeh-2020",
+    "citation": "Hindiyeh NA et al. The Role of Diet and Nutrition in Migraine Triggers and Treatment: A Systematic Literature Review. Headache 2020.",
+    "type": "review",
+    "year": 2020,
+    "url": ""
+  },
+  {
+    "id": "ata-hypothyroidism-2014",
+    "citation": "Jonklaas J et al. Guidelines for the Treatment of Hypothyroidism: American Thyroid Association Task Force. Thyroid 2014.",
+    "type": "guideline",
+    "year": 2014,
+    "url": "https://doi.org/10.1089/thy.2014.0028"
+  },
+  {
+    "id": "ata-hyperthyroidism-2016",
+    "citation": "Ross DS et al. 2016 American Thyroid Association Guidelines for Diagnosis and Management of Hyperthyroidism and Other Causes of Thyrotoxicosis. Thyroid 2016.",
+    "type": "guideline",
+    "year": 2016,
+    "url": "https://doi.org/10.1089/thy.2016.0229"
+  },
+  {
+    "id": "ata-iodine-statement",
+    "citation": "American Thyroid Association statement on iodine (150 mcg/day adults; 150 mcg supplemental in pregnancy per ACOG and ATA).",
+    "type": "guideline",
+    "year": null,
+    "url": "https://doi.org/10.1089/thy.2016.0457"
+  },
+  {
+    "id": "aap-obesity-2023",
+    "citation": "Hampl SE et al. Clinical Practice Guideline for the Evaluation and Treatment of Children and Adolescents With Obesity. Pediatrics 2023.",
+    "type": "guideline",
+    "year": 2023,
+    "url": "https://doi.org/10.1542/peds.2022-060640"
+  },
+  {
+    "id": "naspghan-espghan-celiac",
+    "citation": "NASPGHAN and ESPGHAN guidelines for pediatric celiac disease.",
+    "type": "guideline",
+    "year": null,
+    "url": "https://doi.org/10.1097/MPG.0000000000002497"
+  },
+  {
+    "id": "leap-eat-trials",
+    "citation": "LEAP and EAT trials on early allergen introduction (peanut introduction at 4 to 6 months reduces allergy; now AAP and AAAAI consensus).",
+    "type": "rct",
+    "year": null,
+    "url": "https://doi.org/10.1056/NEJMoa1414850"
+  },
+  {
+    "id": "aap-and-infant-feeding",
+    "citation": "AAP and Academy of Nutrition and Dietetics positions on infant and toddler feeding.",
+    "type": "consensus",
+    "year": null,
+    "url": "https://www.aap.org"
+  },
+  {
+    "id": "acr-ra-integrative-2022",
+    "citation": "England BR et al. 2022 American College of Rheumatology Guideline for Exercise, Rehabilitation, Diet, and Additional Integrative Interventions for Rheumatoid Arthritis. Arthritis Care Res 2023;75:1603-1615.",
+    "type": "guideline",
+    "year": 2023,
+    "url": "https://doi.org/10.1002/acr.25117",
+    "verify": true,
+    "verify_note": "Confirm volume and page range."
+  },
+  {
+    "id": "eular-lifestyle-rmd-2021",
+    "citation": "Gwinnutt JM et al. 2021 EULAR recommendations regarding lifestyle behaviours and work participation to prevent progression of rheumatic and musculoskeletal diseases. Ann Rheum Dis 2023;82:48-56.",
+    "type": "guideline",
+    "year": 2023,
+    "url": "https://doi.org/10.1136/annrheumdis-2021-222020",
+    "verify": true,
+    "verify_note": "Confirm citation details."
+  },
+  {
+    "id": "aga-acg-cic-2023",
+    "citation": "Chang L et al. AGA-ACG Clinical Practice Guideline: Pharmacological Management of Chronic Idiopathic Constipation. Gastroenterology 2023;164:1086-1106.",
+    "type": "guideline",
+    "year": 2023,
+    "url": "https://doi.org/10.1053/j.gastro.2023.03.214"
+  },
+  {
+    "id": "gearry-kiwifruit-2023",
+    "citation": "Gearry R et al. Consumption of 2 Green Kiwifruits Daily Improves Constipation and Abdominal Comfort: Results of an International Multicenter Randomized Controlled Trial. Am J Gastroenterol 2023;118:1058-1068.",
+    "type": "rct",
+    "year": 2023,
+    "url": "https://doi.org/10.14309/ajg.0000000000002124"
+  },
+  {
+    "id": "bharucha-lacy-constipation-2020",
+    "citation": "Bharucha AE, Lacy BE. Mechanisms, Evaluation, and Management of Chronic Constipation. Gastroenterology 2020;158:1232-1249.",
+    "type": "review",
+    "year": 2020,
+    "url": "https://doi.org/10.1053/j.gastro.2019.12.034"
+  },
+  {
+    "id": "iom-dri-fiber-2005",
+    "citation": "Institute of Medicine. Dietary Reference Intakes for Energy, Carbohydrate, Fiber, Fat, Fatty Acids, Cholesterol, Protein, and Amino Acids. National Academies Press, 2005 (fiber 14 g per 1,000 kcal; 25 g women, 38 g men).",
+    "type": "guideline",
+    "year": 2005,
+    "url": "https://doi.org/10.17226/10490"
+  },
+  {
+    "id": "oarsi-2019",
+    "citation": "Bannuru RR et al. OARSI guidelines for the non-surgical management of knee, hip, and polyarticular osteoarthritis. Osteoarthritis Cartilage 2019;27:1578-1589.",
+    "type": "guideline",
+    "year": 2019,
+    "url": "https://doi.org/10.1016/j.joca.2019.06.011"
+  },
+  {
+    "id": "acr-af-oa-2019",
+    "citation": "Kolasinski SL et al. 2019 American College of Rheumatology/Arthritis Foundation Guideline for the Management of Osteoarthritis of the Hand, Hip, and Knee. Arthritis Care Res 2020;72:149-162.",
+    "type": "guideline",
+    "year": 2020,
+    "url": "https://doi.org/10.1002/acr.24131"
+  },
+  {
+    "id": "idea-trial-2013",
+    "citation": "Messier SP et al. Effects of intensive diet and exercise on knee joint loads, inflammation, and clinical outcomes among overweight and obese adults with knee osteoarthritis: the IDEA randomized clinical trial. JAMA 2013;310:1263-1273.",
+    "type": "rct",
+    "year": 2013,
+    "url": "https://doi.org/10.1001/jama.2013.277669"
+  },
+  {
+    "id": "dafne-2002",
+    "citation": "DAFNE Study Group. Training in flexible, intensive insulin management to enable dietary freedom in people with type 1 diabetes: dose adjustment for normal eating (DAFNE) randomised controlled trial. BMJ 2002;325:746.",
+    "type": "rct",
+    "year": 2002,
+    "url": "https://doi.org/10.1136/bmj.325.7367.746"
+  },
+  {
+    "id": "aga-diverticulitis-2015",
+    "citation": "Stollman N et al. American Gastroenterological Association Institute Guideline on the Management of Acute Diverticulitis. Gastroenterology 2015;149:1944-1949.",
+    "type": "guideline",
+    "year": 2015,
+    "url": "https://doi.org/10.1053/j.gastro.2015.10.003"
+  },
+  {
+    "id": "aga-diverticulitis-update-2021",
+    "citation": "Peery AF et al. AGA Clinical Practice Update on Medical Management of Colonic Diverticulitis: Expert Review. Gastroenterology 2021;160:906-911.",
+    "type": "consensus",
+    "year": 2021,
+    "url": "https://doi.org/10.1053/j.gastro.2020.09.059"
+  },
+  {
+    "id": "strate-nuts-2008",
+    "citation": "Strate LL et al. Nut, corn, and popcorn consumption and the incidence of diverticular disease. JAMA 2008;300:907-914.",
+    "type": "cohort",
+    "year": 2008,
+    "url": "https://doi.org/10.1001/jama.300.8.907"
+  },
+  {
+    "id": "portfolio-jenkins-2011",
+    "citation": "Jenkins DJ et al. Effect of a dietary portfolio of cholesterol-lowering foods given at 2 levels of intensity of dietary advice on serum lipids in hyperlipidemia: a randomized controlled trial. JAMA 2011;306:831-839.",
+    "type": "rct",
+    "year": 2011,
+    "url": "https://doi.org/10.1001/jama.2011.1202"
+  },
+  {
+    "id": "tre-liu-nejm-2022",
+    "citation": "Liu D et al. Calorie Restriction with or without Time-Restricted Eating in Weight Loss. N Engl J Med 2022;386:1495-1504.",
+    "type": "rct",
+    "year": 2022,
+    "url": "https://doi.org/10.1056/NEJMoa2114833"
+  },
+  {
+    "id": "tre-jamshed-2022",
+    "citation": "Jamshed H et al. Effectiveness of Early Time-Restricted Eating for Weight Loss, Fat Loss, and Cardiometabolic Health in Adults With Obesity: A Randomized Clinical Trial. JAMA Intern Med 2022;182:953-962.",
+    "type": "rct",
+    "year": 2022,
+    "url": "https://doi.org/10.1001/jamainternmed.2022.3050",
+    "verify": true,
+    "verify_note": "Confirm page range."
+  },
+  {
+    "id": "mifflin-1990",
+    "citation": "Mifflin MD et al. A new predictive equation for resting energy expenditure in healthy individuals. Am J Clin Nutr 1990;51:241-247.",
+    "type": "other",
+    "year": 1990,
+    "url": "https://doi.org/10.1093/ajcn/51.2.241"
+  },
+  {
+    "id": "ainsworth-compendium-2011",
+    "citation": "Ainsworth BE et al. 2011 Compendium of Physical Activities: a second update of codes and MET values. Med Sci Sports Exerc 2011;43:1575-1581.",
+    "type": "other",
+    "year": 2011,
+    "url": "https://doi.org/10.1249/MSS.0b013e31821ece12"
+  },
+  {
+    "id": "user-defined",
+    "citation": "Defined by the user in the app. Not an evidence source.",
+    "type": "other",
+    "year": null,
+    "url": ""
+  },
+  {
+    "id": "holbrook-2005",
+    "citation": "Holbrook AM, Pereira JA, Labiris R, et al. Systematic overview of warfarin and its drug and food interactions. Arch Intern Med 2005;165(10):1095-1106.",
+    "type": "systematic-review",
+    "year": 2005,
+    "url": "https://doi.org/10.1001/archinte.165.10.1095"
+  },
+  {
+    "id": "violi-2016",
+    "citation": "Violi F, Lip GY, Pignatelli P, Pastori D. Interaction between dietary vitamin K intake and anticoagulation by vitamin K antagonists: is it really true? A systematic review. Medicine (Baltimore) 2016;95(10):e2895.",
+    "type": "systematic-review",
+    "year": 2016,
+    "url": "https://doi.org/10.1097/MD.0000000000002895"
+  },
+  {
+    "id": "bailey-2013",
+    "citation": "Bailey DG, Dresser G, Arnold JMO. Grapefruit-medication interactions: forbidden fruit or avoidable consequences? CMAJ 2013;185(4):309-316.",
+    "type": "review",
+    "year": 2013,
+    "url": "https://doi.org/10.1503/cmaj.120951"
+  },
+  {
+    "id": "glim-2019",
+    "citation": "Cederholm T, Jensen GL, Correia MITD, et al. GLIM criteria for the diagnosis of malnutrition: a consensus report from the global clinical nutrition community. Clin Nutr 2019;38(1):1-9.",
+    "type": "consensus",
+    "year": 2019,
+    "url": "https://doi.org/10.1016/j.clnu.2018.08.002"
+  },
+  {
+    "id": "varney-2017",
+    "citation": "Varney J et al. FODMAPs: food composition, defining cutoff values and international application. J Gastroenterol Hepatol 2017;32(Suppl 1):53-61.",
+    "type": "review",
+    "year": 2017,
+    "url": "https://doi.org/10.1111/jgh.13698",
+    "note": "Food-list source for the approved-food lists and swaps; registered here in the 2026-09 audit so the app can show the citation. DOI checked against Crossref."
+  },
+  {
+    "id": "shepherd-2008",
+    "citation": "Shepherd SJ, Parker FC, Muir JG, Gibson PR. Dietary triggers of abdominal symptoms in patients with irritable bowel syndrome: randomized placebo-controlled evidence. Clin Gastroenterol Hepatol 2008;6(7):765-771.",
+    "type": "rct",
+    "year": 2008,
+    "url": "https://doi.org/10.1016/j.cgh.2008.02.058",
+    "note": "Added in the 2026-09 audit for the low FODMAP small-serve caution. DOI checked against Crossref; abstract read on PubMed (PMID 18456565)."
+  },
+  {
+    "id": "muir-2007",
+    "citation": "Muir JG et al. Fructan and free fructose content of common Australian vegetables and fruit. J Agric Food Chem 2007;55:6619-6627.",
+    "type": "other",
+    "year": 2007,
+    "url": "https://doi.org/10.1021/jf070623x",
+    "note": "Food-list source for the approved-food lists and swaps; registered here in the 2026-09 audit so the app can show the citation. DOI checked against Crossref."
+  },
+  {
+    "id": "muir-2009",
+    "citation": "Muir JG et al. Measurement of short-chain carbohydrates in common Australian vegetables and fruits by high-performance liquid chromatography (HPLC). J Agric Food Chem 2009;57:554-565.",
+    "type": "other",
+    "year": 2009,
+    "url": "https://doi.org/10.1021/jf802700e",
+    "note": "Food-list source for the approved-food lists and swaps; registered here in the 2026-09 audit so the app can show the citation. DOI checked against Crossref."
+  },
+  {
+    "id": "biesiekierski-2011",
+    "citation": "Biesiekierski JR et al. Quantification of fructans, galacto-oligosacharides and other short-chain carbohydrates in processed grains and cereals. J Hum Nutr Diet 2011;24:154-176.",
+    "type": "other",
+    "year": 2011,
+    "url": "https://doi.org/10.1111/j.1365-277X.2010.01139.x",
+    "note": "Food-list source for the approved-food lists and swaps; registered here in the 2026-09 audit so the app can show the citation. DOI checked against Crossref."
+  },
+  {
+    "id": "sighi-leaflet-2021",
+    "citation": "Swiss Interest Group Histamine Intolerance (SIGHI). Histamine Elimination Diet leaflet (simplified histamine elimination diet for histamine intolerance), version 2021-11-17. Patient organization material; not peer-reviewed.",
+    "type": "patient-material",
+    "year": 2021,
+    "url": "https://www.histaminintoleranz.ch/downloads/SIGHI-Leaflet_HistamineEliminationDiet.pdf",
+    "note": "Read in full for the 2026-09 audit. The leaflet itself says it is not sufficient for mast cell activation disorders and points to the detailed list at mastzellaktivierung.info."
+  },
+  {
+    "id": "coeliac-uk-cooking-tips",
+    "citation": "Coeliac UK. Hints and tips for cooking at home (gluten-free diet). Web page, read 2026-09-29.",
+    "type": "patient-material",
+    "year": 2026,
+    "url": "https://www.coeliac.org.uk/living-with-coeliac-disease/food-and-drink/cooking-at-home/hints-and-tips-for-cooking-at-home/",
+    "note": "Quoted for stock cubes and soups as gluten sources: \"look out for it in foods such as soups, sauces, stock cubes, ready meals and processed foods like sausages ... it is important to check labels of products such as stock cubes and seasonings ... to ensure they don't contain gluten.\""
+  }
+]

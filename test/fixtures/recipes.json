@@ -1,0 +1,907 @@
+[
+ {
+  "id": "overnight-oats-banana",
+  "name": "Overnight oats with banana",
+  "meal": [
+   "breakfast"
+  ],
+  "servings": 2,
+  "active_min": 5,
+  "total_min": 5,
+  "skill": "beginner",
+  "equipment": [
+   "none"
+  ],
+  "assembly_only": true,
+  "leftovers": "good",
+  "ingredients": [
+   {
+    "food": "fdc-2346396",
+    "grams": 80,
+    "display": "1 cup rolled oats"
+   },
+   {
+    "food": "fdc-746772",
+    "grams": 240,
+    "display": "1 cup 1% milk"
+   },
+   {
+    "food": "fdc-173944",
+    "grams": 118,
+    "display": "1 banana, sliced"
+   }
+  ],
+  "steps": [
+   "Stir oats and milk in a jar.",
+   "Refrigerate overnight.",
+   "Top with banana."
+  ],
+  "tags": [
+   "whole-grain",
+   "fruit",
+   "low-fat-dairy"
+  ],
+  "notes": {
+   "swaps": [
+    {
+     "if_tag": "allergen-milk",
+     "then": "Use a fortified oat or soy drink instead of milk."
+    },
+    {
+     "if_tag": "oats-regular",
+     "then": "Use certified gluten-free oats."
+    }
+   ]
+  }
+ },
+ {
+  "id": "greek-yogurt-berry-bowl",
+  "name": "Greek yogurt bowl",
+  "meal": [
+   "breakfast"
+  ],
+  "servings": 1,
+  "active_min": 3,
+  "total_min": 3,
+  "skill": "beginner",
+  "equipment": [
+   "none"
+  ],
+  "assembly_only": true,
+  "leftovers": "poor",
+  "ingredients": [
+   {
+    "food": "fdc-330137",
+    "grams": 170,
+    "display": "3/4 cup plain nonfat Greek yogurt"
+   },
+   {
+    "food": "fdc-173944",
+    "grams": 60,
+    "display": "half a banana"
+   },
+   {
+    "food": "fdc-2346396",
+    "grams": 20,
+    "display": "2 tbsp rolled oats"
+   }
+  ],
+  "steps": [
+   "Spoon yogurt into a bowl.",
+   "Top with fruit and oats."
+  ],
+  "tags": [
+   "low-fat-dairy",
+   "fruit",
+   "fermented-live-culture"
+  ],
+  "notes": {
+   "swaps": [
+    {
+     "if_tag": "allergen-milk",
+     "then": "Use a soy or coconut yogurt with live cultures."
+    }
+   ]
+  }
+ },
+ {
+  "id": "veggie-scramble",
+  "name": "Vegetable egg scramble",
+  "meal": [
+   "breakfast",
+   "lunch"
+  ],
+  "servings": 1,
+  "active_min": 10,
+  "total_min": 12,
+  "skill": "beginner",
+  "equipment": [
+   "stove"
+  ],
+  "assembly_only": false,
+  "leftovers": "poor",
+  "ingredients": [
+   {
+    "food": "fdc-171287",
+    "grams": 100,
+    "display": "2 large eggs"
+   },
+   {
+    "food": "fdc-747447",
+    "grams": 60,
+    "display": "3/4 cup chopped broccoli"
+   },
+   {
+    "food": "fdc-170457",
+    "grams": 60,
+    "display": "1 small tomato, diced"
+   },
+   {
+    "food": "fdc-171413",
+    "grams": 7,
+    "display": "1/2 tbsp olive oil"
+   }
+  ],
+  "steps": [
+   "Heat oil in a nonstick pan over medium.",
+   "Cook broccoli 3 minutes.",
+   "Add beaten eggs and tomato; stir until just set."
+  ],
+  "tags": [
+   "vegetable",
+   "olive-oil"
+  ],
+  "notes": {
+   "swaps": [
+    {
+     "if_tag": "allergen-egg",
+     "then": "Crumble firm tofu with a pinch of turmeric instead of eggs."
+    }
+   ]
+  }
+ },
+ {
+  "id": "peanut-butter-banana-toast",
+  "name": "Peanut butter banana toast",
+  "meal": [
+   "breakfast"
+  ],
+  "servings": 1,
+  "active_min": 4,
+  "total_min": 5,
+  "skill": "beginner",
+  "equipment": [
+   "none"
+  ],
+  "assembly_only": true,
+  "leftovers": "poor",
+  "ingredients": [
+   {
+    "food": "fdc-335240",
+    "grams": 64,
+    "display": "2 slices whole-wheat bread"
+   },
+   {
+    "food": "fdc-172470",
+    "grams": 32,
+    "display": "2 tbsp peanut butter"
+   },
+   {
+    "food": "fdc-173944",
+    "grams": 118,
+    "display": "1 banana"
+   }
+  ],
+  "steps": [
+   "Toast bread.",
+   "Spread peanut butter; top with sliced banana."
+  ],
+  "tags": [
+   "whole-grain",
+   "nut",
+   "fruit"
+  ],
+  "notes": {
+   "swaps": [
+    {
+     "if_tag": "allergen-peanut",
+     "then": "Use sunflower seed butter."
+    }
+   ]
+  }
+ },
+ {
+  "id": "chicken-brown-rice-broccoli",
+  "name": "Chicken, brown rice, and broccoli",
+  "meal": [
+   "lunch",
+   "dinner"
+  ],
+  "servings": 4,
+  "active_min": 20,
+  "total_min": 40,
+  "skill": "beginner",
+  "equipment": [
+   "stove",
+   "oven"
+  ],
+  "assembly_only": false,
+  "leftovers": "good",
+  "ingredients": [
+   {
+    "food": "fdc-171477",
+    "grams": 450,
+    "display": "1 lb chicken breast"
+   },
+   {
+    "food": "fdc-169704",
+    "grams": 600,
+    "display": "3 cups cooked brown rice"
+   },
+   {
+    "food": "fdc-747447",
+    "grams": 300,
+    "display": "4 cups broccoli florets"
+   },
+   {
+    "food": "fdc-171413",
+    "grams": 27,
+    "display": "2 tbsp olive oil"
+   },
+   {
+    "food": "fdc-169230",
+    "grams": 6,
+    "display": "2 cloves garlic"
+   },
+   {
+    "food": "fdc-167747",
+    "grams": 30,
+    "display": "juice of 1 lemon"
+   }
+  ],
+  "steps": [
+   "Roast chicken at 425 F for 20 minutes.",
+   "Steam broccoli 5 minutes.",
+   "Toss with oil, garlic, and lemon; serve over rice."
+  ],
+  "tags": [
+   "poultry",
+   "whole-grain",
+   "vegetable",
+   "olive-oil"
+  ],
+  "notes": {
+   "sodium_tip": "No added salt in this recipe; season with lemon and pepper.",
+   "swaps": [
+    {
+     "if_tag": "fodmap-fructan",
+     "then": "Skip the garlic; use garlic-infused oil instead."
+    }
+   ]
+  }
+ },
+ {
+  "id": "sheet-pan-tofu-vegetables",
+  "name": "Sheet-pan tofu and vegetables",
+  "meal": [
+   "dinner"
+  ],
+  "servings": 4,
+  "active_min": 15,
+  "total_min": 35,
+  "skill": "comfortable",
+  "equipment": [
+   "oven"
+  ],
+  "assembly_only": false,
+  "leftovers": "good",
+  "ingredients": [
+   {
+    "food": "fdc-172475",
+    "grams": 400,
+    "display": "1 block firm tofu, cubed"
+   },
+   {
+    "food": "fdc-168483",
+    "grams": 400,
+    "display": "2 sweet potatoes, cubed"
+   },
+   {
+    "food": "fdc-747447",
+    "grams": 250,
+    "display": "3 cups broccoli"
+   },
+   {
+    "food": "fdc-171413",
+    "grams": 27,
+    "display": "2 tbsp olive oil"
+   },
+   {
+    "food": "fdc-172473",
+    "grams": 30,
+    "display": "2 tbsp low-sodium soy sauce"
+   }
+  ],
+  "steps": [
+   "Toss everything with oil and soy sauce.",
+   "Roast at 425 F for 25 minutes, turning once."
+  ],
+  "tags": [
+   "legume",
+   "soy",
+   "vegetable",
+   "olive-oil"
+  ],
+  "notes": {
+   "swaps": [
+    {
+     "if_tag": "allergen-soy",
+     "then": "Use chickpeas and a splash of coconut aminos instead of tofu and soy sauce."
+    }
+   ]
+  }
+ },
+ {
+  "id": "lentil-soup",
+  "name": "Lentil vegetable soup",
+  "meal": [
+   "lunch",
+   "dinner"
+  ],
+  "servings": 6,
+  "active_min": 15,
+  "total_min": 45,
+  "skill": "beginner",
+  "equipment": [
+   "stove"
+  ],
+  "assembly_only": false,
+  "leftovers": "good",
+  "ingredients": [
+   {
+    "food": "fdc-2644283",
+    "grams": 300,
+    "display": "1 1/2 cups dry lentils"
+   },
+   {
+    "food": "fdc-170457",
+    "grams": 400,
+    "display": "2 cups chopped tomatoes"
+   },
+   {
+    "food": "fdc-169230",
+    "grams": 9,
+    "display": "3 cloves garlic"
+   },
+   {
+    "food": "fdc-171413",
+    "grams": 27,
+    "display": "2 tbsp olive oil"
+   },
+   {
+    "food": "fdc-746775",
+    "grams": 3,
+    "display": "1/2 tsp salt"
+   }
+  ],
+  "steps": [
+   "Soften garlic in oil.",
+   "Add lentils, tomatoes, and 6 cups water.",
+   "Simmer 30 minutes."
+  ],
+  "tags": [
+   "legume",
+   "vegetable",
+   "olive-oil"
+  ],
+  "notes": {
+   "sodium_tip": "Half a teaspoon of salt for six servings. Do not use bouillon; most cubes carry 800 mg or more per cup.",
+   "swaps": [
+    {
+     "if_tag": "fodmap-gos",
+     "then": "Use canned lentils, rinsed, in a half-cup portion."
+    }
+   ]
+  }
+ },
+ {
+  "id": "salmon-quinoa-bowl",
+  "name": "Salmon and quinoa bowl",
+  "meal": [
+   "dinner"
+  ],
+  "servings": 2,
+  "active_min": 15,
+  "total_min": 25,
+  "skill": "comfortable",
+  "equipment": [
+   "stove",
+   "oven"
+  ],
+  "assembly_only": false,
+  "leftovers": "ok",
+  "ingredients": [
+   {
+    "food": "fdc-salmon-missing",
+    "grams": 300,
+    "display": "2 salmon fillets (about 10 oz)"
+   },
+   {
+    "food": "fdc-168917",
+    "grams": 370,
+    "display": "2 cups cooked quinoa"
+   },
+   {
+    "food": "fdc-2346406",
+    "grams": 150,
+    "display": "1 cucumber, sliced"
+   },
+   {
+    "food": "fdc-2710824",
+    "grams": 100,
+    "display": "half an avocado"
+   },
+   {
+    "food": "fdc-171413",
+    "grams": 14,
+    "display": "1 tbsp olive oil"
+   },
+   {
+    "food": "fdc-167747",
+    "grams": 15,
+    "display": "lemon juice"
+   }
+  ],
+  "steps": [
+   "Bake salmon fillets 12 minutes at 400 F.",
+   "Assemble bowls with quinoa, cucumber, avocado.",
+   "Dress with oil and lemon."
+  ],
+  "tags": [
+   "fish",
+   "whole-grain",
+   "vegetable",
+   "olive-oil"
+  ],
+  "notes": {
+   "swaps": [
+    {
+     "if_tag": "allergen-fish",
+     "then": "Use baked chicken thigh or roasted chickpeas."
+    }
+   ]
+  }
+ },
+ {
+  "id": "black-bean-tacos",
+  "name": "Black bean tacos",
+  "meal": [
+   "lunch",
+   "dinner"
+  ],
+  "servings": 4,
+  "active_min": 15,
+  "total_min": 20,
+  "skill": "beginner",
+  "equipment": [
+   "stove"
+  ],
+  "assembly_only": false,
+  "leftovers": "ok",
+  "ingredients": [
+   {
+    "food": "fdc-175238",
+    "grams": 480,
+    "display": "2 cans low-sodium black beans, rinsed"
+   },
+   {
+    "food": "fdc-167535",
+    "grams": 240,
+    "display": "8 small flour tortillas"
+   },
+   {
+    "food": "fdc-170457",
+    "grams": 200,
+    "display": "2 tomatoes, diced"
+   },
+   {
+    "food": "fdc-2346389",
+    "grams": 100,
+    "display": "shredded romaine"
+   },
+   {
+    "food": "fdc-328637",
+    "grams": 60,
+    "display": "1/2 cup shredded cheddar"
+   }
+  ],
+  "steps": [
+   "Warm beans with cumin.",
+   "Warm tortillas.",
+   "Fill and top."
+  ],
+  "tags": [
+   "legume",
+   "vegetable",
+   "refined-grain"
+  ],
+  "notes": {
+   "sodium_tip": "Rinsing canned beans removes up to 40 percent of the sodium.",
+   "swaps": [
+    {
+     "if_tag": "allergen-wheat",
+     "then": "Use corn tortillas."
+    },
+    {
+     "if_tag": "allergen-milk",
+     "then": "Skip the cheese; add avocado."
+    }
+   ]
+  }
+ },
+ {
+  "id": "rotisserie-chicken-salad",
+  "name": "Rotisserie chicken salad plate",
+  "meal": [
+   "lunch",
+   "dinner"
+  ],
+  "servings": 2,
+  "active_min": 8,
+  "total_min": 8,
+  "skill": "beginner",
+  "equipment": [
+   "none"
+  ],
+  "assembly_only": true,
+  "leftovers": "ok",
+  "ingredients": [
+   {
+    "food": "fdc-171123",
+    "grams": 170,
+    "display": "6 oz rotisserie chicken, skin removed"
+   },
+   {
+    "food": "fdc-2346389",
+    "grams": 150,
+    "display": "4 cups romaine"
+   },
+   {
+    "food": "fdc-2346406",
+    "grams": 100,
+    "display": "1 cucumber"
+   },
+   {
+    "food": "fdc-170457",
+    "grams": 150,
+    "display": "1 cup cherry tomatoes"
+   },
+   {
+    "food": "fdc-171413",
+    "grams": 14,
+    "display": "1 tbsp olive oil"
+   },
+   {
+    "food": "fdc-167747",
+    "grams": 15,
+    "display": "lemon juice"
+   }
+  ],
+  "steps": [
+   "Pull chicken off the bone.",
+   "Toss vegetables with oil and lemon.",
+   "Plate together."
+  ],
+  "tags": [
+   "poultry",
+   "vegetable",
+   "olive-oil"
+  ],
+  "notes": {
+   "sodium_tip": "Rotisserie chicken is injected with a salt solution; a 3 oz serving can carry 300 to 500 mg of sodium. Remove the skin and count it.",
+   "swaps": []
+  }
+ },
+ {
+  "id": "hummus-veg-pita",
+  "name": "Hummus and vegetable pita",
+  "meal": [
+   "lunch"
+  ],
+  "servings": 1,
+  "active_min": 5,
+  "total_min": 5,
+  "skill": "beginner",
+  "equipment": [
+   "none"
+  ],
+  "assembly_only": true,
+  "leftovers": "poor",
+  "ingredients": [
+   {
+    "food": "fdc-321358",
+    "grams": 70,
+    "display": "1/4 cup hummus"
+   },
+   {
+    "food": "fdc-335240",
+    "grams": 64,
+    "display": "2 slices whole-wheat bread"
+   },
+   {
+    "food": "fdc-2346406",
+    "grams": 80,
+    "display": "cucumber slices"
+   },
+   {
+    "food": "fdc-170457",
+    "grams": 60,
+    "display": "tomato slices"
+   }
+  ],
+  "steps": [
+   "Spread hummus on bread.",
+   "Layer vegetables."
+  ],
+  "tags": [
+   "legume",
+   "whole-grain",
+   "vegetable"
+  ],
+  "notes": {
+   "swaps": [
+    {
+     "if_tag": "allergen-sesame",
+     "then": "Use a white bean spread without tahini."
+    },
+    {
+     "if_tag": "allergen-wheat",
+     "then": "Use a gluten-free wrap."
+    }
+   ]
+  }
+ },
+ {
+  "id": "turkey-sweet-potato-skillet",
+  "name": "Turkey and sweet potato skillet",
+  "meal": [
+   "dinner"
+  ],
+  "servings": 4,
+  "active_min": 25,
+  "total_min": 30,
+  "skill": "comfortable",
+  "equipment": [
+   "stove"
+  ],
+  "assembly_only": false,
+  "leftovers": "good",
+  "ingredients": [
+   {
+    "food": "fdc-746785",
+    "grams": 450,
+    "display": "1 lb 93% lean ground turkey"
+   },
+   {
+    "food": "fdc-168483",
+    "grams": 400,
+    "display": "2 sweet potatoes, diced"
+   },
+   {
+    "food": "fdc-747447",
+    "grams": 200,
+    "display": "2 cups broccoli"
+   },
+   {
+    "food": "fdc-171413",
+    "grams": 14,
+    "display": "1 tbsp olive oil"
+   },
+   {
+    "food": "fdc-746775",
+    "grams": 2,
+    "display": "1/3 tsp salt"
+   }
+  ],
+  "steps": [
+   "Brown turkey.",
+   "Add sweet potato and 1/2 cup water; cover 10 minutes.",
+   "Add broccoli; cook 5 minutes more."
+  ],
+  "tags": [
+   "poultry",
+   "vegetable",
+   "olive-oil"
+  ],
+  "notes": {
+   "swaps": []
+  }
+ },
+ {
+  "id": "beef-pasta",
+  "name": "Beef and tomato pasta",
+  "meal": [
+   "dinner"
+  ],
+  "servings": 4,
+  "active_min": 25,
+  "total_min": 35,
+  "skill": "comfortable",
+  "equipment": [
+   "stove"
+  ],
+  "assembly_only": false,
+  "leftovers": "good",
+  "ingredients": [
+   {
+    "food": "fdc-171796",
+    "grams": 340,
+    "display": "3/4 lb 85% lean ground beef"
+   },
+   {
+    "food": "fdc-168910",
+    "grams": 560,
+    "display": "4 cups cooked whole-wheat pasta"
+   },
+   {
+    "food": "fdc-170457",
+    "grams": 400,
+    "display": "2 cups crushed tomatoes"
+   },
+   {
+    "food": "fdc-169230",
+    "grams": 6,
+    "display": "2 cloves garlic"
+   },
+   {
+    "food": "fdc-328637",
+    "grams": 40,
+    "display": "grated cheese"
+   }
+  ],
+  "steps": [
+   "Brown beef with garlic.",
+   "Add tomatoes; simmer 15 minutes.",
+   "Toss with pasta; top with cheese."
+  ],
+  "tags": [
+   "red-meat",
+   "whole-grain",
+   "vegetable"
+  ],
+  "notes": {
+   "swaps": [
+    {
+     "if_tag": "red-meat",
+     "then": "Use ground turkey or lentils."
+    },
+    {
+     "if_tag": "allergen-wheat",
+     "then": "Use brown rice pasta."
+    }
+   ]
+  }
+ },
+ {
+  "id": "baked-potato-beans",
+  "name": "Baked potato with beans and cheese",
+  "meal": [
+   "lunch",
+   "dinner"
+  ],
+  "servings": 2,
+  "active_min": 10,
+  "total_min": 60,
+  "skill": "beginner",
+  "equipment": [
+   "oven",
+   "microwave"
+  ],
+  "assembly_only": false,
+  "leftovers": "ok",
+  "ingredients": [
+   {
+    "food": "fdc-170093",
+    "grams": 600,
+    "display": "2 large baking potatoes"
+   },
+   {
+    "food": "fdc-175238",
+    "grams": 240,
+    "display": "1 can low-sodium black beans, rinsed"
+   },
+   {
+    "food": "fdc-328637",
+    "grams": 40,
+    "display": "1/3 cup shredded cheddar"
+   },
+   {
+    "food": "fdc-747447",
+    "grams": 150,
+    "display": "2 cups steamed broccoli"
+   }
+  ],
+  "steps": [
+   "Bake potatoes at 400 F for 50 minutes (or microwave 8 minutes).",
+   "Split; top with warm beans, broccoli, cheese."
+  ],
+  "tags": [
+   "vegetable",
+   "legume"
+  ],
+  "notes": {
+   "swaps": [
+    {
+     "if_tag": "allergen-milk",
+     "then": "Skip the cheese; add salsa."
+    }
+   ]
+  }
+ },
+ {
+  "id": "shrimp-stir-fry",
+  "name": "Shrimp and vegetable stir-fry",
+  "meal": [
+   "dinner"
+  ],
+  "servings": 2,
+  "active_min": 15,
+  "total_min": 20,
+  "skill": "confident",
+  "equipment": [
+   "stove"
+  ],
+  "assembly_only": false,
+  "leftovers": "poor",
+  "ingredients": [
+   {
+    "food": "fdc-shrimp-missing",
+    "grams": 225,
+    "display": "8 oz shrimp, peeled"
+   },
+   {
+    "food": "fdc-747447",
+    "grams": 200,
+    "display": "2 cups broccoli"
+   },
+   {
+    "food": "fdc-169704",
+    "grams": 300,
+    "display": "1 1/2 cups cooked brown rice"
+   },
+   {
+    "food": "fdc-174278",
+    "grams": 18,
+    "display": "1 tbsp tamari"
+   },
+   {
+    "food": "fdc-171413",
+    "grams": 14,
+    "display": "1 tbsp olive oil"
+   },
+   {
+    "food": "fdc-169230",
+    "grams": 6,
+    "display": "2 cloves garlic"
+   }
+  ],
+  "steps": [
+   "Stir-fry 8 oz shrimp 2 minutes; remove.",
+   "Stir-fry broccoli and garlic 4 minutes.",
+   "Return shrimp, add tamari; serve over rice."
+  ],
+  "tags": [
+   "vegetable",
+   "whole-grain",
+   "soy"
+  ],
+  "notes": {
+   "swaps": [
+    {
+     "if_tag": "allergen-crustacean",
+     "then": "Use chicken breast strips."
+    }
+   ]
+  }
+ }
+]
