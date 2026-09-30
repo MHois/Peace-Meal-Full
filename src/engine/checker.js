@@ -4,7 +4,7 @@
 // anything), pass.
 // Unrecognized text is always reported. It is never counted as safe (README safety rule 7).
 import { strictCheck, strictCheckText, portionCheck, portionCheckText } from './dietlists.js';
-import { segmentTextRaw } from './dictionary.js';
+import { segmentTextRaw, isNoiseOnly, normalizeText } from './dictionary.js';
 import { recipeTotals, derived, round } from './nutrition.js';
 
 function evaluateTags(tagMap, plan, matcher, opts = {}) {
@@ -66,7 +66,10 @@ export function checkText(text, plan, matcher, person = {}) {
   // ingredient statement must be on the list. A piece that is only an amount ("7 ounces") is approved as empty, but it
   // still meets the leave-out examples, so "1 jar (7 ounces) roasted red peppers" keeps its "jar".
   const raw = segmentTextRaw(text);
-  const strict = matcher.dietLists ? strictCheckText(raw, plan, matcher.dietLists, person) : { families: [], notApproved: [] };
+  // A piece is only preparation words (P2-15) when its words are all amounts or noise words and the dictionary finds no
+  // food in it: "half-and-half" is made of noise words, but it is cream.
+  const isNoise = seg => { if (!isNoiseOnly(normalizeText(seg))) return false; const t = matcher.tagText(seg); return !Object.keys(t.tags).length && !Object.keys(t.mayContain || {}).length && !t.unknownRisk.length; };
+  const strict = matcher.dietLists ? strictCheckText(raw, plan, matcher.dietLists, person, isNoise) : { families: [], notApproved: [] };
   const portions = matcher.dietLists ? portionCheckText(raw, plan, matcher.dietLists) : { notes: [], stacked: [] };
   const verdict = verdictFrom({ hits, unknownRisk: r.unknownRisk, unrecognized: r.unrecognized, hasAllergens, restricting, termHits, verifyLabel, notApproved: strict.notApproved, smallServe: portions.stacked });
   return { verdict, hits, preferHits, termHits, verifyLabel, unknownRisk: r.unknownRisk, unrecognized: r.unrecognized, unplaced: r.unplaced || [], notes: r.notes, tags: r.tags, mayContain: r.mayContain, segments: r.segments, restricting, strictFamilies: strict.families, notApproved: strict.notApproved, portionNotes: portions.notes, smallServe: portions.stacked };

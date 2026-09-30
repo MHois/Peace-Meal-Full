@@ -111,7 +111,9 @@ export function approvedFor(text, family, lists, person, opts = {}) {
     for (const t of mine.tolerated) if (t.re.test(n)) return { approved: true, why: 'tolerated', item: t };
   }
   if (opts.avoid !== false) { const ex = avoidExampleFor(text, family, lists); if (ex) return { approved: false, why: 'avoid', item: ex }; }
-  if (!n) return { approved: true, why: 'empty' };
+  // opts.noise: the piece is only amounts and preparation words (P2-15), so it names no food; like an empty piece it is
+  // approved once the leave-out examples have had their say ("1 jar" is still a jar).
+  if (!n || opts.noise) return { approved: true, why: 'empty' };
   const idx = dietFamilyIndex(lists, family);
   for (const a of idx.approved) if (a.re.test(n)) return { approved: true, why: 'list', item: a.item, group: a.group };
   return { approved: false, why: 'unlisted' };
@@ -142,13 +144,14 @@ export function strictCheck(recipe, plan, lists, foodsById, person = {}) {
 }
 
 // Strict check for free text (a label, a typed dish): each segment of the ingredient statement must be on the list.
-// segments are the raw pieces from segmentTextRaw; pieces that are only amounts or preparation words are skipped by the caller.
-export function strictCheckText(segments, plan, lists, person = {}) {
+// segments are the raw pieces from segmentTextRaw. isNoise(segment), when given, says a piece is only amounts and
+// preparation words (P2-15): such a piece meets the leave-out examples but is otherwise approved as empty.
+export function strictCheckText(segments, plan, lists, person = {}, isNoise = null) {
   const families = strictFamiliesFor(plan, lists).filter(f => strictOn(person, f));
   const notApproved = [];
   if (!families.length) return { families, notApproved };
   for (const seg of segments || []) for (const family of families) {
-    const r = approvedFor(seg, family, lists, person);
+    const r = approvedFor(seg, family, lists, person, { noise: !!(isNoise && isNoise(seg)) });
     if (!r.approved) notApproved.push({ label: seg, family, why: r.why, ...(r.why === 'avoid' ? { avoid: r.item.term } : {}) });
   }
   return { families, notApproved };

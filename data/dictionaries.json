@@ -21305,6 +21305,30 @@
       ],
       "match": "word",
       "note": "the botanical name of peanut; the same tags as arachis. Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized."
+    },
+    {
+      "term": "toast",
+      "tags": [
+        "allergen-wheat",
+        "gluten",
+        "refined-grain",
+        "fodmap-fructan",
+        "lactose-hidden"
+      ],
+      "match": "word",
+      "note": "toasted bread; the same tags as bread. French toast (egg and milk) is not this entry: its first word stays not recognized. Added in the fix pass of September 30, 2026 (audit finding P2-15).",
+      "sources": [
+        "biesiekierski-2011",
+        "nih-lactose-2010"
+      ]
+    },
+    {
+      "term": "green tops",
+      "tags": [
+        "vegetable"
+      ],
+      "match": "word",
+      "note": "the green tops of scallions or leeks, written after the vegetable (\"1 scallion, green tops sliced\"); the vegetable itself is named before it. Added in the fix pass of September 30, 2026 (audit finding P2-15)."
     }
   ],
   "unsure": [

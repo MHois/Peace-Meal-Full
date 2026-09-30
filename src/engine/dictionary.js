@@ -65,7 +65,11 @@ const NOISE = new Set(('cup cups tbsp tablespoon tablespoons tsp teaspoon teaspo
   'deseeded de cored pitted stoned scrubbed washed cleaned beaten whisked mashed juiced zested flaked crumbled defrosted cooled warmed steamed soaked patted cut broken removed skinned skinless boneless separated torn snipped squeezed drizzling brushing sprinkling greasing ' +
   'a an the any colour color shape type if possible whenever such as like also fine works well enough around each per more total very lightly slightly thin thick bite lean whole give when serve instructions according shop bought both example from ' +
   // Added September 30, 2026 with the VA recipes: "(90% lean or higher)". A percentage on its own is not an ingredient either.
-  'higher').split(' '));
+  'higher ' +
+  // Added with P2-15 (fix pass of September 30, 2026): preparation, serving, and fat-content words that recipes write
+  // after a comma ("1 English muffin, split", "bread, toasted", "on the side"). None of them is a food on its own.
+  // Left out because they can be one: fat, skim, nonfat, lite, light, oil, juice, powder, meat, kernels, pods, stems.
+  'toasted roasted julienned sifted puréed pureed split shelled chilled boiled cracked slivered pressed deveined grilled blanched ground rolled freshly firmly loosely as needed desired available etc choice combination variety similar other less recommended up store homemade home made on side frying deep pan quick low reduced free sodium unsalted unsweetened plain seedless bone not little matchsticks').split(' '));
 function isAmountWord(t) {
   return /^[\d.,\/½¼¾⅓⅔⅛⅜⅝⅞⅕⅖⅗⅘⅙⅚x×-]+%?$/.test(t) || /^\d+(g|ml|oz|lb|kg|l|cm|mm)$/.test(t);
 }
