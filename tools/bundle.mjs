@@ -2,6 +2,7 @@
 // It rewrites ES module imports into a single classic script by concatenating modules in dependency order.
 import fs from 'node:fs';
 import path from 'node:path';
+import { pagesServiceWorker, fingerprint } from './lib/pages-sw.mjs';
 const root = new URL('../', import.meta.url);
 const R = p => fs.readFileSync(new URL(p, root), 'utf8');
 
@@ -97,38 +98,19 @@ if (PAGES) {
   const swReg = `<script>\nif ('serviceWorker' in navigator && /^https?:$/.test(location.protocol)) {\n  window.__pmSwReg = new Promise(function (done) { window.addEventListener('load', function () { navigator.serviceWorker.register('sw.js').then(done, function () { done(null); }); }); });\n}\n</script>\n`;
   out = out.slice(0, bodyEnd) + swReg + out.slice(bodyEnd);
   fs.writeFileSync(new URL(dir + 'index.html', root), out);
-  fs.writeFileSync(new URL(dir + 'manifest.webmanifest', root), JSON.stringify({
+  const manifest = JSON.stringify({
     name, short_name: name, description: LITE ? 'Your meals, your symptoms, your doctor report. Data stays on this phone.' : 'One table, everyone\'s dietary needs, every recommendation cited. Data stays on this device.',
     start_url: './', scope: './', display: 'standalone', background_color: '#FBFAF7', theme_color: '#3D5A3C',
     icons: [{ src: 'icon-180.png', sizes: '180x180', type: 'image/png' }, { src: 'icon-512.png', sizes: '512x512', type: 'image/png', purpose: 'any' }, { src: 'icon-512.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' }]
-  }, null, 2));
+  }, null, 2);
+  fs.writeFileSync(new URL(dir + 'manifest.webmanifest', root), manifest);
   for (const f of ['icon-180.png', 'icon-512.png']) fs.copyFileSync(new URL(f, root), new URL(dir + f, root));
-  // Service worker: cache first (2026-09 audit). The cached copy opens at once, online or not; a new version (__BUILD__ is
-  // stamped by the Pages workflow with the commit) installs in the background and waits until the person taps
-  // "Update ready, tap to reload", or until the app is next opened after every copy of it was closed.
-  // /full/ and /lite/ share one origin, so they share one set of caches: each app names its caches after itself and
-  // clears only its own old versions (and the unnamed ones older builds left), never the other app's copy.
-  const PAGES_APP = LITE ? 'lite' : 'full';
-  fs.writeFileSync(new URL(dir + 'sw.js', root), `// Cache first; a new version installs in the background and waits for the app's "Update ready, tap to reload".
-const APP = 'pm-pages-${PAGES_APP}-';
-const VERSION = APP + '__BUILD__';
-const SHELL = ['./', './index.html', './manifest.webmanifest', './icon-180.png', './icon-512.png'];
-self.addEventListener('install', e => { e.waitUntil((async () => { const c = await caches.open(VERSION); await Promise.all(SHELL.map(u => c.add(new Request(u, { cache: 'reload' })).catch(() => null))); })()); });
-self.addEventListener('message', e => { if (e.data === 'skip-waiting') self.skipWaiting(); });
-self.addEventListener('activate', e => { e.waitUntil((async () => { for (const k of await caches.keys()) if (k !== VERSION && (k.startsWith(APP) || /^pm-pages-[0-9a-f]{12}$/.test(k))) await caches.delete(k); await self.clients.claim(); })()); });
-self.addEventListener('fetch', e => {
-  const req = e.request;
-  if (req.method !== 'GET' || new URL(req.url).origin !== location.origin) return;
-  e.respondWith((async () => {
-    const c = await caches.open(VERSION);
-    const hit = await c.match(req, { ignoreSearch: true }) || (req.mode === 'navigate' ? await c.match('./index.html') : null);
-    if (hit) return hit;
-    const fresh = await fetch(req);
-    if (fresh && fresh.ok) c.put(req, fresh.clone());
-    return fresh;
-  })());
-});
-`);
+  // Service worker: cache first, and every saved file checked against the fingerprint of this build (tools/lib/pages-sw.mjs,
+  // P1-4 of the audit of September 30, 2026). The fingerprints are taken from the bytes written here; the Pages workflow
+  // later stamps only __BUILD__ in sw.js, so they stay valid. The folder URL ('') serves index.html.
+  const bytes = f => fs.readFileSync(new URL(dir + f, root));
+  const fingerprints = { '': fingerprint(bytes('index.html')), 'index.html': fingerprint(bytes('index.html')), 'manifest.webmanifest': fingerprint(bytes('manifest.webmanifest')), 'icon-180.png': fingerprint(bytes('icon-180.png')), 'icon-512.png': fingerprint(bytes('icon-512.png')) };
+  fs.writeFileSync(new URL(dir + 'sw.js', root), pagesServiceWorker({ app: LITE ? 'lite' : 'full', fingerprints }));
   console.log(dir, (out.length / 1024).toFixed(0) + ' KB');
 } else {
   const outName = LITE ? 'dist/peace-meal-lite.html' : 'dist/nutrition-app.html';
