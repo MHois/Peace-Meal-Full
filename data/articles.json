@@ -125,7 +125,7 @@
         "id": "ada-nutrition-consensus-2026-expected",
         "citation": "ADA nutrition therapy consensus report said to be expected in 2026: none published as of September 30, 2026 (PubMed); the 2026 Standards of Care still refer to the 2019 report. Not cited by any rule.",
         "url": "https://pubmed.ncbi.nlm.nih.gov/?term=American+Diabetes+Association+nutrition+therapy+consensus+report+2026",
-        "verify": true
+        "verify": false
       }
     ]
   },
@@ -870,7 +870,7 @@
     ]
   },
   "anti-inflammatory-mediterranean": {
-    "title": "Anti-inflammatory (Mediterranean-style) eating",
+    "title": "Mediterranean diet (anti-inflammatory)",
     "summary": [
       "The evidence-based version of an anti-inflammatory diet is the Mediterranean pattern: extra-virgin olive oil as the main fat; vegetables, fruit, whole grains, beans, and nuts every day; fish at least twice a week.",
       "Moderate poultry, eggs, and dairy. Not much red or processed meat, sweets, refined grains, or ultra-processed food.",
@@ -3768,7 +3768,7 @@
       {
         "heading": "What the evidence says",
         "paragraphs": [
-          "The evidence rating for this module is MODERATE for a Mediterranean-style eating pattern and INSUFFICIENT for every other named diet. The governing sources are the 2022 American College of Rheumatology guideline on exercise, rehabilitation, diet, and integrative interventions for RA (England et al., Arthritis Care and Research 2023) (VERIFY), the 2021 EULAR lifestyle recommendations for rheumatic diseases (Gwinnutt et al.) (VERIFY), and the PREDIMED trial for the general cardiovascular case for Mediterranean eating.",
+          "The evidence rating for this module is MODERATE for a Mediterranean-style eating pattern and INSUFFICIENT for every other named diet. The governing sources are the 2022 American College of Rheumatology guideline on exercise, rehabilitation, diet, and integrative interventions for RA (England et al., Arthritis Care and Research 2023), the 2021 EULAR lifestyle recommendations for rheumatic diseases (Gwinnutt et al., Annals of the Rheumatic Diseases 2023), and the PREDIMED trial for the general cardiovascular case for Mediterranean eating.",
           "Be clear about what the ACR guideline actually says. It conditionally recommends a Mediterranean-style diet for people with RA, and it rates the certainty of the evidence as low. The trials behind it are small and show modest improvement in pain and stiffness, not disease control. A conditional recommendation means the panel thought most people would want it but the evidence could go either way.",
           "The same guideline conditionally recommends against formally defined diets other than Mediterranean (the vegan, ketogenic, elimination, nightshade-free, paleo, and non-celiac gluten-free diets among them), because the evidence is lacking and restriction has costs. It also conditionally recommends against dietary supplements for RA, including fish oil. The EULAR recommendations add a healthy balanced diet, weight management if overweight, and smoking cessation, without endorsing any specific diet."
         ]
@@ -3820,7 +3820,7 @@
         "paragraphs": [
           "The app scores recipes toward the Mediterranean pattern (vegetable, fruit, whole-grain, legume, nut, fish, and olive-oil tags). It encodes no named exclusion diet and no supplement. The alcohol note appears as information, not a limit.",
           "If you turn on the profile flag \"your clinician has said weight loss would help,\" the weight-management rule activates. Selecting RA together with the anti-inflammatory Mediterranean module is redundant, and the app says so. With gout, both modules point to the same pattern and coexist.",
-          "Two of this module's sources carry a VERIFY flag in the app's source list (the ACR and EULAR citations); their DOIs resolve, and the flag stays until the citation details are confirmed against the journal."
+          "The ACR and EULAR citations were checked against the journals' own records on Crossref and PubMed on September 30, 2026: volume, issue, and pages match."
         ]
       }
     ],
@@ -3844,15 +3844,15 @@
     "references": [
       {
         "id": "acr-ra-integrative-2022",
-        "citation": "England BR et al. 2022 American College of Rheumatology Guideline for Exercise, Rehabilitation, Diet, and Additional Integrative Interventions for Rheumatoid Arthritis. Arthritis Care Res 2023;75:1603-1615. (VERIFY) Confirm volume and page range; Crossref lists 75:1603-1615.",
+        "citation": "England BR et al. 2022 American College of Rheumatology Guideline for Exercise, Rehabilitation, Diet, and Additional Integrative Interventions for Rheumatoid Arthritis. Arthritis Care Res 2023;75(8):1603-1615.",
         "url": "https://doi.org/10.1002/acr.25117",
-        "verify": true
+        "verify": false
       },
       {
         "id": "eular-lifestyle-rmd-2021",
-        "citation": "Gwinnutt JM et al. 2021 EULAR recommendations regarding lifestyle behaviours and work participation to prevent progression of rheumatic and musculoskeletal diseases. Ann Rheum Dis 2023;82:48-56. (VERIFY) Confirm citation details; Crossref lists 82:48-56.",
+        "citation": "Gwinnutt JM et al. 2021 EULAR recommendations regarding lifestyle behaviours and work participation to prevent progression of rheumatic and musculoskeletal diseases. Ann Rheum Dis 2023;82(1):48-56.",
         "url": "https://doi.org/10.1136/annrheumdis-2021-222020",
-        "verify": true
+        "verify": false
       },
       {
         "id": "predimed-2018",
@@ -3881,7 +3881,7 @@
       {
         "heading": "What the evidence says",
         "paragraphs": [
-          "The evidence rating for this module is MODERATE for dietary fiber (especially psyllium) and fluid, MODERATE for two green kiwifruit a day, and LIMITED for prunes. The governing sources are the AGA-ACG clinical practice guideline on chronic idiopathic constipation (Chang et al., Gastroenterology 2023), the multicenter randomized trial of green kiwifruit (Gearry et al., American Journal of Gastroenterology 2023) (VERIFY), the Bharucha and Lacy review of mechanisms and management (Gastroenterology 2020), and the Institute of Medicine's Dietary Reference Intakes for fiber.",
+          "The evidence rating for this module is MODERATE for dietary fiber (especially psyllium) and fluid, MODERATE for two green kiwifruit a day, and LIMITED for prunes. The governing sources are the AGA-ACG clinical practice guideline on chronic idiopathic constipation (Chang et al., Gastroenterology 2023), the multicenter randomized trial of green kiwifruit (Gearry et al., American Journal of Gastroenterology 2023), the Bharucha and Lacy review of mechanisms and management (Gastroenterology 2020), and the Institute of Medicine's Dietary Reference Intakes for fiber.",
           "The AGA-ACG guideline covers medications, and it places fiber supplementation, psyllium in particular, as a reasonable first step before them. Psyllium is the fiber with the most trial support for constipation.",
           "The kiwifruit trial randomized people with constipation to two green kiwifruit a day, psyllium, or prunes. Kiwifruit improved complete spontaneous bowel movements and abdominal comfort, with fewer side effects than psyllium. Prunes have smaller trials with benefit; wheat bran helps some people and worsens bloating in others."
         ]
@@ -3964,9 +3964,9 @@
       },
       {
         "id": "gearry-kiwifruit-2023",
-        "citation": "Gearry R et al. Consumption of 2 Green Kiwifruits Daily Improves Constipation and Abdominal Comfort: Results of an International Multicenter Randomized Controlled Trial. Am J Gastroenterol 2023;118:1058-1066. (VERIFY) Confirm page range; Crossref lists 1058-1068.",
+        "citation": "Gearry R et al. Consumption of 2 Green Kiwifruits Daily Improves Constipation and Abdominal Comfort: Results of an International Multicenter Randomized Controlled Trial. Am J Gastroenterol 2023;118(6):1058-1068.",
         "url": "https://doi.org/10.14309/ajg.0000000000002124",
-        "verify": true
+        "verify": false
       },
       {
         "id": "bharucha-lacy-constipation-2020",
@@ -4563,7 +4563,7 @@
       {
         "heading": "What the evidence says",
         "paragraphs": [
-          "The evidence rating for this pattern is MODERATE for weight loss, and the plain finding is that it is no better than ordinary calorie restriction. The governing sources are the 12-month randomized trial by Liu and colleagues (New England Journal of Medicine 2022), the 14-week randomized trial of early time-restricted eating by Jamshed and colleagues (JAMA Internal Medicine 2022) (VERIFY), and the American Diabetes Association Standards of Care for the safety cautions.",
+          "The evidence rating for this pattern is MODERATE for weight loss, and the plain finding is that it is no better than ordinary calorie restriction. The governing sources are the 12-month randomized trial by Liu and colleagues (New England Journal of Medicine 2022), the 14-week randomized trial of early time-restricted eating by Jamshed and colleagues (JAMA Internal Medicine 2022), and the American Diabetes Association Standards of Care for the safety cautions.",
           "In the NEJM trial, adults with obesity were all put on calorie restriction for 12 months. Half also had to eat within an 8-hour window (8 am to 4 pm); the other half could eat any time. Both groups lost a meaningful amount of weight, and the difference between them was not statistically significant. Adding the window to calorie restriction did not produce more weight loss than calorie restriction alone. The window is not a mechanism on its own; it helps some people eat less.",
           "The JAMA Internal Medicine trial compared an early 8-hour window with a window of 12 hours or more, both with weight-loss counseling, for 14 weeks. The early-window group lost more weight and improved some cardiometabolic markers, including blood pressure. That is short-term evidence that earlier windows may help more than late ones. Long-term data are limited."
         ]
@@ -4644,9 +4644,9 @@
       },
       {
         "id": "tre-jamshed-2022",
-        "citation": "Jamshed H et al. Effectiveness of Early Time-Restricted Eating for Weight Loss, Fat Loss, and Cardiometabolic Health in Adults With Obesity: A Randomized Clinical Trial. JAMA Intern Med 2022;182:953-962. (VERIFY) Confirm page range.",
+        "citation": "Jamshed H et al. Effectiveness of Early Time-Restricted Eating for Weight Loss, Fat Loss, and Cardiometabolic Health in Adults With Obesity: A Randomized Clinical Trial. JAMA Intern Med 2022;182(9):953-962.",
         "url": "https://doi.org/10.1001/jamainternmed.2022.3050",
-        "verify": true
+        "verify": false
       },
       {
         "id": "ada-soc-2026",

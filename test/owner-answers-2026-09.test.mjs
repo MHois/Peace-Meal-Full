@@ -135,11 +135,11 @@ test('[10] the false alarms are gone and the real tags stay', () => {
 });
 
 // ---------------------------------------------------------------- [11] conditions step: ten common conditions first
-test('[11] a new person sees ten common conditions first; rarer ones are under Show all and in search', () => {
+test('[11] a new person sees ten common conditions first; rarer ones are listed below them and in search', () => {
   const c = J('conditions.json');
   assert.deepEqual(c.onboarding_common, ['hypertension', 'hyperlipidemia', 'weight-management-glp1', 't2d', 'masld', 'gerd', 'ckd-non-dialysis', 'ibs-low-fodmap', 'lactose-intolerance', 'celiac']);
   for (const id of c.onboarding_common) assert.ok(mod(id), id + ' is a module');
-  assert.ok(!c.onboarding_common.includes('mcas'), 'mast cell activation is found by search or Show all');
+  assert.ok(!c.onboarding_common.includes('mcas'), 'mast cell activation is listed below the ten and found by search');
   assert.match(c.onboarding_common_note, /not a clinical ranking/);
 });
 
@@ -162,9 +162,11 @@ const sources = J('sources.json');
 const source = id => sources.find(s => s.id === id);
 const ruleIds = pl => [...(pl.applied || []), ...(pl.behavior || []), ...(pl.timing || []), ...(pl.info || [])].map(r => r.rule);
 
-test('[13] item 1: no new ADA consensus report yet; the item stays open', () => {
+test('[13] item 1: no new ADA consensus report yet; checked and dated, so no VERIFY flag (A36)', () => {
   assert.ok(mod('t2d').education.contested.some(x => /none has been published/.test(x)));
-  assert.equal(source('ada-nutrition-consensus-2026-expected').verify, true);
+  // Changed on purpose September 30, 2026: the statement is a checked, dated fact, so the flag is off (VERIFY-log A36).
+  assert.equal(source('ada-nutrition-consensus-2026-expected').verify, false);
+  assert.match(source('ada-nutrition-consensus-2026-expected').verify_note, /PMID 31000505/);
 });
 
 test('[13] item 2 and [15]: the CRPS source has its real citation, stays in the file, and nothing cites it', () => {

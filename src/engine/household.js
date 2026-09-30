@@ -58,6 +58,7 @@ export function seatingPerson(eaters, cook, opts = {}) {
   return {
     id: 'hh:' + seatingKey(eaters), name: eaters.map(p => p.name).join(', '), adult: !kidsOnly, guest: false,
     allergens: union(p => p.allergens || []),
+    allergens_other: union(p => p.allergens_other || []),
     preferences: { avoid_tags: union(p => (p.preferences || {}).avoid_tags || []), avoid_terms: union(p => (p.preferences || {}).avoid_terms || []), patterns: union(p => (p.preferences || {}).patterns || []), spice, cuisines_skip: union(p => (p.preferences || {}).cuisines_skip || []), cuisines_love: union(p => (p.preferences || {}).cuisines_love || []) },
     favorites: { recipes: union(p => (p.favorites && p.favorites.recipes) || []), foods: [] },
     disliked: { recipes: union(p => (p.disliked && p.disliked.recipes) || []), foods: [] },

@@ -137,7 +137,9 @@ export function buildPlan({ person, conditions, dictionaries, today = new Date()
 
   // Auto-include modules driven by profile flags
   if ((person.pregnancy || person.breastfeeding) && byId.has('pregnancy-gdm-breastfeeding')) selected.add('pregnancy-gdm-breastfeeding');
-  if ((person.allergens || []).length && byId.has('food-allergies')) selected.add('food-allergies');
+  // Other allergies (foods outside the nine, typed on the Allergies step) bring in the food-allergies module too.
+  const otherAllergyList = [...new Set((person.allergens_other || []).map(x => String(x || '').trim().toLowerCase()).filter(x => x.length >= 2))];
+  if (((person.allergens || []).length || otherAllergyList.length) && byId.has('food-allergies')) selected.add('food-allergies');
   if (person.flags && person.flags.glp1 && byId.has('weight-management-glp1')) selected.add('weight-management-glp1');
   // Medicines that interact with food: the module switches itself on when any of its questions is answered yes.
   for (const m of byId.values()) if (m.auto_by_medication && (m.medication_questions || []).some(q => q.global && person.medications && person.medications[q.id])) selected.add(m.id);
@@ -547,6 +549,7 @@ export function buildPlan({ person, conditions, dictionaries, today = new Date()
     modes: [...activeModeRules].map(([module, x]) => ({ module, mode: x.mode })),
     tier2: { applied: tier2Applied, missing: tier2Missing },
     restrictionLoad,
+    otherAllergies: otherAllergyList,
     notices
   };
 }

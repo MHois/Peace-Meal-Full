@@ -69,7 +69,7 @@ export function sharingPersonModal(obj, opts = {}) {
     <div class="person-row">${uiAvatar(person.name, { size: 'lg', tone: 'plum' })}<div class="person-main"><div class="name">${uiEsc(person.name || 'Shared profile')}</div><div class="small muted">${opts.subtitle ? uiEsc(opts.subtitle) : 'Read-only view. Nothing here changes the other person’s profile.'}</div></div></div>
     ${parts ? `<div class="row">${parts.map(p => uiChip(p, 'plum')).join('')}</div>` : ''}
     ${hasRules ? `
-      <h3>Allergens</h3>${(person.allergens || []).length ? `<div class="row">${person.allergens.map(t => uiChip(allergenLabel(t), 'stop')).join('')}</div>` : '<p class="small muted">None listed.</p>'}
+      <h3>Allergens</h3>${(person.allergens || []).length || (person.allergens_other || []).length ? `<div class="row">${(person.allergens || []).map(t => uiChip(allergenLabel(t), 'stop')).join('')}${(person.allergens_other || []).map(t => uiChip(t, 'stop')).join('')}</div>` : '<p class="small muted">None listed.</p>'}
       <h3>Modules</h3>${(person.modules || []).length || (person.custom_modules || []).length ? `<ul class="small">${(person.modules || []).map(m => `<li>${uiEsc(uiModuleName(m))}</li>`).join('')}${(person.custom_modules || []).map(cm => `<li>${uiEsc(cm.name)} <span class="chip plum">Defined by them</span></li>`).join('')}</ul>` : '<p class="small muted">None selected.</p>'}
       ${plan ? `<h3>Plan summary</h3>
         <dl class="kv">

@@ -19,8 +19,8 @@
     "type": "other",
     "year": 2026,
     "url": "https://pubmed.ncbi.nlm.nih.gov/?term=American+Diabetes+Association+nutrition+therapy+consensus+report+2026",
-    "verify": true,
-    "verify_note": "Checked September 30, 2026 (VERIFY-log item 1): no successor on PubMed. Stays open until a new report is published; then add it and retire this entry."
+    "verify": false,
+    "verify_note": "Checked September 30, 2026 (VERIFY-log item 1 and A36): a PubMed title search finds the 2019 report (PMID 31000505) and nothing newer from 2023 to 2026. When a new report is published, add it and retire this entry."
   },
   {
     "id": "dpp-2002",
@@ -898,21 +898,21 @@
   },
   {
     "id": "acr-ra-integrative-2022",
-    "citation": "England BR et al. 2022 American College of Rheumatology Guideline for Exercise, Rehabilitation, Diet, and Additional Integrative Interventions for Rheumatoid Arthritis. Arthritis Care Res 2023;75:1603-1615.",
+    "citation": "England BR et al. 2022 American College of Rheumatology Guideline for Exercise, Rehabilitation, Diet, and Additional Integrative Interventions for Rheumatoid Arthritis. Arthritis Care Res 2023;75(8):1603-1615.",
     "type": "guideline",
     "year": 2023,
     "url": "https://doi.org/10.1002/acr.25117",
-    "verify": true,
-    "verify_note": "Confirm volume and page range."
+    "verify": false,
+    "verify_note": "Confirmed September 30, 2026 on Crossref and PubMed (PMID 37227116): volume 75, issue 8, pages 1603-1615 (VERIFY-log A35)."
   },
   {
     "id": "eular-lifestyle-rmd-2021",
-    "citation": "Gwinnutt JM et al. 2021 EULAR recommendations regarding lifestyle behaviours and work participation to prevent progression of rheumatic and musculoskeletal diseases. Ann Rheum Dis 2023;82:48-56.",
+    "citation": "Gwinnutt JM et al. 2021 EULAR recommendations regarding lifestyle behaviours and work participation to prevent progression of rheumatic and musculoskeletal diseases. Ann Rheum Dis 2023;82(1):48-56.",
     "type": "guideline",
     "year": 2023,
     "url": "https://doi.org/10.1136/annrheumdis-2021-222020",
-    "verify": true,
-    "verify_note": "Confirm citation details."
+    "verify": false,
+    "verify_note": "Confirmed September 30, 2026 on Crossref and PubMed (PMID 35260387): volume 82, issue 1, pages 48-56 (VERIFY-log A35)."
   },
   {
     "id": "aga-acg-cic-2023",
@@ -923,7 +923,7 @@
   },
   {
     "id": "gearry-kiwifruit-2023",
-    "citation": "Gearry R et al. Consumption of 2 Green Kiwifruits Daily Improves Constipation and Abdominal Comfort: Results of an International Multicenter Randomized Controlled Trial. Am J Gastroenterol 2023;118:1058-1068.",
+    "citation": "Gearry R et al. Consumption of 2 Green Kiwifruits Daily Improves Constipation and Abdominal Comfort: Results of an International Multicenter Randomized Controlled Trial. Am J Gastroenterol 2023;118(6):1058-1068.",
     "type": "rct",
     "year": 2023,
     "url": "https://doi.org/10.14309/ajg.0000000000002124"
@@ -1007,12 +1007,12 @@
   },
   {
     "id": "tre-jamshed-2022",
-    "citation": "Jamshed H et al. Effectiveness of Early Time-Restricted Eating for Weight Loss, Fat Loss, and Cardiometabolic Health in Adults With Obesity: A Randomized Clinical Trial. JAMA Intern Med 2022;182:953-962.",
+    "citation": "Jamshed H et al. Effectiveness of Early Time-Restricted Eating for Weight Loss, Fat Loss, and Cardiometabolic Health in Adults With Obesity: A Randomized Clinical Trial. JAMA Intern Med 2022;182(9):953-962.",
     "type": "rct",
     "year": 2022,
     "url": "https://doi.org/10.1001/jamainternmed.2022.3050",
-    "verify": true,
-    "verify_note": "Confirm page range."
+    "verify": false,
+    "verify_note": "Confirmed September 30, 2026 on PubMed (PMID 35939311): volume 182, issue 9, pages 953-962; Crossref lists the first page, 953 (VERIFY-log A35)."
   },
   {
     "id": "mifflin-1990",

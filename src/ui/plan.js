@@ -27,6 +27,13 @@ function planSplitLabel(nutrient) {
 
 let planSheetRules = {};
 
+// True when a rule on this plan, or one of its sources, still carries a VERIFY flag (none do as of September 30, 2026).
+function planHasVerify(plan) {
+  const lists = [plan.applied, plan.behavior, plan.info, plan.timing, Object.values(plan.limits || {}), Object.values(plan.targets || {}), Object.values(plan.avoid || {}).flatMap(a => a.rules || []), Object.values(plan.prefer || {}).flatMap(a => a.rules || [])];
+  const rules = lists.flat().filter(Boolean).flatMap(x => Array.isArray(x.rules) ? x.rules : [x]);
+  return rules.some(r => r && (r.verify || (r.sources || []).some(id => { const s = uiState.sourcesById.get(id); return s && s.verify; })));
+}
+
 export function renderPlanScreen(root, ctx) {
   if (ctx && ctx.route && ctx.route.parts && ctx.route.parts[0] === 'foods') return renderDietListScreen(root, ctx.route.parts[1]);
   const person = uiActivePerson();
@@ -63,8 +70,8 @@ export function renderPlanScreen(root, ctx) {
     ${uiSection('Your numbers', `${planCalorieHTML(person, plan)}${numberMeters.length ? `<div class="numbers-grid">${numberMeters.join('')}</div><p class="small muted">"So far today" is summed from what is logged on the Today screen. Limits are "at most"; targets are "at least".</p>` : uiEmptyState('No daily limits or targets are active. Numbers appear when a module carries one, or when a number from your doctor or dietitian is entered.', `<a class="btn small" href="#/people/${uiEsc(person.id)}/clinician">Enter those numbers</a>`)}
       ${periodic.map(x => `<h3>Per ${uiEsc(x.per)}</h3><div class="list boxed">${x.limits.map(([n, l]) => { planSheetRules['p:' + x.per + ':' + n] = { title: `${uiNutrientLabel(n)}: at most ${uiFmtNum(l.value, 1)} per ${x.per}`, rules: l.rules, whys: planWhys(l.rules) }; return `<div class="list-row"><div class="list-main"><span class="list-title">${uiEsc(uiNutrientLabel(n))}</span> <span class="num">at most ${uiFmtNum(l.value, 1)}</span> ${l.clinician ? uiChip('doctor or dietitian', 'plum') : ''}${planWhys(l.rules)[0] ? `<div class="meter-why">${uiEsc(planWhys(l.rules)[0])}</div>` : ''}</div><div class="list-actions"><button type="button" class="btn link small" data-sheet="p:${uiEsc(x.per)}:${uiEsc(n)}">Why (${l.rules.length})</button></div></div>`; }).join('')}${x.targets.map(([n, t]) => { planSheetRules['pt:' + x.per + ':' + n] = { title: `${uiNutrientLabel(n)}: at least ${uiFmtNum(t.min, 1)} per ${x.per}`, rules: t.rules, whys: planWhys(t.rules) }; return `<div class="list-row"><div class="list-main"><span class="list-title">${uiEsc(uiNutrientLabel(n))}</span> <span class="num">at least ${uiFmtNum(t.min, 1)}</span>${planWhys(t.rules)[0] ? `<div class="meter-why">${uiEsc(planWhys(t.rules)[0])}</div>` : ''}</div><div class="list-actions"><button type="button" class="btn link small" data-sheet="pt:${uiEsc(x.per)}:${uiEsc(n)}">Why (${t.rules.length})</button></div></div>`; }).join('')}</div>`).join('')}`, { id: 'plan-numbers' })}
 
-    ${uiSection('Avoid', `<h3>Hard stops ${uiChip(String(avoidHard.length), 'stop')}</h3>
-      ${avoidHard.length ? `<div class="chip-cloud">${avoidHard.map(([tag, v]) => tagChip(tag, v, 'stop')).join('')}</div>` : '<p class="muted small">None.</p>'}
+    ${uiSection('Avoid', `<h3>Hard stops ${uiChip(String(avoidHard.length + (plan.otherAllergies || []).length), 'stop')}</h3>
+      ${avoidHard.length || (plan.otherAllergies || []).length ? `<div class="chip-cloud">${avoidHard.map(([tag, v]) => tagChip(tag, v, 'stop')).join('')}${(plan.otherAllergies || []).map(t => uiChip(t + ' (your allergy)', 'stop')).join('')}</div>` : '<p class="muted small">None.</p>'}
       <h3>Soft, shown as a caution ${uiChip(String(avoidSoft.length), 'caution')}</h3>
       ${avoidSoft.length ? `<div class="chip-cloud">${avoidSoft.map(([tag, v]) => tagChip(tag, v, 'caution')).join('')}</div>` : '<p class="muted small">None.</p>'}
       <p class="small muted">Tap a chip to see the rules behind it.</p>`, { id: 'plan-avoid-h' })}
@@ -96,7 +103,7 @@ export function renderPlanScreen(root, ctx) {
       ${plan.restrictionLoad.modules.length ? `<div class="small muted">${plan.restrictionLoad.modules.map(m => uiEsc(uiModuleName(m))).join(', ')}</div>` : ''}
       ${loadNotice ? uiNoticeHTML(loadNotice) : `<p class="small muted">The plan checks in when ${plan.restrictionLoad.threshold || 3} or more run at once.</p>`}
     </div>`, { id: 'plan-load-h' })}
-    <p class="small muted">Every rule above is shown with its source. A rule marked VERIFY carries a citation that was not confirmed against a primary source and should be checked before the number is trusted.</p>
+    <p class="small muted">Every rule above is shown with its source.${planHasVerify(plan) ? ' A VERIFY label means the app\'s maintainer is still confirming that source\'s publication details against the original; nothing is asked of you.' : ''}</p>
     ${planPrintSheet(person, plan, limits, targets, avoidHard, avoidSoft)}
   `;
   root.classList.add('print-sheet');
@@ -168,7 +175,7 @@ function planPrintSheet(person, plan, limits, targets, avoidHard, avoidSoft) {
     <h2>Numbers</h2>
     ${rows.length ? `<table><thead><tr><th>Nutrient</th><th>Number</th><th>Set by</th></tr></thead><tbody>${rows.join('')}</tbody></table>` : '<p>No daily limits or targets are active.</p>'}
     <div class="print-cols">
-      <div><h2>Hard exclusions (${avoidHard.length})</h2>${avoidHard.length ? `<ul>${avoidHard.map(([tag]) => `<li>${uiEsc(uiTagLabel(tag))}</li>`).join('')}</ul>` : '<p>None.</p>'}</div>
+      <div><h2>Hard exclusions (${avoidHard.length + (plan.otherAllergies || []).length})</h2>${avoidHard.length || (plan.otherAllergies || []).length ? `<ul>${avoidHard.map(([tag]) => `<li>${uiEsc(uiTagLabel(tag))}</li>`).join('')}${(plan.otherAllergies || []).map(t => `<li>${uiEsc(t)} (allergy)</li>`).join('')}</ul>` : '<p>None.</p>'}</div>
       <div><h2>Soft avoids (${avoidSoft.length})</h2>${avoidSoft.length ? `<ul>${avoidSoft.map(([tag]) => `<li>${uiEsc(uiTagLabel(tag))}</li>`).join('')}</ul>` : '<p>None.</p>'}</div>
     </div>
     <h2>Timing</h2>

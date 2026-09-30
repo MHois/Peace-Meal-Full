@@ -177,7 +177,7 @@ function peopleRenderList(root) {
     ${people.length ? `<div class="stack-2">${people.map(p => {
       const isActive = active && active.id === p.id;
       const mods = (p.modules || []).length + (p.custom_modules || []).length;
-      const allergens = (p.allergens || []).map(peopleAllergenLabel);
+      const allergens = [...(p.allergens || []).map(peopleAllergenLabel), ...peopleOtherAllergies(p)];
       const summary = [`${mods} module${mods === 1 ? '' : 's'}`, allergens.length ? `allergens: ${allergens.join(', ')}` : 'no allergens', p.adult === false ? 'caregiver mode' : ''].filter(Boolean).join(', ');
       return `
       <div class="card person-card">
@@ -386,7 +386,7 @@ function peopleStepConditions(container, person) {
   const selected = new Set((person.modules || []).filter(id => !PEOPLE_META_MODULES.includes(id)));
   const groups = [
     { key: 'condition', title: 'Medical conditions', hint: 'diabetes, reflux, kidney, heart, celiac, IBS and more' },
-    { key: 'pattern', title: 'Ways of eating', hint: 'vegetarian, Mediterranean, DASH, low-carb, low added sugar' }
+    { key: 'pattern', title: 'Ways of eating', hint: 'vegetarian, Mediterranean (anti-inflammatory), DASH, low-carb, low added sugar' }
   ];
   const q = peopleCondQuery.trim().toLowerCase();
   const matches = m => !q || (m.name + ' ' + (m.evidence && m.evidence.summary || '') + ' ' + (m.aliases || []).join(' ')).toLowerCase().includes(q);
@@ -396,9 +396,10 @@ function peopleStepConditions(container, person) {
       <button type="button" class="btn small about-btn" data-edu="${uiEsc(m.id)}" aria-label="About ${uiEsc(m.name)}">${uiIcon('book')}About</button>
     </label>`;
   const chosen = modules.filter(m => selected.has(m.id));
-  // Dietitian review (September 9, 2026): a new person sees the common ten first (data/conditions.json onboarding_common),
-  // with everything else one tap away. Search always covers every module. Editing a person who finished setup shows every
-  // group expanded, as before.
+  // Dietitian review (September 9, 2026): a new person sees the common ten first (data/conditions.json onboarding_common).
+  // Owner request (September 30, 2026): everything else is listed right below them, already open, so nobody thinks the
+  // list stops at ten; it used to sit behind a "Show all" button. Search always covers every module. Editing a person
+  // who finished setup shows every group expanded, as before.
   const commonIds = (uiState.conditionsMeta && uiState.conditionsMeta.onboarding_common) || [];
   const short = !person.setup_complete && !peopleCondShowAll && !q && commonIds.length > 0;
   const commonList = commonIds.map(id => modules.find(m => m.id === id)).filter(m => m && !selected.has(m.id));
@@ -410,13 +411,17 @@ function peopleStepConditions(container, person) {
       ${chosen.length ? `<div class="choice-list">${chosen.map(m => row(m) + peopleModulePanelHTML(m, person)).join('')}</div>` : '<p class="cond-none small">No conditions or ways of eating yet. That is fine: the plan will still use your allergies, likes, and cooking answers. Pick from the lists below or search.</p>'}
     </div>
     <div class="field" style="margin-top:1rem"><label for="cond-search">Search</label><div class="search-row">${uiIcon('search')}<input id="cond-search" type="search" placeholder="Type: diabetes, reflux, celiac, vegetarian" value="${uiEsc(peopleCondQuery)}" autocomplete="off"></div></div>
-    ${short ? `<div class="cond-group cond-common"><h2 class="cond-common-title">Common conditions</h2>${commonList.length ? `<div class="choice-list">${commonList.map(row).join('')}</div>` : '<p class="small muted">All of these are selected.</p>'}
-      <button type="button" class="btn cond-show-all" id="cond-show-all">Show all ${allCount} conditions and ways of eating</button></div>` : groups.map(g => {
-      const list = modules.filter(m => m.category === g.key && !selected.has(m.id) && matches(m));
-      const total = modules.filter(m => m.category === g.key && !selected.has(m.id)).length;
+    ${short ? `<p class="small muted cond-all-note">All ${allCount} conditions and ways of eating are on this page: the most common first, then every other one below. Scroll down to see them all.</p>
+      <div class="cond-group cond-common"><h2 class="cond-common-title">Common conditions</h2>${commonList.length ? `<div class="choice-list">${commonList.map(row).join('')}</div>` : '<p class="small muted">All of these are selected.</p>'}</div>` : ''}
+    ${groups.map(g => {
+      // Under the common ten, the groups list only what the common section did not already show.
+      const inCommon = m => short && commonIds.includes(m.id);
+      const list = modules.filter(m => m.category === g.key && !selected.has(m.id) && matches(m) && !inCommon(m));
+      const total = modules.filter(m => m.category === g.key && !selected.has(m.id) && !inCommon(m)).length;
       if (!total) return '';
+      const title = short && g.key === 'condition' ? 'More medical conditions' : g.title;
       const open = true;   // both groups start expanded so nothing is hidden behind an arrow (the owner asked to show everything under Ways of eating)
-      return `<details class="cond-group" ${open ? 'open' : ''}><summary>${g.title}<span class="cond-group-hint">${g.hint}</span><span class="count">${list.length}${q ? ` of ${total}` : ''}</span></summary>
+      return `<details class="cond-group" ${open ? 'open' : ''}><summary>${title}<span class="cond-group-hint">${g.hint}</span><span class="count">${list.length}${q ? ` of ${total}` : ''}</span></summary>
         ${list.length ? `<div class="choice-list">${list.map(row).join('')}</div>` : `<p class="small muted" style="padding-bottom:12px">Nothing here matches "${uiEsc(peopleCondQuery)}".</p>`}</details>`;
     }).join('')}
     ${q && !modules.some(m => !selected.has(m.id) && matches(m)) ? `<p class="small muted">No match for "${uiEsc(peopleCondQuery)}". A diet that is not on the list can be added on the Likes and dislikes step.</p>` : ''}`;
@@ -530,6 +535,12 @@ function peopleStepAllergens(container, person) {
     <div class="choice-list">
       ${UI_ALLERGENS.map(a => `<label class="choice"><input type="checkbox" data-allergen="${a.tag}" ${sel.has(a.tag) ? 'checked' : ''}><span class="choice-body"><span class="choice-title">${a.label}</span>${a.hint ? `<br><span class="small muted">${uiEsc(a.hint)}</span>` : ''}</span></label>`).join('')}
     </div>
+    <div class="field other-allergies" style="margin-top:1rem">
+      <label for="pa-other">Other allergies (foods not in the list above)</label>
+      <input id="pa-other" type="text" value="${uiEsc(peopleOtherAllergies(person).join(', '))}" placeholder="kiwi, mustard, buckwheat" autocomplete="off" autocapitalize="none">
+      <div class="hint">Separate them with commas. Each one is a hard stop, the same as the nine above: never planned, and "Not allowed" on recipes and labels. The app looks for the word in ingredient lists, so list every name the food goes by (for example mustard and Dijon, or buckwheat and soba). US labels must always name the nine major allergens, but other foods used as a spice or flavoring can be listed only as "spice" or "natural flavor". While anything is listed here, the app flags those words so you check with the maker.</div>
+      <p class="small" id="pa-other-saved" aria-live="polite">${peopleOtherAllergies(person).length ? `Hard stops: <strong>${peopleOtherAllergies(person).map(uiEsc).join(', ')}</strong>` : ''}</p>
+    </div>
     ${configurable.length ? `<div class="card" style="margin-top:1rem"><h3>"May contain" and shared-facility labels</h3><p class="small muted">Many people with allergies avoid these. The evidence on actual risk is mixed, so this is your call. Applies when at least one allergen is listed above.</p>${configurable.map(r => peopleConfigurableRuleHTML(r, person)).join('')}</div>` : ''}`;
   container.querySelectorAll('[data-allergen]').forEach(inp => inp.addEventListener('change', () => {
     person.allergens = person.allergens || [];
@@ -538,7 +549,23 @@ function peopleStepAllergens(container, person) {
     if (!inp.checked) person.allergens = person.allergens.filter(x => x !== t);
     peoplePersist(person);
   }));
+  const other = container.querySelector('#pa-other');
+  if (other) other.addEventListener('change', () => {
+    person.allergens_other = peopleParseOtherAllergies(other.value);
+    other.value = person.allergens_other.join(', ');
+    const saved = container.querySelector('#pa-other-saved');
+    if (saved) saved.innerHTML = person.allergens_other.length ? `Hard stops: <strong>${person.allergens_other.map(uiEsc).join(', ')}</strong>` : '';
+    peoplePersist(person);
+  });
   peopleBindModulePanels(container, person, 'allergens');
+}
+
+// Other allergies: lower case, trimmed, one entry per food, at least two letters (the checker matches the same way).
+function peopleParseOtherAllergies(text) {
+  return [...new Set(String(text || '').split(/[,;\n]/).map(s => s.trim().toLowerCase().replace(/\s+/g, ' ')).filter(s => s.length >= 2))];
+}
+function peopleOtherAllergies(person) {
+  return peopleParseOtherAllergies((person.allergens_other || []).join(','));
 }
 
 // d) Preferences, plus the custom diet builder.
@@ -1034,6 +1061,7 @@ function peopleStepReview(container, person) {
     ['Flags', Object.entries(person.flags || {}).filter(([, v]) => v).map(([k]) => uiEsc((uiState.conditionsMeta.flags[k] || { label: k }).label)).join('; ') || 'none'],
     ['Confirmations', (person.confirmations || []).length ? person.confirmations.map(uiEsc).join(', ') : 'none'],
     ['Allergens', (person.allergens || []).length ? person.allergens.map(t => uiEsc(peopleAllergenLabel(t))).join(', ') : 'none'],
+    ['Other allergies', peopleOtherAllergies(person).length ? uiEsc(peopleOtherAllergies(person).join(', ')) : 'none'],
     ['Patterns', uiEsc((prefs.patterns || []).join(', ') || 'none')],
     ['Your own diets', (person.custom_modules || []).length ? person.custom_modules.map(cm => uiEsc(cm.name)).join(', ') : 'none'],
     ['Soft avoid', uiEsc((prefs.avoid_tags || []).map(uiTagLabel).join(', ') || 'none')],

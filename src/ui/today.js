@@ -3,13 +3,15 @@
 import { energyTarget, ACTIVITIES, ACTIVITY_LEVELS, activityCalories, kgToLb, lbToKg } from '../engine/energy.js';
 import { nutrientsForGrams, recipeTotals, scaleTotals, addTotals, emptyTotals, compareToPlan, round, NUTRIENT_KEYS } from '../engine/nutrition.js';
 import { checkRecipe, checkFood } from '../engine/checker.js';
-import { unintendedWeightLoss } from '../engine/report.js';
+import { unintendedWeightLoss, reportDays } from '../engine/report.js';
 import { cautionWhy } from '../engine/planner.js';
 import { portionCheckPieces, familyLabel } from '../engine/dietlists.js';
+import { searchGroupMatches } from '../engine/search.js';
 import { uiState, uiEsc, uiActivePerson, uiPlanFor, uiPersist, uiToast, uiModal, uiIsoDate, uiToday, uiFmtDate, uiFmtNum, uiNutrientLabel, uiVerdictWord, uiVerdictChip, uiSegmented, uiPageHeader, uiSection, uiChip, uiIcon, uiRing, uiMeter, uiStatTile, uiNoticeHTML, uiEmptyState, uiSwitch, uiEnsureAllRecipes } from './common.js';
 import { weekGet } from './week.js';
 import { householdWeekGet } from './household.js';
 import { recipesTasteHTML, recipesBindTaste, recipesIsNever } from './recipes.js';
+import { LOG_SYMPTOMS } from './log.js';
 
 const TODAY_MEALS = [{ id: 'breakfast', label: 'Breakfast' }, { id: 'lunch', label: 'Lunch' }, { id: 'dinner', label: 'Dinner' }, { id: 'snacks', label: 'Snacks' }];
 const TODAY_TRACKED = ['protein_g', 'carb_g', 'fiber_g', 'sodium_mg', 'satfat_g'];
@@ -233,20 +235,85 @@ function todayMealsHTML(person, plan, entries) {
         }).join('') || '<p class="small muted" style="padding:8px 0">Nothing logged.</p>'}</div>
         ${todayMealStackingHTML(plan, list)}
       </section>`;
-    }).join('')}</div>`, { id: 'today-meals-h', action: `<button class="btn small" type="button" id="today-copy-yesterday">Copy yesterday</button><button class="btn small" type="button" id="today-from-plan">${uiIcon('calendar')}Add from this week's plan</button>${uiState.profile.people.length > 1 && uiState.profile.household && uiState.profile.household.built ? `<button class="btn small" type="button" id="today-from-household">${uiIcon('people')}Add from the household plan</button>` : ''}` });
+    }).join('')}</div>`, { id: 'today-meals-h', action: `<button class="btn small" type="button" data-food-history>${uiIcon('list')}History</button><button class="btn small" type="button" id="today-copy-yesterday">Copy yesterday</button><button class="btn small" type="button" id="today-from-plan">${uiIcon('calendar')}Add from this week's plan</button>${uiState.profile.people.length > 1 && uiState.profile.household && uiState.profile.household.built ? `<button class="btn small" type="button" id="today-from-household">${uiIcon('people')}Add from the household plan</button>` : ''}` });
 }
 
 function todayWeightHTML(person) {
   const all = (uiState.profile.weights || []).filter(w => w.person === person.id).sort((a, b) => a.date.localeCompare(b.date));
-  const last30 = all.slice(-30).reverse();
   const cutoff = todayShiftDate(uiIsoDate(uiToday()), -90);
   const chart = all.filter(w => w.date >= cutoff);
   return `<section class="card" aria-labelledby="today-weight-h"><h2 id="today-weight-h">Weight</h2>
     <div class="today-row"><div class="field"><label for="today-weight-lb">Weight (lb)</label><input id="today-weight-lb" type="number" inputmode="decimal" min="50" max="900" step="0.1" placeholder="${all.length ? kgToLb(all[all.length - 1].kg) : '150'}"></div><button class="btn primary" type="button" id="today-log-weight">${uiIcon('scale')}Log weight</button></div>
     <p class="small muted">Stored in kilograms for the rules that need it; shown in pounds. Logging a weight updates the calorie estimate.</p>
     ${chart.length ? todayChartSVG(chart) : '<p class="small muted">No weights in the last 90 days to chart.</p>'}
-    ${last30.length ? `<details><summary>Last ${last30.length} entr${last30.length === 1 ? 'y' : 'ies'}</summary><ul class="today-list">${last30.map(w => `<li><span>${uiFmtDate(w.date)}</span><span class="num">${kgToLb(w.kg)} lb <span class="muted small">(${w.kg} kg)</span> <button class="btn link small" type="button" data-del-weight="${uiEsc(w.date)}" style="min-height:32px">Delete</button></span></li>`).join('')}</ul></details>` : ''}
+    ${all.length ? `<div class="btn-row"><button class="btn" type="button" data-weight-history>${uiIcon('list')}Weight history (${all.length} entr${all.length === 1 ? 'y' : 'ies'})</button></div>` : ''}
   </section>`;
+}
+
+// History, one tap from where things are logged (owner request, September 30, 2026): every weight, newest first, and
+// what was eaten and how the person felt, day by day. Both Today screens (full and lite) open these.
+export function todayBindHistoryButtons(root, person) {
+  root.querySelectorAll('[data-weight-history]').forEach(b => b.addEventListener('click', () => todayWeightHistoryModal(person)));
+  root.querySelectorAll('[data-food-history]').forEach(b => b.addEventListener('click', () => todayFoodHistoryModal(person)));
+}
+
+export function todayWeightHistoryModal(person) {
+  const draw = () => {
+    const all = (uiState.profile.weights || []).filter(w => w.person === person.id).sort((a, b) => a.date.localeCompare(b.date));
+    const rows = all.map((w, i) => ({ w, prev: i ? all[i - 1] : null })).reverse();
+    return `${all.length > 1 ? todayChartSVG(all) : ''}
+      ${rows.length ? `<ul class="today-list">${rows.map(({ w, prev }) => { const d = prev ? Math.round((kgToLb(w.kg) - kgToLb(prev.kg)) * 10) / 10 : null;
+        return `<li><span>${uiFmtDate(w.date)}</span><span class="num">${kgToLb(w.kg)} lb${d != null ? ` <span class="muted small">(${d > 0 ? '+' : ''}${d} lb)</span>` : ''} <button class="btn link small" type="button" data-hist-del-weight="${uiEsc(w.date)}" aria-label="Delete the weight for ${uiEsc(uiFmtDate(w.date))}">Delete</button></span></li>`; }).join('')}</ul>` : uiEmptyState('No weights logged yet.', '', 'list')}
+      <p class="small muted">Every weight you have logged, newest first. The number in brackets is the change from the entry before.</p>`;
+  };
+  // The Today screen behind the sheet redraws when it closes, so a deleted weight leaves its chart and count too.
+  const m = uiModal(draw(), { title: 'Weight history', onClose: () => uiState.rerender() });
+  if (!m) return;
+  const bind = () => m.el.querySelectorAll('[data-hist-del-weight]').forEach(b => b.addEventListener('click', () => {
+    uiState.profile.weights = uiState.profile.weights.filter(w => !(w.person === person.id && w.date === b.dataset.histDelWeight));
+    uiPersist(); m.el.innerHTML = draw(); bind(); uiToast('Deleted.');
+  }));
+  bind();
+}
+
+const TODAY_HISTORY_MEALS = [['breakfast', 'Breakfast'], ['lunch', 'Lunch'], ['dinner', 'Dinner'], ['snacks', 'Snacks']];
+const TODAY_SEVERITY = ['', 'mild', 'moderate', 'bad'];
+function todaySymptomName(id) {
+  const s = LOG_SYMPTOMS.find(x => x.id === id);
+  return s ? s.label : String(id).replace(/^custom:/, '').replace(/_/g, ' ');
+}
+
+export function todayFoodHistoryModal(person) {
+  const state = { days: 30 };
+  const draw = () => {
+    const to = uiIsoDate(uiToday()), from = todayShiftDate(to, -(state.days - 1));
+    const days = reportDays({ diary: uiState.profile.diary, log: uiState.profile.log, weights: uiState.profile.weights, personId: person.id, from, to, onlySymptomDays: false }).reverse();
+    const fine = new Set((uiState.profile.log || []).filter(e => e.person === person.id && e.fine && e.date >= from && e.date <= to).map(e => e.date));
+    for (const date of fine) if (!days.some(d => d.date === date)) days.push({ date, eaten: [], episodes: [], weight: null });
+    days.sort((a, b) => b.date.localeCompare(a.date));
+    const dayHTML = d => {
+      const known = new Set(TODAY_HISTORY_MEALS.map(([k]) => k));
+      const groups = [...TODAY_HISTORY_MEALS, ...[...new Set(d.eaten.map(e => e.meal).filter(x => !known.has(x)))].map(k => [k, String(k).replace(/-/g, ' ')])];
+      const meals = groups.map(([k, label]) => { const es = d.eaten.filter(e => e.meal === k); return es.length ? `<li><strong>${uiEsc(label[0].toUpperCase() + label.slice(1))}:</strong> ${es.map(e => { const kcal = todayNutrientsFor(e).kcal; return uiEsc(todayEntryName(e)) + (kcal ? ` <span class="muted small">${uiFmtNum(kcal)} kcal</span>` : ''); }).join(', ')}</li>` : ''; }).join('');
+      const sym = d.episodes.map(e => Object.entries(e.symptoms).filter(([, v]) => Number(v) > 0).map(([k, v]) => `${uiEsc(todaySymptomName(k))} (${TODAY_SEVERITY[Number(v)] || v})`).join(', ')).filter(Boolean);
+      return `<div class="card history-day"><h3>${uiEsc(uiFmtDate(d.date))}</h3>
+        ${sym.length ? `<p><strong>Symptoms:</strong> ${sym.join('; ')}</p>` : fine.has(d.date) ? '<p><strong>Feeling fine</strong></p>' : ''}
+        ${meals ? `<ul class="small history-meals">${meals}</ul>` : '<p class="small muted">No food logged.</p>'}
+        ${d.weight ? `<p class="small">Weight: ${kgToLb(d.weight.kg)} lb</p>` : ''}</div>`;
+    };
+    return `<p class="small muted">What you ate and how you felt, newest first, for the last ${state.days} days. The Report turns the same diary into a printout for your doctor.</p>
+      ${days.length ? `<div class="stack">${days.map(dayHTML).join('')}</div>` : uiEmptyState(`Nothing logged in the last ${state.days} days.`, '', 'list')}
+      <div class="btn-row"><button class="btn" type="button" data-history-more>Show 30 earlier days</button><a class="btn" href="#/report">Open the Report</a></div>`;
+  };
+  const m = uiModal(draw(), { title: 'Food and symptom history' });
+  if (!m) return;
+  const bind = () => {
+    const more = m.el.querySelector('[data-history-more]');
+    if (more) more.addEventListener('click', () => { state.days += 30; m.el.innerHTML = draw(); bind(); });
+    const rep = m.el.querySelector('a[href="#/report"]');
+    if (rep) rep.addEventListener('click', () => { if (uiState.modalClose) uiState.modalClose({ silent: true }); });
+  };
+  bind();
 }
 
 export function todayChartSVG(points) {
@@ -346,6 +413,7 @@ function todayBind(root, person, plan, date) {
     uiState.profile.weights = uiState.profile.weights.filter(w => !(w.person === person.id && w.date === b.dataset.delWeight));
     uiPersist(); uiState.rerender();
   }));
+  todayBindHistoryButtons(root, person);
   const est = root.querySelector('#today-ex-est');
   const updEst = () => {
     const wkg = todayLatestWeightKg(person);
@@ -438,20 +506,21 @@ function todaySearchItems(person, plan, query, favOnly) {
   const items = [];
   for (const r of (uiState.recipesForPlan && plan ? uiState.recipesForPlan(plan) : uiState.data.recipes)) if (match(r.name) && (!favOnly || favR.has(r.id)) && !recipesIsNever(person, r.id)) items.push({ kind: 'recipe', id: r.id, name: r.name, sub: `Recipe · ${r.active_min} min active · ${r.servings} servings`, fav: favR.has(r.id), obj: r });
   for (const f of uiState.data.foods) if (match(f.name + ' ' + (f.short || '')) && (!favOnly || favF.has(f.id))) items.push({ kind: 'food', id: f.id, name: f.short || f.name, sub: `Food · ${f.group || 'Other'}`, fav: favF.has(f.id), obj: f });
-  items.sort((a, b) => Number(b.fav) - Number(a.fav));
-  const out = items.slice(0, 40);
-  for (const it of out) {
+  // Foods and recipes are ranked and capped separately (src/engine/search.js): with one shared cap of 40, a common
+  // word such as "banana" filled every slot with recipes and a plain banana could not be found.
+  const g = searchGroupMatches(items, q);
+  for (const it of [...g.foods, ...g.recipes]) {
     const c = it.kind === 'recipe' ? checkRecipe(it.obj, plan, uiState.matcher, uiState.foodsById, person) : checkFood(it.obj, plan, uiState.matcher, person);
     it.verdict = c.verdict;
   }
-  return { out, total: items.length };
+  return g;
 }
 
-export function todayAddModal(person, plan, date, meal) {
-  const state = { q: '', fav: false };
+export function todayAddModal(person, plan, date, meal, opts = {}) {
+  const state = { q: opts.q || '', fav: false };
   const m = uiModal(`
     ${uiState.lite ? `<div class="field"><label for="today-w-name">Write it in</label><div class="row"><input id="today-w-name" type="text" placeholder="Toast with butter" autocomplete="off" style="flex:1;min-width:0"><button class="btn primary" type="button" id="today-w-add">Add</button></div><div class="hint">Just the name. Or search below to have it checked and counted.</div></div>` : ''}
-    <div class="row"><input type="search" id="today-q" placeholder="Search recipes and foods" aria-label="Search recipes and foods" style="flex:1;min-width:0"><button class="today-chip" type="button" id="today-fav-chip" aria-pressed="false">${uiIcon('heart')}Favorites</button></div>
+    <div class="row"><input type="search" id="today-q" value="${uiEsc(state.q)}" placeholder="Search recipes and foods" aria-label="Search recipes and foods" style="flex:1;min-width:0"><button class="today-chip" type="button" id="today-fav-chip" aria-pressed="false">${uiIcon('heart')}Favorites</button></div>
     <div id="today-results" style="margin-top:.5rem"></div>
     ${uiState.lite ? '' : `<details style="margin-top:.75rem"><summary>Custom entry (from a label)</summary>
       <div class="today-row"><div class="field"><label for="today-c-name">Name</label><input id="today-c-name" type="text"></div><div class="field" style="max-width:110px"><label for="today-c-kcal">kcal</label><input id="today-c-kcal" type="number" inputmode="numeric" min="0"></div></div>
@@ -462,14 +531,23 @@ export function todayAddModal(person, plan, date, meal) {
   const el = m.el;
   const results = el.querySelector('#today-results');
   const draw = () => {
-    const { out, total } = todaySearchItems(person, plan, state.q, state.fav);
-    results.innerHTML = out.length ? `<p class="small muted" style="margin:0 0 .25rem">${total} match${total === 1 ? '' : 'es'}${total > out.length ? ', showing the first ' + out.length : ''}. Favorites first. Recipes marked never again are not listed.</p>` + out.map(it => `<div class="today-result">
+    const g = todaySearchItems(person, plan, state.q, state.fav);
+    const shown = g.foods.length + g.recipes.length, total = g.totalFoods + g.totalRecipes;
+    const plural = (n, w) => `${n.toLocaleString()} ${w}${n === 1 ? '' : 's'}`;
+    const row = it => `<div class="today-result">
       ${it.kind === 'recipe' ? recipesTasteHTML(person, it.id) : `<button class="heart-btn ${it.fav ? 'on' : ''}" type="button" data-fav-food="${uiEsc(it.id)}" aria-pressed="${it.fav}" aria-label="${it.fav ? 'Remove from favorites' : 'Add to favorites'}">${uiIcon('heart', { fill: it.fav })}</button>`}
       <button class="pick" type="button" data-pick="${it.kind}:${uiEsc(it.id)}"><span class="dot ${it.verdict}" aria-hidden="true"></span><span class="visually-hidden">${uiVerdictWord(it.verdict)}: </span><strong>${uiEsc(it.name)}</strong><br><span class="small muted">${uiEsc(it.sub)}</span></button>
-    </div>`).join('') : uiEmptyState(state.fav ? 'No favorites match. Tap the heart on any recipe or food to add one.' : 'No recipe or food matches.', '', 'list');
+    </div>`;
+    results.innerHTML = shown ? `<p class="small muted" style="margin:0 0 .25rem">${plural(g.totalFoods, 'food')} and ${plural(g.totalRecipes, 'recipe')} match${total > shown ? '; the closest are shown. Type more to narrow it down' : ''}. Favorites first. Recipes marked never again are not listed.</p>`
+      + (g.foods.length ? `<h3 class="eyebrow" style="margin:.75rem 0 .25rem">Foods</h3>${g.foods.map(row).join('')}` : '')
+      + (g.recipes.length ? `<h3 class="eyebrow" style="margin:.75rem 0 .25rem">Recipes</h3>${g.recipes.map(row).join('')}` : '')
+      : uiEmptyState(state.fav ? 'No favorites match. Tap the heart on any recipe or food to add one.' : 'No recipe or food matches.', '', 'list');
     results.querySelectorAll('[data-fav-food]').forEach(b => b.addEventListener('click', () => { todayToggleFavorite(person, 'food', b.dataset.favFood); draw(); }));
     recipesBindTaste(results, person, () => draw());
-    results.querySelectorAll('[data-pick]').forEach(b => b.addEventListener('click', () => { const [k, id] = b.dataset.pick.split(':'); m.close(); todayAmountModal(person, plan, { date, meal, kind: k, ref: id }); }));
+    // The amount sheet replaces this one in place (uiModal reuses the open sheet's history entry). Closing this sheet
+    // first queued a history.back() whose popstate landed after the amount sheet opened and closed it at once, so a
+    // tapped food or recipe seemed to do nothing.
+    results.querySelectorAll('[data-pick]').forEach(b => b.addEventListener('click', () => { const [k, id] = b.dataset.pick.split(':'); todayAmountModal(person, plan, { date, meal, kind: k, ref: id }); }));
   };
   el.querySelector('#today-q').addEventListener('input', e => { state.q = e.target.value; draw(); });
   el.querySelector('#today-fav-chip').addEventListener('click', e => { state.fav = !state.fav; e.currentTarget.classList.toggle('on', state.fav); e.currentTarget.setAttribute('aria-pressed', String(state.fav)); draw(); });
@@ -497,7 +575,7 @@ export function todayAddModal(person, plan, date, meal) {
 }
 
 // Amount form for a recipe (servings) or a food (portion or grams). Also used to edit an existing entry.
-function todayAmountModal(person, plan, { date, meal, kind, ref, entry = null }) {
+export function todayAmountModal(person, plan, { date, meal, kind, ref, entry = null, partsOpen = false }) {
   if (entry) { date = entry.date; meal = entry.meal; kind = entry.kind; ref = entry.ref; }
   if (kind === 'custom') { todayCustomEditModal(entry); return; }
   const obj = kind === 'recipe' ? uiState.recipesById.get(ref) : uiState.foodsById.get(ref);
@@ -511,7 +589,7 @@ function todayAmountModal(person, plan, { date, meal, kind, ref, entry = null })
   if (kind === 'food' && draft.unit === 'g') draft.amount = draft.grams;
   const check = kind === 'recipe' ? checkRecipe(obj, plan, uiState.matcher, uiState.foodsById, person) : checkFood(obj, plan, uiState.matcher, person);
   const m = uiModal(`
-    <div class="row">${uiVerdictChip(check.verdict)} ${check.hits.length ? `<span class="small">Matches: ${check.hits.map(h => uiEsc(h.label) + (h.hard ? ' (hard)' : '')).join(', ')}</span>` : check.verdict === 'caution' ? `<span class="small">${uiEsc(cautionWhy(check))}</span>` : '<span class="small muted">No avoid tags matched.</span>'}</div>
+    <div class="row">${uiVerdictChip(check.verdict)} ${check.hits.length || (check.termHits || []).some(t => t.allergy) ? `<span class="small">Matches: ${[...check.hits.map(h => uiEsc(h.label) + (h.hard ? ' (hard)' : '')), ...(check.termHits || []).filter(t => t.allergy).map(t => uiEsc(t.term) + ' (your allergy, hard)')].join(', ')}</span>` : check.verdict === 'caution' ? `<span class="small">${uiEsc(cautionWhy(check))}</span>` : '<span class="small muted">No avoid tags matched.</span>'}</div>
     ${check.verdict === 'fail' ? uiNoticeHTML({ level: 'block', text: 'This has a hard exclusion for this person. You can still record that it was eaten, but it is not allowed by the plan.' }) : ''}
     <div class="field"><label for="today-a-meal">Meal</label><select id="today-a-meal">${TODAY_MEALS.map(x => `<option value="${x.id}" ${x.id === draft.meal ? 'selected' : ''}>${x.label}</option>`).join('')}</select></div>
     ${kind === 'recipe' ? `<div class="field"><label for="today-a-amount">Servings (recipe makes ${obj.servings})</label><input id="today-a-amount" type="number" inputmode="decimal" min="0.5" step="0.5" value="${uiEsc(draft.amount)}"></div>`
@@ -521,6 +599,7 @@ function todayAmountModal(person, plan, { date, meal, kind, ref, entry = null })
     <div class="field"><label for="today-a-note">Note (optional)</label><input id="today-a-note" type="text" value="${uiEsc(draft.note)}"></div>
     <div class="notice info plain" id="today-a-preview"></div>
     <div class="btn-row"><button class="btn primary" type="button" id="today-a-save">${entry ? 'Save changes' : 'Add'}</button></div>
+    ${kind === 'recipe' && !entry ? todayPartsHTML(obj, partsOpen) : ''}
   `, { title: name });
   if (!m) return;
   const el = m.el;
@@ -565,7 +644,84 @@ function todayAmountModal(person, plan, { date, meal, kind, ref, entry = null })
       m.close(); uiToast(`Added ${name}.`); uiState.rerender();
     }
   });
+  if (kind === 'recipe' && !entry) todayBindParts(el, m, person, plan, obj, date, draft, compute);
   compute();
+}
+
+// Owner request (September 30, 2026): log only the parts of a recipe that were eaten. A part the recipe links to a food
+// in foods.json is logged as that food, with the recipe's grams for it divided by the recipe's servings and multiplied
+// by the servings eaten, so its numbers are USDA values like any other food, and each part adds to the day on its own.
+// A part the recipe gives only as text (imported recipes) has no grams to scale, so nothing is estimated from it:
+// "Find" searches the food list for it instead, and the person picks the food and the amount.
+function todayPartsHTML(recipe, open) {
+  const ings = recipe.ingredients || [];
+  if (!ings.length) return '';
+  const rows = ings.map((ing, i) => {
+    const f = ing.food ? uiState.foodsById.get(ing.food) : null;
+    const label = ing.display || (f ? f.short || f.name : '') || 'Ingredient';
+    if (f && Number(ing.grams) > 0) return `<label class="choice"><input type="checkbox" data-part="${i}"><span class="choice-body"><span class="choice-title">${uiEsc(label)}</span><br><span class="small muted" data-part-share="${i}"></span></span></label>`;
+    return `<div class="list-row today-part-find"><span>${uiEsc(label)}</span><button class="btn small" type="button" data-part-find="${i}">${uiIcon('search')}Find</button></div>`;
+  }).join('');
+  const linked = ings.some(ing => ing.food && uiState.foodsById.get(ing.food) && Number(ing.grams) > 0);
+  const textOnly = ings.some(ing => !(ing.food && uiState.foodsById.get(ing.food) && Number(ing.grams) > 0));
+  return `<details class="today-parts" ${open ? 'open' : ''}><summary>Ate only part of it? Pick the parts</summary>
+    <p class="small muted">${linked ? 'Tick what you ate. Each part is logged as its own food, with its share of the servings above, and its numbers add up in your day.' : ''}${textOnly ? ' Parts with a Find button are written out in the recipe without an amount the app can use: tap Find to pick the food and how much.' : ''}</p>
+    <div class="choice-list">${rows}</div>
+    ${linked ? '<div class="btn-row"><button class="btn primary" type="button" id="today-parts-add" disabled>Add the ticked parts</button></div>' : ''}
+  </details>`;
+}
+
+// "1 ½ cups (360 ml) blueberries, fresh" -> "blueberry": the words to search the food list with.
+export function todayPartQuery(text) {
+  let t = String(text || '').toLowerCase().replace(/\([^)]*\)/g, ' ').split(',')[0];
+  t = t.replace(/(^|\s)\d+(?:[.,]\d+)?\s?(?:g|kg|mg|ml|l|oz|lbs?|tbsp|tsp|cm)(?=\s|$)/g, ' ');
+  t = t.replace(/(^|\s)[\d¼½¾⅓⅔⅛⅜⅝⅞\/.]+(?=\s|$)/g, ' ');
+  t = t.replace(/\b(cups?|c|tablespoons?|tbsps?|tbs|teaspoons?|tsps?|ounces?|oz|pounds?|lbs?|grams?|g|kg|ml|l|liters?|litres?|pinch(es)?|dash(es)?|cloves?|cans?|jars?|packages?|pkgs?|slices?|pieces?|large|medium|small|handfuls?|bunch(es)?|sprigs?|stalks?|heads?|of|about|to|or)\b/g, ' ');
+  return t.split(/\s+/).filter(Boolean).map(w => /(ss|us)$/.test(w) || w.length <= 3 ? w : /oes$/.test(w) ? w.slice(0, -2) : /ies$/.test(w) ? w.slice(0, -3) + 'y' : /s$/.test(w) ? w.slice(0, -1) : w).join(' ').trim();
+}
+
+// The part's words, or, when no food has all of them ("porridge oat"), the shortest ending that some food has ("oat").
+function todayPartSearch(text) {
+  const q = todayPartQuery(text);
+  const words = q.split(' ').filter(Boolean);
+  const hits = ws => (uiState.data.foods || []).some(f => ws.every(w => (f.name + ' ' + (f.short || '')).toLowerCase().includes(w)));
+  if (!words.length || hits(words)) return q;
+  for (let i = 1; i < words.length; i++) if (hits(words.slice(i))) return words.slice(i).join(' ');
+  return q;
+}
+
+function todayBindParts(el, m, person, plan, recipe, date, draft, compute) {
+  const addBtn = el.querySelector('#today-parts-add');
+  const ticked = () => [...el.querySelectorAll('[data-part]:checked')].map(x => Number(x.dataset.part));
+  // Each line names the whole recipe's amount; the share logged follows the servings box.
+  const shares = () => {
+    const servings = Number((el.querySelector('#today-a-amount') || {}).value) || 1;
+    const share = servings / (Number(recipe.servings) || 1);
+    el.querySelectorAll('[data-part-share]').forEach(x => { const ing = recipe.ingredients[Number(x.dataset.partShare)]; x.textContent = `Your share: ${uiFmtNum(Math.round(Number(ing.grams) * share * 10) / 10, 1)} g (recipe makes ${recipe.servings})`; });
+  };
+  shares();
+  const amt = el.querySelector('#today-a-amount');
+  if (amt) amt.addEventListener('input', shares);
+  el.querySelectorAll('[data-part]').forEach(x => x.addEventListener('change', () => { if (addBtn) addBtn.disabled = !ticked().length; }));
+  if (addBtn) addBtn.addEventListener('click', () => {
+    compute();
+    const servings = draft.amount > 0 ? draft.amount : 1;
+    const share = servings / (Number(recipe.servings) || 1);
+    let n = 0;
+    for (const i of ticked()) {
+      const ing = recipe.ingredients[i];
+      const grams = Math.round(Number(ing.grams) * share * 10) / 10;
+      if (!(grams > 0)) continue;
+      todayAddDiaryEntry(person, { date, meal: draft.meal, kind: 'food', ref: ing.food, amount: grams, unit: 'g', grams, note: `part of ${recipe.name}` });
+      n++;
+    }
+    m.close(); uiToast(`Added ${n} part${n === 1 ? '' : 's'} of ${recipe.name}.`); uiState.rerender();
+  });
+  el.querySelectorAll('[data-part-find]').forEach(b => b.addEventListener('click', () => {
+    compute();
+    const ing = recipe.ingredients[Number(b.dataset.partFind)];
+    todayAddModal(person, plan, date, draft.meal, { q: todayPartSearch(ing.display || '') });
+  }));
 }
 
 function todayCustomEditModal(entry) {

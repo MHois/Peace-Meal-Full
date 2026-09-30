@@ -37,7 +37,7 @@ export function buildGroupPlan({ people, conditions, dictionaries, today = new D
 
 // A shareable, minimal copy of a person: what another household needs to cook for them. No log, no weight history.
 export function exportPersonForSharing(person) {
-  const keep = ['name', 'adult', 'sex', 'age', 'modules', 'allergens', 'preferences', 'medications', 'pregnancy', 'breastfeeding', 'tier2', 'phases', 'modes', 'variants', 'flags', 'optional_rules', 'rule_settings', 'confirmations', 'acknowledged', 'custom_modules', 'cooking'];
+  const keep = ['name', 'adult', 'sex', 'age', 'modules', 'allergens', 'allergens_other', 'preferences', 'medications', 'pregnancy', 'breastfeeding', 'tier2', 'phases', 'modes', 'variants', 'flags', 'optional_rules', 'rule_settings', 'confirmations', 'acknowledged', 'custom_modules', 'cooking'];
   const out = { shared: true, version: 1, exported: new Date().toISOString() };
   for (const k of keep) if (person[k] !== undefined) out[k] = JSON.parse(JSON.stringify(person[k]));
   return out;

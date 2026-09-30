@@ -22,7 +22,7 @@
     "lactose-intolerance",
     "celiac"
   ],
-  "onboarding_common_note": "Shown first when a new person is set up; everything else is one tap away under \"Show all\", and search always covers every module (dietitian review, September 9, 2026). Chosen September 30, 2026 (owner question 11): conditions common in adults where everyday eating does much of the work (high blood pressure, high cholesterol, weight, type 2 diabetes, fatty liver, reflux, kidney disease), then three where the diet is the treatment itself (IBS, lactose intolerance, celiac disease). Rarer conditions, such as mast cell activation, are found by search or under Show all. It is a screen layout choice, not a clinical ranking; editing an existing person still shows every condition.",
+  "onboarding_common_note": "Shown first when a new person is set up, with every other condition and way of eating listed right below them (owner request, September 30, 2026; before that they sat behind a \"Show all\" button), and search always covers every module (dietitian review, September 9, 2026). Chosen September 30, 2026 (owner question 11): conditions common in adults where everyday eating does much of the work (high blood pressure, high cholesterol, weight, type 2 diabetes, fatty liver, reflux, kidney disease), then three where the diet is the treatment itself (IBS, lactose intolerance, celiac disease). Rarer conditions, such as mast cell activation, are listed below the ten and found by search. It is a screen layout choice, not a clinical ranking; editing an existing person still shows every condition.",
   "modules": [
     {
       "id": "t2d",
@@ -1445,7 +1445,12 @@
     },
     {
       "id": "anti-inflammatory-mediterranean",
-      "name": "Anti-inflammatory (Mediterranean-style)",
+      "name": "Mediterranean diet (anti-inflammatory)",
+      "aliases": [
+        "anti-inflammatory diet",
+        "Mediterranean diet",
+        "Mediterranean-style eating"
+      ],
       "category": "pattern",
       "phase1_ref": "Part B, 10",
       "evidence": {

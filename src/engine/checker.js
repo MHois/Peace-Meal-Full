@@ -23,7 +23,7 @@ function evaluateTags(tagMap, plan, matcher, opts = {}) {
 // or allergy (a personal preference alone does not count), or a daily or per-meal limit. While this is true, text the
 // dictionary cannot place is a caution, because it could be the very thing the plan restricts.
 export function planRestricts(plan, person = {}) {
-  if (person && person.allergens && person.allergens.length) return true;
+  if (person && ((person.allergens && person.allergens.length) || otherAllergies(person).length)) return true;
   for (const a of Object.values((plan && plan.avoid) || {})) {
     const rules = (a && a.rules) || [];
     if ((a && a.hard) || !rules.length || rules.some(r => !r.preference)) return true;
@@ -58,9 +58,9 @@ function verifyLabelHits(mayContain, plan, matcher) {
 export function checkText(text, plan, matcher, person = {}) {
   const r = matcher.tagText(text);
   const { hits, preferHits } = evaluateTags(r.tags, plan, matcher);
-  const hasAllergens = !!(person.allergens && person.allergens.length);
+  const hasAllergens = !!((person.allergens && person.allergens.length) || otherAllergies(person).length);
   const restricting = planRestricts(plan, person);
-  const termHits = matchAvoidTerms(text, person);
+  const termHits = [...matchOtherAllergies(text, person), ...matchAvoidTerms(text, person)];
   const verifyLabel = verifyLabelHits(r.mayContain, plan, matcher);
   // Strict mode (approved-food lists) applies to a label the same way it applies to a recipe: every piece of the
   // ingredient statement must be on the list. A piece that is only an amount ("7 ounces") is approved as empty, but it
@@ -70,6 +70,32 @@ export function checkText(text, plan, matcher, person = {}) {
   const portions = matcher.dietLists ? portionCheckText(raw, plan, matcher.dietLists) : { notes: [], stacked: [] };
   const verdict = verdictFrom({ hits, unknownRisk: r.unknownRisk, unrecognized: r.unrecognized, hasAllergens, restricting, termHits, verifyLabel, notApproved: strict.notApproved, smallServe: portions.stacked });
   return { verdict, hits, preferHits, termHits, verifyLabel, unknownRisk: r.unknownRisk, unrecognized: r.unrecognized, notes: r.notes, tags: r.tags, mayContain: r.mayContain, segments: r.segments, restricting, strictFamilies: strict.families, notApproved: strict.notApproved, portionNotes: portions.notes, smallServe: portions.stacked };
+}
+
+// Other allergies (owner decision, September 30, 2026): foods outside the nine major allergens that a person typed on
+// the Allergies step, such as kiwi or mustard. Each is a hard stop like the nine (food-allergies rule allergen-custom),
+// and having any turns on the unknown-ingredient caution, because US labels need not name them and they can sit
+// inside "spices" or "natural flavors". Matching is deliberately broad: any ingredient text that contains the word
+// counts ("corn" also catches "popcorn" and "cornstarch"). A word of three letters or fewer must start a word, so
+// "oat" catches "oats" and "oatmeal" but not "goat".
+export function otherAllergies(person) {
+  return [...new Set(((person && person.allergens_other) || []).map(x => String(x || '').trim().toLowerCase()).filter(x => x.length >= 2))];
+}
+
+function allergyTermRe(term) {
+  const e = term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  return new RegExp(term.length <= 3 ? '(^|[^a-z])' + e : e);
+}
+
+export function matchOtherAllergies(text, person) {
+  const t = String(text || '').toLowerCase();
+  return otherAllergies(person).filter(a => allergyTermRe(a).test(t)).map(term => ({ term, hard: true, allergy: true }));
+}
+
+// Ingredient words and food names that other allergies are matched against: a linked food with no display text is still
+// checked by its own name.
+function recipeWordsText(recipe, foodsById) {
+  return [recipe.name, ...(recipe.ingredients || []).map(i => { const f = foodsById && foodsById.get(i.food); return [i.display || '', f ? (f.name || '') + ' ' + (f.short || '') : ''].join(' '); })].join(' ');
 }
 
 function matchAvoidTerms(text, person) {
@@ -82,7 +108,7 @@ export function checkFood(food, plan, matcher, person = {}) {
   const tagMap = {};
   for (const tag of food.tags || []) tagMap[tag] = [food.short || food.name];
   const { hits, preferHits } = evaluateTags(tagMap, plan, matcher);
-  const termHits = matchAvoidTerms(food.name + ' ' + (food.short || ''), person);
+  const termHits = [...matchOtherAllergies(food.name + ' ' + (food.short || ''), person), ...matchAvoidTerms(food.name + ' ' + (food.short || ''), person)];
   // Strict mode applies to a single food the same way it applies to a recipe ingredient (2026-09 audit): the Check
   // screen's two boxes must not disagree about the same food.
   const one = { ingredients: [{ food: food.id }] }, byId = new Map([[food.id, food]]);
@@ -114,8 +140,8 @@ export function checkRecipe(recipe, plan, matcher, foodsById, person = {}) {
   }
   for (const tag of recipe.tags || []) addTag(tag, 'recipe');
   const { hits, preferHits } = evaluateTags(tagMap, plan, matcher);
-  const termHits = matchAvoidTerms(recipe.name + ' ' + (recipe.ingredients || []).map(i => i.display || '').join(' '), person);
-  const hasAllergens = !!(person.allergens && person.allergens.length);
+  const termHits = [...matchOtherAllergies(recipeWordsText(recipe, foodsById), person), ...matchAvoidTerms(recipe.name + ' ' + (recipe.ingredients || []).map(i => i.display || '').join(' '), person)];
+  const hasAllergens = !!((person.allergens && person.allergens.length) || otherAllergies(person).length);
   const restricting = planRestricts(plan, person);
   for (const t of Object.keys(tagMap)) delete mayContain[t];
   const verifyLabel = verifyLabelHits(mayContain, plan, matcher);
