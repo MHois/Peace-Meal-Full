@@ -2214,7 +2214,7 @@
           "default": "exclude",
           "tier": 1,
           "strength": "may",
-          "text": "\"May contain\" and shared-facility labels are user-configurable. Many people with allergies avoid these; the evidence on actual risk is mixed.",
+          "text": "\"May contain\" and \"made in a facility that also handles\" warnings: many people with allergies avoid these, and the evidence on the real risk is mixed. A warning that names your allergen is a stop, like the ingredient itself. For warnings that name other foods, you choose on the Allergies step; the default is a caution.",
           "sources": [
             "aaaai-acaai-food-allergy-2014",
             "fda-falcpa-2004"

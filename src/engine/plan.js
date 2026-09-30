@@ -120,6 +120,30 @@ function ruleApplies(rule, m, person, ctx) {
   return { apply: true };
 }
 
+// P2-10 (plain words): what each medicine answer's flag and requirement mean, said the way a person would. Each restates
+// its effect name and the rule text it comes from (low-carb lc-screen: "SGLT2 inhibitor use (euglycemic ketoacidosis
+// risk), insulin or sulfonylurea use (hypoglycemia; dose adjustment needed)"); none adds advice. An effect missing here
+// keeps the old wording.
+const MEDICATION_FLAG_WORDS = {
+  'hypoglycemia-awareness': 'watch for low blood sugar (hypoglycemia)',
+  'hypoglycemia-dose-adjustment': 'watch for low blood sugar (hypoglycemia); your doctor needs to adjust your medicine doses',
+  'hypoglycemia-risk-with-fasting-windows': 'watch for low blood sugar (hypoglycemia) during long gaps without food',
+  'low-carb-ketoacidosis-caution': 'take care with low-carb eating: with this medicine it can lead to ketoacidosis (a dangerous build-up of acid in the blood)',
+  'ketoacidosis-caution-with-low-carb': 'take care with low-carb eating: with this medicine it can lead to ketoacidosis (a dangerous build-up of acid in the blood)',
+  'euglycemic-ketoacidosis-risk': 'know the risk of ketoacidosis (a dangerous build-up of acid in the blood), which can happen even when blood sugar looks normal',
+  'serum-potassium-monitoring': 'have your blood potassium checked as your doctor advises'
+};
+const MEDICATION_REQUIRE_WORDS = {
+  'clinician-plan': 'a plan set with your doctor',
+  'clinician-signoff': 'your doctor\'s OK'
+};
+// ", which is about 70 to 84 grams a day for you": the higher-protein module's 1.0 to 1.2 g per kg, in the person's grams.
+function proteinGramsFor(person) {
+  const w = Number(person && person.weight_kg);
+  if (!(w > 0)) return '';
+  return `, which is about ${Math.round(w)} to ${Math.round(w * 1.2)} grams a day for you`;
+}
+
 export function buildPlan({ person, conditions, dictionaries, today = new Date() }) {
   conditions = normalizeConditions(conditions);
   // User-defined patterns live on the person and behave like modules with a 'user-defined' source.
@@ -190,9 +214,10 @@ export function buildPlan({ person, conditions, dictionaries, today = new Date()
     const dismissed = (person.dismissed_suggestions || []).includes('higher-protein-older-adult');
     if (byId.has('higher-protein-older-adult') && !activeIds.has('higher-protein-older-adult') && !dismissed && person.adult !== false && ((ageNum && ageNum >= 65) || glp1On)) {
       notices.push({ level: 'info', code: 'suggest-module', module: 'higher-protein-older-adult', sources: ['espen-geriatrics-2022'],
+        // P2-10: plain words, and the person's own grams when their weight is on file (the module's 1.0 to 1.2 g/kg/day).
         text: ageNum && ageNum >= 65
-          ? `At ${ageNum}, dietitians recommend more protein than the standard adult amount, about 1.0 to 1.2 g per kg of body weight a day, to hold on to muscle. The higher-protein module sets that target and spreads it across meals.`
-          : 'On a GLP-1 medicine, appetite drops and muscle goes with the fat unless protein stays up. The higher-protein module sets a protein target of about 1.0 to 1.2 g per kg a day and spreads it across meals.',
+          ? `At your age, dietitians suggest a little more protein to keep your muscles strong: about 1 to 1.2 grams a day for each kilogram you weigh${proteinGramsFor(person)}. Tap Add it and the app spreads it over your meals.`
+          : `On a GLP-1 medicine, appetite drops, and you can lose muscle along with fat unless you keep your protein up. Tap Add it to set a protein target of about 1 to 1.2 grams a day for each kilogram you weigh${proteinGramsFor(person)}, spread over your meals.`,
         action: 'add-module:higher-protein-older-adult', actionLabel: 'Add it', dismiss: 'higher-protein-older-adult' });
     }
   }
@@ -224,8 +249,8 @@ export function buildPlan({ person, conditions, dictionaries, today = new Date()
         const [verb, arg] = eff.split(':');
         if (verb === 'suppress') suppressedRules.set(arg, { reason: 'medication', text: q.text, module: m.id });
         else if (verb === 'enable') enabledRules.add(arg);
-        else if (verb === 'flag') notices.push({ level: 'warn', code: 'medication-flag', module: m.id, text: `${m.name}: because you answered yes to "${q.text}", note: ${String(arg || '').replace(/-/g, ' ')}.` });
-        else if (verb === 'require') notices.push({ level: 'warn', code: 'medication-require', module: m.id, text: `${m.name}: because you answered yes to "${q.text}", this pattern needs ${String(arg || '').replace(/-/g, ' ')} before you follow it.` });
+        else if (verb === 'flag') notices.push({ level: 'warn', code: 'medication-flag', module: m.id, text: `${m.name}: you answered yes to "${q.text}", so ${MEDICATION_FLAG_WORDS[arg] || 'note: ' + String(arg || '').replace(/-/g, ' ')}.` });
+        else if (verb === 'require') notices.push({ level: 'warn', code: 'medication-require', module: m.id, text: `${m.name}: you answered yes to "${q.text}", so this pattern needs ${MEDICATION_REQUIRE_WORDS[arg] || String(arg || '').replace(/-/g, ' ')} before you follow it.` });
       }
     }
   }

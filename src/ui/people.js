@@ -544,7 +544,7 @@ function peopleStepAllergens(container, person) {
       <p class="small" id="pa-other-saved" aria-live="polite">${peopleOtherAllergies(person).length ? `Hard stops: <strong>${peopleOtherAllergies(person).map(uiEsc).join(', ')}</strong>` : ''}</p>
     </div>
     ${perAllergy.map(r => `<div class="card" style="margin-top:1rem"><h3>${uiEsc(UI_ALLERGENS.find(a => a.tag === r.allergen) ? UI_ALLERGENS.find(a => a.tag === r.allergen).label : r.allergen)}: ask your allergist</h3><p class="small muted">Applies only when this allergy is checked above.</p>${peopleConfigurableRuleHTML(r, person)}</div>`).join('')}
-    ${configurable.length ? `<div class="card" style="margin-top:1rem"><h3>"May contain" and shared-facility labels</h3><p class="small muted">Many people with allergies avoid these. The evidence on actual risk is mixed, so this is your call. Applies when at least one allergen is listed above.</p>${configurable.map(r => peopleConfigurableRuleHTML(r, person)).join('')}</div>` : ''}`;
+    ${configurable.length ? `<div class="card" style="margin-top:1rem"><h3>"May contain" and shared-facility labels</h3><p class="small muted">Many people with allergies avoid these, and the evidence on the real risk is mixed. A warning that names one of your allergies is always a stop. For warnings about other foods, this is your call. Applies when at least one allergen is listed above.</p>${configurable.map(r => peopleConfigurableRuleHTML(r, person)).join('')}</div>` : ''}`;
   container.querySelectorAll('[data-allergen]').forEach(inp => inp.addEventListener('change', () => {
     person.allergens = person.allergens || [];
     const t = inp.dataset.allergen;

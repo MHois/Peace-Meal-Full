@@ -152,12 +152,17 @@ export function renderCheckScreen(root) {
   });
 }
 
+// What a stop and a caution mean, on the Why sheet (P2-10: plain words; the app's own terms were "hard stop",
+// "soft rule", and "acknowledgment").
+export const CHECK_WHY_HARD = 'Never eat this. No preference, mode, or "I understand" tap turns this rule off.';
+export const CHECK_WHY_SOFT = 'A caution, not a stop. You decide.';
+
 // Wires the "why" links (rules behind a match) to a sheet.
 export function checkBindResult(root) {
   root.querySelectorAll('[data-why]').forEach(b => b.addEventListener('click', () => {
     const h = checkLastRules[Number(b.dataset.why)];
     if (!h) return;
-    uiModal(`<p class="small muted">${h.note ? uiEsc(h.note) : h.hard ? 'A hard stop: never overridden by a preference, a mode, or an acknowledgment.' : 'A soft rule: shown as a caution; your call.'}</p>${uiRulesList(h.rules)}`, { title: `Why: ${h.label}` });
+    uiModal(`<p class="small muted">${uiEsc(h.note ? h.note : h.hard ? CHECK_WHY_HARD : CHECK_WHY_SOFT)}</p>${uiRulesList(h.rules)}`, { title: `Why: ${h.label}` });
   }));
 }
 
@@ -165,7 +170,8 @@ export function checkBindResult(root) {
 // term that can hide something, or not on a strict approved list) is a "not sure", never a pass.
 export function checkHeadline(r, lite = false) {
   const verdict = r.verdict;
-  if (verdict === 'fail') return 'Contains a hard exclusion.';
+  // P2-10: the stop in plain words ("Contains a hard exclusion." until September 30, 2026).
+  if (verdict === 'fail') return lite ? 'No. This has something you must not eat.' : 'No: contains something this plan never allows.';
   const known = (r.notApproved || []).filter(n => n.why === 'avoid' || n.why === 'reacts').length;   // on a leave-out list: a known problem
   const unsure = (r.unrecognized || []).length || (r.unknownRisk || []).length || (r.notApproved || []).length - known;
   const salt = (r.sodium || [])[0];

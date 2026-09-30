@@ -30,7 +30,8 @@ test('the GLP-1 and PCOS screening rules keep their source sentence and say the 
 test('low-carb: an SGLT2 inhibitor gives a warning and does not block; pregnancy turns the pattern off', () => {
   // What the corrected text says the app does.
   const sglt2 = planFor(tester(['low-carb-ketogenic'], { medications: { sglt2: true } }));
-  assert.ok(sglt2.notices.some(n => n.level === 'warn' && n.code === 'medication-require' && /clinician signoff/.test(n.text)));
+  // P2-10 (plain words): the notice said "needs clinician signoff"; it now says "needs your doctor's OK". Same check, new words.
+  assert.ok(sglt2.notices.some(n => n.level === 'warn' && n.code === 'medication-require' && /needs your doctor's OK/.test(n.text)));
   assert.ok(sglt2.modules.some(m => m.id === 'low-carb-ketogenic'));
   const pregnant = planFor(tester(['low-carb-ketogenic'], { sex: 'female', age: 30, pregnancy: true }));
   assert.ok(pregnant.notices.some(n => n.level === 'block' && n.code === 'module-disabled' && n.module === 'low-carb-ketogenic'));
