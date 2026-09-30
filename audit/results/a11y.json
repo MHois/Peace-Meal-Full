@@ -1,0 +1,8439 @@
+{
+ "axe": [],
+ "targets": {
+  "lite": {
+   "under24": [
+    {
+     "screen": "week",
+     "w": 1,
+     "h": 1,
+     "what": "input#week-budget on"
+    },
+    {
+     "screen": "week",
+     "w": 1,
+     "h": 1,
+     "what": "label.visually-hidden Snacks each day this week"
+    },
+    {
+     "screen": "recipes",
+     "w": 1,
+     "h": 1,
+     "what": "label.visually-hidden Search recipes"
+    },
+    {
+     "screen": "report",
+     "w": 1,
+     "h": 1,
+     "what": "input 7"
+    },
+    {
+     "screen": "report",
+     "w": 1,
+     "h": 1,
+     "what": "input 14"
+    },
+    {
+     "screen": "report",
+     "w": 1,
+     "h": 1,
+     "what": "input 30"
+    },
+    {
+     "screen": "report",
+     "w": 1,
+     "h": 1,
+     "what": "input 90"
+    },
+    {
+     "screen": "report",
+     "w": 1,
+     "h": 1,
+     "what": "input 180"
+    },
+    {
+     "screen": "report",
+     "w": 1,
+     "h": 1,
+     "what": "input all"
+    },
+    {
+     "screen": "report",
+     "w": 1,
+     "h": 1,
+     "what": "input symptoms"
+    },
+    {
+     "screen": "check",
+     "w": 1,
+     "h": 1,
+     "what": "label.visually-hidden Ingredient list"
+    },
+    {
+     "screen": "check",
+     "w": 1,
+     "h": 1,
+     "what": "input#check-photo.visually-hidden"
+    },
+    {
+     "screen": "check",
+     "w": 1,
+     "h": 1,
+     "what": "label.visually-hidden Look up a food"
+    },
+    {
+     "screen": "grocery",
+     "w": 1,
+     "h": 1,
+     "what": "label.visually-hidden List for"
+    },
+    {
+     "screen": "settings",
+     "w": 1,
+     "h": 1,
+     "what": "input system"
+    },
+    {
+     "screen": "settings",
+     "w": 1,
+     "h": 1,
+     "what": "input light"
+    },
+    {
+     "screen": "settings",
+     "w": 1,
+     "h": 1,
+     "what": "input dark"
+    },
+    {
+     "screen": "settings",
+     "w": 1,
+     "h": 1,
+     "what": "input#set-large on"
+    },
+    {
+     "screen": "settings",
+     "w": 1,
+     "h": 1,
+     "what": "input#set-import.visually-hidden"
+    },
+    {
+     "screen": "settings",
+     "w": 1,
+     "h": 1,
+     "what": "input#coll-wikibooks on"
+    },
+    {
+     "screen": "settings",
+     "w": 1,
+     "h": 1,
+     "what": "input#coll-nhs on"
+    },
+    {
+     "screen": "settings",
+     "w": 1,
+     "h": 1,
+     "what": "input#coll-nhlbi on"
+    },
+    {
+     "screen": "settings",
+     "w": 1,
+     "h": 1,
+     "what": "input#coll-va on"
+    },
+    {
+     "screen": "settings",
+     "w": 1,
+     "h": 1,
+     "what": "input#coll-parentclub on"
+    },
+    {
+     "screen": "settings",
+     "w": 1,
+     "h": 1,
+     "what": "input#coll-usda on"
+    },
+    {
+     "screen": "settings",
+     "w": 1,
+     "h": 1,
+     "what": "input#coll-review_dual on"
+    },
+    {
+     "screen": "settings",
+     "w": 229,
+     "h": 22,
+     "what": "a Where the recipes come from"
+    }
+   ],
+   "under44": [
+    {
+     "screen": "today",
+     "w": 94,
+     "h": 40,
+     "what": "button.btn.small Back to the previous screen"
+    },
+    {
+     "screen": "today",
+     "w": 81,
+     "h": 32,
+     "what": "a.brand LITE"
+    },
+    {
+     "screen": "today",
+     "w": 77,
+     "h": 40,
+     "what": "button.btn.small Add it"
+    },
+    {
+     "screen": "today",
+     "w": 94,
+     "h": 40,
+     "what": "button.btn.small Not now"
+    },
+    {
+     "screen": "today",
+     "w": 229,
+     "h": 30,
+     "what": "label Today's weight (lb)"
+    },
+    {
+     "screen": "week",
+     "w": 94,
+     "h": 40,
+     "what": "button.btn.small Back to the previous screen"
+    },
+    {
+     "screen": "week",
+     "w": 81,
+     "h": 32,
+     "what": "a.brand LITE"
+    },
+    {
+     "screen": "week",
+     "w": 137,
+     "h": 40,
+     "what": "button#week-regen.btn.small New week"
+    },
+    {
+     "screen": "week",
+     "w": 120,
+     "h": 40,
+     "what": "a.btn.small Recipes"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Swap Breakfast on Wed, Sep 30"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Log Cottage cheese bowl with p"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Add Cottage cheese bowl with p"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Swap Lunch on Wed, Sep 30"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Log Chicken salad with grapes"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Add Chicken salad with grapes"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Swap Afternoon snack on Wed, S"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Log Nutty apple and celery ric"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Add Nutty apple and celery ric"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Swap Dinner on Wed, Sep 30"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Log Roasted sweet potato and b"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Add Roasted sweet potato and b"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Swap Breakfast on Thu, Oct 1"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Log Kedgeree with a kick in th"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Add Kedgeree with a kick to To"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Swap Lunch on Thu, Oct 1"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Log Canned salmon salad in let"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Add Canned salmon salad in let"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Swap Afternoon snack on Thu, O"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Log Savory cottage cheese bowl"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Add Savory cottage cheese bowl"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Swap Dinner on Thu, Oct 1"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Log Coconut lentil and caulifl"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Add Coconut lentil and caulifl"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Swap Breakfast on Fri, Oct 2"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Log Egg white omelet with mush"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Add Egg white omelet with mush"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Swap Lunch on Fri, Oct 2"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Log Tuna and white bean salad"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Add Tuna and white bean salad"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Swap Afternoon snack on Fri, O"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Log Rice cakes with almond but"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Add Rice cakes with almond but"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Swap Dinner on Fri, Oct 2"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Log Rotisserie chicken, rice,"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Add Rotisserie chicken, rice,"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Swap Breakfast on Sat, Oct 3"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Log Zucchini, pepper, and feta"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Add Zucchini, pepper, and feta"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Swap Lunch on Sat, Oct 3"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Log Quinoa black bean bowls wi"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Add Quinoa black bean bowls wi"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Swap Afternoon snack on Sat, O"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Log Hummus with carrots and cu"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Add Hummus with carrots and cu"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Swap Dinner on Sat, Oct 3"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Log Baked cod with cherry toma"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Add Baked cod with cherry toma"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Swap Breakfast on Sun, Oct 4"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Log Quinoa, egg, and cucumber"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Add Quinoa, egg, and cucumber"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Swap Lunch on Sun, Oct 4"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Log Lentil salad with cucumber"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Add Lentil salad with cucumber"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Swap Afternoon snack on Sun, O"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Log Cottage cheese with peache"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Add Cottage cheese with peache"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Swap Dinner on Sun, Oct 4"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Log Greek chickpea salad in th"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Add Greek chickpea salad to To"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Swap Breakfast on Mon, Oct 5"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Log Turmeric tofu scramble wit"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Add Turmeric tofu scramble wit"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Swap Lunch on Mon, Oct 5"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Log Tuna and rice salad with l"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Add Tuna and rice salad with l"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Swap Afternoon snack on Mon, O"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Log Steamed edamame in the pod"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Add Steamed edamame in the pod"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Swap Dinner on Mon, Oct 5"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Log Roasted Broccoli, Fennel,"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Add Roasted Broccoli, Fennel,"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Swap Breakfast on Tue, Oct 6"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Log Microwave Turkey and Veget"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Add Microwave Turkey and Veget"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Swap Lunch on Tue, Oct 6"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Log Baby Spinach With Golden R"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Add Baby Spinach With Golden R"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Swap Afternoon snack on Tue, O"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Log Grilled plantain with fres"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Add Grilled plantain with fres"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Swap Dinner on Tue, Oct 6"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Log Alaska Salmon Salad in the"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Add Alaska Salmon Salad to Tod"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 94,
+     "h": 40,
+     "what": "button.btn.small Back to the previous screen"
+    },
+    {
+     "screen": "recipes",
+     "w": 81,
+     "h": 32,
+     "what": "a.brand LITE"
+    },
+    {
+     "screen": "recipes",
+     "w": 146,
+     "h": 40,
+     "what": "button#rc-new.btn.small New recipe"
+    },
+    {
+     "screen": "recipes",
+     "w": 173,
+     "h": 40,
+     "what": "button#rc-paste.btn.small Paste a recipe"
+    },
+    {
+     "screen": "recipes",
+     "w": 125,
+     "h": 36,
+     "what": "button.chip.neutral Favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 121,
+     "h": 36,
+     "what": "button.chip.neutral Featured"
+    },
+    {
+     "screen": "recipes",
+     "w": 134,
+     "h": 36,
+     "what": "button.chip.neutral Has nutrition"
+    },
+    {
+     "screen": "recipes",
+     "w": 130,
+     "h": 36,
+     "what": "button.chip.neutral Fits my plan"
+    },
+    {
+     "screen": "recipes",
+     "w": 175,
+     "h": 36,
+     "what": "button.chip.neutral Under 20 minutes"
+    },
+    {
+     "screen": "recipes",
+     "w": 122,
+     "h": 36,
+     "what": "button.chip.neutral Peace Meal"
+    },
+    {
+     "screen": "recipes",
+     "w": 61,
+     "h": 36,
+     "what": "button.chip.neutral NHS"
+    },
+    {
+     "screen": "recipes",
+     "w": 123,
+     "h": 36,
+     "what": "button.chip.neutral Parent Club"
+    },
+    {
+     "screen": "recipes",
+     "w": 79,
+     "h": 36,
+     "what": "button.chip.neutral NHLBI"
+    },
+    {
+     "screen": "recipes",
+     "w": 49,
+     "h": 36,
+     "what": "button.chip.neutral VA"
+    },
+    {
+     "screen": "recipes",
+     "w": 66,
+     "h": 36,
+     "what": "button.chip.neutral Mine"
+    },
+    {
+     "screen": "recipes",
+     "w": 116,
+     "h": 36,
+     "what": "button.chip.neutral Vegetarian"
+    },
+    {
+     "screen": "recipes",
+     "w": 77,
+     "h": 36,
+     "what": "button.chip.neutral Vegan"
+    },
+    {
+     "screen": "recipes",
+     "w": 210,
+     "h": 36,
+     "what": "select#rc-meal Any meal\nBreakfast\nLunch\nDinne"
+    },
+    {
+     "screen": "recipes",
+     "w": 264,
+     "h": 36,
+     "what": "select#rc-cuisine Any cuisine\nAmerican\nMexican a"
+    },
+    {
+     "screen": "recipes",
+     "w": 116,
+     "h": 40,
+     "what": "button#rc-clear.btn.link Clear filters"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "report",
+     "w": 94,
+     "h": 40,
+     "what": "button.btn.small Back to the previous screen"
+    },
+    {
+     "screen": "report",
+     "w": 81,
+     "h": 32,
+     "what": "a.brand LITE"
+    },
+    {
+     "screen": "report",
+     "w": 94,
+     "h": 40,
+     "what": "button#lite-print.btn.small Print"
+    },
+    {
+     "screen": "report",
+     "w": 152,
+     "h": 40,
+     "what": "button#lite-export.btn.small Save as file"
+    },
+    {
+     "screen": "check",
+     "w": 94,
+     "h": 40,
+     "what": "button.btn.small Back to the previous screen"
+    },
+    {
+     "screen": "check",
+     "w": 81,
+     "h": 32,
+     "what": "a.brand LITE"
+    },
+    {
+     "screen": "plan",
+     "w": 94,
+     "h": 40,
+     "what": "button.btn.small Back to the previous screen"
+    },
+    {
+     "screen": "plan",
+     "w": 81,
+     "h": 32,
+     "what": "a.brand LITE"
+    },
+    {
+     "screen": "plan",
+     "w": 94,
+     "h": 40,
+     "what": "button#plan-print.btn.small Print"
+    },
+    {
+     "screen": "plan",
+     "w": 87,
+     "h": 40,
+     "what": "a.btn.small Edit"
+    },
+    {
+     "screen": "plan",
+     "w": 125,
+     "h": 24,
+     "what": "button.btn.link About Hypertension"
+    },
+    {
+     "screen": "plan",
+     "w": 138,
+     "h": 24,
+     "what": "button.btn.link About Celiac disease"
+    },
+    {
+     "screen": "plan",
+     "w": 135,
+     "h": 24,
+     "what": "button.btn.link About Food allergies"
+    },
+    {
+     "screen": "plan",
+     "w": 61,
+     "h": 32,
+     "what": "button.btn.link Why (1)"
+    },
+    {
+     "screen": "plan",
+     "w": 61,
+     "h": 32,
+     "what": "button.btn.link Why (1)"
+    },
+    {
+     "screen": "plan",
+     "w": 81,
+     "h": 36,
+     "what": "button.chip.stop Gluten"
+    },
+    {
+     "screen": "plan",
+     "w": 78,
+     "h": 36,
+     "what": "button.chip.stop Wheat"
+    },
+    {
+     "screen": "plan",
+     "w": 143,
+     "h": 36,
+     "what": "button.chip.stop Hidden gluten"
+    },
+    {
+     "screen": "plan",
+     "w": 276,
+     "h": 36,
+     "what": "button.chip.stop Oats, not certified gluten-fre"
+    },
+    {
+     "screen": "plan",
+     "w": 84,
+     "h": 36,
+     "what": "button.chip.stop Peanut"
+    },
+    {
+     "screen": "plan",
+     "w": 106,
+     "h": 36,
+     "what": "button.chip.caution Red meat"
+    },
+    {
+     "screen": "plan",
+     "w": 132,
+     "h": 36,
+     "what": "button.chip.caution Added sugar"
+    },
+    {
+     "screen": "plan",
+     "w": 251,
+     "h": 36,
+     "what": "button.chip.caution Sugar-sweetened beverage"
+    },
+    {
+     "screen": "plan",
+     "w": 88,
+     "h": 36,
+     "what": "button.chip.caution Alcohol"
+    },
+    {
+     "screen": "plan",
+     "w": 265,
+     "h": 36,
+     "what": "button.chip.caution May contain / shared facility"
+    },
+    {
+     "screen": "plan",
+     "w": 110,
+     "h": 36,
+     "what": "button.chip.pass Vegetable"
+    },
+    {
+     "screen": "plan",
+     "w": 64,
+     "h": 36,
+     "what": "button.chip.pass Fruit"
+    },
+    {
+     "screen": "plan",
+     "w": 125,
+     "h": 36,
+     "what": "button.chip.pass Whole grain"
+    },
+    {
+     "screen": "plan",
+     "w": 225,
+     "h": 36,
+     "what": "button.chip.pass Low-fat or fat-free dairy"
+    },
+    {
+     "screen": "plan",
+     "w": 86,
+     "h": 36,
+     "what": "button.chip.pass Poultry"
+    },
+    {
+     "screen": "plan",
+     "w": 168,
+     "h": 36,
+     "what": "button.chip.pass Fish and seafood"
+    },
+    {
+     "screen": "plan",
+     "w": 91,
+     "h": 36,
+     "what": "button.chip.pass Legume"
+    },
+    {
+     "screen": "plan",
+     "w": 55,
+     "h": 36,
+     "what": "button.chip.pass Nut"
+    },
+    {
+     "screen": "grocery",
+     "w": 94,
+     "h": 40,
+     "what": "button.btn.small Back to the previous screen"
+    },
+    {
+     "screen": "grocery",
+     "w": 81,
+     "h": 32,
+     "what": "a.brand LITE"
+    },
+    {
+     "screen": "grocery",
+     "w": 114,
+     "h": 40,
+     "what": "input Eaters on Wed, Sep 30"
+    },
+    {
+     "screen": "grocery",
+     "w": 114,
+     "h": 40,
+     "what": "input Eaters on Thu, Oct 1"
+    },
+    {
+     "screen": "grocery",
+     "w": 114,
+     "h": 40,
+     "what": "input Eaters on Fri, Oct 2"
+    },
+    {
+     "screen": "grocery",
+     "w": 114,
+     "h": 40,
+     "what": "input Eaters on Sat, Oct 3"
+    },
+    {
+     "screen": "grocery",
+     "w": 114,
+     "h": 40,
+     "what": "input Eaters on Sun, Oct 4"
+    },
+    {
+     "screen": "grocery",
+     "w": 114,
+     "h": 40,
+     "what": "input Eaters on Mon, Oct 5"
+    },
+    {
+     "screen": "grocery",
+     "w": 114,
+     "h": 40,
+     "what": "input Eaters on Tue, Oct 6"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Water, tap"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Quinoa, uncooked"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Rice, brown, cooked"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Rice, white, long-grain,"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Cheese, feta"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Cheese, mozzarella, part"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Cottage cheese, 2%"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Egg white, raw"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Egg, whole, raw"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Greek yogurt, plain, nonf"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Milk, 1%"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Mayonnaise"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Olive oil"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Cod, Atlantic, raw"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Salmon, pink, canned"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Tuna, light, canned in wa"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Bag leaf spinach"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Bell pepper"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit C celery"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit C golden seedles raisin"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit C green onion"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit C nonfat plain yogurt"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Celery stick into"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Curry powder"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Deli turkey torn into"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Easy cook white brown ric"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Egg"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Fennel bulb cored inch th"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Fillet salmon"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Garlic"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Garlic powder"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Ground black pepper"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Ground coriander"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Ground cumin"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Ground nutmeg"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Hazelnut"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Head broccoli cut into fl"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Jalapeno membrane seed re"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Lemon juice"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit No salt added chickpea"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Nonfat plain greek yogurt"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Nonstick cooking spray"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Olive oil"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Onion powder"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Paprika"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Parsley"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Pea"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Pine nut"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Quarter cucumber"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Red apple cored"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Reduced fat soft cheese"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Rice cake"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Ripe plantain"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Salt"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Seedles red grape"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Skinles cod fillet cut in"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Skinles salmon fillet cut"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Skinles smoked haddock fi"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Spinach broccoli"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Spring onion"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Tomato"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Avocado"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Banana, ripe"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Grapes, red, seedless"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Lemon juice, fresh"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Lime juice, fresh"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Olives, ripe, canned"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Peach, raw"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Pineapple, raw"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Black beans, canned, low"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Cannellini beans, canned"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Chickpeas, canned"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Hummus"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Lentils, dry"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Tofu, firm"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Almond butter"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Almonds, raw"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Coconut milk, canned"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Pumpkin seeds (pepitas)"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Sunflower seeds, raw"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Walnuts"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Chicken breast, roasted"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Rotisserie chicken, breas"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Rice cakes, brown rice, p"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Salsa, jarred"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Black pepper"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Chili powder"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Cumin seed"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Dill, fresh"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Garlic powder"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Oregano, dried"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Salt, table, iodized"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Turmeric, ground"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Baby carrots, raw"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Bell pepper, red, raw"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Broccoli, frozen, cooked"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Cauliflower, raw"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Celery, raw"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Chives, raw"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Cilantro, fresh"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Corn, sweet, raw"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Cucumber, with peel, raw"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Edamame, frozen, prepared"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Garlic, raw"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Ginger root, raw"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Kale, raw"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Lettuce, romaine"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Mushrooms, white button,"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Onion, red, raw"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Onion, yellow, raw"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Parsley, fresh"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Peppers, sweet, red, cook"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Potato, red, raw"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Scallions (green onions),"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Spinach, baby, raw"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Sweet potato, raw"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Tomatoes, canned, diced"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Tomatoes, grape, raw"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Zucchini, raw"
+    },
+    {
+     "screen": "pantry",
+     "w": 94,
+     "h": 40,
+     "what": "button.btn.small Back to the previous screen"
+    },
+    {
+     "screen": "pantry",
+     "w": 81,
+     "h": 32,
+     "what": "a.brand LITE"
+    },
+    {
+     "screen": "people",
+     "w": 94,
+     "h": 40,
+     "what": "button.btn.small Back to the previous screen"
+    },
+    {
+     "screen": "people",
+     "w": 81,
+     "h": 32,
+     "what": "a.brand LITE"
+    },
+    {
+     "screen": "people",
+     "w": 108,
+     "h": 40,
+     "what": "button.btn.small Delete"
+    },
+    {
+     "screen": "people",
+     "w": 80,
+     "h": 36,
+     "what": "a.chip.neutral Basics"
+    },
+    {
+     "screen": "people",
+     "w": 101,
+     "h": 36,
+     "what": "a.chip.neutral Allergies"
+    },
+    {
+     "screen": "people",
+     "w": 199,
+     "h": 36,
+     "what": "a.chip.neutral Conditions and diets"
+    },
+    {
+     "screen": "people",
+     "w": 176,
+     "h": 36,
+     "what": "a.chip.neutral Likes and dislikes"
+    },
+    {
+     "screen": "people",
+     "w": 128,
+     "h": 36,
+     "what": "a.chip.neutral Medications"
+    },
+    {
+     "screen": "people",
+     "w": 94,
+     "h": 36,
+     "what": "a.chip.neutral Cooking"
+    },
+    {
+     "screen": "people",
+     "w": 85,
+     "h": 36,
+     "what": "a.chip.neutral Review"
+    },
+    {
+     "screen": "log",
+     "w": 94,
+     "h": 40,
+     "what": "button.btn.small Back to the previous screen"
+    },
+    {
+     "screen": "log",
+     "w": 81,
+     "h": 32,
+     "what": "a.brand LITE"
+    },
+    {
+     "screen": "log",
+     "w": 324,
+     "h": 30,
+     "what": "label Date"
+    },
+    {
+     "screen": "log",
+     "w": 324,
+     "h": 30,
+     "what": "label Meal"
+    },
+    {
+     "screen": "log",
+     "w": 324,
+     "h": 30,
+     "what": "label Meal from this week's plan"
+    },
+    {
+     "screen": "log",
+     "w": 324,
+     "h": 30,
+     "what": "label Or describe what you ate"
+    },
+    {
+     "screen": "log",
+     "w": 324,
+     "h": 30,
+     "what": "label Bloating None"
+    },
+    {
+     "screen": "log",
+     "w": 324,
+     "h": 30,
+     "what": "label Gas None"
+    },
+    {
+     "screen": "log",
+     "w": 324,
+     "h": 30,
+     "what": "label Stomach pain None"
+    },
+    {
+     "screen": "log",
+     "w": 324,
+     "h": 30,
+     "what": "label Nausea None"
+    },
+    {
+     "screen": "log",
+     "w": 324,
+     "h": 30,
+     "what": "label Heartburn or reflux None"
+    },
+    {
+     "screen": "log",
+     "w": 324,
+     "h": 30,
+     "what": "label Diarrhea None"
+    },
+    {
+     "screen": "log",
+     "w": 324,
+     "h": 30,
+     "what": "label Constipation None"
+    },
+    {
+     "screen": "log",
+     "w": 324,
+     "h": 30,
+     "what": "label Headache None"
+    },
+    {
+     "screen": "log",
+     "w": 324,
+     "h": 30,
+     "what": "label Flushing or hives None"
+    },
+    {
+     "screen": "log",
+     "w": 324,
+     "h": 30,
+     "what": "label Itching or rash None"
+    },
+    {
+     "screen": "log",
+     "w": 324,
+     "h": 30,
+     "what": "label Mouth or throat itch None"
+    },
+    {
+     "screen": "log",
+     "w": 324,
+     "h": 30,
+     "what": "label Fatigue or brain fog None"
+    },
+    {
+     "screen": "log",
+     "w": 324,
+     "h": 30,
+     "what": "label Joint pain None"
+    },
+    {
+     "screen": "log",
+     "w": 324,
+     "h": 30,
+     "what": "label Dizziness or racing heart None"
+    },
+    {
+     "screen": "log",
+     "w": 324,
+     "h": 30,
+     "what": "label Poor sleep None"
+    },
+    {
+     "screen": "log",
+     "w": 324,
+     "h": 30,
+     "what": "label Mood None"
+    },
+    {
+     "screen": "log",
+     "w": 324,
+     "h": 30,
+     "what": "label Notes"
+    },
+    {
+     "screen": "log",
+     "w": 80,
+     "h": 40,
+     "what": "button.btn.small Delete"
+    },
+    {
+     "screen": "breathe",
+     "w": 94,
+     "h": 40,
+     "what": "button.btn.small Back to the previous screen"
+    },
+    {
+     "screen": "breathe",
+     "w": 81,
+     "h": 32,
+     "what": "a.brand LITE"
+    },
+    {
+     "screen": "breathe",
+     "w": 146,
+     "h": 40,
+     "what": "button#breathe-full.btn.small Full screen"
+    },
+    {
+     "screen": "learn",
+     "w": 94,
+     "h": 40,
+     "what": "button.btn.small Back to the previous screen"
+    },
+    {
+     "screen": "learn",
+     "w": 81,
+     "h": 32,
+     "what": "a.brand LITE"
+    },
+    {
+     "screen": "settings",
+     "w": 94,
+     "h": 40,
+     "what": "button.btn.small Back to the previous screen"
+    },
+    {
+     "screen": "settings",
+     "w": 81,
+     "h": 32,
+     "what": "a.brand LITE"
+    }
+   ]
+  },
+  "full": {
+   "under24": [
+    {
+     "screen": "home",
+     "w": 1,
+     "h": 1,
+     "what": "label.visually-hidden Active person"
+    },
+    {
+     "screen": "plan",
+     "w": 117,
+     "h": 20,
+     "what": "button.btn.link About Celiac disease"
+    },
+    {
+     "screen": "plan",
+     "w": 115,
+     "h": 20,
+     "what": "button.btn.link About Food allergies"
+    },
+    {
+     "screen": "check",
+     "w": 1,
+     "h": 1,
+     "what": "label.visually-hidden Ingredient list"
+    },
+    {
+     "screen": "check",
+     "w": 1,
+     "h": 1,
+     "what": "input#check-photo.visually-hidden"
+    },
+    {
+     "screen": "check",
+     "w": 1,
+     "h": 1,
+     "what": "label.visually-hidden Look up a food"
+    },
+    {
+     "screen": "today",
+     "w": 1,
+     "h": 1,
+     "what": "input#today-count-ex on"
+    },
+    {
+     "screen": "week",
+     "w": 1,
+     "h": 1,
+     "what": "input#week-budget on"
+    },
+    {
+     "screen": "week",
+     "w": 1,
+     "h": 1,
+     "what": "input#week-unknown on"
+    },
+    {
+     "screen": "week",
+     "w": 1,
+     "h": 1,
+     "what": "label.visually-hidden Snacks each day this week"
+    },
+    {
+     "screen": "recipes",
+     "w": 1,
+     "h": 1,
+     "what": "label.visually-hidden Search recipes"
+    },
+    {
+     "screen": "grocery",
+     "w": 1,
+     "h": 1,
+     "what": "label.visually-hidden List for"
+    },
+    {
+     "screen": "together",
+     "w": 1,
+     "h": 1,
+     "what": "input#hh-budget on"
+    },
+    {
+     "screen": "together",
+     "w": 1,
+     "h": 1,
+     "what": "input#tg-file.visually-hidden"
+    },
+    {
+     "screen": "settings",
+     "w": 1,
+     "h": 1,
+     "what": "input system"
+    },
+    {
+     "screen": "settings",
+     "w": 1,
+     "h": 1,
+     "what": "input light"
+    },
+    {
+     "screen": "settings",
+     "w": 1,
+     "h": 1,
+     "what": "input dark"
+    },
+    {
+     "screen": "settings",
+     "w": 1,
+     "h": 1,
+     "what": "input#set-large on"
+    },
+    {
+     "screen": "settings",
+     "w": 1,
+     "h": 1,
+     "what": "input#set-import.visually-hidden"
+    },
+    {
+     "screen": "settings",
+     "w": 1,
+     "h": 1,
+     "what": "input#coll-wikibooks on"
+    },
+    {
+     "screen": "settings",
+     "w": 1,
+     "h": 1,
+     "what": "input#coll-nhs on"
+    },
+    {
+     "screen": "settings",
+     "w": 1,
+     "h": 1,
+     "what": "input#coll-nhlbi on"
+    },
+    {
+     "screen": "settings",
+     "w": 1,
+     "h": 1,
+     "what": "input#coll-va on"
+    },
+    {
+     "screen": "settings",
+     "w": 1,
+     "h": 1,
+     "what": "input#coll-parentclub on"
+    },
+    {
+     "screen": "settings",
+     "w": 1,
+     "h": 1,
+     "what": "input#coll-usda on"
+    },
+    {
+     "screen": "settings",
+     "w": 1,
+     "h": 1,
+     "what": "input#coll-review_dual on"
+    },
+    {
+     "screen": "settings",
+     "w": 195,
+     "h": 18,
+     "what": "a Where the recipes come from"
+    }
+   ],
+   "under44": [
+    {
+     "screen": "home",
+     "w": 88,
+     "h": 40,
+     "what": "button.btn.small Back to the previous screen"
+    },
+    {
+     "screen": "home",
+     "w": 32,
+     "h": 32,
+     "what": "a.brand"
+    },
+    {
+     "screen": "home",
+     "w": 130,
+     "h": 40,
+     "what": "a.btn.small Edit profile"
+    },
+    {
+     "screen": "home",
+     "w": 135,
+     "h": 40,
+     "what": "a.btn.small Open Today"
+    },
+    {
+     "screen": "people",
+     "w": 88,
+     "h": 40,
+     "what": "button.btn.small Back to the previous screen"
+    },
+    {
+     "screen": "people",
+     "w": 32,
+     "h": 32,
+     "what": "a.brand"
+    },
+    {
+     "screen": "people",
+     "w": 97,
+     "h": 40,
+     "what": "button.btn.small Delete"
+    },
+    {
+     "screen": "people",
+     "w": 72,
+     "h": 36,
+     "what": "a.chip.neutral Basics"
+    },
+    {
+     "screen": "people",
+     "w": 90,
+     "h": 36,
+     "what": "a.chip.neutral Allergies"
+    },
+    {
+     "screen": "people",
+     "w": 173,
+     "h": 36,
+     "what": "a.chip.neutral Conditions and diets"
+    },
+    {
+     "screen": "people",
+     "w": 154,
+     "h": 36,
+     "what": "a.chip.neutral Likes and dislikes"
+    },
+    {
+     "screen": "people",
+     "w": 112,
+     "h": 36,
+     "what": "a.chip.neutral Medications"
+    },
+    {
+     "screen": "people",
+     "w": 84,
+     "h": 36,
+     "what": "a.chip.neutral Cooking"
+    },
+    {
+     "screen": "people",
+     "w": 76,
+     "h": 36,
+     "what": "a.chip.neutral Review"
+    },
+    {
+     "screen": "people",
+     "w": 122,
+     "h": 40,
+     "what": "button.btn.small Set active"
+    },
+    {
+     "screen": "people",
+     "w": 97,
+     "h": 40,
+     "what": "button.btn.small Delete"
+    },
+    {
+     "screen": "people",
+     "w": 72,
+     "h": 36,
+     "what": "a.chip.neutral Basics"
+    },
+    {
+     "screen": "people",
+     "w": 90,
+     "h": 36,
+     "what": "a.chip.neutral Allergies"
+    },
+    {
+     "screen": "people",
+     "w": 173,
+     "h": 36,
+     "what": "a.chip.neutral Conditions and diets"
+    },
+    {
+     "screen": "people",
+     "w": 154,
+     "h": 36,
+     "what": "a.chip.neutral Likes and dislikes"
+    },
+    {
+     "screen": "people",
+     "w": 112,
+     "h": 36,
+     "what": "a.chip.neutral Medications"
+    },
+    {
+     "screen": "people",
+     "w": 84,
+     "h": 36,
+     "what": "a.chip.neutral Cooking"
+    },
+    {
+     "screen": "people",
+     "w": 76,
+     "h": 36,
+     "what": "a.chip.neutral Review"
+    },
+    {
+     "screen": "plan",
+     "w": 88,
+     "h": 40,
+     "what": "button.btn.small Back to the previous screen"
+    },
+    {
+     "screen": "plan",
+     "w": 32,
+     "h": 32,
+     "what": "a.brand"
+    },
+    {
+     "screen": "plan",
+     "w": 85,
+     "h": 40,
+     "what": "button#plan-print.btn.small Print"
+    },
+    {
+     "screen": "plan",
+     "w": 79,
+     "h": 40,
+     "what": "a.btn.small Edit"
+    },
+    {
+     "screen": "plan",
+     "w": 173,
+     "h": 40,
+     "what": "a.btn.small Enter those numbers"
+    },
+    {
+     "screen": "plan",
+     "w": 73,
+     "h": 36,
+     "what": "button.chip.stop Gluten"
+    },
+    {
+     "screen": "plan",
+     "w": 70,
+     "h": 36,
+     "what": "button.chip.stop Wheat"
+    },
+    {
+     "screen": "plan",
+     "w": 126,
+     "h": 36,
+     "what": "button.chip.stop Hidden gluten"
+    },
+    {
+     "screen": "plan",
+     "w": 239,
+     "h": 36,
+     "what": "button.chip.stop Oats, not certified gluten-fre"
+    },
+    {
+     "screen": "plan",
+     "w": 57,
+     "h": 36,
+     "what": "button.chip.stop Milk"
+    },
+    {
+     "screen": "plan",
+     "w": 229,
+     "h": 36,
+     "what": "button.chip.caution May contain / shared facility"
+    },
+    {
+     "screen": "plan",
+     "w": 110,
+     "h": 36,
+     "what": "button.chip.pass Whole grain"
+    },
+    {
+     "screen": "plan",
+     "w": 82,
+     "h": 36,
+     "what": "button.chip.pass Legume"
+    },
+    {
+     "screen": "plan",
+     "w": 97,
+     "h": 36,
+     "what": "button.chip.pass Vegetable"
+    },
+    {
+     "screen": "plan",
+     "w": 277,
+     "h": 41,
+     "what": "a"
+    },
+    {
+     "screen": "plan",
+     "w": 260,
+     "h": 41,
+     "what": "a"
+    },
+    {
+     "screen": "check",
+     "w": 88,
+     "h": 40,
+     "what": "button.btn.small Back to the previous screen"
+    },
+    {
+     "screen": "check",
+     "w": 32,
+     "h": 32,
+     "what": "a.brand"
+    },
+    {
+     "screen": "today",
+     "w": 88,
+     "h": 40,
+     "what": "button.btn.small Back to the previous screen"
+    },
+    {
+     "screen": "today",
+     "w": 32,
+     "h": 32,
+     "what": "a.brand"
+    },
+    {
+     "screen": "today",
+     "w": 40,
+     "h": 40,
+     "what": "button#today-prev.btn.small Previous day"
+    },
+    {
+     "screen": "today",
+     "w": 40,
+     "h": 40,
+     "what": "button#today-next.btn.small Next day"
+    },
+    {
+     "screen": "today",
+     "w": 151,
+     "h": 40,
+     "what": "button#today-set-target.btn.small Change target"
+    },
+    {
+     "screen": "today",
+     "w": 102,
+     "h": 40,
+     "what": "button.btn.small History"
+    },
+    {
+     "screen": "today",
+     "w": 135,
+     "h": 40,
+     "what": "button#today-copy-yesterday.btn.small Copy yesterday"
+    },
+    {
+     "screen": "today",
+     "w": 236,
+     "h": 40,
+     "what": "button#today-from-plan.btn.small Add from this week's plan"
+    },
+    {
+     "screen": "today",
+     "w": 79,
+     "h": 40,
+     "what": "button.btn.small Add"
+    },
+    {
+     "screen": "today",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Oatmeal with berries"
+    },
+    {
+     "screen": "today",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Remove Oatmeal with berries"
+    },
+    {
+     "screen": "today",
+     "w": 79,
+     "h": 40,
+     "what": "button.btn.small Add"
+    },
+    {
+     "screen": "today",
+     "w": 79,
+     "h": 40,
+     "what": "button.btn.small Add"
+    },
+    {
+     "screen": "today",
+     "w": 79,
+     "h": 40,
+     "what": "button.btn.small Add"
+    },
+    {
+     "screen": "today",
+     "w": 167,
+     "h": 26,
+     "what": "label Weight (lb)"
+    },
+    {
+     "screen": "today",
+     "w": 196,
+     "h": 26,
+     "what": "label Activity"
+    },
+    {
+     "screen": "today",
+     "w": 120,
+     "h": 26,
+     "what": "label Minutes"
+    },
+    {
+     "screen": "today",
+     "w": 122,
+     "h": 26,
+     "what": "label"
+    },
+    {
+     "screen": "today",
+     "w": 120,
+     "h": 26,
+     "what": "label"
+    },
+    {
+     "screen": "week",
+     "w": 88,
+     "h": 40,
+     "what": "button.btn.small Back to the previous screen"
+    },
+    {
+     "screen": "week",
+     "w": 32,
+     "h": 32,
+     "what": "a.brand"
+    },
+    {
+     "screen": "week",
+     "w": 131,
+     "h": 40,
+     "what": "button#week-regen.btn.small Regenerate"
+    },
+    {
+     "screen": "week",
+     "w": 107,
+     "h": 40,
+     "what": "a.btn.small Recipes"
+    },
+    {
+     "screen": "week",
+     "w": 90,
+     "h": 32,
+     "what": "button.chip.pass CAN COOK"
+    },
+    {
+     "screen": "week",
+     "w": 100,
+     "h": 32,
+     "what": "select 10 min\n15 min\n20 min\n30 min\n45"
+    },
+    {
+     "screen": "week",
+     "w": 52,
+     "h": 32,
+     "what": "input Eaters on Wed, Sep 30"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Swap Breakfast on Wed, Sep 30"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Log Turmeric tofu scramble wit"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Add Turmeric tofu scramble wit"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Swap Lunch on Wed, Sep 30"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Log Coconut lentil and caulifl"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Add Coconut lentil and caulifl"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Swap Afternoon snack on Wed, S"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Log Raspberry chia jam on rice"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Add Raspberry chia jam on rice"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Swap Dinner on Wed, Sep 30"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Log Quinoa black bean bowls wi"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Add Quinoa black bean bowls wi"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "week",
+     "w": 90,
+     "h": 32,
+     "what": "button.chip.pass CAN COOK"
+    },
+    {
+     "screen": "week",
+     "w": 100,
+     "h": 32,
+     "what": "select 10 min\n15 min\n20 min\n30 min\n45"
+    },
+    {
+     "screen": "week",
+     "w": 52,
+     "h": 32,
+     "what": "input Eaters on Thu, Oct 1"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Swap Breakfast on Thu, Oct 1"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Log Quinoa, egg, and cucumber"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Add Quinoa, egg, and cucumber"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Swap Lunch on Thu, Oct 1"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Log Roasted sweet potato and b"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Add Roasted sweet potato and b"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Swap Afternoon snack on Thu, O"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Log Steamed edamame in the pod"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Add Steamed edamame in the pod"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Swap Dinner on Thu, Oct 1"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Log Unstuffed cabbage skillet"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Add Unstuffed cabbage skillet"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "week",
+     "w": 90,
+     "h": 32,
+     "what": "button.chip.pass CAN COOK"
+    },
+    {
+     "screen": "week",
+     "w": 100,
+     "h": 32,
+     "what": "select 10 min\n15 min\n20 min\n30 min\n45"
+    },
+    {
+     "screen": "week",
+     "w": 52,
+     "h": 32,
+     "what": "input Eaters on Fri, Oct 2"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Swap Breakfast on Fri, Oct 2"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Log Kedgeree with a kick in th"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Add Kedgeree with a kick to To"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Swap Lunch on Fri, Oct 2"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Log Tuna and white bean salad"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Add Tuna and white bean salad"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Swap Afternoon snack on Fri, O"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Log Hummus with carrots and cu"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Add Hummus with carrots and cu"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Swap Dinner on Fri, Oct 2"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Log Mild cauliflower and chick"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Add Mild cauliflower and chick"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "week",
+     "w": 90,
+     "h": 32,
+     "what": "button.chip.pass CAN COOK"
+    },
+    {
+     "screen": "week",
+     "w": 100,
+     "h": 32,
+     "what": "select 10 min\n15 min\n20 min\n30 min\n45"
+    },
+    {
+     "screen": "week",
+     "w": 52,
+     "h": 32,
+     "what": "input Eaters on Sat, Oct 3"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Swap Breakfast on Sat, Oct 3"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Log Sweet potato and pepper ha"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Add Sweet potato and pepper ha"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Swap Lunch on Sat, Oct 3"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Log Quinoa bowl with roasted p"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Add Quinoa bowl with roasted p"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Swap Afternoon snack on Sat, O"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Log Rice cakes with almond but"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Add Rice cakes with almond but"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Swap Dinner on Sat, Oct 3"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Log Shrimp rice noodle salad w"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Add Shrimp rice noodle salad w"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "week",
+     "w": 90,
+     "h": 32,
+     "what": "button.chip.pass CAN COOK"
+    },
+    {
+     "screen": "week",
+     "w": 100,
+     "h": 32,
+     "what": "select 10 min\n15 min\n20 min\n30 min\n45"
+    },
+    {
+     "screen": "week",
+     "w": 52,
+     "h": 32,
+     "what": "input Eaters on Sun, Oct 4"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Swap Breakfast on Sun, Oct 4"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Log Spinach and red pepper egg"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Add Spinach and red pepper egg"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Swap Lunch on Sun, Oct 4"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Log Rotisserie chicken, rice,"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Add Rotisserie chicken, rice,"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Swap Afternoon snack on Sun, O"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Log Watermelon and cucumber sa"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Add Watermelon and cucumber sa"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Swap Dinner on Sun, Oct 4"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Log Black bean and rice bowl w"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Add Black bean and rice bowl w"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "week",
+     "w": 90,
+     "h": 32,
+     "what": "button.chip.pass CAN COOK"
+    },
+    {
+     "screen": "week",
+     "w": 100,
+     "h": 32,
+     "what": "select 10 min\n15 min\n20 min\n30 min\n45"
+    },
+    {
+     "screen": "week",
+     "w": 52,
+     "h": 32,
+     "what": "input Eaters on Mon, Oct 5"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Swap Breakfast on Mon, Oct 5"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Log Microwave Turkey and Veget"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Add Microwave Turkey and Veget"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Swap Lunch on Mon, Oct 5"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Log Rice and Vegetable Medley"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Add Rice and Vegetable Medley"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Swap Afternoon snack on Mon, O"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Log Grilled plantain with fres"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Add Grilled plantain with fres"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Swap Dinner on Mon, Oct 5"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Log Pan-seared halibut with he"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Add Pan-seared halibut with he"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "week",
+     "w": 90,
+     "h": 32,
+     "what": "button.chip.pass CAN COOK"
+    },
+    {
+     "screen": "week",
+     "w": 100,
+     "h": 32,
+     "what": "select 10 min\n15 min\n20 min\n30 min\n45"
+    },
+    {
+     "screen": "week",
+     "w": 52,
+     "h": 32,
+     "what": "input Eaters on Tue, Oct 6"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Swap Breakfast on Tue, Oct 6"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Log Sweet potato and kale hash"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Add Sweet potato and kale hash"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Swap Lunch on Tue, Oct 6"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Log Coconut rice salad in the"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Add Coconut rice salad to Toda"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Swap Afternoon snack on Tue, O"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Log Apple slices with peanut b"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Add Apple slices with peanut b"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Swap Dinner on Tue, Oct 6"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Log Baked cod with cherry toma"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Add Baked cod with cherry toma"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "week",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 88,
+     "h": 40,
+     "what": "button.btn.small Back to the previous screen"
+    },
+    {
+     "screen": "recipes",
+     "w": 32,
+     "h": 32,
+     "what": "a.brand"
+    },
+    {
+     "screen": "recipes",
+     "w": 129,
+     "h": 40,
+     "what": "button#rc-new.btn.small New recipe"
+    },
+    {
+     "screen": "recipes",
+     "w": 152,
+     "h": 40,
+     "what": "button#rc-paste.btn.small Paste a recipe"
+    },
+    {
+     "screen": "recipes",
+     "w": 113,
+     "h": 36,
+     "what": "button.chip.neutral Favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 110,
+     "h": 36,
+     "what": "button.chip.neutral Featured"
+    },
+    {
+     "screen": "recipes",
+     "w": 118,
+     "h": 36,
+     "what": "button.chip.neutral Has nutrition"
+    },
+    {
+     "screen": "recipes",
+     "w": 114,
+     "h": 36,
+     "what": "button.chip.neutral Fits my plan"
+    },
+    {
+     "screen": "recipes",
+     "w": 153,
+     "h": 36,
+     "what": "button.chip.neutral Under 20 minutes"
+    },
+    {
+     "screen": "recipes",
+     "w": 107,
+     "h": 36,
+     "what": "button.chip.neutral Peace Meal"
+    },
+    {
+     "screen": "recipes",
+     "w": 56,
+     "h": 36,
+     "what": "button.chip.neutral NHS"
+    },
+    {
+     "screen": "recipes",
+     "w": 109,
+     "h": 36,
+     "what": "button.chip.neutral Parent Club"
+    },
+    {
+     "screen": "recipes",
+     "w": 71,
+     "h": 36,
+     "what": "button.chip.neutral NHLBI"
+    },
+    {
+     "screen": "recipes",
+     "w": 45,
+     "h": 36,
+     "what": "button.chip.neutral VA"
+    },
+    {
+     "screen": "recipes",
+     "w": 100,
+     "h": 36,
+     "what": "button.chip.neutral Wikibooks"
+    },
+    {
+     "screen": "recipes",
+     "w": 60,
+     "h": 36,
+     "what": "button.chip.neutral Mine"
+    },
+    {
+     "screen": "recipes",
+     "w": 102,
+     "h": 36,
+     "what": "button.chip.neutral Vegetarian"
+    },
+    {
+     "screen": "recipes",
+     "w": 69,
+     "h": 36,
+     "what": "button.chip.neutral Vegan"
+    },
+    {
+     "screen": "recipes",
+     "w": 189,
+     "h": 36,
+     "what": "select#rc-meal Any meal\nBreakfast\nLunch\nDinne"
+    },
+    {
+     "screen": "recipes",
+     "w": 235,
+     "h": 36,
+     "what": "select#rc-cuisine Any cuisine\nAmerican\nMexican a"
+    },
+    {
+     "screen": "recipes",
+     "w": 101,
+     "h": 40,
+     "what": "button#rc-clear.btn.link Clear filters"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.heart-btn Add to favorites"
+    },
+    {
+     "screen": "recipes",
+     "w": 40,
+     "h": 40,
+     "what": "button.never-btn Never suggest this recipe agai"
+    },
+    {
+     "screen": "recipes",
+     "w": 346,
+     "h": 41,
+     "what": "a Where the recipes come from"
+    },
+    {
+     "screen": "grocery",
+     "w": 88,
+     "h": 40,
+     "what": "button.btn.small Back to the previous screen"
+    },
+    {
+     "screen": "grocery",
+     "w": 32,
+     "h": 32,
+     "what": "a.brand"
+    },
+    {
+     "screen": "grocery",
+     "w": 114,
+     "h": 40,
+     "what": "input Eaters on Wed, Sep 30"
+    },
+    {
+     "screen": "grocery",
+     "w": 114,
+     "h": 40,
+     "what": "input Eaters on Thu, Oct 1"
+    },
+    {
+     "screen": "grocery",
+     "w": 114,
+     "h": 40,
+     "what": "input Eaters on Fri, Oct 2"
+    },
+    {
+     "screen": "grocery",
+     "w": 114,
+     "h": 40,
+     "what": "input Eaters on Sat, Oct 3"
+    },
+    {
+     "screen": "grocery",
+     "w": 114,
+     "h": 40,
+     "what": "input Eaters on Sun, Oct 4"
+    },
+    {
+     "screen": "grocery",
+     "w": 114,
+     "h": 40,
+     "what": "input Eaters on Mon, Oct 5"
+    },
+    {
+     "screen": "grocery",
+     "w": 114,
+     "h": 40,
+     "what": "input Eaters on Tue, Oct 6"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Ground beef, 90% lean, ra"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Water, tap"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Chia seeds"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Quinoa, uncooked"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Rice noodles, dry"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Rice, brown, cooked"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Rice, white, long-grain,"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Egg, whole, raw"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Canola oil"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Olive oil"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Cod, Atlantic, raw"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Halibut, raw"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Shrimp, raw"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Tuna, light, canned in wa"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Bell pepper"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Brown rice uncooked"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Bunch spring onion"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Carrot"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Celery"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Coriander"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Cranberrie"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Curry powder"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Deli turkey torn into"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Desiccated coconut"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Easy cook brown rice"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Easy cook white brown ric"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Egg"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Garlic powder"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Green pea"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Ground black pepper"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Juice zest lime"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Mushroom"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Nonstick cooking spray"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Olive oil"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Onion"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Onion powder"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Parsley"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Pea"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Pepper any colour"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Quarter cucumber"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Ripe plantain"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Salt"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Skinles cod fillet cut in"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Skinles salmon fillet cut"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Skinles smoked haddock fi"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Spinach broccoli"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Spring onion"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Tomato"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Apple, Gala"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Avocado"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Banana, ripe"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Lemon juice, fresh"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Lime juice, fresh"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Olives, ripe, canned"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Raspberries, raw"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Watermelon"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Black beans, canned, low"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Cannellini beans, canned"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Chickpeas, canned, draine"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Hummus"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Lentils, dry"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Peanut butter, smooth, no"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Peanuts, dry roasted, uns"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Tofu, firm"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Almond butter"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Coconut milk, canned"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Pumpkin seeds (pepitas)"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Rotisserie chicken, breas"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Rice cakes, brown rice, b"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Rice cakes, brown rice, p"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Fish sauce"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Salsa, jarred"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Basil, fresh"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Black pepper"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Chili powder"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Coriander seed"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Cumin seed"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Dill, fresh"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Garlic powder"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Oregano, dried"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Paprika"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Salt, table, iodized"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Turmeric, ground"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Maple syrup"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Sugar, granulated"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Baby carrots, raw"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Bell pepper, green, raw"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Bell pepper, red, raw"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Broccoli, frozen, cooked"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Cabbage, green, raw"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Carrots, raw"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Cauliflower, raw"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Celery, raw"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Chives, raw"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Cilantro, fresh"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Corn, sweet, raw"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Cucumber, with peel, raw"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Edamame, frozen, prepared"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Garlic, raw"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Ginger root, raw"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Jalapeno pepper, raw"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Kale, raw"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Lettuce, green leaf"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Lettuce, romaine"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Onion, red, raw"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Onion, yellow, raw"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Parsley, fresh"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Peppers, sweet, red, cook"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Scallions (green onions),"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Spinach, baby, raw"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Sweet potato, baked in sk"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Sweet potato, raw"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Tomato paste"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Tomatoes, canned, diced"
+    },
+    {
+     "screen": "grocery",
+     "w": 24,
+     "h": 24,
+     "what": "input on"
+    },
+    {
+     "screen": "grocery",
+     "w": 40,
+     "h": 40,
+     "what": "button.btn.small Edit Tomatoes, grape, raw"
+    },
+    {
+     "screen": "pantry",
+     "w": 88,
+     "h": 40,
+     "what": "button.btn.small Back to the previous screen"
+    },
+    {
+     "screen": "pantry",
+     "w": 32,
+     "h": 32,
+     "what": "a.brand"
+    },
+    {
+     "screen": "together",
+     "w": 88,
+     "h": 40,
+     "what": "button.btn.small Back to the previous screen"
+    },
+    {
+     "screen": "together",
+     "w": 32,
+     "h": 32,
+     "what": "a.brand"
+    },
+    {
+     "screen": "together",
+     "w": 324,
+     "h": 26,
+     "what": "label Whose kitchen"
+    },
+    {
+     "screen": "together",
+     "w": 324,
+     "h": 26,
+     "what": "label Snacks each day"
+    },
+    {
+     "screen": "together",
+     "w": 212,
+     "h": 40,
+     "what": "button.btn.small SA\nSample A: usual week"
+    },
+    {
+     "screen": "together",
+     "w": 211,
+     "h": 40,
+     "what": "button.btn.small SB\nSample B: usual week"
+    },
+    {
+     "screen": "together",
+     "w": 40,
+     "h": 36,
+     "what": "button.roster-btn.on Sample A at Breakfast on Wedne"
+    },
+    {
+     "screen": "together",
+     "w": 40,
+     "h": 36,
+     "what": "button.roster-btn.on Sample B at Breakfast on Wedne"
+    },
+    {
+     "screen": "together",
+     "w": 40,
+     "h": 36,
+     "what": "button.roster-btn.on Sample A at Lunch on Wednesday"
+    },
+    {
+     "screen": "together",
+     "w": 40,
+     "h": 36,
+     "what": "button.roster-btn.on Sample B at Lunch on Wednesday"
+    },
+    {
+     "screen": "together",
+     "w": 40,
+     "h": 36,
+     "what": "button.roster-btn.on Sample A at PM snack on Wednes"
+    },
+    {
+     "screen": "together",
+     "w": 40,
+     "h": 36,
+     "what": "button.roster-btn.on Sample B at PM snack on Wednes"
+    },
+    {
+     "screen": "together",
+     "w": 40,
+     "h": 36,
+     "what": "button.roster-btn.on Sample A at Dinner on Wednesda"
+    },
+    {
+     "screen": "together",
+     "w": 40,
+     "h": 36,
+     "what": "button.roster-btn.on Sample B at Dinner on Wednesda"
+    },
+    {
+     "screen": "together",
+     "w": 40,
+     "h": 36,
+     "what": "button.roster-btn.on Sample A at Breakfast on Thurs"
+    },
+    {
+     "screen": "together",
+     "w": 40,
+     "h": 36,
+     "what": "button.roster-btn.on Sample B at Breakfast on Thurs"
+    },
+    {
+     "screen": "together",
+     "w": 40,
+     "h": 36,
+     "what": "button.roster-btn.on Sample A at Lunch on Thursday"
+    },
+    {
+     "screen": "together",
+     "w": 40,
+     "h": 36,
+     "what": "button.roster-btn.on Sample B at Lunch on Thursday"
+    },
+    {
+     "screen": "together",
+     "w": 40,
+     "h": 36,
+     "what": "button.roster-btn.on Sample A at PM snack on Thursd"
+    },
+    {
+     "screen": "together",
+     "w": 40,
+     "h": 36,
+     "what": "button.roster-btn.on Sample B at PM snack on Thursd"
+    },
+    {
+     "screen": "together",
+     "w": 40,
+     "h": 36,
+     "what": "button.roster-btn.on Sample A at Dinner on Thursday"
+    },
+    {
+     "screen": "together",
+     "w": 40,
+     "h": 36,
+     "what": "button.roster-btn.on Sample B at Dinner on Thursday"
+    },
+    {
+     "screen": "together",
+     "w": 40,
+     "h": 36,
+     "what": "button.roster-btn.on Sample A at Breakfast on Frida"
+    },
+    {
+     "screen": "together",
+     "w": 40,
+     "h": 36,
+     "what": "button.roster-btn.on Sample B at Breakfast on Frida"
+    },
+    {
+     "screen": "together",
+     "w": 40,
+     "h": 36,
+     "what": "button.roster-btn.on Sample A at Lunch on Friday"
+    },
+    {
+     "screen": "together",
+     "w": 40,
+     "h": 36,
+     "what": "button.roster-btn.on Sample B at Lunch on Friday"
+    },
+    {
+     "screen": "together",
+     "w": 40,
+     "h": 36,
+     "what": "button.roster-btn.on Sample A at PM snack on Friday"
+    },
+    {
+     "screen": "together",
+     "w": 40,
+     "h": 36,
+     "what": "button.roster-btn.on Sample B at PM snack on Friday"
+    },
+    {
+     "screen": "together",
+     "w": 40,
+     "h": 36,
+     "what": "button.roster-btn.on Sample A at Dinner on Friday"
+    },
+    {
+     "screen": "together",
+     "w": 40,
+     "h": 36,
+     "what": "button.roster-btn.on Sample B at Dinner on Friday"
+    },
+    {
+     "screen": "together",
+     "w": 40,
+     "h": 36,
+     "what": "button.roster-btn.on Sample A at Breakfast on Satur"
+    },
+    {
+     "screen": "together",
+     "w": 40,
+     "h": 36,
+     "what": "button.roster-btn.on Sample B at Breakfast on Satur"
+    },
+    {
+     "screen": "together",
+     "w": 40,
+     "h": 36,
+     "what": "button.roster-btn.on Sample A at Lunch on Saturday"
+    },
+    {
+     "screen": "together",
+     "w": 40,
+     "h": 36,
+     "what": "button.roster-btn.on Sample B at Lunch on Saturday"
+    },
+    {
+     "screen": "together",
+     "w": 40,
+     "h": 36,
+     "what": "button.roster-btn.on Sample A at PM snack on Saturd"
+    },
+    {
+     "screen": "together",
+     "w": 40,
+     "h": 36,
+     "what": "button.roster-btn.on Sample B at PM snack on Saturd"
+    },
+    {
+     "screen": "together",
+     "w": 40,
+     "h": 36,
+     "what": "button.roster-btn.on Sample A at Dinner on Saturday"
+    },
+    {
+     "screen": "together",
+     "w": 40,
+     "h": 36,
+     "what": "button.roster-btn.on Sample B at Dinner on Saturday"
+    },
+    {
+     "screen": "together",
+     "w": 40,
+     "h": 36,
+     "what": "button.roster-btn.on Sample A at Breakfast on Sunda"
+    },
+    {
+     "screen": "together",
+     "w": 40,
+     "h": 36,
+     "what": "button.roster-btn.on Sample B at Breakfast on Sunda"
+    },
+    {
+     "screen": "together",
+     "w": 40,
+     "h": 36,
+     "what": "button.roster-btn.on Sample A at Lunch on Sunday"
+    },
+    {
+     "screen": "together",
+     "w": 40,
+     "h": 36,
+     "what": "button.roster-btn.on Sample B at Lunch on Sunday"
+    },
+    {
+     "screen": "together",
+     "w": 40,
+     "h": 36,
+     "what": "button.roster-btn.on Sample A at PM snack on Sunday"
+    },
+    {
+     "screen": "together",
+     "w": 40,
+     "h": 36,
+     "what": "button.roster-btn.on Sample B at PM snack on Sunday"
+    },
+    {
+     "screen": "together",
+     "w": 40,
+     "h": 36,
+     "what": "button.roster-btn.on Sample A at Dinner on Sunday"
+    },
+    {
+     "screen": "together",
+     "w": 40,
+     "h": 36,
+     "what": "button.roster-btn.on Sample B at Dinner on Sunday"
+    },
+    {
+     "screen": "together",
+     "w": 40,
+     "h": 36,
+     "what": "button.roster-btn.on Sample A at Breakfast on Monda"
+    },
+    {
+     "screen": "together",
+     "w": 40,
+     "h": 36,
+     "what": "button.roster-btn.on Sample B at Breakfast on Monda"
+    },
+    {
+     "screen": "together",
+     "w": 40,
+     "h": 36,
+     "what": "button.roster-btn.on Sample A at Lunch on Monday"
+    },
+    {
+     "screen": "together",
+     "w": 40,
+     "h": 36,
+     "what": "button.roster-btn.on Sample B at Lunch on Monday"
+    },
+    {
+     "screen": "together",
+     "w": 40,
+     "h": 36,
+     "what": "button.roster-btn.on Sample A at PM snack on Monday"
+    },
+    {
+     "screen": "together",
+     "w": 40,
+     "h": 36,
+     "what": "button.roster-btn.on Sample B at PM snack on Monday"
+    },
+    {
+     "screen": "together",
+     "w": 40,
+     "h": 36,
+     "what": "button.roster-btn.on Sample A at Dinner on Monday"
+    },
+    {
+     "screen": "together",
+     "w": 40,
+     "h": 36,
+     "what": "button.roster-btn.on Sample B at Dinner on Monday"
+    },
+    {
+     "screen": "together",
+     "w": 40,
+     "h": 36,
+     "what": "button.roster-btn.on Sample A at Breakfast on Tuesd"
+    },
+    {
+     "screen": "together",
+     "w": 40,
+     "h": 36,
+     "what": "button.roster-btn.on Sample B at Breakfast on Tuesd"
+    },
+    {
+     "screen": "together",
+     "w": 40,
+     "h": 36,
+     "what": "button.roster-btn.on Sample A at Lunch on Tuesday"
+    },
+    {
+     "screen": "together",
+     "w": 40,
+     "h": 36,
+     "what": "button.roster-btn.on Sample B at Lunch on Tuesday"
+    },
+    {
+     "screen": "together",
+     "w": 40,
+     "h": 36,
+     "what": "button.roster-btn.on Sample A at PM snack on Tuesda"
+    },
+    {
+     "screen": "together",
+     "w": 40,
+     "h": 36,
+     "what": "button.roster-btn.on Sample B at PM snack on Tuesda"
+    },
+    {
+     "screen": "together",
+     "w": 40,
+     "h": 36,
+     "what": "button.roster-btn.on Sample A at Dinner on Tuesday"
+    },
+    {
+     "screen": "together",
+     "w": 40,
+     "h": 36,
+     "what": "button.roster-btn.on Sample B at Dinner on Tuesday"
+    },
+    {
+     "screen": "together",
+     "w": 324,
+     "h": 26,
+     "what": "label Paste shared profile"
+    },
+    {
+     "screen": "log",
+     "w": 88,
+     "h": 40,
+     "what": "button.btn.small Back to the previous screen"
+    },
+    {
+     "screen": "log",
+     "w": 32,
+     "h": 32,
+     "what": "a.brand"
+    },
+    {
+     "screen": "log",
+     "w": 324,
+     "h": 26,
+     "what": "label Date"
+    },
+    {
+     "screen": "log",
+     "w": 324,
+     "h": 26,
+     "what": "label Meal"
+    },
+    {
+     "screen": "log",
+     "w": 324,
+     "h": 26,
+     "what": "label Meal from this week's plan"
+    },
+    {
+     "screen": "log",
+     "w": 324,
+     "h": 26,
+     "what": "label Or describe what you ate"
+    },
+    {
+     "screen": "log",
+     "w": 324,
+     "h": 26,
+     "what": "label Bloating None"
+    },
+    {
+     "screen": "log",
+     "w": 324,
+     "h": 26,
+     "what": "label Gas None"
+    },
+    {
+     "screen": "log",
+     "w": 324,
+     "h": 26,
+     "what": "label Stomach pain None"
+    },
+    {
+     "screen": "log",
+     "w": 324,
+     "h": 26,
+     "what": "label Nausea None"
+    },
+    {
+     "screen": "log",
+     "w": 324,
+     "h": 26,
+     "what": "label Heartburn or reflux None"
+    },
+    {
+     "screen": "log",
+     "w": 324,
+     "h": 26,
+     "what": "label Diarrhea None"
+    },
+    {
+     "screen": "log",
+     "w": 324,
+     "h": 26,
+     "what": "label Constipation None"
+    },
+    {
+     "screen": "log",
+     "w": 324,
+     "h": 26,
+     "what": "label Headache None"
+    },
+    {
+     "screen": "log",
+     "w": 324,
+     "h": 26,
+     "what": "label Flushing or hives None"
+    },
+    {
+     "screen": "log",
+     "w": 324,
+     "h": 26,
+     "what": "label Itching or rash None"
+    },
+    {
+     "screen": "log",
+     "w": 324,
+     "h": 26,
+     "what": "label Mouth or throat itch None"
+    },
+    {
+     "screen": "log",
+     "w": 324,
+     "h": 26,
+     "what": "label Fatigue or brain fog None"
+    },
+    {
+     "screen": "log",
+     "w": 324,
+     "h": 26,
+     "what": "label Joint pain None"
+    },
+    {
+     "screen": "log",
+     "w": 324,
+     "h": 26,
+     "what": "label Dizziness or racing heart None"
+    },
+    {
+     "screen": "log",
+     "w": 324,
+     "h": 26,
+     "what": "label Poor sleep None"
+    },
+    {
+     "screen": "log",
+     "w": 324,
+     "h": 26,
+     "what": "label Mood None"
+    },
+    {
+     "screen": "log",
+     "w": 324,
+     "h": 26,
+     "what": "label Notes"
+    },
+    {
+     "screen": "log",
+     "w": 72,
+     "h": 40,
+     "what": "button.btn.small Delete"
+    },
+    {
+     "screen": "breathe",
+     "w": 88,
+     "h": 40,
+     "what": "button.btn.small Back to the previous screen"
+    },
+    {
+     "screen": "breathe",
+     "w": 32,
+     "h": 32,
+     "what": "a.brand"
+    },
+    {
+     "screen": "breathe",
+     "w": 129,
+     "h": 40,
+     "what": "button#breathe-full.btn.small Full screen"
+    },
+    {
+     "screen": "learn",
+     "w": 88,
+     "h": 40,
+     "what": "button.btn.small Back to the previous screen"
+    },
+    {
+     "screen": "learn",
+     "w": 32,
+     "h": 32,
+     "what": "a.brand"
+    },
+    {
+     "screen": "settings",
+     "w": 88,
+     "h": 40,
+     "what": "button.btn.small Back to the previous screen"
+    },
+    {
+     "screen": "settings",
+     "w": 32,
+     "h": 32,
+     "what": "a.brand"
+    }
+   ]
+  }
+ },
+ "reflow": [
+  {
+   "build": "lite",
+   "screen": "today",
+   "scrollWidth": 369,
+   "clientWidth": 320,
+   "sideways": true,
+   "wide": [
+    "div.lite-slot",
+    "div.lite-slot-head",
+    "span.chip",
+    "p.lite-planned",
+    "ul.lite-logged"
+   ]
+  },
+  {
+   "build": "lite",
+   "screen": "week",
+   "scrollWidth": 320,
+   "clientWidth": 320,
+   "sideways": false,
+   "wide": [
+    "a",
+    "span",
+    "button#more-btn",
+    "svg",
+    "path"
+   ]
+  },
+  {
+   "build": "lite",
+   "screen": "recipes",
+   "scrollWidth": 416,
+   "clientWidth": 320,
+   "sideways": true,
+   "wide": [
+    "label.filter-select",
+    "select#rc-meal",
+    "label.filter-select",
+    "select#rc-cuisine",
+    "a"
+   ]
+  },
+  {
+   "build": "lite",
+   "screen": "report",
+   "scrollWidth": 611,
+   "clientWidth": 320,
+   "sideways": true,
+   "wide": [
+    "table.report-table",
+    "thead",
+    "tr",
+    "th.num",
+    "th.num"
+   ]
+  },
+  {
+   "build": "lite",
+   "screen": "check",
+   "scrollWidth": 320,
+   "clientWidth": 320,
+   "sideways": false,
+   "wide": [
+    "a",
+    "span",
+    "button#more-btn.on",
+    "svg",
+    "path"
+   ]
+  },
+  {
+   "build": "lite",
+   "screen": "plan",
+   "scrollWidth": 450,
+   "clientWidth": 320,
+   "sideways": true,
+   "wide": [
+    "div.meter",
+    "div.meter-why",
+    "div.bar",
+    "div.meter-word",
+    "span.muted"
+   ]
+  },
+  {
+   "build": "lite",
+   "screen": "grocery",
+   "scrollWidth": 375,
+   "clientWidth": 320,
+   "sideways": true,
+   "wide": [
+    "div.page-head-actions",
+    "select#grocery-for",
+    "a",
+    "span",
+    "button#more-btn.on"
+   ]
+  },
+  {
+   "build": "lite",
+   "screen": "pantry",
+   "scrollWidth": 320,
+   "clientWidth": 320,
+   "sideways": false,
+   "wide": [
+    "a",
+    "span",
+    "button#more-btn.on",
+    "svg",
+    "path"
+   ]
+  },
+  {
+   "build": "lite",
+   "screen": "people",
+   "scrollWidth": 336,
+   "clientWidth": 320,
+   "sideways": true,
+   "wide": [
+    "a.chip",
+    "a",
+    "span",
+    "button#more-btn.on",
+    "svg"
+   ]
+  },
+  {
+   "build": "lite",
+   "screen": "log",
+   "scrollWidth": 320,
+   "clientWidth": 320,
+   "sideways": false,
+   "wide": [
+    "a",
+    "span",
+    "button#more-btn.on",
+    "svg",
+    "path"
+   ]
+  },
+  {
+   "build": "lite",
+   "screen": "breathe",
+   "scrollWidth": 320,
+   "clientWidth": 320,
+   "sideways": false,
+   "wide": [
+    "a",
+    "span",
+    "button#more-btn.on",
+    "svg",
+    "path"
+   ]
+  },
+  {
+   "build": "lite",
+   "screen": "learn",
+   "scrollWidth": 468,
+   "clientWidth": 320,
+   "sideways": true,
+   "wide": [
+    "span.chip",
+    "a",
+    "svg",
+    "path",
+    "span"
+   ]
+  },
+  {
+   "build": "lite",
+   "screen": "settings",
+   "scrollWidth": 320,
+   "clientWidth": 320,
+   "sideways": false,
+   "wide": [
+    "a",
+    "span",
+    "button#more-btn.on",
+    "svg",
+    "path"
+   ]
+  },
+  {
+   "build": "full",
+   "screen": "home",
+   "scrollWidth": 379,
+   "clientWidth": 320,
+   "sideways": true,
+   "wide": [
+    "a.quick-action",
+    "span",
+    "small",
+    "a.quick-action",
+    "span"
+   ]
+  },
+  {
+   "build": "full",
+   "screen": "people",
+   "scrollWidth": 336,
+   "clientWidth": 320,
+   "sideways": true,
+   "wide": [
+    "a.chip",
+    "a.chip",
+    "button#more-btn.on",
+    "svg",
+    "path"
+   ]
+  },
+  {
+   "build": "full",
+   "screen": "plan",
+   "scrollWidth": 442,
+   "clientWidth": 320,
+   "sideways": true,
+   "wide": [
+    "button.chip",
+    "button.chip",
+    "a",
+    "svg",
+    "span"
+   ]
+  },
+  {
+   "build": "full",
+   "screen": "check",
+   "scrollWidth": 320,
+   "clientWidth": 320,
+   "sideways": false,
+   "wide": [
+    "button#more-btn",
+    "svg",
+    "path",
+    "span"
+   ]
+  },
+  {
+   "build": "full",
+   "screen": "today",
+   "scrollWidth": 381,
+   "clientWidth": 320,
+   "sideways": true,
+   "wide": [
+    "div.entry-kcal",
+    "div.entry-nut",
+    "button#more-btn",
+    "svg",
+    "path"
+   ]
+  },
+  {
+   "build": "full",
+   "screen": "week",
+   "scrollWidth": 320,
+   "clientWidth": 320,
+   "sideways": false,
+   "wide": [
+    "button#more-btn",
+    "svg",
+    "path",
+    "span"
+   ]
+  },
+  {
+   "build": "full",
+   "screen": "recipes",
+   "scrollWidth": 416,
+   "clientWidth": 320,
+   "sideways": true,
+   "wide": [
+    "label.filter-select",
+    "select#rc-meal",
+    "label.filter-select",
+    "select#rc-cuisine",
+    "a"
+   ]
+  },
+  {
+   "build": "full",
+   "screen": "grocery",
+   "scrollWidth": 320,
+   "clientWidth": 320,
+   "sideways": false,
+   "wide": [
+    "button#more-btn.on",
+    "svg",
+    "path",
+    "span"
+   ]
+  },
+  {
+   "build": "full",
+   "screen": "pantry",
+   "scrollWidth": 320,
+   "clientWidth": 320,
+   "sideways": false,
+   "wide": [
+    "button#more-btn.on",
+    "svg",
+    "path",
+    "span"
+   ]
+  },
+  {
+   "build": "full",
+   "screen": "together",
+   "scrollWidth": 367,
+   "clientWidth": 320,
+   "sideways": true,
+   "wide": [
+    "section.roster-day",
+    "div.roster-day-head",
+    "h3#rd-2026-09-30",
+    "section.roster-day",
+    "div.roster-day-head"
+   ]
+  },
+  {
+   "build": "full",
+   "screen": "log",
+   "scrollWidth": 320,
+   "clientWidth": 320,
+   "sideways": false,
+   "wide": [
+    "button#more-btn.on",
+    "svg",
+    "path",
+    "span"
+   ]
+  },
+  {
+   "build": "full",
+   "screen": "breathe",
+   "scrollWidth": 320,
+   "clientWidth": 320,
+   "sideways": false,
+   "wide": [
+    "button#more-btn.on",
+    "svg",
+    "path",
+    "span"
+   ]
+  },
+  {
+   "build": "full",
+   "screen": "learn",
+   "scrollWidth": 468,
+   "clientWidth": 320,
+   "sideways": true,
+   "wide": [
+    "span.chip",
+    "a",
+    "svg",
+    "path",
+    "span"
+   ]
+  },
+  {
+   "build": "full",
+   "screen": "settings",
+   "scrollWidth": 320,
+   "clientWidth": 320,
+   "sideways": false,
+   "wide": [
+    "button#more-btn.on",
+    "svg",
+    "path",
+    "span"
+   ]
+  }
+ ],
+ "keyboard": [
+  {
+   "build": "lite",
+   "screen": "today",
+   "reached": 36,
+   "focusableInMain": 28,
+   "noVisibleFocus": [],
+   "noVisibleFocusCount": 0
+  },
+  {
+   "build": "lite",
+   "screen": "check",
+   "reached": 13,
+   "focusableInMain": 5,
+   "noVisibleFocus": [],
+   "noVisibleFocusCount": 0
+  },
+  {
+   "build": "lite",
+   "screen": "settings",
+   "reached": 24,
+   "focusableInMain": 18,
+   "noVisibleFocus": [],
+   "noVisibleFocusCount": 0
+  },
+  {
+   "build": "full",
+   "screen": "home",
+   "reached": 20,
+   "focusableInMain": 12,
+   "noVisibleFocus": [],
+   "noVisibleFocusCount": 0
+  },
+  {
+   "build": "full",
+   "screen": "week",
+   "reached": 80,
+   "focusableInMain": 194,
+   "noVisibleFocus": [],
+   "noVisibleFocusCount": 0
+  },
+  {
+   "build": "full",
+   "screen": "people",
+   "reached": 31,
+   "focusableInMain": 22,
+   "noVisibleFocus": [],
+   "noVisibleFocusCount": 0
+  },
+  {
+   "build": "lite",
+   "screen": "symptom sheet",
+   "focusLeftTheSheet": 21,
+   "escapeCloses": true
+  }
+ ],
+ "motion": {
+  "cssReducedMotionRules": 2,
+  "breatheReducedMotionRules": 2,
+  "breatheRunningAnimations": []
+ },
+ "announcements": [
+  {
+   "what": "label verdict",
+   "live": "polite",
+   "atomic": "true",
+   "role": null,
+   "hasText": true
+  },
+  {
+   "what": "Undo toast",
+   "role": "status",
+   "live": null,
+   "text": "Removed: Oatmeal with berries.\nUndo"
+  },
+  {
+   "what": "failed save",
+   "role": "alert",
+   "text": "Not saved. This device did not store you"
+  }
+ ]
+}
