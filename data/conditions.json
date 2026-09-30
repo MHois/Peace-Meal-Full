@@ -594,7 +594,7 @@
           "tier": 1,
           "strength": "should",
           "text": "Soluble fiber (oats, barley, legumes, psyllium) 5 to 10 g/day lowers LDL modestly.",
-          "why": "Oats, barley, beans, and psyllium add soluble fiber that lowers LDL a little more.",
+          "why": "Add soluble fiber: oats, barley, beans, lentils, psyllium. 5 to 10 g a day lowers LDL modestly.",
           "sources": [
             "aha-acc-cholesterol-2018",
             "aha-dietary-guidance-2021"
@@ -1511,6 +1511,7 @@
           "tier": 1,
           "strength": "should",
           "text": "Fish and seafood at least twice a week. Omega-3 from fish (EPA/DHA) has the best data.",
+          "why": "Omega-3 fats from fish (EPA and DHA) have the best data within the pattern.",
           "sources": [
             "aha-dietary-guidance-2021",
             "predimed-2018"
@@ -2484,7 +2485,7 @@
           "tier": 1,
           "strength": "should",
           "text": "Higher protein and resistance training to protect muscle and bone during rapid loss: about 80 to 120 g of protein a day. The joint GLP-1 advisory offers this fixed daily target because per-kilogram targets based on actual body weight can overstate needs in people with obesity. Higher targets, such as 1.2 to 1.6 g/kg/day, have also been proposed during active loss.",
-          "why": "Protect muscle with higher protein, about 80 to 120 g a day, and resistance training.",
+          "why": "Protect muscle and bone during fast loss with higher protein, about 80 to 120 g a day, plus resistance exercise.",
           "sources": [
             "glp1-nutrition-advisory-2025",
             "sievenpiper-glp1-2026"
@@ -4299,6 +4300,7 @@
           "tier": 1,
           "strength": "should",
           "text": "Fish: 8 to 12 oz/week of low-mercury fish.",
+          "why": "Low-mercury fish is recommended at 8 to 12 oz a week; only the seven high-mercury species are off the list.",
           "sources": [
             "fda-epa-fish-advice-2021"
           ]
@@ -5724,7 +5726,7 @@
           "tier": 1,
           "strength": "should",
           "text": "Iodine: adequate (150 mcg/day) but not excessive; excess iodine (kelp supplements) can worsen thyroid disease.",
-          "why": "Get enough iodine (150 mcg a day) but not extra; kelp supplements can make thyroid disease worse.",
+          "why": "Get enough iodine, about 150 mcg a day, but not extra. Kelp and iodine supplements can make thyroid disease worse.",
           "sources": [
             "ata-iodine-statement",
             "ata-hypothyroidism-2014"
@@ -6105,7 +6107,7 @@
           "tier": 1,
           "strength": "should",
           "text": "Fiber 25 to 38 g a day from whole plant foods, increased gradually over 2 to 3 weeks with extra fluid. Too fast causes gas and bloating.",
-          "why": "Fiber and fluid are the first step for constipation, and they work for many people.",
+          "why": "Fiber and fluid are the first step, and they work for many people.",
           "sources": [
             "iom-dri-fiber-2005",
             "bharucha-lacy-constipation-2020"

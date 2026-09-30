@@ -2914,6 +2914,10 @@
                 "apple cider vinegar",
                 "cider vinegar"
               ],
+              "foods": [
+                "fdc-172237",
+                "fdc-173469"
+              ],
               "portion": "usual serve",
               "verified": true,
               "note": "distilled white (spirit) vinegar or apple cider vinegar only; wine, balsamic, rice, sherry, and malt vinegar are left out. checked against the SIGHI leaflet, September 30, 2026",

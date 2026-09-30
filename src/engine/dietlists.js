@@ -12,6 +12,11 @@
 // vinegar, and others). They are checked before the approved list, on the ingredient as written, so "leftover roast
 // chicken" is leftovers, not chicken. An example can carry "unless", a regular expression that exempts the forms the
 // list itself allows (a quick homemade vegetable stock, for instance).
+//
+// An approved item can also name food-data records by id ("foods"). USDA writes names head word first ("Vinegar,
+// distilled"), which neither the approved names nor the leave-out "unless" read the list's way, so the food box called
+// the approved vinegars left out (fix pass of September 30, 2026, P2-9). A listed record is approved as that item; a
+// recipe's own wording is still checked first.
 
 import { isNoiseOnly, isDescriptor } from './dictionary.js';
 
@@ -47,7 +52,9 @@ function dietFamilyIndex(lists, family) {
   // portion_except: wordings that name a different product ("corn oil" is not corn), so they get no portion note.
   const portionExcept = [];
   for (const g of (fam && fam.groups) || []) for (const it of g.items || []) for (const ex of it.portion_except || []) { const re = dietTermRegex(ex); if (re) portionExcept.push({ re, item: it }); }
-  const idx = { approved, avoid, portionExcept };
+  const foods = new Map();
+  for (const g of (fam && fam.groups) || []) for (const it of g.items || []) for (const id of it.foods || []) if (!foods.has(id)) foods.set(id, { item: it, group: g.name });
+  const idx = { approved, avoid, portionExcept, foods };
   byFam.set(family, idx);
   return idx;
 }
@@ -160,7 +167,8 @@ const DIET_CLAIM_AFTER = new Set(['free', 'added', 'reduced']);
 // Returns { approved, why, item } where why is 'reacts' | 'tolerated' | 'avoid' | 'list' | 'unlisted' | 'empty'.
 // Order: the person's own lists, then the family's leave-out examples, then the family's approved list.
 // opts.avoid = false skips the leave-out examples (strictCheck uses that for a linked food's generic USDA name when the
-// recipe's own wording is checked already).
+// recipe's own wording is checked already). opts.foodId, given with a food's own name, finds the food-data records an
+// approved item names; the person's own lists still come first.
 export function approvedFor(text, family, lists, person, opts = {}) {
   const n = dietNormalize(text);
   const mine = dietPersonLists(person, family);
@@ -169,6 +177,7 @@ export function approvedFor(text, family, lists, person, opts = {}) {
     const t = dietCovering(n, mine.tolerated);
     if (t) return { approved: true, why: 'tolerated', item: t };
   }
+  if (opts.foodId) { const f = dietFamilyIndex(lists, family).foods.get(opts.foodId); if (f) return { approved: true, why: 'list', item: f.item, group: f.group }; }
   if (opts.avoid !== false) { const ex = avoidExampleFor(text, family, lists); if (ex) return { approved: false, why: 'avoid', item: ex }; }
   // opts.noise: the piece is only amounts and preparation words (P2-15), so it names no food; like an empty piece it is
   // approved once the leave-out examples have had their say ("1 jar" is still a jar).
@@ -212,7 +221,7 @@ export function strictCheck(recipe, plan, lists, foodsById, person = {}) {
       let verdict = null;
       for (let i = 0; i < texts.length; i++) {
         const isFoodName = food && (texts[i] === food.short || texts[i] === food.name) && texts[i] !== ing.display;
-        const r = approvedFor(texts[i], family, lists, person, { avoid: i === 0, foodName: !!isFoodName });
+        const r = approvedFor(texts[i], family, lists, person, { avoid: i === 0, foodName: !!isFoodName, foodId: isFoodName ? food.id : undefined });
         if (r.why === 'reacts' || r.why === 'avoid') { verdict = r; break; }
         if (r.approved) verdict = r;
       }

@@ -18747,9 +18747,18 @@
         "histamine-fermented"
       ],
       "match": "word",
-      "note": "all vinegars are fermented; SIGHI lists vinegar as poorly tolerated, distilled white vinegar least so. patient-reported and food-chemistry basis; not RCT-confirmed; freshness and storage matter more than the food name",
+      "note": "all vinegars are fermented; SIGHI lists vinegar as poorly tolerated, distilled white vinegar least so. patient-reported and food-chemistry basis; not RCT-confirmed; freshness and storage matter more than the food name. Distilled white (spirit) vinegar and apple cider vinegar are left out of this entry: the SIGHI leaflet rates them well tolerated, and the low histamine list approves them (VERIFY-log A20, F6)",
+      "except": [
+        "distilled white vinegar",
+        "white vinegar",
+        "distilled vinegar",
+        "spirit vinegar",
+        "apple cider vinegar",
+        "cider vinegar"
+      ],
       "sources": [
-        "sighi-list"
+        "sighi-list",
+        "sighi-leaflet-2021"
       ]
     },
     {

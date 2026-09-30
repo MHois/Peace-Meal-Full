@@ -109,6 +109,9 @@ for (const [fid, fam] of Object.entries(dietLists.families || {})) {
     if (!Array.isArray(it.sources) || !it.sources.length) err(`diet list ${fid} item ${it.term} has no sources`);
     for (const s of it.sources || []) if (!sourceIds.has(s)) err(`diet list ${fid} item ${it.term} cites unknown source ${s}`);
     if (it.portion_except && !(Array.isArray(it.portion_except) && it.portion_except.every(x => typeof x === 'string' && x.trim()))) err(`diet list ${fid} item ${it.term} portion_except must be a list of wordings`);
+    // foods: food-data records the item approves by id (P2-9); each must exist.
+    if (it.foods != null && !Array.isArray(it.foods)) err(`diet list ${fid} item ${it.term} foods must be a list of food ids`);
+    for (const id of it.foods || []) if (!foodIds.has(id)) err(`diet list ${fid} item ${it.term} names unknown food ${id}`);
   }
   // Evidence basis (low histamine, 2026-09 audit): every item and leave-out example names one of the legend's bases.
   if (fam.basis_legend) {

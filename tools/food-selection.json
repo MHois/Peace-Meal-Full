@@ -5412,14 +5412,15 @@
   {
     "fdcId": 173469,
     "short": "Vinegar, apple cider",
-    "tags": [
-      "histamine-fermented"
-    ],
+    "tags": [],
     "portions_add": [],
     "why": "",
     "tag_review": [
       "histamine-high"
-    ]
+    ],
+    "tag_notes": {
+      "histamine-fermented": "The SIGHI leaflet rates apple cider vinegar well tolerated on a low histamine diet, so it is left untagged, as in the dictionary (VERIFY-log A20, F6)."
+    }
   },
   {
     "fdcId": 172237,
