@@ -61,17 +61,17 @@ test('P2-13: a list name approves a text only when it covers the whole name, not
   assert.equal(approvedFor('smoked chicken', 'low-histamine', lists, {}).approved, false, 'smoked is not ignored');
 });
 
-// The audit counted 100 (low FODMAP) and 98 (low histamine) such foods. Four remain, each for a reason that is not a
+// The audit counted 100 (low FODMAP) and 98 (low histamine) such foods. Six remain, each for a reason that is not a
 // word inside a longer name: the low FODMAP list approves tempeh by name (the list is the diet's own source; the food
-// data's GOS tag comes from soy), USDA's "Pork, leg (ham)" is fresh pork leg that the food data tags from the word
+// data's GOS tag comes from soy), USDA's four "Pork, leg (ham)" records are fresh pork leg that the food data tags from the word
 // "ham", and USDA's "Salmon, pink, canned" puts "canned" last, where the "canned fish" leave-out cannot see it; its own
 // histamine tag still makes it a caution in both boxes.
 test('P2-13: no USDA food that carries a low FODMAP or low histamine avoid tag is approved by the list through a word inside its name', () => {
-  const expected = { 'low-fodmap': ['Tempeh, cooked'], 'low-histamine': ['Pork, leg (ham), whole, raw', 'Pork, leg (ham), whole, cooked, roasted', 'Salmon, pink, canned'] };
+  const expected = { 'low-fodmap': ['Tempeh, cooked'], 'low-histamine': ['Pork, leg (ham), whole, raw', 'Pork, leg (ham), whole, cooked, roasted', 'Pork, leg (ham), rump half, raw', 'Pork, leg (ham), rump half, cooked, roasted', 'Salmon, pink, canned'] };
   for (const [family, fam] of Object.entries(lists.families)) {
     const famTags = new Set(fam.tags || []);
     const risky = foods.filter(f => (f.tags || []).some(t => famTags.has(t))).filter(f => { const a = approvedFor(f.short || f.name, family, lists, {}, {}); return a.approved && a.why === 'list'; }).map(f => f.short || f.name);
-    assert.deepEqual(risky, expected[family], family);
+    assert.deepEqual([...risky].sort(), [...expected[family]].sort(), family);
   }
   const h = PROFILES['low histamine'];
   const salmon = foods.find(f => (f.short || f.name) === 'Salmon, pink, canned');

@@ -106,6 +106,8 @@ const DESCRIPTORS = new Set([
   'style meal mixed juice juices porridge root semisweet bittersweet flat curly cook baking old fashioned rolled regular coarse weed fluid condensed dehydrated stale back split heavy whipping elbow assorted clarified cultured pasteurized desiccated wide blanched deveined average grained sticky wild chuck butt neck filet filets braising range popping thumb pearled unseasoned unflavored bulk dashes lump couple bit much etc sprinkle decoration person caps tuber overripe unripe eating cob leafy summer garden closed delicious bella rich cara heat dish soaking under until see has their could perhaps called make known suggested omit additional up pan vegetarian vegan tree qt mineral shot pickling flower bow tie angel hair',
   // label wording and forms seen in the audit's label corpus
   'processes process processing uses handles handled packaged shaped oils tail tails groats grade delactosed calcium hydrolyzed hydrolysed',
+  // USDA's words for cuts and forms of fresh meat ("Pork, loin, blade (chops), bone-in, separable lean and fat, broiled")
+  'blade center centre rump spareribs boston country separable broiled unprepared unheated',
 ].join(' ').split(' ').filter(Boolean));
 export function isDescriptor(word) { return DESCRIPTORS.has(word); }
 

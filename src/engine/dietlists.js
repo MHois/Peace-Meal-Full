@@ -176,8 +176,26 @@ export function approvedFor(text, family, lists, person, opts = {}) {
   const idx = dietFamilyIndex(lists, family);
   const a = dietCovering(n, idx.approved);
   if (a) return { approved: true, why: 'list', item: a.item, group: a.group };
+  // A food-data name ("Squash, summer, zucchini, frozen, cooked") names its food among category, kind, and form words
+  // that no list could cover, so for those names a list name may still match a word anywhere, as before, unless the
+  // name says the food was made into something else ("Snacks, beef jerky", "Beef, cured, corned beef", "Soup, cream of
+  // mushroom"). Typed text and recipe lines keep the whole-name rule above.
+  if (opts.foodName) {
+    const words = n.split(/[\s-]+/);
+    if (!words.some(w => DIET_FOOD_NAME_DENY.has(w)) && idx.approved.some(x => x.re.test(n))) {
+      const hit = idx.approved.find(x => x.re.test(n));
+      return { approved: true, why: 'list', item: hit.item, group: hit.group };
+    }
+  }
   return { approved: false, why: 'unlisted' };
 }
+// Words in a food-data name that mean the food was made into something else (fix pass of September 30, 2026, P2-13).
+const DIET_FOOD_NAME_DENY = new Set(('snacks snack jerky cured smoked breaded battered fried sausage sausages salami bologna frankfurter frankfurters ' +
+  'bratwurst bockwurst thuringer cervelat beerwurst pepperoni pastrami corned bacon ham luncheon deli prepackaged soup soups stock broth ' +
+  'bouillon sauce dressing gravy chips crisps crackers cookies cake cakes pie pies pudding puddings ice cream creams sherbet candies candy ' +
+  'jams jam preserves jelly syrup syrups concentrate drink drinks carbonated soda nuggets sandwich burger cheeseburger hamburger burrito ' +
+  'rolls dumpling dumplings ravioli entree fast mix mixes coated caramel pickled kimchi sauerkraut dehydrated spread margarine imitation ' +
+  'flavored flavor seasoned marinated').split(' '));
 
 // Strict check for a recipe. Returns { families, notApproved: [{ label, family, why }] }.
 // The leave-out examples are checked against the ingredient as the recipe writes it (or the food's short name when the
@@ -193,7 +211,8 @@ export function strictCheck(recipe, plan, lists, foodsById, person = {}) {
     for (const family of families) {
       let verdict = null;
       for (let i = 0; i < texts.length; i++) {
-        const r = approvedFor(texts[i], family, lists, person, { avoid: i === 0 });
+        const isFoodName = food && (texts[i] === food.short || texts[i] === food.name) && texts[i] !== ing.display;
+        const r = approvedFor(texts[i], family, lists, person, { avoid: i === 0, foodName: !!isFoodName });
         if (r.why === 'reacts' || r.why === 'avoid') { verdict = r; break; }
         if (r.approved) verdict = r;
       }
