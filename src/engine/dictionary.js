@@ -46,6 +46,8 @@ export function segmentText(text) {
 export function segmentTextRaw(text) {
   const t = String(text || '')
     .replace(/^\s*ingredients?:\s*/i, '')
+    // "e.g." is a separator, not two ingredients ("e" and "g"): recipe cards write "(e.g. chicken, pork, tofu)".
+    .replace(/\be\.\s?g\.,?/gi, ',')
     .replace(/[()\[\]{}]/g, ',')
     .replace(/\band\/or\b/gi, ',')
     .replace(/[\r\n]+/g, ',');
@@ -61,10 +63,12 @@ const NOISE = new Set(('cup cups tbsp tablespoon tablespoons tsp teaspoon teaspo
   // leaves", or "stock cube" are still reported as not recognized.
   'mug mugs mugful mugfuls tin tins tub tubs pot pots pack packs packet packets sachet sachets stick sticks spear spears leaf leaves rasher rashers portion portions fillet fillets cube cubes chunk chunks strip strips wedge wedges ring rings quarter quarters half halves third thirds floret florets cm mm inch inches dessert dessertspoon dessertspoons spoon spoons heaped generous scant size sized approx ' +
   'deseeded de cored pitted stoned scrubbed washed cleaned beaten whisked mashed juiced zested flaked crumbled defrosted cooled warmed steamed soaked patted cut broken removed skinned skinless boneless separated torn snipped squeezed drizzling brushing sprinkling greasing ' +
-  'a an the any colour color shape type if possible whenever such as like also fine works well enough around each per more total very lightly slightly thin thick bite lean whole give when serve instructions according shop bought both example from').split(' '));
+  'a an the any colour color shape type if possible whenever such as like also fine works well enough around each per more total very lightly slightly thin thick bite lean whole give when serve instructions according shop bought both example from ' +
+  // Added September 30, 2026 with the VA recipes: "(90% lean or higher)". A percentage on its own is not an ingredient either.
+  'higher').split(' '));
 export function isNoiseOnly(segment) {
   const tokens = segment.split(' ').filter(Boolean);
-  return tokens.length > 0 && tokens.every(t => NOISE.has(t) || /^[\d.,\/½¼¾⅓⅔x×-]+$/.test(t) || /^\d+(g|ml|oz|lb|kg|l|cm|mm)$/.test(t));
+  return tokens.length > 0 && tokens.every(t => NOISE.has(t) || /^[\d.,\/½¼¾⅓⅔x×-]+%?$/.test(t) || /^\d+(g|ml|oz|lb|kg|l|cm|mm)$/.test(t));
 }
 
 export function buildMatcher(dictionaries) {

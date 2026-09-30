@@ -26,12 +26,13 @@ export function recipesSourceKey(r) {
   if (/nhs/i.test(r.source || '')) return 'nhs';
   if (/parent club/i.test(r.source || '')) return 'parentclub';
   if (/nhlbi/i.test(r.source || '')) return 'nhlbi';
+  if (/^VA Healthy Teaching Kitchen$/.test(r.source || '')) return 'va';
   if (/wikibooks/i.test(r.source || '')) return 'wikibooks';
   if (/usda/i.test(r.source || '')) return 'usda';
   return 'peace-meal';
 }
-const RECIPES_SOURCE_LABEL = { mine: 'Mine', nhs: 'NHS', parentclub: 'Parent Club', nhlbi: 'NHLBI', wikibooks: 'Wikibooks', usda: 'USDA', 'peace-meal': 'Peace Meal' };
-const RECIPES_SOURCE_TONE = { mine: 'plum', nhs: 'info', parentclub: 'info', nhlbi: 'info', wikibooks: 'neutral', usda: 'caution', 'peace-meal': 'olive' };
+const RECIPES_SOURCE_LABEL = { mine: 'Mine', nhs: 'NHS', parentclub: 'Parent Club', nhlbi: 'NHLBI', va: 'VA', wikibooks: 'Wikibooks', usda: 'USDA', 'peace-meal': 'Peace Meal' };
+const RECIPES_SOURCE_TONE = { mine: 'plum', nhs: 'info', parentclub: 'info', nhlbi: 'info', va: 'info', wikibooks: 'neutral', usda: 'caution', 'peace-meal': 'olive' };
 export function recipesSourceChip(r) { const k = recipesSourceKey(r); return uiChip(RECIPES_SOURCE_LABEL[k], RECIPES_SOURCE_TONE[k]) + recipesDietChips(r); }
 const RECIPES_FAMILY_LABEL = { 'low-fodmap': 'low FODMAP', 'low-histamine': 'low histamine' };
 // "adapted" for a swap-layer copy; "written for" on Peace Meal's own diet recipes.
@@ -339,7 +340,7 @@ export function renderRecipesScreen(root) {
   const mine = uiState.data.recipes.filter(r => r.custom).length;
   const chip = (id, label, on) => `<button type="button" class="chip ${on ? 'plum' : 'neutral'} filter-chip" data-filter="${id}" aria-pressed="${on}">${label}</button>`;
   root.innerHTML = `
-    ${uiPageHeader('Recipes', `${uiFmtNum(total)} recipes from Peace Meal, the NHS website, the Wikibooks Cookbook, and your own kitchen${mine ? ` (${mine} of yours)` : ''}.${later ? ` The ${uiFmtNum(later.count)} Wikibooks Cookbook recipes load when you search.` : ''} Each one is checked against ${uiEsc(person.name)}'s plan when it is on screen.`, `<button class="btn small primary" type="button" id="rc-new">${uiIcon('plus')}New recipe</button><button class="btn small" type="button" id="rc-paste">${uiIcon('paste')}Paste a recipe</button>`)}
+    ${uiPageHeader('Recipes', `${uiFmtNum(total)} recipes from Peace Meal, the NHS website, the NHLBI, the VA, Parent Club, ${uiState.lite ? '' : 'the Wikibooks Cookbook, '}and your own kitchen${mine ? ` (${mine} of yours)` : ''}.${later ? ` The ${uiFmtNum(later.count)} Wikibooks Cookbook recipes load when you search.` : ''} Each one is checked against ${uiEsc(person.name)}'s plan when it is on screen.`, `<button class="btn small primary" type="button" id="rc-new">${uiIcon('plus')}New recipe</button><button class="btn small" type="button" id="rc-paste">${uiIcon('paste')}Paste a recipe</button>`)}
     <div class="card recipes-toolbar">
       <label for="rc-q" class="visually-hidden">Search recipes</label>
       <div class="search-row">${uiIcon('search')}<input id="rc-q" type="search" placeholder="Search by name or ingredient" value="${uiEsc(recipesUi.q)}" autocomplete="off"></div>
@@ -350,7 +351,7 @@ export function renderRecipesScreen(root) {
         ${chip('fits', 'Fits my plan', recipesUi.fits)}
         ${chip('quick', 'Under 20 minutes', recipesUi.quick)}
         <span class="filter-sep" aria-hidden="true"></span>
-        ${['peace-meal', 'nhs', 'parentclub', 'nhlbi', 'wikibooks', 'usda', 'mine'].filter(s => s !== 'usda' || uiState.data.recipes.some(r => r.source === 'USDA MyPlate Kitchen')).map(s => chip('source:' + s, RECIPES_SOURCE_LABEL[s], recipesUi.source === s)).join('')}
+        ${['peace-meal', 'nhs', 'parentclub', 'nhlbi', 'va', 'wikibooks', 'usda', 'mine'].filter(s => (s !== 'usda' || uiState.data.recipes.some(r => r.source === 'USDA MyPlate Kitchen')) && !(s === 'wikibooks' && uiState.lite)).map(s => chip('source:' + s, RECIPES_SOURCE_LABEL[s], recipesUi.source === s)).join('')}
         <span class="filter-sep" aria-hidden="true"></span>
         ${chip('veg:vegetarian', 'Vegetarian', recipesUi.veg === 'vegetarian')}
         ${chip('veg:vegan', 'Vegan', recipesUi.veg === 'vegan')}
@@ -360,7 +361,7 @@ export function renderRecipesScreen(root) {
       </div>
     </div>
     <div id="rc-list" class="stack-2"></div>
-    <p class="small muted recipes-foot">Recipes come from Peace Meal, the NHS website (Open Government Licence v3.0), the Wikibooks Cookbook (CC BY-SA 4.0), and your own kitchen. <a href="#/learn/sources">Where the recipes come from</a>.</p>
+    <p class="small muted recipes-foot">Recipes come from Peace Meal, the NHS website and Parent Club (Open Government Licence v3.0), the NHLBI and the VA (US government works, not copyright protected), ${uiState.lite ? '' : 'the Wikibooks Cookbook (CC BY-SA 4.0), '}and your own kitchen. <a href="#/learn/sources">Where the recipes come from</a>.</p>
   `;
   const listEl = root.querySelector('#rc-list');
   const draw = () => {
@@ -413,11 +414,12 @@ export function renderRecipesScreen(root) {
 export function recipesSourceCounts() {
   const base = uiState.baseRecipes || [];
   const by = key => base.filter(r => recipesSourceKey(r) === key);
-  const nhs = by('nhs'), pcs = by('parentclub'), nhlbi = by('nhlbi'), wb = by('wikibooks'), pm = by('peace-meal');
+  const nhs = by('nhs'), pcs = by('parentclub'), nhlbi = by('nhlbi'), va = by('va'), wb = by('wikibooks'), pm = by('peace-meal');
   const links = uiState.profile && uiState.profile.recipe_links ? Object.keys(uiState.profile.recipe_links).filter(id => Array.isArray(uiState.profile.recipe_links[id]) && uiState.profile.recipe_links[id].some(l => l.food)).length : 0;
   const later = uiDeferredRecipes() || { count: 0, featured: 0, times_estimated: 0 };   // shipped in this file, read on the first search
   return {
     total: base.length + later.count, peaceMeal: pm.length, nhs: nhs.length, nhsWithNutrition: nhs.filter(r => r.nutrition_per_serving).length,
+    va: va.length, vaWithNotes: va.filter(r => r.notes && r.notes.text).length,
     nhlbi: nhlbi.length, nhlbiWithPotassium: nhlbi.filter(r => r.nutrition_per_serving && typeof r.nutrition_per_serving.potassium_mg === 'number').length,
     parentclub: pcs.length, parentclubWithSodium: pcs.filter(r => r.nutrition_per_serving && typeof r.nutrition_per_serving.sodium_mg === 'number').length,
     wikibooks: wb.length + later.count, wikibooksFeatured: wb.filter(r => r.featured).length + later.featured, wikibooksTimesEstimated: wb.filter(r => r.times_estimated).length + later.times_estimated,

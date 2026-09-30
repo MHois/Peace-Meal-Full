@@ -1,6 +1,6 @@
 # Recipe sources and attribution
 
-This page lists every outside recipe collection imported into `data/recipes-open.json`, the licence each one carries, the exact attribution wording the licence requires, what nutrition data each source provides, and the import counts. The importer is `tools/import-open-recipes.mjs`; fetched pages are cached under `tools/open-recipes/` (not committed). No source here is a US federal publication.
+This page lists every outside recipe collection imported into `data/recipes-open.json`, the licence each one carries, the exact attribution wording the licence requires, what nutrition data each source provides, and the import counts. The importer is `tools/import-open-recipes.mjs`; fetched pages are cached under `tools/open-recipes/` (not committed). Parent Club (`tools/import-parentclub.mjs`) and the NHLBI (`tools/import-nhlbi.mjs`) are described on the app's Sources page (Learn, Sources). Two collections are US federal publications, the NHLBI and the VA (section 3): they are recipes, not dietary guidance, and no rule cites them.
 
 Last import: 2026-09-09. File size: 4.00 MB (budget 4 MB). Total recipes: 2457.
 
@@ -29,9 +29,22 @@ Last import: 2026-09-09. File size: 4.00 MB (budget 4 MB). Total recipes: 2457.
 - **Nutrition data: none.** The Wikibooks Cookbook does not publish nutrition figures, and this app never derives numbers from text. Wikibooks recipes therefore have no `nutrition_per_serving` and no `nutrition_source`, and the app shows "nutrition not available" for them until a person links each ingredient to a food in the recipe editor, after which nutrients are computed from `foods.json` by grams like any other recipe.
 - Counts: 3812 candidate pages listed, 3535 passed the filters, 1267 dropped to stay under the size budget (recipes without a stated servings value first, then the longest step text), **2268 recipes imported** (1202 with stated times, 1066 estimated; 1421 with a stated servings value; 2177 with a stated difficulty; 40 featured). Skipped by reason: few-ingredients 86, cocktail-or-candy 84, few-steps 64, no-procedure 25, disambiguation 12, no-ingredients 4, non-english 1, title-filter 1.
 
+## 3. VA Healthy Teaching Kitchen (US Department of Veterans Affairs)
+
+**"Pursuant to federal law, government-produced materials appearing on this and other VA websites are not copyright protected."** (VA copyright policy, https://department.va.gov/copyright-policy/, read September 30, 2026; 17 U.S.C. section 105.)
+
+- Source: https://www.nutrition.va.gov/NUTRITION/Recipes.asp and its category pages (54 listing pages). Each recipe is a one-page PDF card. Importer: `tools/import-va.mjs` (needs `pdfjs-dist`, installed outside `package.json`; see the file's header). PDFs are cached under `tools/open-recipes/va/` (not committed).
+- robots.txt: nutrition.va.gov has none (HTTP 404), which permits crawling.
+- Attribution stored on every recipe: `Recipe from the VA Healthy Teaching Kitchen, Nutrition and Food Services, U.S. Department of Veterans Affairs, nutrition.va.gov. Not copyright protected as a work of the United States Government.` No personal names are stored.
+- Left out: every card that says it was "Adapted from" another source (50 cards: magazines, cooking websites, cookbooks), because such a card is not government-produced throughout; cards listed twice on the site (imported once); cards whose title is already in another collection; and, at the owner's request, six titles most US home cooks would not recognize by name (a tagine, calabacitas, two shakshukas, a kohlrabi dish, and a romesco sauce); and three cards that make an ingredient or a condiment rather than a dish (homemade ricotta, pico de gallo, and quick-pickled onions), which the planner would otherwise schedule as a lunch or dinner.
+- Recipe ids: `va-<title-slug>`; `source_url` is the PDF.
+- Nutrition data: each card prints calories, total fat, saturated fat, sodium, total carbohydrate, dietary fiber, and protein per serving (a few add sugars). Stored as-is with `nutrition_source: "va"`; the serving size is kept as `serving_size_text`. Cholesterol and potassium are not published and are left blank.
+- The card's "Recipe Notes" are kept in `notes.text`. Meal slots come from the site's section (Breakfast, Main Dishes, Sides, Snacks, Desserts, Beverages, Dressings and Sauces) and then pass the same component check as every other collection; five cards whose section gave the wrong slot are set by hand in the importer.
+- Counts (September 30, 2026): 309 PDF links, 210 recipes imported.
+
 ## How the app uses these recipes
 
 - Ingredients are display-only (`{ "display": "..." }`, no `food` link, no grams). The dictionary tags ingredient text at run time for allergen and diet checks, and anything unrecognised is reported as such, never treated as safe.
-- NHS recipes show the stored per-serving nutrition (`recipeTotals` in `src/engine/nutrition.js` uses it when a recipe has `nutrition_source` and `nutrition_per_serving` and no linked foods).
+- NHS, NHLBI, Parent Club, and VA recipes show the stored per-serving nutrition (`recipeTotals` in `src/engine/nutrition.js` uses it when a recipe has `nutrition_source` and `nutrition_per_serving` and no linked foods).
 - Wikibooks recipes show no nutrition until ingredients are linked in the editor.
 - `tags` is empty on every imported recipe because the tag vocabulary is controlled; tags are added by hand or by the dictionary at run time.

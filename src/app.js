@@ -246,11 +246,11 @@ export function appRender() {
 // The recipe pool = shipped recipes, with any ingredient links the household added to imported recipes
 // (profile.recipe_links[recipeId] = [{food, grams, display}]), plus recipes the household wrote (profile.custom_recipes).
 // Call uiState.refreshRecipes() after editing either.
-export const APP_COLLECTION_OF_SOURCE = { 'NHS website': 'nhs', 'Parent Club Scotland': 'parentclub', 'NHLBI (NIH)': 'nhlbi', 'Wikibooks Cookbook': 'wikibooks', 'USDA MyPlate Kitchen': 'usda' };
+export const APP_COLLECTION_OF_SOURCE = { 'NHS website': 'nhs', 'Parent Club Scotland': 'parentclub', 'NHLBI (NIH)': 'nhlbi', 'VA Healthy Teaching Kitchen': 'va', 'Wikibooks Cookbook': 'wikibooks', 'USDA MyPlate Kitchen': 'usda' };
 // A recipe's collection: its own "collection" field (Peace Meal's September 2026 set for both diets, "review_dual"), or its source.
 export function appCollectionOf(r) { return r.collection || APP_COLLECTION_OF_SOURCE[r.source]; }
 export function appCollectionCounts() {
-  const counts = { nhs: 0, parentclub: 0, nhlbi: 0, wikibooks: 0, usda: 0, review_dual: 0 };
+  const counts = { nhs: 0, parentclub: 0, nhlbi: 0, va: 0, wikibooks: 0, usda: 0, review_dual: 0 };
   for (const r of uiState.baseRecipes || []) { const k = appCollectionOf(r); if (k) counts[k]++; }
   const d = appDeferredInfo();
   if (d) counts.wikibooks += d.count;   // not read yet, still part of the collection
@@ -300,7 +300,7 @@ function appPrebuildAdapted() {
 function appAssembleRecipes() {
   const profile = uiState.profile || {};
   const links = profile.recipe_links || {};
-  const on = Object.assign({ nhs: true, parentclub: true, nhlbi: true, wikibooks: true, usda: false, review_dual: true }, profile.recipe_collections || {});
+  const on = Object.assign({ nhs: true, parentclub: true, nhlbi: true, va: true, wikibooks: true, usda: false, review_dual: true }, profile.recipe_collections || {});
   const out = [];
   for (const r of uiState.baseRecipes || []) {
     const coll = appCollectionOf(r);
@@ -394,7 +394,7 @@ async function appBoot() {
   uiState.syncRefresh = appBootSync;
   uiState.profile = load();
   uiState.lite = APP_LITE;
-  if (APP_LITE && uiState.profile && !uiState.profile.people.length && uiState.profile.recipe_collections) { uiState.profile.recipe_collections.nhs = true; uiState.profile.recipe_collections.parentclub = true; uiState.profile.recipe_collections.nhlbi = true; uiState.profile.recipe_collections.wikibooks = false; }
+  if (APP_LITE && uiState.profile && !uiState.profile.people.length && uiState.profile.recipe_collections) { uiState.profile.recipe_collections.nhs = true; uiState.profile.recipe_collections.parentclub = true; uiState.profile.recipe_collections.nhlbi = true; uiState.profile.recipe_collections.va = true; uiState.profile.recipe_collections.wikibooks = false; }
   // Collections with per-serving nutrition are on by default since v2.3. Profiles saved before that carried nhs: false; switch it on once.
   if (uiState.profile && uiState.profile.recipe_collections && !uiState.profile.recipe_collections.defaults_v3) { uiState.profile.recipe_collections.nhs = true; uiState.profile.recipe_collections.parentclub = true; uiState.profile.recipe_collections.defaults_v3 = true; }
   if (uiState.profile && uiState.profile.recipe_collections && !uiState.profile.recipe_collections.defaults_v4) { uiState.profile.recipe_collections.nhlbi = true; uiState.profile.recipe_collections.defaults_v4 = true; }

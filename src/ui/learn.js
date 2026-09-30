@@ -186,10 +186,23 @@ function learnRenderSources(root) {
         <li>Ingredient lines use American measures (cups, tablespoons, ounces). Two pages had no ingredient list and were skipped. Loaded now: ${uiFmtNum(c.nhlbi)} recipes.</li>
       </ul>
 
+      <h2>5. VA Healthy Teaching Kitchen (US Department of Veterans Affairs)</h2>
+      <p><strong>Not copyright protected.</strong> VA's copyright policy (${ext('https://department.va.gov/copyright-policy/')}, read September 30, 2026): "Pursuant to federal law, government-produced materials appearing on this and other VA websites are not copyright protected." (17 U.S.C. section 105.) A recipe card that says it was "Adapted from" another source (a magazine, a cooking website, a cookbook) is not government-produced throughout, so every such card is left out. Added at the household's request for everyday American recipes; it is a collection switch in Settings like every other outside source.</p>
+      <ul>
+        <li>Source: ${ext('https://www.nutrition.va.gov/NUTRITION/Recipes.asp')} and its category pages; each recipe is a one-page PDF card. Importer: <code>tools/import-va.mjs</code>.</li>
+        <li>Attribution line stored on every recipe: <em>Recipe from the VA Healthy Teaching Kitchen, Nutrition and Food Services, U.S. Department of Veterans Affairs, nutrition.va.gov. Not copyright protected as a work of the United States Government.</em> Cards credited to an individual VA dietitian keep the VA attribution only; no personal names are stored.</li>
+        <li>robots.txt: nutrition.va.gov has none (HTTP 404), which permits crawling.</li>
+        <li>Recipe ids: <code>va-&lt;title-slug&gt;</code>; <code>source_url</code> is the PDF the text came from.</li>
+        <li>Nutrition data: each card prints a per-serving line: calories, total fat, saturated fat, <strong>sodium</strong>, total carbohydrate, dietary fiber, and protein (a few add sugars). Stored as-is with <code>nutrition_source: "va"</code>; the stated serving size is kept as <code>serving_size_text</code>. Cholesterol and potassium are not published, so those fields are blank, not guessed.</li>
+        <li>The card's "Recipe Notes" (swaps, storage, serving ideas) are kept as the recipe's notes. Cards listed twice on the site are imported once; a card whose title is already in another collection is left out.</li>
+        <li>Six titles most US home cooks would not recognize by name were left out at the owner's request (a tagine, calabacitas, two shakshukas, a kohlrabi dish, and a romesco sauce); three cards that make an ingredient or a condiment rather than a dish were left out too. Both lists are in the importer.</li>
+        <li>Loaded now: ${uiFmtNum(c.va)} recipes, ${uiFmtNum(c.vaWithNotes)} with notes.</li>
+      </ul>
+
       <h2>How the app uses these recipes</h2>
       <ul>
         <li>Ingredients are display-only (<code>{ "display": "..." }</code>, no <code>food</code> link, no grams). The dictionary tags ingredient text at run time for allergen and diet checks, and anything unrecognised is reported as such, never treated as safe.</li>
-        <li>NHS, Parent Club, and NHLBI recipes show the stored per-serving nutrition (<code>recipeTotals</code> in <code>src/engine/nutrition.js</code> uses it when a recipe has <code>nutrition_source</code> and <code>nutrition_per_serving</code> and no linked foods).</li>
+        <li>NHS, Parent Club, NHLBI, and VA recipes show the stored per-serving nutrition (<code>recipeTotals</code> in <code>src/engine/nutrition.js</code> uses it when a recipe has <code>nutrition_source</code> and <code>nutrition_per_serving</code> and no linked foods).</li>
         <li>Wikibooks recipes show no nutrition until ingredients are linked in the editor.</li>
         <li><code>tags</code> is empty on every imported recipe because the tag vocabulary is controlled; tags are added by hand or by the dictionary at run time.</li>
         <li>Recipes you write yourself ("Mine") and ingredient links you add are stored on this device in your profile, never in the data files.</li>
