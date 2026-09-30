@@ -18,7 +18,7 @@ const MUTATIONS = [
   { rule: 7, text: 'Ingredient text the dictionary does not recognize is reported as not recognized. It is never counted as safe.', file: 'src/engine/checker.js', find: "  if (unrecognized && unrecognized.length && guarded) return 'caution';", replace: "", what: 'unrecognized text counts as safe' },
   { rule: 8, text: 'There is no language model in the app.', file: 'src/app.js', find: "async function appBoot() {", replace: "async function appBoot() {\n  try { fetch('https://api.anthropic.com/v1/messages', { method: 'POST', body: '{}' }).catch(() => {}); } catch { /* audit */ }", what: 'the app calls a language model API at start' }
 ];
-const COPY = ['src', 'data', 'test', 'tools/lib', 'package.json', 'sw.js', 'index.html', 'breathe.html', 'manifest.webmanifest', 'site', 'icon-180.png', 'icon-512.png', 'icon.svg', 'tools/bundle.mjs', 'tools/validate.mjs', 'docs', 'README.md', '.github'];
+const COPY = ['src', 'data', 'test', 'tools/lib', 'tools/old-address', 'package.json', 'sw.js', 'index.html', 'breathe.html', 'manifest.webmanifest', 'site', 'icon-180.png', 'icon-512.png', 'icon.svg', 'tools/bundle.mjs', 'tools/validate.mjs', 'docs', 'README.md', '.github'];
 const results = [];
 fs.rmSync(WORK, { recursive: true, force: true });
 MUTATIONS.forEach((m, i) => {
