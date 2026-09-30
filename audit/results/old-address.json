@@ -1,0 +1,214 @@
+{
+ "oldCommit": "b77787f",
+ "scenarios": {
+  "icon from old lite/": [
+   {
+    "step": "1 as before (site up)",
+    "title": "Peace Meal for one",
+    "notFound": false,
+    "moved": false,
+    "appShown": true,
+    "personShown": true,
+    "text": "Skip to content Peace Meal for one LITE SP Sample Person Hello, Sample Person Wednesday, S"
+   },
+   {
+    "step": "2 today, online (every path 404)",
+    "title": "Site not found · GitHub Pages",
+    "notFound": true,
+    "moved": false,
+    "appShown": false,
+    "personShown": false,
+    "text": "404 There isn't a GitHub Pages site here."
+   },
+   {
+    "step": "3 today, no connection (Airplane Mode)",
+    "title": "Peace Meal for one",
+    "notFound": false,
+    "moved": false,
+    "appShown": true,
+    "personShown": true,
+    "text": "Skip to content Peace Meal for one LITE SP Sample Person Hello, Sample Person Wednesday, S"
+   },
+   {
+    "step": "4 no connection: Settings, Save a backup",
+    "backup": {
+     "hasPerson": true,
+     "bytes": 3608
+    }
+   },
+   {
+    "step": "5 proposal published, online",
+    "title": "Peace Meal has moved",
+    "notFound": false,
+    "moved": true,
+    "appShown": true,
+    "personShown": false,
+    "text": "Peace Meal has moved Your information is still on this phone, inside this old icon. Move i"
+   },
+   {
+    "step": "6 proposal: Save my information",
+    "backup": {
+     "hasPerson": true,
+     "bytes": 2107
+    },
+    "link": "https://mchoisington.github.io/Peace-Meal-Full/lite/"
+   },
+   {
+    "step": "7 after the proposal was seen, no connection",
+    "title": "Peace Meal has moved",
+    "notFound": false,
+    "moved": true,
+    "appShown": true,
+    "personShown": false,
+    "text": "Peace Meal has moved Your information is still on this phone, inside this old icon. Move i"
+   }
+  ],
+  "icon from old full/": [
+   {
+    "step": "1 as before (site up)",
+    "title": "Peace Meal",
+    "notFound": false,
+    "moved": false,
+    "appShown": true,
+    "personShown": true,
+    "text": "Skip to content Peace Meal SP Sample Person Good morning, Sample Person Edit profile Wedne"
+   },
+   {
+    "step": "2 today, online (every path 404)",
+    "title": "Site not found · GitHub Pages",
+    "notFound": true,
+    "moved": false,
+    "appShown": false,
+    "personShown": false,
+    "text": "404 There isn't a GitHub Pages site here."
+   },
+   {
+    "step": "3 today, no connection (Airplane Mode)",
+    "title": "Peace Meal",
+    "notFound": false,
+    "moved": false,
+    "appShown": true,
+    "personShown": true,
+    "text": "Skip to content Peace Meal SP Sample Person Good morning, Sample Person Edit profile Wedne"
+   },
+   {
+    "step": "4 no connection: Settings, Save a backup",
+    "backup": {
+     "hasPerson": true,
+     "bytes": 3523
+    }
+   },
+   {
+    "step": "5 proposal published, online",
+    "title": "Peace Meal has moved",
+    "notFound": false,
+    "moved": true,
+    "appShown": true,
+    "personShown": false,
+    "text": "Peace Meal has moved Your information is still on this phone, inside this old icon. Move i"
+   },
+   {
+    "step": "6 proposal: Save my information",
+    "backup": {
+     "hasPerson": true,
+     "bytes": 2107
+    },
+    "link": "https://mchoisington.github.io/Peace-Meal-Full/full/"
+   },
+   {
+    "step": "7 after the proposal was seen, no connection",
+    "title": "Peace Meal has moved",
+    "notFound": false,
+    "moved": true,
+    "appShown": true,
+    "personShown": false,
+    "text": "Peace Meal has moved Your information is still on this phone, inside this old icon. Move i"
+   }
+  ],
+  "icon from the old front page": [
+   {
+    "step": "1 as before (site up)",
+    "title": "Peace Meal",
+    "notFound": false,
+    "moved": false,
+    "appShown": true,
+    "personShown": true,
+    "text": "Skip to content Peace Meal SP Sample Person Good morning, Sample Person Edit profile Wedne"
+   },
+   {
+    "step": "2 today, online (every path 404)",
+    "title": "Peace Meal",
+    "notFound": false,
+    "moved": false,
+    "appShown": true,
+    "personShown": true,
+    "text": "Skip to content Peace Meal SP Sample Person Good morning, Sample Person Edit profile Wedne"
+   },
+   {
+    "step": "3 today, no connection",
+    "title": "Peace Meal",
+    "notFound": false,
+    "moved": false,
+    "appShown": true,
+    "personShown": true,
+    "text": "Skip to content Peace Meal SP Sample Person Good morning, Sample Person Edit profile Wedne"
+   },
+   {
+    "step": "4 proposal page only, online",
+    "title": "Peace Meal",
+    "notFound": false,
+    "moved": false,
+    "appShown": true,
+    "personShown": true,
+    "text": "Skip to content Peace Meal SP Sample Person Good morning, Sample Person Edit profile Wedne"
+   },
+   {
+    "step": "5 proposal page plus the replacement worker, online (second open)",
+    "title": "Peace Meal has moved",
+    "notFound": false,
+    "moved": true,
+    "appShown": true,
+    "personShown": false,
+    "text": "Peace Meal has moved Your information is still on this phone, inside this old icon. Move i"
+   }
+  ],
+  "Safari tab": [
+   {
+    "step": "open the new address in the same browser storage",
+    "title": "Peace Meal for one",
+    "notFound": false,
+    "moved": false,
+    "appShown": true,
+    "personShown": true,
+    "text": "Skip to content Peace Meal for one LITE SP Sample Person Hello, Sample Person Wednesday, S",
+    "copiedToNewKey": true
+   }
+  ],
+  "new icon, Bring my data": [
+   {
+    "step": "file saved in Airplane Mode",
+    "importControl": true,
+    "title": "Peace Meal for one",
+    "notFound": false,
+    "moved": false,
+    "appShown": true,
+    "personShown": true,
+    "text": "Skip to content Back LITE SP Sample Person Hello, Sample Person Wednesday, September 30 IN",
+    "saved": true
+   },
+   {
+    "step": "file saved by the proposal page",
+    "importControl": true,
+    "title": "Peace Meal for one",
+    "notFound": false,
+    "moved": false,
+    "appShown": true,
+    "personShown": true,
+    "text": "Skip to content Back LITE SP Sample Person Hello, Sample Person Wednesday, September 30 IN",
+    "saved": true
+   }
+  ]
+ },
+ "airplaneBackup": "old-address-1790758754757.json",
+ "movedBackup": "old-address-1790758757372.json"
+}

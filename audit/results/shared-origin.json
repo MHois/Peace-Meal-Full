@@ -1,0 +1,32 @@
+{
+ "read": {
+  "keysVisible": [
+   "peace-meal-lite:v1",
+   "peace-meal-lite:home-screen-guide"
+  ],
+  "person": {
+   "name": "Sample Person",
+   "age": 72,
+   "conditions": [
+    "hypertension",
+    "celiac"
+   ],
+   "allergies": [
+    "allergen-peanut"
+   ]
+  },
+  "symptomEntries": 1,
+  "weights": 1
+ },
+ "changed": {
+  "peanutLabelAfterChange": "PASS Nothing in the plan flags this. Ingredient text Fits a preference Nut Legume"
+ },
+ "cache": {
+  "keys": [
+   "pm-pages-lite-8035a288d8bb"
+  ],
+  "replaced": true,
+  "nextLaunchShows": "This is not Peace Meal Written by another page on the same origin."
+ },
+ "worker": "refused: SecurityError"
+}

@@ -1,0 +1,252 @@
+{
+ "proxy": "yes",
+ "spkiPinned": 2,
+ "normal": {
+  "lite": {
+   "pageRequests": 24,
+   "sameOriginServed": [
+    "/Peace-Meal-Full/lite/",
+    "/Peace-Meal-Full/lite/icon-180.png",
+    "/Peace-Meal-Full/lite/sw.js",
+    "/Peace-Meal-Full/lite/",
+    "/Peace-Meal-Full/lite/index.html",
+    "/Peace-Meal-Full/lite/manifest.webmanifest",
+    "/Peace-Meal-Full/lite/icon-180.png",
+    "/Peace-Meal-Full/lite/icon-512.png"
+   ],
+   "crossOrigin": [],
+   "dataOrBlob": 0,
+   "withBody": []
+  },
+  "full": {
+   "pageRequests": 25,
+   "sameOriginServed": [
+    "/Peace-Meal-Full/full/",
+    "/Peace-Meal-Full/full/sw.js",
+    "/Peace-Meal-Full/full/icon-180.png",
+    "/Peace-Meal-Full/full/",
+    "/Peace-Meal-Full/full/index.html",
+    "/Peace-Meal-Full/full/manifest.webmanifest",
+    "/Peace-Meal-Full/full/icon-180.png",
+    "/Peace-Meal-Full/full/icon-512.png"
+   ],
+   "crossOrigin": [],
+   "dataOrBlob": 0,
+   "withBody": []
+  }
+ },
+ "photo": {
+  "lite": {
+   "ms": 1833,
+   "status": "Text added. Look it over, fix anything the camera misread, then tap Check this list.",
+   "text": "INGREDIENTS: WHEAT FLOUR, SUGAR, PEANUTS, SALT, SOY LECITHIN.",
+   "verdictAfterCheck": "FAIL Contains a hard exclusion. Ingredient text Matches HARD STOP Wheat matched: flour, wheat, wheat flour Why (1) HARD STOP Gluten matched:",
+   "crossOrigin": [
+    {
+     "phase": "photo",
+     "method": "GET",
+     "url": "https://cdnjs.cloudflare.com/ajax/libs/tesseract.js/5.1.1/tesseract.min.js",
+     "host": "cdnjs.cloudflare.com",
+     "type": "script",
+     "bodyBytes": 0,
+     "fromServiceWorker": false
+    },
+    {
+     "phase": "photo",
+     "method": "GET",
+     "url": "https://cdnjs.cloudflare.com/ajax/libs/tesseract.js/5.1.1/worker.min.js",
+     "host": "cdnjs.cloudflare.com",
+     "type": "fetch",
+     "bodyBytes": 0,
+     "fromServiceWorker": false
+    },
+    {
+     "phase": "photo",
+     "method": "GET",
+     "url": "https://cdn.jsdelivr.net/npm/tesseract.js-core@5.1.1/tesseract-core-simd-lstm.wasm.js",
+     "host": "cdn.jsdelivr.net",
+     "type": "fetch",
+     "bodyBytes": 0,
+     "fromServiceWorker": false
+    },
+    {
+     "phase": "photo",
+     "method": "GET",
+     "url": "https://cdn.jsdelivr.net/npm/@tesseract.js-data/eng@1.0.0/4.0.0_best_int/eng.traineddata.gz",
+     "host": "cdn.jsdelivr.net",
+     "type": "fetch",
+     "bodyBytes": 0,
+     "fromServiceWorker": false
+    }
+   ],
+   "hosts": [
+    "cdnjs.cloudflare.com",
+    "cdn.jsdelivr.net"
+   ],
+   "nonGet": [],
+   "withBody": []
+  },
+  "full": {
+   "ms": 1605,
+   "status": "Text added. Look it over, fix anything the camera misread, then tap Check this list.",
+   "text": "INGREDIENTS: WHEAT FLOUR, SUGAR, PEANUTS, SALT, SOY LECITHIN.",
+   "verdictAfterCheck": "FAIL Contains a hard exclusion. Ingredient text Matches HARD STOP Wheat matched: flour, wheat, wheat flour Why (1) HARD STOP Gluten matched:",
+   "crossOrigin": [
+    {
+     "phase": "photo",
+     "method": "GET",
+     "url": "https://cdnjs.cloudflare.com/ajax/libs/tesseract.js/5.1.1/tesseract.min.js",
+     "host": "cdnjs.cloudflare.com",
+     "type": "script",
+     "bodyBytes": 0,
+     "fromServiceWorker": false
+    },
+    {
+     "phase": "photo",
+     "method": "GET",
+     "url": "https://cdnjs.cloudflare.com/ajax/libs/tesseract.js/5.1.1/worker.min.js",
+     "host": "cdnjs.cloudflare.com",
+     "type": "fetch",
+     "bodyBytes": 0,
+     "fromServiceWorker": false
+    },
+    {
+     "phase": "photo",
+     "method": "GET",
+     "url": "https://cdn.jsdelivr.net/npm/tesseract.js-core@5.1.1/tesseract-core-simd-lstm.wasm.js",
+     "host": "cdn.jsdelivr.net",
+     "type": "fetch",
+     "bodyBytes": 0,
+     "fromServiceWorker": false
+    },
+    {
+     "phase": "photo",
+     "method": "GET",
+     "url": "https://cdn.jsdelivr.net/npm/@tesseract.js-data/eng@1.0.0/4.0.0_best_int/eng.traineddata.gz",
+     "host": "cdn.jsdelivr.net",
+     "type": "fetch",
+     "bodyBytes": 0,
+     "fromServiceWorker": false
+    }
+   ],
+   "hosts": [
+    "cdnjs.cloudflare.com",
+    "cdn.jsdelivr.net"
+   ],
+   "nonGet": [],
+   "withBody": []
+  }
+ },
+ "tamper": {
+  "language data, one byte changed": {
+   "changedFileServed": 1,
+   "status": "The label reader could not load. It needs Wi-Fi the first time. Or use your phone camera to copy the text, then paste it above.",
+   "text": "",
+   "refused": true
+  },
+  "main script, a comment added": {
+   "changedFileServed": 1,
+   "status": "The label reader could not load. It needs Wi-Fi the first time. Or use your phone camera to copy the text, then paste it above.",
+   "text": "",
+   "refused": true
+  }
+ },
+ "offlineSecondPhoto": {
+  "firstPhotoOnline": {
+   "status": "Text added. Look it over, fix anything the camera misread, then tap Check this list.",
+   "text": "INGREDIENTS: WHEAT FLOUR, SUGAR, PEANUTS, SALT, SOY LECITHIN."
+  },
+  "internetDuringSecond": "unreachable",
+  "secondPhoto": {
+   "status": "Text added. Look it over, fix anything the camera misread, then tap Check this list.",
+   "text": "INGREDIENTS: WHEAT FLOUR, SUGAR, PEANUTS, SALT, SOY LECITHIN."
+  },
+  "works": true
+ },
+ "netlog": {
+  "normalUse": {
+   "app": {
+    "GET http://127.0.0.1:46465/Peace-Meal-Full/lite/": 2,
+    "GET https://content-autofill.googleapis.com/v1/pages/ChRDaHJvbWUvMTQxLjAuNzM5MC4zNxIZCYrr01D_k87MEgUNCCLUzyHUVFLtoxeyNhi3qcoB?alt=proto": 2,
+    "GET http://127.0.0.1:46465/Peace-Meal-Full/lite/icon-180.png": 2,
+    "GET http://127.0.0.1:46465/Peace-Meal-Full/lite/sw.js": 1,
+    "GET http://127.0.0.1:46465/Peace-Meal-Full/lite/index.html": 1,
+    "GET http://127.0.0.1:46465/Peace-Meal-Full/lite/manifest.webmanifest": 1,
+    "GET http://127.0.0.1:46465/Peace-Meal-Full/lite/icon-512.png": 1,
+    "GET https://content-autofill.googleapis.com/v1/pages/ChRDaHJvbWUvMTQxLjAuNzM5MC4zNxJ7CQL0t-DzIwmLEgUNsItOJRIFDZSQkvoSBQ2BkPF8EgUNlJCS-hIFDYGQ8XwSBQ2UkJL6EgUNgZDxfBI...": 1,
+    "GET https://content-autofill.googleapis.com/v1/pages/ChRDaHJvbWUvMTQxLjAuNzM5MC4zNxInCSSSJi7tcnLGEgUN5jRmjRIFDSFlWSoSBQ1cSeeCIcyb0Bau3z_vGLepygE=?alt=proto": 4,
+    "GET https://content-autofill.googleapis.com/v1/pages/ChRDaHJvbWUvMTQxLjAuNzM5MC4zNxIgCQtA2JkUMSfoEgUND563PhIFDck6pF4hheNhKXB7JMUYt6nKAQ==?alt=proto": 2,
+    "GET https://content-autofill.googleapis.com/v1/pages/ChRDaHJvbWUvMTQxLjAuNzM5MC4zNxIZCWUtgdEW8DN8EgUNXaBSKiF3SIWQgbtIThi3qcoB?alt=proto": 1,
+    "GET https://content-autofill.googleapis.com/v1/pages/ChRDaHJvbWUvMTQxLjAuNzM5MC4zNxI1CRJ-mo-ixIlmEgUNnM6WWhIFDfC8eowSBQ37yJ_SEgUNsiWxaRIFDaQ6D1EhTc2DaOHiYl8Yt6nKAQ=...": 2,
+    "GET https://content-autofill.googleapis.com/v1/pages/ChRDaHJvbWUvMTQxLjAuNzM5MC4zNxI8CTZr2oANCmmqEgUN5jRmjRIFDSFlWSoSBQ1cSeeCEgUNnUsjexIFDZnVzJwSBQ1uT5Z3IYlGHWqC-Km...": 2,
+    "GET http://127.0.0.1:46465/Peace-Meal-Full/full/": 2,
+    "GET http://127.0.0.1:46465/Peace-Meal-Full/full/sw.js": 1,
+    "GET http://127.0.0.1:46465/Peace-Meal-Full/full/icon-180.png": 2,
+    "GET http://127.0.0.1:46465/Peace-Meal-Full/full/index.html": 1,
+    "GET http://127.0.0.1:46465/Peace-Meal-Full/full/manifest.webmanifest": 1,
+    "GET http://127.0.0.1:46465/Peace-Meal-Full/full/icon-512.png": 1,
+    "GET https://content-autofill.googleapis.com/v1/pages/ChRDaHJvbWUvMTQxLjAuNzM5MC4zNxIgCUdkBpNAY99TEgUNJHIuyBIFDTdtZ7AhM-BvZaKJ8sMYt6nKAQ==?alt=proto": 1,
+    "GET https://content-autofill.googleapis.com/v1/pages/ChRDaHJvbWUvMTQxLjAuNzM5MC4zNxIgCQtA2JkUMSfoEgUND563PhIFDck6pF4hKclkSU0PTqMYt6nKAQ==?alt=proto": 2,
+    "GET https://content-autofill.googleapis.com/v1/pages/ChRDaHJvbWUvMTQxLjAuNzM5MC4zNxI8CbbqLajlP8FfEgUNSvpF0BIFDUpds44SBQ3ZB5brEgUNxeyI0RIFDfGG43sSBQ3Cq1OlITd6I_5ZMmr...": 1,
+    "GET https://content-autofill.googleapis.com/v1/pages/ChRDaHJvbWUvMTQxLjAuNzM5MC4zNxIZCWUtgdEW8DN8EgUNXaBSKiFfP4dHAD9JJxi3qcoB?alt=proto": 1,
+    "GET https://content-autofill.googleapis.com/v1/pages/ChRDaHJvbWUvMTQxLjAuNzM5MC4zNxInCSdx1HbZvPn9EgUN6MEOIRIFDeqrt_QSBQ2pfWGUIYN_y1uSCZ0gGLepygE=?alt=proto": 1
+   },
+   "appHosts": [
+    "127.0.0.1:46465",
+    "content-autofill.googleapis.com"
+   ],
+   "browserOwnHosts": [
+    "clients2.google.com",
+    "redirector.gvt1.com",
+    "accounts.google.com",
+    "www.google.com",
+    "r5---sn-a5mlrnls.gvt1.com",
+    "r4---sn-2op5q5-5n.gvt1.com",
+    "dns.google",
+    "android.clients.google.com"
+   ],
+   "browserOwnRequests": 55
+  },
+  "photo": {
+   "app": {
+    "GET http://127.0.0.1:46465/Peace-Meal-Full/lite/#/check": 3,
+    "GET https://content-autofill.googleapis.com/v1/pages/ChRDaHJvbWUvMTQxLjAuNzM5MC4zNxIgCQtA2JkUMSfoEgUND563PhIFDck6pF4hheNhKXB7JMUYt6nKAQ==?alt=proto": 3,
+    "GET http://127.0.0.1:46465/Peace-Meal-Full/lite/sw.js": 3,
+    "GET http://127.0.0.1:46465/Peace-Meal-Full/lite/icon-180.png": 6,
+    "GET http://127.0.0.1:46465/Peace-Meal-Full/lite/": 3,
+    "GET http://127.0.0.1:46465/Peace-Meal-Full/lite/index.html": 3,
+    "GET http://127.0.0.1:46465/Peace-Meal-Full/lite/manifest.webmanifest": 3,
+    "GET http://127.0.0.1:46465/Peace-Meal-Full/lite/icon-512.png": 3,
+    "GET https://cdnjs.cloudflare.com/ajax/libs/tesseract.js/5.1.1/tesseract.min.js": 3,
+    "GET https://cdnjs.cloudflare.com/ajax/libs/tesseract.js/5.1.1/worker.min.js": 3,
+    "GET https://cdn.jsdelivr.net/npm/tesseract.js-core@5.1.1/tesseract-core-simd-lstm.wasm.js": 3,
+    "GET https://cdn.jsdelivr.net/npm/@tesseract.js-data/eng@1.0.0/4.0.0_best_int/eng.traineddata.gz": 2,
+    "GET http://127.0.0.1:46465/Peace-Meal-Full/full/#/check": 1,
+    "GET https://content-autofill.googleapis.com/v1/pages/ChRDaHJvbWUvMTQxLjAuNzM5MC4zNxIgCQtA2JkUMSfoEgUND563PhIFDck6pF4hKclkSU0PTqMYt6nKAQ==?alt=proto": 1,
+    "GET http://127.0.0.1:46465/Peace-Meal-Full/full/icon-180.png": 2,
+    "GET http://127.0.0.1:46465/Peace-Meal-Full/full/sw.js": 1,
+    "GET http://127.0.0.1:46465/Peace-Meal-Full/full/": 1,
+    "GET http://127.0.0.1:46465/Peace-Meal-Full/full/index.html": 1,
+    "GET http://127.0.0.1:46465/Peace-Meal-Full/full/manifest.webmanifest": 1,
+    "GET http://127.0.0.1:46465/Peace-Meal-Full/full/icon-512.png": 1
+   },
+   "appHosts": [
+    "127.0.0.1:46465",
+    "content-autofill.googleapis.com",
+    "cdnjs.cloudflare.com",
+    "cdn.jsdelivr.net"
+   ],
+   "browserOwnHosts": [
+    "clients2.google.com",
+    "redirector.gvt1.com",
+    "accounts.google.com",
+    "www.google.com",
+    "r4---sn-a5m7lnld.gvt1.com",
+    "r3---sn-qjp5q5-5x.gvt1.com",
+    "android.clients.google.com",
+    "dns.google"
+   ],
+   "browserOwnRequests": 40
+  }
+ }
+}
