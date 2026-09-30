@@ -10,8 +10,37 @@ export const LEGACY_KEYS = ['peace-meal:v1', 'specialty-nutrition-app:v1'];
 export const STORE_KEYS = { lite: 'peace-meal-lite:v1', full: 'peace-meal-full:v1' };
 const STORE_MIGRATED_SUFFIX = ':migrated';
 
-// The key this session reads and writes, and what the last migration attempt did (Settings shows it).
-export const storeState = { key: null, migration: null };
+// The key this session reads and writes, what the last migration attempt did (Settings shows it), and saved data that
+// could not be read on this launch (P0-4; every screen shows it).
+export const storeState = { key: null, migration: null, unreadable: null };
+
+// P0-4 (fix pass of September 30, 2026): saved data this build cannot read. Before anything else is saved, the text is
+// copied once to its own key, <key>:unreadable:<time>, which nothing in the app overwrites or removes without asking.
+// When even that copy cannot be written, save() refuses to write over the only copy until the person has saved it as a
+// file and chosen Start fresh (releaseUnreadable).
+export const UNREADABLE_MARK = ':unreadable:';
+export function unreadableCopies(storage = storeLocal()) {
+  const out = [];
+  if (!storage) return out;
+  try {
+    for (let i = 0; i < storage.length; i++) { const k = storage.key(i); if (k && k.includes(UNREADABLE_MARK)) out.push({ key: k, text: storage.getItem(k) }); }
+  } catch { /* storage not readable */ }
+  return out.sort((a, b) => a.key.localeCompare(b.key));
+}
+function storeKeepUnreadable(storage, key, raw, reason, repaired) {
+  const at = new Date().toISOString();
+  let copyKey = null, copyFailed = false;
+  const same = unreadableCopies(storage).find(c => c.key.startsWith(key + UNREADABLE_MARK) && c.text === raw);
+  if (same) copyKey = same.key;
+  else {
+    const k = key + UNREADABLE_MARK + at;
+    try { storage.setItem(k, raw); copyKey = storage.getItem(k) === raw ? k : null; } catch { copyKey = null; }
+    if (!copyKey) { copyFailed = true; try { storage.removeItem(k); } catch { /* nothing more to do */ } }
+  }
+  storeState.unreadable = { key, copyKey, copyFailed, reason, repaired: !!repaired, chars: raw.length, at, text: raw, released: false };
+}
+// "Start fresh": the person has the text as a file, or chose to let it go. Saves may write over the key again.
+export function releaseUnreadable() { if (storeState.unreadable) storeState.unreadable.released = true; }
 
 function storeIsLite() { return typeof window !== 'undefined' && !!window.__PEACE_MEAL_LITE__; }
 function storeLocal() { try { return typeof localStorage !== 'undefined' ? localStorage : null; } catch { return null; } }
@@ -75,13 +104,31 @@ export function load(storage = storeLocal(), lite = storeIsLite()) {
   const m = migrateStorage(lite, storage);
   storeState.key = m.key;
   storeState.migration = m;
-  try {
-    const raw = storage ? storage.getItem(m.key) : null;
-    if (!raw) return defaultProfile();
-    const p = JSON.parse(raw);
-    if (!p || !Array.isArray(p.people)) return defaultProfile();
-    return migrate(p);
-  } catch { return defaultProfile(); }
+  storeState.unreadable = null;
+  let raw = null;
+  try { raw = storage ? storage.getItem(m.key) : null; } catch { return defaultProfile(); }
+  if (!raw) return defaultProfile();
+  let p;
+  try { p = JSON.parse(raw); } catch {
+    storeKeepUnreadable(storage, m.key, raw, 'The saved text is cut off or damaged.', false);
+    return defaultProfile();
+  }
+  if (!p || typeof p !== 'object' || !Array.isArray(p.people)) {
+    storeKeepUnreadable(storage, m.key, raw, 'The saved data is not in the form this app reads.', false);
+    return defaultProfile();
+  }
+  // A person that is not an object (null, a number) holds nothing to keep: drop it and keep everyone else, with the
+  // original copied aside first.
+  const bad = p.people.filter(x => !x || typeof x !== 'object' || Array.isArray(x)).length;
+  if (bad) {
+    storeKeepUnreadable(storage, m.key, raw, bad === 1 ? 'One entry in the list of people was empty.' : `${bad} entries in the list of people were empty.`, true);
+    p.people = p.people.filter(x => x && typeof x === 'object' && !Array.isArray(x));
+  }
+  try { return migrate(p); } catch {
+    if (!storeState.unreadable) storeKeepUnreadable(storage, m.key, raw, 'Part of the saved data is not in the form this app reads.', false);
+    else storeState.unreadable.repaired = false;
+    return defaultProfile();
+  }
 }
 
 // Fill in fields added after a profile was first saved. Never removes anything.
@@ -103,6 +150,8 @@ export function migrate(p) {
 export function save(profile, storage = storeLocal()) {
   try {
     if (!storage) return false;
+    const u = storeState.unreadable;
+    if (u && u.copyFailed && !u.released) return false;   // never write over the only copy of unreadable data
     storage.setItem(storeState.key || storeKeyFor(), JSON.stringify(profile));
     return true;
   } catch { return false; }

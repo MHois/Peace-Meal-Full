@@ -6,7 +6,7 @@ import { annotateCuisines } from './engine/cuisine.js';
 import { buildPlan } from './engine/plan.js';
 import { checkRecipe } from './engine/checker.js';
 import { buildAdaptedRecipes, familiesFor } from './engine/swaps.js';
-import { uiState, uiEsc, uiActivePerson, uiToast, uiPersist, uiEnsurePerson, uiIcon, uiBrandMark, uiAvatar, uiNavRecord, uiCanGoBack, uiGoBack, uiBackButtonHTML } from './ui/common.js';
+import { uiState, uiEsc, uiActivePerson, uiToast, uiPersist, uiEnsurePerson, uiIcon, uiBrandMark, uiAvatar, uiNavRecord, uiCanGoBack, uiGoBack, uiBackButtonHTML, uiUnreadableNoticeHTML, uiBindUnreadableNotice } from './ui/common.js';
 import { renderHomeScreen, renderWelcomeScreen } from './ui/home.js';
 import { renderPeopleScreen } from './ui/people.js';
 import { renderPlanScreen } from './ui/plan.js';
@@ -228,6 +228,9 @@ export function appRender() {
     main.insertAdjacentHTML('afterbegin', `<div class="backbar">${uiBackButtonHTML('back-desktop')}</div>`);
     main.querySelectorAll('[data-back]').forEach(b => b.addEventListener('click', uiGoBack));
   }
+  // Saved data that could not be read (P0-4) is named at the top of every screen.
+  const unreadable = uiUnreadableNoticeHTML();
+  if (unreadable) { main.insertAdjacentHTML('afterbegin', `<div class="section">${unreadable}</div>`); uiBindUnreadableNotice(main); }
   if (uiState.dataProblems.length && uiState.route.screen !== 'settings') {
     const box = document.createElement('div');
     box.className = 'section';

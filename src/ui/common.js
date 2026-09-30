@@ -1,6 +1,6 @@
 // Shared UI state and helpers. Every screen module imports from here.
 // Names are prefixed with "ui" so nothing collides when tools/bundle.mjs concatenates all modules into one scope.
-import { save } from '../store.js';
+import { save, storeState, releaseUnreadable } from '../store.js';
 import { buildPlan, labelNutrient } from '../engine/plan.js';
 
 export const uiState = {
@@ -84,6 +84,45 @@ export function uiSaveStatus(ok) {
     <div class="btn-row"><button class="btn primary lite-big" type="button" data-save-retry>Try again</button><button class="btn lite-big" type="button" data-save-backup>Send a backup</button></div>`;
   bar.querySelector('[data-save-retry]').onclick = () => { if (uiPersist()) uiToast('Saved.'); };
   bar.querySelector('[data-save-backup]').onclick = () => { if (uiState.shareBackup) uiState.shareBackup(); };
+}
+
+// Hand a file to the person: the share sheet where there is one (the iPhone's "Save to Files"), else a download.
+// Returns 'shared', 'saved', 'closed' (they closed the share sheet), or 'failed'.
+export async function uiShareFile(filename, text, title) {
+  try {
+    if (typeof File === 'function' && typeof navigator !== 'undefined' && navigator.share && navigator.canShare) {
+      const file = new File([text], filename, { type: 'application/json' });
+      if (navigator.canShare({ files: [file] })) { await navigator.share({ files: [file], title }); return 'shared'; }
+    }
+  } catch (e) { if (e && e.name === 'AbortError') return 'closed'; }
+  return uiDownload(filename, text) ? 'saved' : 'failed';
+}
+
+// P0-4 (fix pass of September 30, 2026): saved data that could not be read on this launch (store.js keeps a copy). The
+// notice sits at the top of every screen until the person has saved the original as a file and chosen Start fresh, or,
+// when the rest of the data was kept, OK.
+export function uiUnreadableNoticeHTML() {
+  const u = storeState.unreadable;
+  if (!u || u.released) return '';
+  const head = u.repaired ? 'Part of your saved data could not be read.' : 'Your saved data could not be read.';
+  const what = u.repaired ? 'Everything else is here, and a copy of the original is kept on this device.'
+    : u.copyFailed ? 'The app could not keep a copy of it, so it will not save anything new until you save the original as a file.'
+      : 'A copy of it is kept on this device, and the app has started with nothing filled in.';
+  const done = u.repaired || uiState.unreadableSaved;
+  return `<div class="notice block unreadable-notice" id="unreadable-notice" role="alert">${uiIcon('stop', { cls: 'notice-icon' })}<div class="notice-head">${head}</div>
+    <div class="notice-body"><p>${uiEsc(u.reason)} ${what} Save it as a file so it is not lost, and give it to whoever looks after this app.</p>
+    <div class="btn-row"><button class="btn primary lite-big" type="button" data-unreadable-save>Save it as a file</button>${done ? `<button class="btn lite-big" type="button" data-unreadable-done>${u.repaired ? 'OK' : 'Start fresh'}</button>` : ''}</div></div></div>`;
+}
+export function uiBindUnreadableNotice(root) {
+  const saveBtn = root.querySelector('[data-unreadable-save]');
+  if (saveBtn) saveBtn.addEventListener('click', async () => {
+    const u = storeState.unreadable;
+    const r = await uiShareFile(`peace-meal-could-not-read-${String(u.at).slice(0, 10)}.json`, u.text, 'Peace Meal: saved data that could not be read');
+    if (r === 'shared' || r === 'saved') { uiState.unreadableSaved = true; uiToast('Saved as a file.'); uiState.rerender(); }
+    else if (r === 'failed') uiToast('The file could not be saved here. The copy is still kept on this device.');
+  });
+  const doneBtn = root.querySelector('[data-unreadable-done]');
+  if (doneBtn) doneBtn.addEventListener('click', () => { releaseUnreadable(); uiPersist(); uiState.rerender(); });
 }
 
 // A removal the person can take back for ten seconds. Only the latest removal can be undone; a new one closes the old window.
