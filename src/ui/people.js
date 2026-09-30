@@ -322,7 +322,7 @@ function peopleStepBasics(container, person) {
       <div class="field"><span class="label">Sex</span>${uiSegmented('sex', [{ value: 'female', label: 'Female' }, { value: 'male', label: 'Male' }, { value: 'other', label: 'Other or prefer not to say' }], person.sex || '')}
         <div class="hint">Used only where a rule differs by sex.</div></div>
       <div class="grid-2">
-        <div class="field"><label for="pb-age">Age (years)</label><input id="pb-age" type="number" inputmode="numeric" min="0" max="120" value="${person.age ?? ''}"></div>
+        <div class="field"><label for="pb-age">Age (years)</label><input id="pb-age" type="number" inputmode="numeric" min="0" max="120" value="${uiEsc(person.age ?? '')}"></div>
         <div class="field"><label for="pb-weight">Weight (lb)</label><input id="pb-weight" type="number" inputmode="decimal" min="1" max="900" step="1" value="${lb}">
           <div class="hint">Optional. Some rules are written per kilogram of body weight (for example protein in kidney disease); the app converts for you. Without a weight those rules are shown but not turned into a daily number.</div></div>
         <div class="field"><span class="label" id="pb-height-label">Height (ft / in)</span>

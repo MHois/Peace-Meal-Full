@@ -1,7 +1,7 @@
 // Settings: appearance (theme, large text), export, import, guests, clear, about.
-import { exportJSON, importJSON, clearAll, defaultProfile, backupDue, storeState, unreadableCopies } from '../store.js';
+import { exportJSON, importJSON, clearAll, defaultProfile, backupDue, storeState, unreadableCopies, keepBeforeImport } from '../store.js';
 import { appCollectionCounts } from '../app.js';
-import { uiState, uiEsc, uiPersist, uiDownload, uiToast, uiNavigate, uiIsoDate, uiCopyText, uiEnsurePerson, uiPageHeader, uiSection, uiSwitch, uiSegmented, uiChip, uiIcon, uiLoadUiPrefs, uiSaveUiPrefs, uiNoticeHTML, uiModal, uiShareFile } from './common.js';
+import { uiState, uiEsc, uiPersist, uiDownload, uiToast, uiNavigate, uiIsoDate, uiCopyText, uiEnsurePerson, uiPageHeader, uiSection, uiSwitch, uiSegmented, uiChip, uiIcon, uiLoadUiPrefs, uiSaveUiPrefs, uiNoticeHTML, uiModal, uiShareFile, uiUndoToast } from './common.js';
 import { claimOwner, registerDevice, sealOwnerBackup, restoreOwnerBackup, forgetDeviceIdentity, removePerson } from '../engine/sync.js';
 import { sharingState, sharingLocalHTML, sharingPendingHTML, sharingSafe, sharingPublishIfShared, sharingShortFingerprint } from './sharing.js';
 import { installInSafariTab, installInBrowserTab, installShowGuide } from './install.js';
@@ -324,16 +324,29 @@ export function settingsImportFile(file, done) {
       const incoming = importJSON(String(reader.result));
       const n = incoming.people.length;
       const here = uiState.profile.people.length;
-      if (!window.confirm(here ? `Replace everything on this device with this file (${n} ${n === 1 ? 'person' : 'people'}, ${(incoming.log || []).length} log entries)?` : `Bring in this file (${n} ${n === 1 ? 'person' : 'people'}, ${(incoming.log || []).length} log entries)?`)) { if (done) done(false); return; }
+      const dropped = incoming._importDropped || 0;
+      const odd = dropped ? ` ${dropped} ${dropped === 1 ? 'value in it was' : 'values in it were'} not the right kind and will be left out.` : '';
+      if (!window.confirm((here ? `Replace everything on this device with this file (${n} ${n === 1 ? 'person' : 'people'}, ${(incoming.log || []).length} log entries)?` : `Bring in this file (${n} ${n === 1 ? 'person' : 'people'}, ${(incoming.log || []).length} log entries)?`) + odd)) { if (done) done(false); return; }
+      // Keep what was here, so the import can be undone (P1-2).
+      const before = here ? uiState.profile : null;
+      const beforeKey = here ? keepBeforeImport() : null;
       uiState.profile = incoming;
       if (!Array.isArray(uiState.profile.log)) uiState.profile.log = [];
       uiState.profile.people.forEach(uiEnsurePerson);
       if (!uiState.profile.activePerson && n) uiState.profile.activePerson = incoming.people[0].id;
       const saved = uiPersist();
       if (uiState.refreshRecipes) uiState.refreshRecipes();
-      uiToast(saved ? 'Imported.' : 'Imported for now, but not saved on this device. See the message at the top.');
       if (done) done(true);
       uiNavigate(uiState.lite ? '#/today' : '#/home');
+      if (before) uiUndoToast(saved ? 'Imported. The data from before is kept.' : 'Imported for now, but not saved on this device.', () => {
+        uiState.profile = before;
+        uiPersist();
+        if (uiState.refreshRecipes) uiState.refreshRecipes();
+        uiToast('Put back the data from before the import.');
+        uiState.rerender();
+      });
+      else uiToast(saved ? 'Imported.' : 'Imported for now, but not saved on this device. See the message at the top.');
+      if (beforeKey) uiState.lastBeforeImport = beforeKey;
     } catch (err) {
       uiToast('Import failed: ' + err.message);
       if (done) done(false);

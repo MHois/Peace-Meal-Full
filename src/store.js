@@ -161,11 +161,103 @@ export function exportJSON(profile) {
   return JSON.stringify({ ...profile, exported: new Date().toISOString() }, null, 2);
 }
 
+// P1-2 (fix pass of September 30, 2026): a backup file is checked by type before it is used, because the screens trust
+// what is saved (a crafted file once ran script through the age field). Numbers become numbers or empty, text stays
+// text, lists keep only what they should hold, and anything else is dropped and counted (_importDropped, not saved).
+const IMPORT_NUM = ['age', 'weight_kg', 'height_cm', 'manual_kcal', 'planSeed'];
+const IMPORT_STR = ['id', 'name', 'sex', 'activity'];
+const IMPORT_BOOL = ['adult', 'pregnancy', 'breastfeeding', 'setup_complete', 'guest'];
+const IMPORT_STR_LIST = ['modules', 'allergens', 'allergens_other', 'optional_rules', 'confirmations', 'acknowledged'];
+const IMPORT_OBJ = ['preferences', 'variants', 'flags', 'rule_settings', 'goals', 'favorites', 'disliked', 'servings_by_day', 'medications', 'tier2', 'phases', 'modes', 'cooking'];
+const IMPORT_TOP_LISTS = ['log', 'diary', 'weights', 'exercise', 'pantry', 'custom_recipes'];
+const isPlainObject = v => !!v && typeof v === 'object' && !Array.isArray(v);
+function importCheckTypes(p) {
+  let dropped = 0;
+  const bad = () => { dropped++; };
+  for (const k of IMPORT_TOP_LISTS) {
+    if (p[k] == null) continue;
+    if (!Array.isArray(p[k])) { p[k] = []; bad(); continue; }
+    const kept = p[k].filter(isPlainObject);
+    dropped += p[k].length - kept.length;
+    p[k] = kept;
+  }
+  const people = p.people.filter(isPlainObject);
+  dropped += p.people.length - people.length;
+  p.people = people;
+  const np = newPerson('x');
+  for (const person of people) {
+    for (const k of IMPORT_NUM) {
+      const v = person[k];
+      if (v == null || v === '') { if (v === '') person[k] = null; continue; }
+      if (typeof v === 'number' && Number.isFinite(v)) continue;
+      if (typeof v === 'string' && /^\s*-?\d+(\.\d+)?\s*$/.test(v)) { person[k] = Number(v); continue; }
+      person[k] = null; bad();
+    }
+    for (const k of IMPORT_STR) {
+      const v = person[k];
+      if (v == null || typeof v === 'string') continue;
+      if (typeof v === 'number' || typeof v === 'boolean') { person[k] = String(v); continue; }
+      person[k] = k === 'name' ? 'Person' : k === 'id' ? np.id : np[k]; bad();
+    }
+    for (const k of IMPORT_BOOL) {
+      const v = person[k];
+      if (v == null || typeof v === 'boolean') continue;
+      if (v === 'true' || v === 'false') { person[k] = v === 'true'; continue; }
+      person[k] = np[k] !== undefined ? np[k] : false; bad();
+    }
+    for (const k of IMPORT_STR_LIST) {
+      const v = person[k];
+      if (v == null) continue;
+      if (!Array.isArray(v)) { person[k] = []; bad(); continue; }
+      const kept = v.filter(x => typeof x === 'string');
+      dropped += v.length - kept.length;
+      person[k] = kept;
+    }
+    if (person.custom_modules != null) {
+      if (!Array.isArray(person.custom_modules)) { person.custom_modules = []; bad(); }
+      else { const kept = person.custom_modules.filter(isPlainObject); dropped += person.custom_modules.length - kept.length; person.custom_modules = kept; }
+    }
+    for (const k of IMPORT_OBJ) {
+      const v = person[k];
+      if (v == null || isPlainObject(v)) continue;
+      person[k] = JSON.parse(JSON.stringify(np[k] !== undefined ? np[k] : {})); bad();
+    }
+    if (isPlainObject(person.preferences)) for (const k of ['avoid_tags', 'avoid_terms', 'patterns']) {
+      const v = person.preferences[k];
+      if (v == null) continue;
+      if (!Array.isArray(v)) { person.preferences[k] = []; bad(); continue; }
+      const kept = v.filter(x => typeof x === 'string');
+      dropped += v.length - kept.length;
+      person.preferences[k] = kept;
+    }
+  }
+  return dropped;
+}
+
 export function importJSON(text) {
   const p = JSON.parse(text);
   if (!p || !Array.isArray(p.people)) throw new Error('Not a valid export file.');
-  return migrate(p);
+  const dropped = importCheckTypes(p);
+  const out = migrate(p);
+  Object.defineProperty(out, '_importDropped', { value: dropped, enumerable: false, configurable: true, writable: true });
+  return out;
 }
+
+// Before an import replaces what is on this device, the current saved text is kept under its own key, so the import
+// can be undone (P1-2). Returns the key, or null when nothing was saved or the copy could not be written.
+export const BEFORE_IMPORT_MARK = ':before-import:';
+export function keepBeforeImport(storage = storeLocal()) {
+  if (!storage) return null;
+  const key = storeState.key || storeKeyFor();
+  try {
+    const raw = storage.getItem(key);
+    if (raw == null) return null;
+    const k = key + BEFORE_IMPORT_MARK + new Date().toISOString();
+    storage.setItem(k, raw);
+    return storage.getItem(k) === raw ? k : null;
+  } catch { return null; }
+}
+export function readKept(k, storage = storeLocal()) { try { return storage ? storage.getItem(k) : null; } catch { return null; } }
 
 // Clears this build's data. The shared key from before the update is removed only when the other build (lite or full)
 // already has its own copy, or when this build was still using it; otherwise the other build may still need it.
