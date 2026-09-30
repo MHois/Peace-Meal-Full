@@ -209,7 +209,9 @@ function settingsRestoreModal(text) {
 
 
 // ---- Recipe collections: each imported library is a choice. Peace Meal's own recipes and yours are always on. ----
-const SETTINGS_USDA_NOTICE = 'Please note that RFK Jr\'s racoon-dick brain may have somehow overseen or influenced these so-called nutritional "facts" from this USDA recipe directory. No raccoon dicks or bear cub meat should be included as ingredient options, but it doesn\'t hurt to double check because he is the second largest and clinically insane turd of the century. Proceed with caution - have a peaceful meal!';
+// A plain note before the USDA recipes are switched on (owner request, September 30, 2026: the earlier joke text
+// was removed).
+const SETTINGS_USDA_NOTICE = 'These recipes come from USDA MyPlate Kitchen, a free US government collection. The app checks each one against your plan the same way it checks every other recipe, and the nutrition numbers per serving are the ones USDA publishes.';
 function settingsCollectionsHTML(profile) {
   const on = Object.assign({ nhs: true, parentclub: true, nhlbi: true, wikibooks: true, usda: false, review_dual: true }, profile.recipe_collections || {});
   const n = appCollectionCounts();
