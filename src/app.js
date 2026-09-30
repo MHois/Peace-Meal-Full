@@ -24,7 +24,7 @@ import { renderBreatheScreen } from './ui/breathe.js';
 import { renderRecipesScreen } from './ui/recipes.js';
 import { renderOwnerScreen } from './ui/owner.js';
 import { settingsShareBackup } from './ui/settings.js';
-import { installShouldGuide, installShowGuide } from './ui/install.js';
+import { installShouldGuide, installShowGuide, installBannerHTML, installBindBanner } from './ui/install.js';
 import { getDb, ensureDeviceIdentity, registerDevice, readOwner, isOwner } from './engine/sync.js';
 
 const APP_DATA_FILES = ['sources', 'conditions', 'dictionaries', 'foods', 'recipes', 'recipes-open', 'recipes-usda', 'articles', 'swaps', 'diet-lists'];
@@ -231,6 +231,9 @@ export function appRender() {
   // Saved data that could not be read (P0-4) is named at the top of every screen.
   const unreadable = uiUnreadableNoticeHTML();
   if (unreadable) { main.insertAdjacentHTML('afterbegin', `<div class="section">${unreadable}</div>`); uiBindUnreadableNotice(main); }
+  // P1-5: in a Safari tab on an iPhone, every screen says the data is not saved safely (src/ui/install.js).
+  const safari = installBannerHTML();
+  if (safari) { main.insertAdjacentHTML('afterbegin', `<div class="section">${safari}</div>`); installBindBanner(main); }
   if (uiState.dataProblems.length && uiState.route.screen !== 'settings') {
     const box = document.createElement('div');
     box.className = 'section';
