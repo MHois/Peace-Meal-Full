@@ -7,7 +7,7 @@
 // app at the root plus single-file copies at lite/ and full/, each with its own service worker. It is served under
 // /specialty-nutrition-app/ on the same local origin as the new site (/Peace-Meal-Full/), as on GitHub Pages.
 // Modes: live (as before), gone (every path 404, as today), offline (no connection), moved (the proposal in
-// audit/proposals/old-address/ at /, lite/ and full/; with or without the replacement front-page worker).
+// tools/old-address/ (first proposed in audit/proposals/old-address/) at /, lite/ and full/; with or without the replacement front-page worker).
 // Needs the old repository's history: set PM_OLD_REPO to its checkout (default ../specialty-nutrition-app).
 // Results: audit/results/old-address.json.
 import fs from 'node:fs';
@@ -20,7 +20,7 @@ import { sampleProfile } from './screens.mjs';
 const OLD_REPO = process.env.PM_OLD_REPO || path.resolve(ROOT, '../specialty-nutrition-app');
 const OLD_SHA = 'b77787f';
 const OLD = path.join(TMP, 'old-site');
-const PROPOSAL = path.join(ROOT, 'audit/proposals/old-address');
+const PROPOSAL = path.join(ROOT, 'tools/old-address');   // moved from audit/proposals/old-address/ in the fix pass (P1-6)
 const out = { oldCommit: OLD_SHA, scenarios: {} };
 try { execFileSync('git', ['-C', OLD_REPO, 'cat-file', '-e', OLD_SHA + '^{commit}']); } catch {
   console.log(`Skipped: the old repository's commit ${OLD_SHA} is not available (set PM_OLD_REPO).`);
