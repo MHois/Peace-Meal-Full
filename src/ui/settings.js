@@ -213,13 +213,14 @@ function settingsRestoreModal(text) {
 // was removed).
 const SETTINGS_USDA_NOTICE = 'These recipes come from USDA MyPlate Kitchen, a free US government collection. The app checks each one against your plan the same way it checks every other recipe, and the nutrition numbers per serving are the ones USDA publishes.';
 function settingsCollectionsHTML(profile) {
-  const on = Object.assign({ nhs: true, parentclub: true, nhlbi: true, wikibooks: true, usda: false, review_dual: true }, profile.recipe_collections || {});
+  const on = Object.assign({ nhs: true, parentclub: true, nhlbi: true, va: true, wikibooks: true, usda: false, review_dual: true }, profile.recipe_collections || {});
   const n = appCollectionCounts();
   return `<div class="card">
     <p class="small">Tick a collection to include its recipes in search, the week plan, and Pantry. Untick it to leave all of them out. Recipes written for Peace Meal and your own are always included.</p>
     ${uiSwitch('coll-wikibooks', `Wikibooks Cookbook (${n.wikibooks.toLocaleString()} recipes)`, 'Community recipes from around the world under a Creative Commons licence. They list ingredients as plain text, so the app has no calorie or sodium numbers for them; they only go into a week when the Week screen switch "Also use recipes that have no nutrition numbers" is on.', on.wikibooks)}
     ${uiSwitch('coll-nhs', `NHS recipes, United Kingdom (${n.nhs.toLocaleString()} recipes)`, 'Dietitian-written family recipes with calories, fat, sugar, and salt per serving. British dishes and measures.', on.nhs)}
     ${uiSwitch('coll-nhlbi', `NHLBI heart-healthy recipes, US National Institutes of Health (${n.nhlbi.toLocaleString()} recipes)`, 'Recipes from the National Heart, Lung, and Blood Institute with calories, fat, sodium, potassium, fiber, and protein per serving. Public domain. American measures.', on.nhlbi)}
+    ${uiSwitch('coll-va', `VA Healthy Teaching Kitchen, US Department of Veterans Affairs (${n.va.toLocaleString()} recipes)`, 'Everyday American recipes written by VA dietitians, with calories, fat, sodium, carbohydrate, fiber, and protein per serving. Public domain. American measures.', on.va)}
     ${uiSwitch('coll-parentclub', `Parent Club, Scottish Government (${n.parentclub.toLocaleString()} recipes)`, 'Family recipes with full per-serving nutrition, including sodium in milligrams, and ingredient weights in grams. British dishes and measures.', on.parentclub)}
     ${uiSwitch('coll-usda', `USDA MyPlate Kitchen, United States (${n.usda.toLocaleString()} recipes)`, n.usda ? 'American home cooking with per-serving nutrition. Public domain.' : 'Not loaded in this build.', on.usda)}
     ${n.review_dual ? uiSwitch('coll-review_dual', `Peace Meal recipes for low FODMAP and low histamine together (${n.review_dual.toLocaleString()} recipes)`, 'Breakfasts and dinners written in September 2026 for someone on both diets at once. Every ingredient is linked to a USDA food and is on both approved lists, and each recipe passes both strict checks. Reviewed and switched on September 30, 2026.', on.review_dual) : ''}
@@ -227,13 +228,13 @@ function settingsCollectionsHTML(profile) {
 }
 function settingsBindCollections(root, profile) {
   const setColl = (key, value) => {
-    profile.recipe_collections = Object.assign({ nhs: true, parentclub: true, nhlbi: true, wikibooks: true, usda: false, review_dual: true }, profile.recipe_collections || {}, { [key]: value });
+    profile.recipe_collections = Object.assign({ nhs: true, parentclub: true, nhlbi: true, va: true, wikibooks: true, usda: false, review_dual: true }, profile.recipe_collections || {}, { [key]: value });
     uiPersist();
     if (typeof uiState.refreshRecipes === 'function') uiState.refreshRecipes();
     uiToast(value ? 'Collection included.' : 'Collection left out.');
     if (typeof uiState.rerender === 'function') uiState.rerender();
   };
-  for (const key of ['wikibooks', 'nhs', 'parentclub', 'nhlbi', 'review_dual']) {
+  for (const key of ['wikibooks', 'nhs', 'parentclub', 'nhlbi', 'va', 'review_dual']) {
     const el = root.querySelector('#coll-' + key);
     if (el) el.addEventListener('change', () => setColl(key, el.checked));
   }

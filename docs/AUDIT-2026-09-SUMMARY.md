@@ -182,11 +182,13 @@ At the owner's request, after using the live app:
 - **VERIFY.** Every flag is checked and cleared (A35, A36), and the app no longer asks readers to check sources: that is the maintainer's job.
 - **Home Screen guide.** The iPhone steps start with the three dots at the bottom of Safari, then Share (at the top on an iPad). Android steps (Chrome, and Samsung Internet) are added, and the guide now shows in an Android browser too. The front page and both Word guides say the same.
 
+- **More American recipes.** 210 recipes from the VA Healthy Teaching Kitchen (US Department of Veterans Affairs; government work, not copyright protected), with the VA's own per-serving nutrition, in both apps and on by default (Settings, Recipe collections). Cards adapted from other sources are left out, as are six titles most US home cooks would not know by name and three cards that make an ingredient or a condiment rather than a dish (`tools/import-va.mjs`, `docs/RECIPE-SOURCES.md` section 3). The label and recipe checker no longer reads "e.g." as an ingredient called "e", or a bare percentage such as "(1%)" or "(90% lean or higher)" as an unknown ingredient; the words after "e.g." are still checked.
+
 Tests changed on purpose in this round:
 - `test/owner-answers-2026-09.test.mjs`, "[13] item 1". Old: the ADA source's `verify` is `true` ("the item stays open"). New: `false`, with a note that cites the 2019 report's PubMed number. Why: the statement is a checked, dated fact (A36).
 - `test/owner-answers-2026-09.test.mjs`, "[11]": the test name and one message say the rarer conditions are listed below the ten instead of under Show all. The assertions are unchanged.
 
-New tests: `test/owner-requests-2026-09-30.test.mjs` (14), and one more in `test/sw.test.mjs` (the two offline copies).
+New tests: `test/owner-requests-2026-09-30.test.mjs` (14), `test/va-recipes.test.mjs` (6), and one more in `test/sw.test.mjs` (the two offline copies).
 
 ## Still open
 

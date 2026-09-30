@@ -34,7 +34,7 @@ for (const f of ['sources', 'conditions', 'dictionaries', 'foods', 'recipes', 'r
   data[f] = fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, 'utf8')) : (f === 'dictionaries' ? { tags: {}, entries: [] } : f === 'articles' ? {} : f === 'swaps' ? { families: {}, swaps: [] } : f === 'diet-lists' ? { families: {} } : []);
 }
 if (LITE && Array.isArray(data['recipes-open'])) data['recipes-open'] = data['recipes-open'].filter(r => r.source !== 'Wikibooks Cookbook');
-if (LITE) data['recipes-usda'] = [];   // the USDA collection stays a full-app opt-in; lite ships Peace Meal's own recipes plus the NHS and Parent Club sets
+if (LITE) data['recipes-usda'] = [];   // the USDA collection stays a full-app opt-in; lite ships Peace Meal's own recipes plus the NHS, Parent Club, NHLBI, and VA sets
 // Full build (2026-09 audit): the 2,268 Wikibooks recipes are a third of the inline data and have no nutrition numbers.
 // They ship in the same file as a JSON block the browser does not run (<script type="application/json">), so launch
 // skips parsing them; src/app.js reads the block the first time someone searches recipes, or at launch when the saved

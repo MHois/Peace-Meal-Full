@@ -36,7 +36,7 @@ export function renderWelcomeScreen(root) {
         <li>${uiIcon('calendar')}<span><strong>Whoever does the cooking.</strong> Meals that fit your time, skill, kitchen, and budget, with leftovers planned in. Change a day's cooking time right on the week.</span></li>
         <li>${uiIcon('cart')}<span><strong>The grocery run.</strong> One list for the week, scaled to who is eating each day, with pantry matching and a running change log.</span></li>
         <li>${uiIcon('check-circle')}<span><strong>The label check.</strong> Paste an ingredient list from any package and get a plain answer: fine, caution, or no, and why. Allergens are never overridden.</span></li>
-        <li>${uiIcon('leaf')}<span><strong>About 2,900 recipes.</strong> Peace Meal's own, the NHS, Parent Club Scotland, the NHLBI, the Wikibooks Cookbook, and yours. Calorie targets, weight and exercise tracking, favorites, spice level, and cuisines you love or skip.</span></li>
+        <li>${uiIcon('leaf')}<span><strong>About 3,100 recipes.</strong> Peace Meal's own, the NHS, Parent Club Scotland, the NHLBI, the VA Healthy Teaching Kitchen, the Wikibooks Cookbook, and yours. Calorie targets, weight and exercise tracking, favorites, spice level, and cuisines you love or skip.</span></li>
         <li>${uiIcon('breathe')}<span><strong>A minute to breathe.</strong> A short visual reset for the days when dinner is the last straw.</span></li>
       </ul>
       <a class="btn primary big" href="#/people/new">Set up the first person</a>
