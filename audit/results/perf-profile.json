@@ -1,0 +1,60 @@
+{
+ "cpuSlowdown": 4,
+ "inclusiveMs": {
+  "appBoot": 27546,
+  "loadData": 0,
+  "appNormalizeData": 2,
+  "buildMatcher": 36,
+  "appAssembleRecipes": 199,
+  "appPrebuildAdapted": 0,
+  "annotateCuisines": 193,
+  "appRender": 27290,
+  "renderLiteTodayScreen": 27197,
+  "weekGet": 27131,
+  "buildWeekPlan": 27121,
+  "buildPlan": 9,
+  "uiPlanFor": 17,
+  "checkRecipe": 26531,
+  "strictCheck": 30,
+  "portionCheck": 3,
+  "recipeTotals": 556,
+  "tagText": 25356,
+  "tagTextUncached": 25110,
+  "matchSegment": 23524,
+  "fires": 22672,
+  "scoreRecipe": 349
+ },
+ "totalSampledMs": 29834,
+ "firstScreenByStart": {
+  "#/today": {
+   "medianMs": 25364,
+   "all": [
+    26205,
+    26350,
+    25364,
+    24512,
+    23799
+   ]
+  },
+  "#/check": {
+   "medianMs": 1932,
+   "all": [
+    1888,
+    1932,
+    1919,
+    1942,
+    1989
+   ]
+  },
+  "#/report": {
+   "medianMs": 2010,
+   "all": [
+    1984,
+    1902,
+    2170,
+    2135,
+    2010
+   ]
+  }
+ }
+}

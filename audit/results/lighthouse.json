@@ -1,0 +1,79 @@
+{
+ "lighthouse": "13.5.0",
+ "runs": {
+  "lite": {
+   "scores": {
+    "performance": 30,
+    "accessibility": 100,
+    "best-practices": 100
+   },
+   "auditsThatErrored": [],
+   "firstContentfulPaintMs": 29357,
+   "largestContentfulPaintMs": 29449,
+   "totalBlockingTimeMs": 1266,
+   "speedIndexMs": 29357,
+   "interactiveMs": 30979,
+   "mainThreadWorkMs": 2349,
+   "bootupTimeMs": 1287,
+   "totalByteWeight": 5857009,
+   "failedAudits": [
+    "first-contentful-paint: 29.4 s",
+    "largest-contentful-paint: 29.4 s",
+    "speed-index: 29.4 s",
+    "total-blocking-time: 1,270 ms",
+    "max-potential-fid: 1,010 ms",
+    "interactive: 31.0 s",
+    "mainthread-work-breakdown: 2.3 s",
+    "bootup-time: 1.3 s",
+    "valid-source-maps: 0",
+    "total-byte-weight: Total size was 5,720 KiB",
+    "unminified-css: Est savings of 12 KiB",
+    "unminified-javascript: Est savings of 145 KiB",
+    "unused-css-rules: Est savings of 333 KiB",
+    "unused-javascript: Est savings of 649 KiB",
+    "document-latency-insight: Est savings of 3,825 KiB"
+   ],
+   "runWarnings": []
+  },
+  "full": {
+   "scores": {
+    "performance": 22,
+    "accessibility": 100,
+    "best-practices": null
+   },
+   "auditsThatErrored": [
+    "charset: Required MainDocumentContent gatherer encountered an error: Protocol error (Network.getResponseBody): Protocol error (Network.getResponseBody): Request content "
+   ],
+   "firstContentfulPaintMs": 59947,
+   "largestContentfulPaintMs": 60049,
+   "totalBlockingTimeMs": 1635,
+   "speedIndexMs": 59947,
+   "interactiveMs": 62079,
+   "mainThreadWorkMs": 3187,
+   "bootupTimeMs": 1556,
+   "totalByteWeight": 12113660,
+   "failedAudits": [
+    "first-contentful-paint: 59.9 s",
+    "largest-contentful-paint: 60.0 s",
+    "speed-index: 59.9 s",
+    "total-blocking-time: 1,630 ms",
+    "max-potential-fid: 1,210 ms",
+    "cumulative-layout-shift: 0.155",
+    "interactive: 62.1 s",
+    "mainthread-work-breakdown: 3.2 s",
+    "bootup-time: 1.6 s",
+    "layout-shifts: 2 layout shifts found",
+    "valid-source-maps: 0",
+    "total-byte-weight: Total size was 11,830 KiB",
+    "unminified-css: Est savings of 12 KiB",
+    "unminified-javascript: Est savings of 145 KiB",
+    "unused-css-rules: Est savings of 334 KiB",
+    "unused-javascript: Est savings of 652 KiB",
+    "cls-culprits-insight: 0",
+    "document-latency-insight: Est savings of 7,918 KiB",
+    "forced-reflow-insight: 0"
+   ],
+   "runWarnings": []
+  }
+ }
+}

@@ -3,6 +3,17 @@
   "private": true,
   "type": "module",
   "description": "Audit tooling for Peace Meal. The app itself has no dependencies; this folder does.",
+  "scripts": {
+    "all": "node run-all.mjs",
+    "test": "cd .. && node --test audit/tests/*.test.mjs",
+    "lint": "cd .. && node audit/scripts/eslint-run.mjs",
+    "e2e": "cd .. && node audit/e2e/journeys.mjs; node audit/e2e/data-safety.mjs; node audit/e2e/offline-iphone.mjs; node audit/e2e/xss.mjs; node audit/e2e/screenshots.mjs",
+    "a11y": "cd .. && node audit/e2e/a11y.mjs; node audit/e2e/a11y-reflow.mjs",
+    "perf": "cd .. && node audit/e2e/perf.mjs; node audit/e2e/lighthouse.mjs",
+    "privacy": "cd .. && node audit/e2e/network.mjs; node audit/scripts/sri-check.mjs; node audit/e2e/csp.mjs; node audit/e2e/shared-origin.mjs; node audit/e2e/old-address.mjs; node audit/scripts/live-stamp.mjs",
+    "data": "cd .. && node audit/scripts/data-quality.mjs; node audit/scripts/rule-mutations.mjs; node audit/scripts/readability.mjs",
+    "mutation": "cd .. && audit/node_modules/.bin/stryker run audit/stryker.conf.json && node audit/scripts/stryker-summary.mjs"
+  },
   "devDependencies": {
     "@eslint/js": "^10.0.0",
     "@stryker-mutator/core": "^10.0.0",
@@ -13,6 +24,7 @@
     "fast-check": "^4.0.0",
     "globals": "^16.0.0",
     "jscpd": "^4.0.5",
+    "lighthouse": "^13.5.0",
     "playwright-core": "1.56.1"
   }
 }

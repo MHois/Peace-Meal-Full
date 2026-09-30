@@ -1,0 +1,75 @@
+{
+ "lighthouse": "13.5.0",
+ "target": "live site (gzip)",
+ "runs": {
+  "lite": {
+   "scores": {
+    "performance": 35,
+    "accessibility": 100,
+    "best-practices": 100
+   },
+   "auditsThatErrored": [],
+   "firstContentfulPaintMs": 7609,
+   "largestContentfulPaintMs": 7703,
+   "totalBlockingTimeMs": 1147,
+   "speedIndexMs": 7609,
+   "interactiveMs": 9003,
+   "mainThreadWorkMs": 2199,
+   "bootupTimeMs": 1214,
+   "totalByteWeight": 1371862,
+   "failedAudits": [
+    "first-contentful-paint: 7.6 s",
+    "largest-contentful-paint: 7.7 s",
+    "speed-index: 7.6 s",
+    "total-blocking-time: 1,150 ms",
+    "max-potential-fid: 870 ms",
+    "interactive: 9.0 s",
+    "mainthread-work-breakdown: 2.2 s",
+    "valid-source-maps: 0",
+    "unminified-css: Est savings of 3 KiB",
+    "unminified-javascript: Est savings of 34 KiB",
+    "unused-css-rules: Est savings of 78 KiB",
+    "unused-javascript: Est savings of 152 KiB"
+   ],
+   "runWarnings": []
+  },
+  "full": {
+   "scores": {
+    "performance": 21,
+    "accessibility": 100,
+    "best-practices": null
+   },
+   "auditsThatErrored": [
+    "charset: Required MainDocumentContent gatherer encountered an error: Protocol error (Network.getResponseBody): Protocol error (Network.getResponseBody): Request content "
+   ],
+   "firstContentfulPaintMs": 13719,
+   "largestContentfulPaintMs": 13821,
+   "totalBlockingTimeMs": 2036,
+   "speedIndexMs": 13719,
+   "interactiveMs": 16167,
+   "mainThreadWorkMs": 3550,
+   "bootupTimeMs": 1804,
+   "totalByteWeight": 2646020,
+   "failedAudits": [
+    "first-contentful-paint: 13.7 s",
+    "largest-contentful-paint: 13.8 s",
+    "speed-index: 13.7 s",
+    "total-blocking-time: 2,040 ms",
+    "max-potential-fid: 1,440 ms",
+    "cumulative-layout-shift: 0.155",
+    "interactive: 16.2 s",
+    "mainthread-work-breakdown: 3.6 s",
+    "bootup-time: 1.8 s",
+    "layout-shifts: 2 layout shifts found",
+    "valid-source-maps: 0",
+    "unminified-css: Est savings of 3 KiB",
+    "unminified-javascript: Est savings of 32 KiB",
+    "unused-css-rules: Est savings of 73 KiB",
+    "unused-javascript: Est savings of 142 KiB",
+    "cls-culprits-insight: 0",
+    "forced-reflow-insight: 0"
+   ],
+   "runWarnings": []
+  }
+ }
+}
