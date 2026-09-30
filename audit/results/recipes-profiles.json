@@ -1,0 +1,152 @@
+{
+ "recipes": {
+  "full": 4152,
+  "lite": 841
+ },
+ "profiles": {
+  "peanut allergy": {
+   "full": {
+    "pass": 1033,
+    "caution": 2973,
+    "fail": 146
+   },
+   "lite": {
+    "pass": 290,
+    "caution": 526,
+    "fail": 25
+   },
+   "lineCautionRecipePass": 23
+  },
+  "milk allergy": {
+   "full": {
+    "pass": 509,
+    "caution": 1649,
+    "fail": 1994
+   },
+   "lite": {
+    "pass": 160,
+    "caution": 279,
+    "fail": 402
+   },
+   "lineCautionRecipePass": 13
+  },
+  "shellfish and sesame allergies": {
+   "full": {
+    "pass": 1026,
+    "caution": 2905,
+    "fail": 221
+   },
+   "lite": {
+    "pass": 275,
+    "caution": 517,
+    "fail": 49
+   },
+   "lineCautionRecipePass": 18
+  },
+  "kiwi (an allergy outside the nine)": {
+   "full": {
+    "pass": 1070,
+    "caution": 3072,
+    "fail": 10
+   },
+   "lite": {
+    "pass": 300,
+    "caution": 538,
+    "fail": 3
+   },
+   "lineCautionRecipePass": 23
+  },
+  "celiac disease": {
+   "full": {
+    "pass": 593,
+    "caution": 1830,
+    "fail": 1729
+   },
+   "lite": {
+    "pass": 177,
+    "caution": 299,
+    "fail": 365
+   },
+   "lineCautionRecipePass": 13
+  },
+  "high blood pressure and type 2 diabetes": {
+   "full": {
+    "pass": 351,
+    "caution": 3801,
+    "fail": 0
+   },
+   "lite": {
+    "pass": 119,
+    "caution": 722,
+    "fail": 0
+   },
+   "lineCautionRecipePass": 9
+  },
+  "IBS on low FODMAP": {
+   "full": {
+    "pass": 167,
+    "caution": 3985,
+    "fail": 0
+   },
+   "lite": {
+    "pass": 92,
+    "caution": 749,
+    "fail": 0
+   },
+   "lineCautionRecipePass": 60
+  },
+  "MCAS (low histamine)": {
+   "full": {
+    "pass": 153,
+    "caution": 3999,
+    "fail": 0
+   },
+   "lite": {
+    "pass": 69,
+    "caution": 772,
+    "fail": 0
+   },
+   "lineCautionRecipePass": 48
+  },
+  "vegan": {
+   "full": {
+    "pass": 334,
+    "caution": 3818,
+    "fail": 0
+   },
+   "lite": {
+    "pass": 80,
+    "caution": 761,
+    "fail": 0
+   },
+   "lineCautionRecipePass": 3
+  },
+  "kidney disease (stages 1 to 4)": {
+   "full": {
+    "pass": 1053,
+    "caution": 3099,
+    "fail": 0
+   },
+   "lite": {
+    "pass": 291,
+    "caution": 550,
+    "fail": 0
+   },
+   "lineCautionRecipePass": 23
+  }
+ },
+ "crashes": [],
+ "hardIngredientNotFail": [],
+ "swaps": {
+  "low-fodmap": {
+   "adapted": 117,
+   "notPassForItsDiet": 0,
+   "examples": []
+  },
+  "low-histamine": {
+   "adapted": 28,
+   "notPassForItsDiet": 0,
+   "examples": []
+  }
+ }
+}

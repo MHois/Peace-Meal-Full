@@ -1,0 +1,140 @@
+[
+ {
+  "id": "P1a",
+  "text": "anything the app does not recognize is never a pass while a condition, allergy, or limit is on file",
+  "holds": false,
+  "why": "an unknown word beside a known one (\"sugar xqzt\")"
+ },
+ {
+  "id": "P1b",
+  "text": "the label checker uses the strict low histamine list: \"apple, blueberries\" passes, \"apple, pear\" does not (MCAS)",
+  "holds": true
+ },
+ {
+  "id": "P1c",
+  "text": "\"leftover roast chicken\" is no longer approved as chicken on a low histamine plan",
+  "holds": true
+ },
+ {
+  "id": "P2a",
+  "text": "stock, broth, bouillon, and gravy mixes ask for a gluten label check (celiac)",
+  "holds": true
+ },
+ {
+  "id": "P2b",
+  "text": "on a low histamine plan shop stock is not approved; a quick homemade vegetable stock is (approved-food list)",
+  "holds": true
+ },
+ {
+  "id": "P2c",
+  "text": "jarred and brined foods count like vinegar on a low histamine plan",
+  "holds": true
+ },
+ {
+  "id": "P2d",
+  "text": "the tomato swap says fresh-roasted pepper",
+  "holds": true
+ },
+ {
+  "id": "P5a",
+  "text": "two or more \"small serve\" foods in one meal is a caution on low FODMAP",
+  "holds": true
+ },
+ {
+  "id": "P5b",
+  "text": "every low histamine item says what its rating rests on",
+  "holds": true
+ },
+ {
+  "id": "P5c",
+  "text": "the medicines-and-food education was approved and added (module education and an article)",
+  "holds": true
+ },
+ {
+  "id": "P6",
+  "text": "a default week never gives a person with a daily limit a recipe without nutrition numbers",
+  "holds": true
+ },
+ {
+  "id": "P7a",
+  "text": "the thirty recipes for low FODMAP and low histamine together pass both strict checks",
+  "holds": true
+ },
+ {
+  "id": "P7b",
+  "text": "a plain-words \"why\" under every number, taken word for word from the condition's own article",
+  "holds": false,
+  "why": "Expected values to be strictly deep-equal:"
+ },
+ {
+  "id": "Q2",
+  "text": "limes, lime juice and zest, limeade, and marmalade carry the grapefruit tag",
+  "holds": true
+ },
+ {
+  "id": "Q3",
+  "text": "warfarin: Violi 2016 is cited first",
+  "holds": true
+ },
+ {
+  "id": "Q4",
+  "text": "levothyroxine wording follows the ATA guideline: 60 minutes before breakfast, or at bedtime 3 or more hours after eating",
+  "holds": true
+ },
+ {
+  "id": "Q5",
+  "text": "recipes without nutrition numbers are never planned for anyone with a daily limit, even when hearted",
+  "holds": true
+ },
+ {
+  "id": "Q6",
+  "text": "quick homemade meat or fish stock is not approved on a low histamine plan; quick homemade vegetable stock is (approved-food list)",
+  "holds": true
+ },
+ {
+  "id": "Q8",
+  "text": "banana, legumes, most nuts, and black pepper are left out on low histamine; chia, sunflower seeds, and cinnamon stay unchecked",
+  "holds": true
+ },
+ {
+  "id": "Q9a",
+  "text": "pear, minced meat, rice and oat milk, green beans, peas, and canned corn are left out; avocado and shellfish stay out (low histamine)",
+  "holds": true
+ },
+ {
+  "id": "Q9b",
+  "text": "distilled white and apple cider vinegar are approved on the low histamine list",
+  "holds": true
+ },
+ {
+  "id": "Q9c",
+  "text": "and so a label with distilled white or apple cider vinegar is not flagged on a low histamine plan",
+  "holds": false,
+  "why": "distilled white vinegar: the dictionary tags every vinegar histamine-fermented, so the label is a caution"
+ },
+ {
+  "id": "Q10",
+  "text": "dictionary fixes: butter beans are not milk, water chestnuts are not a tree nut, salmon steaks are not red meat; crisped rice cereal, rice pilaf, fried rice, and vermicelli ask for a label check (celiac)",
+  "holds": true
+ },
+ {
+  "id": "Q13a",
+  "text": "GLP-1 protein is the advisory's 80 to 120 g a day, not per kilogram of actual weight",
+  "holds": true
+ },
+ {
+  "id": "Q13b",
+  "text": "coconut (every coconut product) and chestnut keep the tree nut tag; heartnut is added",
+  "holds": true
+ },
+ {
+  "id": "Q15",
+  "text": "vitamin-c-crps-2021 carries the Seth 2022 citation and is cited by nothing",
+  "holds": true
+ },
+ {
+  "id": "Still-open",
+  "text": "\"Snacks, crisped rice bar\" and \"Rice mix, cheese flavor\" still pass for celiac on the food check (listed as still open)",
+  "holds": true
+ }
+]

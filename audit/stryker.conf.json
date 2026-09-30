@@ -1,0 +1,35 @@
+{
+  "$schema": "../audit/node_modules/@stryker-mutator/core/schema/stryker-schema.json",
+  "_comment": "Phase 3, item 15. Run from the repository root: audit/node_modules/.bin/stryker run audit/stryker.conf.json. Mutates the label checker and the approved-food lists only. Each mutant is judged by the app's own test suite (every file in test/, run with node --test), one file after another, fastest and most relevant first, stopping at the first failing file: the verdict is the same as running the whole suite at once, and a killed mutant is known sooner.",
+  "packageManager": "npm",
+  "testRunner": "command",
+  "commandRunner": {
+    "command": "node --test test/checker.test.mjs && node --test test/dietlists.test.mjs && node --test test/owner-requests-2026-09-30.test.mjs && node --test test/va-recipes.test.mjs && node --test test/wave2.test.mjs && node --test test/swaps.test.mjs && node --test test/dictionary-smoke.test.mjs && node --test test/final-review-2026-09.test.mjs && node --test test/cuisine.test.mjs && node --test test/goals.test.mjs && node --test test/planner.test.mjs && node --test test/plan.test.mjs && node --test test/owner-answers-2026-09.test.mjs && node --test test/audit-2026-09.test.mjs && node --test test/household.test.mjs && node --test test/wave3.test.mjs && node --test test/crypto.test.mjs && node --test test/store-migration.test.mjs && node --test test/sw.test.mjs && node --test test/report.test.mjs"
+  },
+  "mutate": [
+    "src/engine/checker.js",
+    "src/engine/dietlists.js"
+  ],
+  "ignorePatterns": [
+    "audit",
+    "dist",
+    "tools/usda",
+    "tools/open-recipes",
+    "tools/usda-recipes",
+    "docs",
+    "node_modules"
+  ],
+  "coverageAnalysis": "off",
+  "reporters": [
+    "json",
+    "clear-text",
+    "progress"
+  ],
+  "jsonReporter": {
+    "fileName": "audit/results/stryker/mutation.json"
+  },
+  "tempDirName": "audit/.stryker-tmp",
+  "concurrency": 4,
+  "timeoutMS": 180000,
+  "cleanTempDir": true
+}

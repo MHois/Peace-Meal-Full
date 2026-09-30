@@ -1,0 +1,5443 @@
+[
+ {
+  "profile": "milk",
+  "kind": "plain",
+  "text": "milk",
+  "expect": "not-pass",
+  "id": "L001"
+ },
+ {
+  "profile": "milk",
+  "kind": "plain",
+  "text": "whole milk",
+  "expect": "not-pass",
+  "id": "L002"
+ },
+ {
+  "profile": "milk",
+  "kind": "plain",
+  "text": "skim milk",
+  "expect": "not-pass",
+  "id": "L003"
+ },
+ {
+  "profile": "milk",
+  "kind": "plain",
+  "text": "nonfat dry milk",
+  "expect": "not-pass",
+  "id": "L004"
+ },
+ {
+  "profile": "milk",
+  "kind": "plain",
+  "text": "milk powder",
+  "expect": "not-pass",
+  "id": "L005"
+ },
+ {
+  "profile": "milk",
+  "kind": "plain",
+  "text": "dried milk",
+  "expect": "not-pass",
+  "id": "L006"
+ },
+ {
+  "profile": "milk",
+  "kind": "plain",
+  "text": "milk solids",
+  "expect": "not-pass",
+  "id": "L007"
+ },
+ {
+  "profile": "milk",
+  "kind": "plain",
+  "text": "cream",
+  "expect": "not-pass",
+  "id": "L008"
+ },
+ {
+  "profile": "milk",
+  "kind": "plain",
+  "text": "heavy cream",
+  "expect": "not-pass",
+  "id": "L009"
+ },
+ {
+  "profile": "milk",
+  "kind": "plain",
+  "text": "sour cream",
+  "expect": "not-pass",
+  "id": "L010"
+ },
+ {
+  "profile": "milk",
+  "kind": "plain",
+  "text": "butter",
+  "expect": "not-pass",
+  "id": "L011"
+ },
+ {
+  "profile": "milk",
+  "kind": "plain",
+  "text": "butterfat",
+  "expect": "not-pass",
+  "id": "L012"
+ },
+ {
+  "profile": "milk",
+  "kind": "plain",
+  "text": "butter oil",
+  "expect": "not-pass",
+  "id": "L013"
+ },
+ {
+  "profile": "milk",
+  "kind": "plain",
+  "text": "ghee",
+  "expect": "not-pass",
+  "id": "L014"
+ },
+ {
+  "profile": "milk",
+  "kind": "plain",
+  "text": "buttermilk",
+  "expect": "not-pass",
+  "id": "L015"
+ },
+ {
+  "profile": "milk",
+  "kind": "plain",
+  "text": "cheese",
+  "expect": "not-pass",
+  "id": "L016"
+ },
+ {
+  "profile": "milk",
+  "kind": "plain",
+  "text": "cheddar cheese",
+  "expect": "not-pass",
+  "id": "L017"
+ },
+ {
+  "profile": "milk",
+  "kind": "plain",
+  "text": "parmesan cheese",
+  "expect": "not-pass",
+  "id": "L018"
+ },
+ {
+  "profile": "milk",
+  "kind": "plain",
+  "text": "mozzarella",
+  "expect": "not-pass",
+  "id": "L019"
+ },
+ {
+  "profile": "milk",
+  "kind": "plain",
+  "text": "cottage cheese",
+  "expect": "not-pass",
+  "id": "L020"
+ },
+ {
+  "profile": "milk",
+  "kind": "plain",
+  "text": "cream cheese",
+  "expect": "not-pass",
+  "id": "L021"
+ },
+ {
+  "profile": "milk",
+  "kind": "plain",
+  "text": "ricotta",
+  "expect": "not-pass",
+  "id": "L022"
+ },
+ {
+  "profile": "milk",
+  "kind": "plain",
+  "text": "yogurt",
+  "expect": "not-pass",
+  "id": "L023"
+ },
+ {
+  "profile": "milk",
+  "kind": "plain",
+  "text": "kefir",
+  "expect": "not-pass",
+  "id": "L024"
+ },
+ {
+  "profile": "milk",
+  "kind": "plain",
+  "text": "half-and-half",
+  "expect": "not-pass",
+  "id": "L025"
+ },
+ {
+  "profile": "milk",
+  "kind": "plain",
+  "text": "custard",
+  "expect": "not-pass",
+  "id": "L026"
+ },
+ {
+  "profile": "milk",
+  "kind": "plain",
+  "text": "condensed milk",
+  "expect": "not-pass",
+  "id": "L027"
+ },
+ {
+  "profile": "milk",
+  "kind": "plain",
+  "text": "evaporated milk",
+  "expect": "not-pass",
+  "id": "L028"
+ },
+ {
+  "profile": "milk",
+  "kind": "plain",
+  "text": "paneer",
+  "expect": "not-pass",
+  "id": "L029"
+ },
+ {
+  "profile": "milk",
+  "kind": "plain",
+  "text": "milk chocolate",
+  "expect": "not-pass",
+  "id": "L030"
+ },
+ {
+  "profile": "milk",
+  "kind": "hidden",
+  "text": "whey",
+  "expect": "not-pass",
+  "id": "L031"
+ },
+ {
+  "profile": "milk",
+  "kind": "hidden",
+  "text": "whey protein concentrate",
+  "expect": "not-pass",
+  "id": "L032"
+ },
+ {
+  "profile": "milk",
+  "kind": "hidden",
+  "text": "sweet whey",
+  "expect": "not-pass",
+  "id": "L033"
+ },
+ {
+  "profile": "milk",
+  "kind": "hidden",
+  "text": "delactosed whey",
+  "expect": "not-pass",
+  "id": "L034"
+ },
+ {
+  "profile": "milk",
+  "kind": "hidden",
+  "text": "casein",
+  "expect": "not-pass",
+  "id": "L035"
+ },
+ {
+  "profile": "milk",
+  "kind": "hidden",
+  "text": "sodium caseinate",
+  "expect": "not-pass",
+  "id": "L036"
+ },
+ {
+  "profile": "milk",
+  "kind": "hidden",
+  "text": "calcium caseinate",
+  "expect": "not-pass",
+  "id": "L037"
+ },
+ {
+  "profile": "milk",
+  "kind": "hidden",
+  "text": "hydrolyzed casein",
+  "expect": "not-pass",
+  "id": "L038"
+ },
+ {
+  "profile": "milk",
+  "kind": "hidden",
+  "text": "rennet casein",
+  "expect": "not-pass",
+  "id": "L039"
+ },
+ {
+  "profile": "milk",
+  "kind": "hidden",
+  "text": "lactalbumin",
+  "expect": "not-pass",
+  "id": "L040"
+ },
+ {
+  "profile": "milk",
+  "kind": "hidden",
+  "text": "lactoglobulin",
+  "expect": "not-pass",
+  "id": "L041"
+ },
+ {
+  "profile": "milk",
+  "kind": "hidden",
+  "text": "lactose",
+  "expect": "not-pass",
+  "id": "L042"
+ },
+ {
+  "profile": "milk",
+  "kind": "hidden",
+  "text": "curds",
+  "expect": "not-pass",
+  "id": "L043"
+ },
+ {
+  "profile": "milk",
+  "kind": "hidden",
+  "text": "milk protein concentrate",
+  "expect": "not-pass",
+  "id": "L044"
+ },
+ {
+  "profile": "milk",
+  "kind": "hidden",
+  "text": "recaldent",
+  "expect": "not-pass",
+  "id": "L045"
+ },
+ {
+  "profile": "milk",
+  "kind": "typo",
+  "text": "mlik",
+  "expect": "not-pass",
+  "id": "L046"
+ },
+ {
+  "profile": "milk",
+  "kind": "typo",
+  "text": "buttr",
+  "expect": "not-pass",
+  "id": "L047"
+ },
+ {
+  "profile": "milk",
+  "kind": "typo",
+  "text": "chesse",
+  "expect": "not-pass",
+  "id": "L048"
+ },
+ {
+  "profile": "milk",
+  "kind": "typo",
+  "text": "yoghurt",
+  "expect": "not-pass",
+  "id": "L049"
+ },
+ {
+  "profile": "milk",
+  "kind": "typo",
+  "text": "caseinate",
+  "expect": "not-pass",
+  "id": "L050"
+ },
+ {
+  "profile": "milk",
+  "kind": "typo",
+  "text": "wey protein",
+  "expect": "not-pass",
+  "id": "L051"
+ },
+ {
+  "profile": "milk",
+  "kind": "ocr",
+  "text": "rnilk",
+  "expect": "not-pass",
+  "id": "L052"
+ },
+ {
+  "profile": "milk",
+  "kind": "ocr",
+  "text": "mi1k",
+  "expect": "not-pass",
+  "id": "L053"
+ },
+ {
+  "profile": "milk",
+  "kind": "ocr",
+  "text": "rnilk powder",
+  "expect": "not-pass",
+  "id": "L054"
+ },
+ {
+  "profile": "milk",
+  "kind": "ocr",
+  "text": "cre am",
+  "expect": "not-pass",
+  "id": "L055"
+ },
+ {
+  "profile": "milk",
+  "kind": "ocr",
+  "text": "wh ey",
+  "expect": "not-pass",
+  "id": "L056"
+ },
+ {
+  "profile": "milk",
+  "kind": "masked",
+  "text": "sugar, rnilk chocolate",
+  "expect": "not-pass",
+  "id": "L057"
+ },
+ {
+  "profile": "milk",
+  "kind": "masked",
+  "text": "whole rnilk powder",
+  "expect": "not-pass",
+  "id": "L058"
+ },
+ {
+  "profile": "milk",
+  "kind": "masked",
+  "text": "sweetened condensed rni1k",
+  "expect": "not-pass",
+  "id": "L059"
+ },
+ {
+  "profile": "milk",
+  "kind": "masked",
+  "text": "rnilk chocolate chips",
+  "expect": "not-pass",
+  "id": "L060"
+ },
+ {
+  "profile": "milk",
+  "kind": "masked",
+  "text": "chedar cheese sauce",
+  "expect": "not-pass",
+  "id": "L061"
+ },
+ {
+  "profile": "milk",
+  "kind": "may",
+  "text": "May contain milk.",
+  "expect": "not-pass",
+  "id": "L062"
+ },
+ {
+  "profile": "milk",
+  "kind": "may",
+  "text": "Manufactured on shared equipment with milk.",
+  "expect": "not-pass",
+  "id": "L063"
+ },
+ {
+  "profile": "milk",
+  "kind": "may",
+  "text": "Made in a facility that also processes milk and eggs.",
+  "expect": "not-pass",
+  "id": "L064"
+ },
+ {
+  "profile": "milk",
+  "kind": "may",
+  "text": "Produced in a plant that handles dairy.",
+  "expect": "not-pass",
+  "id": "L065"
+ },
+ {
+  "profile": "milk",
+  "kind": "contains",
+  "text": "CONTAINS: MILK.",
+  "expect": "not-pass",
+  "id": "L066"
+ },
+ {
+  "profile": "milk",
+  "kind": "contains",
+  "text": "Contains: Milk, Soy.",
+  "expect": "not-pass",
+  "id": "L067"
+ },
+ {
+  "profile": "milk",
+  "kind": "contains",
+  "text": "Allergens: milk",
+  "expect": "not-pass",
+  "id": "L068"
+ },
+ {
+  "profile": "milk",
+  "kind": "source",
+  "text": "caramel",
+  "expect": "not-pass",
+  "why": "can be made from the allergen; the source may appear only in a separate Contains statement",
+  "id": "L069"
+ },
+ {
+  "profile": "milk",
+  "kind": "source",
+  "text": "nougat",
+  "expect": "not-pass",
+  "why": "can be made from the allergen; the source may appear only in a separate Contains statement",
+  "id": "L070"
+ },
+ {
+  "profile": "milk",
+  "kind": "source",
+  "text": "margarine",
+  "expect": "not-pass",
+  "why": "can be made from the allergen; the source may appear only in a separate Contains statement",
+  "id": "L071"
+ },
+ {
+  "profile": "milk",
+  "kind": "case",
+  "text": "Ingredients: Sugar, MILK, Salt.",
+  "expect": "not-pass",
+  "id": "L072"
+ },
+ {
+  "profile": "milk",
+  "kind": "case",
+  "text": "Milk, Water, Natural Color",
+  "expect": "not-pass",
+  "id": "L073"
+ },
+ {
+  "profile": "milk",
+  "kind": "case",
+  "text": "Ingredients: Sugar, WHOLE MILK, Salt.",
+  "expect": "not-pass",
+  "id": "L074"
+ },
+ {
+  "profile": "milk",
+  "kind": "case",
+  "text": "Whole Milk, Water, Natural Color",
+  "expect": "not-pass",
+  "id": "L075"
+ },
+ {
+  "profile": "milk",
+  "kind": "case",
+  "text": "Ingredients: Sugar, SKIM MILK, Salt.",
+  "expect": "not-pass",
+  "id": "L076"
+ },
+ {
+  "profile": "milk",
+  "kind": "case",
+  "text": "Skim Milk, Water, Natural Color",
+  "expect": "not-pass",
+  "id": "L077"
+ },
+ {
+  "profile": "milk",
+  "kind": "case",
+  "text": "Ingredients: Sugar, NONFAT DRY MILK, Salt.",
+  "expect": "not-pass",
+  "id": "L078"
+ },
+ {
+  "profile": "milk",
+  "kind": "case",
+  "text": "Nonfat Dry Milk, Water, Natural Color",
+  "expect": "not-pass",
+  "id": "L079"
+ },
+ {
+  "profile": "milk",
+  "kind": "case",
+  "text": "Ingredients: Sugar, MILK POWDER, Salt.",
+  "expect": "not-pass",
+  "id": "L080"
+ },
+ {
+  "profile": "milk",
+  "kind": "case",
+  "text": "Milk Powder, Water, Natural Color",
+  "expect": "not-pass",
+  "id": "L081"
+ },
+ {
+  "profile": "milk",
+  "kind": "case",
+  "text": "Ingredients: Sugar, DRIED MILK, Salt.",
+  "expect": "not-pass",
+  "id": "L082"
+ },
+ {
+  "profile": "milk",
+  "kind": "case",
+  "text": "Dried Milk, Water, Natural Color",
+  "expect": "not-pass",
+  "id": "L083"
+ },
+ {
+  "profile": "milk",
+  "kind": "plural",
+  "text": "water, milks, salt",
+  "expect": "not-pass",
+  "id": "L084"
+ },
+ {
+  "profile": "milk",
+  "kind": "plural",
+  "text": "water, whole milks, salt",
+  "expect": "not-pass",
+  "id": "L085"
+ },
+ {
+  "profile": "milk",
+  "kind": "plural",
+  "text": "water, skim milks, salt",
+  "expect": "not-pass",
+  "id": "L086"
+ },
+ {
+  "profile": "milk",
+  "kind": "plural",
+  "text": "water, nonfat dry milks, salt",
+  "expect": "not-pass",
+  "id": "L087"
+ },
+ {
+  "profile": "milk",
+  "kind": "ocr",
+  "text": "salt, rnilk, sugar",
+  "expect": "not-pass",
+  "id": "L088"
+ },
+ {
+  "profile": "milk",
+  "kind": "ocr",
+  "text": "salt, mi1k, sugar",
+  "expect": "not-pass",
+  "id": "L089"
+ },
+ {
+  "profile": "milk",
+  "kind": "ocr",
+  "text": "salt, mi lk, sugar",
+  "expect": "not-pass",
+  "id": "L090"
+ },
+ {
+  "profile": "milk",
+  "kind": "ocr",
+  "text": "salt, mlk, sugar",
+  "expect": "not-pass",
+  "id": "L091"
+ },
+ {
+  "profile": "egg",
+  "kind": "plain",
+  "text": "egg",
+  "expect": "not-pass",
+  "id": "L092"
+ },
+ {
+  "profile": "egg",
+  "kind": "plain",
+  "text": "eggs",
+  "expect": "not-pass",
+  "id": "L093"
+ },
+ {
+  "profile": "egg",
+  "kind": "plain",
+  "text": "whole eggs",
+  "expect": "not-pass",
+  "id": "L094"
+ },
+ {
+  "profile": "egg",
+  "kind": "plain",
+  "text": "egg whites",
+  "expect": "not-pass",
+  "id": "L095"
+ },
+ {
+  "profile": "egg",
+  "kind": "plain",
+  "text": "egg yolks",
+  "expect": "not-pass",
+  "id": "L096"
+ },
+ {
+  "profile": "egg",
+  "kind": "plain",
+  "text": "dried egg",
+  "expect": "not-pass",
+  "id": "L097"
+ },
+ {
+  "profile": "egg",
+  "kind": "plain",
+  "text": "powdered egg",
+  "expect": "not-pass",
+  "id": "L098"
+ },
+ {
+  "profile": "egg",
+  "kind": "plain",
+  "text": "liquid egg",
+  "expect": "not-pass",
+  "id": "L099"
+ },
+ {
+  "profile": "egg",
+  "kind": "plain",
+  "text": "egg noodles",
+  "expect": "not-pass",
+  "id": "L100"
+ },
+ {
+  "profile": "egg",
+  "kind": "plain",
+  "text": "mayonnaise",
+  "expect": "not-pass",
+  "id": "L101"
+ },
+ {
+  "profile": "egg",
+  "kind": "plain",
+  "text": "meringue",
+  "expect": "not-pass",
+  "id": "L102"
+ },
+ {
+  "profile": "egg",
+  "kind": "plain",
+  "text": "eggnog",
+  "expect": "not-pass",
+  "id": "L103"
+ },
+ {
+  "profile": "egg",
+  "kind": "plain",
+  "text": "egg wash",
+  "expect": "not-pass",
+  "id": "L104"
+ },
+ {
+  "profile": "egg",
+  "kind": "hidden",
+  "text": "albumin",
+  "expect": "not-pass",
+  "id": "L105"
+ },
+ {
+  "profile": "egg",
+  "kind": "hidden",
+  "text": "albumen",
+  "expect": "not-pass",
+  "id": "L106"
+ },
+ {
+  "profile": "egg",
+  "kind": "hidden",
+  "text": "ovalbumin",
+  "expect": "not-pass",
+  "id": "L107"
+ },
+ {
+  "profile": "egg",
+  "kind": "hidden",
+  "text": "lysozyme",
+  "expect": "not-pass",
+  "id": "L108"
+ },
+ {
+  "profile": "egg",
+  "kind": "hidden",
+  "text": "livetin",
+  "expect": "not-pass",
+  "id": "L109"
+ },
+ {
+  "profile": "egg",
+  "kind": "hidden",
+  "text": "ovomucoid",
+  "expect": "not-pass",
+  "id": "L110"
+ },
+ {
+  "profile": "egg",
+  "kind": "hidden",
+  "text": "ovomucin",
+  "expect": "not-pass",
+  "id": "L111"
+ },
+ {
+  "profile": "egg",
+  "kind": "hidden",
+  "text": "vitellin",
+  "expect": "not-pass",
+  "id": "L112"
+ },
+ {
+  "profile": "egg",
+  "kind": "hidden",
+  "text": "ovovitellin",
+  "expect": "not-pass",
+  "id": "L113"
+ },
+ {
+  "profile": "egg",
+  "kind": "hidden",
+  "text": "surimi",
+  "expect": "not-pass",
+  "id": "L114"
+ },
+ {
+  "profile": "egg",
+  "kind": "hidden",
+  "text": "globulin",
+  "expect": "not-pass",
+  "id": "L115"
+ },
+ {
+  "profile": "egg",
+  "kind": "typo",
+  "text": "egss",
+  "expect": "not-pass",
+  "id": "L116"
+ },
+ {
+  "profile": "egg",
+  "kind": "typo",
+  "text": "egg yoke",
+  "expect": "not-pass",
+  "id": "L117"
+ },
+ {
+  "profile": "egg",
+  "kind": "typo",
+  "text": "mayonaise",
+  "expect": "not-pass",
+  "id": "L118"
+ },
+ {
+  "profile": "egg",
+  "kind": "typo",
+  "text": "albumine",
+  "expect": "not-pass",
+  "id": "L119"
+ },
+ {
+  "profile": "egg",
+  "kind": "ocr",
+  "text": "e gg",
+  "expect": "not-pass",
+  "id": "L120"
+ },
+ {
+  "profile": "egg",
+  "kind": "ocr",
+  "text": "eg g whites",
+  "expect": "not-pass",
+  "id": "L121"
+ },
+ {
+  "profile": "egg",
+  "kind": "ocr",
+  "text": "a1bumin",
+  "expect": "not-pass",
+  "id": "L122"
+ },
+ {
+  "profile": "egg",
+  "kind": "ocr",
+  "text": "ovalbumln",
+  "expect": "not-pass",
+  "id": "L123"
+ },
+ {
+  "profile": "egg",
+  "kind": "masked",
+  "text": "pasteurized egg whltes, salt",
+  "expect": "not-pass",
+  "id": "L124"
+ },
+ {
+  "profile": "egg",
+  "kind": "masked",
+  "text": "wh0le eggs, sugar",
+  "expect": "not-pass",
+  "id": "L125"
+ },
+ {
+  "profile": "egg",
+  "kind": "masked",
+  "text": "mayonaise dressing",
+  "expect": "not-pass",
+  "id": "L126"
+ },
+ {
+  "profile": "egg",
+  "kind": "may",
+  "text": "May contain egg.",
+  "expect": "not-pass",
+  "id": "L127"
+ },
+ {
+  "profile": "egg",
+  "kind": "may",
+  "text": "Made on equipment that also processes eggs.",
+  "expect": "not-pass",
+  "id": "L128"
+ },
+ {
+  "profile": "egg",
+  "kind": "may",
+  "text": "Produced in a facility that uses egg.",
+  "expect": "not-pass",
+  "id": "L129"
+ },
+ {
+  "profile": "egg",
+  "kind": "contains",
+  "text": "CONTAINS: EGG.",
+  "expect": "not-pass",
+  "id": "L130"
+ },
+ {
+  "profile": "egg",
+  "kind": "contains",
+  "text": "Contains: Wheat, Egg.",
+  "expect": "not-pass",
+  "id": "L131"
+ },
+ {
+  "profile": "egg",
+  "kind": "case",
+  "text": "Ingredients: Sugar, EGG, Salt.",
+  "expect": "not-pass",
+  "id": "L132"
+ },
+ {
+  "profile": "egg",
+  "kind": "case",
+  "text": "Egg, Water, Natural Color",
+  "expect": "not-pass",
+  "id": "L133"
+ },
+ {
+  "profile": "egg",
+  "kind": "case",
+  "text": "Ingredients: Sugar, EGGS, Salt.",
+  "expect": "not-pass",
+  "id": "L134"
+ },
+ {
+  "profile": "egg",
+  "kind": "case",
+  "text": "Eggs, Water, Natural Color",
+  "expect": "not-pass",
+  "id": "L135"
+ },
+ {
+  "profile": "egg",
+  "kind": "case",
+  "text": "Ingredients: Sugar, WHOLE EGGS, Salt.",
+  "expect": "not-pass",
+  "id": "L136"
+ },
+ {
+  "profile": "egg",
+  "kind": "case",
+  "text": "Whole Eggs, Water, Natural Color",
+  "expect": "not-pass",
+  "id": "L137"
+ },
+ {
+  "profile": "egg",
+  "kind": "case",
+  "text": "Ingredients: Sugar, EGG WHITES, Salt.",
+  "expect": "not-pass",
+  "id": "L138"
+ },
+ {
+  "profile": "egg",
+  "kind": "case",
+  "text": "Egg Whites, Water, Natural Color",
+  "expect": "not-pass",
+  "id": "L139"
+ },
+ {
+  "profile": "egg",
+  "kind": "case",
+  "text": "Ingredients: Sugar, EGG YOLKS, Salt.",
+  "expect": "not-pass",
+  "id": "L140"
+ },
+ {
+  "profile": "egg",
+  "kind": "case",
+  "text": "Egg Yolks, Water, Natural Color",
+  "expect": "not-pass",
+  "id": "L141"
+ },
+ {
+  "profile": "egg",
+  "kind": "case",
+  "text": "Ingredients: Sugar, DRIED EGG, Salt.",
+  "expect": "not-pass",
+  "id": "L142"
+ },
+ {
+  "profile": "egg",
+  "kind": "case",
+  "text": "Dried Egg, Water, Natural Color",
+  "expect": "not-pass",
+  "id": "L143"
+ },
+ {
+  "profile": "egg",
+  "kind": "plural",
+  "text": "water, eggs, salt",
+  "expect": "not-pass",
+  "id": "L144"
+ },
+ {
+  "profile": "egg",
+  "kind": "plural",
+  "text": "water, egg, salt",
+  "expect": "not-pass",
+  "id": "L145"
+ },
+ {
+  "profile": "egg",
+  "kind": "plural",
+  "text": "water, whole egg, salt",
+  "expect": "not-pass",
+  "id": "L146"
+ },
+ {
+  "profile": "egg",
+  "kind": "plural",
+  "text": "water, egg white, salt",
+  "expect": "not-pass",
+  "id": "L147"
+ },
+ {
+  "profile": "egg",
+  "kind": "ocr",
+  "text": "salt, eg g, sugar",
+  "expect": "not-pass",
+  "id": "L148"
+ },
+ {
+  "profile": "fish",
+  "kind": "plain",
+  "text": "fish",
+  "expect": "not-pass",
+  "id": "L149"
+ },
+ {
+  "profile": "fish",
+  "kind": "plain",
+  "text": "anchovy",
+  "expect": "not-pass",
+  "id": "L150"
+ },
+ {
+  "profile": "fish",
+  "kind": "plain",
+  "text": "anchovies",
+  "expect": "not-pass",
+  "id": "L151"
+ },
+ {
+  "profile": "fish",
+  "kind": "plain",
+  "text": "cod",
+  "expect": "not-pass",
+  "id": "L152"
+ },
+ {
+  "profile": "fish",
+  "kind": "plain",
+  "text": "salmon",
+  "expect": "not-pass",
+  "id": "L153"
+ },
+ {
+  "profile": "fish",
+  "kind": "plain",
+  "text": "tuna",
+  "expect": "not-pass",
+  "id": "L154"
+ },
+ {
+  "profile": "fish",
+  "kind": "plain",
+  "text": "tilapia",
+  "expect": "not-pass",
+  "id": "L155"
+ },
+ {
+  "profile": "fish",
+  "kind": "plain",
+  "text": "pollock",
+  "expect": "not-pass",
+  "id": "L156"
+ },
+ {
+  "profile": "fish",
+  "kind": "plain",
+  "text": "haddock",
+  "expect": "not-pass",
+  "id": "L157"
+ },
+ {
+  "profile": "fish",
+  "kind": "plain",
+  "text": "halibut",
+  "expect": "not-pass",
+  "id": "L158"
+ },
+ {
+  "profile": "fish",
+  "kind": "plain",
+  "text": "sardines",
+  "expect": "not-pass",
+  "id": "L159"
+ },
+ {
+  "profile": "fish",
+  "kind": "plain",
+  "text": "mackerel",
+  "expect": "not-pass",
+  "id": "L160"
+ },
+ {
+  "profile": "fish",
+  "kind": "plain",
+  "text": "trout",
+  "expect": "not-pass",
+  "id": "L161"
+ },
+ {
+  "profile": "fish",
+  "kind": "plain",
+  "text": "catfish",
+  "expect": "not-pass",
+  "id": "L162"
+ },
+ {
+  "profile": "fish",
+  "kind": "plain",
+  "text": "fish sauce",
+  "expect": "not-pass",
+  "id": "L163"
+ },
+ {
+  "profile": "fish",
+  "kind": "plain",
+  "text": "fish oil",
+  "expect": "not-pass",
+  "id": "L164"
+ },
+ {
+  "profile": "fish",
+  "kind": "plain",
+  "text": "fish gelatin",
+  "expect": "not-pass",
+  "id": "L165"
+ },
+ {
+  "profile": "fish",
+  "kind": "plain",
+  "text": "worcestershire sauce",
+  "expect": "not-pass",
+  "id": "L166"
+ },
+ {
+  "profile": "fish",
+  "kind": "plain",
+  "text": "caesar dressing",
+  "expect": "not-pass",
+  "id": "L167"
+ },
+ {
+  "profile": "fish",
+  "kind": "plain",
+  "text": "imitation crab",
+  "expect": "not-pass",
+  "id": "L168"
+ },
+ {
+  "profile": "fish",
+  "kind": "plain",
+  "text": "bonito flakes",
+  "expect": "not-pass",
+  "id": "L169"
+ },
+ {
+  "profile": "fish",
+  "kind": "plain",
+  "text": "dashi",
+  "expect": "not-pass",
+  "id": "L170"
+ },
+ {
+  "profile": "fish",
+  "kind": "plain",
+  "text": "caviar",
+  "expect": "not-pass",
+  "id": "L171"
+ },
+ {
+  "profile": "fish",
+  "kind": "plain",
+  "text": "roe",
+  "expect": "not-pass",
+  "id": "L172"
+ },
+ {
+  "profile": "fish",
+  "kind": "hidden",
+  "text": "surimi",
+  "expect": "not-pass",
+  "id": "L173"
+ },
+ {
+  "profile": "fish",
+  "kind": "hidden",
+  "text": "omega-3 fatty acids (from fish oil)",
+  "expect": "not-pass",
+  "id": "L174"
+ },
+ {
+  "profile": "fish",
+  "kind": "hidden",
+  "text": "anchovy paste",
+  "expect": "not-pass",
+  "id": "L175"
+ },
+ {
+  "profile": "fish",
+  "kind": "hidden",
+  "text": "fish stock",
+  "expect": "not-pass",
+  "id": "L176"
+ },
+ {
+  "profile": "fish",
+  "kind": "hidden",
+  "text": "nam pla",
+  "expect": "not-pass",
+  "id": "L177"
+ },
+ {
+  "profile": "fish",
+  "kind": "typo",
+  "text": "anchovey",
+  "expect": "not-pass",
+  "id": "L178"
+ },
+ {
+  "profile": "fish",
+  "kind": "typo",
+  "text": "samon",
+  "expect": "not-pass",
+  "id": "L179"
+ },
+ {
+  "profile": "fish",
+  "kind": "typo",
+  "text": "tunna",
+  "expect": "not-pass",
+  "id": "L180"
+ },
+ {
+  "profile": "fish",
+  "kind": "typo",
+  "text": "worcester sauce",
+  "expect": "not-pass",
+  "id": "L181"
+ },
+ {
+  "profile": "fish",
+  "kind": "ocr",
+  "text": "s a1mon",
+  "expect": "not-pass",
+  "id": "L182"
+ },
+ {
+  "profile": "fish",
+  "kind": "ocr",
+  "text": "anch0vies",
+  "expect": "not-pass",
+  "id": "L183"
+ },
+ {
+  "profile": "fish",
+  "kind": "ocr",
+  "text": "f ish sauce",
+  "expect": "not-pass",
+  "id": "L184"
+ },
+ {
+  "profile": "fish",
+  "kind": "ocr",
+  "text": "po1lock",
+  "expect": "not-pass",
+  "id": "L185"
+ },
+ {
+  "profile": "fish",
+  "kind": "masked",
+  "text": "smoked sa1mon, salt",
+  "expect": "not-pass",
+  "id": "L186"
+ },
+ {
+  "profile": "fish",
+  "kind": "masked",
+  "text": "anch0vy paste",
+  "expect": "not-pass",
+  "id": "L187"
+ },
+ {
+  "profile": "fish",
+  "kind": "masked",
+  "text": "tuna in water, salt",
+  "expect": "not-pass",
+  "id": "L188"
+ },
+ {
+  "profile": "fish",
+  "kind": "masked",
+  "text": "wild caught sa1mon fillets",
+  "expect": "not-pass",
+  "id": "L189"
+ },
+ {
+  "profile": "fish",
+  "kind": "may",
+  "text": "May contain fish.",
+  "expect": "not-pass",
+  "id": "L190"
+ },
+ {
+  "profile": "fish",
+  "kind": "may",
+  "text": "Processed in a facility that also processes fish.",
+  "expect": "not-pass",
+  "id": "L191"
+ },
+ {
+  "profile": "fish",
+  "kind": "may",
+  "text": "Made on shared equipment with fish and shellfish.",
+  "expect": "not-pass",
+  "id": "L192"
+ },
+ {
+  "profile": "fish",
+  "kind": "contains",
+  "text": "CONTAINS: FISH (ANCHOVY).",
+  "expect": "not-pass",
+  "id": "L193"
+ },
+ {
+  "profile": "fish",
+  "kind": "contains",
+  "text": "Contains: Fish (Cod).",
+  "expect": "not-pass",
+  "id": "L194"
+ },
+ {
+  "profile": "fish",
+  "kind": "case",
+  "text": "Ingredients: Sugar, FISH, Salt.",
+  "expect": "not-pass",
+  "id": "L195"
+ },
+ {
+  "profile": "fish",
+  "kind": "case",
+  "text": "Fish, Water, Natural Color",
+  "expect": "not-pass",
+  "id": "L196"
+ },
+ {
+  "profile": "fish",
+  "kind": "case",
+  "text": "Ingredients: Sugar, ANCHOVY, Salt.",
+  "expect": "not-pass",
+  "id": "L197"
+ },
+ {
+  "profile": "fish",
+  "kind": "case",
+  "text": "Anchovy, Water, Natural Color",
+  "expect": "not-pass",
+  "id": "L198"
+ },
+ {
+  "profile": "fish",
+  "kind": "case",
+  "text": "Ingredients: Sugar, ANCHOVIES, Salt.",
+  "expect": "not-pass",
+  "id": "L199"
+ },
+ {
+  "profile": "fish",
+  "kind": "case",
+  "text": "Anchovies, Water, Natural Color",
+  "expect": "not-pass",
+  "id": "L200"
+ },
+ {
+  "profile": "fish",
+  "kind": "case",
+  "text": "Ingredients: Sugar, COD, Salt.",
+  "expect": "not-pass",
+  "id": "L201"
+ },
+ {
+  "profile": "fish",
+  "kind": "case",
+  "text": "Cod, Water, Natural Color",
+  "expect": "not-pass",
+  "id": "L202"
+ },
+ {
+  "profile": "fish",
+  "kind": "case",
+  "text": "Ingredients: Sugar, SALMON, Salt.",
+  "expect": "not-pass",
+  "id": "L203"
+ },
+ {
+  "profile": "fish",
+  "kind": "case",
+  "text": "Salmon, Water, Natural Color",
+  "expect": "not-pass",
+  "id": "L204"
+ },
+ {
+  "profile": "fish",
+  "kind": "case",
+  "text": "Ingredients: Sugar, TUNA, Salt.",
+  "expect": "not-pass",
+  "id": "L205"
+ },
+ {
+  "profile": "fish",
+  "kind": "case",
+  "text": "Tuna, Water, Natural Color",
+  "expect": "not-pass",
+  "id": "L206"
+ },
+ {
+  "profile": "fish",
+  "kind": "plural",
+  "text": "water, fishs, salt",
+  "expect": "not-pass",
+  "id": "L207"
+ },
+ {
+  "profile": "fish",
+  "kind": "plural",
+  "text": "water, anchovys, salt",
+  "expect": "not-pass",
+  "id": "L208"
+ },
+ {
+  "profile": "fish",
+  "kind": "plural",
+  "text": "water, anchovie, salt",
+  "expect": "not-pass",
+  "id": "L209"
+ },
+ {
+  "profile": "fish",
+  "kind": "plural",
+  "text": "water, cods, salt",
+  "expect": "not-pass",
+  "id": "L210"
+ },
+ {
+  "profile": "fish",
+  "kind": "ocr",
+  "text": "salt, fi sh, sugar",
+  "expect": "not-pass",
+  "id": "L211"
+ },
+ {
+  "profile": "fish",
+  "kind": "ocr",
+  "text": "salt, fsh, sugar",
+  "expect": "not-pass",
+  "id": "L212"
+ },
+ {
+  "profile": "crustacean",
+  "kind": "plain",
+  "text": "shrimp",
+  "expect": "not-pass",
+  "id": "L213"
+ },
+ {
+  "profile": "crustacean",
+  "kind": "plain",
+  "text": "prawns",
+  "expect": "not-pass",
+  "id": "L214"
+ },
+ {
+  "profile": "crustacean",
+  "kind": "plain",
+  "text": "crab",
+  "expect": "not-pass",
+  "id": "L215"
+ },
+ {
+  "profile": "crustacean",
+  "kind": "plain",
+  "text": "lobster",
+  "expect": "not-pass",
+  "id": "L216"
+ },
+ {
+  "profile": "crustacean",
+  "kind": "plain",
+  "text": "crayfish",
+  "expect": "not-pass",
+  "id": "L217"
+ },
+ {
+  "profile": "crustacean",
+  "kind": "plain",
+  "text": "crawfish",
+  "expect": "not-pass",
+  "id": "L218"
+ },
+ {
+  "profile": "crustacean",
+  "kind": "plain",
+  "text": "langoustine",
+  "expect": "not-pass",
+  "id": "L219"
+ },
+ {
+  "profile": "crustacean",
+  "kind": "plain",
+  "text": "krill",
+  "expect": "not-pass",
+  "id": "L220"
+ },
+ {
+  "profile": "crustacean",
+  "kind": "plain",
+  "text": "scampi",
+  "expect": "not-pass",
+  "id": "L221"
+ },
+ {
+  "profile": "crustacean",
+  "kind": "plain",
+  "text": "shrimp paste",
+  "expect": "not-pass",
+  "id": "L222"
+ },
+ {
+  "profile": "crustacean",
+  "kind": "plain",
+  "text": "crab meat",
+  "expect": "not-pass",
+  "id": "L223"
+ },
+ {
+  "profile": "crustacean",
+  "kind": "plain",
+  "text": "lobster tail",
+  "expect": "not-pass",
+  "id": "L224"
+ },
+ {
+  "profile": "crustacean",
+  "kind": "plain",
+  "text": "shellfish",
+  "expect": "not-pass",
+  "id": "L225"
+ },
+ {
+  "profile": "crustacean",
+  "kind": "hidden",
+  "text": "crab extract",
+  "expect": "not-pass",
+  "id": "L226"
+ },
+ {
+  "profile": "crustacean",
+  "kind": "hidden",
+  "text": "shrimp powder",
+  "expect": "not-pass",
+  "id": "L227"
+ },
+ {
+  "profile": "crustacean",
+  "kind": "hidden",
+  "text": "surimi",
+  "expect": "not-pass",
+  "id": "L228"
+ },
+ {
+  "profile": "crustacean",
+  "kind": "hidden",
+  "text": "imitation crab",
+  "expect": "not-pass",
+  "id": "L229"
+ },
+ {
+  "profile": "crustacean",
+  "kind": "hidden",
+  "text": "krill oil",
+  "expect": "not-pass",
+  "id": "L230"
+ },
+ {
+  "profile": "crustacean",
+  "kind": "hidden",
+  "text": "shellfish extract",
+  "expect": "not-pass",
+  "id": "L231"
+ },
+ {
+  "profile": "crustacean",
+  "kind": "typo",
+  "text": "shirmp",
+  "expect": "not-pass",
+  "id": "L232"
+ },
+ {
+  "profile": "crustacean",
+  "kind": "typo",
+  "text": "lobser",
+  "expect": "not-pass",
+  "id": "L233"
+ },
+ {
+  "profile": "crustacean",
+  "kind": "typo",
+  "text": "craw fish",
+  "expect": "not-pass",
+  "id": "L234"
+ },
+ {
+  "profile": "crustacean",
+  "kind": "ocr",
+  "text": "shrirnp",
+  "expect": "not-pass",
+  "id": "L235"
+ },
+ {
+  "profile": "crustacean",
+  "kind": "ocr",
+  "text": "lobste r",
+  "expect": "not-pass",
+  "id": "L236"
+ },
+ {
+  "profile": "crustacean",
+  "kind": "ocr",
+  "text": "cr ab",
+  "expect": "not-pass",
+  "id": "L237"
+ },
+ {
+  "profile": "crustacean",
+  "kind": "ocr",
+  "text": "prawn s",
+  "expect": "not-pass",
+  "id": "L238"
+ },
+ {
+  "profile": "crustacean",
+  "kind": "masked",
+  "text": "cooked shrirnp, salt",
+  "expect": "not-pass",
+  "id": "L239"
+ },
+ {
+  "profile": "crustacean",
+  "kind": "masked",
+  "text": "dried shrirnp paste",
+  "expect": "not-pass",
+  "id": "L240"
+ },
+ {
+  "profile": "crustacean",
+  "kind": "masked",
+  "text": "lobste r bisque base",
+  "expect": "not-pass",
+  "id": "L241"
+ },
+ {
+  "profile": "crustacean",
+  "kind": "may",
+  "text": "May contain crustacean shellfish.",
+  "expect": "not-pass",
+  "id": "L242"
+ },
+ {
+  "profile": "crustacean",
+  "kind": "may",
+  "text": "Made in a facility that processes shellfish.",
+  "expect": "not-pass",
+  "id": "L243"
+ },
+ {
+  "profile": "crustacean",
+  "kind": "may",
+  "text": "May contain shrimp.",
+  "expect": "not-pass",
+  "id": "L244"
+ },
+ {
+  "profile": "crustacean",
+  "kind": "contains",
+  "text": "CONTAINS: SHRIMP.",
+  "expect": "not-pass",
+  "id": "L245"
+ },
+ {
+  "profile": "crustacean",
+  "kind": "contains",
+  "text": "Contains: Crustacean Shellfish (Crab).",
+  "expect": "not-pass",
+  "id": "L246"
+ },
+ {
+  "profile": "crustacean",
+  "kind": "case",
+  "text": "Ingredients: Sugar, SHRIMP, Salt.",
+  "expect": "not-pass",
+  "id": "L247"
+ },
+ {
+  "profile": "crustacean",
+  "kind": "case",
+  "text": "Shrimp, Water, Natural Color",
+  "expect": "not-pass",
+  "id": "L248"
+ },
+ {
+  "profile": "crustacean",
+  "kind": "case",
+  "text": "Ingredients: Sugar, PRAWNS, Salt.",
+  "expect": "not-pass",
+  "id": "L249"
+ },
+ {
+  "profile": "crustacean",
+  "kind": "case",
+  "text": "Prawns, Water, Natural Color",
+  "expect": "not-pass",
+  "id": "L250"
+ },
+ {
+  "profile": "crustacean",
+  "kind": "case",
+  "text": "Ingredients: Sugar, CRAB, Salt.",
+  "expect": "not-pass",
+  "id": "L251"
+ },
+ {
+  "profile": "crustacean",
+  "kind": "case",
+  "text": "Crab, Water, Natural Color",
+  "expect": "not-pass",
+  "id": "L252"
+ },
+ {
+  "profile": "crustacean",
+  "kind": "case",
+  "text": "Ingredients: Sugar, LOBSTER, Salt.",
+  "expect": "not-pass",
+  "id": "L253"
+ },
+ {
+  "profile": "crustacean",
+  "kind": "case",
+  "text": "Lobster, Water, Natural Color",
+  "expect": "not-pass",
+  "id": "L254"
+ },
+ {
+  "profile": "crustacean",
+  "kind": "case",
+  "text": "Ingredients: Sugar, CRAYFISH, Salt.",
+  "expect": "not-pass",
+  "id": "L255"
+ },
+ {
+  "profile": "crustacean",
+  "kind": "case",
+  "text": "Crayfish, Water, Natural Color",
+  "expect": "not-pass",
+  "id": "L256"
+ },
+ {
+  "profile": "crustacean",
+  "kind": "case",
+  "text": "Ingredients: Sugar, CRAWFISH, Salt.",
+  "expect": "not-pass",
+  "id": "L257"
+ },
+ {
+  "profile": "crustacean",
+  "kind": "case",
+  "text": "Crawfish, Water, Natural Color",
+  "expect": "not-pass",
+  "id": "L258"
+ },
+ {
+  "profile": "crustacean",
+  "kind": "plural",
+  "text": "water, shrimps, salt",
+  "expect": "not-pass",
+  "id": "L259"
+ },
+ {
+  "profile": "crustacean",
+  "kind": "plural",
+  "text": "water, prawn, salt",
+  "expect": "not-pass",
+  "id": "L260"
+ },
+ {
+  "profile": "crustacean",
+  "kind": "plural",
+  "text": "water, crabs, salt",
+  "expect": "not-pass",
+  "id": "L261"
+ },
+ {
+  "profile": "crustacean",
+  "kind": "plural",
+  "text": "water, lobsters, salt",
+  "expect": "not-pass",
+  "id": "L262"
+ },
+ {
+  "profile": "crustacean",
+  "kind": "ocr",
+  "text": "salt, shrirnp, sugar",
+  "expect": "not-pass",
+  "id": "L263"
+ },
+ {
+  "profile": "crustacean",
+  "kind": "ocr",
+  "text": "salt, shr imp, sugar",
+  "expect": "not-pass",
+  "id": "L264"
+ },
+ {
+  "profile": "crustacean",
+  "kind": "ocr",
+  "text": "salt, shrmp, sugar",
+  "expect": "not-pass",
+  "id": "L265"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "plain",
+  "text": "almond",
+  "expect": "not-pass",
+  "id": "L266"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "plain",
+  "text": "almonds",
+  "expect": "not-pass",
+  "id": "L267"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "plain",
+  "text": "almond flour",
+  "expect": "not-pass",
+  "id": "L268"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "plain",
+  "text": "almond butter",
+  "expect": "not-pass",
+  "id": "L269"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "plain",
+  "text": "almond milk",
+  "expect": "not-pass",
+  "id": "L270"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "plain",
+  "text": "cashew",
+  "expect": "not-pass",
+  "id": "L271"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "plain",
+  "text": "cashews",
+  "expect": "not-pass",
+  "id": "L272"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "plain",
+  "text": "walnut",
+  "expect": "not-pass",
+  "id": "L273"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "plain",
+  "text": "walnuts",
+  "expect": "not-pass",
+  "id": "L274"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "plain",
+  "text": "pecan",
+  "expect": "not-pass",
+  "id": "L275"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "plain",
+  "text": "pecans",
+  "expect": "not-pass",
+  "id": "L276"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "plain",
+  "text": "hazelnut",
+  "expect": "not-pass",
+  "id": "L277"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "plain",
+  "text": "hazelnuts",
+  "expect": "not-pass",
+  "id": "L278"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "plain",
+  "text": "filberts",
+  "expect": "not-pass",
+  "id": "L279"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "plain",
+  "text": "pistachio",
+  "expect": "not-pass",
+  "id": "L280"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "plain",
+  "text": "pistachios",
+  "expect": "not-pass",
+  "id": "L281"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "plain",
+  "text": "macadamia nuts",
+  "expect": "not-pass",
+  "id": "L282"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "plain",
+  "text": "brazil nuts",
+  "expect": "not-pass",
+  "id": "L283"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "plain",
+  "text": "pine nuts",
+  "expect": "not-pass",
+  "id": "L284"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "plain",
+  "text": "pignoli",
+  "expect": "not-pass",
+  "id": "L285"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "plain",
+  "text": "heartnut",
+  "expect": "not-pass",
+  "id": "L286"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "plain",
+  "text": "black walnut",
+  "expect": "not-pass",
+  "id": "L287"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "plain",
+  "text": "coconut",
+  "expect": "not-pass",
+  "id": "L288"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "plain",
+  "text": "chestnut",
+  "expect": "not-pass",
+  "id": "L289"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "plain",
+  "text": "tree nuts",
+  "expect": "not-pass",
+  "id": "L290"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "hidden",
+  "text": "marzipan",
+  "expect": "not-pass",
+  "id": "L291"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "hidden",
+  "text": "praline",
+  "expect": "not-pass",
+  "id": "L292"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "hidden",
+  "text": "gianduja",
+  "expect": "not-pass",
+  "id": "L293"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "hidden",
+  "text": "pesto",
+  "expect": "not-pass",
+  "id": "L294"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "hidden",
+  "text": "nut meal",
+  "expect": "not-pass",
+  "id": "L295"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "hidden",
+  "text": "almond extract",
+  "expect": "not-pass",
+  "id": "L296"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "hidden",
+  "text": "nougat",
+  "expect": "not-pass",
+  "id": "L297"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "hidden",
+  "text": "nut paste",
+  "expect": "not-pass",
+  "id": "L298"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "hidden",
+  "text": "natural nut extract",
+  "expect": "not-pass",
+  "id": "L299"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "hidden",
+  "text": "frangipane",
+  "expect": "not-pass",
+  "id": "L300"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "hidden",
+  "text": "nut butter",
+  "expect": "not-pass",
+  "id": "L301"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "hidden",
+  "text": "chocolate hazelnut spread",
+  "expect": "not-pass",
+  "id": "L302"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "typo",
+  "text": "almnds",
+  "expect": "not-pass",
+  "id": "L303"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "typo",
+  "text": "cashw",
+  "expect": "not-pass",
+  "id": "L304"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "typo",
+  "text": "walnts",
+  "expect": "not-pass",
+  "id": "L305"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "typo",
+  "text": "pistacio",
+  "expect": "not-pass",
+  "id": "L306"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "typo",
+  "text": "hazel nut",
+  "expect": "not-pass",
+  "id": "L307"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "typo",
+  "text": "pecan s",
+  "expect": "not-pass",
+  "id": "L308"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "ocr",
+  "text": "alrnonds",
+  "expect": "not-pass",
+  "id": "L309"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "ocr",
+  "text": "a1monds",
+  "expect": "not-pass",
+  "id": "L310"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "ocr",
+  "text": "cas hew",
+  "expect": "not-pass",
+  "id": "L311"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "ocr",
+  "text": "wa1nuts",
+  "expect": "not-pass",
+  "id": "L312"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "ocr",
+  "text": "pist achio",
+  "expect": "not-pass",
+  "id": "L313"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "masked",
+  "text": "almnd milk",
+  "expect": "not-pass",
+  "id": "L314"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "masked",
+  "text": "cashw butter",
+  "expect": "not-pass",
+  "id": "L315"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "masked",
+  "text": "alrnond butter",
+  "expect": "not-pass",
+  "id": "L316"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "masked",
+  "text": "roasted a1monds, salt",
+  "expect": "not-pass",
+  "id": "L317"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "masked",
+  "text": "wa1nut pieces, sugar",
+  "expect": "not-pass",
+  "id": "L318"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "masked",
+  "text": "hazel nut spread",
+  "expect": "not-pass",
+  "id": "L319"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "masked",
+  "text": "sugar, a1mond flour",
+  "expect": "not-pass",
+  "id": "L320"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "may",
+  "text": "May contain tree nuts.",
+  "expect": "not-pass",
+  "id": "L321"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "may",
+  "text": "Made in a facility that also processes tree nuts.",
+  "expect": "not-pass",
+  "id": "L322"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "may",
+  "text": "Manufactured on shared equipment with almonds and cashews.",
+  "expect": "not-pass",
+  "id": "L323"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "may",
+  "text": "May contain traces of nuts.",
+  "expect": "not-pass",
+  "id": "L324"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "contains",
+  "text": "CONTAINS: ALMONDS.",
+  "expect": "not-pass",
+  "id": "L325"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "contains",
+  "text": "Contains: Tree Nuts (Cashew, Pecan).",
+  "expect": "not-pass",
+  "id": "L326"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "case",
+  "text": "Ingredients: Sugar, ALMOND, Salt.",
+  "expect": "not-pass",
+  "id": "L327"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "case",
+  "text": "Almond, Water, Natural Color",
+  "expect": "not-pass",
+  "id": "L328"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "case",
+  "text": "Ingredients: Sugar, ALMONDS, Salt.",
+  "expect": "not-pass",
+  "id": "L329"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "case",
+  "text": "Almonds, Water, Natural Color",
+  "expect": "not-pass",
+  "id": "L330"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "case",
+  "text": "Ingredients: Sugar, ALMOND FLOUR, Salt.",
+  "expect": "not-pass",
+  "id": "L331"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "case",
+  "text": "Almond Flour, Water, Natural Color",
+  "expect": "not-pass",
+  "id": "L332"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "case",
+  "text": "Ingredients: Sugar, ALMOND BUTTER, Salt.",
+  "expect": "not-pass",
+  "id": "L333"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "case",
+  "text": "Almond Butter, Water, Natural Color",
+  "expect": "not-pass",
+  "id": "L334"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "case",
+  "text": "Ingredients: Sugar, ALMOND MILK, Salt.",
+  "expect": "not-pass",
+  "id": "L335"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "case",
+  "text": "Almond Milk, Water, Natural Color",
+  "expect": "not-pass",
+  "id": "L336"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "case",
+  "text": "Ingredients: Sugar, CASHEW, Salt.",
+  "expect": "not-pass",
+  "id": "L337"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "case",
+  "text": "Cashew, Water, Natural Color",
+  "expect": "not-pass",
+  "id": "L338"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "plural",
+  "text": "water, almonds, salt",
+  "expect": "not-pass",
+  "id": "L339"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "plural",
+  "text": "water, almond, salt",
+  "expect": "not-pass",
+  "id": "L340"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "plural",
+  "text": "water, almond flours, salt",
+  "expect": "not-pass",
+  "id": "L341"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "plural",
+  "text": "water, almond butters, salt",
+  "expect": "not-pass",
+  "id": "L342"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "ocr",
+  "text": "salt, alrnond, sugar",
+  "expect": "not-pass",
+  "id": "L343"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "ocr",
+  "text": "salt, alm0nd, sugar",
+  "expect": "not-pass",
+  "id": "L344"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "ocr",
+  "text": "salt, a1mond, sugar",
+  "expect": "not-pass",
+  "id": "L345"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "ocr",
+  "text": "salt, alm ond, sugar",
+  "expect": "not-pass",
+  "id": "L346"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "ocr",
+  "text": "salt, almnd, sugar",
+  "expect": "not-pass",
+  "id": "L347"
+ },
+ {
+  "profile": "peanut",
+  "kind": "plain",
+  "text": "peanut",
+  "expect": "not-pass",
+  "id": "L348"
+ },
+ {
+  "profile": "peanut",
+  "kind": "plain",
+  "text": "peanuts",
+  "expect": "not-pass",
+  "id": "L349"
+ },
+ {
+  "profile": "peanut",
+  "kind": "plain",
+  "text": "peanut butter",
+  "expect": "not-pass",
+  "id": "L350"
+ },
+ {
+  "profile": "peanut",
+  "kind": "plain",
+  "text": "peanut flour",
+  "expect": "not-pass",
+  "id": "L351"
+ },
+ {
+  "profile": "peanut",
+  "kind": "plain",
+  "text": "peanut oil",
+  "expect": "not-pass",
+  "id": "L352"
+ },
+ {
+  "profile": "peanut",
+  "kind": "plain",
+  "text": "cold pressed peanut oil",
+  "expect": "not-pass",
+  "id": "L353"
+ },
+ {
+  "profile": "peanut",
+  "kind": "plain",
+  "text": "roasted peanuts",
+  "expect": "not-pass",
+  "id": "L354"
+ },
+ {
+  "profile": "peanut",
+  "kind": "plain",
+  "text": "arachis oil",
+  "expect": "not-pass",
+  "id": "L355"
+ },
+ {
+  "profile": "peanut",
+  "kind": "plain",
+  "text": "groundnuts",
+  "expect": "not-pass",
+  "id": "L356"
+ },
+ {
+  "profile": "peanut",
+  "kind": "plain",
+  "text": "beer nuts",
+  "expect": "not-pass",
+  "id": "L357"
+ },
+ {
+  "profile": "peanut",
+  "kind": "plain",
+  "text": "monkey nuts",
+  "expect": "not-pass",
+  "id": "L358"
+ },
+ {
+  "profile": "peanut",
+  "kind": "plain",
+  "text": "mixed nuts",
+  "expect": "not-pass",
+  "id": "L359"
+ },
+ {
+  "profile": "peanut",
+  "kind": "plain",
+  "text": "goober peas",
+  "expect": "not-pass",
+  "id": "L360"
+ },
+ {
+  "profile": "peanut",
+  "kind": "plain",
+  "text": "mandelonas",
+  "expect": "not-pass",
+  "id": "L361"
+ },
+ {
+  "profile": "peanut",
+  "kind": "plain",
+  "text": "peanut protein",
+  "expect": "not-pass",
+  "id": "L362"
+ },
+ {
+  "profile": "peanut",
+  "kind": "hidden",
+  "text": "hydrolyzed peanut protein",
+  "expect": "not-pass",
+  "id": "L363"
+ },
+ {
+  "profile": "peanut",
+  "kind": "hidden",
+  "text": "arachis hypogaea",
+  "expect": "not-pass",
+  "id": "L364"
+ },
+ {
+  "profile": "peanut",
+  "kind": "hidden",
+  "text": "ground nuts",
+  "expect": "not-pass",
+  "id": "L365"
+ },
+ {
+  "profile": "peanut",
+  "kind": "hidden",
+  "text": "satay sauce",
+  "expect": "not-pass",
+  "id": "L366"
+ },
+ {
+  "profile": "peanut",
+  "kind": "typo",
+  "text": "penut",
+  "expect": "not-pass",
+  "id": "L367"
+ },
+ {
+  "profile": "peanut",
+  "kind": "typo",
+  "text": "penuts",
+  "expect": "not-pass",
+  "id": "L368"
+ },
+ {
+  "profile": "peanut",
+  "kind": "typo",
+  "text": "penut butter",
+  "expect": "not-pass",
+  "id": "L369"
+ },
+ {
+  "profile": "peanut",
+  "kind": "typo",
+  "text": "peanutt",
+  "expect": "not-pass",
+  "id": "L370"
+ },
+ {
+  "profile": "peanut",
+  "kind": "typo",
+  "text": "pea nut",
+  "expect": "not-pass",
+  "id": "L371"
+ },
+ {
+  "profile": "peanut",
+  "kind": "ocr",
+  "text": "pean ut butter",
+  "expect": "not-pass",
+  "id": "L372"
+ },
+ {
+  "profile": "peanut",
+  "kind": "ocr",
+  "text": "peanu t",
+  "expect": "not-pass",
+  "id": "L373"
+ },
+ {
+  "profile": "peanut",
+  "kind": "ocr",
+  "text": "p eanuts",
+  "expect": "not-pass",
+  "id": "L374"
+ },
+ {
+  "profile": "peanut",
+  "kind": "ocr",
+  "text": "pea nuts",
+  "expect": "not-pass",
+  "id": "L375"
+ },
+ {
+  "profile": "peanut",
+  "kind": "masked",
+  "text": "penut butter",
+  "expect": "not-pass",
+  "id": "L376"
+ },
+ {
+  "profile": "peanut",
+  "kind": "masked",
+  "text": "pean ut butter",
+  "expect": "not-pass",
+  "id": "L377"
+ },
+ {
+  "profile": "peanut",
+  "kind": "masked",
+  "text": "roasted penuts, salt",
+  "expect": "not-pass",
+  "id": "L378"
+ },
+ {
+  "profile": "peanut",
+  "kind": "masked",
+  "text": "sugar, penut flour",
+  "expect": "not-pass",
+  "id": "L379"
+ },
+ {
+  "profile": "peanut",
+  "kind": "masked",
+  "text": "penut oil",
+  "expect": "not-pass",
+  "id": "L380"
+ },
+ {
+  "profile": "peanut",
+  "kind": "may",
+  "text": "May contain peanuts.",
+  "expect": "not-pass",
+  "id": "L381"
+ },
+ {
+  "profile": "peanut",
+  "kind": "may",
+  "text": "Made in a facility that also processes peanuts.",
+  "expect": "not-pass",
+  "id": "L382"
+ },
+ {
+  "profile": "peanut",
+  "kind": "may",
+  "text": "Manufactured on shared equipment with peanuts.",
+  "expect": "not-pass",
+  "id": "L383"
+ },
+ {
+  "profile": "peanut",
+  "kind": "may",
+  "text": "May contain traces of peanut.",
+  "expect": "not-pass",
+  "id": "L384"
+ },
+ {
+  "profile": "peanut",
+  "kind": "contains",
+  "text": "CONTAINS: PEANUTS.",
+  "expect": "not-pass",
+  "id": "L385"
+ },
+ {
+  "profile": "peanut",
+  "kind": "contains",
+  "text": "Contains: Peanut.",
+  "expect": "not-pass",
+  "id": "L386"
+ },
+ {
+  "profile": "peanut",
+  "kind": "case",
+  "text": "Ingredients: Sugar, PEANUT, Salt.",
+  "expect": "not-pass",
+  "id": "L387"
+ },
+ {
+  "profile": "peanut",
+  "kind": "case",
+  "text": "Peanut, Water, Natural Color",
+  "expect": "not-pass",
+  "id": "L388"
+ },
+ {
+  "profile": "peanut",
+  "kind": "case",
+  "text": "Ingredients: Sugar, PEANUTS, Salt.",
+  "expect": "not-pass",
+  "id": "L389"
+ },
+ {
+  "profile": "peanut",
+  "kind": "case",
+  "text": "Peanuts, Water, Natural Color",
+  "expect": "not-pass",
+  "id": "L390"
+ },
+ {
+  "profile": "peanut",
+  "kind": "case",
+  "text": "Ingredients: Sugar, PEANUT BUTTER, Salt.",
+  "expect": "not-pass",
+  "id": "L391"
+ },
+ {
+  "profile": "peanut",
+  "kind": "case",
+  "text": "Peanut Butter, Water, Natural Color",
+  "expect": "not-pass",
+  "id": "L392"
+ },
+ {
+  "profile": "peanut",
+  "kind": "case",
+  "text": "Ingredients: Sugar, PEANUT FLOUR, Salt.",
+  "expect": "not-pass",
+  "id": "L393"
+ },
+ {
+  "profile": "peanut",
+  "kind": "case",
+  "text": "Peanut Flour, Water, Natural Color",
+  "expect": "not-pass",
+  "id": "L394"
+ },
+ {
+  "profile": "peanut",
+  "kind": "case",
+  "text": "Ingredients: Sugar, PEANUT OIL, Salt.",
+  "expect": "not-pass",
+  "id": "L395"
+ },
+ {
+  "profile": "peanut",
+  "kind": "case",
+  "text": "Peanut Oil, Water, Natural Color",
+  "expect": "not-pass",
+  "id": "L396"
+ },
+ {
+  "profile": "peanut",
+  "kind": "case",
+  "text": "Ingredients: Sugar, COLD PRESSED PEANUT OIL, Salt.",
+  "expect": "not-pass",
+  "id": "L397"
+ },
+ {
+  "profile": "peanut",
+  "kind": "case",
+  "text": "Cold Pressed Peanut Oil, Water, Natural Color",
+  "expect": "not-pass",
+  "id": "L398"
+ },
+ {
+  "profile": "peanut",
+  "kind": "plural",
+  "text": "water, peanuts, salt",
+  "expect": "not-pass",
+  "id": "L399"
+ },
+ {
+  "profile": "peanut",
+  "kind": "plural",
+  "text": "water, peanut, salt",
+  "expect": "not-pass",
+  "id": "L400"
+ },
+ {
+  "profile": "peanut",
+  "kind": "plural",
+  "text": "water, peanut butters, salt",
+  "expect": "not-pass",
+  "id": "L401"
+ },
+ {
+  "profile": "peanut",
+  "kind": "plural",
+  "text": "water, peanut flours, salt",
+  "expect": "not-pass",
+  "id": "L402"
+ },
+ {
+  "profile": "peanut",
+  "kind": "ocr",
+  "text": "salt, pea nut, sugar",
+  "expect": "not-pass",
+  "id": "L403"
+ },
+ {
+  "profile": "peanut",
+  "kind": "ocr",
+  "text": "salt, panut, sugar",
+  "expect": "not-pass",
+  "id": "L404"
+ },
+ {
+  "profile": "wheat",
+  "kind": "plain",
+  "text": "wheat",
+  "expect": "not-pass",
+  "id": "L405"
+ },
+ {
+  "profile": "wheat",
+  "kind": "plain",
+  "text": "whole wheat",
+  "expect": "not-pass",
+  "id": "L406"
+ },
+ {
+  "profile": "wheat",
+  "kind": "plain",
+  "text": "wheat flour",
+  "expect": "not-pass",
+  "id": "L407"
+ },
+ {
+  "profile": "wheat",
+  "kind": "plain",
+  "text": "enriched flour",
+  "expect": "not-pass",
+  "id": "L408"
+ },
+ {
+  "profile": "wheat",
+  "kind": "plain",
+  "text": "flour",
+  "expect": "not-pass",
+  "id": "L409"
+ },
+ {
+  "profile": "wheat",
+  "kind": "plain",
+  "text": "all-purpose flour",
+  "expect": "not-pass",
+  "id": "L410"
+ },
+ {
+  "profile": "wheat",
+  "kind": "plain",
+  "text": "bread flour",
+  "expect": "not-pass",
+  "id": "L411"
+ },
+ {
+  "profile": "wheat",
+  "kind": "plain",
+  "text": "durum",
+  "expect": "not-pass",
+  "id": "L412"
+ },
+ {
+  "profile": "wheat",
+  "kind": "plain",
+  "text": "durum wheat semolina",
+  "expect": "not-pass",
+  "id": "L413"
+ },
+ {
+  "profile": "wheat",
+  "kind": "plain",
+  "text": "semolina",
+  "expect": "not-pass",
+  "id": "L414"
+ },
+ {
+  "profile": "wheat",
+  "kind": "plain",
+  "text": "spelt",
+  "expect": "not-pass",
+  "id": "L415"
+ },
+ {
+  "profile": "wheat",
+  "kind": "plain",
+  "text": "farro",
+  "expect": "not-pass",
+  "id": "L416"
+ },
+ {
+  "profile": "wheat",
+  "kind": "plain",
+  "text": "einkorn",
+  "expect": "not-pass",
+  "id": "L417"
+ },
+ {
+  "profile": "wheat",
+  "kind": "plain",
+  "text": "emmer",
+  "expect": "not-pass",
+  "id": "L418"
+ },
+ {
+  "profile": "wheat",
+  "kind": "plain",
+  "text": "kamut",
+  "expect": "not-pass",
+  "id": "L419"
+ },
+ {
+  "profile": "wheat",
+  "kind": "plain",
+  "text": "khorasan wheat",
+  "expect": "not-pass",
+  "id": "L420"
+ },
+ {
+  "profile": "wheat",
+  "kind": "plain",
+  "text": "triticale",
+  "expect": "not-pass",
+  "id": "L421"
+ },
+ {
+  "profile": "wheat",
+  "kind": "plain",
+  "text": "bulgur",
+  "expect": "not-pass",
+  "id": "L422"
+ },
+ {
+  "profile": "wheat",
+  "kind": "plain",
+  "text": "couscous",
+  "expect": "not-pass",
+  "id": "L423"
+ },
+ {
+  "profile": "wheat",
+  "kind": "plain",
+  "text": "freekeh",
+  "expect": "not-pass",
+  "id": "L424"
+ },
+ {
+  "profile": "wheat",
+  "kind": "plain",
+  "text": "seitan",
+  "expect": "not-pass",
+  "id": "L425"
+ },
+ {
+  "profile": "wheat",
+  "kind": "plain",
+  "text": "wheat germ",
+  "expect": "not-pass",
+  "id": "L426"
+ },
+ {
+  "profile": "wheat",
+  "kind": "plain",
+  "text": "wheat bran",
+  "expect": "not-pass",
+  "id": "L427"
+ },
+ {
+  "profile": "wheat",
+  "kind": "plain",
+  "text": "wheat starch",
+  "expect": "not-pass",
+  "id": "L428"
+ },
+ {
+  "profile": "wheat",
+  "kind": "plain",
+  "text": "hydrolyzed wheat protein",
+  "expect": "not-pass",
+  "id": "L429"
+ },
+ {
+  "profile": "wheat",
+  "kind": "plain",
+  "text": "graham flour",
+  "expect": "not-pass",
+  "id": "L430"
+ },
+ {
+  "profile": "wheat",
+  "kind": "plain",
+  "text": "farina",
+  "expect": "not-pass",
+  "id": "L431"
+ },
+ {
+  "profile": "wheat",
+  "kind": "plain",
+  "text": "matzo meal",
+  "expect": "not-pass",
+  "id": "L432"
+ },
+ {
+  "profile": "wheat",
+  "kind": "plain",
+  "text": "breadcrumbs",
+  "expect": "not-pass",
+  "id": "L433"
+ },
+ {
+  "profile": "wheat",
+  "kind": "plain",
+  "text": "panko",
+  "expect": "not-pass",
+  "id": "L434"
+ },
+ {
+  "profile": "wheat",
+  "kind": "plain",
+  "text": "vital wheat gluten",
+  "expect": "not-pass",
+  "id": "L435"
+ },
+ {
+  "profile": "wheat",
+  "kind": "plain",
+  "text": "wheat berries",
+  "expect": "not-pass",
+  "id": "L436"
+ },
+ {
+  "profile": "wheat",
+  "kind": "plain",
+  "text": "cracked wheat",
+  "expect": "not-pass",
+  "id": "L437"
+ },
+ {
+  "profile": "wheat",
+  "kind": "plain",
+  "text": "soy sauce",
+  "expect": "not-pass",
+  "id": "L438"
+ },
+ {
+  "profile": "wheat",
+  "kind": "hidden",
+  "text": "atta",
+  "expect": "not-pass",
+  "id": "L439"
+ },
+ {
+  "profile": "wheat",
+  "kind": "hidden",
+  "text": "maida",
+  "expect": "not-pass",
+  "id": "L440"
+ },
+ {
+  "profile": "wheat",
+  "kind": "hidden",
+  "text": "sooji",
+  "expect": "not-pass",
+  "id": "L441"
+ },
+ {
+  "profile": "wheat",
+  "kind": "hidden",
+  "text": "fu",
+  "expect": "not-pass",
+  "id": "L442"
+ },
+ {
+  "profile": "wheat",
+  "kind": "hidden",
+  "text": "wheat gluten",
+  "expect": "not-pass",
+  "id": "L443"
+ },
+ {
+  "profile": "wheat",
+  "kind": "hidden",
+  "text": "modified wheat starch",
+  "expect": "not-pass",
+  "id": "L444"
+ },
+ {
+  "profile": "wheat",
+  "kind": "hidden",
+  "text": "bread crumbs",
+  "expect": "not-pass",
+  "id": "L445"
+ },
+ {
+  "profile": "wheat",
+  "kind": "hidden",
+  "text": "croutons",
+  "expect": "not-pass",
+  "id": "L446"
+ },
+ {
+  "profile": "wheat",
+  "kind": "hidden",
+  "text": "orzo",
+  "expect": "not-pass",
+  "id": "L447"
+ },
+ {
+  "profile": "wheat",
+  "kind": "hidden",
+  "text": "udon noodles",
+  "expect": "not-pass",
+  "id": "L448"
+ },
+ {
+  "profile": "wheat",
+  "kind": "hidden",
+  "text": "crackers",
+  "expect": "not-pass",
+  "id": "L449"
+ },
+ {
+  "profile": "wheat",
+  "kind": "typo",
+  "text": "wheet",
+  "expect": "not-pass",
+  "id": "L450"
+ },
+ {
+  "profile": "wheat",
+  "kind": "typo",
+  "text": "whole wheet",
+  "expect": "not-pass",
+  "id": "L451"
+ },
+ {
+  "profile": "wheat",
+  "kind": "typo",
+  "text": "weat flour",
+  "expect": "not-pass",
+  "id": "L452"
+ },
+ {
+  "profile": "wheat",
+  "kind": "typo",
+  "text": "semolena",
+  "expect": "not-pass",
+  "id": "L453"
+ },
+ {
+  "profile": "wheat",
+  "kind": "typo",
+  "text": "bulghur",
+  "expect": "not-pass",
+  "id": "L454"
+ },
+ {
+  "profile": "wheat",
+  "kind": "ocr",
+  "text": "vvheat",
+  "expect": "not-pass",
+  "id": "L455"
+ },
+ {
+  "profile": "wheat",
+  "kind": "ocr",
+  "text": "vvheat flour",
+  "expect": "not-pass",
+  "id": "L456"
+ },
+ {
+  "profile": "wheat",
+  "kind": "ocr",
+  "text": "wh eat",
+  "expect": "not-pass",
+  "id": "L457"
+ },
+ {
+  "profile": "wheat",
+  "kind": "ocr",
+  "text": "f1our",
+  "expect": "not-pass",
+  "id": "L458"
+ },
+ {
+  "profile": "wheat",
+  "kind": "ocr",
+  "text": "enriched whe at flour",
+  "expect": "not-pass",
+  "id": "L459"
+ },
+ {
+  "profile": "wheat",
+  "kind": "masked",
+  "text": "enriched vvheat flour",
+  "expect": "not-pass",
+  "id": "L460"
+ },
+ {
+  "profile": "wheat",
+  "kind": "masked",
+  "text": "sugar, wheet flakes",
+  "expect": "not-pass",
+  "id": "L461"
+ },
+ {
+  "profile": "wheat",
+  "kind": "masked",
+  "text": "whole wheet pasta",
+  "expect": "not-pass",
+  "id": "L462"
+ },
+ {
+  "profile": "wheat",
+  "kind": "masked",
+  "text": "toasted vvheat germ",
+  "expect": "not-pass",
+  "id": "L463"
+ },
+ {
+  "profile": "wheat",
+  "kind": "may",
+  "text": "May contain wheat.",
+  "expect": "not-pass",
+  "id": "L464"
+ },
+ {
+  "profile": "wheat",
+  "kind": "may",
+  "text": "Made in a facility that also processes wheat.",
+  "expect": "not-pass",
+  "id": "L465"
+ },
+ {
+  "profile": "wheat",
+  "kind": "may",
+  "text": "Manufactured on shared equipment with wheat and soy.",
+  "expect": "not-pass",
+  "id": "L466"
+ },
+ {
+  "profile": "wheat",
+  "kind": "contains",
+  "text": "CONTAINS: WHEAT.",
+  "expect": "not-pass",
+  "id": "L467"
+ },
+ {
+  "profile": "wheat",
+  "kind": "contains",
+  "text": "Contains: Wheat, Milk, Soy.",
+  "expect": "not-pass",
+  "id": "L468"
+ },
+ {
+  "profile": "wheat",
+  "kind": "source",
+  "text": "modified food starch",
+  "expect": "not-pass",
+  "why": "can be made from the allergen; the source may appear only in a separate Contains statement",
+  "id": "L469"
+ },
+ {
+  "profile": "wheat",
+  "kind": "source",
+  "text": "maltodextrin",
+  "expect": "not-pass",
+  "why": "can be made from the allergen; the source may appear only in a separate Contains statement",
+  "id": "L470"
+ },
+ {
+  "profile": "wheat",
+  "kind": "source",
+  "text": "dextrin",
+  "expect": "not-pass",
+  "why": "can be made from the allergen; the source may appear only in a separate Contains statement",
+  "id": "L471"
+ },
+ {
+  "profile": "wheat",
+  "kind": "case",
+  "text": "Ingredients: Sugar, WHEAT, Salt.",
+  "expect": "not-pass",
+  "id": "L472"
+ },
+ {
+  "profile": "wheat",
+  "kind": "case",
+  "text": "Wheat, Water, Natural Color",
+  "expect": "not-pass",
+  "id": "L473"
+ },
+ {
+  "profile": "wheat",
+  "kind": "case",
+  "text": "Ingredients: Sugar, WHOLE WHEAT, Salt.",
+  "expect": "not-pass",
+  "id": "L474"
+ },
+ {
+  "profile": "wheat",
+  "kind": "case",
+  "text": "Whole Wheat, Water, Natural Color",
+  "expect": "not-pass",
+  "id": "L475"
+ },
+ {
+  "profile": "wheat",
+  "kind": "case",
+  "text": "Ingredients: Sugar, WHEAT FLOUR, Salt.",
+  "expect": "not-pass",
+  "id": "L476"
+ },
+ {
+  "profile": "wheat",
+  "kind": "case",
+  "text": "Wheat Flour, Water, Natural Color",
+  "expect": "not-pass",
+  "id": "L477"
+ },
+ {
+  "profile": "wheat",
+  "kind": "case",
+  "text": "Ingredients: Sugar, ENRICHED FLOUR, Salt.",
+  "expect": "not-pass",
+  "id": "L478"
+ },
+ {
+  "profile": "wheat",
+  "kind": "case",
+  "text": "Enriched Flour, Water, Natural Color",
+  "expect": "not-pass",
+  "id": "L479"
+ },
+ {
+  "profile": "wheat",
+  "kind": "case",
+  "text": "Ingredients: Sugar, FLOUR, Salt.",
+  "expect": "not-pass",
+  "id": "L480"
+ },
+ {
+  "profile": "wheat",
+  "kind": "case",
+  "text": "Flour, Water, Natural Color",
+  "expect": "not-pass",
+  "id": "L481"
+ },
+ {
+  "profile": "wheat",
+  "kind": "case",
+  "text": "Ingredients: Sugar, ALL-PURPOSE FLOUR, Salt.",
+  "expect": "not-pass",
+  "id": "L482"
+ },
+ {
+  "profile": "wheat",
+  "kind": "case",
+  "text": "All-Purpose Flour, Water, Natural Color",
+  "expect": "not-pass",
+  "id": "L483"
+ },
+ {
+  "profile": "wheat",
+  "kind": "plural",
+  "text": "water, wheats, salt",
+  "expect": "not-pass",
+  "id": "L484"
+ },
+ {
+  "profile": "wheat",
+  "kind": "plural",
+  "text": "water, whole wheats, salt",
+  "expect": "not-pass",
+  "id": "L485"
+ },
+ {
+  "profile": "wheat",
+  "kind": "plural",
+  "text": "water, wheat flours, salt",
+  "expect": "not-pass",
+  "id": "L486"
+ },
+ {
+  "profile": "wheat",
+  "kind": "plural",
+  "text": "water, enriched flours, salt",
+  "expect": "not-pass",
+  "id": "L487"
+ },
+ {
+  "profile": "wheat",
+  "kind": "ocr",
+  "text": "salt, whe at, sugar",
+  "expect": "not-pass",
+  "id": "L488"
+ },
+ {
+  "profile": "wheat",
+  "kind": "ocr",
+  "text": "salt, what, sugar",
+  "expect": "not-pass",
+  "id": "L489"
+ },
+ {
+  "profile": "soy",
+  "kind": "plain",
+  "text": "soy",
+  "expect": "not-pass",
+  "id": "L490"
+ },
+ {
+  "profile": "soy",
+  "kind": "plain",
+  "text": "soya",
+  "expect": "not-pass",
+  "id": "L491"
+ },
+ {
+  "profile": "soy",
+  "kind": "plain",
+  "text": "soybeans",
+  "expect": "not-pass",
+  "id": "L492"
+ },
+ {
+  "profile": "soy",
+  "kind": "plain",
+  "text": "soy protein isolate",
+  "expect": "not-pass",
+  "id": "L493"
+ },
+ {
+  "profile": "soy",
+  "kind": "plain",
+  "text": "soy protein concentrate",
+  "expect": "not-pass",
+  "id": "L494"
+ },
+ {
+  "profile": "soy",
+  "kind": "plain",
+  "text": "soy flour",
+  "expect": "not-pass",
+  "id": "L495"
+ },
+ {
+  "profile": "soy",
+  "kind": "plain",
+  "text": "soy milk",
+  "expect": "not-pass",
+  "id": "L496"
+ },
+ {
+  "profile": "soy",
+  "kind": "plain",
+  "text": "tofu",
+  "expect": "not-pass",
+  "id": "L497"
+ },
+ {
+  "profile": "soy",
+  "kind": "plain",
+  "text": "tempeh",
+  "expect": "not-pass",
+  "id": "L498"
+ },
+ {
+  "profile": "soy",
+  "kind": "plain",
+  "text": "miso",
+  "expect": "not-pass",
+  "id": "L499"
+ },
+ {
+  "profile": "soy",
+  "kind": "plain",
+  "text": "natto",
+  "expect": "not-pass",
+  "id": "L500"
+ },
+ {
+  "profile": "soy",
+  "kind": "plain",
+  "text": "edamame",
+  "expect": "not-pass",
+  "id": "L501"
+ },
+ {
+  "profile": "soy",
+  "kind": "plain",
+  "text": "textured vegetable protein",
+  "expect": "not-pass",
+  "id": "L502"
+ },
+ {
+  "profile": "soy",
+  "kind": "plain",
+  "text": "TVP",
+  "expect": "not-pass",
+  "id": "L503"
+ },
+ {
+  "profile": "soy",
+  "kind": "plain",
+  "text": "soy sauce",
+  "expect": "not-pass",
+  "id": "L504"
+ },
+ {
+  "profile": "soy",
+  "kind": "plain",
+  "text": "shoyu",
+  "expect": "not-pass",
+  "id": "L505"
+ },
+ {
+  "profile": "soy",
+  "kind": "plain",
+  "text": "tamari",
+  "expect": "not-pass",
+  "id": "L506"
+ },
+ {
+  "profile": "soy",
+  "kind": "plain",
+  "text": "yuba",
+  "expect": "not-pass",
+  "id": "L507"
+ },
+ {
+  "profile": "soy",
+  "kind": "plain",
+  "text": "okara",
+  "expect": "not-pass",
+  "id": "L508"
+ },
+ {
+  "profile": "soy",
+  "kind": "plain",
+  "text": "hydrolyzed soy protein",
+  "expect": "not-pass",
+  "id": "L509"
+ },
+ {
+  "profile": "soy",
+  "kind": "plain",
+  "text": "soy lecithin",
+  "expect": "not-pass",
+  "id": "L510"
+ },
+ {
+  "profile": "soy",
+  "kind": "plain",
+  "text": "lecithin (soy)",
+  "expect": "not-pass",
+  "id": "L511"
+ },
+ {
+  "profile": "soy",
+  "kind": "plain",
+  "text": "soybean oil",
+  "expect": "not-pass",
+  "id": "L512"
+ },
+ {
+  "profile": "soy",
+  "kind": "plain",
+  "text": "soy nuts",
+  "expect": "not-pass",
+  "id": "L513"
+ },
+ {
+  "profile": "soy",
+  "kind": "hidden",
+  "text": "bean curd",
+  "expect": "not-pass",
+  "id": "L514"
+ },
+ {
+  "profile": "soy",
+  "kind": "hidden",
+  "text": "kinako",
+  "expect": "not-pass",
+  "id": "L515"
+ },
+ {
+  "profile": "soy",
+  "kind": "hidden",
+  "text": "soy albumin",
+  "expect": "not-pass",
+  "id": "L516"
+ },
+ {
+  "profile": "soy",
+  "kind": "hidden",
+  "text": "teriyaki sauce",
+  "expect": "not-pass",
+  "id": "L517"
+ },
+ {
+  "profile": "soy",
+  "kind": "hidden",
+  "text": "hoisin sauce",
+  "expect": "not-pass",
+  "id": "L518"
+ },
+ {
+  "profile": "soy",
+  "kind": "typo",
+  "text": "soya bean",
+  "expect": "not-pass",
+  "id": "L519"
+ },
+ {
+  "profile": "soy",
+  "kind": "typo",
+  "text": "soy bean",
+  "expect": "not-pass",
+  "id": "L520"
+ },
+ {
+  "profile": "soy",
+  "kind": "typo",
+  "text": "edamane",
+  "expect": "not-pass",
+  "id": "L521"
+ },
+ {
+  "profile": "soy",
+  "kind": "typo",
+  "text": "tofoo",
+  "expect": "not-pass",
+  "id": "L522"
+ },
+ {
+  "profile": "soy",
+  "kind": "ocr",
+  "text": "s0y",
+  "expect": "not-pass",
+  "id": "L523"
+ },
+ {
+  "profile": "soy",
+  "kind": "ocr",
+  "text": "s0y protein isolate",
+  "expect": "not-pass",
+  "id": "L524"
+ },
+ {
+  "profile": "soy",
+  "kind": "ocr",
+  "text": "so y lecithin",
+  "expect": "not-pass",
+  "id": "L525"
+ },
+ {
+  "profile": "soy",
+  "kind": "ocr",
+  "text": "soybe an",
+  "expect": "not-pass",
+  "id": "L526"
+ },
+ {
+  "profile": "soy",
+  "kind": "masked",
+  "text": "s0y protein isolate, sugar",
+  "expect": "not-pass",
+  "id": "L527"
+ },
+ {
+  "profile": "soy",
+  "kind": "masked",
+  "text": "sugar, s0y lecithin",
+  "expect": "not-pass",
+  "id": "L528"
+ },
+ {
+  "profile": "soy",
+  "kind": "masked",
+  "text": "organic s0y milk",
+  "expect": "not-pass",
+  "id": "L529"
+ },
+ {
+  "profile": "soy",
+  "kind": "masked",
+  "text": "textured s0y protein",
+  "expect": "not-pass",
+  "id": "L530"
+ },
+ {
+  "profile": "soy",
+  "kind": "may",
+  "text": "May contain soy.",
+  "expect": "not-pass",
+  "id": "L531"
+ },
+ {
+  "profile": "soy",
+  "kind": "may",
+  "text": "Made in a facility that also processes soy.",
+  "expect": "not-pass",
+  "id": "L532"
+ },
+ {
+  "profile": "soy",
+  "kind": "may",
+  "text": "Processed on shared equipment with soybeans.",
+  "expect": "not-pass",
+  "id": "L533"
+ },
+ {
+  "profile": "soy",
+  "kind": "contains",
+  "text": "CONTAINS: SOY.",
+  "expect": "not-pass",
+  "id": "L534"
+ },
+ {
+  "profile": "soy",
+  "kind": "contains",
+  "text": "Contains: Soy Lecithin.",
+  "expect": "not-pass",
+  "id": "L535"
+ },
+ {
+  "profile": "soy",
+  "kind": "source",
+  "text": "lecithin",
+  "expect": "not-pass",
+  "why": "can be made from the allergen; the source may appear only in a separate Contains statement",
+  "id": "L536"
+ },
+ {
+  "profile": "soy",
+  "kind": "source",
+  "text": "vegetable oil",
+  "expect": "not-pass",
+  "why": "can be made from the allergen; the source may appear only in a separate Contains statement",
+  "id": "L537"
+ },
+ {
+  "profile": "soy",
+  "kind": "source",
+  "text": "hydrolyzed vegetable protein",
+  "expect": "not-pass",
+  "why": "can be made from the allergen; the source may appear only in a separate Contains statement",
+  "id": "L538"
+ },
+ {
+  "profile": "soy",
+  "kind": "source",
+  "text": "natural flavor",
+  "expect": "not-pass",
+  "why": "can be made from the allergen; the source may appear only in a separate Contains statement",
+  "id": "L539"
+ },
+ {
+  "profile": "soy",
+  "kind": "case",
+  "text": "Ingredients: Sugar, SOY, Salt.",
+  "expect": "not-pass",
+  "id": "L540"
+ },
+ {
+  "profile": "soy",
+  "kind": "case",
+  "text": "Soy, Water, Natural Color",
+  "expect": "not-pass",
+  "id": "L541"
+ },
+ {
+  "profile": "soy",
+  "kind": "case",
+  "text": "Ingredients: Sugar, SOYA, Salt.",
+  "expect": "not-pass",
+  "id": "L542"
+ },
+ {
+  "profile": "soy",
+  "kind": "case",
+  "text": "Soya, Water, Natural Color",
+  "expect": "not-pass",
+  "id": "L543"
+ },
+ {
+  "profile": "soy",
+  "kind": "case",
+  "text": "Ingredients: Sugar, SOYBEANS, Salt.",
+  "expect": "not-pass",
+  "id": "L544"
+ },
+ {
+  "profile": "soy",
+  "kind": "case",
+  "text": "Soybeans, Water, Natural Color",
+  "expect": "not-pass",
+  "id": "L545"
+ },
+ {
+  "profile": "soy",
+  "kind": "case",
+  "text": "Ingredients: Sugar, SOY PROTEIN ISOLATE, Salt.",
+  "expect": "not-pass",
+  "id": "L546"
+ },
+ {
+  "profile": "soy",
+  "kind": "case",
+  "text": "Soy Protein Isolate, Water, Natural Color",
+  "expect": "not-pass",
+  "id": "L547"
+ },
+ {
+  "profile": "soy",
+  "kind": "case",
+  "text": "Ingredients: Sugar, SOY PROTEIN CONCENTRATE, Salt.",
+  "expect": "not-pass",
+  "id": "L548"
+ },
+ {
+  "profile": "soy",
+  "kind": "case",
+  "text": "Soy Protein Concentrate, Water, Natural Color",
+  "expect": "not-pass",
+  "id": "L549"
+ },
+ {
+  "profile": "soy",
+  "kind": "case",
+  "text": "Ingredients: Sugar, SOY FLOUR, Salt.",
+  "expect": "not-pass",
+  "id": "L550"
+ },
+ {
+  "profile": "soy",
+  "kind": "case",
+  "text": "Soy Flour, Water, Natural Color",
+  "expect": "not-pass",
+  "id": "L551"
+ },
+ {
+  "profile": "soy",
+  "kind": "plural",
+  "text": "water, soys, salt",
+  "expect": "not-pass",
+  "id": "L552"
+ },
+ {
+  "profile": "soy",
+  "kind": "plural",
+  "text": "water, soyas, salt",
+  "expect": "not-pass",
+  "id": "L553"
+ },
+ {
+  "profile": "soy",
+  "kind": "plural",
+  "text": "water, soybean, salt",
+  "expect": "not-pass",
+  "id": "L554"
+ },
+ {
+  "profile": "soy",
+  "kind": "plural",
+  "text": "water, soy protein isolates, salt",
+  "expect": "not-pass",
+  "id": "L555"
+ },
+ {
+  "profile": "soy",
+  "kind": "ocr",
+  "text": "salt, s0y, sugar",
+  "expect": "not-pass",
+  "id": "L556"
+ },
+ {
+  "profile": "soy",
+  "kind": "ocr",
+  "text": "salt, so y, sugar",
+  "expect": "not-pass",
+  "id": "L557"
+ },
+ {
+  "profile": "soy",
+  "kind": "ocr",
+  "text": "salt, sy, sugar",
+  "expect": "not-pass",
+  "id": "L558"
+ },
+ {
+  "profile": "sesame",
+  "kind": "plain",
+  "text": "sesame",
+  "expect": "not-pass",
+  "id": "L559"
+ },
+ {
+  "profile": "sesame",
+  "kind": "plain",
+  "text": "sesame seeds",
+  "expect": "not-pass",
+  "id": "L560"
+ },
+ {
+  "profile": "sesame",
+  "kind": "plain",
+  "text": "sesame oil",
+  "expect": "not-pass",
+  "id": "L561"
+ },
+ {
+  "profile": "sesame",
+  "kind": "plain",
+  "text": "toasted sesame oil",
+  "expect": "not-pass",
+  "id": "L562"
+ },
+ {
+  "profile": "sesame",
+  "kind": "plain",
+  "text": "sesame paste",
+  "expect": "not-pass",
+  "id": "L563"
+ },
+ {
+  "profile": "sesame",
+  "kind": "plain",
+  "text": "tahini",
+  "expect": "not-pass",
+  "id": "L564"
+ },
+ {
+  "profile": "sesame",
+  "kind": "plain",
+  "text": "tahina",
+  "expect": "not-pass",
+  "id": "L565"
+ },
+ {
+  "profile": "sesame",
+  "kind": "plain",
+  "text": "benne seeds",
+  "expect": "not-pass",
+  "id": "L566"
+ },
+ {
+  "profile": "sesame",
+  "kind": "plain",
+  "text": "benne",
+  "expect": "not-pass",
+  "id": "L567"
+ },
+ {
+  "profile": "sesame",
+  "kind": "plain",
+  "text": "gingelly oil",
+  "expect": "not-pass",
+  "id": "L568"
+ },
+ {
+  "profile": "sesame",
+  "kind": "plain",
+  "text": "gomasio",
+  "expect": "not-pass",
+  "id": "L569"
+ },
+ {
+  "profile": "sesame",
+  "kind": "plain",
+  "text": "halvah",
+  "expect": "not-pass",
+  "id": "L570"
+ },
+ {
+  "profile": "sesame",
+  "kind": "plain",
+  "text": "hummus",
+  "expect": "not-pass",
+  "id": "L571"
+ },
+ {
+  "profile": "sesame",
+  "kind": "plain",
+  "text": "za'atar",
+  "expect": "not-pass",
+  "id": "L572"
+ },
+ {
+  "profile": "sesame",
+  "kind": "plain",
+  "text": "furikake",
+  "expect": "not-pass",
+  "id": "L573"
+ },
+ {
+  "profile": "sesame",
+  "kind": "plain",
+  "text": "sesame flour",
+  "expect": "not-pass",
+  "id": "L574"
+ },
+ {
+  "profile": "sesame",
+  "kind": "plain",
+  "text": "til",
+  "expect": "not-pass",
+  "id": "L575"
+ },
+ {
+  "profile": "sesame",
+  "kind": "plain",
+  "text": "sim sim",
+  "expect": "not-pass",
+  "id": "L576"
+ },
+ {
+  "profile": "sesame",
+  "kind": "hidden",
+  "text": "sesamum indicum",
+  "expect": "not-pass",
+  "id": "L577"
+ },
+ {
+  "profile": "sesame",
+  "kind": "hidden",
+  "text": "sesamol",
+  "expect": "not-pass",
+  "id": "L578"
+ },
+ {
+  "profile": "sesame",
+  "kind": "hidden",
+  "text": "tahina sauce",
+  "expect": "not-pass",
+  "id": "L579"
+ },
+ {
+  "profile": "sesame",
+  "kind": "hidden",
+  "text": "baba ghanoush",
+  "expect": "not-pass",
+  "id": "L580"
+ },
+ {
+  "profile": "sesame",
+  "kind": "typo",
+  "text": "seseme",
+  "expect": "not-pass",
+  "id": "L581"
+ },
+ {
+  "profile": "sesame",
+  "kind": "typo",
+  "text": "sesme",
+  "expect": "not-pass",
+  "id": "L582"
+ },
+ {
+  "profile": "sesame",
+  "kind": "typo",
+  "text": "tahinni",
+  "expect": "not-pass",
+  "id": "L583"
+ },
+ {
+  "profile": "sesame",
+  "kind": "typo",
+  "text": "sesami seeds",
+  "expect": "not-pass",
+  "id": "L584"
+ },
+ {
+  "profile": "sesame",
+  "kind": "ocr",
+  "text": "sesa me",
+  "expect": "not-pass",
+  "id": "L585"
+ },
+ {
+  "profile": "sesame",
+  "kind": "ocr",
+  "text": "se same oil",
+  "expect": "not-pass",
+  "id": "L586"
+ },
+ {
+  "profile": "sesame",
+  "kind": "ocr",
+  "text": "tah1ni",
+  "expect": "not-pass",
+  "id": "L587"
+ },
+ {
+  "profile": "sesame",
+  "kind": "ocr",
+  "text": "sesarne seeds",
+  "expect": "not-pass",
+  "id": "L588"
+ },
+ {
+  "profile": "sesame",
+  "kind": "masked",
+  "text": "toasted sesarne oil",
+  "expect": "not-pass",
+  "id": "L589"
+ },
+ {
+  "profile": "sesame",
+  "kind": "masked",
+  "text": "sugar, sesme seeds",
+  "expect": "not-pass",
+  "id": "L590"
+ },
+ {
+  "profile": "sesame",
+  "kind": "masked",
+  "text": "roasted sesarne seeds, salt",
+  "expect": "not-pass",
+  "id": "L591"
+ },
+ {
+  "profile": "sesame",
+  "kind": "may",
+  "text": "May contain sesame.",
+  "expect": "not-pass",
+  "id": "L592"
+ },
+ {
+  "profile": "sesame",
+  "kind": "may",
+  "text": "Made in a facility that also processes sesame.",
+  "expect": "not-pass",
+  "id": "L593"
+ },
+ {
+  "profile": "sesame",
+  "kind": "may",
+  "text": "Manufactured on shared equipment with sesame seeds.",
+  "expect": "not-pass",
+  "id": "L594"
+ },
+ {
+  "profile": "sesame",
+  "kind": "contains",
+  "text": "CONTAINS: SESAME.",
+  "expect": "not-pass",
+  "id": "L595"
+ },
+ {
+  "profile": "sesame",
+  "kind": "contains",
+  "text": "Contains: Sesame, Wheat.",
+  "expect": "not-pass",
+  "id": "L596"
+ },
+ {
+  "profile": "sesame",
+  "kind": "source",
+  "text": "spices",
+  "expect": "not-pass",
+  "why": "can be made from the allergen; the source may appear only in a separate Contains statement",
+  "id": "L597"
+ },
+ {
+  "profile": "sesame",
+  "kind": "source",
+  "text": "natural flavors",
+  "expect": "not-pass",
+  "why": "can be made from the allergen; the source may appear only in a separate Contains statement",
+  "id": "L598"
+ },
+ {
+  "profile": "sesame",
+  "kind": "source",
+  "text": "seasoning",
+  "expect": "not-pass",
+  "why": "can be made from the allergen; the source may appear only in a separate Contains statement",
+  "id": "L599"
+ },
+ {
+  "profile": "sesame",
+  "kind": "case",
+  "text": "Ingredients: Sugar, SESAME, Salt.",
+  "expect": "not-pass",
+  "id": "L600"
+ },
+ {
+  "profile": "sesame",
+  "kind": "case",
+  "text": "Sesame, Water, Natural Color",
+  "expect": "not-pass",
+  "id": "L601"
+ },
+ {
+  "profile": "sesame",
+  "kind": "case",
+  "text": "Ingredients: Sugar, SESAME SEEDS, Salt.",
+  "expect": "not-pass",
+  "id": "L602"
+ },
+ {
+  "profile": "sesame",
+  "kind": "case",
+  "text": "Sesame Seeds, Water, Natural Color",
+  "expect": "not-pass",
+  "id": "L603"
+ },
+ {
+  "profile": "sesame",
+  "kind": "case",
+  "text": "Ingredients: Sugar, SESAME OIL, Salt.",
+  "expect": "not-pass",
+  "id": "L604"
+ },
+ {
+  "profile": "sesame",
+  "kind": "case",
+  "text": "Sesame Oil, Water, Natural Color",
+  "expect": "not-pass",
+  "id": "L605"
+ },
+ {
+  "profile": "sesame",
+  "kind": "case",
+  "text": "Ingredients: Sugar, TOASTED SESAME OIL, Salt.",
+  "expect": "not-pass",
+  "id": "L606"
+ },
+ {
+  "profile": "sesame",
+  "kind": "case",
+  "text": "Toasted Sesame Oil, Water, Natural Color",
+  "expect": "not-pass",
+  "id": "L607"
+ },
+ {
+  "profile": "sesame",
+  "kind": "case",
+  "text": "Ingredients: Sugar, SESAME PASTE, Salt.",
+  "expect": "not-pass",
+  "id": "L608"
+ },
+ {
+  "profile": "sesame",
+  "kind": "case",
+  "text": "Sesame Paste, Water, Natural Color",
+  "expect": "not-pass",
+  "id": "L609"
+ },
+ {
+  "profile": "sesame",
+  "kind": "case",
+  "text": "Ingredients: Sugar, TAHINI, Salt.",
+  "expect": "not-pass",
+  "id": "L610"
+ },
+ {
+  "profile": "sesame",
+  "kind": "case",
+  "text": "Tahini, Water, Natural Color",
+  "expect": "not-pass",
+  "id": "L611"
+ },
+ {
+  "profile": "sesame",
+  "kind": "plural",
+  "text": "water, sesames, salt",
+  "expect": "not-pass",
+  "id": "L612"
+ },
+ {
+  "profile": "sesame",
+  "kind": "plural",
+  "text": "water, sesame seed, salt",
+  "expect": "not-pass",
+  "id": "L613"
+ },
+ {
+  "profile": "sesame",
+  "kind": "plural",
+  "text": "water, sesame oils, salt",
+  "expect": "not-pass",
+  "id": "L614"
+ },
+ {
+  "profile": "sesame",
+  "kind": "plural",
+  "text": "water, toasted sesame oils, salt",
+  "expect": "not-pass",
+  "id": "L615"
+ },
+ {
+  "profile": "sesame",
+  "kind": "ocr",
+  "text": "salt, sesarne, sugar",
+  "expect": "not-pass",
+  "id": "L616"
+ },
+ {
+  "profile": "sesame",
+  "kind": "ocr",
+  "text": "salt, ses ame, sugar",
+  "expect": "not-pass",
+  "id": "L617"
+ },
+ {
+  "profile": "sesame",
+  "kind": "ocr",
+  "text": "salt, ssame, sugar",
+  "expect": "not-pass",
+  "id": "L618"
+ },
+ {
+  "profile": "celiac",
+  "kind": "plain",
+  "text": "wheat",
+  "expect": "not-pass",
+  "id": "L619"
+ },
+ {
+  "profile": "celiac",
+  "kind": "plain",
+  "text": "wheat flour",
+  "expect": "not-pass",
+  "id": "L620"
+ },
+ {
+  "profile": "celiac",
+  "kind": "plain",
+  "text": "barley",
+  "expect": "not-pass",
+  "id": "L621"
+ },
+ {
+  "profile": "celiac",
+  "kind": "plain",
+  "text": "barley flour",
+  "expect": "not-pass",
+  "id": "L622"
+ },
+ {
+  "profile": "celiac",
+  "kind": "plain",
+  "text": "pearl barley",
+  "expect": "not-pass",
+  "id": "L623"
+ },
+ {
+  "profile": "celiac",
+  "kind": "plain",
+  "text": "barley malt",
+  "expect": "not-pass",
+  "id": "L624"
+ },
+ {
+  "profile": "celiac",
+  "kind": "plain",
+  "text": "barley malt extract",
+  "expect": "not-pass",
+  "id": "L625"
+ },
+ {
+  "profile": "celiac",
+  "kind": "plain",
+  "text": "malt",
+  "expect": "not-pass",
+  "id": "L626"
+ },
+ {
+  "profile": "celiac",
+  "kind": "plain",
+  "text": "malt extract",
+  "expect": "not-pass",
+  "id": "L627"
+ },
+ {
+  "profile": "celiac",
+  "kind": "plain",
+  "text": "malt syrup",
+  "expect": "not-pass",
+  "id": "L628"
+ },
+ {
+  "profile": "celiac",
+  "kind": "plain",
+  "text": "malt vinegar",
+  "expect": "not-pass",
+  "id": "L629"
+ },
+ {
+  "profile": "celiac",
+  "kind": "plain",
+  "text": "malt flavoring",
+  "expect": "not-pass",
+  "id": "L630"
+ },
+ {
+  "profile": "celiac",
+  "kind": "plain",
+  "text": "malted milk",
+  "expect": "not-pass",
+  "id": "L631"
+ },
+ {
+  "profile": "celiac",
+  "kind": "plain",
+  "text": "malted barley flour",
+  "expect": "not-pass",
+  "id": "L632"
+ },
+ {
+  "profile": "celiac",
+  "kind": "plain",
+  "text": "rye",
+  "expect": "not-pass",
+  "id": "L633"
+ },
+ {
+  "profile": "celiac",
+  "kind": "plain",
+  "text": "rye flour",
+  "expect": "not-pass",
+  "id": "L634"
+ },
+ {
+  "profile": "celiac",
+  "kind": "plain",
+  "text": "pumpernickel",
+  "expect": "not-pass",
+  "id": "L635"
+ },
+ {
+  "profile": "celiac",
+  "kind": "plain",
+  "text": "oats",
+  "expect": "not-pass",
+  "id": "L636"
+ },
+ {
+  "profile": "celiac",
+  "kind": "plain",
+  "text": "rolled oats",
+  "expect": "not-pass",
+  "id": "L637"
+ },
+ {
+  "profile": "celiac",
+  "kind": "plain",
+  "text": "oat flour",
+  "expect": "not-pass",
+  "id": "L638"
+ },
+ {
+  "profile": "celiac",
+  "kind": "plain",
+  "text": "oatmeal",
+  "expect": "not-pass",
+  "id": "L639"
+ },
+ {
+  "profile": "celiac",
+  "kind": "plain",
+  "text": "steel-cut oats",
+  "expect": "not-pass",
+  "id": "L640"
+ },
+ {
+  "profile": "celiac",
+  "kind": "plain",
+  "text": "oat bran",
+  "expect": "not-pass",
+  "id": "L641"
+ },
+ {
+  "profile": "celiac",
+  "kind": "plain",
+  "text": "brewer's yeast",
+  "expect": "not-pass",
+  "id": "L642"
+ },
+ {
+  "profile": "celiac",
+  "kind": "plain",
+  "text": "brewers yeast",
+  "expect": "not-pass",
+  "id": "L643"
+ },
+ {
+  "profile": "celiac",
+  "kind": "plain",
+  "text": "beer",
+  "expect": "not-pass",
+  "id": "L644"
+ },
+ {
+  "profile": "celiac",
+  "kind": "plain",
+  "text": "ale",
+  "expect": "not-pass",
+  "id": "L645"
+ },
+ {
+  "profile": "celiac",
+  "kind": "plain",
+  "text": "lager",
+  "expect": "not-pass",
+  "id": "L646"
+ },
+ {
+  "profile": "celiac",
+  "kind": "plain",
+  "text": "triticale",
+  "expect": "not-pass",
+  "id": "L647"
+ },
+ {
+  "profile": "celiac",
+  "kind": "plain",
+  "text": "seitan",
+  "expect": "not-pass",
+  "id": "L648"
+ },
+ {
+  "profile": "celiac",
+  "kind": "plain",
+  "text": "spelt",
+  "expect": "not-pass",
+  "id": "L649"
+ },
+ {
+  "profile": "celiac",
+  "kind": "plain",
+  "text": "farro",
+  "expect": "not-pass",
+  "id": "L650"
+ },
+ {
+  "profile": "celiac",
+  "kind": "plain",
+  "text": "durum",
+  "expect": "not-pass",
+  "id": "L651"
+ },
+ {
+  "profile": "celiac",
+  "kind": "plain",
+  "text": "semolina",
+  "expect": "not-pass",
+  "id": "L652"
+ },
+ {
+  "profile": "celiac",
+  "kind": "plain",
+  "text": "bulgur",
+  "expect": "not-pass",
+  "id": "L653"
+ },
+ {
+  "profile": "celiac",
+  "kind": "plain",
+  "text": "couscous",
+  "expect": "not-pass",
+  "id": "L654"
+ },
+ {
+  "profile": "celiac",
+  "kind": "plain",
+  "text": "soy sauce",
+  "expect": "not-pass",
+  "id": "L655"
+ },
+ {
+  "profile": "celiac",
+  "kind": "plain",
+  "text": "graham crackers",
+  "expect": "not-pass",
+  "id": "L656"
+ },
+ {
+  "profile": "celiac",
+  "kind": "plain",
+  "text": "matzo",
+  "expect": "not-pass",
+  "id": "L657"
+ },
+ {
+  "profile": "celiac",
+  "kind": "hidden",
+  "text": "gluten",
+  "expect": "not-pass",
+  "id": "L658"
+ },
+ {
+  "profile": "celiac",
+  "kind": "hidden",
+  "text": "wheat gluten",
+  "expect": "not-pass",
+  "id": "L659"
+ },
+ {
+  "profile": "celiac",
+  "kind": "hidden",
+  "text": "hydrolyzed wheat protein",
+  "expect": "not-pass",
+  "id": "L660"
+ },
+ {
+  "profile": "celiac",
+  "kind": "hidden",
+  "text": "udon",
+  "expect": "not-pass",
+  "id": "L661"
+ },
+ {
+  "profile": "celiac",
+  "kind": "hidden",
+  "text": "orzo",
+  "expect": "not-pass",
+  "id": "L662"
+ },
+ {
+  "profile": "celiac",
+  "kind": "hidden",
+  "text": "panko",
+  "expect": "not-pass",
+  "id": "L663"
+ },
+ {
+  "profile": "celiac",
+  "kind": "hidden",
+  "text": "croutons",
+  "expect": "not-pass",
+  "id": "L664"
+ },
+ {
+  "profile": "celiac",
+  "kind": "hidden",
+  "text": "communion wafers",
+  "expect": "not-pass",
+  "id": "L665"
+ },
+ {
+  "profile": "celiac",
+  "kind": "hidden",
+  "text": "malt powder",
+  "expect": "not-pass",
+  "id": "L666"
+ },
+ {
+  "profile": "celiac",
+  "kind": "hidden",
+  "text": "oats (may contain wheat)",
+  "expect": "not-pass",
+  "id": "L667"
+ },
+ {
+  "profile": "celiac",
+  "kind": "hidden",
+  "text": "whole grain oats",
+  "expect": "not-pass",
+  "id": "L668"
+ },
+ {
+  "profile": "celiac",
+  "kind": "hidden",
+  "text": "quick oats",
+  "expect": "not-pass",
+  "id": "L669"
+ },
+ {
+  "profile": "celiac",
+  "kind": "hidden",
+  "text": "instant oatmeal",
+  "expect": "not-pass",
+  "id": "L670"
+ },
+ {
+  "profile": "celiac",
+  "kind": "hidden",
+  "text": "rye bread",
+  "expect": "not-pass",
+  "id": "L671"
+ },
+ {
+  "profile": "celiac",
+  "kind": "typo",
+  "text": "barly",
+  "expect": "not-pass",
+  "id": "L672"
+ },
+ {
+  "profile": "celiac",
+  "kind": "typo",
+  "text": "rolled oat",
+  "expect": "not-pass",
+  "id": "L673"
+ },
+ {
+  "profile": "celiac",
+  "kind": "typo",
+  "text": "malt vineger",
+  "expect": "not-pass",
+  "id": "L674"
+ },
+ {
+  "profile": "celiac",
+  "kind": "typo",
+  "text": "rye flower",
+  "expect": "not-pass",
+  "id": "L675"
+ },
+ {
+  "profile": "celiac",
+  "kind": "ocr",
+  "text": "bar1ey",
+  "expect": "not-pass",
+  "id": "L676"
+ },
+ {
+  "profile": "celiac",
+  "kind": "ocr",
+  "text": "ma1t extract",
+  "expect": "not-pass",
+  "id": "L677"
+ },
+ {
+  "profile": "celiac",
+  "kind": "ocr",
+  "text": "r ye flour",
+  "expect": "not-pass",
+  "id": "L678"
+ },
+ {
+  "profile": "celiac",
+  "kind": "ocr",
+  "text": "0ats",
+  "expect": "not-pass",
+  "id": "L679"
+ },
+ {
+  "profile": "celiac",
+  "kind": "ocr",
+  "text": "barley rna1t",
+  "expect": "not-pass",
+  "id": "L680"
+ },
+ {
+  "profile": "celiac",
+  "kind": "masked",
+  "text": "sugar, bar1ey malt",
+  "expect": "not-pass",
+  "id": "L681"
+ },
+ {
+  "profile": "celiac",
+  "kind": "masked",
+  "text": "toasted 0at flakes",
+  "expect": "not-pass",
+  "id": "L682"
+ },
+ {
+  "profile": "celiac",
+  "kind": "masked",
+  "text": "organic bar1ey flour",
+  "expect": "not-pass",
+  "id": "L683"
+ },
+ {
+  "profile": "celiac",
+  "kind": "masked",
+  "text": "ma1t vinegar, salt",
+  "expect": "not-pass",
+  "id": "L684"
+ },
+ {
+  "profile": "celiac",
+  "kind": "may",
+  "text": "May contain wheat.",
+  "expect": "not-pass",
+  "id": "L685"
+ },
+ {
+  "profile": "celiac",
+  "kind": "may",
+  "text": "Made in a facility that also processes wheat and barley.",
+  "expect": "not-pass",
+  "id": "L686"
+ },
+ {
+  "profile": "celiac",
+  "kind": "may",
+  "text": "Processed on shared equipment with wheat.",
+  "expect": "not-pass",
+  "id": "L687"
+ },
+ {
+  "profile": "celiac",
+  "kind": "contains",
+  "text": "CONTAINS: WHEAT.",
+  "expect": "not-pass",
+  "id": "L688"
+ },
+ {
+  "profile": "celiac",
+  "kind": "contains",
+  "text": "Contains: Wheat, Barley.",
+  "expect": "not-pass",
+  "id": "L689"
+ },
+ {
+  "profile": "celiac",
+  "kind": "source",
+  "text": "modified food starch",
+  "expect": "not-pass",
+  "why": "can be made from the allergen; the source may appear only in a separate Contains statement",
+  "id": "L690"
+ },
+ {
+  "profile": "celiac",
+  "kind": "source",
+  "text": "natural flavors",
+  "expect": "not-pass",
+  "why": "can be made from the allergen; the source may appear only in a separate Contains statement",
+  "id": "L691"
+ },
+ {
+  "profile": "celiac",
+  "kind": "source",
+  "text": "seasoning",
+  "expect": "not-pass",
+  "why": "can be made from the allergen; the source may appear only in a separate Contains statement",
+  "id": "L692"
+ },
+ {
+  "profile": "celiac",
+  "kind": "case",
+  "text": "Ingredients: Sugar, WHEAT, Salt.",
+  "expect": "not-pass",
+  "id": "L693"
+ },
+ {
+  "profile": "celiac",
+  "kind": "case",
+  "text": "Wheat, Water, Natural Color",
+  "expect": "not-pass",
+  "id": "L694"
+ },
+ {
+  "profile": "celiac",
+  "kind": "case",
+  "text": "Ingredients: Sugar, WHEAT FLOUR, Salt.",
+  "expect": "not-pass",
+  "id": "L695"
+ },
+ {
+  "profile": "celiac",
+  "kind": "case",
+  "text": "Wheat Flour, Water, Natural Color",
+  "expect": "not-pass",
+  "id": "L696"
+ },
+ {
+  "profile": "celiac",
+  "kind": "case",
+  "text": "Ingredients: Sugar, BARLEY, Salt.",
+  "expect": "not-pass",
+  "id": "L697"
+ },
+ {
+  "profile": "celiac",
+  "kind": "case",
+  "text": "Barley, Water, Natural Color",
+  "expect": "not-pass",
+  "id": "L698"
+ },
+ {
+  "profile": "celiac",
+  "kind": "case",
+  "text": "Ingredients: Sugar, BARLEY FLOUR, Salt.",
+  "expect": "not-pass",
+  "id": "L699"
+ },
+ {
+  "profile": "celiac",
+  "kind": "case",
+  "text": "Barley Flour, Water, Natural Color",
+  "expect": "not-pass",
+  "id": "L700"
+ },
+ {
+  "profile": "celiac",
+  "kind": "case",
+  "text": "Ingredients: Sugar, PEARL BARLEY, Salt.",
+  "expect": "not-pass",
+  "id": "L701"
+ },
+ {
+  "profile": "celiac",
+  "kind": "case",
+  "text": "Pearl Barley, Water, Natural Color",
+  "expect": "not-pass",
+  "id": "L702"
+ },
+ {
+  "profile": "celiac",
+  "kind": "case",
+  "text": "Ingredients: Sugar, BARLEY MALT, Salt.",
+  "expect": "not-pass",
+  "id": "L703"
+ },
+ {
+  "profile": "celiac",
+  "kind": "case",
+  "text": "Barley Malt, Water, Natural Color",
+  "expect": "not-pass",
+  "id": "L704"
+ },
+ {
+  "profile": "celiac",
+  "kind": "plural",
+  "text": "water, wheats, salt",
+  "expect": "not-pass",
+  "id": "L705"
+ },
+ {
+  "profile": "celiac",
+  "kind": "plural",
+  "text": "water, wheat flours, salt",
+  "expect": "not-pass",
+  "id": "L706"
+ },
+ {
+  "profile": "celiac",
+  "kind": "plural",
+  "text": "water, barleys, salt",
+  "expect": "not-pass",
+  "id": "L707"
+ },
+ {
+  "profile": "celiac",
+  "kind": "plural",
+  "text": "water, barley flours, salt",
+  "expect": "not-pass",
+  "id": "L708"
+ },
+ {
+  "profile": "celiac",
+  "kind": "ocr",
+  "text": "salt, whe at, sugar",
+  "expect": "not-pass",
+  "id": "L709"
+ },
+ {
+  "profile": "celiac",
+  "kind": "ocr",
+  "text": "salt, what, sugar",
+  "expect": "not-pass",
+  "id": "L710"
+ },
+ {
+  "profile": "milk",
+  "kind": "label",
+  "text": "INGREDIENTS: ENRICHED FLOUR (WHEAT FLOUR, NIACIN, REDUCED IRON, THIAMINE MONONITRATE, RIBOFLAVIN, FOLIC ACID), CHEESE (MILK, SALT, CHEESE CULTURES, ENZYMES, ANNATTO), VEGETABLE OIL, SALT, PAPRIKA.",
+  "expect": "not-pass",
+  "id": "L711"
+ },
+ {
+  "profile": "wheat",
+  "kind": "label",
+  "text": "INGREDIENTS: ENRICHED FLOUR (WHEAT FLOUR, NIACIN, REDUCED IRON, THIAMINE MONONITRATE, RIBOFLAVIN, FOLIC ACID), CHEESE (MILK, SALT, CHEESE CULTURES, ENZYMES, ANNATTO), VEGETABLE OIL, SALT, PAPRIKA.",
+  "expect": "not-pass",
+  "id": "L712"
+ },
+ {
+  "profile": "celiac",
+  "kind": "label",
+  "text": "INGREDIENTS: ENRICHED FLOUR (WHEAT FLOUR, NIACIN, REDUCED IRON, THIAMINE MONONITRATE, RIBOFLAVIN, FOLIC ACID), CHEESE (MILK, SALT, CHEESE CULTURES, ENZYMES, ANNATTO), VEGETABLE OIL, SALT, PAPRIKA.",
+  "expect": "not-pass",
+  "id": "L713"
+ },
+ {
+  "profile": "soy",
+  "kind": "label",
+  "text": "Ingredients: Sugar, Unbleached Enriched Flour, Palm Oil, Cocoa (Processed with Alkali), High Fructose Corn Syrup, Leavening (Baking Soda and/or Calcium Phosphate), Salt, Soy Lecithin, Vanillin. Contains: Wheat, Soy.",
+  "expect": "not-pass",
+  "id": "L714"
+ },
+ {
+  "profile": "wheat",
+  "kind": "label",
+  "text": "Ingredients: Sugar, Unbleached Enriched Flour, Palm Oil, Cocoa (Processed with Alkali), High Fructose Corn Syrup, Leavening (Baking Soda and/or Calcium Phosphate), Salt, Soy Lecithin, Vanillin. Contains: Wheat, Soy.",
+  "expect": "not-pass",
+  "id": "L715"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "label",
+  "text": "Ingredients: Whole grain rolled oats, honey, almonds, brown rice syrup, canola oil, sea salt, natural flavor. Contains almonds. Made in a facility that also processes peanuts and other tree nuts.",
+  "expect": "not-pass",
+  "id": "L716"
+ },
+ {
+  "profile": "peanut",
+  "kind": "label",
+  "text": "Ingredients: Whole grain rolled oats, honey, almonds, brown rice syrup, canola oil, sea salt, natural flavor. Contains almonds. Made in a facility that also processes peanuts and other tree nuts.",
+  "expect": "not-pass",
+  "id": "L717"
+ },
+ {
+  "profile": "celiac",
+  "kind": "label",
+  "text": "Ingredients: Whole grain rolled oats, honey, almonds, brown rice syrup, canola oil, sea salt, natural flavor. Contains almonds. Made in a facility that also processes peanuts and other tree nuts.",
+  "expect": "not-pass",
+  "id": "L718"
+ },
+ {
+  "profile": "soy",
+  "kind": "label",
+  "text": "NOODLES: ENRICHED WHEAT FLOUR, PALM OIL, SALT. SEASONING: SALT, MONOSODIUM GLUTAMATE, SOY SAUCE POWDER (SOYBEAN, WHEAT, SALT), GARLIC POWDER, DEHYDRATED GREEN ONION.",
+  "expect": "not-pass",
+  "id": "L719"
+ },
+ {
+  "profile": "wheat",
+  "kind": "label",
+  "text": "NOODLES: ENRICHED WHEAT FLOUR, PALM OIL, SALT. SEASONING: SALT, MONOSODIUM GLUTAMATE, SOY SAUCE POWDER (SOYBEAN, WHEAT, SALT), GARLIC POWDER, DEHYDRATED GREEN ONION.",
+  "expect": "not-pass",
+  "id": "L720"
+ },
+ {
+  "profile": "egg",
+  "kind": "label",
+  "text": "Soybean oil, water, whole eggs, vinegar, egg yolks, salt, sugar, lemon juice concentrate, calcium disodium EDTA.",
+  "expect": "not-pass",
+  "id": "L721"
+ },
+ {
+  "profile": "soy",
+  "kind": "label",
+  "text": "Soybean oil, water, whole eggs, vinegar, egg yolks, salt, sugar, lemon juice concentrate, calcium disodium EDTA.",
+  "expect": "not-pass",
+  "id": "L722"
+ },
+ {
+  "profile": "fish",
+  "kind": "label",
+  "text": "Soybean oil, water, parmesan cheese (pasteurized part-skim milk, cheese cultures, salt, enzymes), egg yolk, anchovies, garlic, lemon juice, Worcestershire sauce.",
+  "expect": "not-pass",
+  "id": "L723"
+ },
+ {
+  "profile": "milk",
+  "kind": "label",
+  "text": "Soybean oil, water, parmesan cheese (pasteurized part-skim milk, cheese cultures, salt, enzymes), egg yolk, anchovies, garlic, lemon juice, Worcestershire sauce.",
+  "expect": "not-pass",
+  "id": "L724"
+ },
+ {
+  "profile": "crustacean",
+  "kind": "label",
+  "text": "Water, shrimp, salt, sugar, potato starch, garlic, shrimp paste (shrimp, salt), chili pepper.",
+  "expect": "not-pass",
+  "id": "L725"
+ },
+ {
+  "profile": "sesame",
+  "kind": "label",
+  "text": "Chickpeas, water, tahini (ground sesame), lemon juice, garlic, salt, citric acid.",
+  "expect": "not-pass",
+  "id": "L726"
+ },
+ {
+  "profile": "sesame",
+  "kind": "label",
+  "text": "Enriched wheat flour, water, sesame seeds, sugar, yeast, soybean oil, salt.",
+  "expect": "not-pass",
+  "id": "L727"
+ },
+ {
+  "profile": "celiac",
+  "kind": "label",
+  "text": "Water, rice, barley malt extract, salt, vitamin E.",
+  "expect": "not-pass",
+  "id": "L728"
+ },
+ {
+  "profile": "celiac",
+  "kind": "label",
+  "text": "Filtered water, malt vinegar, salt, natural flavor.",
+  "expect": "not-pass",
+  "id": "L729"
+ },
+ {
+  "profile": "celiac",
+  "kind": "label",
+  "text": "Toasted oats, sugar, corn syrup, salt, honey, cinnamon.",
+  "expect": "not-pass",
+  "id": "L730"
+ },
+ {
+  "profile": "milk",
+  "kind": "label",
+  "text": "Sugar, cocoa butter, whole milk powder, chocolate liquor, soy lecithin, vanilla. May contain peanuts and tree nuts.",
+  "expect": "not-pass",
+  "id": "L731"
+ },
+ {
+  "profile": "peanut",
+  "kind": "label",
+  "text": "Sugar, cocoa butter, whole milk powder, chocolate liquor, soy lecithin, vanilla. May contain peanuts and tree nuts.",
+  "expect": "not-pass",
+  "id": "L732"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "label",
+  "text": "Sugar, cocoa butter, whole milk powder, chocolate liquor, soy lecithin, vanilla. May contain peanuts and tree nuts.",
+  "expect": "not-pass",
+  "id": "L733"
+ },
+ {
+  "profile": "peanut",
+  "kind": "label",
+  "text": "Roasted peanuts, sugar, hydrogenated vegetable oil (rapeseed and soybean), salt.",
+  "expect": "not-pass",
+  "id": "L734"
+ },
+ {
+  "profile": "milk",
+  "kind": "label",
+  "text": "Cultured pasteurized grade A nonfat milk, cream, pectin. Contains live and active cultures.",
+  "expect": "not-pass",
+  "id": "L735"
+ },
+ {
+  "profile": "egg",
+  "kind": "label",
+  "text": "Semolina (wheat), durum wheat flour, eggs, niacin, ferrous sulfate, thiamin mononitrate, riboflavin, folic acid.",
+  "expect": "not-pass",
+  "id": "L736"
+ },
+ {
+  "profile": "wheat",
+  "kind": "label",
+  "text": "Semolina (wheat), durum wheat flour, eggs, niacin, ferrous sulfate, thiamin mononitrate, riboflavin, folic acid.",
+  "expect": "not-pass",
+  "id": "L737"
+ },
+ {
+  "profile": "fish",
+  "kind": "label",
+  "text": "Pollock, water, sugar, wheat starch, egg whites, sorbitol, salt, crab extract, natural and artificial flavor.",
+  "expect": "not-pass",
+  "id": "L738"
+ },
+ {
+  "profile": "crustacean",
+  "kind": "label",
+  "text": "Pollock, water, sugar, wheat starch, egg whites, sorbitol, salt, crab extract, natural and artificial flavor.",
+  "expect": "not-pass",
+  "id": "L739"
+ },
+ {
+  "profile": "egg",
+  "kind": "label",
+  "text": "Pollock, water, sugar, wheat starch, egg whites, sorbitol, salt, crab extract, natural and artificial flavor.",
+  "expect": "not-pass",
+  "id": "L740"
+ },
+ {
+  "profile": "soy",
+  "kind": "label",
+  "text": "Water, soybeans, calcium sulfate, glucono delta lactone.",
+  "expect": "not-pass",
+  "id": "L741"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "label",
+  "text": "Almondmilk (filtered water, almonds), cane sugar, calcium carbonate, sea salt, gellan gum.",
+  "expect": "not-pass",
+  "id": "L742"
+ },
+ {
+  "profile": "milk",
+  "kind": "label",
+  "text": "Sugar, corn syrup, cream, butter, salt, vanilla extract.",
+  "expect": "not-pass",
+  "id": "L743"
+ },
+ {
+  "profile": "wheat",
+  "kind": "label",
+  "text": "Chicken broth, enriched wheat flour, carrots, celery, chicken, salt, modified food starch.",
+  "expect": "not-pass",
+  "id": "L744"
+ },
+ {
+  "profile": "celiac",
+  "kind": "label",
+  "text": "Chicken broth, enriched wheat flour, carrots, celery, chicken, salt, modified food starch.",
+  "expect": "not-pass",
+  "id": "L745"
+ },
+ {
+  "profile": "milk",
+  "kind": "control",
+  "text": "coconut milk",
+  "expect": "control",
+  "id": "L746"
+ },
+ {
+  "profile": "milk",
+  "kind": "control",
+  "text": "peanut butter",
+  "expect": "control",
+  "id": "L747"
+ },
+ {
+  "profile": "milk",
+  "kind": "control",
+  "text": "cocoa butter",
+  "expect": "control",
+  "id": "L748"
+ },
+ {
+  "profile": "milk",
+  "kind": "control",
+  "text": "butter beans",
+  "expect": "control",
+  "id": "L749"
+ },
+ {
+  "profile": "milk",
+  "kind": "control",
+  "text": "almond milk",
+  "expect": "control",
+  "id": "L750"
+ },
+ {
+  "profile": "milk",
+  "kind": "control",
+  "text": "oat milk",
+  "expect": "control",
+  "id": "L751"
+ },
+ {
+  "profile": "milk",
+  "kind": "control",
+  "text": "cream of tartar",
+  "expect": "control",
+  "id": "L752"
+ },
+ {
+  "profile": "egg",
+  "kind": "control",
+  "text": "eggplant",
+  "expect": "control",
+  "id": "L753"
+ },
+ {
+  "profile": "egg",
+  "kind": "control",
+  "text": "egg replacer (potato starch, tapioca flour)",
+  "expect": "control",
+  "id": "L754"
+ },
+ {
+  "profile": "wheat",
+  "kind": "control",
+  "text": "buckwheat",
+  "expect": "control",
+  "id": "L755"
+ },
+ {
+  "profile": "wheat",
+  "kind": "control",
+  "text": "rice flour",
+  "expect": "control",
+  "id": "L756"
+ },
+ {
+  "profile": "wheat",
+  "kind": "control",
+  "text": "corn tortillas",
+  "expect": "control",
+  "id": "L757"
+ },
+ {
+  "profile": "wheat",
+  "kind": "control",
+  "text": "wheatgrass",
+  "expect": "control",
+  "id": "L758"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "control",
+  "text": "nutmeg",
+  "expect": "control",
+  "id": "L759"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "control",
+  "text": "water chestnuts",
+  "expect": "control",
+  "id": "L760"
+ },
+ {
+  "profile": "tree-nut",
+  "kind": "control",
+  "text": "butternut squash",
+  "expect": "control",
+  "id": "L761"
+ },
+ {
+  "profile": "peanut",
+  "kind": "control",
+  "text": "sunflower seed butter",
+  "expect": "control",
+  "id": "L762"
+ },
+ {
+  "profile": "peanut",
+  "kind": "control",
+  "text": "chickpeas",
+  "expect": "control",
+  "id": "L763"
+ },
+ {
+  "profile": "fish",
+  "kind": "control",
+  "text": "fish-shaped crackers (enriched wheat flour, cheddar cheese, salt)",
+  "expect": "control",
+  "id": "L764"
+ },
+ {
+  "profile": "crustacean",
+  "kind": "control",
+  "text": "crab apples",
+  "expect": "control",
+  "id": "L765"
+ },
+ {
+  "profile": "crustacean",
+  "kind": "control",
+  "text": "oyster sauce",
+  "expect": "control",
+  "id": "L766"
+ },
+ {
+  "profile": "soy",
+  "kind": "control",
+  "text": "sunflower lecithin",
+  "expect": "control",
+  "id": "L767"
+ },
+ {
+  "profile": "soy",
+  "kind": "control",
+  "text": "canola oil",
+  "expect": "control",
+  "id": "L768"
+ },
+ {
+  "profile": "sesame",
+  "kind": "control",
+  "text": "sunflower seeds",
+  "expect": "control",
+  "id": "L769"
+ },
+ {
+  "profile": "sesame",
+  "kind": "control",
+  "text": "pumpkin seeds",
+  "expect": "control",
+  "id": "L770"
+ },
+ {
+  "profile": "celiac",
+  "kind": "control",
+  "text": "certified gluten-free oats",
+  "expect": "control",
+  "id": "L771"
+ },
+ {
+  "profile": "celiac",
+  "kind": "control",
+  "text": "rice",
+  "expect": "control",
+  "id": "L772"
+ },
+ {
+  "profile": "celiac",
+  "kind": "control",
+  "text": "quinoa",
+  "expect": "control",
+  "id": "L773"
+ },
+ {
+  "profile": "celiac",
+  "kind": "control",
+  "text": "buckwheat groats",
+  "expect": "control",
+  "id": "L774"
+ },
+ {
+  "profile": "celiac",
+  "kind": "control",
+  "text": "distilled vinegar",
+  "expect": "control",
+  "id": "L775"
+ }
+]

@@ -1,0 +1,357 @@
+{
+ "profiles": {
+  "peanut allergy": {
+   "foodsFlagged": 28,
+   "typedNamePasses": 0,
+   "hardStopFoodPassesAsText": 0,
+   "examples": []
+  },
+  "milk allergy": {
+   "foodsFlagged": 274,
+   "typedNamePasses": 2,
+   "hardStopFoodPassesAsText": 2,
+   "examples": [
+    {
+     "food": "Candies, caramels",
+     "typed": "Caramels",
+     "foodVerdict": "fail",
+     "foodTags": [
+      "allergen-milk"
+     ]
+    },
+    {
+     "food": "Potato salad with egg",
+     "typed": "Potato salad with egg",
+     "foodVerdict": "fail",
+     "foodTags": [
+      "allergen-milk"
+     ]
+    }
+   ]
+  },
+  "wheat allergy": {
+   "foodsFlagged": 260,
+   "typedNamePasses": 10,
+   "hardStopFoodPassesAsText": 10,
+   "examples": [
+    {
+     "food": "Cereals ready-to-eat, POST, HONEY BUNCHES OF OATS, honey roasted",
+     "typed": "HONEY BUNCHES OF OATS, honey roasted",
+     "foodVerdict": "fail",
+     "foodTags": [
+      "allergen-wheat"
+     ]
+    },
+    {
+     "food": "Fast foods, chicken fillet sandwich, plain with pickles",
+     "typed": "Chicken fillet sandwich, plain with pickles",
+     "foodVerdict": "fail",
+     "foodTags": [
+      "allergen-wheat"
+     ]
+    },
+    {
+     "food": "Fast Foods, crispy chicken filet sandwich, with lettuce and mayonnaise",
+     "typed": "Crispy chicken filet sandwich, with lettuce and mayonnaise",
+     "foodVerdict": "fail",
+     "foodTags": [
+      "allergen-wheat"
+     ]
+    },
+    {
+     "food": "Fast foods, crispy chicken, bacon, and tomato club sandwich, with cheese, lettuce, and mayonnaise",
+     "typed": "Crispy chicken, bacon, and tomato club sandwich, with cheese, lettuce, and mayonnaise",
+     "foodVerdict": "fail",
+     "foodTags": [
+      "allergen-wheat"
+     ]
+    },
+    {
+     "food": "Cereals ready-to-eat, POST, GRAPE-NUTS Cereal",
+     "typed": "Grape-Nuts",
+     "foodVerdict": "fail",
+     "foodTags": [
+      "allergen-wheat"
+     ]
+    },
+    {
+     "food": "Cereals ready-to-eat, POST, GRAPE-NUTS Flakes",
+     "typed": "GRAPE-NUTS Flakes",
+     "foodVerdict": "fail",
+     "foodTags": [
+      "allergen-wheat"
+     ]
+    },
+    {
+     "food": "Rolls, hamburger or hotdog, plain",
+     "typed": "Hamburger / hot dog bun",
+     "foodVerdict": "fail",
+     "foodTags": [
+      "allergen-wheat"
+     ]
+    },
+    {
+     "food": "Fast foods, chicken tenders",
+     "typed": "Chicken tenders",
+     "foodVerdict": "fail",
+     "foodTags": [
+      "allergen-wheat"
+     ]
+    },
+    {
+     "food": "Cereals ready-to-eat, POST Bran Flakes",
+     "typed": "Bran Flakes",
+     "foodVerdict": "fail",
+     "foodTags": [
+      "allergen-wheat"
+     ]
+    },
+    {
+     "food": "Cereals ready-to-eat, QUAKER, Oatmeal Squares",
+     "typed": "Oatmeal Squares",
+     "foodVerdict": "fail",
+     "foodTags": [
+      "allergen-wheat"
+     ]
+    }
+   ]
+  },
+  "soy allergy": {
+   "foodsFlagged": 43,
+   "typedNamePasses": 0,
+   "hardStopFoodPassesAsText": 0,
+   "examples": []
+  },
+  "tree nut allergy": {
+   "foodsFlagged": 70,
+   "typedNamePasses": 0,
+   "hardStopFoodPassesAsText": 0,
+   "examples": []
+  },
+  "fish allergy": {
+   "foodsFlagged": 122,
+   "typedNamePasses": 0,
+   "hardStopFoodPassesAsText": 0,
+   "examples": []
+  },
+  "shellfish allergy": {
+   "foodsFlagged": 15,
+   "typedNamePasses": 0,
+   "hardStopFoodPassesAsText": 0,
+   "examples": []
+  },
+  "egg allergy": {
+   "foodsFlagged": 63,
+   "typedNamePasses": 0,
+   "hardStopFoodPassesAsText": 0,
+   "examples": []
+  },
+  "sesame allergy": {
+   "foodsFlagged": 15,
+   "typedNamePasses": 0,
+   "hardStopFoodPassesAsText": 0,
+   "examples": []
+  },
+  "celiac disease": {
+   "foodsFlagged": 286,
+   "typedNamePasses": 7,
+   "hardStopFoodPassesAsText": 7,
+   "examples": [
+    {
+     "food": "Fast foods, chicken fillet sandwich, plain with pickles",
+     "typed": "Chicken fillet sandwich, plain with pickles",
+     "foodVerdict": "fail",
+     "foodTags": [
+      "allergen-wheat",
+      "gluten"
+     ]
+    },
+    {
+     "food": "Fast Foods, crispy chicken filet sandwich, with lettuce and mayonnaise",
+     "typed": "Crispy chicken filet sandwich, with lettuce and mayonnaise",
+     "foodVerdict": "fail",
+     "foodTags": [
+      "allergen-wheat",
+      "gluten"
+     ]
+    },
+    {
+     "food": "Fast foods, crispy chicken, bacon, and tomato club sandwich, with cheese, lettuce, and mayonnaise",
+     "typed": "Crispy chicken, bacon, and tomato club sandwich, with cheese, lettuce, and mayonnaise",
+     "foodVerdict": "fail",
+     "foodTags": [
+      "allergen-wheat",
+      "gluten"
+     ]
+    },
+    {
+     "food": "Cereals ready-to-eat, POST, GRAPE-NUTS Cereal",
+     "typed": "Grape-Nuts",
+     "foodVerdict": "fail",
+     "foodTags": [
+      "allergen-wheat",
+      "gluten"
+     ]
+    },
+    {
+     "food": "Cereals ready-to-eat, POST, GRAPE-NUTS Flakes",
+     "typed": "GRAPE-NUTS Flakes",
+     "foodVerdict": "fail",
+     "foodTags": [
+      "allergen-wheat",
+      "gluten"
+     ]
+    },
+    {
+     "food": "Fast foods, chicken tenders",
+     "typed": "Chicken tenders",
+     "foodVerdict": "fail",
+     "foodTags": [
+      "allergen-wheat",
+      "gluten"
+     ]
+    },
+    {
+     "food": "Cereals ready-to-eat, POST Bran Flakes",
+     "typed": "Bran Flakes",
+     "foodVerdict": "fail",
+     "foodTags": [
+      "allergen-wheat",
+      "gluten"
+     ]
+    }
+   ]
+  },
+  "MCAS (low histamine)": {
+   "foodsFlagged": 1015,
+   "typedNamePasses": 0,
+   "hardStopFoodPassesAsText": 0,
+   "examples": []
+  },
+  "IBS (low FODMAP)": {
+   "foodsFlagged": 879,
+   "typedNamePasses": 5,
+   "hardStopFoodPassesAsText": 0,
+   "examples": [
+    {
+     "food": "Candies, dark chocolate coated coffee beans",
+     "typed": "Dark chocolate coated coffee beans",
+     "foodVerdict": "caution",
+     "foodTags": [
+      "fodmap-gos"
+     ]
+    },
+    {
+     "food": "Noodles, egg, dry, enriched",
+     "typed": "Egg noodles, dry",
+     "foodVerdict": "caution",
+     "foodTags": [
+      "fodmap-fructan"
+     ]
+    },
+    {
+     "food": "Noodles, egg, enriched, cooked",
+     "typed": "Egg noodles, cooked",
+     "foodVerdict": "caution",
+     "foodTags": [
+      "fodmap-fructan"
+     ]
+    },
+    {
+     "food": "Cereals ready-to-eat, POST, GRAPE-NUTS Cereal",
+     "typed": "Grape-Nuts",
+     "foodVerdict": "caution",
+     "foodTags": [
+      "fodmap-fructan"
+     ]
+    },
+    {
+     "food": "Tempeh, cooked",
+     "typed": "Tempeh, cooked",
+     "foodVerdict": "caution",
+     "foodTags": [
+      "fodmap-gos"
+     ]
+    }
+   ]
+  },
+  "lactose intolerance": {
+   "foodsFlagged": 113,
+   "typedNamePasses": 0,
+   "hardStopFoodPassesAsText": 0,
+   "examples": []
+  }
+ },
+ "sodium": [
+  {
+   "label": "salt",
+   "verdict": "pass",
+   "sodiumLimit": 2300
+  },
+  {
+   "label": "sea salt",
+   "verdict": "pass",
+   "sodiumLimit": 2300
+  },
+  {
+   "label": "kosher salt",
+   "verdict": "pass",
+   "sodiumLimit": 2300
+  },
+  {
+   "label": "garlic salt",
+   "verdict": "pass",
+   "sodiumLimit": 2300
+  },
+  {
+   "label": "celery salt",
+   "verdict": "pass",
+   "sodiumLimit": 2300
+  },
+  {
+   "label": "seasoned salt",
+   "verdict": "pass",
+   "sodiumLimit": 2300
+  },
+  {
+   "label": "soy sauce",
+   "verdict": "pass",
+   "sodiumLimit": 2300
+  },
+  {
+   "label": "fish sauce",
+   "verdict": "pass",
+   "sodiumLimit": 2300
+  },
+  {
+   "label": "baking soda",
+   "verdict": "pass",
+   "sodiumLimit": 2300
+  },
+  {
+   "label": "monosodium glutamate",
+   "verdict": "pass",
+   "sodiumLimit": 2300
+  },
+  {
+   "label": "pickles",
+   "verdict": "pass",
+   "sodiumLimit": 2300
+  },
+  {
+   "label": "olives",
+   "verdict": "pass",
+   "sodiumLimit": 2300
+  },
+  {
+   "label": "feta",
+   "verdict": "pass",
+   "sodiumLimit": 2300
+  },
+  {
+   "label": "hot dog",
+   "verdict": "pass",
+   "sodiumLimit": 2300
+  }
+ ]
+}

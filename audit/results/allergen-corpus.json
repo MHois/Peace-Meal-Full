@@ -1,0 +1,677 @@
+{
+ "lines": 775,
+ "asserted": 745,
+ "falsePass": 33,
+ "byKind": {
+  "plain": {
+   "lines": 235,
+   "pass": 2,
+   "caution": 4,
+   "fail": 229
+  },
+  "hidden": {
+   "lines": 87,
+   "pass": 0,
+   "caution": 14,
+   "fail": 73
+  },
+  "typo": {
+   "lines": 45,
+   "pass": 4,
+   "caution": 30,
+   "fail": 11
+  },
+  "ocr": {
+   "lines": 71,
+   "pass": 6,
+   "caution": 60,
+   "fail": 5
+  },
+  "masked": {
+   "lines": 42,
+   "pass": 15,
+   "caution": 18,
+   "fail": 9
+  },
+  "may": {
+   "lines": 33,
+   "pass": 0,
+   "caution": 1,
+   "fail": 32
+  },
+  "contains": {
+   "lines": 21,
+   "pass": 1,
+   "caution": 0,
+   "fail": 20
+  },
+  "source": {
+   "lines": 16,
+   "pass": 5,
+   "caution": 11,
+   "fail": 0
+  },
+  "case": {
+   "lines": 120,
+   "pass": 0,
+   "caution": 0,
+   "fail": 120
+  },
+  "plural": {
+   "lines": 40,
+   "pass": 0,
+   "caution": 2,
+   "fail": 38
+  },
+  "label": {
+   "lines": 35,
+   "pass": 0,
+   "caution": 1,
+   "fail": 34
+  }
+ },
+ "byProfile": {
+  "milk": {
+   "lines": 96,
+   "pass": 3,
+   "caution": 18,
+   "fail": 75
+  },
+  "egg": {
+   "lines": 60,
+   "pass": 0,
+   "caution": 11,
+   "fail": 49
+  },
+  "fish": {
+   "lines": 66,
+   "pass": 0,
+   "caution": 16,
+   "fail": 50
+  },
+  "crustacean": {
+   "lines": 55,
+   "pass": 1,
+   "caution": 13,
+   "fail": 41
+  },
+  "tree-nut": {
+   "lines": 85,
+   "pass": 4,
+   "caution": 17,
+   "fail": 64
+  },
+  "peanut": {
+   "lines": 60,
+   "pass": 8,
+   "caution": 9,
+   "fail": 43
+  },
+  "wheat": {
+   "lines": 90,
+   "pass": 2,
+   "caution": 16,
+   "fail": 72
+  },
+  "soy": {
+   "lines": 73,
+   "pass": 9,
+   "caution": 12,
+   "fail": 52
+  },
+  "sesame": {
+   "lines": 62,
+   "pass": 4,
+   "caution": 19,
+   "fail": 39
+  },
+  "celiac": {
+   "lines": 98,
+   "pass": 2,
+   "caution": 10,
+   "fail": 86
+  }
+ },
+ "falsePasses": [
+  {
+   "id": "L057",
+   "profile": "milk",
+   "kind": "masked",
+   "text": "sugar, rnilk chocolate",
+   "tags": [
+    "added-sugar",
+    "histamine-high",
+    "oxalate-high",
+    "caffeine",
+    "chocolate"
+   ]
+  },
+  {
+   "id": "L059",
+   "profile": "milk",
+   "kind": "masked",
+   "text": "sweetened condensed rni1k",
+   "tags": [
+    "added-sugar"
+   ]
+  },
+  {
+   "id": "L069",
+   "profile": "milk",
+   "kind": "source",
+   "text": "caramel",
+   "tags": [
+    "added-sugar"
+   ]
+  },
+  {
+   "id": "L234",
+   "profile": "crustacean",
+   "kind": "typo",
+   "text": "craw fish",
+   "tags": [
+    "allergen-fish",
+    "fish",
+    "purine-moderate",
+    "small-particle-friendly"
+   ]
+  },
+  {
+   "id": "L314",
+   "profile": "tree-nut",
+   "kind": "masked",
+   "text": "almnd milk",
+   "tags": [
+    "allergen-milk",
+    "lactose-high",
+    "fodmap-lactose",
+    "calcium-rich",
+    "potassium-high-food"
+   ]
+  },
+  {
+   "id": "L315",
+   "profile": "tree-nut",
+   "kind": "masked",
+   "text": "cashw butter",
+   "tags": [
+    "allergen-milk",
+    "lactose-low",
+    "full-fat-dairy"
+   ]
+  },
+  {
+   "id": "L316",
+   "profile": "tree-nut",
+   "kind": "masked",
+   "text": "alrnond butter",
+   "tags": [
+    "allergen-milk",
+    "lactose-low",
+    "full-fat-dairy"
+   ]
+  },
+  {
+   "id": "L320",
+   "profile": "tree-nut",
+   "kind": "masked",
+   "text": "sugar, a1mond flour",
+   "tags": [
+    "added-sugar",
+    "allergen-wheat",
+    "gluten",
+    "refined-grain",
+    "fodmap-fructan"
+   ]
+  },
+  {
+   "id": "L369",
+   "profile": "peanut",
+   "kind": "typo",
+   "text": "penut butter",
+   "tags": [
+    "allergen-milk",
+    "lactose-low",
+    "full-fat-dairy"
+   ]
+  },
+  {
+   "id": "L371",
+   "profile": "peanut",
+   "kind": "typo",
+   "text": "pea nut",
+   "tags": [
+    "allergen-tree-nut",
+    "nut",
+    "large-particle",
+    "oxalate-high",
+    "vegetable"
+   ]
+  },
+  {
+   "id": "L372",
+   "profile": "peanut",
+   "kind": "ocr",
+   "text": "pean ut butter",
+   "tags": [
+    "allergen-milk",
+    "lactose-low",
+    "full-fat-dairy"
+   ]
+  },
+  {
+   "id": "L375",
+   "profile": "peanut",
+   "kind": "ocr",
+   "text": "pea nuts",
+   "tags": [
+    "allergen-tree-nut",
+    "nut",
+    "large-particle",
+    "oxalate-high",
+    "vegetable"
+   ]
+  },
+  {
+   "id": "L376",
+   "profile": "peanut",
+   "kind": "masked",
+   "text": "penut butter",
+   "tags": [
+    "allergen-milk",
+    "lactose-low",
+    "full-fat-dairy"
+   ]
+  },
+  {
+   "id": "L377",
+   "profile": "peanut",
+   "kind": "masked",
+   "text": "pean ut butter",
+   "tags": [
+    "allergen-milk",
+    "lactose-low",
+    "full-fat-dairy"
+   ]
+  },
+  {
+   "id": "L379",
+   "profile": "peanut",
+   "kind": "masked",
+   "text": "sugar, penut flour",
+   "tags": [
+    "added-sugar",
+    "allergen-wheat",
+    "gluten",
+    "refined-grain",
+    "fodmap-fructan"
+   ]
+  },
+  {
+   "id": "L403",
+   "profile": "peanut",
+   "kind": "ocr",
+   "text": "salt, pea nut, sugar",
+   "tags": [
+    "basic-ingredient",
+    "allergen-tree-nut",
+    "nut",
+    "large-particle",
+    "oxalate-high",
+    "vegetable",
+    "added-sugar"
+   ]
+  },
+  {
+   "id": "L469",
+   "profile": "wheat",
+   "kind": "source",
+   "text": "modified food starch",
+   "tags": [
+    "ultra-processed"
+   ]
+  },
+  {
+   "id": "L470",
+   "profile": "wheat",
+   "kind": "source",
+   "text": "maltodextrin",
+   "tags": [
+    "ultra-processed",
+    "emulsifier-additive"
+   ]
+  },
+  {
+   "id": "L510",
+   "profile": "soy",
+   "kind": "plain",
+   "text": "soy lecithin",
+   "tags": [
+    "soy-lecithin",
+    "emulsifier-additive"
+   ]
+  },
+  {
+   "id": "L512",
+   "profile": "soy",
+   "kind": "plain",
+   "text": "soybean oil",
+   "tags": [
+    "soy-refined-oil"
+   ]
+  },
+  {
+   "id": "L524",
+   "profile": "soy",
+   "kind": "ocr",
+   "text": "s0y protein isolate",
+   "tags": [
+    "ultra-processed"
+   ]
+  },
+  {
+   "id": "L525",
+   "profile": "soy",
+   "kind": "ocr",
+   "text": "so y lecithin",
+   "tags": [
+    "emulsifier-additive"
+   ]
+  },
+  {
+   "id": "L527",
+   "profile": "soy",
+   "kind": "masked",
+   "text": "s0y protein isolate, sugar",
+   "tags": [
+    "ultra-processed",
+    "added-sugar"
+   ]
+  },
+  {
+   "id": "L528",
+   "profile": "soy",
+   "kind": "masked",
+   "text": "sugar, s0y lecithin",
+   "tags": [
+    "added-sugar",
+    "emulsifier-additive"
+   ]
+  },
+  {
+   "id": "L529",
+   "profile": "soy",
+   "kind": "masked",
+   "text": "organic s0y milk",
+   "tags": [
+    "allergen-milk",
+    "lactose-high",
+    "fodmap-lactose",
+    "calcium-rich",
+    "potassium-high-food"
+   ]
+  },
+  {
+   "id": "L535",
+   "profile": "soy",
+   "kind": "contains",
+   "text": "Contains: Soy Lecithin.",
+   "tags": [
+    "soy-lecithin",
+    "emulsifier-additive"
+   ]
+  },
+  {
+   "id": "L536",
+   "profile": "soy",
+   "kind": "source",
+   "text": "lecithin",
+   "tags": [
+    "emulsifier-additive"
+   ]
+  },
+  {
+   "id": "L584",
+   "profile": "sesame",
+   "kind": "typo",
+   "text": "sesami seeds",
+   "tags": [
+    "seed",
+    "large-particle"
+   ]
+  },
+  {
+   "id": "L588",
+   "profile": "sesame",
+   "kind": "ocr",
+   "text": "sesarne seeds",
+   "tags": [
+    "seed",
+    "large-particle"
+   ]
+  },
+  {
+   "id": "L590",
+   "profile": "sesame",
+   "kind": "masked",
+   "text": "sugar, sesme seeds",
+   "tags": [
+    "added-sugar",
+    "seed",
+    "large-particle"
+   ]
+  },
+  {
+   "id": "L591",
+   "profile": "sesame",
+   "kind": "masked",
+   "text": "roasted sesarne seeds, salt",
+   "tags": [
+    "seed",
+    "large-particle",
+    "basic-ingredient"
+   ]
+  },
+  {
+   "id": "L684",
+   "profile": "celiac",
+   "kind": "masked",
+   "text": "ma1t vinegar, salt",
+   "tags": [
+    "histamine-fermented",
+    "basic-ingredient"
+   ]
+  },
+  {
+   "id": "L690",
+   "profile": "celiac",
+   "kind": "source",
+   "text": "modified food starch",
+   "tags": [
+    "ultra-processed"
+   ]
+  }
+ ],
+ "controls": [
+  {
+   "id": "L746",
+   "profile": "milk",
+   "text": "coconut milk",
+   "verdict": "pass"
+  },
+  {
+   "id": "L747",
+   "profile": "milk",
+   "text": "peanut butter",
+   "verdict": "pass"
+  },
+  {
+   "id": "L748",
+   "profile": "milk",
+   "text": "cocoa butter",
+   "verdict": "caution"
+  },
+  {
+   "id": "L749",
+   "profile": "milk",
+   "text": "butter beans",
+   "verdict": "pass"
+  },
+  {
+   "id": "L750",
+   "profile": "milk",
+   "text": "almond milk",
+   "verdict": "pass"
+  },
+  {
+   "id": "L751",
+   "profile": "milk",
+   "text": "oat milk",
+   "verdict": "pass"
+  },
+  {
+   "id": "L752",
+   "profile": "milk",
+   "text": "cream of tartar",
+   "verdict": "pass"
+  },
+  {
+   "id": "L753",
+   "profile": "egg",
+   "text": "eggplant",
+   "verdict": "pass"
+  },
+  {
+   "id": "L754",
+   "profile": "egg",
+   "text": "egg replacer (potato starch, tapioca flour)",
+   "verdict": "caution"
+  },
+  {
+   "id": "L755",
+   "profile": "wheat",
+   "text": "buckwheat",
+   "verdict": "pass"
+  },
+  {
+   "id": "L756",
+   "profile": "wheat",
+   "text": "rice flour",
+   "verdict": "pass"
+  },
+  {
+   "id": "L757",
+   "profile": "wheat",
+   "text": "corn tortillas",
+   "verdict": "caution"
+  },
+  {
+   "id": "L758",
+   "profile": "wheat",
+   "text": "wheatgrass",
+   "verdict": "caution"
+  },
+  {
+   "id": "L759",
+   "profile": "tree-nut",
+   "text": "nutmeg",
+   "verdict": "pass"
+  },
+  {
+   "id": "L760",
+   "profile": "tree-nut",
+   "text": "water chestnuts",
+   "verdict": "pass"
+  },
+  {
+   "id": "L761",
+   "profile": "tree-nut",
+   "text": "butternut squash",
+   "verdict": "pass"
+  },
+  {
+   "id": "L762",
+   "profile": "peanut",
+   "text": "sunflower seed butter",
+   "verdict": "pass"
+  },
+  {
+   "id": "L763",
+   "profile": "peanut",
+   "text": "chickpeas",
+   "verdict": "pass"
+  },
+  {
+   "id": "L764",
+   "profile": "fish",
+   "text": "fish-shaped crackers (enriched wheat flour, cheddar cheese, salt)",
+   "verdict": "fail"
+  },
+  {
+   "id": "L765",
+   "profile": "crustacean",
+   "text": "crab apples",
+   "verdict": "pass"
+  },
+  {
+   "id": "L766",
+   "profile": "crustacean",
+   "text": "oyster sauce",
+   "verdict": "caution"
+  },
+  {
+   "id": "L767",
+   "profile": "soy",
+   "text": "sunflower lecithin",
+   "verdict": "pass"
+  },
+  {
+   "id": "L768",
+   "profile": "soy",
+   "text": "canola oil",
+   "verdict": "pass"
+  },
+  {
+   "id": "L769",
+   "profile": "sesame",
+   "text": "sunflower seeds",
+   "verdict": "pass"
+  },
+  {
+   "id": "L770",
+   "profile": "sesame",
+   "text": "pumpkin seeds",
+   "verdict": "pass"
+  },
+  {
+   "id": "L771",
+   "profile": "celiac",
+   "text": "certified gluten-free oats",
+   "verdict": "pass"
+  },
+  {
+   "id": "L772",
+   "profile": "celiac",
+   "text": "rice",
+   "verdict": "pass"
+  },
+  {
+   "id": "L773",
+   "profile": "celiac",
+   "text": "quinoa",
+   "verdict": "pass"
+  },
+  {
+   "id": "L774",
+   "profile": "celiac",
+   "text": "buckwheat groats",
+   "verdict": "pass"
+  },
+  {
+   "id": "L775",
+   "profile": "celiac",
+   "text": "distilled vinegar",
+   "verdict": "pass"
+  }
+ ]
+}
