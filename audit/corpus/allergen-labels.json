@@ -3290,8 +3290,8 @@
   "profile": "wheat",
   "kind": "source",
   "text": "maltodextrin",
-  "expect": "not-pass",
-  "why": "can be made from the allergen; the source may appear only in a separate Contains statement",
+  "expect": "pass",
+  "why": "revised in the fix pass of September 30, 2026 (P2-11): wheat based maltodextrins are exempt from allergen labelling (Regulation (EU) No 1169/2011, Annex II, 1(b)) and FARE's wheat list does not name maltodextrin, so there is nothing on the label to check. The audit expected not-pass.",
   "id": "L470"
  },
  {
