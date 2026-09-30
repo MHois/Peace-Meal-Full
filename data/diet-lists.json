@@ -356,7 +356,15 @@
                 "red chilli",
                 "green chilli",
                 "chili flakes",
-                "chilli flakes"
+                "chilli flakes",
+                "chile",
+                "chile pepper",
+                "chili pepper",
+                "chilli pepper",
+                "red chile",
+                "green chile",
+                "red chili",
+                "green chili"
               ],
               "portion": "usual serve",
               "sources": [
@@ -648,7 +656,12 @@
                 "rice milk",
                 "rice bran",
                 "rice malt syrup",
-                "rice crackers"
+                "rice crackers",
+                "risotto rice",
+                "arborio rice",
+                "sushi rice",
+                "glutinous rice",
+                "sticky rice"
               ],
               "portion": "usual serve",
               "sources": [
@@ -798,7 +811,9 @@
                 "bicarbonate of soda",
                 "cream of tartar",
                 "yeast",
-                "dried yeast"
+                "dried yeast",
+                "active dry yeast",
+                "fast action yeast"
               ],
               "portion": "usual serve",
               "sources": [
@@ -900,7 +915,9 @@
                 "eggs",
                 "egg whites",
                 "egg white",
-                "egg yolk"
+                "egg yolk",
+                "hard boiled egg",
+                "soft boiled egg"
               ],
               "portion": "usual serve",
               "sources": [
@@ -1164,7 +1181,18 @@
                 "emmental",
                 "colby",
                 "monterey jack",
-                "havarti"
+                "havarti",
+                "cheddar cheese",
+                "parmesan cheese",
+                "pecorino cheese",
+                "gruyere cheese",
+                "gouda cheese",
+                "edam cheese",
+                "manchego cheese",
+                "emmental cheese",
+                "colby cheese",
+                "monterey jack cheese",
+                "havarti cheese"
               ],
               "portion": "usual serve",
               "note": "aged cheeses are almost lactose free",
@@ -1175,7 +1203,9 @@
             {
               "term": "mozzarella",
               "aliases": [
-                "fresh mozzarella"
+                "fresh mozzarella",
+                "mozzarella cheese",
+                "fresh mozzarella cheese"
               ],
               "portion": "usual serve",
               "sources": [
@@ -1187,12 +1217,17 @@
               "portion": "usual serve",
               "sources": [
                 "halmos-2014"
+              ],
+              "aliases": [
+                "feta cheese"
               ]
             },
             {
               "term": "brie",
               "aliases": [
-                "camembert"
+                "camembert",
+                "brie cheese",
+                "camembert cheese"
               ],
               "portion": "usual serve",
               "sources": [
@@ -1430,7 +1465,9 @@
                 "five spice",
                 "garam masala",
                 "sumac",
-                "za'atar"
+                "za'atar",
+                "cumin seed",
+                "caraway seed"
               ],
               "portion": "usual serve",
               "note": "check spice blends for onion or garlic powder",
@@ -2239,7 +2276,12 @@
                 "rice cakes",
                 "rice paper",
                 "puffed rice",
-                "rice crackers"
+                "rice crackers",
+                "risotto rice",
+                "arborio rice",
+                "sushi rice",
+                "glutinous rice",
+                "sticky rice"
               ],
               "portion": "usual serve",
               "basis": "SIGHI rating only",
@@ -2546,7 +2588,9 @@
               "aliases": [
                 "eggs",
                 "egg yolk",
-                "egg yolks"
+                "egg yolks",
+                "hard boiled egg",
+                "soft boiled egg"
               ],
               "portion": "usual serve, cooked",
               "note": "cooked through; raw egg white is a histamine liberator",
@@ -2712,7 +2756,9 @@
             {
               "term": "fresh mozzarella",
               "aliases": [
-                "mozzarella"
+                "mozzarella",
+                "mozzarella cheese",
+                "fresh mozzarella cheese"
               ],
               "portion": "usual serve",
               "note": "young cheese; histamine builds with ageing",
@@ -2735,7 +2781,9 @@
                 "mascarpone",
                 "paneer",
                 "fresh cheese",
-                "young cheese"
+                "young cheese",
+                "ricotta cheese",
+                "mascarpone cheese"
               ],
               "portion": "usual serve",
               "basis": "SIGHI rating only",
@@ -2931,7 +2979,9 @@
                 "fennel seed",
                 "saffron",
                 "sweet paprika",
-                "paprika"
+                "paprika",
+                "cumin seed",
+                "caraway seed"
               ],
               "portion": "usual serve",
               "note": "mild spices; hot spices (chilli, cayenne, hot paprika) and mixes like curry powder are liberators",
@@ -3078,7 +3128,24 @@
           "basis_note": "Sánchez-Pérez 2021 lab data (preserved and semi-preserved fish, 151 samples): histamine 10.03 mg/kg on average, highest 657.05 (canned sardines).",
           "basis_sources": [
             "sanchez-perez-2021"
-          ]
+          ],
+          "aliases": [
+            "canned tuna",
+            "tinned tuna",
+            "canned salmon",
+            "tinned salmon",
+            "canned sardines",
+            "tinned sardines",
+            "sardines in oil",
+            "canned mackerel",
+            "tinned mackerel",
+            "canned anchovies",
+            "tinned anchovies",
+            "tuna in water",
+            "tuna in oil",
+            "tinned fish"
+          ],
+          "aliases_note": "Named kinds of canned fish, added in the fix pass of September 30, 2026 (P2-13) so a label that names the fish is caught; the leave-out itself is unchanged."
         },
         {
           "term": "shellfish",

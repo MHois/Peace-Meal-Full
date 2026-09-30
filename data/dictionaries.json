@@ -20970,11 +20970,15 @@
       ],
       "may_contain": [
         "allergen-milk",
+        "allergen-soy",
         "soy-refined-oil",
         "soy-lecithin"
       ],
       "match": "word",
-      "note": "a vegetable-oil spread. The US standard of identity (21 CFR 166.110) allows milk, cream, or whey among its optional ingredients, and soybean oil and soy lecithin are common, so milk and soy are label checks, not a pass. Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized."
+      "note": "a vegetable-oil spread. The US standard of identity (21 CFR 166.110) lets its water phase hold milk and milk products, whey, casein, caseinate, or soy protein isolate, and allows emulsifiers; soybean oil and soy lecithin are common. So milk and soy are label checks, not a pass. Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized.",
+      "sources": [
+        "cfr-166-110"
+      ]
     },
     {
       "term": "wholemeal",
@@ -21724,6 +21728,7 @@
     "bailey-2013": "Bailey DG, Dresser G, Arnold JMO. Grapefruit-medication interactions: forbidden fruit or avoidable consequences? CMAJ 2013;185(4):309-316. https://doi.org/10.1503/cmaj.120951",
     "coeliac-uk-cooking-tips": "Coeliac UK. Hints and tips for cooking at home (gluten-free diet). Patient material, read 2026-09-29: stock cubes, soups, and sauces as gluten sources; check the label.",
     "sighi-leaflet-2021": "Swiss Interest Group Histamine Intolerance (SIGHI). Histamine Elimination Diet leaflet, version 2021-11-17. Patient material.",
-    "fda-food-allergies-page": "FDA. Food Allergies (web page on food allergen labeling), content current as of 03/11/2026. Declares the food source of a major food allergen in parentheses, with the example \"lecithin (soy)\"."
+    "fda-food-allergies-page": "FDA. Food Allergies (web page on food allergen labeling), content current as of 03/11/2026. Declares the food source of a major food allergen in parentheses, with the example \"lecithin (soy)\".",
+    "cfr-166-110": "21 CFR 166.110, Margarine (standard of identity). Paragraph (a)(2): \"(i) Water and/or milk and/or milk products. (ii) Suitable edible protein including, but not limited to, the liquid, condensed, or dry form of whey, ... casein, caseinate, vegetable proteins, or soy protein isolate\"; paragraph (b)(4): \"Emulsifiers.\" Read 2026-09-30 from govinfo (CFR 2024, title 21, volume 2)."
   }
 }

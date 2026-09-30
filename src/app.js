@@ -1,6 +1,7 @@
 // Router and top-level state. Loads data from window.__APP_DATA__ (single-file bundle) or fetch('data/*.json') over http.
 import { load, storeState } from './store.js';
 import { buildMatcher } from './engine/dictionary.js';
+import { indexFoodNames } from './engine/checker.js';
 import { annotateCuisines } from './engine/cuisine.js';
 import { buildPlan } from './engine/plan.js';
 import { checkRecipe } from './engine/checker.js';
@@ -428,6 +429,7 @@ async function appBoot() {
   uiState.dataProblems = problems;
   uiState.matcher = buildMatcher(uiState.data.dictionaries);
   uiState.matcher.dietLists = uiState.data['diet-lists'] || { families: {} };   // approved-food lists for strict mode
+  uiState.matcher.foodNames = indexFoodNames(uiState.data.foods || []);   // typed food names get the food's own tags (P0-3)
   uiState.conditionsById = new Map(uiState.data.conditions.map(m => [m.id, m]));
   uiState.sourcesById = new Map(uiState.data.sources.map(s => [s.id, s]));
   uiState.foodsById = new Map(uiState.data.foods.map(f => [f.id, f]));

@@ -2,7 +2,7 @@
 import fs from 'node:fs';
 import { buildMatcher } from '../../src/engine/dictionary.js';
 import { buildPlan } from '../../src/engine/plan.js';
-import { checkText, checkRecipe, checkFood } from '../../src/engine/checker.js';
+import { checkText, checkRecipe, checkFood, indexFoodNames } from '../../src/engine/checker.js';
 
 const ROOT = new URL('../../', import.meta.url);
 export const J = f => JSON.parse(fs.readFileSync(new URL('data/' + f, ROOT), 'utf8'));
@@ -14,6 +14,9 @@ export const foods = J('foods.json');
 export const foodsById = new Map(foods.map(f => [f.id, f]));
 export const matcher = buildMatcher(dictionaries);
 matcher.dietLists = dietLists;
+// The app wires the food names into the matcher too (src/app.js, since the fix of audit finding P0-3); do the same here,
+// or the audit's checks would test a label box the app no longer has. Guarded so this file still loads on older code.
+if (typeof indexFoodNames === 'function') matcher.foodNames = indexFoodNames(foods);
 
 // A made-up adult with nothing on file. Every test person is invented.
 export function person(extra = {}) {

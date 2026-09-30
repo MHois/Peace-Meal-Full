@@ -55,8 +55,61 @@ function verifyLabelHits(mayContain, plan, matcher) {
   return out;
 }
 
+// P0-3 (fix pass of September 30, 2026): a label or dish typed by its plain name ("Caramels", "1 cup Grape-Nuts") gets
+// the tags that food carries in the food data (data/foods.json), the same tags the food box uses. Keys are the food's
+// name and short name with case, punctuation, and leading amounts ("1 cup") taken off; only an exact key counts.
+const FOOD_KEY_LEAD = new Set('cup cups tbsp tablespoon tablespoons tsp teaspoon teaspoons oz ounce ounces lb lbs pound pounds g gram grams kg ml l liter liters litre litres can cans jar jars package packages pkg bag bags box boxes slice slices piece pieces serving servings handful handfuls pinch dash of a an'.split(' '));
+export function foodNameKey(s) {
+  const words = normalizeText(s).replace(/[(),.;:!?"]/g, ' ').replace(/\s+/g, ' ').trim().split(' ').filter(Boolean);
+  let i = 0;
+  while (i < words.length && (FOOD_KEY_LEAD.has(words[i]) || /^[\d.,\/½¼¾⅓⅔⅛⅜⅝⅞x×-]+%?$/.test(words[i]) || /^\d+(g|ml|oz|lb|kg|l)$/.test(words[i]))) i++;
+  return words.slice(i).join(' ');
+}
+// key -> { foods, tags (carried by every food with that name), mayContain (carried by only some) }
+export function indexFoodNames(foods) {
+  const byKey = new Map();
+  for (const f of foods || []) for (const n of [f.name, f.short]) {
+    if (!n) continue;
+    const k = foodNameKey(n);
+    if (!k) continue;
+    if (!byKey.has(k)) byKey.set(k, []);
+    if (!byKey.get(k).includes(f)) byKey.get(k).push(f);
+  }
+  const out = new Map();
+  for (const [k, list] of byKey) {
+    const all = list.map(f => new Set(f.tags || []));
+    const union = [...new Set(list.flatMap(f => f.tags || []))];
+    out.set(k, { foods: list, tags: union.filter(t => all.every(s => s.has(t))), mayContain: union.filter(t => !all.every(s => s.has(t))) });
+  }
+  return out;
+}
+// The foods a text names: the whole text, or one of its pieces, is exactly a food's name.
+function foodsNamedIn(text, matcher) {
+  if (!matcher.foodNames) return [];
+  const found = [];
+  for (const piece of [String(text || ''), ...segmentTextRaw(text)]) {
+    const hit = matcher.foodNames.get(foodNameKey(piece));
+    if (hit && !found.some(x => x.hit === hit)) found.push({ piece, hit });
+  }
+  return found;
+}
+
 export function checkText(text, plan, matcher, person = {}) {
-  const r = matcher.tagText(text);
+  const r0 = matcher.tagText(text);
+  // Merge the named foods' tags into a copy; the matcher's cached result is never changed.
+  const named = foodsNamedIn(text, matcher);
+  const r = named.length ? { ...r0, tags: { ...r0.tags }, mayContain: { ...(r0.mayContain || {}) } } : r0;
+  for (const { hit } of named) {
+    const label = hit.foods[0].short || hit.foods[0].name;
+    for (const t of hit.tags) r.tags[t] = [...new Set([...(r.tags[t] || []), label])];
+    for (const t of hit.mayContain) if (!r.tags[t]) r.mayContain[t] = [...new Set([...(r.mayContain[t] || []), label])];
+  }
+  // A piece that is exactly a food's name is known from the food data, even when the dictionary cannot place a word in it.
+  if (named.length) {
+    const keys = new Set(named.map(n => foodNameKey(n.piece)));
+    r.unrecognized = (r0.unrecognized || []).filter(u => !keys.has(foodNameKey(u)));
+    r.unplaced = (r0.unplaced || []).filter(u => !keys.has(foodNameKey(u.segment)));
+  }
   const { hits, preferHits } = evaluateTags(r.tags, plan, matcher);
   const hasAllergens = !!((person.allergens && person.allergens.length) || otherAllergies(person).length);
   const restricting = planRestricts(plan, person);
@@ -70,6 +123,14 @@ export function checkText(text, plan, matcher, person = {}) {
   // food in it: "half-and-half" is made of noise words, but it is cream.
   const isNoise = seg => { if (!isNoiseOnly(normalizeText(seg))) return false; const t = matcher.tagText(seg); return !Object.keys(t.tags).length && !Object.keys(t.mayContain || {}).length && !t.unknownRisk.length; };
   const strict = matcher.dietLists ? strictCheckText(raw, plan, matcher.dietLists, person, isNoise) : { families: [], notApproved: [] };
+  // A named food also gets the food box's strict-list check, so the two boxes agree about it (P0-3).
+  if (matcher.dietLists && named.length && strict.families.length) {
+    for (const { piece, hit } of named) for (const f of hit.foods) {
+      const one = { ingredients: [{ food: f.id }] };
+      const s2 = strictCheck(one, plan, matcher.dietLists, new Map([[f.id, f]]), person);
+      for (const n of s2.notApproved) if (!strict.notApproved.some(x => x.family === n.family && x.label === piece)) strict.notApproved.push({ ...n, label: piece });
+    }
+  }
   const portions = matcher.dietLists ? portionCheckText(raw, plan, matcher.dietLists) : { notes: [], stacked: [] };
   const verdict = verdictFrom({ hits, unknownRisk: r.unknownRisk, unrecognized: r.unrecognized, hasAllergens, restricting, termHits, verifyLabel, notApproved: strict.notApproved, smallServe: portions.stacked });
   return { verdict, hits, preferHits, termHits, verifyLabel, unknownRisk: r.unknownRisk, unrecognized: r.unrecognized, unplaced: r.unplaced || [], notes: r.notes, tags: r.tags, mayContain: r.mayContain, segments: r.segments, restricting, strictFamilies: strict.families, notApproved: strict.notApproved, portionNotes: portions.notes, smallServe: portions.stacked };

@@ -1134,5 +1134,13 @@
     "year": 2026,
     "url": "https://www.fda.gov/food/nutrition-food-labeling-and-critical-foods/food-allergies",
     "note": "Read 2026-09-30: \"The name of the food source of a major food allergen must appear: In parentheses following the name of the ingredient. Examples: lecithin (soy), flour (wheat), and whey (milk) - OR - Immediately after or next to the list of ingredients in a contains statement. Example: Contains wheat, milk, and soy.\""
+  },
+  {
+    "id": "cfr-166-110",
+    "citation": "21 CFR 166.110, Margarine (standard of identity).",
+    "type": "regulation",
+    "year": 2024,
+    "url": "https://www.govinfo.gov/content/pkg/CFR-2024-title21-vol2/xml/CFR-2024-title21-vol2-sec166-110.xml",
+    "note": "Read 2026-09-30. Paragraph (a)(2): \"(i) Water and/or milk and/or milk products. (ii) Suitable edible protein including, but not limited to, the liquid, condensed, or dry form of whey, whey modified by the reduction of lactose and/or minerals, nonlactose containing whey components, albumin, casein, caseinate, vegetable proteins, or soy protein isolate\". Paragraph (b)(4): \"Emulsifiers.\""
   }
 ]
