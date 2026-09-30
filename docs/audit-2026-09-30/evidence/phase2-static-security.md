@@ -69,7 +69,7 @@ These are active only when the app runs inside claude.ai with a shared store (`s
 
 `audit/scripts/swallowed-errors.mjs` found 74 `catch` blocks: 53 silent, 3 logged only, 18 shown to the person or returned as an error. Most silent ones guard optional features (storage probes, the share sheet, WebAssembly detection) and are harmless. The ones that can lose data or hide a problem:
 
-- **`src/store.js:79-84` (P1).** When saved data cannot be read (JSON damaged, or a `null` in `people`), `load()` returns an empty profile and keeps no copy of what was there.
+- **`src/store.js:79-84` (P1 here; raised to P0 in `REPORT.md`, because it loses data and the report's P0 definition covers data loss).** When saved data cannot be read (JSON damaged, or a `null` in `people`), `load()` returns an empty profile and keeps no copy of what was there.
 
   The test in `audit/e2e/data-safety.mjs` shows what the person sees: the welcome screen of a new install, with no message. The first thing they then save (typing their name) overwrites the unreadable data for good. Result: `keptAtLaunch: true, warnedOnScreen: false, keptAfterFirstEntry: false, copyKeptAnywhere: false`, in both builds.
 - **`src/store.js:115-119` (P2).** Import checks only that `people` is an array. Types are not validated, which is the root of the XSS above. Import replaces everything after one confirmation, and the replaced data is not kept for an undo (`settings.js:286-309`).

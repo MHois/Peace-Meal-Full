@@ -48,6 +48,7 @@ function scan(text, where) {
     nameRes.forEach(re => { if (re.test(l)) findings.push({ kind: 'private name list', pattern: 'a name on the private list', where, line: i + 1 }); });
   });
 }
+const SELF = new Set(['audit/scripts/secrets-scan.mjs', 'audit/results/secrets-scan.json']);
 // 1. every blob reachable from any ref
 const objects = git('rev-list', '--all', '--objects').toString().trim().split('\n').map(l => { const [sha, ...p] = l.split(' '); return { sha, path: p.join(' ') }; });
 const typeOf = new Map(execFileSync('git', ['cat-file', '--batch-check=%(objectname) %(objecttype) %(objectsize)'], { cwd: root, input: objects.map(o => o.sha).join('\n'), maxBuffer: 1 << 28 }).toString().trim().split('\n').map(l => { const [s, t, z] = l.split(' '); return [s, { t, z: Number(z) }]; }));
@@ -60,13 +61,14 @@ for (const o of objects) {
   const buf = git('cat-file', '-p', o.sha);
   blobs++; bytes += buf.length;
   if (/\.(png|jpe?g|gif|woff2?|ico|pdf|zip|gz)$/i.test(o.path)) continue;   // binary: see the image note in the report
+  if (SELF.has(o.path)) continue;   // this scanner's own patterns and results would match themselves
   scan(buf.toString('utf8'), `blob ${o.sha.slice(0, 10)} ${o.path}`);
 }
 // 2. commit messages and author lines
 const log = git('log', '--all', '--format=%H%x00%an <%ae>%x00%cn <%ce>%x00%B%x01').toString().split('\x01').filter(s => s.trim());
 for (const entry of log) { const [h, a, c, body] = entry.trim().split('\x00'); scan(body || '', `commit message ${h.slice(0, 10)}`); scan(`${a}\n${c}`, `commit author ${h.slice(0, 10)}`); }
 // 3. files in the working tree that are not committed yet (this audit's own output)
-for (const f of git('ls-files', '--others', '--exclude-standard').toString().trim().split('\n').filter(Boolean).filter(f => f !== 'audit/scripts/secrets-scan.mjs' && f !== 'audit/results/secrets-scan.json')) {
+for (const f of git('ls-files', '--others', '--exclude-standard').toString().trim().split('\n').filter(Boolean).filter(f => !SELF.has(f))) {
   if (/\.(png|jpe?g|gif|woff2?)$/i.test(f)) continue;
   scan(fs.readFileSync(root + f, 'utf8'), `working tree ${f}`);
 }
