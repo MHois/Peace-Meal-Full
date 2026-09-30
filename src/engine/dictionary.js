@@ -71,12 +71,35 @@ export function isNoiseOnly(segment) {
   return tokens.length > 0 && tokens.every(t => NOISE.has(t) || /^[\d.,\/½¼¾⅓⅔x×-]+%?$/.test(t) || /^\d+(g|ml|oz|lb|kg|l|cm|mm)$/.test(t));
 }
 
-export function buildMatcher(dictionaries) {
+// The words of a piece of text as the patterns see them: runs of a-z and 0-9 (buildRegex treats anything else as a
+// boundary).
+function tokensOf(segment) {
+  return segment.match(/[a-z0-9]+/g) || [];
+}
+
+// The whole words that must appear in a piece of text for this term's pattern to match (P2-1, audit of September 30,
+// 2026): the term's first word, and for a one-word 'word' term also the plural forms pluralPattern allows. Returns null
+// when the pattern could match without such a word (substring terms, or a first word with characters outside a-z and
+// 0-9, such as "1%" or "fd&c"); those terms are tried on every piece, as before.
+function termKeys(term, mode) {
+  if (mode === 'substring') return null;
+  const words = term.split(' ');
+  const first = words[0];
+  if (!/^[a-z0-9]+$/.test(first)) return null;
+  if (words.length > 1 || mode === 'phrase') return [first];
+  if (/y$/.test(first) && !/[aeiou]y$/.test(first)) return [first, first.slice(0, -1) + 'ies'];
+  return [first, first + 's', first + 'es'];
+}
+
+// opts.index === false tries every pattern on every piece (the behavior before the index); the tests use it to prove
+// the index changes no result.
+export function buildMatcher(dictionaries, opts = {}) {
   const tagDefs = dictionaries.tags || {};
-  const entries = (dictionaries.entries || []).map(e => {
+  const entries = (dictionaries.entries || []).map((e, order) => {
     const term = normalizeText(e.term);
     const mode = e.match || 'word';
     return {
+      order,
       term,
       tags: Array.isArray(e.tags) ? e.tags : [],
       match: mode,
@@ -89,6 +112,24 @@ export function buildMatcher(dictionaries) {
       re: buildRegex(term, mode)
     };
   });
+
+  // Word -> the entries whose pattern needs that word (see termKeys), plus the few entries tried on every piece.
+  const useIndex = opts.index !== false;
+  const byWord = new Map();
+  const always = [];
+  for (const e of entries) {
+    const keys = termKeys(e.term, e.match);
+    if (!keys) { always.push(e); continue; }
+    for (const k of new Set(keys)) { if (!byWord.has(k)) byWord.set(k, []); byWord.get(k).push(e); }
+  }
+  const stats = { patternChecks: 0 };
+  // The entries worth trying on this piece, in dictionary order (the order decides the order of tags and notes).
+  function candidates(segment) {
+    if (!useIndex) return entries;
+    const found = new Set(always);
+    for (const w of tokensOf(segment)) { const list = byWord.get(w); if (list) for (const e of list) found.add(e); }
+    return [...found].sort((a, b) => a.order - b.order);
+  }
 
   // Returns the matched span { start, end } or null.
   function fires(e, segment) {
@@ -115,7 +156,9 @@ export function buildMatcher(dictionaries) {
     const matchedTerms = [];
     const notes = [];
     const fired = [];
-    for (const e of entries) { const span = fires(e, segment); if (span) fired.push({ e, ...span }); }
+    const tryList = candidates(segment);
+    stats.patternChecks += tryList.length;
+    for (const e of tryList) { const span = fires(e, segment); if (span) fired.push({ e, ...span }); }
     for (const { e, start, end } of fired) {
       matchedTerms.push(e.term);
       // An unknown-kind term ("tortilla": corn or flour?) is settled when a longer entry covering the same words also
@@ -174,5 +217,5 @@ export function buildMatcher(dictionaries) {
   function tagDef(tag) { return tagDefs[tag] || null; }
   function isHardTag(tag) { return !!(tagDefs[tag] && tagDefs[tag].hard); }
 
-  return { tagText, tagLabel, tagDef, isHardTag, entryCount: entries.length, tags: tagDefs };
+  return { tagText, tagLabel, tagDef, isHardTag, entryCount: entries.length, tags: tagDefs, stats: () => ({ ...stats }) };
 }
