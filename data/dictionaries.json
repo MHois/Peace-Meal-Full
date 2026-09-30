@@ -11802,7 +11802,9 @@
       "note": "generic 'nuts' or 'mixed nuts'; tree nut tag is conservative because the species is unknown. Oxalate: AUA and Phase 1 D4 list nuts as a class; almonds and cashews are highest, macadamias low. pair with a calcium source in the same meal rather than eliminating (AUA)",
       "except": [
         "ground nut",
-        "ground nuts"
+        "ground nuts",
+        "pea nut",
+        "pea nuts"
       ],
       "sources": [
         "aua-stones-2014",
@@ -12534,7 +12536,8 @@
         "pea protein",
         "pea milk",
         "pea flour",
-        "chick pea"
+        "chick pea",
+        "pea nut"
       ]
     },
     {
@@ -12679,7 +12682,8 @@
         "black-eyed peas",
         "black eyed peas",
         "pigeon peas",
-        "chick peas"
+        "chick peas",
+        "pea nuts"
       ]
     },
     {
@@ -20939,6 +20943,368 @@
         "sighi-leaflet-2021",
         "sighi-list"
       ]
+    },
+    {
+      "term": "pea nut",
+      "tags": [
+        "allergen-peanut",
+        "nut",
+        "legume",
+        "large-particle",
+        "histamine-high",
+        "oxalate-high"
+      ],
+      "match": "word",
+      "note": "a scanning split or misspelling of peanut (audit corpus lines L371, L375, L403); read as peanut, never as pea and a tree nut. Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized.",
+      "sources": [
+        "sighi-list",
+        "holmes-2000"
+      ]
+    },
+    {
+      "term": "margarine",
+      "tags": [
+        "basic-ingredient"
+      ],
+      "may_contain": [
+        "allergen-milk",
+        "soy-refined-oil",
+        "soy-lecithin"
+      ],
+      "match": "word",
+      "note": "a vegetable-oil spread. The US standard of identity (21 CFR 166.110) allows milk, cream, or whey among its optional ingredients, and soybean oil and soy lecithin are common, so milk and soy are label checks, not a pass. Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized."
+    },
+    {
+      "term": "wholemeal",
+      "tags": [
+        "allergen-wheat",
+        "gluten",
+        "fodmap-fructan",
+        "whole-grain"
+      ],
+      "match": "word",
+      "note": "UK wording for whole wheat (wholemeal flour, bread, pasta, pitta), so wheat and gluten. Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized.",
+      "sources": [
+        "biesiekierski-2011"
+      ]
+    },
+    {
+      "term": "pitta",
+      "tags": [
+        "allergen-wheat",
+        "gluten",
+        "refined-grain",
+        "fodmap-fructan"
+      ],
+      "match": "word",
+      "note": "UK spelling of pita bread; the same tags as pita. Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized."
+    },
+    {
+      "term": "bun",
+      "tags": [
+        "allergen-wheat",
+        "gluten",
+        "refined-grain",
+        "fodmap-fructan",
+        "lactose-hidden"
+      ],
+      "match": "word",
+      "note": "a bread roll (hamburger or hot dog bun, dinner roll); the same tags as bread. Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized.",
+      "sources": [
+        "biesiekierski-2011",
+        "nih-lactose-2010"
+      ]
+    },
+    {
+      "term": "bread roll",
+      "tags": [
+        "allergen-wheat",
+        "gluten",
+        "refined-grain",
+        "fodmap-fructan",
+        "lactose-hidden"
+      ],
+      "match": "word",
+      "note": "a bread roll (hamburger or hot dog bun, dinner roll); the same tags as bread. Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized.",
+      "sources": [
+        "biesiekierski-2011",
+        "nih-lactose-2010"
+      ]
+    },
+    {
+      "term": "chile pepper",
+      "tags": [
+        "spicy"
+      ],
+      "match": "word",
+      "note": "a hot pepper; the same tag as jalapeno and hot pepper. The word chili or chilli on its own is left out on purpose: it can mean the dish (chili con carne). Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized."
+    },
+    {
+      "term": "chili pepper",
+      "tags": [
+        "spicy"
+      ],
+      "match": "word",
+      "note": "a hot pepper; the same tag as jalapeno and hot pepper. The word chili or chilli on its own is left out on purpose: it can mean the dish (chili con carne). Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized."
+    },
+    {
+      "term": "chilli pepper",
+      "tags": [
+        "spicy"
+      ],
+      "match": "word",
+      "note": "a hot pepper; the same tag as jalapeno and hot pepper. The word chili or chilli on its own is left out on purpose: it can mean the dish (chili con carne). Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized."
+    },
+    {
+      "term": "green chile",
+      "tags": [
+        "spicy"
+      ],
+      "match": "word",
+      "note": "a hot pepper; the same tag as jalapeno and hot pepper. The word chili or chilli on its own is left out on purpose: it can mean the dish (chili con carne). Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized."
+    },
+    {
+      "term": "green chili",
+      "tags": [
+        "spicy"
+      ],
+      "match": "word",
+      "note": "a hot pepper; the same tag as jalapeno and hot pepper. The word chili or chilli on its own is left out on purpose: it can mean the dish (chili con carne). Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized."
+    },
+    {
+      "term": "green chilli",
+      "tags": [
+        "spicy"
+      ],
+      "match": "word",
+      "note": "a hot pepper; the same tag as jalapeno and hot pepper. The word chili or chilli on its own is left out on purpose: it can mean the dish (chili con carne). Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized."
+    },
+    {
+      "term": "red chile",
+      "tags": [
+        "spicy"
+      ],
+      "match": "word",
+      "note": "a hot pepper; the same tag as jalapeno and hot pepper. The word chili or chilli on its own is left out on purpose: it can mean the dish (chili con carne). Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized."
+    },
+    {
+      "term": "red chili",
+      "tags": [
+        "spicy"
+      ],
+      "match": "word",
+      "note": "a hot pepper; the same tag as jalapeno and hot pepper. The word chili or chilli on its own is left out on purpose: it can mean the dish (chili con carne). Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized."
+    },
+    {
+      "term": "red chilli",
+      "tags": [
+        "spicy"
+      ],
+      "match": "word",
+      "note": "a hot pepper; the same tag as jalapeno and hot pepper. The word chili or chilli on its own is left out on purpose: it can mean the dish (chili con carne). Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized."
+    },
+    {
+      "term": "scotch bonnet",
+      "tags": [
+        "spicy"
+      ],
+      "match": "word",
+      "note": "a hot pepper; the same tag as jalapeno and hot pepper. The word chili or chilli on its own is left out on purpose: it can mean the dish (chili con carne). Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized."
+    },
+    {
+      "term": "serrano pepper",
+      "tags": [
+        "spicy"
+      ],
+      "match": "word",
+      "note": "a hot pepper; the same tag as jalapeno and hot pepper. The word chili or chilli on its own is left out on purpose: it can mean the dish (chili con carne). Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized."
+    },
+    {
+      "term": "serrano chile",
+      "tags": [
+        "spicy"
+      ],
+      "match": "word",
+      "note": "a hot pepper; the same tag as jalapeno and hot pepper. The word chili or chilli on its own is left out on purpose: it can mean the dish (chili con carne). Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized."
+    },
+    {
+      "term": "serrano chili",
+      "tags": [
+        "spicy"
+      ],
+      "match": "word",
+      "note": "a hot pepper; the same tag as jalapeno and hot pepper. The word chili or chilli on its own is left out on purpose: it can mean the dish (chili con carne). Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized."
+    },
+    {
+      "term": "jalapeño",
+      "tags": [
+        "spicy"
+      ],
+      "match": "word",
+      "note": "a hot pepper; the same tag as jalapeno and hot pepper. The word chili or chilli on its own is left out on purpose: it can mean the dish (chili con carne). Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized."
+    },
+    {
+      "term": "monterey jack",
+      "tags": [
+        "allergen-milk",
+        "calcium-rich"
+      ],
+      "match": "word",
+      "note": "a semi-hard cheese; the same tags as cheese. Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized."
+    },
+    {
+      "term": "monterrey jack",
+      "tags": [
+        "allergen-milk",
+        "calcium-rich"
+      ],
+      "match": "word",
+      "note": "a semi-hard cheese; the same tags as cheese. Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized."
+    },
+    {
+      "term": "pepper jack",
+      "tags": [
+        "allergen-milk",
+        "calcium-rich"
+      ],
+      "match": "word",
+      "note": "a semi-hard cheese; the same tags as cheese. Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized."
+    },
+    {
+      "term": "colby jack",
+      "tags": [
+        "allergen-milk",
+        "calcium-rich"
+      ],
+      "match": "word",
+      "note": "a semi-hard cheese; the same tags as cheese. Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized."
+    },
+    {
+      "term": "jack cheese",
+      "tags": [
+        "allergen-milk",
+        "calcium-rich"
+      ],
+      "match": "word",
+      "note": "a semi-hard cheese; the same tags as cheese. Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized."
+    },
+    {
+      "term": "hard boiled egg",
+      "tags": [
+        "allergen-egg",
+        "small-particle-friendly"
+      ],
+      "match": "word",
+      "note": "egg; the same tags as egg. Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized."
+    },
+    {
+      "term": "hard cooked egg",
+      "tags": [
+        "allergen-egg",
+        "small-particle-friendly"
+      ],
+      "match": "word",
+      "note": "egg; the same tags as egg. Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized."
+    },
+    {
+      "term": "spicy",
+      "tags": [
+        "spicy"
+      ],
+      "match": "word",
+      "note": "the word itself says the food is hot (spicy sausage, spicy sauce). Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized."
+    },
+    {
+      "term": "gluten",
+      "tags": [
+        "gluten"
+      ],
+      "may_contain": [
+        "allergen-wheat"
+      ],
+      "match": "word",
+      "except": [
+        "gluten free",
+        "gluten-free",
+        "corn gluten",
+        "no gluten",
+        "without gluten"
+      ],
+      "note": "gluten named as an ingredient (wheat gluten, gluten added). Wheat is a label check because the grain is not named. Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized."
+    },
+    {
+      "term": "risotto rice",
+      "tags": [
+        "basic-ingredient"
+      ],
+      "match": "word",
+      "note": "the rice sold for risotto (arborio, carnaroli); the same tags as rice. The word risotto on its own is left out on purpose: the dish usually has butter and cheese. Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized."
+    },
+    {
+      "term": "rice paper",
+      "tags": [
+        "basic-ingredient"
+      ],
+      "match": "word",
+      "note": "rice paper wrappers (rice flour, tapioca, water, salt); the same tags as rice. Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized."
+    },
+    {
+      "term": "rice paper wrapper",
+      "tags": [
+        "basic-ingredient"
+      ],
+      "match": "word",
+      "note": "rice paper wrappers; the same tags as rice. Other wrappers (wonton, egg roll, spring roll) are wheat and are not this entry. Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized."
+    },
+    {
+      "term": "crustacean",
+      "tags": [
+        "allergen-crustacean",
+        "fish",
+        "histamine-high",
+        "purine-high"
+      ],
+      "match": "word",
+      "note": "the allergen name US labels use (Crustacean Shellfish); the same tags as shellfish. Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized.",
+      "sources": [
+        "comas-baste-2020",
+        "acr-gout-2020"
+      ]
+    },
+    {
+      "term": "hazel nut",
+      "tags": [
+        "allergen-tree-nut",
+        "nut",
+        "large-particle"
+      ],
+      "match": "word",
+      "note": "hazelnut written as two words; the same tags as hazelnut. Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized."
+    },
+    {
+      "term": "sesame paste",
+      "tags": [
+        "allergen-sesame",
+        "seed"
+      ],
+      "match": "word",
+      "note": "sesame paste is tahini; the same tags as tahini. Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized."
+    },
+    {
+      "term": "sunflower lecithin",
+      "tags": [
+        "emulsifier-additive"
+      ],
+      "match": "word",
+      "note": "lecithin from sunflower, named on the label; the same tags as lecithin. No soy. Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized."
+    },
+    {
+      "term": "arachis hypogaea",
+      "tags": [
+        "allergen-peanut"
+      ],
+      "match": "word",
+      "note": "the botanical name of peanut; the same tags as arachis. Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized."
     }
   ],
   "unsure": [
