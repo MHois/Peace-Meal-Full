@@ -1,0 +1,777 @@
+{
+  "statistics": {
+    "detectionDate": "2026-09-30T08:03:32.584Z",
+    "formats": {
+      "javascript": {
+        "sources": {
+          "src/ui/week.js": {
+            "lines": 441,
+            "tokens": 10965,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/ui/together.js": {
+            "lines": 177,
+            "tokens": 4772,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/ui/today.js": {
+            "lines": 747,
+            "tokens": 18486,
+            "sources": 1,
+            "clones": 2,
+            "duplicatedLines": 10,
+            "duplicatedTokens": 236,
+            "percentage": 1.34,
+            "percentageTokens": 1.28,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/ui/sharing.js": {
+            "lines": 90,
+            "tokens": 2479,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/ui/settings.js": {
+            "lines": 326,
+            "tokens": 5072,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/ui/recipes.js": {
+            "lines": 429,
+            "tokens": 11892,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/ui/recipes-edit.js": {
+            "lines": 471,
+            "tokens": 12234,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/ui/plan.js": {
+            "lines": 264,
+            "tokens": 7570,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/ui/pantry.js": {
+            "lines": 91,
+            "tokens": 1957,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/ui/owner.js": {
+            "lines": 47,
+            "tokens": 1291,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/ui/log.js": {
+            "lines": 107,
+            "tokens": 2781,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/ui/lite.js": {
+            "lines": 266,
+            "tokens": 8644,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/ui/learn.js": {
+            "lines": 216,
+            "tokens": 2419,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/ui/install.js": {
+            "lines": 86,
+            "tokens": 1123,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/ui/household.js": {
+            "lines": 335,
+            "tokens": 6946,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/ui/home.js": {
+            "lines": 138,
+            "tokens": 2314,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/ui/grocery.js": {
+            "lines": 277,
+            "tokens": 4992,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/ui/dietlist.js": {
+            "lines": 120,
+            "tokens": 3695,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/ui/common.js": {
+            "lines": 725,
+            "tokens": 11777,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/ui/check.js": {
+            "lines": 242,
+            "tokens": 5148,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/ui/breathe.js": {
+            "lines": 19,
+            "tokens": 227,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/engine/sync.js": {
+            "lines": 145,
+            "tokens": 3197,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/engine/swaps.js": {
+            "lines": 102,
+            "tokens": 1613,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/engine/spice.js": {
+            "lines": 107,
+            "tokens": 2614,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/engine/search.js": {
+            "lines": 24,
+            "tokens": 499,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/engine/screen.js": {
+            "lines": 31,
+            "tokens": 261,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/engine/report.js": {
+            "lines": 107,
+            "tokens": 2661,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/engine/planner.js": {
+            "lines": 325,
+            "tokens": 7617,
+            "sources": 1,
+            "clones": 1,
+            "duplicatedLines": 5,
+            "duplicatedTokens": 216,
+            "percentage": 1.54,
+            "percentageTokens": 2.84,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/engine/plan.js": {
+            "lines": 573,
+            "tokens": 13525,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/engine/pantry.js": {
+            "lines": 29,
+            "tokens": 849,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/engine/nutrition.js": {
+            "lines": 87,
+            "tokens": 1623,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/engine/household.js": {
+            "lines": 231,
+            "tokens": 6119,
+            "sources": 1,
+            "clones": 1,
+            "duplicatedLines": 5,
+            "duplicatedTokens": 216,
+            "percentage": 2.16,
+            "percentageTokens": 3.53,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/engine/group.js": {
+            "lines": 44,
+            "tokens": 1476,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/engine/grocery.js": {
+            "lines": 92,
+            "tokens": 2141,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/engine/energy.js": {
+            "lines": 84,
+            "tokens": 1733,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/engine/dietlists.js": {
+            "lines": 247,
+            "tokens": 4347,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/engine/dictionary.js": {
+            "lines": 178,
+            "tokens": 2454,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/engine/cuisine.js": {
+            "lines": 117,
+            "tokens": 1620,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/engine/crypto.js": {
+            "lines": 92,
+            "tokens": 1792,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/engine/checker.js": {
+            "lines": 166,
+            "tokens": 3579,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/store.js": {
+            "lines": 151,
+            "tokens": 3074,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app.js": {
+            "lines": 499,
+            "tokens": 9252,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "sw.js": {
+            "lines": 48,
+            "tokens": 741,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          }
+        },
+        "total": {
+          "lines": 9093,
+          "tokens": 199571,
+          "sources": 43,
+          "clones": 2,
+          "duplicatedLines": 10,
+          "duplicatedTokens": 334,
+          "percentage": 0.11,
+          "percentageTokens": 0.17,
+          "newDuplicatedLines": 0,
+          "newClones": 0
+        }
+      },
+      "css": {
+        "sources": {
+          "src/fonts/fonts.css": {
+            "lines": 191,
+            "tokens": 1358,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/app.css": {
+            "lines": 999,
+            "tokens": 26328,
+            "sources": 1,
+            "clones": 2,
+            "duplicatedLines": 56,
+            "duplicatedTokens": 530,
+            "percentage": 5.61,
+            "percentageTokens": 2.01,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          }
+        },
+        "total": {
+          "lines": 1190,
+          "tokens": 27686,
+          "sources": 2,
+          "clones": 1,
+          "duplicatedLines": 28,
+          "duplicatedTokens": 265,
+          "percentage": 2.35,
+          "percentageTokens": 0.96,
+          "newDuplicatedLines": 0,
+          "newClones": 0
+        }
+      },
+      "txt": {
+        "sources": {
+          "src/fonts/OFL-Fraunces.txt": {
+            "lines": 93,
+            "tokens": 1359,
+            "sources": 1,
+            "clones": 1,
+            "duplicatedLines": 89,
+            "duplicatedTokens": 1343,
+            "percentage": 95.7,
+            "percentageTokens": 98.82,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/fonts/OFL-Atkinson-Hyperlegible.txt": {
+            "lines": 92,
+            "tokens": 1358,
+            "sources": 1,
+            "clones": 1,
+            "duplicatedLines": 89,
+            "duplicatedTokens": 1343,
+            "percentage": 96.74,
+            "percentageTokens": 98.9,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          }
+        },
+        "total": {
+          "lines": 185,
+          "tokens": 2717,
+          "sources": 2,
+          "clones": 1,
+          "duplicatedLines": 89,
+          "duplicatedTokens": 1343,
+          "percentage": 48.11,
+          "percentageTokens": 49.43,
+          "newDuplicatedLines": 0,
+          "newClones": 0
+        }
+      }
+    },
+    "total": {
+      "lines": 10468,
+      "tokens": 229974,
+      "sources": 47,
+      "clones": 4,
+      "duplicatedLines": 127,
+      "duplicatedTokens": 1942,
+      "percentage": 1.21,
+      "percentageTokens": 0.84,
+      "newDuplicatedLines": 0,
+      "newClones": 0
+    }
+  },
+  "duplicates": [
+    {
+      "format": "javascript",
+      "lines": 6,
+      "fragment": "const missing = [];\n    if (!person.sex) missing.push('sex');\n    if (!(Number(person.age) > 0)) missing.push('age');\n    if (!(Number(person.weight_kg) > 0)) missing.push('weight');\n    if (!(Number(person.height_cm) > 0)) missing.push('height');\n    if (missing.length) {",
+      "tokens": 118,
+      "firstFile": {
+        "name": "src/ui/today.js",
+        "start": 475,
+        "end": 480,
+        "startLoc": {
+          "line": 475,
+          "column": 5,
+          "position": 11164
+        },
+        "endLoc": {
+          "line": 480,
+          "column": 26,
+          "position": 11282
+        }
+      },
+      "secondFile": {
+        "name": "src/ui/today.js",
+        "start": 140,
+        "end": 145,
+        "startLoc": {
+          "line": 140,
+          "column": 3,
+          "position": 2945
+        },
+        "endLoc": {
+          "line": 145,
+          "column": 29,
+          "position": 3063
+        }
+      }
+    },
+    {
+      "format": "txt",
+      "lines": 90,
+      "fragment": "This Font Software is licensed under the SIL Open Font License, Version 1.1.\nThis license is copied below, and is also available with a FAQ at:\nhttp://scripts.sil.org/OFL\n\n-----------------------------------------------------------\nSIL OPEN FONT LICENSE Version 1.1 - 26 February 2007\n-----------------------------------------------------------\n\nPREAMBLE\nThe goals of the Open Font License (OFL) are to stimulate worldwide\ndevelopment of collaborative font projects, to support the font creation\nefforts of academic and linguistic communities, and to provide a free and\nopen framework in which fonts may be shared and improved in partnership\nwith others.\n\nThe OFL allows the licensed fonts to be used, studied, modified and\nredistributed freely as long as they are not sold by themselves. The\nfonts, including any derivative works, can be bundled, embedded, \nredistributed and/or sold with any software provided that any reserved\nnames are not used by derivative works. The fonts and derivatives,\nhowever, cannot be released under any other type of license. The\nrequirement for fonts to remain under this license does not apply\nto any document created using the fonts or their derivatives.\n\nDEFINITIONS\n\"Font Software\" refers to the set of files released by the Copyright\nHolder(s) under this license and clearly marked as such. This may\ninclude source files, build scripts and documentation.\n\n\"Reserved Font Name\" refers to any names specified as such after the\ncopyright statement(s).\n\n\"Original Version\" refers to the collection of Font Software components as\ndistributed by the Copyright Holder(s).\n\n\"Modified Version\" refers to any derivative made by adding to, deleting,\nor substituting -- in part or in whole -- any of the components of the\nOriginal Version, by changing formats or by porting the Font Software to a\nnew environment.\n\n\"Author\" refers to any designer, engineer, programmer, technical\nwriter or other person who contributed to the Font Software.\n\nPERMISSION & CONDITIONS\nPermission is hereby granted, free of charge, to any person obtaining\na copy of the Font Software, to use, study, copy, merge, embed, modify,\nredistribute, and sell modified and unmodified copies of the Font\nSoftware, subject to the following conditions:\n\n1) Neither the Font Software nor any of its individual components,\nin Original or Modified Versions, may be sold by itself.\n\n2) Original or Modified Versions of the Font Software may be bundled,\nredistributed and/or sold with any software, provided that each copy\ncontains the above copyright notice and this license. These can be\nincluded either as stand-alone text files, human-readable headers or\nin the appropriate machine-readable metadata fields within text or\nbinary files as long as those fields can be easily viewed by the user.\n\n3) No Modified Version of the Font Software may use the Reserved Font\nName(s) unless explicit written permission is granted by the corresponding\nCopyright Holder. This restriction only applies to the primary font name as\npresented to the users.\n\n4) The name(s) of the Copyright Holder(s) or the Author(s) of the Font\nSoftware shall not be used to promote, endorse or advertise any\nModified Version, except to acknowledge the contribution(s) of the\nCopyright Holder(s) and the Author(s) or with their explicit written\npermission.\n\n5) The Font Software, modified or unmodified, in part or in whole,\nmust be distributed entirely under this license, and must not be\ndistributed under any other license. The requirement for fonts to\nremain under this license does not apply to any document created\nusing the Font Software.\n\nTERMINATION\nThis license becomes null and void if any of the above conditions are\nnot met.\n\nDISCLAIMER\nTHE FONT SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND,\nEXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OF\nMERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT\nOF COPYRIGHT, PATENT, TRADEMARK, OR OTHER RIGHT. IN NO EVENT SHALL THE\nCOPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,\nINCLUDING ANY GENERAL, SPECIAL, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL\nDAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING\nFROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM\nOTHER DEALINGS IN THE FONT SOFTWARE.",
+      "tokens": 1343,
+      "firstFile": {
+        "name": "src/fonts/OFL-Atkinson-Hyperlegible.txt",
+        "start": 3,
+        "end": 92,
+        "startLoc": {
+          "line": 3,
+          "column": 1,
+          "position": 15
+        },
+        "endLoc": {
+          "line": 92,
+          "column": 37,
+          "position": 1358
+        }
+      },
+      "secondFile": {
+        "name": "src/fonts/OFL-Fraunces.txt",
+        "start": 3,
+        "end": 93,
+        "startLoc": {
+          "line": 3,
+          "column": 1,
+          "position": 15
+        },
+        "endLoc": {
+          "line": 93,
+          "column": 37,
+          "position": 1359
+        }
+      }
+    },
+    {
+      "format": "javascript",
+      "lines": 6,
+      "fragment": "); }\n\nfunction mulberry32(a) { return function () { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }\nfunction hashStr(s) { let h = 2166136261; for (const c of String(s)) { h ^= c.charCodeAt(0); h = Math.imul(h, 16777619); } return h >>> 0; }\n\n// Seatings share plans and recipe checks by eater set, so a week with four distinct combinations checks each recipe four times, not thirty.",
+      "tokens": 216,
+      "firstFile": {
+        "name": "src/engine/household.js",
+        "start": 68,
+        "end": 73,
+        "startLoc": {
+          "line": 68,
+          "column": 73,
+          "position": 1470
+        },
+        "endLoc": {
+          "line": 73,
+          "column": 141,
+          "position": 1686
+        }
+      },
+      "secondFile": {
+        "name": "src/engine/planner.js",
+        "start": 52,
+        "end": 65,
+        "startLoc": {
+          "line": 52,
+          "column": 60,
+          "position": 1044
+        },
+        "endLoc": {
+          "line": 65,
+          "column": 117,
+          "position": 1266
+        }
+      }
+    },
+    {
+      "format": "css",
+      "lines": 29,
+      "fragment": " {\n  color-scheme: dark;\n  --ground: #141816;\n  --surface: #1C211E;\n  --raised: #232A26;\n  --ink: #ECEAE2;\n  --muted: #A9AFA9;\n  --hairline: #2E3531;\n  --primary: #9DBE97;\n  --primary-strong: #B9D3B3;\n  --on-primary: #141816;\n  --accent: #D79BB9;\n  --on-accent: #141816;\n  --tint-olive: rgba(157, 190, 151, 0.14);\n  --tint-plum: rgba(215, 155, 185, 0.14);\n  --stop: #F28B82;\n  --stop-tint: rgba(242, 139, 130, 0.14);\n  --caution: #E3B341;\n  --caution-tint: rgba(227, 179, 65, 0.14);\n  --pass: #7FCFB6;\n  --pass-tint: rgba(127, 207, 182, 0.14);\n  --info: #8FB8D6;\n  --info-tint: rgba(143, 184, 214, 0.14);\n  --scrim: rgba(0, 0, 0, 0.6);\n  --shadow: none;\n  --track: #2A312D;\n}\n\n/* ---------- Base ---------- */",
+      "tokens": 265,
+      "firstFile": {
+        "name": "src/app.css",
+        "start": 82,
+        "end": 110,
+        "startLoc": {
+          "line": 82,
+          "column": 25,
+          "position": 722
+        },
+        "endLoc": {
+          "line": 110,
+          "column": 33,
+          "position": 987
+        }
+      },
+      "secondFile": {
+        "name": "src/app.css",
+        "start": 54,
+        "end": 81,
+        "startLoc": {
+          "line": 54,
+          "column": 34,
+          "position": 453
+        },
+        "endLoc": {
+          "line": 81,
+          "column": 2,
+          "position": 718
+        }
+      }
+    }
+  ]
+}

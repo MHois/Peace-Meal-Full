@@ -1,0 +1,186 @@
+[
+ {
+  "build": "lite",
+  "name": "a1. Send a backup produces a file",
+  "pass": true
+ },
+ {
+  "build": "lite",
+  "name": "a2. the backup file holds everything that was saved",
+  "pass": true,
+  "lost": [],
+  "added": [
+   "/people/0/screen"
+  ]
+ },
+ {
+  "build": "lite",
+  "name": "a3. importing the backup in an empty browser restores it with nothing lost",
+  "pass": true,
+  "differences": []
+ },
+ {
+  "build": "lite",
+  "name": "b1. the old key is copied to this build's own key",
+  "pass": true
+ },
+ {
+  "build": "lite",
+  "name": "b2. the copy is recorded and the old copy is left in place",
+  "pass": true
+ },
+ {
+  "build": "lite",
+  "name": "b3. the moved data is what the app shows",
+  "pass": true
+ },
+ {
+  "build": "lite",
+  "name": "c1. Clear data here leaves the full build's saved profile",
+  "pass": true
+ },
+ {
+  "build": "lite",
+  "name": "c2. Clear data here leaves the full build's grocery ticks",
+  "pass": false,
+  "note": "sn-grocery:* keys are shared by both builds"
+ },
+ {
+  "build": "lite",
+  "name": "c3. Clear data here removes this build's own profile",
+  "pass": true
+ },
+ {
+  "build": "lite",
+  "name": "c4 (observation). display settings after Clear data",
+  "pass": true,
+  "observation": "kept (shared by both builds)"
+ },
+ {
+  "build": "lite",
+  "name": "d1. a failed save shows the \"Not saved\" alert",
+  "pass": true
+ },
+ {
+  "build": "lite",
+  "name": "d2. nothing already saved is lost when a save fails",
+  "pass": true
+ },
+ {
+  "build": "lite",
+  "name": "d3. Try again saves once there is room, and the alert goes away",
+  "pass": true
+ },
+ {
+  "build": "lite",
+  "name": "e1. a cut-off save: the person is told the saved data could not be read",
+  "pass": false
+ },
+ {
+  "build": "lite",
+  "name": "e2. a cut-off save: the unreadable data survives the first new entry (kept, or copied aside)",
+  "pass": false
+ },
+ {
+  "build": "lite",
+  "name": "e1. a null person entry: the person is told the saved data could not be read",
+  "pass": false
+ },
+ {
+  "build": "lite",
+  "name": "e2. a null person entry: the unreadable data survives the first new entry (kept, or copied aside)",
+  "pass": false
+ },
+ {
+  "build": "full",
+  "name": "a1. Send a backup produces a file",
+  "pass": true
+ },
+ {
+  "build": "full",
+  "name": "a2. the backup file holds everything that was saved",
+  "pass": true,
+  "lost": [],
+  "added": [
+   "/people/0/screen"
+  ]
+ },
+ {
+  "build": "full",
+  "name": "a3. importing the backup in an empty browser restores it with nothing lost",
+  "pass": true,
+  "differences": []
+ },
+ {
+  "build": "full",
+  "name": "b1. the old key is copied to this build's own key",
+  "pass": true
+ },
+ {
+  "build": "full",
+  "name": "b2. the copy is recorded and the old copy is left in place",
+  "pass": true
+ },
+ {
+  "build": "full",
+  "name": "b3. the moved data is what the app shows",
+  "pass": true
+ },
+ {
+  "build": "full",
+  "name": "c1. Clear data here leaves the lite build's saved profile",
+  "pass": true
+ },
+ {
+  "build": "full",
+  "name": "c2. Clear data here leaves the lite build's grocery ticks",
+  "pass": false,
+  "note": "sn-grocery:* keys are shared by both builds"
+ },
+ {
+  "build": "full",
+  "name": "c3. Clear data here removes this build's own profile",
+  "pass": true
+ },
+ {
+  "build": "full",
+  "name": "c4 (observation). display settings after Clear data",
+  "pass": true,
+  "observation": "kept (shared by both builds)"
+ },
+ {
+  "build": "full",
+  "name": "d1. a failed save shows the \"Not saved\" alert",
+  "pass": true
+ },
+ {
+  "build": "full",
+  "name": "d2. nothing already saved is lost when a save fails",
+  "pass": true
+ },
+ {
+  "build": "full",
+  "name": "d3. Try again saves once there is room, and the alert goes away",
+  "pass": true
+ },
+ {
+  "build": "full",
+  "name": "e1. a cut-off save: the person is told the saved data could not be read",
+  "pass": false
+ },
+ {
+  "build": "full",
+  "name": "e2. a cut-off save: the unreadable data survives the first new entry (kept, or copied aside)",
+  "pass": false
+ },
+ {
+  "build": "full",
+  "name": "e1. a null person entry: the person is told the saved data could not be read",
+  "pass": false
+ },
+ {
+  "build": "full",
+  "name": "e2. a null person entry: the unreadable data survives the first new entry (kept, or copied aside)",
+  "pass": false
+ }
+]

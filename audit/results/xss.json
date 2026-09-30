@@ -1,0 +1,63 @@
+{
+ "hits": [
+  {
+   "build": "lite",
+   "path": "backup file imported through Settings (every field poisoned)",
+   "screen": "report",
+   "field": "person.age"
+  },
+  {
+   "build": "lite",
+   "path": "backup file imported through Settings (every field poisoned)",
+   "screen": "people/p1/basics",
+   "field": "person.age"
+  },
+  {
+   "build": "full",
+   "path": "backup file imported through Settings (every field poisoned)",
+   "screen": "report",
+   "field": "person.age"
+  },
+  {
+   "build": "full",
+   "path": "backup file imported through Settings (every field poisoned)",
+   "screen": "people/p1/basics",
+   "field": "person.age"
+  },
+  {
+   "build": "lite",
+   "path": "round trip: every value the app saved, poisoned",
+   "screen": "report",
+   "field": "people[].age"
+  },
+  {
+   "build": "lite",
+   "path": "round trip: every value the app saved, poisoned",
+   "screen": "people/p1/basics",
+   "field": "people[].age"
+  },
+  {
+   "build": "full",
+   "path": "round trip: every value the app saved, poisoned",
+   "screen": "report",
+   "field": "people[].age"
+  },
+  {
+   "build": "full",
+   "path": "round trip: every value the app saved, poisoned",
+   "screen": "people/p1/basics",
+   "field": "people[].age"
+  }
+ ],
+ "javascriptLinks": [],
+ "errors": [],
+ "notes": [
+  "lite: after import the store holds the crafted backup",
+  "full: after import the store holds the crafted backup",
+  "lite: round trip poisoned 301 saved values",
+  "lite: round trip store still poisoned after reload: true",
+  "full: round trip poisoned 301 saved values",
+  "full: round trip store still poisoned after reload: true"
+ ],
+ "stamp": "44d0bbd07935"
+}
