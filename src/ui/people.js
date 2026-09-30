@@ -473,8 +473,9 @@ function peopleModulePanelHTML(m, person) {
 }
 function peopleConfigurableRuleHTML(r, person) {
   const def = r.default || r.default_for_allergy || (r.kind === 'avoid' ? 'exclude' : 'allow');
-  const cur = person.rule_settings[r.id] || def;
-  return `<div class="field"><span class="label">${uiEsc(r.text)}</span>${uiSegmented('setting-' + r.id, [{ value: 'allow', label: 'Allow' }, { value: 'exclude', label: 'Exclude' }], cur, { label: r.id })}<div class="hint">Default: ${def}. Your choice: ${cur}.</div></div>`;
+  const key = r.setting || r.id;   // two rules can share one choice (P0-2)
+  const cur = person.rule_settings[key] || def;
+  return `<div class="field"><span class="label">${uiEsc(r.text)}</span>${uiSegmented('setting-' + key, [{ value: 'allow', label: 'Allow' }, { value: 'exclude', label: 'Exclude' }], cur, { label: r.id })}<div class="hint">Default: ${def}. Your choice: ${cur}.</div></div>`;
 }
 function peopleGlobalFlagsHTML(person) {
   const flags = Object.entries(uiState.conditionsMeta.flags || {}).filter(([, f]) => !f.module);
@@ -528,7 +529,8 @@ function peopleSyncVegPatternFromVariant(person, variant) {
 function peopleStepAllergens(container, person) {
   const sel = new Set(person.allergens || []);
   const allergyModule = uiState.conditionsById.get('food-allergies');
-  const configurable = ((allergyModule && allergyModule.rules) || []).filter(r => r.configurable);
+  const configurable = ((allergyModule && allergyModule.rules) || []).filter(r => r.configurable && !r.allergen);
+  const perAllergy = ((allergyModule && allergyModule.rules) || []).filter(r => r.configurable && r.allergen);
   container.innerHTML = `
     ${uiNoticeHTML({ level: 'block', text: 'Allergens are hard exclusions. Nothing in this app overrides them: not a preference, not a mode, not an acknowledgment. When an ingredient is not recognized, the app says so and does not assume it is safe.' })}
     <p>Confirmed food allergies (the nine FDA major allergens):</p>
@@ -541,6 +543,7 @@ function peopleStepAllergens(container, person) {
       <div class="hint">Separate them with commas. Each one is a hard stop, the same as the nine above: never planned, and "Not allowed" on recipes and labels. The app looks for the word in ingredient lists, so list every name the food goes by (for example mustard and Dijon, or buckwheat and soba). US labels must always name the nine major allergens, but other foods used as a spice or flavoring can be listed only as "spice" or "natural flavor". While anything is listed here, the app flags those words so you check with the maker.</div>
       <p class="small" id="pa-other-saved" aria-live="polite">${peopleOtherAllergies(person).length ? `Hard stops: <strong>${peopleOtherAllergies(person).map(uiEsc).join(', ')}</strong>` : ''}</p>
     </div>
+    ${perAllergy.map(r => `<div class="card" style="margin-top:1rem"><h3>${uiEsc(UI_ALLERGENS.find(a => a.tag === r.allergen) ? UI_ALLERGENS.find(a => a.tag === r.allergen).label : r.allergen)}: ask your allergist</h3><p class="small muted">Applies only when this allergy is checked above.</p>${peopleConfigurableRuleHTML(r, person)}</div>`).join('')}
     ${configurable.length ? `<div class="card" style="margin-top:1rem"><h3>"May contain" and shared-facility labels</h3><p class="small muted">Many people with allergies avoid these. The evidence on actual risk is mixed, so this is your call. Applies when at least one allergen is listed above.</p>${configurable.map(r => peopleConfigurableRuleHTML(r, person)).join('')}</div>` : ''}`;
   container.querySelectorAll('[data-allergen]').forEach(inp => inp.addEventListener('change', () => {
     person.allergens = person.allergens || [];

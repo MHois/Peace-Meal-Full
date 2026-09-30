@@ -102,11 +102,13 @@
       "label": "Soy",
       "family": "allergen",
       "hard": true,
-      "description": "Soybeans and soy protein foods (tofu, edamame, miso, soy sauce, TVP). Hard exclusion. Highly refined soybean oil (soy-refined-oil) and soy lecithin (soy-lecithin) are exempt from FALCPA and carry their own tags; the allergy module excludes them by default and lets the user relax that with allergist input.",
+      "description": "Soybeans and soy protein foods (tofu, edamame, miso, soy sauce, TVP). Hard exclusion. Highly refined soybean oil (soy-refined-oil) is exempt from FALCPA labeling; soy lecithin (soy-lecithin) is not exempt and is declared as soy. Both carry their own tags; the allergy module excludes them by default and lets the user relax that with allergist input.",
       "sources": [
         "fda-falcpa-2004",
         "aaaai-2014",
-        "fare-labels"
+        "fare-labels",
+        "fda-allergen-qa-2025",
+        "fda-food-allergies-page"
       ]
     },
     "allergen-sesame": {

@@ -1118,5 +1118,21 @@
     "year": 2026,
     "url": "https://www.coeliac.org.uk/living-with-coeliac-disease/food-and-drink/cooking-at-home/hints-and-tips-for-cooking-at-home/",
     "note": "Quoted for stock cubes and soups as gluten sources: \"look out for it in foods such as soups, sauces, stock cubes, ready meals and processed foods like sausages ... it is important to check labels of products such as stock cubes and seasonings ... to ensure they don't contain gluten.\""
+  },
+  {
+    "id": "fda-allergen-qa-2025",
+    "citation": "FDA. Questions and Answers Regarding Food Allergens, Including the Food Allergen Labeling Requirements of the Federal Food, Drug, and Cosmetic Act (Edition 5): Guidance for Industry. January 2025.",
+    "type": "regulation",
+    "year": 2025,
+    "url": "https://www.fda.gov/media/117410/download",
+    "note": "Read 2026-09-30. Question 9: \"Highly refined oils, which are intended to signify refined, bleached, deodorized oils, that are derived from major food allergens are exempt from section 403(w) of the FD&C Act.\" Question 8: \"Besides highly refined oils, which are specifically exempt from the definition of major food allergen, food ingredients (including flavors, colors, and incidental additives) derived from a major food allergen are not subject to the food allergen labeling requirements of the FD&C Act when the food ingredients do not contain a protein derived from the major food allergen (section 201(qq)(2) of the FD&C Act).\""
+  },
+  {
+    "id": "fda-food-allergies-page",
+    "citation": "FDA. Food Allergies (web page on food allergen labeling). Content current as of 03/11/2026.",
+    "type": "regulation",
+    "year": 2026,
+    "url": "https://www.fda.gov/food/nutrition-food-labeling-and-critical-foods/food-allergies",
+    "note": "Read 2026-09-30: \"The name of the food source of a major food allergen must appear: In parentheses following the name of the ingredient. Examples: lecithin (soy), flour (wheat), and whey (milk) - OR - Immediately after or next to the list of ingredients in a contains statement. Example: Contains wheat, milk, and soy.\""
   }
 ]

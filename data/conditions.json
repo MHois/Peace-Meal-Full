@@ -2155,6 +2155,28 @@
           ]
         },
         {
+          "id": "allergen-soy-oil-lecithin",
+          "kind": "avoid",
+          "tags": [
+            "soy-refined-oil",
+            "soy-lecithin"
+          ],
+          "allergen": "allergen-soy",
+          "hard": true,
+          "configurable": true,
+          "setting": "soy-refined-oil-lecithin",
+          "default_for_allergy": "exclude",
+          "tier": 1,
+          "strength": "must",
+          "text": "Soy allergy: refined soybean oil and soy lecithin are not allowed unless your allergist says they are fine. Highly refined soybean oil is exempt from allergen labeling; soy lecithin is not, and labels declare it as soy. Most people with a soy allergy tolerate both, which is why the choice is yours to make with your allergist.",
+          "sources": [
+            "fda-falcpa-2004",
+            "aaaai-acaai-food-allergy-2014",
+            "fda-allergen-qa-2025",
+            "fda-food-allergies-page"
+          ]
+        },
+        {
           "id": "allergen-sesame",
           "kind": "avoid",
           "tags": [

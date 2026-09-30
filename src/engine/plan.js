@@ -69,7 +69,9 @@ function ruleApplies(rule, m, person, ctx) {
   const optional = rule.optional === true || rule.default === 'off';
   if (optional && !(person.optional_rules || []).includes(rule.id)) return { apply: false };
   if (rule.configurable) {
-    const setting = settings[rule.id] ?? rule.default ?? rule.default_for_allergy ?? null;
+    // rule.setting lets two rules share one choice: the soy allergy rule and the soy-free pattern ask the same
+    // allergist question about refined soybean oil and soy lecithin (P0-2, fix pass of September 30, 2026).
+    const setting = settings[rule.setting || rule.id] ?? rule.default ?? rule.default_for_allergy ?? null;
     if ((rule.kind === 'avoid') && (setting === 'allow' || setting === 'off')) return { apply: false };
     if (rule.kind === 'info' && setting === 'exclude' && Array.isArray(rule.tags) && rule.tags.length) return { apply: true, asAvoid: true };
   }
@@ -361,6 +363,8 @@ export function buildPlan({ person, conditions, dictionaries, today = new Date()
         const mine = new Set(person.allergens || []);
         if (!rule.tags.some(t => t.startsWith('allergen-') && mine.has(t))) continue;
       }
+      // A rule that belongs to one allergy (rule.allergen) applies only with that allergy on file.
+      if (m.id === 'food-allergies' && rule.allergen && !(person.allergens || []).includes(rule.allergen)) continue;
       // conflict suppression on module+param
       const nut = rule.nutrient || null;
       const sup = suppressedModuleParams.find(s => s.module === m.id && (s.param === 'all' || s.param === null || (nut && paramMatches(nut, s.param))));
