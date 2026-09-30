@@ -9,7 +9,9 @@ export const FEATURE_MODULES = {
   'weight-loss': ['weight-management-glp1'],
   'ketogenic': ['low-carb-ketogenic'],
   'low-carb-under-175g': ['low-carb-ketogenic'],
-  'intermittent-fasting': [],
+  // P1-1 (fix pass of September 30, 2026): this mapped to nothing, so pregnancy and a child's profile left the
+  // time-restricted eating pattern on. README safety rule 6.
+  'intermittent-fasting': ['time-restricted-eating'],
   'elimination-protocols-except-allergen-celiac': ['ibs-low-fodmap', 'mcas', 'gluten-free-non-celiac'],
   'new-elimination-protocols': ['ibs-low-fodmap', 'mcas', 'gluten-free-non-celiac'],
   'calorie-targets': []
