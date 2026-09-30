@@ -102,6 +102,7 @@ export function newPerson(name = 'Me') {
 
 export function load(storage = storeLocal(), lite = storeIsLite()) {
   const m = migrateStorage(lite, storage);
+  migrateGroceryKeys(lite, storage);
   storeState.key = m.key;
   storeState.migration = m;
   storeState.unreadable = null;
@@ -263,6 +264,8 @@ export function readKept(k, storage = storeLocal()) { try { return storage ? sto
 // already has its own copy, or when this build was still using it; otherwise the other build may still need it.
 export function clearAll(storage = storeLocal(), lite = storeIsLite()) {
   if (!storage) return;
+  clearGroceryKeys(lite, storage);
+  try { storage.removeItem(STORE_DEVICE_KEY); } catch { /* ignore */ }   // P2-6: this device's shared-store key goes too
   const own = storeKeyFor(lite), other = storeKeyFor(!lite);
   const key = storeState.key || own;
   try { storage.removeItem(key); } catch { /* ignore */ }
@@ -271,6 +274,56 @@ export function clearAll(storage = storeLocal(), lite = storeIsLite()) {
   try { otherHasOwn = storage.getItem(other) != null || storage.getItem(other + STORE_MIGRATED_SUFFIX) != null; } catch { /* ignore */ }
   if (otherHasOwn || LEGACY_KEYS.includes(key)) for (const k of LEGACY_KEYS) { try { storage.removeItem(k); } catch { /* ignore */ } }
   if (LEGACY_KEYS.includes(key)) storeState.key = own;
+}
+
+// ---- Grocery ticks (P2-6, fix pass of September 30, 2026) ----
+// Both builds used to keep ticks under sn-grocery:<week>, so Clear data in one build wiped the other's. Each build now
+// keeps its own, <build>:grocery:<week>. On the first launch after the update, migrateGroceryKeys() copies the shared
+// keys that the build does not have yet, reads each copy back, and records that it did; the shared keys stay. If a copy
+// fails, nothing is recorded and the next launch tries again. Clear data removes this build's ticks, and the shared
+// ones only once the other build has its own (or was cleared).
+export const GROCERY_LEGACY_PREFIX = 'sn-grocery:';
+// The shared-store identity (src/engine/sync.js, LS_KEY). Only the claude.ai version makes one.
+const STORE_DEVICE_KEY = 'peace-meal:device';
+function storeBuildBase(lite) { return lite ? 'peace-meal-lite' : 'peace-meal-full'; }
+export function groceryKeyPrefix(lite = storeIsLite()) { return storeBuildBase(lite) + ':grocery:'; }
+function groceryMarker(lite) { return storeBuildBase(lite) + ':grocery-migrated'; }
+function storeAllKeys(storage) {
+  const out = [];
+  for (let i = 0; i < (storage.length || 0); i++) { const k = storage.key(i); if (k != null) out.push(k); }
+  return out;
+}
+// Returns { migrated, copied, error? }.
+export function migrateGroceryKeys(lite = storeIsLite(), storage = storeLocal()) {
+  if (!storage) return { migrated: false, copied: 0 };
+  const prefix = groceryKeyPrefix(lite), marker = groceryMarker(lite);
+  let legacy;
+  try {
+    if (storage.getItem(marker) != null) return { migrated: false, copied: 0 };
+    legacy = storeAllKeys(storage).filter(k => k.startsWith(GROCERY_LEGACY_PREFIX));
+  } catch (e) { return { migrated: false, copied: 0, error: 'storage could not be read: ' + e.message }; }
+  let copied = 0, ok = true;
+  for (const k of legacy) {
+    const nk = prefix + k.slice(GROCERY_LEGACY_PREFIX.length);
+    try {
+      if (storage.getItem(nk) != null) continue;
+      const v = storage.getItem(k);
+      storage.setItem(nk, v);
+      if (storage.getItem(nk) === v) copied++; else ok = false;
+    } catch { ok = false; }
+  }
+  if (ok) { try { storage.setItem(marker, JSON.stringify({ at: new Date().toISOString(), copied })); } catch { ok = false; } }
+  return { migrated: ok, copied };
+}
+function clearGroceryKeys(lite, storage) {
+  let keys;
+  try { keys = storeAllKeys(storage); } catch { return; }
+  const prefix = groceryKeyPrefix(lite);
+  for (const k of keys) if (k.startsWith(prefix)) { try { storage.removeItem(k); } catch { /* ignore */ } }
+  try { storage.setItem(groceryMarker(lite), JSON.stringify({ cleared: new Date().toISOString() })); } catch { /* ignore */ }   // cleared ticks never come back
+  let otherHasOwn = false;
+  try { otherHasOwn = storage.getItem(groceryMarker(!lite)) != null; } catch { /* ignore */ }
+  if (otherHasOwn) for (const k of keys) if (k.startsWith(GROCERY_LEGACY_PREFIX)) { try { storage.removeItem(k); } catch { /* ignore */ } }
 }
 
 // Monthly backup reminder (2026-09 audit). Due 30 days after the last backup, or, when there has never been one, 30 days

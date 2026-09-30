@@ -84,9 +84,12 @@ export function renderSettingsScreen(root) {
   settingsBindCollections(root, profile);
   settingsBindUnreadable(root);
   root.querySelector('#set-clear').addEventListener('click', () => {
-    if (!window.confirm('Clear all data on this device? This cannot be undone.')) return;
+    // P2-6: Clear data also removes this build's grocery ticks (not the other build's) and this device's shared-store key.
+    const s = uiState.sync || {};
+    const keyNote = s.identity ? (s.isOwner ? " This device's sharing key goes too, and with it the owner role, unless it was backed up." : " This device's sharing key goes too.") : '';
+    if (!window.confirm('Clear all data on this device? This cannot be undone.' + keyNote)) return;
     clearAll();
-    try { for (const k of Object.keys(localStorage)) if (k.startsWith('sn-grocery:')) localStorage.removeItem(k); } catch { /* ignore */ }
+    s.identity = null; s.isOwner = false;
     uiState.profile = defaultProfile();
     uiPersist();
     uiToast('Cleared.');

@@ -3,11 +3,13 @@
 import { buildGroceryList, applyAdjustments, diffGrocery, groceryText } from '../engine/grocery.js';
 import { uiState, uiEsc, uiActivePerson, uiPlanFor, uiWeekKey, uiFmtDate, uiFmtNum, uiToast, uiCopyText, uiPersist, uiIsoDate, uiToday, uiDownload, uiPageHeader, uiSection, uiChip, uiIcon, uiNoticeHTML, uiEmptyState } from './common.js';
 import { weekGet } from './week.js';
+import { groceryKeyPrefix } from '../store.js';
 import { householdWeekGet, householdPseudoPerson } from './household.js';
 
 const GROCERY_DAY_NAMES = { sun: 'Sunday', mon: 'Monday', tue: 'Tuesday', wed: 'Wednesday', thu: 'Thursday', fri: 'Friday', sat: 'Saturday' };
 const GROCERY_SLOT_LABEL = { breakfast: 'Breakfast', lunch: 'Lunch', dinner: 'Dinner' };
-function groceryStorageKey(person) { return 'sn-grocery:' + uiWeekKey(person); }
+// Each build's own ticks (P2-6): store.js copied the old shared sn-grocery:<week> keys at launch.
+function groceryStorageKey(person) { return groceryKeyPrefix() + uiWeekKey(person); }
 function groceryLoadChecked(person) {
   try { return new Set(JSON.parse(localStorage.getItem(groceryStorageKey(person)) || '[]')); } catch { return new Set(); }
 }
