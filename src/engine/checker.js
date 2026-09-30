@@ -33,10 +33,11 @@ export function planRestricts(plan, person = {}) {
   return false;
 }
 
-export function verdictFrom({ hits, unknownRisk, unrecognized, hasAllergens, restricting, termHits, verifyLabel, notApproved, smallServe }) {
+export function verdictFrom({ hits, unknownRisk, unrecognized, hasAllergens, restricting, termHits, verifyLabel, notApproved, smallServe, sodium }) {
   if (hits.some(h => h.hard) || (termHits || []).some(t => t.hard)) return 'fail';
   if (hits.length || (termHits || []).length) return 'caution';
   if (verifyLabel && verifyLabel.length) return 'caution';
+  if (sodium && sodium.length) return 'caution';
   if (notApproved && notApproved.length) return 'caution';
   if (smallServe && smallServe.length) return 'caution';
   const guarded = !!(hasAllergens || restricting);
@@ -53,6 +54,36 @@ function verifyLabelHits(mayContain, plan, matcher) {
     if (av) out.push({ tag, label: matcher ? matcher.tagLabel(tag) : tag, hard: !!av.hard, terms, rules: av.rules });
   }
   return out;
+}
+
+// P1-3 (fix pass of September 30, 2026): high in salt. A food is high in salt when USDA FoodData Central lists more
+// than 600 mg sodium per 100 g: the UK front-of-pack "high" cutoff for foods, more than 1.5 g salt per 100 g, with salt
+// counted as sodium times 2.5 (source uk-fop-2016, Annex 3, Table 2). Dictionary words carry the tag sodium-high from
+// the same USDA records (docs/VERIFY-log.md, F4). This is a fact about the food, not advice: it matters only while the
+// plan has a daily sodium limit, and then it is a caution that says to check the sodium on the Nutrition Facts label,
+// citing that limit's own rules. A recipe compares its sodium per serving with the limit instead; only a salty line
+// that its total leaves out (no linked food, no published nutrition) makes it a caution.
+export const SODIUM_HIGH_MG_PER_100G = 600;
+export function foodIsSodiumHigh(food) {
+  const na = food && food.per100g && food.per100g.sodium_mg;
+  return typeof na === 'number' && na > SODIUM_HIGH_MG_PER_100G;
+}
+function foodTags(food) {
+  const tags = food.tags || [];
+  return foodIsSodiumHigh(food) && !tags.includes('sodium-high') ? [...tags, 'sodium-high'] : tags;
+}
+// One entry when the plan has a daily sodium limit and the text or food is, or can be, high in salt.
+function sodiumHits(tags, mayContain, plan, matcher, food = null) {
+  const lim = plan && plan.limits && plan.limits.sodium_mg;
+  if (!lim) return [];
+  // A word and a food name can both name the same thing ("soy sauce", "Soy sauce"): list it once.
+  const seen = new Set(), once = t => { const k = String(t).toLowerCase(); if (seen.has(k)) return false; seen.add(k); return true; };
+  const terms = ((tags && tags['sodium-high']) || []).filter(once);
+  const mayTerms = ((mayContain && mayContain['sodium-high']) || []).filter(once);
+  if (!terms.length && !mayTerms.length) return [];
+  const out = { tag: 'sodium-high', label: matcher ? matcher.tagLabel('sodium-high') : 'High in salt', terms, mayTerms, limit: lim.value, rules: lim.rules || [] };
+  if (food) out.per100g = food.per100g.sodium_mg;
+  return [out];
 }
 
 // P0-3 (fix pass of September 30, 2026): a label or dish typed by its plain name ("Caramels", "1 cup Grape-Nuts") gets
@@ -77,8 +108,8 @@ export function indexFoodNames(foods) {
   }
   const out = new Map();
   for (const [k, list] of byKey) {
-    const all = list.map(f => new Set(f.tags || []));
-    const union = [...new Set(list.flatMap(f => f.tags || []))];
+    const all = list.map(f => new Set(foodTags(f)));
+    const union = [...new Set(list.flatMap(f => foodTags(f)))];
     out.set(k, { foods: list, tags: union.filter(t => all.every(s => s.has(t))), mayContain: union.filter(t => !all.every(s => s.has(t))) });
   }
   return out;
@@ -132,8 +163,9 @@ export function checkText(text, plan, matcher, person = {}) {
     }
   }
   const portions = matcher.dietLists ? portionCheckText(raw, plan, matcher.dietLists) : { notes: [], stacked: [] };
-  const verdict = verdictFrom({ hits, unknownRisk: r.unknownRisk, unrecognized: r.unrecognized, hasAllergens, restricting, termHits, verifyLabel, notApproved: strict.notApproved, smallServe: portions.stacked });
-  return { verdict, hits, preferHits, termHits, verifyLabel, unknownRisk: r.unknownRisk, unrecognized: r.unrecognized, unplaced: r.unplaced || [], notes: r.notes, tags: r.tags, mayContain: r.mayContain, segments: r.segments, restricting, strictFamilies: strict.families, notApproved: strict.notApproved, portionNotes: portions.notes, smallServe: portions.stacked };
+  const sodium = sodiumHits(r.tags, r.mayContain, plan, matcher);
+  const verdict = verdictFrom({ hits, unknownRisk: r.unknownRisk, unrecognized: r.unrecognized, hasAllergens, restricting, termHits, verifyLabel, notApproved: strict.notApproved, smallServe: portions.stacked, sodium });
+  return { verdict, hits, preferHits, termHits, verifyLabel, sodium, unknownRisk: r.unknownRisk, unrecognized: r.unrecognized, unplaced: r.unplaced || [], notes: r.notes, tags: r.tags, mayContain: r.mayContain, segments: r.segments, restricting, strictFamilies: strict.families, notApproved: strict.notApproved, portionNotes: portions.notes, smallServe: portions.stacked };
 }
 
 // Other allergies (owner decision, September 30, 2026): foods outside the nine major allergens that a person typed on
@@ -178,8 +210,9 @@ export function checkFood(food, plan, matcher, person = {}) {
   const one = { ingredients: [{ food: food.id }] }, byId = new Map([[food.id, food]]);
   const strict = matcher && matcher.dietLists ? strictCheck(one, plan, matcher.dietLists, byId, person) : { families: [], notApproved: [] };
   const portions = matcher && matcher.dietLists ? portionCheck(one, plan, matcher.dietLists, byId) : { notes: [], stacked: [] };
-  const verdict = verdictFrom({ hits, unknownRisk: [], unrecognized: [], hasAllergens: false, termHits, notApproved: strict.notApproved, smallServe: portions.stacked });
-  return { verdict, hits, preferHits, termHits, tags: tagMap, strictFamilies: strict.families, notApproved: strict.notApproved, portionNotes: portions.notes, smallServe: portions.stacked };
+  const sodium = foodIsSodiumHigh(food) ? sodiumHits({ 'sodium-high': [food.short || food.name] }, {}, plan, matcher, food) : [];
+  const verdict = verdictFrom({ hits, unknownRisk: [], unrecognized: [], hasAllergens: false, termHits, notApproved: strict.notApproved, smallServe: portions.stacked, sodium });
+  return { verdict, hits, preferHits, termHits, sodium, tags: tagMap, strictFamilies: strict.families, notApproved: strict.notApproved, portionNotes: portions.notes, smallServe: portions.stacked };
 }
 
 export function checkRecipe(recipe, plan, matcher, foodsById, person = {}) {
@@ -188,6 +221,10 @@ export function checkRecipe(recipe, plan, matcher, foodsById, person = {}) {
   const unknownRisk = [];
   const unrecognized = [];
   const mayContain = {};
+  // P1-3: with a daily sodium limit, a salty line whose sodium the recipe's total leaves out (no linked food, and no
+  // published nutrition) is a caution: the app cannot count it toward the limit, and never counts it as zero.
+  const imported = !!(recipe.nutrition_per_serving && recipe.nutrition_source);
+  const saltUncounted = [], saltMayUncounted = [];
   for (const ing of recipe.ingredients || []) {
     const food = foodsById.get(ing.food);
     const label = ing.display || (food ? food.short || food.name : ing.food);
@@ -199,6 +236,7 @@ export function checkRecipe(recipe, plan, matcher, foodsById, person = {}) {
       for (const [tag, terms] of Object.entries(r.mayContain || {})) (mayContain[tag] ||= []).push(...terms);
       for (const u of r.unknownRisk) unknownRisk.push(u);
       if (!food && r.unrecognized.length) unrecognized.push(label);
+      if (!food && !imported) { if (r.tags['sodium-high']) saltUncounted.push(label); else if ((r.mayContain || {})['sodium-high']) saltMayUncounted.push(label); }
     }
     if (!food && !ing.display) unrecognized.push(ing.food);
   }
@@ -209,7 +247,8 @@ export function checkRecipe(recipe, plan, matcher, foodsById, person = {}) {
   const restricting = planRestricts(plan, person);
   for (const t of Object.keys(tagMap)) delete mayContain[t];
   const verifyLabel = verifyLabelHits(mayContain, plan, matcher);
-  const verdict = verdictFrom({ hits, unknownRisk, unrecognized, hasAllergens, restricting, termHits, verifyLabel });
+  const sodium = sodiumHits({ 'sodium-high': saltUncounted }, { 'sodium-high': saltMayUncounted }, plan, matcher).map(x => ({ ...x, uncounted: true }));
+  const verdict = verdictFrom({ hits, unknownRisk, unrecognized, hasAllergens, restricting, termHits, verifyLabel, sodium });
   const nut = recipeTotals(recipe, foodsById);
   const perServing = nut.perServing;
   const d = derived(perServing);
@@ -226,5 +265,5 @@ export function checkRecipe(recipe, plan, matcher, foodsById, person = {}) {
   // serve' foods in one meal.
   const portions = matcher && matcher.dietLists ? portionCheck(recipe, plan, matcher.dietLists, foodsById) : { notes: [], stacked: [] };
   const finalVerdict = (exceeds.length || strict.notApproved.length || portions.stacked.length) && verdict !== 'fail' ? 'caution' : verdict;
-  return { verdict: finalVerdict, hits, preferHits, termHits, verifyLabel, unknownRisk, unrecognized, restricting, tags: tagMap, perServing, vsLimits, exceeds, missingFoods: nut.missingFoods, strictFamilies: strict.families, notApproved: strict.notApproved, portionNotes: portions.notes, smallServe: portions.stacked };
+  return { verdict: finalVerdict, hits, preferHits, termHits, verifyLabel, sodium, unknownRisk, unrecognized, restricting, tags: tagMap, perServing, vsLimits, exceeds, missingFoods: nut.missingFoods, strictFamilies: strict.families, notApproved: strict.notApproved, portionNotes: portions.notes, smallServe: portions.stacked };
 }

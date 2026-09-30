@@ -1142,5 +1142,21 @@
     "year": 2024,
     "url": "https://www.govinfo.gov/content/pkg/CFR-2024-title21-vol2/xml/CFR-2024-title21-vol2-sec166-110.xml",
     "note": "Read 2026-09-30. Paragraph (a)(2): \"(i) Water and/or milk and/or milk products. (ii) Suitable edible protein including, but not limited to, the liquid, condensed, or dry form of whey, whey modified by the reduction of lactose and/or minerals, nonlactose containing whey components, albumin, casein, caseinate, vegetable proteins, or soy protein isolate\". Paragraph (b)(4): \"Emulsifiers.\""
+  },
+  {
+    "id": "usda-fdc",
+    "citation": "U.S. Department of Agriculture, Agricultural Research Service. FoodData Central. SR Legacy (April 2018), FNDDS 2021-2023 (October 2024 release), Foundation Foods, and Branded Foods.",
+    "type": "other",
+    "year": 2024,
+    "url": "https://fdc.nal.usda.gov/",
+    "note": "Food-composition measurement, not dietary advice (README, Sources policy). Read 2026-09-30: sodium (nutrient 1093) per 100 g for the records listed in docs/VERIFY-log.md, fix pass F4. Branded Foods values are the manufacturer's label, used only for words with no SR Legacy, FNDDS, or Foundation record."
+  },
+  {
+    "id": "uk-fop-2016",
+    "citation": "Department of Health, Food Standards Agency, and devolved administrations in Scotland, Northern Ireland and Wales. Guide to creating a front of pack (FoP) nutrition label for pre-packed products sold through retail outlets. Updated November 2016.",
+    "type": "regulation",
+    "year": 2016,
+    "url": "https://assets.publishing.service.gov.uk/media/5a80cd03ed915d74e33fc7c5/FoP_Nutrition_labelling_UK_guidance.pdf",
+    "note": "Read 2026-09-30. Annex 3, Table 2, \"Criteria for 100g of food\": \"Salt ≤ 0.3g/100g > 0.3g to ≤ 1.5g/100g >1.5g/100g >1.8g/portion\" (LOW, MEDIUM, HIGH). Footnote 5: \"Sodium from all sources expressed as salt. This can be determined by multiplying the sodium content of a food by 2.5.\" Used only as the cutoff for the sodium-high tag (more than 600 mg sodium per 100 g); it is a labelling criterion, not dietary advice."
   }
 ]

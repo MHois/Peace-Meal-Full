@@ -157,7 +157,7 @@ export function checkBindResult(root) {
   root.querySelectorAll('[data-why]').forEach(b => b.addEventListener('click', () => {
     const h = checkLastRules[Number(b.dataset.why)];
     if (!h) return;
-    uiModal(`<p class="small muted">${h.hard ? 'A hard stop: never overridden by a preference, a mode, or an acknowledgment.' : 'A soft rule: shown as a caution; your call.'}</p>${uiRulesList(h.rules)}`, { title: `Why: ${h.label}` });
+    uiModal(`<p class="small muted">${h.note ? uiEsc(h.note) : h.hard ? 'A hard stop: never overridden by a preference, a mode, or an acknowledgment.' : 'A soft rule: shown as a caution; your call.'}</p>${uiRulesList(h.rules)}`, { title: `Why: ${h.label}` });
   }));
 }
 
@@ -168,12 +168,16 @@ export function checkHeadline(r, lite = false) {
   if (verdict === 'fail') return 'Contains a hard exclusion.';
   const known = (r.notApproved || []).filter(n => n.why === 'avoid' || n.why === 'reacts').length;   // on a leave-out list: a known problem
   const unsure = (r.unrecognized || []).length || (r.unknownRisk || []).length || (r.notApproved || []).length - known;
-  const flagged = (r.hits || []).length || (r.termHits || []).length || (r.verifyLabel || []).length || known;
+  const salt = (r.sodium || [])[0];
+  const flagged = (r.hits || []).length || (r.termHits || []).length || (r.verifyLabel || []).length || known || !!salt;
   if (verdict === 'caution') {
     if (unsure && !flagged) return lite ? 'Not sure. Ask before eating.' : 'Not sure: the app cannot say these ingredients are safe for this plan.';
     if ((r.smallServe || []).length && !flagged && !(r.exceeds || []).length) return 'Several small-serve foods together. Keep each one to a small serve.';
-    const onlyLabel = (r.verifyLabel || []).length && !(r.hits || []).length && !(r.termHits || []).length && !known;
+    const onlyLabel = (r.verifyLabel || []).length && !(r.hits || []).length && !(r.termHits || []).length && !known && !salt;
     if (onlyLabel) { const what = [...new Set(r.verifyLabel.map(v => String(v.label || v.tag).toLowerCase()))].join(' and '); return lite ? `Check the label for ${what} before eating.` : `Check the label for ${what}.`; }
+    // P1-3: salt is the only flag. A food from the food list has its USDA number; a label has its Nutrition Facts panel.
+    const onlySalt = salt && !(r.hits || []).length && !(r.termHits || []).length && !(r.verifyLabel || []).length && !known && !unsure && !(r.smallServe || []).length;
+    if (onlySalt) return salt.per100g != null ? `High in salt: ${uiFmtNum(salt.per100g)} mg sodium per 100 g.` : `${salt.terms.length ? 'High in salt.' : 'Can be high in salt.'} Check the sodium on the label.`;
     return 'Something here needs a look.';
   }
   if ((r.unrecognized || []).length) return 'Nothing is restricted in this plan, so nothing is flagged. Some words were not recognized.';
@@ -185,7 +189,8 @@ export function checkResultHTML(r, person, plan, opts = {}) {
   const unrec = r.unrecognized || [];
   const notApproved = r.notApproved || [];
   const headline = checkHeadline(r, !!uiState.lite);
-  checkLastRules = r.hits.slice();
+  // The Why buttons: the avoid rules behind each match, then the sodium limit's own rules (P1-3).
+  checkLastRules = [...r.hits, ...(r.sodium || []).map(s => ({ label: 'Sodium limit', hard: false, note: 'The plan\'s daily sodium limit. Salt is not a stop: check how much sodium is in it and count it toward the day.', rules: s.rules }))];
   const famLabel = f => { const l = uiState.data['diet-lists'] && uiState.data['diet-lists'].families && uiState.data['diet-lists'].families[f]; return l ? l.label : f; };
   return `
     <div class="verdict ${verdict}" role="${verdict === 'fail' ? 'alert' : 'status'}">
@@ -202,6 +207,12 @@ export function checkResultHTML(r, person, plan, opts = {}) {
     ${(r.termHits || []).some(t => t.allergy) ? uiSection('On your allergy list', `<div class="list boxed">${r.termHits.filter(t => t.allergy).map(t => `<div class="match-row">${uiChip('hard stop', 'stop')}<div><strong>${uiEsc(t.term)}</strong><div class="match-term">other allergy you listed on the Allergies step</div></div><span></span></div>`).join('')}</div>`, { id: 'check-allergy-terms-h' }) : ''}
     ${(r.termHits || []).some(t => !t.allergy) ? uiSection('Your avoid words', `<div class="list boxed">${r.termHits.filter(t => !t.allergy).map(t => `<div class="match-row">${uiChip('soft', 'caution')}<div><strong>${uiEsc(t.term)}</strong><div class="match-term">personal preference</div></div><span></span></div>`).join('')}</div>`, { id: 'check-terms-h' }) : ''}
     ${(r.verifyLabel || []).length ? uiSection('Check the label', `<div class="list boxed">${r.verifyLabel.map(v => `<div class="rule"><strong>${uiEsc(v.label)}</strong> <span class="small muted">can be in: ${(v.terms || []).map(uiEsc).join(', ')}</span><div class="small">Often, but not always. The package's ingredient list and allergy statement settle it.</div></div>`).join('')}</div>`, { id: 'check-label-h' }) : ''}
+    ${(r.sodium || []).length ? uiSection('Salt', `<div class="list boxed">${r.sodium.map((s, i) => `<div class="match-row">
+        ${uiChip('soft', 'caution')}
+        <div>${s.terms.length ? `<strong>High in salt:</strong> ${s.terms.map(uiEsc).join(', ')}` : ''}${s.terms.length && s.mayTerms.length ? '<br>' : ''}${s.mayTerms.length ? `<strong>Can be high in salt:</strong> ${s.mayTerms.map(uiEsc).join(', ')}` : ''}
+        <div class="small">${s.per100g != null ? `USDA lists ${uiFmtNum(s.per100g)} mg sodium per 100 g. This plan's sodium limit is ${uiFmtNum(s.limit)} mg a day; the table below shows how much a portion adds.` : `This plan's sodium limit is ${uiFmtNum(s.limit)} mg a day. Look at the sodium on the Nutrition Facts label and count it toward the day.`}</div></div>
+        <button class="btn link small" type="button" data-why="${r.hits.length + i}">Why (${s.rules.length})</button>
+      </div>`).join('')}</div>`, { id: 'check-salt-h' }) : ''}
     ${(r.unknownRisk || []).length ? uiSection('Terms that can hide something', `<div class="list boxed">${r.unknownRisk.map(u => `<div class="rule"><strong>${uiEsc(u.term)}</strong>${u.segment ? ` <span class="small muted">in "${uiEsc(u.segment)}"</span>` : ''}<div class="small">${uiEsc(u.note || 'This term does not say what it contains.')}</div></div>`).join('')}</div>`, { id: 'check-hide-h' }) : ''}
     ${(r.notes || []).length ? uiSection('Portion notes', `<div class="list boxed">${r.notes.map(n => `<div class="rule"><strong>${uiEsc(n.term)}</strong><div class="small">${uiEsc(n.note)}</div></div>`).join('')}</div>`, { id: 'check-notes-h' }) : ''}
     ${uiPortionsHTML(r) ? uiSection('Portions on the approved list', uiPortionsHTML(r), { id: 'check-portions-h' }) : ''}

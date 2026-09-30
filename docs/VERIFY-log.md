@@ -69,3 +69,220 @@ The audit of September 30, 2026 (`docs/audit-2026-09-30/REPORT.md`) found the fi
 | F1 | P0-2. A soy allergy now applies the default the app already stated: refined soybean oil and soy lecithin are not allowed unless the person, with their allergist, allows them (one choice, shared with the soy-free pattern). The soy tag's description no longer says soy lecithin is exempt from allergen labeling; it is not. | `data/conditions.json` food-allergies rule `allergen-soy-oil-lecithin`; `data/dictionaries.json` tag `allergen-soy`; `src/engine/plan.js`; `src/ui/people.js` | The app's own soy rule (`allergen-soy`, unchanged), FALCPA (`fda-falcpa-2004`), FDA allergen Q&A Edition 5 (`fda-allergen-qa-2025`, new), FDA Food Allergies page (`fda-food-allergies-page`, new) | App's rule: "Refined soybean oil and soy lecithin are excluded by default and can be relaxed only with allergist input". FDA Q&A, question 9: "Highly refined oils, which are intended to signify refined, bleached, deodorized oils, that are derived from major food allergens are exempt from section 403(w) of the FD&C Act." FDA Food Allergies page: "The name of the food source of a major food allergen must appear: In parentheses following the name of the ingredient. Examples: "lecithin (soy)," "flour (wheat)," and "whey (milk)"". | Done |
 | F2 | P0-1. Dictionary entries added so words next to a known term are placed, each with tags copied from an existing entry or stated from a source: margarine (a label check for milk and soy, from its standard of identity), gluten (tagged gluten; wheat a label check, since the grain is not named), crustacean (the tags of shellfish; "Crustacean shellfish" is FDA's name for the allergen), pea nut and arachis hypogaea (peanut), hazel nut (hazelnut), sesame paste (tahini), sunflower lecithin (lecithin), wholemeal (whole wheat), pitta (pita), bun and bread roll and toast (bread), hot-pepper names (jalapeno), jack cheeses (cheese), hard boiled egg (egg), rice paper and risotto rice (rice) | `data/dictionaries.json` | 21 CFR 166.110 (`cfr-166-110`, new); FDA allergen Q&A Edition 5 (`fda-allergen-qa-2025`) | 21 CFR 166.110(a)(2): "(i) Water and/or milk and/or milk products. (ii) Suitable edible protein including, but not limited to, the liquid, condensed, or dry form of whey, ... casein, caseinate, vegetable proteins, or soy protein isolate"; (b)(4): "Emulsifiers." FDA Q&A Edition 5, the list of major food allergens: "Crustacean shellfish (such as crab, lobster, shrimp)". The other entries copy the tags of the entry named in their note and make no new claim. | Done |
 | F3 | P2-13. The approved-food lists match a whole name, not a word inside a longer one ("beef" no longer approves "corned beef"). Names from the food data ("Squash, summer, zucchini, frozen, cooked") are judged differently, because no list can cover their category and form words: a list name may match any word, as before, unless the name says the food was made into something else (jerky, cured, smoked, sausage, soup, sauce, chips, ice cream, and similar). "fresh" and "young" are no longer stripped, so "fresh cheese" and "young cheese" no longer approve every cheese; blue, mature, sharp, and strong cheese are not approved by them. Name variants added to existing items only (for example "cheddar cheese" to hard cheese, "chile pepper" to chilli, "risotto rice" to rice, "hard boiled egg" to egg): 48 aliases. The low histamine leave-out "canned fish" names its kinds (canned tuna, salmon, sardines, mackerel, anchovies; tuna in water or oil): 14 aliases | `src/engine/dietlists.js`; `data/diet-lists.json` | The lists' own items and their sources, unchanged; for canned fish, the existing leave-out and its basis (`sanchez-perez-2021`) | The low histamine list's own leave-out example "canned fish", with its basis note: "Sánchez-Pérez 2021 lab data (preserved and semi-preserved fish, 151 samples): histamine 10.03 mg/kg on average, highest 657.05 (canned sardines)." No item was added, and no food was moved between approved and leave-out. | Done |
+| F4 | P1-3. A new dictionary tag, sodium-high ("High in salt"), on 106 words, and "can be high in salt" (may_contain) on 74 more; one new word, capers. While a plan has a daily sodium limit (hypertension, type 2 diabetes, kidney disease, dialysis, heart failure, kidney stones, DASH, or a limit the person set), a label or food with one of these words, or a food from the food list above 600 mg sodium per 100 g, is a caution: "High in salt. Check the sodium on the label." The result names the plan's limit and cites that limit's own rule and sources. Without a sodium limit nothing changes. A recipe keeps its per-serving sodium comparison; one with a salty line the app cannot count (no linked food and no published nutrition, as in most Wikibooks recipes) is a caution with a sodium limit, because sodium the app does not know is never counted as zero (the Week screen already keeps such recipes out of a plan with a daily limit). | `data/dictionaries.json` (tag `sodium-high`, entries listed below), `src/engine/checker.js` (`SODIUM_HIGH_MG_PER_100G`, `foodIsSodiumHigh`), `src/ui/check.js`, `src/ui/log.js`, `src/ui/recipes.js`, `src/engine/planner.js` (`cautionWhy`) | uk-fop-2016 (the cutoff); usda-fdc (the values); the caution itself rests on each module's existing sodium rule (for hypertension, htn-sodium: aha-acc-htn-2025, dash-sodium-2001) | UK guide, Annex 3, Table 2, "Criteria for 100g of food": "Salt ≤ 0.3g/100g > 0.3g to ≤ 1.5g/100g >1.5g/100g >1.8g/portion" (low, medium, high). Footnote 5: "Sodium from all sources expressed as salt. This can be determined by multiplying the sodium content of a food by 2.5." So high is more than 1.5 g salt, which is more than 600 mg sodium, per 100 g. | Verified. The per-portion criterion (more than 1.8 g salt in a portion over 100 g) is not applied: the app has no manufacturer portion, and the food box already shows a portion's sodium against the limit. |
+
+### F4. Words marked high in salt, and their USDA records
+
+Method, September 30, 2026. For each dictionary word, the USDA FoodData Central records for the food it names were read from the SR Legacy (April 2018) and FNDDS 2021-2023 (October 2024) download files, and from the Foundation records already in `data/foods.json`; sodium is nutrient 1093, in mg per 100 g. Forms sold under their own names were left out: low sodium, reduced sodium, unsalted, no salt added, prepared with water, home recipe, reduced fat or fat free, imitation, meatless, and sandwiches or other dishes. A word is **high** when every remaining record is above 600 mg per 100 g, **can be high** when some are above and some are not, and is not marked when none is above. Branded Foods records (the manufacturer's label, looked up on fdc.nal.usda.gov) are used only where USDA has no SR Legacy, FNDDS, or Foundation record for the food, and each such word lists at least one brand. Eight words were moved by review, and the reason is on their row: biscuit, bread crumbs, breadcrumbs, chili powder, oyster sauce, stock cube, and stock powder to "can be high"; yeast extract not marked. Words that are not their own dictionary entry are covered by the entry they contain: "celery salt", "onion salt", and "seasoned salt" are marked through salt.
+
+| Word | Marked | USDA FoodData Central records (dataset, FDC ID, description: mg sodium per 100 g) |
+|---|---|---|
+| `aged cheddar` | high | FNDDS 2705709, Cheese, Cheddar: 654; Foundation 328637, Cheese, cheddar: 654; SR Legacy 170899, Cheese, cheddar, sharp, sliced: 644 (4 records, all above 600) |
+| `aged gouda` | high | SR Legacy 171241, Cheese, gouda: 819; FNDDS 2705717, Cheese, Gouda or Edam: 819 |
+| `american cheese` | high | SR Legacy 170853, Cheese, pasteurized process, American, fortified with vitamin D: 1,671; SR Legacy 171290, Cheese, pasteurized process, American, without added vitamin D: 1,671; Foundation 2647439, Cheese, pasteurized process cheese food or product, American, singles: 1,420 (5 records, all above 600) |
+| `anchovy paste` | high | Branded 1986426, ANCHOVY PASTE (American Roland): 7,600; Branded 2680213, ANCHOVY PASTE (World Finer Foods): 6,710; Branded 2026262, ANCHOVY PASTE (Napoleon): 5,570 |
+| `bacon` | high | SR Legacy 167914, Pork, cured, bacon, cooked, baked: 2,193; SR Legacy 171639, Bacon, turkey, microwaved: 2,021; SR Legacy 168277, Pork, cured, bacon, unprepared: 751 (14 records, all above 600) |
+| `baking powder` | high | SR Legacy 172803, Leavening agents, baking powder, double-acting, sodium aluminum sulfate: 10,600; SR Legacy 172804, Leavening agents, baking powder, double-acting, straight phosphate: 7,893 |
+| `baking soda` | high | SR Legacy 175040, Leavening agents, baking soda: 27,360 |
+| `barbecue sauce` | high | SR Legacy 171830, Sauce, barbecue, OPEN PIT, original: 1,517; SR Legacy 174544, Sauce, barbecue, KRAFT, original: 1,242; SR Legacy 171829, Sauce, barbecue, KC MASTERPIECE, original: 613 (7 records, all above 600) |
+| `bbq sauce` | high | SR Legacy 171830, Sauce, barbecue, OPEN PIT, original: 1,517; SR Legacy 174544, Sauce, barbecue, KRAFT, original: 1,242; SR Legacy 171829, Sauce, barbecue, KC MASTERPIECE, original: 613 (7 records, all above 600) |
+| `beef jerky` | high | SR Legacy 167536, Snacks, beef jerky, chopped and formed: 1,785; FNDDS 2705860, Beef jerky: 1,785 |
+| `black bean sauce` | high | Branded 2025097, BLACK BEAN SAUCE (Snappy Dragon): 2,470 |
+| `blue cheese` | high | SR Legacy 172175, Cheese, blue: 1,146; FNDDS 2705705, Cheese, Blue or Roquefort: 1,146 |
+| `blue-veined cheese` | high | SR Legacy 171250, Cheese, roquefort: 1,809; SR Legacy 172175, Cheese, blue: 1,146; FNDDS 2705705, Cheese, Blue or Roquefort: 1,146 |
+| `bologna` | high | SR Legacy 171637, Bologna, meat and poultry: 1,379; SR Legacy 173873, Bologna, chicken, pork: 1,240; SR Legacy 173856, Bologna, pork: 907 (10 records, all above 600) |
+| `brie` | high | SR Legacy 172177, Cheese, brie: 629; FNDDS 2705708, Cheese, Brie: 629 |
+| `camembert` | high | SR Legacy 172178, Cheese, camembert: 842; FNDDS 2705707, Cheese, Camembert: 842 |
+| `capers` | high | SR Legacy 172238, Capers, canned: 2,348; Branded 1906100, CAPERS (Goya): 2,530; Branded 2504093, CAPERS (Iberia): 1,390 |
+| `catsup` | high | FNDDS 2709733, Ketchup: 928; SR Legacy 168556, Catsup: 907 |
+| `caviar` | high | SR Legacy 174188, Fish, caviar, black and red, granular: 1,500; FNDDS 2706332, Caviar: 1,500 |
+| `cheddar` | high | FNDDS 2705709, Cheese, Cheddar: 654; Foundation 328637, Cheese, cheddar: 654; SR Legacy 170899, Cheese, cheddar, sharp, sliced: 644 (4 records, all above 600) |
+| `chorizo` | high | FNDDS 2706179, Chorizo: 983; Foundation 746781, Sausage, pork, chorizo, link or ground, cooked, pan-fried: 983; SR Legacy 173859, Sausage, pork, chorizo, link or ground, raw: 788 |
+| `colby jack` | high | FNDDS 2705713, Cheese, Colby Jack: 633; SR Legacy 173416, Cheese, colby: 604; FNDDS 2705712, Cheese, Colby: 604 |
+| `corned beef` | high | SR Legacy 170199, Beef, cured, corned beef, brisket, raw: 1,217; SR Legacy 170200, Beef, cured, corned beef, brisket, cooked: 973; SR Legacy 170602, Beef, cured, corned beef, canned: 897 |
+| `country ham` | high | SR Legacy 168282, Pork, cured, ham, center slice, country-style, separable lean only, raw: 2,695 |
+| `crouton` | high | SR Legacy 172752, Croutons, seasoned: 1,333; FNDDS 2707697, Croutons: 1,333; SR Legacy 172751, Croutons, plain: 698 |
+| `cured` | high | SR Legacy 170604, Beef, cured, dried: 2,790; SR Legacy 168282, Pork, cured, ham, center slice, country-style, separable lean only, raw: 2,695; SR Legacy 168367, Pork, cured, ham, rump, bone-in, separable lean and fat, unheated: 722 (88 records, all above 600) |
+| `cured ham` | high | SR Legacy 168282, Pork, cured, ham, center slice, country-style, separable lean only, raw: 2,695; SR Legacy 167876, Pork, cured, ham, whole, separable lean only, unheated: 1,516; SR Legacy 168367, Pork, cured, ham, rump, bone-in, separable lean and fat, unheated: 722 (68 records, all above 600) |
+| `cured meat` | high | SR Legacy 170604, Beef, cured, dried: 2,790; SR Legacy 168282, Pork, cured, ham, center slice, country-style, separable lean only, raw: 2,695; SR Legacy 168367, Pork, cured, ham, rump, bone-in, separable lean and fat, unheated: 722 (88 records, all above 600) |
+| `deli ham` | high | SR Legacy 171626, Ham, chopped, canned: 1,280; SR Legacy 171627, Ham, chopped, not canned: 1,194; SR Legacy 173864, Ham, sliced, regular (approximately 11% fat): 814 |
+| `deli meat` | high | SR Legacy 172951, Luncheon meat, pork with ham, minced, canned, includes Spam (Hormel): 1,411; SR Legacy 171637, Bologna, meat and poultry: 1,379; FNDDS 2706217, Turkey ham, prepackaged or deli, luncheon meat: 810 (26 records, all above 600) |
+| `deli turkey` | high | SR Legacy 174613, Turkey, white, rotisserie, deli cut: 1,200; SR Legacy 172941, Turkey breast, sliced, prepackaged: 898; FNDDS 2706217, Turkey ham, prepackaged or deli, luncheon meat: 810 (4 records, all above 600) |
+| `dry sausage` | high | SR Legacy 172938, Salami, dry or hard, pork: 2,260; SR Legacy 174582, Salami, dry or hard, pork, beef: 1,756; FNDDS 2706199, Thuringer: 1,300 (6 records, all above 600) |
+| `duck sauce` | high | SR Legacy 171823, Sauce, duck, ready-to-serve: 712 |
+| `everything bagel seasoning` | high | Branded 2152623, EVERYTHING BAGEL SEASONING (B&G Foods): 9,500; Branded 2034534, EVERYTHING BAGEL SEASONING (McCormick): 8,120; Branded 2563566, EVERYTHING BAGEL SEASONING (Badia): 2,140 |
+| `fermented sausage` | high | SR Legacy 172938, Salami, dry or hard, pork: 2,260; SR Legacy 174582, Salami, dry or hard, pork, beef: 1,756; FNDDS 2706199, Thuringer: 1,300 (6 records, all above 600) |
+| `feta` | high | SR Legacy 173420, Cheese, feta: 1,139; FNDDS 2705714, Cheese, Feta: 1,034; Foundation 2259796, Cheese, feta, whole milk, crumbled: 1,034 |
+| `fish sauce` | high | SR Legacy 174531, Sauce, fish, ready-to-serve: 7,851; FNDDS 2706457, Fish sauce: 7,851 |
+| `frankfurter` | high | SR Legacy 172968, Frankfurter, meat: 1,090; SR Legacy 171634, Frankfurter, meat and poultry, cooked, grilled: 1,079; FNDDS 2706757, Frankfurters or hot dogs and sauerkraut: 764 (12 records, all above 600) |
+| `garlic salt` | high | Branded 2021120, GARLIC SALT (McCormick): 36,900; Branded 2071659, GARLIC SALT (Badia): 31,700; Branded 1859770, GARLIC SALT (Goya): 24,000 |
+| `gorgonzola` | high | SR Legacy 172175, Cheese, blue: 1,146; FNDDS 2705705, Cheese, Blue or Roquefort: 1,146 |
+| `gouda` | high | SR Legacy 171241, Cheese, gouda: 819; FNDDS 2705717, Cheese, Gouda or Edam: 819 |
+| `gruyere` | high | SR Legacy 171242, Cheese, gruyere: 714; FNDDS 2705718, Cheese, Gruyere: 714 |
+| `ham` | high | SR Legacy 168282, Pork, cured, ham, center slice, country-style, separable lean only, raw: 2,695; FNDDS 2705879, Ham, prosciutto: 2,695; SR Legacy 168367, Pork, cured, ham, rump, bone-in, separable lean and fat, unheated: 722 (74 records, all above 600) |
+| `ham hock` | high | SR Legacy 169157, Pork, pickled pork hocks: 1,050; FNDDS 2705900, Pork, ham hocks: 1,040 |
+| `hoisin` | high | SR Legacy 172886, Sauce, hoisin, ready-to-serve: 1,615; FNDDS 2707441, Hoisin sauce: 1,615 |
+| `hoisin sauce` | high | SR Legacy 172886, Sauce, hoisin, ready-to-serve: 1,615; FNDDS 2707441, Hoisin sauce: 1,615 |
+| `hot dog` | high | SR Legacy 172968, Frankfurter, meat: 1,090; SR Legacy 171634, Frankfurter, meat and poultry, cooked, grilled: 1,079; FNDDS 2706757, Frankfurters or hot dogs and sauerkraut: 764 (13 records, all above 600) |
+| `hot sauce` | high | SR Legacy 171187, Sauce, hot chile, sriracha, CHA! BY TEXAS PETE: 2,903; SR Legacy 171186, Sauce, hot chile, sriracha: 2,124; SR Legacy 171188, Sauce, hot chile, sriracha, TUONG OT SRIRACHA: 1,540 |
+| `instant noodles` | high | SR Legacy 171615, Soup, ramen noodle, chicken flavor, dry: 1,923; SR Legacy 171177, Soup, ramen noodle, any flavor, dry: 1,855; SR Legacy 171614, Soup, ramen noodle, beef flavor, dry: 1,727 |
+| `iodized salt` | high | Foundation 746775, Salt, table, iodized: 38,700 |
+| `jerky` | high | FNDDS 2705915, Venison/deer jerky: 2,955; FNDDS 2705865, Pork jerky: 1,810; FNDDS 2705860, Beef jerky: 1,785 (4 records, all above 600) |
+| `ketchup` | high | FNDDS 2709733, Ketchup: 928; SR Legacy 168556, Catsup: 907 |
+| `kielbasa` | high | SR Legacy 174607, Kielbasa, Polish, turkey and beef, smoked: 1,200; SR Legacy 173877, Kielbasa, fully cooked, grilled: 1,062; SR Legacy 173879, Kielbasa, fully cooked, unheated: 928 (4 records, all above 600) |
+| `kosher salt` | high | Branded 1965739, KOSHER SALT (Gel Spice): 40,000; Branded 2538421, KOSHER SALT (US Salt): 39,300; Branded 2302584, KOSHER SALT (Vigo): 38,800 |
+| `lite salt` | high | Branded 2573378, LITE SALT (Morton Salt): 20,700 |
+| `liverwurst` | high | SR Legacy 172944, Oscar Mayer, Braunschweiger Liver Sausage (sliced): 1,159; SR Legacy 171621, Braunschweiger (a liver sausage), pork: 977; SR Legacy 174596, Liverwurst spread: 700 (5 records, all above 600) |
+| `lox` | high | SR Legacy 171985, Fish, salmon, chinook, smoked, (lox), regular: 2,000 |
+| `luncheon meat` | high | SR Legacy 172951, Luncheon meat, pork with ham, minced, canned, includes Spam (Hormel): 1,411; SR Legacy 174571, Luncheon meat, pork, canned: 1,289; FNDDS 2706205, Luncheon meat, NFS: 890 (4 records, all above 600) |
+| `marmite` | high | SR Legacy 167717, Yeast extract spread: 3,380; FNDDS 2710006, Yeast extract spread: 3,380 |
+| `miso` | high | SR Legacy 172442, Miso: 3,728; FNDDS 2707439, Miso: 3,728 |
+| `monosodium glutamate` | high | Branded 1849860, ACCENT, FLAVOR ENHANCER (B&G Foods): 16,000; Branded 2449440, MSG MONOSODIUM GLUTAMATE (Smart & Final): 12,500 |
+| `mortadella` | high | SR Legacy 174573, Mortadella, beef, pork: 1,246; FNDDS 2706182, Mortadella: 1,246 |
+| `msg` | high | Branded 1849860, ACCENT, FLAVOR ENHANCER (B&G Foods): 16,000; Branded 2449440, MSG MONOSODIUM GLUTAMATE (Smart & Final): 12,500 |
+| `nova lox` | high | SR Legacy 171985, Fish, salmon, chinook, smoked, (lox), regular: 2,000; SR Legacy 173687, Fish, salmon, chinook, smoked: 672 |
+| `olives` | high | FNDDS 2710091, Olives, stuffed: 1,620; SR Legacy 169096, Olives, pickled, canned or bottled, green: 1,556; FNDDS 2710090, Olives, black: 735 (7 records, all above 600) |
+| `oyster cracker` | high | SR Legacy 167942, Crackers, saltines, whole wheat (includes multi-grain): 1,214; SR Legacy 172746, Crackers, saltines (includes oyster, soda, soup): 941; FNDDS 2708160, Crackers, oyster: 941 |
+| `pancetta` | high | SR Legacy 167914, Pork, cured, bacon, cooked, baked: 2,193; Foundation 749420, Pork, cured, bacon, cooked, restaurant: 1,830; SR Legacy 168277, Pork, cured, bacon, unprepared: 751 (5 records, all above 600) |
+| `parmesan` | high | SR Legacy 171247, Cheese, parmesan, grated: 1,804; SR Legacy 173431, Cheese, parmesan, shredded: 1,696; Foundation 2259795, Cheese, parmesan, grated, refrigerated: 1,046 (6 records, all above 600) |
+| `part-skim mozzarella` | high | FNDDS 2705723, Cheese, Mozzarella, part skim: 699; Foundation 329370, Cheese, mozzarella, low moisture, part-skim: 699; SR Legacy 170847, Cheese, mozzarella, part skim milk: 619 (5 records, all above 600) |
+| `pastrami` | high | SR Legacy 172927, Pastrami, turkey: 1,123; SR Legacy 170204, Beef, cured, pastrami: 1,078; FNDDS 2706183, Pastrami, NFS: 1,078 |
+| `pecorino` | high | SR Legacy 171249, Cheese, romano: 1,433 |
+| `pepperoni` | high | SR Legacy 174575, Pepperoni, beef and pork, sliced: 1,582; FNDDS 2706185, Pepperoni, NFS: 1,582 |
+| `pesto` | high | SR Legacy 171582, Sauce, pesto, CLASSICO, basil pesto, ready-to-serve: 1,028; SR Legacy 171580, Sauce, pesto, ready-to-serve, shelf stable: 998; SR Legacy 171581, Sauce, pesto, BUITONI, pesto with basil, ready-to-serve, refrigerated: 603 (6 records, all above 600) |
+| `processed cheese` | high | SR Legacy 170853, Cheese, pasteurized process, American, fortified with vitamin D: 1,671; SR Legacy 171290, Cheese, pasteurized process, American, without added vitamin D: 1,671; SR Legacy 170854, Cheese, pasteurized process, pimento: 915 (8 records, all above 600) |
+| `prosciutto` | high | FNDDS 2705879, Ham, prosciutto: 2,695 |
+| `provolone` | high | SR Legacy 170850, Cheese, provolone: 727; FNDDS 2705733, Cheese, Provolone: 601; Foundation 2647440, Cheese, provolone, sliced: 601 |
+| `queso blanco` | high | SR Legacy 172224, Cheese, white, queso blanco: 704 |
+| `queso fresco` | high | SR Legacy 172223, Cheese, fresh, queso fresco: 751; Foundation 2647442, Cheese, queso fresco, solid: 626; FNDDS 2705745, Queso Fresco: 626 |
+| `raw sauerkraut` | high | SR Legacy 169279, Sauerkraut, canned, solids and liquids: 661; FNDDS 2709982, Sauerkraut: 659 |
+| `romano` | high | SR Legacy 171249, Cheese, romano: 1,433 |
+| `roquefort` | high | SR Legacy 171250, Cheese, roquefort: 1,809; FNDDS 2705705, Cheese, Blue or Roquefort: 1,146 |
+| `salami` | high | SR Legacy 172938, Salami, dry or hard, pork: 2,260; SR Legacy 174603, Salami, Italian, pork: 1,890; SR Legacy 172937, Salami, cooked, turkey: 1,107 (7 records, all above 600) |
+| `salt` | high | SR Legacy 173468, Salt, table: 38,758; Foundation 746775, Salt, table, iodized: 38,700 |
+| `sauerkraut` | high | SR Legacy 169279, Sauerkraut, canned, solids and liquids: 661; FNDDS 2709982, Sauerkraut: 659 |
+| `sea salt` | high | Branded 2573382, SEA SALT (Morton Salt): 40,000; Branded 2450448, SEA SALT (Smart & Final): 40,000; Branded 2372715, SEA SALT (H E Butt): 39,200 |
+| `self-rising flour` | high | SR Legacy 168895, Wheat flour, white, all-purpose, self-rising, enriched: 1,193 |
+| `serrano ham` | high | SR Legacy 168282, Pork, cured, ham, center slice, country-style, separable lean only, raw: 2,695; FNDDS 2705879, Ham, prosciutto: 2,695; SR Legacy 168367, Pork, cured, ham, rump, bone-in, separable lean and fat, unheated: 722 (69 records, all above 600) |
+| `shoyu` | high | SR Legacy 174277, Soy sauce made from soy and wheat (shoyu): 5,493 |
+| `smoked sausage` | high | SR Legacy 170606, Sausage, beef, cured, cooked, smoked: 1,131; SR Legacy 174605, Sausage, chicken, beef, pork, skinless, smoked: 1,034; SR Legacy 174584, Sausage, smoked link sausage, pork: 827 (8 records, all above 600) |
+| `smoked turkey` | high | SR Legacy 167709, Turkey, wing, smoked, cooked, with skin, bone removed: 996; SR Legacy 167710, Turkey, drumstick, smoked, cooked, with skin, bone removed: 996 |
+| `smoked whitefish` | high | SR Legacy 173712, Fish, whitefish, mixed species, smoked: 1,019 |
+| `soy sauce` | high | SR Legacy 174279, Soy sauce made from hydrolyzed vegetable protein: 6,820; SR Legacy 174278, Soy sauce made from soy (tamari): 5,586; FNDDS 2707442, Soy sauce: 5,493 (4 records, all above 600) |
+| `spam` | high | SR Legacy 172951, Luncheon meat, pork with ham, minced, canned, includes Spam (Hormel): 1,411; FNDDS 2706211, Spam: 1,411 |
+| `sriracha` | high | SR Legacy 171187, Sauce, hot chile, sriracha, CHA! BY TEXAS PETE: 2,903; SR Legacy 171186, Sauce, hot chile, sriracha: 2,124; SR Legacy 171188, Sauce, hot chile, sriracha, TUONG OT SRIRACHA: 1,540 |
+| `summer sausage` | high | SR Legacy 172940, Thuringer, cervelat, summer sausage, beef, pork: 1,300 |
+| `table salt` | high | SR Legacy 173468, Salt, table: 38,758; Foundation 746775, Salt, table, iodized: 38,700 |
+| `tamari` | high | SR Legacy 174278, Soy sauce made from soy (tamari): 5,586 |
+| `teriyaki` | high | SR Legacy 171167, Sauce, teriyaki, ready-to-serve: 3,833; FNDDS 2707445, Teriyaki sauce: 3,833 |
+| `teriyaki sauce` | high | SR Legacy 171167, Sauce, teriyaki, ready-to-serve: 3,833; FNDDS 2707445, Teriyaki sauce: 3,833 |
+| `unpasteurized sauerkraut` | high | SR Legacy 169279, Sauerkraut, canned, solids and liquids: 661; FNDDS 2709982, Sauerkraut: 659 |
+| `vegemite` | high | SR Legacy 167717, Yeast extract spread: 3,380; FNDDS 2710006, Yeast extract spread: 3,380 |
+| `velveeta` | high | SR Legacy 173448, KRAFT VELVEETA Pasteurized Process Cheese Spread: 1,499 |
+| `wakame` | high | SR Legacy 170496, Seaweed, wakame, raw: 872 |
+| `wiener` | high | SR Legacy 172968, Frankfurter, meat: 1,090; SR Legacy 171634, Frankfurter, meat and poultry, cooked, grilled: 1,079; FNDDS 2706757, Frankfurters or hot dogs and sauerkraut: 764 (12 records, all above 600) |
+| `worcestershire` | high | SR Legacy 171610, Sauce, worcestershire: 1,300; FNDDS 2707447, Worcestershire sauce: 1,300 |
+| `worcestershire sauce` | high | SR Legacy 171610, Sauce, worcestershire: 1,300; FNDDS 2707447, Worcestershire sauce: 1,300 |
+| `aged cheese` | can be high | above: SR Legacy 171247, Cheese, parmesan, grated: 1,804. At or below: Foundation 746767, Cheese, swiss: 185 (19 of 22 records above 600) |
+| `anchovy` | can be high | above: SR Legacy 174183, Fish, anchovy, european, canned in oil, drained solids: 3,668. At or below: SR Legacy 174182, Fish, anchovy, european, raw: 104 (2 of 3 records above 600) |
+| `beef stock` | can be high | above: SR Legacy 171560, Soup, beef broth or bouillon, powder, dry: 26,000. At or below: SR Legacy 171538, Soup, beef broth or bouillon canned, ready-to-serve: 372 (3 of 4 records above 600) |
+| `biscuit` | can be high | SR Legacy 174902, Biscuits, plain or buttermilk, dry mix: 1,276; SR Legacy 172669, Biscuits, plain or buttermilk, refrigerated dough, higher fat, baked: 1,002; SR Legacy 172671, Biscuits, mixed grain, refrigerated dough: 670 (13 records, all above 600). Review: In the UK a biscuit is a cookie; USDA lists only the American quick bread. |
+| `bouillon` | can be high | above: SR Legacy 171560, Soup, beef broth or bouillon, powder, dry: 26,000. At or below: SR Legacy 171538, Soup, beef broth or bouillon canned, ready-to-serve: 372 (5 of 6 records above 600) |
+| `bratwurst` | can be high | above: SR Legacy 171622, Bratwurst, pork, beef, link: 1,112. At or below: SR Legacy 174595, Bratwurst, veal, cooked: 60 (5 of 7 records above 600) |
+| `bread` | can be high | above: SR Legacy 174911, Bread, french or vienna, toasted (includes sourdough): 720. At or below: SR Legacy 172680, Bread, raisin, enriched: 347 (12 of 58 records above 600) |
+| `bread crumbs` | can be high | SR Legacy 172806, Bread, crumbs, dry, grated, seasoned: 2,100; SR Legacy 174928, Bread, crumbs, dry, grated, plain: 732. Review: Fresh breadcrumbs are bread (see bread); USDA lists only dry ones. |
+| `bread roll` | can be high | above: SR Legacy 175029, Rolls, dinner, rye: 650. At or below: SR Legacy 174107, Rolls, dinner, sweet: 253 (1 of 14 records above 600) |
+| `breadcrumbs` | can be high | SR Legacy 172806, Bread, crumbs, dry, grated, seasoned: 2,100; SR Legacy 174928, Bread, crumbs, dry, grated, plain: 732. Review: Fresh breadcrumbs are bread (see bread); USDA lists only dry ones. |
+| `broth` | can be high | above: SR Legacy 171560, Soup, beef broth or bouillon, powder, dry: 26,000. At or below: SR Legacy 171606, Fish broth: 200 (6 of 11 records above 600) |
+| `butter` | can be high | above: SR Legacy 173410, Butter, salted: 643. At or below: FNDDS 2710155, Butter, stick: 524 (1 of 3 records above 600) |
+| `cheese` | can be high | above: SR Legacy 171250, Cheese, roquefort: 1,809. At or below: SR Legacy 171248, Cheese, ricotta, part skim milk: 99 (66 of 89 records above 600) |
+| `cheese curds` | can be high | above: Branded 2637796, CHEESE CURDS (Meijer): 714. At or below: Branded 2553988, CHEESE CURDS (Westby): 433 (2 of 3 records above 600) |
+| `cheese spread` | can be high | above: SR Legacy 171254, Cheese spread, pasteurized process, American: 1,625. At or below: FNDDS 2705775, Cheese spread, cream cheese: 436 (4 of 6 records above 600) |
+| `chicken stock` | can be high | above: SR Legacy 171563, Soup, chicken broth cubes, dry: 24,000. At or below: SR Legacy 174536, Soup, chicken broth, ready-to-serve: 371 (3 of 4 records above 600) |
+| `chili powder` | can be high | SR Legacy 171319, Spices, chili powder: 2,867. Review: The US product is a blend with salt; UK chilli powder is often ground chilli alone, which USDA does not list. |
+| `chips` | can be high | above: SR Legacy 167970, Snacks, tortilla chips, taco-flavor: 787. At or below: SR Legacy 174805, Snacks, potato chips, lightly salted: 187 (13 of 46 records above 600) |
+| `clam` | can be high | above: SR Legacy 171975, Mollusks, clam, mixed species, cooked, moist heat: 1,202. At or below: SR Legacy 171976, Mollusks, clam, mixed species, canned, drained solids: 112 (2 of 5 records above 600) |
+| `coconut aminos` | can be high | above: Branded 2132095, COCONUT AMINOS (Kroger): 3,930. At or below: Branded 2282541, COCONUT AMINOS (Dynamic Health): 500 (2 of 3 records above 600) |
+| `corn chips` | can be high | above: FNDDS 2708196, Corn chips, plain: 817. At or below: FNDDS 2708197, Corn chips, flavored: 509 (4 of 7 records above 600) |
+| `cornbread` | can be high | above: SR Legacy 172692, Bread, stuffing, cornbread, dry mix: 1,429. At or below: FNDDS 2707813, Cornbread muffin, stick, round: 385 (3 of 8 records above 600) |
+| `cottage cheese` | can be high | above: FNDDS 2705754, Cheese, cottage, salted, dry curd: 755. At or below: SR Legacy 172179, Cheese, cottage, creamed, large or small curd: 315 (1 of 5 records above 600) |
+| `crab` | can be high | above: SR Legacy 174202, Crustaceans, crab, alaska king, cooked, moist heat: 1,072. At or below: SR Legacy 174204, Crustaceans, crab, blue, raw: 293 (3 of 10 records above 600) |
+| `crabmeat` | can be high | above: SR Legacy 174202, Crustaceans, crab, alaska king, cooked, moist heat: 1,072. At or below: SR Legacy 174204, Crustaceans, crab, blue, raw: 293 (3 of 10 records above 600) |
+| `cracker` | can be high | above: SR Legacy 167942, Crackers, saltines, whole wheat (includes multi-grain): 1,214. At or below: FNDDS 2708158, Crackers, matzo: 0 (39 of 59 records above 600) |
+| `flour tortilla` | can be high | above: SR Legacy 167535, Tortillas, ready-to-bake or -fry, flour, shelf stable: 742. At or below: SR Legacy 173242, Tortillas, ready-to-bake or -fry, flour, without added calcium: 478 (3 of 4 records above 600) |
+| `hard cheese` | can be high | above: SR Legacy 171247, Cheese, parmesan, grated: 1,804. At or below: Foundation 746767, Cheese, swiss: 185 (16 of 20 records above 600) |
+| `herring` | can be high | above: SR Legacy 173668, Fish, herring, Atlantic, kippered: 918. At or below: SR Legacy 169806, Fish, herring eggs, Pacific, plain (Alaska Native): 61 (2 of 9 records above 600) |
+| `jack cheese` | can be high | above: Foundation 2647438, Cheese, monterey jack, solid: 662. At or below: SR Legacy 170844, Cheese, monterey: 600 (2 of 3 records above 600) |
+| `low-fat cheese` | can be high | above: SR Legacy 169080, Cheese, pasteurized process, American, low fat: 1,789. At or below: FNDDS 2705737, Cheese, Swiss, reduced fat: 199 (13 of 24 records above 600) |
+| `margarine` | can be high | above: SR Legacy 171018, Margarine, regular, hard, soybean (hydrogenated): 943. At or below: SR Legacy 171431, Margarine, margarine-like vegetable oil spread, 67-70% fat, tub: 536 (29 of 34 records above 600) |
+| `mayo` | can be high | above: SR Legacy 167695, Mayonnaise, made with tofu: 773. At or below: SR Legacy 167736, Mayonnaise dressing, no cholesterol: 486 (6 of 8 records above 600) |
+| `mayonnaise` | can be high | above: SR Legacy 167695, Mayonnaise, made with tofu: 773. At or below: SR Legacy 167736, Mayonnaise dressing, no cholesterol: 486 (6 of 8 records above 600) |
+| `monterey jack` | can be high | above: Foundation 2647438, Cheese, monterey jack, solid: 662. At or below: SR Legacy 170844, Cheese, monterey: 600 (2 of 3 records above 600) |
+| `monterrey jack` | can be high | above: Foundation 2647438, Cheese, monterey jack, solid: 662. At or below: SR Legacy 170844, Cheese, monterey: 600 (2 of 3 records above 600) |
+| `mozzarella` | can be high | above: SR Legacy 170846, Cheese, mozzarella, whole milk, low moisture: 710. At or below: SR Legacy 170845, Cheese, mozzarella, whole milk: 486 (7 of 8 records above 600) |
+| `mustard` | can be high | above: SR Legacy 172234, Mustard, prepared, yellow: 1,104. At or below: SR Legacy 170929, Spices, mustard seed, ground: 13 (3 of 4 records above 600) |
+| `oyster sauce` | can be high | SR Legacy 174529, Sauce, oyster, ready-to-serve: 2,733; FNDDS 2707150, Oyster sauce: 2,733. Review: The dictionary marks this word unknown-risk (brands differ in what they contain), and an unknown-risk word carries no tags of its own, so it is marked as can be high even though every USDA record is above 600. |
+| `peanut sauce` | can be high | above: SR Legacy 174070, Sauce, peanut, made from peanut butter, water, soy sauce: 1,338. At or below: SR Legacy 171575, Sauce, peanut, made from coconut, water, sugar, peanuts: 319 (2 of 3 records above 600) |
+| `pepper jack` | can be high | above: Foundation 2647438, Cheese, monterey jack, solid: 662. At or below: SR Legacy 170844, Cheese, monterey: 600 (2 of 3 records above 600) |
+| `pickle` | can be high | above: SR Legacy 169379, Pickles, cucumber, sour: 1,208. At or below: FNDDS 2710080, Pickles, sweet: 457 (4 of 6 records above 600) |
+| `pickled` | can be high | above: SR Legacy 169892, Eggplant, pickled: 1,674. At or below: FNDDS 2710071, Beets, pickled: 149 (29 of 33 records above 600) |
+| `popcorn` | can be high | above: FNDDS 2708229, Popcorn, microwave, cheese flavored: 916. At or below: SR Legacy 167959, Snacks, popcorn, air-popped: 8 (17 of 33 records above 600) |
+| `potato chips` | can be high | above: FNDDS 2709433, Potato chips, restructured, flavored: 757. At or below: SR Legacy 174805, Snacks, potato chips, lightly salted: 187 (4 of 31 records above 600) |
+| `pretzel` | can be high | above: SR Legacy 170650, Snacks, pretzels, hard, plain, made with unenriched flour, salted: 1,715. At or below: SR Legacy 169064, Pretzels, soft: 203 (21 of 30 records above 600) |
+| `ramen` | can be high | above: SR Legacy 171615, Soup, ramen noodle, chicken flavor, dry: 1,923. At or below: FNDDS 2709159, Ramen bowl, vegetarian with egg: 322 (3 of 10 records above 600) |
+| `reduced-fat cheese` | can be high | above: SR Legacy 169080, Cheese, pasteurized process, American, low fat: 1,789. At or below: FNDDS 2705737, Cheese, Swiss, reduced fat: 199 (13 of 19 records above 600) |
+| `relish` | can be high | above: SR Legacy 169386, Pickle relish, hamburger: 1,096. At or below: SR Legacy 173962, Cranberry-orange relish, canned: 32 (4 of 6 records above 600) |
+| `roe` | can be high | above: SR Legacy 174188, Fish, caviar, black and red, granular: 1,500. At or below: SR Legacy 175132, Fish, roe, mixed species, raw: 91 (2 of 4 records above 600) |
+| `rye bread` | can be high | above: SR Legacy 172685, Bread, rye, toasted: 664. At or below: FNDDS 2707755, Bread, rye: 570 (4 of 7 records above 600) |
+| `salsa` | can be high | above: SR Legacy 171824, Sauce, salsa, verde, ready-to-serve: 906. At or below: FNDDS 2709737, Salsa, pico de gallo: 443 (6 of 7 records above 600) |
+| `sausage` | can be high | above: SR Legacy 172953, Sausage, Polish, beef with chicken, hot: 1,540. At or below: SR Legacy 171631, Sausage, Italian, pork, mild, raw: 563 (28 of 32 records above 600) |
+| `scallop` | can be high | above: SR Legacy 167742, Mollusks, scallop, (bay and sea), cooked, steamed: 667. At or below: SR Legacy 174220, Mollusks, scallop, mixed species, raw: 392 (1 of 3 records above 600) |
+| `seasoning` | can be high | above: SR Legacy 172242, Seasoning mix, dry, sazon, coriander & annatto: 17,000. At or below: SR Legacy 171331, Spices, poultry seasoning: 27 (3 of 4 records above 600) |
+| `seasoning blend` | can be high | above: SR Legacy 172242, Seasoning mix, dry, sazon, coriander & annatto: 17,000. At or below: SR Legacy 171331, Spices, poultry seasoning: 27 (3 of 4 records above 600) |
+| `seasonings` | can be high | above: SR Legacy 172242, Seasoning mix, dry, sazon, coriander & annatto: 17,000. At or below: SR Legacy 171331, Spices, poultry seasoning: 27 (3 of 4 records above 600) |
+| `seaweed` | can be high | above: SR Legacy 167602, Seaweed, Canadian Cultivated EMI-TSUNOMATA, dry: 4,331. At or below: SR Legacy 169280, Seaweed, agar, raw: 9 (4 of 15 records above 600) |
+| `shrimp` | can be high | above: SR Legacy 171971, Crustaceans, shrimp, mixed species, cooked, moist heat (may contain additives to retain moisture): 947. At or below: SR Legacy 175180, Crustaceans, shrimp, cooked: 111 (2 of 7 records above 600) |
+| `shrimp paste` | can be high | above: Branded 2032323, BLACHEN DRIED SHRIMP PASTE (First Indo American): 13,100. At or below: Branded 2182708, Nishin Shrimp Paste: 450 (2 of 3 records above 600) |
+| `smoked fish` | can be high | above: SR Legacy 171985, Fish, salmon, chinook, smoked, (lox), regular: 2,000. At or below: SR Legacy 167646, Fish, salmon, red, (sockeye), kippered (Alaska Native): 460 (11 of 14 records above 600) |
+| `smoked salmon` | can be high | above: SR Legacy 171985, Fish, salmon, chinook, smoked, (lox), regular: 2,000. At or below: SR Legacy 167645, Fish, salmon, red, (sockeye), canned, smoked (Alaska Native): 600 (4 of 5 records above 600) |
+| `smoked trout` | can be high | above: SR Legacy 171985, Fish, salmon, chinook, smoked, (lox), regular: 2,000. At or below: SR Legacy 167646, Fish, salmon, red, (sockeye), kippered (Alaska Native): 460 (11 of 14 records above 600) |
+| `soba` | can be high | above: SR Legacy 168906, Noodles, japanese, soba, dry: 792. At or below: SR Legacy 168907, Noodles, japanese, soba, cooked: 60 (1 of 2 records above 600) |
+| `sourdough bread` | can be high | above: SR Legacy 174911, Bread, french or vienna, toasted (includes sourdough): 720. At or below: FNDDS 2707728, Bread, French or Vienna, whole wheat: 375 (6 of 9 records above 600) |
+| `stock` | can be high | above: SR Legacy 171560, Soup, beef broth or bouillon, powder, dry: 26,000. At or below: SR Legacy 171606, Fish broth: 200 (6 of 10 records above 600) |
+| `stock cube` | can be high | SR Legacy 171561, Soup, beef broth, cubed, dry: 24,000; SR Legacy 171563, Soup, chicken broth cubes, dry: 24,000. Review: The dictionary marks this word unknown-risk (brands differ in what they contain), and an unknown-risk word carries no tags of its own, so it is marked as can be high even though every USDA record is above 600. |
+| `stock pot` | can be high | above: SR Legacy 171560, Soup, beef broth or bouillon, powder, dry: 26,000. At or below: SR Legacy 171538, Soup, beef broth or bouillon canned, ready-to-serve: 372 (4 of 5 records above 600) |
+| `stock powder` | can be high | SR Legacy 171560, Soup, beef broth or bouillon, powder, dry: 26,000; SR Legacy 171562, Soup, chicken broth or bouillon, dry: 23,875. Review: The dictionary marks this word unknown-risk (brands differ in what they contain), and an unknown-risk word carries no tags of its own, so it is marked as can be high even though every USDA record is above 600. |
+| `string cheese` | can be high | above: Branded 2094125, STRING CHEESE (7-Eleven): 857. At or below: Branded 1887195, STRING CHEESE (Renard's): 529 (2 of 3 records above 600) |
+| `sweet chili sauce` | can be high | above: Branded 2068561, SWEET CHILI SAUCE (Natural Earth): 1,470. At or below: Branded 2093921, SWEET CHILI SAUCE (Schlotterbeck & Foss): 357 (2 of 3 records above 600) |
+| `tortilla` | can be high | above: SR Legacy 167535, Tortillas, ready-to-bake or -fry, flour, shelf stable: 742. At or below: FNDDS 2707823, Tortilla, corn: 45 (6 of 10 records above 600) |
+| `tortilla chips` | can be high | above: SR Legacy 167970, Snacks, tortilla chips, taco-flavor: 787. At or below: SR Legacy 173143, Tortilla chips, yellow, plain, salted: 310 (6 of 11 records above 600) |
+| `vegetable bouillon` | can be high | above: SR Legacy 171560, Soup, beef broth or bouillon, powder, dry: 26,000. At or below: SR Legacy 171538, Soup, beef broth or bouillon canned, ready-to-serve: 372 (3 of 4 records above 600) |
+
+Reviewed and not marked (no USDA record for the plain food above 600 mg per 100 g, or no record at all):
+
+| Word | Marked | USDA FoodData Central records |
+|---|---|---|
+| `cod` | not marked | FNDDS 2706240, Fish, cod, NFS: 426; FNDDS 2706244, Fish, cod, fried: 426 (13 records, none above 600) |
+| `corn tortilla` | not marked | SR Legacy 175036, Tortillas, ready-to-bake or -fry, corn: 45; FNDDS 2707823, Tortilla, corn: 45 |
+| `crab stick` | not marked | FNDDS 2706843, Crab salad made with imitation crab: 530; SR Legacy 174203, Crustaceans, crab, alaska king, imitation, made from surimi: 529 (3 records, none above 600) |
+| `cream cheese` | not marked | SR Legacy 173418, Cheese, cream: 314 |
+| `fish stock` | not marked | SR Legacy 171606, Fish broth: 200 |
+| `goat cheese` | not marked | SR Legacy 173435, Cheese, goat, soft type: 459; SR Legacy 172197, Cheese, goat, hard type: 423 (4 records, none above 600) |
+| `graham cracker` | not marked | FNDDS 2708133, Graham crackers: 516; FNDDS 2708134, Graham crackers (Teddy Grahams): 516 (3 records, none above 600) |
+| `imitation crab` | not marked | FNDDS 2706843, Crab salad made with imitation crab: 530; SR Legacy 174203, Crustaceans, crab, alaska king, imitation, made from surimi: 529 (3 records, none above 600) |
+| `kimchi` | not marked | SR Legacy 170392, Cabbage, kimchi: 498; FNDDS 2710077, Kimchi: 498 |
+| `miso soup` | not marked | FNDDS 2707455, Soup, miso or tofu: 467 |
+| `nori` | not marked | SR Legacy 168458, Seaweed, laver, raw: 48 |
+| `plum sauce` | not marked | SR Legacy 172879, Sauce, plum, ready-to-serve: 538 |
+| `queso panela` | not marked | no USDA record |
+| `rice cracker` | not marked | SR Legacy 173161, Rice crackers: 233; SR Legacy 167966, Snacks, rice cracker brown rice, plain: 166 |
+| `salt substitute` | not marked | Branded 2113452, SALT SUBSTITUTE (Morton Salt): 0; Branded 1818913, SALT SUBSTITUTE (Cumberland Packing): 0 |
+| `surimi` | not marked | SR Legacy 173702, Fish, surimi: 143 |
+| `swiss cheese` | not marked | SR Legacy 171251, Cheese, swiss: 187; FNDDS 2705735, Cheese, Swiss: 185 (3 records, none above 600) |
+| `tomato sauce` | not marked | SR Legacy 170054, Tomato products, canned, sauce: 474 |
+| `vegetable broth` | not marked | SR Legacy 171180, Soup, SWANSON, vegetable broth: 303; SR Legacy 171583, Soup, vegetable broth, ready to serve: 296 |
+| `vegetable stock` | not marked | SR Legacy 171583, Soup, vegetable broth, ready to serve: 296 |
+| `white bread` | not marked | SR Legacy 174925, Bread, white, commercially prepared, toasted: 537; FNDDS 2707603, Bread, white with whole wheat swirl, toasted: 508 (10 records, none above 600) |
+| `whole grain bread` | not marked | FNDDS 2707707, Bread, whole grain white, toasted: 495; FNDDS 2707706, Bread, whole grain white: 450 (4 records, none above 600) |
+| `whole wheat bread` | not marked | SR Legacy 172689, Bread, whole-wheat, commercially prepared, toasted: 565; FNDDS 2707717, Bread, whole wheat, with raisins, toasted: 528 (7 records, none above 600) |
+| `yeast extract` | not marked | SR Legacy 167717, Yeast extract spread: 3,380; FNDDS 2710006, Yeast extract spread: 3,380. Review: USDA lists only the yeast extract spread, not the ingredient. |
