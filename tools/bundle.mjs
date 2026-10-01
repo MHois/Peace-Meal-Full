@@ -58,6 +58,16 @@ if (!LITE && Array.isArray(data['recipes-open'])) {
     deferredBlock = `<script type="application/json" id="pm-deferred-wikibooks">${JSON.stringify(wb).replace(/</g, '\\u003c')}</script>\n`;
   } else if (wb.length) console.warn('Wikibooks recipes are not together in recipes-open.json; they stay inline (launch is slower).');
 }
+// P2-14 (audit of September 30, 2026): the USDA MyPlate Kitchen recipes (1,043, 2.4 MB) are off by default, so the full
+// build ships them in a JSON block too, and src/app.js reads it only when the collection is switched on. They are last
+// in the recipe order, so the app puts them back at the end and every week plan comes out the same. Lite has none.
+let usdaBlock = '';
+if (!LITE && Array.isArray(data['recipes-usda']) && data['recipes-usda'].length) {
+  const us = data['recipes-usda'];
+  data.deferred = { ...(data.deferred || {}), usda: { element: 'pm-deferred-usda', source: 'USDA MyPlate Kitchen', collection: 'usda', count: us.length, id_prefix: 'usda-' } };
+  data['recipes-usda'] = [];
+  usdaBlock = `<script type="application/json" id="pm-deferred-usda">${JSON.stringify(us).replace(/</g, '\\u003c')}</script>\n`;
+}
 const html = R('index.html');
 if (fs.existsSync(new URL('breathe.html', root))) data.breatheHtml = R('breathe.html');
 const iconSvg = fs.existsSync(new URL('icon.svg', root)) ? R('icon.svg') : '';
@@ -77,7 +87,7 @@ const dataScript = `<script>${LITE ? 'window.__PEACE_MEAL_LITE__ = true;' : ''}w
 let out = html
   .replace(/<link[^>]+href="src\/fonts\/fonts\.css"[^>]*>/, () => `<style>\n${fontsCss}\n</style>`)
   .replace(/<link[^>]+href="src\/app\.css"[^>]*>/, () => `<style>\n${css}\n</style>`)
-  .replace(/<script[^>]+type="module"[^>]+src="src\/app\.js"[^>]*><\/script>/, () => `${deferredBlock}${dataScript}\n<script>\n(function(){\n${js}\n})();\n</script>`)
+  .replace(/<script[^>]+type="module"[^>]+src="src\/app\.js"[^>]*><\/script>/, () => `${deferredBlock}${usdaBlock}${dataScript}\n<script>\n(function(){\n${js}\n})();\n</script>`)
   .replace(/<link[^>]+rel="manifest"[^>]*>\s*/, '')
   .replace(/(<link[^>]+rel="(?:icon|apple-touch-icon)"[^>]+href=")[^"]+(")/g, (m, a, b) => iconData ? a + iconData + b : '')
   .replace(/<script>[^<]*serviceWorker[^<]*<\/script>\s*/, '');
@@ -113,7 +123,8 @@ if (PAGES) {
   fs.writeFileSync(new URL(dir + 'sw.js', root), pagesServiceWorker({ app: LITE ? 'lite' : 'full', fingerprints }));
   console.log(dir, (out.length / 1024).toFixed(0) + ' KB');
 } else {
-  const outName = LITE ? 'dist/peace-meal-lite.html' : 'dist/nutrition-app.html';
-  fs.writeFileSync(new URL(outName, root), out);
+  // PM_BUNDLE_OUT (tests only): write the single file somewhere else, so a test can build without touching dist/.
+  const outName = process.env.PM_BUNDLE_OUT || (LITE ? 'dist/peace-meal-lite.html' : 'dist/nutrition-app.html');
+  fs.writeFileSync(process.env.PM_BUNDLE_OUT ? outName : new URL(outName, root), out);
   console.log(outName, (out.length / 1024).toFixed(0) + ' KB');
 }

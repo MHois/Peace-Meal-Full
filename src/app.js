@@ -60,7 +60,7 @@ export async function loadData() {
   return { data: out, problems };
 }
 
-function appNormalizeData(data) {
+export function appNormalizeData(data) {
   // conditions.json is { version, notes, modules, proposed_tags, flags } (or a bare array in older fixtures)
   uiState.conditionsMeta = { flags: {}, proposed_tags: [] };
   if (data.conditions && !Array.isArray(data.conditions)) {
@@ -261,6 +261,8 @@ export function appCollectionCounts() {
   for (const r of uiState.baseRecipes || []) { const k = appCollectionOf(r); if (k) counts[k]++; }
   const d = appDeferredInfo();
   if (d) counts.wikibooks += d.count;   // not read yet, still part of the collection
+  const u = appDeferredUsdaInfo();
+  if (u) counts.usda += u.count;   // the same for the USDA recipes (P2-14)
   return counts;
 }
 // Adapted copies for one diet family: every base recipe with nutrition that the swap list can fix, re-checked against a plan
@@ -353,22 +355,46 @@ function appLoadDeferred() {
   if (!d) return false;
   const on = Object.assign({ wikibooks: true }, (uiState.profile && uiState.profile.recipe_collections) || {});
   if (!on.wikibooks) return false;   // the collection is switched off in Settings: nothing to show, so nothing to read
+  uiState.deferredLoaded = true;   // once, whatever happened: a failed read is not retried on every keystroke
+  if (!appReadDeferredBlock(d)) { uiToast('The Wikibooks recipes could not be read from this file.'); return false; }
+  appAssembleRecipes();
+  if (uiState.weekCache) uiState.weekCache.clear();
+  return true;
+}
+// Reads one deferred block into the base recipes, after the recipe named in "after" (at the end when there is none).
+// False when the block is missing or cannot be parsed.
+function appReadDeferredBlock(d) {
   const el = typeof document !== 'undefined' ? document.getElementById(d.element) : null;
   let list = null;
   try { list = el ? JSON.parse(el.textContent) : null; } catch (e) { console.error(e); list = null; }
-  uiState.deferredLoaded = true;   // once, whatever happened: a failed read is not retried on every keystroke
-  if (!Array.isArray(list)) { uiToast('The Wikibooks recipes could not be read from this file.'); return false; }
+  if (!Array.isArray(list)) return false;
   const base = uiState.baseRecipes;
   const seen = new Set(base.map(r => r.id));
   const add = list.filter(r => r && r.id && !seen.has(r.id));
   const at = d.after ? base.findIndex(r => r.id === d.after) : -1;
   if (at >= 0) base.splice(at + 1, 0, ...add); else base.push(...add);
   if (el) el.textContent = '';   // the parsed copy is the one in use now
-  appAssembleRecipes();
-  if (uiState.weekCache) uiState.weekCache.clear();
   return true;
 }
-function appRefreshRecipes() {
+// P2-14 (audit of September 30, 2026): the USDA MyPlate Kitchen recipes are off by default, and the full single-file
+// build keeps them in a JSON block (tools/bundle.mjs). They are read when the collection is on: at launch, or when it is
+// switched on in Settings (which calls refreshRecipes). Off, they are never in the recipe pool, so nothing needs them.
+function appDeferredUsdaInfo() {
+  const d = uiState.data && uiState.data.deferred && uiState.data.deferred.usda;
+  return d && !uiState.deferredUsdaLoaded ? d : null;
+}
+function appLoadDeferredUsda() {
+  const d = appDeferredUsdaInfo();
+  if (!d) return false;
+  const on = Object.assign({ usda: false }, (uiState.profile && uiState.profile.recipe_collections) || {});
+  if (!on.usda) return false;
+  uiState.deferredUsdaLoaded = true;   // once, whatever happened, as for the Wikibooks block
+  if (!appReadDeferredBlock(d)) { uiToast('The USDA recipes could not be read from this file.'); return false; }
+  return true;
+}
+// Exported for test/audit-fix-p2-14-usda-deferred.test.mjs; the bundle strips "export".
+export function appRefreshRecipes() {
+  appLoadDeferredUsda();   // before the pool is put together, so it is put together once
   appAssembleRecipes();
   if (appNeedsDeferred(uiState.profile)) appLoadDeferred();
 }
