@@ -721,18 +721,30 @@ export function uiGreeting(name) {
   return name ? `${word}, ${uiEsc(name)}` : word;
 }
 
-// ---- UI preferences (theme, large text). Stored under peace-meal:ui; nothing else reads it. ----
+// ---- UI preferences (theme, large text). Each build keeps its own; nothing else reads them. ----
 // Large text is on by default in the lite build until the person sets it (largeTextSet), 2026-09 audit.
-const UI_PREFS_KEY = 'peace-meal:ui';
+// P3-9 (audit of September 30, 2026): both builds used one key, "peace-meal:ui", and on the hosted site they share one
+// web address, so a setting changed in one build changed the other. Each build now has its own key; the shared key from
+// before is copied into it the first time that build runs, and is left in place.
+const UI_PREFS_LEGACY_KEY = 'peace-meal:ui';
 function uiLiteBuild() { return typeof window !== 'undefined' && !!window.__PEACE_MEAL_LITE__; }
+function uiPrefsKey() { return (uiLiteBuild() ? 'peace-meal-lite' : 'peace-meal-full') + ':ui'; }
+function uiPrefsRaw() {
+  const key = uiPrefsKey();
+  const own = localStorage.getItem(key);
+  if (own != null) return own;
+  const legacy = localStorage.getItem(UI_PREFS_LEGACY_KEY);
+  if (legacy != null) { try { localStorage.setItem(key, legacy); } catch { /* storage full: read the old copy again next time */ } }
+  return legacy;
+}
 export function uiLoadUiPrefs() {
   try {
-    const p = JSON.parse(localStorage.getItem(UI_PREFS_KEY) || '{}');
+    const p = JSON.parse(uiPrefsRaw() || '{}');
     return { theme: ['light', 'dark'].includes(p.theme) ? p.theme : 'system', largeText: p.largeTextSet || !uiLiteBuild() ? !!p.largeText : true, largeTextSet: !!p.largeTextSet };
   } catch { return { theme: 'system', largeText: uiLiteBuild(), largeTextSet: false }; }
 }
 export function uiSaveUiPrefs(prefs) {
-  try { localStorage.setItem(UI_PREFS_KEY, JSON.stringify(prefs)); } catch { /* ignore */ }
+  try { localStorage.setItem(uiPrefsKey(), JSON.stringify(prefs)); } catch { /* ignore */ }
   uiApplyUiPrefs(prefs);
 }
 export function uiApplyUiPrefs(prefs = uiLoadUiPrefs()) {
