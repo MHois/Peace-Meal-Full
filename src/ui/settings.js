@@ -1,5 +1,5 @@
 // Settings: appearance (theme, large text), export, import, guests, clear, about.
-import { exportJSON, importJSON, clearAll, defaultProfile, backupDue, storeState, unreadableCopies, keepBeforeImport } from '../store.js';
+import { exportJSON, importJSON, clearAll, defaultProfile, backupDue, storeState, unreadableCopies, keepBeforeImport, recipeCollectionsOn } from '../store.js';
 import { appCollectionCounts } from '../app.js';
 import { uiState, uiEsc, uiPersist, uiDownload, uiToast, uiNavigate, uiIsoDate, uiCopyText, uiEnsurePerson, uiPageHeader, uiSection, uiSwitch, uiSegmented, uiChip, uiIcon, uiLoadUiPrefs, uiSaveUiPrefs, uiNoticeHTML, uiModal, uiShareFile, uiUndoToast } from './common.js';
 import { claimOwner, registerDevice, sealOwnerBackup, restoreOwnerBackup, forgetDeviceIdentity, removePerson } from '../engine/sync.js';
@@ -250,7 +250,7 @@ function settingsRestoreModal(text) {
 // was removed).
 const SETTINGS_USDA_NOTICE = 'These recipes come from USDA MyPlate Kitchen, a free US government collection. The app checks each one against your plan the same way it checks every other recipe, and the nutrition numbers per serving are the ones USDA publishes.';
 function settingsCollectionsHTML(profile) {
-  const on = Object.assign({ nhs: true, parentclub: true, nhlbi: true, va: true, wikibooks: true, usda: false, review_dual: true }, profile.recipe_collections || {});
+  const on = recipeCollectionsOn(profile);
   const n = appCollectionCounts();
   return `<div class="card">
     <p class="small">Tick a collection to include its recipes in search, the week plan, and Pantry. Untick it to leave all of them out. Recipes written for Peace Meal and your own are always included.</p>
@@ -265,7 +265,7 @@ function settingsCollectionsHTML(profile) {
 }
 function settingsBindCollections(root, profile) {
   const setColl = (key, value) => {
-    profile.recipe_collections = Object.assign({ nhs: true, parentclub: true, nhlbi: true, va: true, wikibooks: true, usda: false, review_dual: true }, profile.recipe_collections || {}, { [key]: value });
+    profile.recipe_collections = Object.assign(recipeCollectionsOn(profile), { [key]: value });
     uiPersist();
     if (typeof uiState.refreshRecipes === 'function') uiState.refreshRecipes();
     uiToast(value ? 'Collection included.' : 'Collection left out.');

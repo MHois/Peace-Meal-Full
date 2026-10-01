@@ -1,5 +1,5 @@
 // Router and top-level state. Loads data from window.__APP_DATA__ (single-file bundle) or fetch('data/*.json') over http.
-import { load, storeState } from './store.js';
+import { load, storeState, recipeCollectionsOn } from './store.js';
 import { buildMatcher } from './engine/dictionary.js';
 import { indexFoodNames } from './engine/checker.js';
 import { annotateCuisines } from './engine/cuisine.js';
@@ -309,7 +309,7 @@ function appPrebuildAdapted() {
 function appAssembleRecipes() {
   const profile = uiState.profile || {};
   const links = profile.recipe_links || {};
-  const on = Object.assign({ nhs: true, parentclub: true, nhlbi: true, va: true, wikibooks: true, usda: false, review_dual: true }, profile.recipe_collections || {});
+  const on = recipeCollectionsOn(profile);
   const out = [];
   for (const r of uiState.baseRecipes || []) {
     const coll = appCollectionOf(r);
@@ -344,7 +344,7 @@ function appNeedsDeferred(profile) {
   const d = appDeferredInfo();
   if (!d || !profile) return false;
   try {
-    const on = Object.assign({ wikibooks: true }, profile.recipe_collections || {});
+    const on = recipeCollectionsOn(profile);
     const text = JSON.stringify({ people: profile.people || [], diary: profile.diary || [], log: profile.log || [], household: profile.household || {}, links: Object.keys(profile.recipe_links || {}) });
     if (text.includes('"' + d.id_prefix)) return true;   // a saved week, diary entry, favorite, or link names one of them
     return !!(on.wikibooks && text.includes('"include_unknown_nutrition":true'));   // the planner may use recipes without numbers
@@ -353,7 +353,7 @@ function appNeedsDeferred(profile) {
 function appLoadDeferred() {
   const d = appDeferredInfo();
   if (!d) return false;
-  const on = Object.assign({ wikibooks: true }, (uiState.profile && uiState.profile.recipe_collections) || {});
+  const on = recipeCollectionsOn(uiState.profile);
   if (!on.wikibooks) return false;   // the collection is switched off in Settings: nothing to show, so nothing to read
   uiState.deferredLoaded = true;   // once, whatever happened: a failed read is not retried on every keystroke
   if (!appReadDeferredBlock(d)) { uiToast('The Wikibooks recipes could not be read from this file.'); return false; }
@@ -386,7 +386,7 @@ function appDeferredUsdaInfo() {
 function appLoadDeferredUsda() {
   const d = appDeferredUsdaInfo();
   if (!d) return false;
-  const on = Object.assign({ usda: false }, (uiState.profile && uiState.profile.recipe_collections) || {});
+  const on = recipeCollectionsOn(uiState.profile);
   if (!on.usda) return false;
   uiState.deferredUsdaLoaded = true;   // once, whatever happened, as for the Wikibooks block
   if (!appReadDeferredBlock(d)) { uiToast('The USDA recipes could not be read from this file.'); return false; }

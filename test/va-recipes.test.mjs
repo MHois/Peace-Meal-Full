@@ -45,7 +45,9 @@ test('VA recipes: the titles left out for cultural fit or for not being a dish s
 test('VA recipes: a collection switch in Settings, on by default, in both builds', () => {
   assert.match(R('src/app.js'), /'VA Healthy Teaching Kitchen': 'va'/);
   assert.match(R('src/ui/settings.js'), /uiSwitch\('coll-va'/);
-  assert.match(R('src/store.js'), /recipe_collections: \{[^}]*\bva: true/);
+  // Changed on purpose October 1, 2026 (P3-3): the defaults are written once, in RECIPE_COLLECTION_DEFAULTS, instead of
+  // inline in the new-profile object. Same expectation: VA is on by default.
+  assert.match(R('src/store.js'), /RECIPE_COLLECTION_DEFAULTS = Object\.freeze\(\{[^}]*\bva: true/);
   // The lite build leaves out only the Wikibooks recipes from recipes-open.json.
   assert.match(R('tools/bundle.mjs'), /data\['recipes-open'\]\.filter\(r => r\.source !== 'Wikibooks Cookbook'\)/);
   // The Wikibooks recipes stay together, so the full build can still defer them (tools/bundle.mjs).
