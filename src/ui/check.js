@@ -33,10 +33,11 @@ function checkLoadOcr() {
   });
   return checkOcrLoading;
 }
-// One pinned file, after the browser has checked its hash.
-async function checkPinnedFetch(f) {
+// One pinned file, after the browser has checked its hash. P3-11 (audit of September 30, 2026): the browser's own error
+// is kept as the cause, so the console says why (offline, blocked, or a changed file). Exported for the P3-11 test.
+export async function checkPinnedFetch(f) {
   let res;
-  try { res = await fetch(f.url, { integrity: f.integrity, mode: 'cors', credentials: 'omit' }); } catch (e) { throw new Error('a reader file did not load or did not match its hash'); }
+  try { res = await fetch(f.url, { integrity: f.integrity, mode: 'cors', credentials: 'omit' }); } catch (e) { throw new Error('a reader file did not load or did not match its hash', { cause: e }); }
   if (!res.ok) throw new Error('a reader file did not load (' + res.status + ')');
   return res;
 }
@@ -126,6 +127,7 @@ export function renderCheckScreen(root) {
       status.textContent = 'Text added. Look it over, fix anything the camera misread, then tap Check this list.';
       ta.focus();
     } catch (err) {
+      console.warn('The label reader did not load:', err, err && err.cause);   // P3-11: the cause, for whoever looks at the console
       status.textContent = uiState.lite
         ? 'The label reader could not load. It needs Wi-Fi the first time. Or use your phone camera to copy the text, then paste it above.'
         : 'The label reader could not load here (' + (err && err.message ? err.message : 'no internet or blocked') + '). It needs the internet the first time. Or use your phone camera to copy the text, then paste it above.';
