@@ -1022,3 +1022,13 @@ button[disabled].lite-big { opacity: 0.75; cursor: default; }
 @media (min-width: 900px) { .roster-days { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .roster-day-head { flex-wrap: wrap; }
 @media print { .table-wrap { overflow: visible; } }
+
+/* P2-5: in the lite build every control is at least 44 by 44 px, the iPhone guideline. Small buttons, hearts, and
+   "never" buttons were 40 px; chips, link buttons, the brand link, filter menus, and the week's eater counts 24 to 36.
+   Grocery checkboxes sit in a 44 px row that ticks them (the row is the target). */
+html.lite .btn.small, html.lite .btn.link, html.lite button.chip, html.lite a.chip, html.lite .topbar .brand,
+html.lite .filter-bar .filter-select select, html.lite .meter .meter-word .btn.link, html.lite .week-eaters input,
+html.lite .grocery-days input, html.lite .person-card .edit-row a.chip { min-height: 44px; }
+/* Condition names in the Plan heading are inline links; in lite they are tall enough to tap too. */
+html.lite .module-name { min-height: 44px !important; }
+html.lite .btn.small.icon, html.lite .heart-btn, html.lite .never-btn { min-width: 44px; min-height: 44px; }

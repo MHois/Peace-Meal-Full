@@ -401,6 +401,7 @@ async function appBoot() {
   uiState.syncRefresh = appBootSync;
   uiState.profile = load();
   uiState.lite = APP_LITE;
+  if (APP_LITE) document.documentElement.classList.add('lite');   // lite-only sizes in app.css (P2-5)
   if (APP_LITE && uiState.profile && !uiState.profile.people.length && uiState.profile.recipe_collections) { uiState.profile.recipe_collections.nhs = true; uiState.profile.recipe_collections.parentclub = true; uiState.profile.recipe_collections.nhlbi = true; uiState.profile.recipe_collections.va = true; uiState.profile.recipe_collections.wikibooks = false; }
   // Collections with per-serving nutrition are on by default since v2.3. Profiles saved before that carried nhs: false; switch it on once.
   if (uiState.profile && uiState.profile.recipe_collections && !uiState.profile.recipe_collections.defaults_v3) { uiState.profile.recipe_collections.nhs = true; uiState.profile.recipe_collections.parentclub = true; uiState.profile.recipe_collections.defaults_v3 = true; }
