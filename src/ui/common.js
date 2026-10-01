@@ -60,7 +60,9 @@ export function uiFmtNum(v, digits = 0) {
 
 export function uiPersist() {
   uiState.planCache.clear();
-  uiState.weekCache.clear();
+  // P2-1 (fix pass of September 30, 2026): the built week is no longer cleared on every save; weekGet rebuilds it when
+  // something it depends on changed (src/ui/week.js, weekInputs). Kept here, not deleted, for review:
+  // uiState.weekCache.clear();
   const ok = save(uiState.profile);
   uiSaveStatus(ok);
   return ok;

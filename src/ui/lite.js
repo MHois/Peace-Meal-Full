@@ -4,7 +4,7 @@ import { symptomEpisodes, foodsBeforeSymptoms, weightTrend, reportDays, intakeAv
 import { lbToKg, kgToLb } from '../engine/energy.js';
 import { uiState, uiEsc, uiActivePerson, uiPlanFor, uiPersist, uiToast, uiModal, uiIsoDate, uiToday, uiFmtDate, uiFmtNum, uiPageHeader, uiSection, uiChip, uiIcon, uiEmptyState, uiNoticeHTML, uiTagLabel, uiSourcesHTML, uiDownload, uiSegmented, uiUndoToast } from './common.js';
 import { todayAddDiaryEntry, todayAddModal, todayLatestWeightKg, todayChartSVG, todayShiftDate, todayEntryName, todayWeightLossNoticeHTML, todayMealStackingHTML, todayBindHistoryButtons, todayAmountModal } from './today.js';
-import { weekGet } from './week.js';
+import { weekGet, weekCached } from './week.js';
 import { LOG_SYMPTOMS } from './log.js';
 import { SLOT_LABEL } from '../engine/planner.js';
 import { settingsShareBackup, settingsBackupReminderHTML, settingsBindBackupReminder } from './settings.js';
@@ -20,7 +20,10 @@ export function renderLiteTodayScreen(root) {
   const person = uiActivePerson();
   const plan = uiPlanFor(person);
   const date = uiIsoDate(uiToday());
-  const week = uiState.data.recipes.length ? weekGet(person, plan) : null;
+  // P2-1 (fix pass of September 30, 2026): Today shows at once; when the week is not built yet, it is built right after
+  // the first paint and Today is drawn again (liteBuildWeekSoon).
+  const week = uiState.data.recipes.length ? weekCached(person, plan) : null;
+  const weekPending = uiState.data.recipes.length > 0 && !week;
   const day = week ? week.days.find(d => d.date === date) : null;
   const entries = (uiState.profile.diary || []).filter(e => e.person === person.id && e.date === date);
   // Today's symptom entries as stored (not copies), so each one can be removed; and today's "feeling fine", if any.
@@ -42,7 +45,7 @@ export function renderLiteTodayScreen(root) {
       const logged = entries.filter(e => e.meal === LITE_SLOT_TO_DIARY[slot] || e.meal === slot);
       return `<div class="lite-slot card">
         <div class="lite-slot-head"><span class="slot">${SLOT_LABEL[slot] || slot}</span>${logged.length ? uiChip(`${logged.length} logged`, 'pass') : ''}</div>
-        ${planned && planned.recipe ? `<p class="lite-planned">Planned: <strong>${uiEsc(planned.name)}</strong></p>` : '<p class="small muted">Nothing planned for this slot.</p>'}
+        ${planned && planned.recipe ? `<p class="lite-planned">Planned: <strong>${uiEsc(planned.name)}</strong></p>` : weekPending ? `<p class="small muted">Working out today's plan…</p>` : '<p class="small muted">Nothing planned for this slot.</p>'}
         ${logged.length ? `<ul class="lite-logged">${logged.map(e => `<li class="lite-logged-row"><span>${uiEsc(todayEntryName(e))}</span>${removeBtn(uiState.profile.diary, e, todayEntryName(e))}</li>`).join('')}</ul>` : ''}
         ${todayMealStackingHTML(plan, logged)}
         <div class="btn-row">${planned && planned.recipe && !logged.some(e => e.ref === planned.recipe) ? `<button class="btn primary lite-big" type="button" data-ate="${uiEsc(slot)}">${uiIcon('check')}I ate this</button><button class="btn lite-big" type="button" data-ate-part="${uiEsc(slot)}">Only part of it</button>` : ''}<button class="btn lite-big" type="button" data-other="${uiEsc(slot)}">${uiIcon('plus')}Something else</button></div>
@@ -106,6 +109,29 @@ export function renderLiteTodayScreen(root) {
     uiState.profile.weights.push({ date, person: person.id, kg });
     person.weight_kg = kg;
     uiPersist(); uiToast(`Saved ${lb} lb.`); uiState.rerender();
+  });
+  if (weekPending) liteBuildWeekSoon();
+}
+
+// P2-1 (fix pass of September 30, 2026): the week is built after Today has been painted, for whoever is active then
+// (with their plan as it is then), and Today is drawn again with the planned meals. While the person is typing or has
+// a sheet open, the redraw waits until they are done (checked every 1.5 seconds), so nothing they typed is lost.
+let liteWeekBuilding = false;
+function liteBuildWeekSoon() {
+  if (liteWeekBuilding) return;
+  liteWeekBuilding = true;
+  // Two frames, then a task: Today's first frame is on screen before the build starts.
+  const afterPaint = fn => (typeof requestAnimationFrame === 'function' ? requestAnimationFrame(() => requestAnimationFrame(() => setTimeout(fn, 0))) : setTimeout(fn, 0));
+  afterPaint(() => {
+    try { const p = uiActivePerson(); if (p) weekGet(p, uiPlanFor(p)); } catch (e) { console.warn(e); }
+    const busy = () => { const a = document.activeElement; return !!uiState.modalClose || !!(a && /^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName)); };
+    const redraw = () => {
+      if (!uiState.route || uiState.route.screen !== 'today') { liteWeekBuilding = false; return; }
+      if (busy()) { setTimeout(redraw, 1500); return; }
+      liteWeekBuilding = false;
+      uiState.rerender();
+    };
+    redraw();
   });
 }
 

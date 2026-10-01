@@ -13,14 +13,33 @@ const WEEK_MINUTE_OPTIONS = [10, 15, 20, 30, 45, 60, 90];
 const WEEK_DAY_NAMES = { sun: 'Sunday', mon: 'Monday', tue: 'Tuesday', wed: 'Wednesday', thu: 'Thursday', fri: 'Friday', sat: 'Saturday' };
 const WEEK_DAY_SHORT = { sun: 'Sun', mon: 'Mon', tue: 'Tue', wed: 'Wed', thu: 'Thu', fri: 'Fri', sat: 'Sat' };
 
+// P2-1 (fix pass of September 30, 2026): a built week is kept until something it depends on changes, instead of being
+// thrown away on every save (each tap on lite Today rebuilt it). It depends on the person (allergies, conditions,
+// settings, likes, this week's changes), the recipe collections, linked ingredients, the person's own recipes, and the
+// recipe pool, which is a new list whenever it is put together again (src/app.js, appAssembleRecipes); the date and the
+// plan seed are in the key. The household week works the same way (src/ui/household.js, householdSignature).
+function weekInputs(person) {
+  const p = uiState.profile || {};
+  return JSON.stringify([person, p.recipe_collections || null, p.recipe_links || null, p.household || null, p.custom_recipes || null]);
+}
+const weekPool = () => (uiState.data && uiState.data.recipes) || null;
+// The built week for this person when it is ready and still current; null when it would have to be built.
+export function weekCached(person) {
+  const hit = uiState.weekCache.get(uiWeekKey(person));
+  return hit && hit.pool === weekPool() && hit.inputs === weekInputs(person) ? hit.week : null;
+}
+
 export function weekGet(person, plan) {
+  const ready = weekCached(person);
+  if (ready) return ready;
   const key = uiWeekKey(person);
-  if (uiState.weekCache.has(key)) return uiState.weekCache.get(key);
   const wo = weekThisWeek(person);
   const week = buildWeekPlan({ person, plan, recipes: uiState.recipesForPlan ? uiState.recipesForPlan(plan) : uiState.data.recipes, foodsById: uiState.foodsById, matcher: uiState.matcher, startDate: uiToday(), seed: person.planSeed || 0, dayOverrides: wo.days, snacksPerDay: wo.snacks_per_day });
   weekApplySnapshot(week, person);
   weekApplyOverrides(week, person, plan);
-  uiState.weekCache.set(key, week);
+  // One week per person: an older one (another day, another seed) is dropped. Inputs are read after the build, which can tidy the person.
+  for (const k of [...uiState.weekCache.keys()]) if (k !== key && k.startsWith(person.id + '|')) uiState.weekCache.delete(k);
+  uiState.weekCache.set(key, { week, pool: weekPool(), inputs: weekInputs(person) });
   return week;
 }
 
