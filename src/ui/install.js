@@ -5,7 +5,7 @@
 // the Home Screen app's first screen (the same backup file format as Settings). Shown once; Settings can open it again.
 // Android (owner request, September 30, 2026): the guide also shows in an Android browser tab, with Chrome and Samsung
 // Internet steps. There the Home screen app shares the browser's storage, so nothing needs moving.
-import { uiState, uiEsc, uiIcon, uiIsoDate, uiToday } from './common.js';
+import { uiState, uiEsc, uiIcon, uiIsoDate, uiToday, uiTrapTab } from './common.js';
 import { settingsShareBackup } from './settings.js';
 
 function installGuideKey() { return (uiState.lite ? 'peace-meal-lite' : 'peace-meal-full') + ':home-screen-guide'; }
@@ -106,7 +106,7 @@ export function installShowGuide() {
   el.querySelector('[data-install-done]').addEventListener('click', close);
   const b = el.querySelector('[data-install-backup]');
   if (b) b.addEventListener('click', () => settingsShareBackup());
-  el.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+  el.addEventListener('keydown', e => { if (e.key === 'Escape') close(); else uiTrapTab(e, el); });
   document.body.appendChild(el);
   const h = el.querySelector('h1'); if (h) { h.setAttribute('tabindex', '-1'); h.focus(); }
 }

@@ -324,6 +324,22 @@ export function uiToast(msg) {
   uiToast._t = setTimeout(() => t.classList.remove('show'), 2400);
 }
 
+// P2-3 (fix pass of September 30, 2026): Tab and Shift+Tab stay inside an open sheet. Only Escape was handled, so 21 of
+// 40 Tab presses on the lite symptom sheet reached the screen behind it. Call from the sheet's keydown handler; returns
+// true when it handled the key. Hidden controls (a closed section) are skipped.
+const UI_FOCUSABLE = 'a[href], button:not([disabled]), input:not([disabled]):not([type="hidden"]), select:not([disabled]), textarea:not([disabled]), summary, [tabindex]:not([tabindex="-1"])';
+export function uiTrapTab(e, box) {
+  if (!e || e.key !== 'Tab' || !box) return false;
+  const items = [...box.querySelectorAll(UI_FOCUSABLE)].filter(x => x.getClientRects().length > 0);
+  const at = document.activeElement;
+  if (!items.length) { e.preventDefault(); return true; }
+  const first = items[0], last = items[items.length - 1];
+  if (!items.includes(at)) { e.preventDefault(); (e.shiftKey ? last : first).focus(); return true; }
+  if (e.shiftKey && at === first) { e.preventDefault(); last.focus(); return true; }
+  if (!e.shiftKey && at === last) { e.preventDefault(); first.focus(); return true; }
+  return false;
+}
+
 // A short yes/no pop-up layered over whatever sheet is open, so that sheet stays put. Resolves true only on the confirm button.
 export function uiConfirmSheet({ title, text, confirm = 'Yes', cancel = 'Cancel' }) {
   return new Promise(resolve => {
@@ -334,7 +350,7 @@ export function uiConfirmSheet({ title, text, confirm = 'Yes', cancel = 'Cancel'
     layer.innerHTML = `<div class="modal confirm" role="alertdialog" aria-modal="true" aria-label="${uiEsc(title || 'Are you sure?')}"><div class="modal-head"><h2>${uiEsc(title || '')}</h2></div><div class="modal-body"><p>${uiEsc(text)}</p><div class="btn-row"><button class="btn primary" type="button" data-yes="1">${uiEsc(confirm)}</button><button class="btn" type="button" data-no="1">${uiEsc(cancel)}</button></div></div></div>`;
     const prev = document.activeElement;
     const done = v => { document.removeEventListener('keydown', onKey, true); layer.remove(); if (prev && prev.focus) prev.focus(); resolve(v); };
-    const onKey = e => { if (e.key === 'Escape') { e.stopPropagation(); done(false); } };
+    const onKey = e => { if (e.key === 'Escape') { e.stopPropagation(); done(false); } else if (e.key === 'Tab') { e.stopPropagation(); uiTrapTab(e, layer.querySelector('.modal')); } };
     layer.addEventListener('click', e => { if (e.target === layer) done(false); });
     layer.querySelector('[data-yes]').addEventListener('click', () => done(true));
     layer.querySelector('[data-no]').addEventListener('click', () => done(false));
@@ -364,7 +380,7 @@ export function uiModal(html, opts = {}) {
     if (opts.onClose) opts.onClose(o);
   };
   uiState.modalClose = close;
-  const onKey = e => { if (e.key === 'Escape') close(); };
+  const onKey = e => { if (e.key === 'Escape') close(); else uiTrapTab(e, backdrop.querySelector('.modal')); };
   // Close on the X button, or on a tap outside the sheet. A tap inside the sheet never closes it.
   backdrop.addEventListener('click', e => { const t = e.target.closest ? e.target.closest('[data-close]') : null; if (!t || !backdrop.contains(t)) return; if (t === backdrop && e.target !== backdrop) return; close(); });
   backdrop.querySelector('.modal-back').addEventListener('click', () => close());
