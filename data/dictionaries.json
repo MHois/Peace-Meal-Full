@@ -10009,6 +10009,127 @@
       "may_contain": [
         "allergen-milk",
         "allergen-egg"
+      ],
+      "except": [
+        "whole wheat lasagna",
+        "wholewheat lasagna",
+        "wholemeal lasagna",
+        "whole grain lasagna",
+        "wholegrain lasagna",
+        "gluten-free lasagna",
+        "brown rice lasagna",
+        "rice lasagna"
+      ]
+    },
+    {
+      "term": "rice lasagna",
+      "tags": [
+        "basic-ingredient"
+      ],
+      "match": "word",
+      "note": "rice lasagna: tags copied from rice, with lasagna's own label checks (fix pass of September 30, 2026, N4)",
+      "may_contain": [
+        "allergen-milk",
+        "allergen-egg"
+      ]
+    },
+    {
+      "term": "brown rice lasagna",
+      "tags": [
+        "whole-grain"
+      ],
+      "match": "word",
+      "note": "brown rice lasagna: tags copied from brown rice, with lasagna's own label checks (fix pass of September 30, 2026, N4)",
+      "may_contain": [
+        "allergen-milk",
+        "allergen-egg"
+      ]
+    },
+    {
+      "term": "gluten-free lasagna",
+      "tags": [
+        "refined-grain"
+      ],
+      "match": "word",
+      "note": "gluten-free lasagna: tags copied from gluten-free pasta, with lasagna's own label checks (fix pass of September 30, 2026, N4)",
+      "may_contain": [
+        "allergen-milk",
+        "allergen-egg"
+      ]
+    },
+    {
+      "term": "wholegrain lasagna",
+      "tags": [
+        "allergen-wheat",
+        "gluten",
+        "whole-grain",
+        "fodmap-fructan"
+      ],
+      "match": "word",
+      "note": "wholegrain lasagna: tags copied from whole wheat pasta, with lasagna's own label checks (fix pass of September 30, 2026, N4)",
+      "may_contain": [
+        "allergen-milk",
+        "allergen-egg"
+      ]
+    },
+    {
+      "term": "whole grain lasagna",
+      "tags": [
+        "allergen-wheat",
+        "gluten",
+        "whole-grain",
+        "fodmap-fructan"
+      ],
+      "match": "word",
+      "note": "whole grain lasagna: tags copied from whole wheat pasta, with lasagna's own label checks (fix pass of September 30, 2026, N4)",
+      "may_contain": [
+        "allergen-milk",
+        "allergen-egg"
+      ]
+    },
+    {
+      "term": "wholemeal lasagna",
+      "tags": [
+        "allergen-wheat",
+        "gluten",
+        "whole-grain",
+        "fodmap-fructan"
+      ],
+      "match": "word",
+      "note": "wholemeal lasagna: tags copied from whole wheat pasta, with lasagna's own label checks (fix pass of September 30, 2026, N4)",
+      "may_contain": [
+        "allergen-milk",
+        "allergen-egg"
+      ]
+    },
+    {
+      "term": "wholewheat lasagna",
+      "tags": [
+        "allergen-wheat",
+        "gluten",
+        "whole-grain",
+        "fodmap-fructan"
+      ],
+      "match": "word",
+      "note": "wholewheat lasagna: tags copied from whole wheat pasta, with lasagna's own label checks (fix pass of September 30, 2026, N4)",
+      "may_contain": [
+        "allergen-milk",
+        "allergen-egg"
+      ]
+    },
+    {
+      "term": "whole wheat lasagna",
+      "tags": [
+        "allergen-wheat",
+        "gluten",
+        "whole-grain",
+        "fodmap-fructan"
+      ],
+      "match": "word",
+      "note": "whole wheat lasagna: tags copied from whole wheat pasta, with lasagna's own label checks (fix pass of September 30, 2026, N4)",
+      "may_contain": [
+        "allergen-milk",
+        "allergen-egg"
       ]
     },
     {
@@ -10647,7 +10768,47 @@
         "fodmap-fructan"
       ],
       "match": "word",
-      "note": ""
+      "note": "",
+      "except": [
+        "whole wheat macaroni",
+        "wholewheat macaroni",
+        "wholemeal macaroni",
+        "whole grain macaroni",
+        "wholegrain macaroni",
+        "gluten-free macaroni",
+        "brown rice macaroni",
+        "rice macaroni"
+      ]
+    },
+    {
+      "term": "gluten-free macaroni",
+      "tags": [
+        "refined-grain"
+      ],
+      "match": "word",
+      "note": "gluten-free macaroni: tags copied from gluten-free pasta (fix pass of September 30, 2026, N4)"
+    },
+    {
+      "term": "wholegrain macaroni",
+      "tags": [
+        "allergen-wheat",
+        "gluten",
+        "whole-grain",
+        "fodmap-fructan"
+      ],
+      "match": "word",
+      "note": "wholegrain macaroni: tags copied from whole wheat pasta (fix pass of September 30, 2026, N4)"
+    },
+    {
+      "term": "whole grain macaroni",
+      "tags": [
+        "allergen-wheat",
+        "gluten",
+        "whole-grain",
+        "fodmap-fructan"
+      ],
+      "match": "word",
+      "note": "whole grain macaroni: tags copied from whole wheat pasta (fix pass of September 30, 2026, N4)"
     },
     {
       "term": "mackerel",
@@ -12060,7 +12221,9 @@
         "buckwheat noodles",
         "zucchini noodles",
         "kelp noodles",
-        "soba noodles"
+        "soba noodles",
+        "lasagna noodle",
+        "lasagna noodles"
       ]
     },
     {
@@ -12500,7 +12663,47 @@
         "fodmap-fructan"
       ],
       "match": "word",
-      "note": ""
+      "note": "",
+      "except": [
+        "whole wheat orzo",
+        "wholewheat orzo",
+        "wholemeal orzo",
+        "whole grain orzo",
+        "wholegrain orzo",
+        "gluten-free orzo",
+        "brown rice orzo",
+        "rice orzo"
+      ]
+    },
+    {
+      "term": "gluten-free orzo",
+      "tags": [
+        "refined-grain"
+      ],
+      "match": "word",
+      "note": "gluten-free orzo: tags copied from gluten-free pasta (fix pass of September 30, 2026, N4)"
+    },
+    {
+      "term": "wholegrain orzo",
+      "tags": [
+        "allergen-wheat",
+        "gluten",
+        "whole-grain",
+        "fodmap-fructan"
+      ],
+      "match": "word",
+      "note": "wholegrain orzo: tags copied from whole wheat pasta (fix pass of September 30, 2026, N4)"
+    },
+    {
+      "term": "whole grain orzo",
+      "tags": [
+        "allergen-wheat",
+        "gluten",
+        "whole-grain",
+        "fodmap-fructan"
+      ],
+      "match": "word",
+      "note": "whole grain orzo: tags copied from whole wheat pasta (fix pass of September 30, 2026, N4)"
     },
     {
       "term": "ouzo",
@@ -12815,11 +13018,37 @@
         "buckwheat pasta",
         "edamame pasta",
         "gluten-free corn and rice pasta",
-        "corn and rice pasta"
+        "corn and rice pasta",
+        "wholewheat pasta",
+        "wholemeal pasta",
+        "whole grain pasta",
+        "wholegrain pasta"
       ],
       "sources": [
         "biesiekierski-2011"
       ]
+    },
+    {
+      "term": "wholegrain pasta",
+      "tags": [
+        "allergen-wheat",
+        "gluten",
+        "whole-grain",
+        "fodmap-fructan"
+      ],
+      "match": "word",
+      "note": "wholegrain pasta: tags copied from whole wheat pasta (fix pass of September 30, 2026, N4)"
+    },
+    {
+      "term": "whole grain pasta",
+      "tags": [
+        "allergen-wheat",
+        "gluten",
+        "whole-grain",
+        "fodmap-fructan"
+      ],
+      "match": "word",
+      "note": "whole grain pasta: tags copied from whole wheat pasta (fix pass of September 30, 2026, N4)"
     },
     {
       "term": "pastrami",
@@ -16814,8 +17043,46 @@
       "match": "word",
       "note": "",
       "except": [
-        "spaghetti squash"
+        "spaghetti squash",
+        "whole wheat spaghetti",
+        "wholewheat spaghetti",
+        "wholemeal spaghetti",
+        "whole grain spaghetti",
+        "wholegrain spaghetti",
+        "gluten-free spaghetti",
+        "brown rice spaghetti",
+        "rice spaghetti"
       ]
+    },
+    {
+      "term": "gluten-free spaghetti",
+      "tags": [
+        "refined-grain"
+      ],
+      "match": "word",
+      "note": "gluten-free spaghetti: tags copied from gluten-free pasta (fix pass of September 30, 2026, N4)"
+    },
+    {
+      "term": "wholegrain spaghetti",
+      "tags": [
+        "allergen-wheat",
+        "gluten",
+        "whole-grain",
+        "fodmap-fructan"
+      ],
+      "match": "word",
+      "note": "wholegrain spaghetti: tags copied from whole wheat pasta (fix pass of September 30, 2026, N4)"
+    },
+    {
+      "term": "whole grain spaghetti",
+      "tags": [
+        "allergen-wheat",
+        "gluten",
+        "whole-grain",
+        "fodmap-fructan"
+      ],
+      "match": "word",
+      "note": "whole grain spaghetti: tags copied from whole wheat pasta (fix pass of September 30, 2026, N4)"
     },
     {
       "term": "linguini",
