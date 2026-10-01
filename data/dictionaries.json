@@ -2349,6 +2349,17 @@
       ]
     },
     {
+      "term": "artificial nuts",
+      "tags": [
+        "allergen-peanut"
+      ],
+      "match": "word",
+      "note": "FARE lists \"Artificial nuts\" among foods to avoid with a peanut allergy: they are usually peanuts, deflavored and reflavored (fix pass of September 30, 2026, N3)",
+      "sources": [
+        "fare-peanut-page"
+      ]
+    },
+    {
       "term": "beer nuts",
       "tags": [
         "allergen-peanut"
@@ -10562,18 +10573,26 @@
     {
       "term": "lupin",
       "tags": [
-        "legume"
+        "legume",
+        "allergen-peanut"
       ],
       "match": "word",
-      "note": "lupin flour cross-reacts with peanut allergy in a subset; it is an EU-declared allergen but not an FDA major allergen"
+      "note": "lupin flour cross-reacts with peanut allergy in a subset; it is an EU-declared allergen but not an FDA major allergen. FARE lists \"Lupin (or lupine)\" among foods to avoid with a peanut allergy, so it is a stop for one (fix pass of September 30, 2026, N3)",
+      "sources": [
+        "fare-peanut-page"
+      ]
     },
     {
       "term": "lupine",
       "tags": [
-        "legume"
+        "legume",
+        "allergen-peanut"
       ],
       "match": "word",
-      "note": "see lupin"
+      "note": "see lupin. FARE lists \"Lupin (or lupine)\" among foods to avoid with a peanut allergy, so it is a stop for one (fix pass of September 30, 2026, N3)",
+      "sources": [
+        "fare-peanut-page"
+      ]
     },
     {
       "term": "lychee",
@@ -12085,16 +12104,50 @@
         "oxalate-high"
       ],
       "match": "word",
-      "note": "generic 'nuts' or 'mixed nuts'; tree nut tag is conservative because the species is unknown. Oxalate: AUA and Phase 1 D4 list nuts as a class; almonds and cashews are highest, macadamias low. pair with a calcium source in the same meal rather than eliminating (AUA)",
+      "note": "generic 'nuts' or 'mixed nuts'; tree nut tag is conservative because the species is unknown. Oxalate: AUA and Phase 1 D4 list nuts as a class; almonds and cashews are highest, macadamias low. pair with a calcium source in the same meal rather than eliminating (AUA). The kind is unknown, so a peanut is possible too: FARE lists \"Nut meat or nut meal\" and \"Nut pieces\" among foods to avoid with a peanut allergy. A peanut label check, as for nut butter; a named nut (pine nuts, cashew nuts) is judged as that nut (fix pass of September 30, 2026, N3)",
       "except": [
         "ground nut",
         "ground nuts",
         "pea nut",
-        "pea nuts"
+        "pea nuts",
+        "brazil nut",
+        "cashew nut",
+        "macadamia nut",
+        "pecan nut",
+        "pistachio nut",
+        "almond nut",
+        "pine nut",
+        "hazel nut",
+        "kola nut",
+        "lychee nut",
+        "shea nut",
+        "soy nut",
+        "tree nut"
+      ],
+      "may_contain": [
+        "allergen-peanut"
       ],
       "sources": [
         "aua-stones-2014",
-        "holmes-2000"
+        "holmes-2000",
+        "fare-peanut-page"
+      ]
+    },
+    {
+      "term": "nutmeat",
+      "tags": [
+        "allergen-tree-nut",
+        "nut",
+        "large-particle",
+        "oxalate-high"
+      ],
+      "match": "word",
+      "note": "nut meat written as one word (FARE lists \"Nut meat or nut meal\" among foods to avoid with a peanut allergy); tags and the peanut label check copied from nut (fix pass of September 30, 2026, N3)",
+      "may_contain": [
+        "allergen-peanut"
+      ],
+      "sources": [
+        "fare-peanut-page"
       ]
     },
     {
@@ -18446,6 +18499,18 @@
       ]
     },
     {
+      "term": "tree nut",
+      "tags": [
+        "allergen-tree-nut",
+        "nut"
+      ],
+      "match": "word",
+      "note": "the allergen group as a label names it (\"Contains: Tree Nuts (Cashew, Pecan)\"); a tree nut stop, and not a peanut, which labels name on its own (fix pass of September 30, 2026, N3)",
+      "sources": [
+        "fda-falcpa-2004"
+      ]
+    },
+    {
       "term": "trail mix",
       "tags": [
         "allergen-tree-nut",
@@ -22391,6 +22456,7 @@
     "uk-fop-2016": "Department of Health, Food Standards Agency, and devolved administrations. Guide to creating a front of pack (FoP) nutrition label for pre-packed products sold through retail outlets. Updated November 2016. Annex 3, Table 2 (criteria for 100 g of food).",
     "fare-wheat-page": "Food Allergy Research and Education (FARE). Wheat Allergy (web page), https://www.foodallergy.org/living-food-allergies/food-allergy-essentials/common-allergens/wheat. Read 2026-09-30: under \"Wheat is sometimes found in the following:\", \"Starch (gelatinized starch, modified starch, modified food starch, vegetable starch)\". The page does not name maltodextrin or dextrin. Patient material.",
     "fare-milk-page": "Food Allergy Research and Education (FARE). Milk (web page), https://www.foodallergy.org/living-food-allergies/food-allergy-essentials/common-allergens/milk. Read 2026-09-30: under \"Other Possible Sources of Milk:\", \"Caramel candies\" and \"Nougat\". Patient material.",
-    "eu-1169-2011-annex-ii": "Regulation (EU) No 1169/2011 on the provision of food information to consumers, Annex II (as amended by Delegated Regulation (EU) No 78/2014), https://www.legislation.gov.uk/eur/2011/1169/annex/II. Read 2026-09-30: \"1. Cereals containing gluten, namely: wheat ... and products thereof, except: (a) wheat based glucose syrups including dextrose; (b) wheat based maltodextrins; (c) glucose syrups based on barley\"."
+    "eu-1169-2011-annex-ii": "Regulation (EU) No 1169/2011 on the provision of food information to consumers, Annex II (as amended by Delegated Regulation (EU) No 78/2014), https://www.legislation.gov.uk/eur/2011/1169/annex/II. Read 2026-09-30: \"1. Cereals containing gluten, namely: wheat ... and products thereof, except: (a) wheat based glucose syrups including dextrose; (b) wheat based maltodextrins; (c) glucose syrups based on barley\".",
+    "fare-peanut-page": "Food Allergy Research and Education (FARE). Peanut (web page), https://www.foodallergy.org/living-food-allergies/food-allergy-essentials/common-allergens/peanut. Read 2026-09-30: under \"Foods to avoid containing peanuts\": \"Artificial nuts\", \"Lupin (or lupine)\", \"Mixed nuts\", \"Nut meat or nut meal\", \"Nut pieces\". Patient material."
   }
 }
