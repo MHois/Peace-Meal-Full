@@ -2977,6 +2977,44 @@
       ]
     },
     {
+      "term": "baguette",
+      "tags": [
+        "allergen-wheat",
+        "gluten",
+        "refined-grain",
+        "fodmap-fructan",
+        "lactose-hidden"
+      ],
+      "match": "word",
+      "note": "tags copied from bread (fix pass of September 30, 2026, P2-12)",
+      "may_contain": [
+        "sodium-high"
+      ],
+      "sources": [
+        "biesiekierski-2011",
+        "nih-lactose-2010"
+      ]
+    },
+    {
+      "term": "french stick",
+      "tags": [
+        "allergen-wheat",
+        "gluten",
+        "refined-grain",
+        "fodmap-fructan",
+        "lactose-hidden"
+      ],
+      "match": "word",
+      "note": "UK name for a baguette; tags copied from bread (fix pass of September 30, 2026, P2-12)",
+      "may_contain": [
+        "sodium-high"
+      ],
+      "sources": [
+        "biesiekierski-2011",
+        "nih-lactose-2010"
+      ]
+    },
+    {
       "term": "bread crumbs",
       "tags": [
         "allergen-wheat",
@@ -3780,6 +3818,21 @@
       "match": "word",
       "note": "restrict only when serum potassium is high, per KDIGO/KDOQI; plant potassium is less bioavailable",
       "portion_note": "portion threshold not encoded; treat as high FODMAP",
+      "sources": [
+        "biesiekierski-2011",
+        "halmos-2014",
+        "nkf-potassium"
+      ]
+    },
+    {
+      "term": "cannellini",
+      "tags": [
+        "legume",
+        "fodmap-gos",
+        "potassium-high-food"
+      ],
+      "match": "word",
+      "note": "cannellini beans written without beans; tags copied from cannellini bean (fix pass of September 30, 2026, P2-12)",
       "sources": [
         "biesiekierski-2011",
         "halmos-2014",
@@ -10119,6 +10172,42 @@
       ]
     },
     {
+      "term": "salad leaves",
+      "tags": [
+        "vegetable",
+        "raw-vegetable"
+      ],
+      "match": "word",
+      "note": "UK mixed salad leaves; tags copied from lettuce (fix pass of September 30, 2026, P2-12)",
+      "sources": [
+        "acg-gastroparesis-2022"
+      ]
+    },
+    {
+      "term": "cos lettuce",
+      "tags": [
+        "vegetable",
+        "raw-vegetable"
+      ],
+      "match": "word",
+      "note": "romaine; tags copied from lettuce (fix pass of September 30, 2026, P2-12)",
+      "sources": [
+        "acg-gastroparesis-2022"
+      ]
+    },
+    {
+      "term": "iceberg",
+      "tags": [
+        "vegetable",
+        "raw-vegetable"
+      ],
+      "match": "word",
+      "note": "iceberg lettuce; tags copied from lettuce (fix pass of September 30, 2026, P2-12)",
+      "sources": [
+        "acg-gastroparesis-2022"
+      ]
+    },
+    {
       "term": "light tuna",
       "tags": [
         "allergen-fish",
@@ -11309,6 +11398,14 @@
       "note": ""
     },
     {
+      "term": "forest fruits",
+      "tags": [
+        "fruit"
+      ],
+      "match": "word",
+      "note": "UK frozen mixed berries; tags copied from mixed berries (fix pass of September 30, 2026, P2-12)"
+    },
+    {
       "term": "mixed greens",
       "tags": [
         "vegetable",
@@ -11789,6 +11886,21 @@
       "match": "word",
       "note": "restrict only when serum potassium is high, per KDIGO/KDOQI; plant potassium is less bioavailable",
       "portion_note": "portion threshold not encoded; treat as high FODMAP",
+      "sources": [
+        "biesiekierski-2011",
+        "halmos-2014",
+        "nkf-potassium"
+      ]
+    },
+    {
+      "term": "haricot bean",
+      "tags": [
+        "legume",
+        "fodmap-gos",
+        "potassium-high-food"
+      ],
+      "match": "word",
+      "note": "UK name for navy beans; tags copied from navy bean (fix pass of September 30, 2026, P2-12)",
       "sources": [
         "biesiekierski-2011",
         "halmos-2014",
@@ -14204,6 +14316,20 @@
       ]
     },
     {
+      "term": "sultana",
+      "tags": [
+        "fruit",
+        "potassium-high-food"
+      ],
+      "match": "word",
+      "note": "golden raisin; tags copied from raisin (fix pass of September 30, 2026, P2-12)",
+      "sources": [
+        "kdoqi-2020",
+        "kdigo-2024",
+        "nkf-potassium"
+      ]
+    },
+    {
       "term": "rambutan",
       "tags": [
         "fruit"
@@ -15006,6 +15132,14 @@
       ],
       "match": "word",
       "note": ""
+    },
+    {
+      "term": "swede",
+      "tags": [
+        "vegetable"
+      ],
+      "match": "word",
+      "note": "UK name for rutabaga; tags copied from rutabaga (fix pass of September 30, 2026, P2-12)"
     },
     {
       "term": "rye",
@@ -16631,6 +16765,51 @@
       ]
     },
     {
+      "term": "linguini",
+      "tags": [
+        "allergen-wheat",
+        "gluten",
+        "refined-grain",
+        "fodmap-fructan"
+      ],
+      "match": "word",
+      "note": "a wheat pasta; tags copied from spaghetti; whole wheat linguini is whole grain (the whole wheat entry) (fix pass of September 30, 2026, P2-12)",
+      "except": [
+        "whole wheat linguini",
+        "wholewheat linguini"
+      ]
+    },
+    {
+      "term": "linguine",
+      "tags": [
+        "allergen-wheat",
+        "gluten",
+        "refined-grain",
+        "fodmap-fructan"
+      ],
+      "match": "word",
+      "note": "a wheat pasta; tags copied from spaghetti; whole wheat linguine is whole grain (the whole wheat entry) (fix pass of September 30, 2026, P2-12)",
+      "except": [
+        "whole wheat linguine",
+        "wholewheat linguine"
+      ]
+    },
+    {
+      "term": "tagliatelle",
+      "tags": [
+        "allergen-wheat",
+        "gluten",
+        "refined-grain",
+        "fodmap-fructan"
+      ],
+      "match": "word",
+      "note": "a wheat pasta; tags copied from spaghetti; whole wheat tagliatelle is whole grain (the whole wheat entry) (fix pass of September 30, 2026, P2-12)",
+      "except": [
+        "whole wheat tagliatelle",
+        "wholewheat tagliatelle"
+      ]
+    },
+    {
       "term": "spaghetti squash",
       "tags": [
         "vegetable"
@@ -18183,6 +18362,21 @@
       ]
     },
     {
+      "term": "passata",
+      "tags": [
+        "histamine-high",
+        "potassium-high-food",
+        "tomato"
+      ],
+      "match": "word",
+      "note": "sieved tomatoes; tags copied from tomato paste (fix pass of September 30, 2026, P2-12)",
+      "sources": [
+        "comas-baste-2020",
+        "sighi-list",
+        "nkf-potassium"
+      ]
+    },
+    {
       "term": "tomato sauce",
       "tags": [
         "histamine-high",
@@ -19406,6 +19600,14 @@
       "note": "label phrase; the grain that follows carries any allergen tag"
     },
     {
+      "term": "wholegrain",
+      "tags": [
+        "whole-grain"
+      ],
+      "match": "word",
+      "note": "UK spelling of whole grain; tags copied from whole grain (fix pass of September 30, 2026, P2-12)"
+    },
+    {
       "term": "whole grain bread",
       "tags": [
         "allergen-wheat",
@@ -19499,6 +19701,20 @@
       ],
       "match": "word",
       "note": "",
+      "sources": [
+        "biesiekierski-2011"
+      ]
+    },
+    {
+      "term": "wholewheat",
+      "tags": [
+        "allergen-wheat",
+        "gluten",
+        "fodmap-fructan",
+        "whole-grain"
+      ],
+      "match": "word",
+      "note": "UK spelling of whole wheat; tags copied from whole wheat (fix pass of September 30, 2026, P2-12)",
       "sources": [
         "biesiekierski-2011"
       ]
@@ -19950,6 +20166,17 @@
       ]
     },
     {
+      "term": "chilli powder",
+      "tags": [
+        "spicy"
+      ],
+      "match": "word",
+      "note": "UK spelling of chili powder; tags copied from chili powder (fix pass of September 30, 2026, P2-12)",
+      "may_contain": [
+        "sodium-high"
+      ]
+    },
+    {
       "term": "cayenne",
       "tags": [
         "spicy"
@@ -20368,6 +20595,14 @@
       "note": ""
     },
     {
+      "term": "cornflour",
+      "tags": [
+        "basic-ingredient"
+      ],
+      "match": "word",
+      "note": "UK name for cornstarch (one word; US corn flour is ground corn); tags copied from cornstarch (fix pass of September 30, 2026, P2-12)"
+    },
+    {
       "term": "corn starch",
       "tags": [
         "basic-ingredient"
@@ -20382,6 +20617,14 @@
       ],
       "match": "word",
       "note": ""
+    },
+    {
+      "term": "rapeseed oil",
+      "tags": [
+        "basic-ingredient"
+      ],
+      "match": "word",
+      "note": "UK name for canola oil; tags copied from canola oil (fix pass of September 30, 2026, P2-12)"
     },
     {
       "term": "sunflower oil",
@@ -20542,6 +20785,14 @@
       ],
       "match": "word",
       "note": ""
+    },
+    {
+      "term": "bay leaves",
+      "tags": [
+        "basic-ingredient"
+      ],
+      "match": "word",
+      "note": "plural of bay leaf; tags copied from bay leaf (fix pass of September 30, 2026, P2-12)"
     },
     {
       "term": "nutmeg",
@@ -21340,6 +21591,24 @@
       ],
       "match": "word",
       "note": "a vegetable-oil spread. The US standard of identity (21 CFR 166.110) lets its water phase hold milk and milk products, whey, casein, caseinate, or soy protein isolate, and allows emulsifiers; soybean oil and soy lecithin are common. So milk and soy are label checks, not a pass. Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized.",
+      "sources": [
+        "cfr-166-110"
+      ]
+    },
+    {
+      "term": "fat spread",
+      "tags": [
+        "basic-ingredient"
+      ],
+      "match": "word",
+      "note": "UK low-fat or reduced-fat spread, a margarine-type product; tags and label checks copied from margarine (fix pass of September 30, 2026, P2-12)",
+      "may_contain": [
+        "allergen-milk",
+        "allergen-soy",
+        "soy-refined-oil",
+        "soy-lecithin",
+        "sodium-high"
+      ],
       "sources": [
         "cfr-166-110"
       ]

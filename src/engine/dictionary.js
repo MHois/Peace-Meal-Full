@@ -69,7 +69,10 @@ const NOISE = new Set(('cup cups tbsp tablespoon tablespoons tsp teaspoon teaspo
   // Added with P2-15 (fix pass of September 30, 2026): preparation, serving, and fat-content words that recipes write
   // after a comma ("1 English muffin, split", "bread, toasted", "on the side"). None of them is a food on its own.
   // Left out because they can be one: fat, skim, nonfat, lite, light, oil, juice, powder, meat, kernels, pods, stems.
-  'toasted roasted julienned sifted puréed pureed split shelled chilled boiled cracked slivered pressed deveined grilled blanched ground rolled freshly firmly loosely as needed desired available etc choice combination variety similar other less recommended up store homemade home made on side frying deep pan quick low reduced free sodium unsalted unsweetened plain seedless bone not little matchsticks').split(' '));
+  'toasted roasted julienned sifted puréed pureed split shelled chilled boiled cracked slivered pressed deveined grilled blanched ground rolled freshly firmly loosely as needed desired available etc choice combination variety similar other less recommended up store homemade home made on side frying deep pan quick low reduced free sodium unsalted unsweetened plain seedless bone not little matchsticks ' +
+  // Added with P2-12 (fix pass of September 30, 2026): equipment and counting words in imported recipe lines ("nonstick
+  // cooking spray", "4 wooden skewers", "(one type or a combination)"). None of them names a food.
+  'nonstick wooden skewer skewers one two three four five six seven eight nine ten twelve').split(' '));
 function isAmountWord(t) {
   return /^[\d.,\/½¼¾⅓⅔⅛⅜⅝⅞⅕⅖⅗⅘⅙⅚x×-]+%?$/.test(t) || /^\d+(g|ml|oz|lb|kg|l|cm|mm)$/.test(t);
 }
