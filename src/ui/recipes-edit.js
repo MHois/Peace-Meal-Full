@@ -21,17 +21,24 @@ function recipesEdStem(w) {
   return s;
 }
 
+// P3-5 (audit of September 30, 2026): the five number-and-unit patterns that search anywhere in a line (stated grams,
+// kilograms, millilitres, litres, and the "(15 oz)" inside one) re-read a run of digits from every position in it, so
+// one pasted line of 80,000 digits froze the editor for seconds. They look at the first 500 characters only. The longest
+// ingredient line in the recipe data is 218 characters, so every real line is read exactly as before.
+const RECIPES_ED_SCAN = 500;
+
 // The quantity at the front of an ingredient line, the unit that follows it, and any stated weight anywhere in the line.
 export function recipesEdParseQuantity(display) {
   let s = String(display || '').trim();
   const out = { qty: null, unit: null, size: null, stated: null, ml: null, inner: null, rest: s };
-  const gm = /(\d+(?:[.,]\d+)?)\s*(?:g|grams?)\b/i.exec(s);
+  const scan = s.slice(0, RECIPES_ED_SCAN);
+  const gm = /(\d+(?:[.,]\d+)?)\s*(?:g|grams?)\b/i.exec(scan);
   if (gm) out.stated = parseFloat(gm[1].replace(',', '.'));
-  const kgm = /(\d+(?:[.,]\d+)?)\s*kg\b/i.exec(s);
+  const kgm = /(\d+(?:[.,]\d+)?)\s*kg\b/i.exec(scan);
   if (out.stated == null && kgm) out.stated = parseFloat(kgm[1].replace(',', '.')) * 1000;
-  const mlm = /(\d+(?:[.,]\d+)?)\s*(?:ml|millilit(?:re|er)s?)\b/i.exec(s);
+  const mlm = /(\d+(?:[.,]\d+)?)\s*(?:ml|millilit(?:re|er)s?)\b/i.exec(scan);
   if (mlm) out.ml = parseFloat(mlm[1].replace(',', '.'));
-  const lm = /(\d+(?:[.,]\d+)?)\s*(?:litres?|liters?|l)\b/i.exec(s);
+  const lm = /(\d+(?:[.,]\d+)?)\s*(?:litres?|liters?|l)\b/i.exec(scan);
   if (out.ml == null && lm) out.ml = parseFloat(lm[1].replace(',', '.')) * 1000;
   // unicode fractions and mixed numbers
   s = s.replace(/(\d)\s*([½¼¾⅓⅔⅛⅜⅝⅞])/g, (m, d, f) => String(Number(d) + RECIPES_ED_UNICODE_FRACTIONS[f]))
@@ -59,7 +66,7 @@ export function recipesEdParseQuantity(display) {
     }
     const pm = /^\(([^)]*)\)\s*(.*)$/.exec(s);
     if (pm) {
-      const inner = /(\d+(?:\.\d+)?)\s*(oz|ounces?|g|grams?|ml|lbs?|cups?)\b/i.exec(pm[1]);
+      const inner = /(\d+(?:\.\d+)?)\s*(oz|ounces?|g|grams?|ml|lbs?|cups?)\b/i.exec(pm[1].slice(0, RECIPES_ED_SCAN));
       if (inner) out.inner = { qty: parseFloat(inner[1]), unit: RECIPES_ED_UNIT_NORMAL[inner[2].toLowerCase()] || (/^g/i.test(inner[2]) ? 'g' : inner[2].toLowerCase()) };
       s = pm[2];
     }
