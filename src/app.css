@@ -997,3 +997,28 @@ button[disabled].lite-big { opacity: 0.75; cursor: default; }
 .update-ready { position: fixed; left: 50%; top: calc(8px + env(safe-area-inset-top)); transform: translateX(-50%); z-index: 65; display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 10px 18px; border-radius: 999px; border: 0; background: var(--primary); color: var(--on-primary); font: inherit; font-weight: 700; box-shadow: var(--shadow); cursor: pointer; width: max-content; max-width: 92vw; }
 .update-ready .ico { width: 20px; height: 20px; }
 @media print { .update-ready { display: none !important; } }
+
+/* P2-4 (fix pass of September 30, 2026): reflow. With text doubled at phone width, 12 of 27 screens scrolled sideways,
+   and at 320 px the lite Report did. Rows wrap now, text columns may shrink, and the report tables scroll in their own
+   box (.table-wrap). */
+.chip, .badge { max-width: 100%; white-space: normal; overflow-wrap: break-word; }
+.meter { grid-template-columns: minmax(0, 1fr) auto; }
+.lite-slot .lite-slot-head { flex-wrap: wrap; }
+.quick-actions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (min-width: 640px) { .quick-actions { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.quick-action { min-width: 0; }
+/* A word longer than its tile or button breaks (with a hyphen where the browser can) rather than push the page wide. */
+.tile, .quick-action { overflow-wrap: anywhere; hyphens: auto; }
+.filter-bar .filter-select, .filter-bar .filter-select select { max-width: 100%; }
+.entry-row .entry-main { grid-template-columns: minmax(0, 1fr) auto; }
+.lite-slots { grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 720px) { .lite-slots { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.lite-logged-row { flex-wrap: wrap; }
+.page-head .page-head-actions { min-width: 0; max-width: 100%; }
+.page-head .page-head-actions select { max-width: 100%; }
+.tabbar a, .tabbar button { min-width: 0; margin-left: 0; margin-right: 0; }
+.tabbar a span, .tabbar button span { max-width: 100%; overflow-wrap: anywhere; text-align: center; }
+.roster-days { grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 900px) { .roster-days { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.roster-day-head { flex-wrap: wrap; }
+@media print { .table-wrap { overflow: visible; } }
