@@ -20754,7 +20754,31 @@
         "basic-ingredient"
       ],
       "match": "word",
-      "note": ""
+      "note": "most cooking sprays are an oil with soy lecithin to stop sticking: in USDA FoodData Central branded records (searched September 30, 2026), 266 of 327 cooking sprays list soy lecithin and 80 list soybean oil. A soy allergy leaves both out by default, so they are a label check (fix pass of September 30, 2026, N2; VERIFY-log F9).",
+      "may_contain": [
+        "soy-lecithin",
+        "soy-refined-oil"
+      ],
+      "sources": [
+        "usda-fdc"
+      ]
+    },
+    {
+      "term": "baking spray",
+      "tags": [
+        "basic-ingredient"
+      ],
+      "match": "word",
+      "note": "a cooking spray made for baking pans: in USDA FoodData Central branded records (searched September 30, 2026), 18 of 20 baking sprays list soy lecithin and most list wheat flour; one gluten-free kind uses rice flour. So soy, wheat, and gluten are label checks (fix pass of September 30, 2026, N2; VERIFY-log F9).",
+      "may_contain": [
+        "allergen-wheat",
+        "gluten",
+        "soy-lecithin",
+        "soy-refined-oil"
+      ],
+      "sources": [
+        "usda-fdc"
+      ]
     },
     {
       "term": "grapefruit juice",
