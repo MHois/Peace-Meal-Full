@@ -7,7 +7,8 @@
 //   directory/<personId>            { personId, name, initials, deviceFingerprint, updated } names only, visible to everyone
 //   profiles/<personId>             { box, keys: { <fingerprint>: wrapped }, deviceFingerprint, updated }
 //   shares/<shareId>                { from, to (fingerprint), personName, parts: [..], box, key: wrapped, created, expires }
-import * as C from './crypto.js';
+// Named imports, not a namespace: tools/bundle.mjs pastes the modules together, and a namespace object would not exist (N5).
+import { cryptoAvailable, decryptJson, encryptJson, generateDeviceKey, newContentKey, openWithPassphrase, sealWithPassphrase, shortId, unwrapKey, wrapKeyFor } from './crypto.js';
 
 const LS_KEY = 'peace-meal:device';
 
@@ -17,8 +18,8 @@ export function loadDeviceIdentity() {
 export async function ensureDeviceIdentity(name = 'This device') {
   let id = loadDeviceIdentity();
   if (id && id.fingerprint) return id;
-  if (!C.cryptoAvailable()) return null;
-  const k = await C.generateDeviceKey();
+  if (!cryptoAvailable()) return null;
+  const k = await generateDeviceKey();
   id = { ...k, name, created: new Date().toISOString() };
   try { localStorage.setItem(LS_KEY, JSON.stringify(id)); } catch { /* ignore */ }
   return id;
@@ -57,11 +58,11 @@ function initials(name) { return String(name || '?').split(/\s+/).map(w => w[0])
 export async function publishPerson(db, identity, person) {
   if (!db || !identity) return { ok: false, reason: 'unavailable' };
   const owner = await readOwner(db);
-  const contentKey = await C.newContentKey();
-  const box = await C.encryptJson(contentKey, person);
+  const contentKey = await newContentKey();
+  const box = await encryptJson(contentKey, person);
   const keys = {};
-  keys[identity.fingerprint] = await C.wrapKeyFor(contentKey, identity.privateJwk, identity.publicJwk, publicPart(identity));
-  if (owner && owner.fingerprint !== identity.fingerprint) keys[owner.fingerprint] = await C.wrapKeyFor(contentKey, identity.privateJwk, identity.publicJwk, owner.publicJwk);
+  keys[identity.fingerprint] = await wrapKeyFor(contentKey, identity.privateJwk, identity.publicJwk, publicPart(identity));
+  if (owner && owner.fingerprint !== identity.fingerprint) keys[owner.fingerprint] = await wrapKeyFor(contentKey, identity.privateJwk, identity.publicJwk, owner.publicJwk);
   const now = new Date().toISOString();
   try {
     await db.doc('profiles/' + person.id).set({ box, keys, deviceFingerprint: identity.fingerprint, updated: now });
@@ -89,8 +90,8 @@ export async function openPerson(db, identity, personId) {
     const rec = s.data();
     const wrapped = rec.keys && rec.keys[identity.fingerprint];
     if (!wrapped) return { locked: true, personId };
-    const key = await C.unwrapKey(wrapped, identity.privateJwk);
-    const person = await C.decryptJson(key, rec.box);
+    const key = await unwrapKey(wrapped, identity.privateJwk);
+    const person = await decryptJson(key, rec.box);
     return { locked: false, personId, person, updated: rec.updated, deviceFingerprint: rec.deviceFingerprint };
   } catch { return { locked: true, personId, error: true }; }
 }
@@ -111,10 +112,10 @@ export function buildSharePackage(person, partIds, extra = {}) {
 export async function sendShare(db, identity, recipientDevice, person, partIds, extra = {}, days = 30) {
   if (!db || !identity || !recipientDevice) return { ok: false, reason: 'unavailable' };
   const pkg = buildSharePackage(person, partIds, extra);
-  const contentKey = await C.newContentKey();
-  const box = await C.encryptJson(contentKey, pkg);
-  const key = await C.wrapKeyFor(contentKey, identity.privateJwk, identity.publicJwk, recipientDevice.publicJwk);
-  const id = C.shortId();
+  const contentKey = await newContentKey();
+  const box = await encryptJson(contentKey, pkg);
+  const key = await wrapKeyFor(contentKey, identity.privateJwk, identity.publicJwk, recipientDevice.publicJwk);
+  const id = shortId();
   const created = new Date();
   const expires = new Date(created.getTime() + days * 86400000);
   try { await db.doc('shares/' + id).set({ id, from: identity.fingerprint, fromName: identity.name || '', to: recipientDevice.fingerprint, personName: person.name, parts: pkg.parts, box, key, created: created.toISOString(), expires: expires.toISOString() }); return { ok: true, id }; } catch (e) { return { ok: false, reason: e && e.code || 'error' }; }
@@ -128,7 +129,7 @@ export async function listSharesForMe(db, identity) {
   } catch { return []; }
 }
 export async function openShare(db, identity, share) {
-  try { const key = await C.unwrapKey(share.key, identity.privateJwk); return await C.decryptJson(key, share.box); } catch { return null; }
+  try { const key = await unwrapKey(share.key, identity.privateJwk); return await decryptJson(key, share.box); } catch { return null; }
 }
 export async function listDevices(db) {
   if (!db) return [];
@@ -136,9 +137,9 @@ export async function listDevices(db) {
 }
 
 // Owner recovery: seal the owner's device identity with a passphrase so it can be restored on another device.
-export async function sealOwnerBackup(identity, passphrase) { return C.sealWithPassphrase(passphrase, identity); }
+export async function sealOwnerBackup(identity, passphrase) { return sealWithPassphrase(passphrase, identity); }
 export async function restoreOwnerBackup(box, passphrase) {
-  const id = await C.openWithPassphrase(passphrase, box);
+  const id = await openWithPassphrase(passphrase, box);
   if (!id || !id.fingerprint || !id.privateJwk) throw new Error('Not an owner backup.');
   try { localStorage.setItem(LS_KEY, JSON.stringify(id)); } catch { /* ignore */ }
   return id;

@@ -81,7 +81,11 @@ const fontsCss = fs.existsSync(new URL('src/fonts/fonts.css', root))
 let js = '';
 for (const f of [...order, ...uiFiles, appFile]) {
   if (!fs.existsSync(new URL(f, root))) continue;
-  js += `\n/* ---- ${f} ---- */\n` + stripModuleSyntax(R(f)) + '\n';
+  const src = R(f);
+  // N5 (October 1, 2026): a namespace import (import * as X) has nothing to point at once the modules are pasted
+  // together, so X would be undefined when the page runs. Stop the build instead of shipping that page.
+  if (/^\s*import\s+\*\s+as\s/m.test(src)) throw new Error(`${f}: a namespace import ("import * as") is not supported by tools/bundle.mjs; import the names instead.`);
+  js += `\n/* ---- ${f} ---- */\n` + stripModuleSyntax(src) + '\n';
 }
 const dataScript = `<script>${LITE ? 'window.__PEACE_MEAL_LITE__ = true;' : ''}window.__APP_DATA__ = ${JSON.stringify(data).replace(/<\/script/gi, '<\\/script')};</script>`;
 let out = html
