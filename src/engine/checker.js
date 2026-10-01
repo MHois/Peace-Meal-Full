@@ -134,7 +134,18 @@ function foodsNamedIn(text, matcher) {
   return found;
 }
 
-export function checkText(text, plan, matcher, person = {}) {
+// P3-6 (audit of September 30, 2026): the screens always pass the text box's string, but the checker no longer assumes
+// one. Input that cannot be turned into text (its toString is not a function, or throws) is checked as the words
+// "unreadable input", which the dictionary does not recognize, so a restricted plan gets "Not sure", never PASS
+// (README rule 7), and the checker never throws.
+function checkerTextOf(x) {
+  if (typeof x === 'string') return x;
+  if (x == null) return '';
+  try { return String(x); } catch { return 'unreadable input'; }
+}
+
+export function checkText(input, plan, matcher, person = {}) {
+  const text = checkerTextOf(input);
   const r0 = matcher.tagText(text);
   // Merge the named foods' tags into a copy; the matcher's cached result is never changed.
   const named = foodsNamedIn(text, matcher);
