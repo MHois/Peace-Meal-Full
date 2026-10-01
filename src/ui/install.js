@@ -5,7 +5,7 @@
 // the Home Screen app's first screen (the same backup file format as Settings). Shown once; Settings can open it again.
 // Android (owner request, September 30, 2026): the guide also shows in an Android browser tab, with Chrome and Samsung
 // Internet steps. There the Home screen app shares the browser's storage, so nothing needs moving.
-import { uiState, uiEsc, uiIcon, uiIsoDate, uiToday, uiTrapTab } from './common.js';
+import { uiState, uiEsc, uiIcon, uiIsoDate, uiToday, uiTrapTab, uiSaveSmall } from './common.js';
 import { settingsShareBackup } from './settings.js';
 
 function installGuideKey() { return (uiState.lite ? 'peace-meal-lite' : 'peace-meal-full') + ':home-screen-guide'; }
@@ -102,7 +102,7 @@ export function installShowGuide() {
     <div class="btn-row"><button class="btn primary lite-big" type="button" data-install-done>Got it</button></div>
     <p class="small muted">This guide shows once. Settings has a link to open it again.</p>
   </div>`;
-  const close = () => { try { localStorage.setItem(installGuideKey(), new Date().toISOString()); } catch { /* ignore */ } el.remove(); };
+  const close = () => { uiSaveSmall(installGuideKey(), new Date().toISOString(), 'This guide will show again next time: the device did not keep the "done" mark.'); el.remove(); };   // P3-10
   el.querySelector('[data-install-done]').addEventListener('click', close);
   const b = el.querySelector('[data-install-backup]');
   if (b) b.addEventListener('click', () => settingsShareBackup());

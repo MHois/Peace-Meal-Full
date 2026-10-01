@@ -317,6 +317,14 @@ export function uiEnsurePerson(person) {
   return person;
 }
 
+// P3-10 (audit of September 30, 2026): a small save outside the profile (a grocery tick, a display setting, the Home
+// Screen guide's "done" mark) that the device refuses, usually because its storage is full, says so instead of failing
+// silently. The profile itself has its own "Not saved" alert (uiSaveStatus). Returns whether it was saved.
+export function uiSaveSmall(key, value, notSaved) {
+  try { localStorage.setItem(key, value); return true; }
+  catch { uiToast(`${notSaved} This device's storage may be full. Free up some space, then try again.`); return false; }
+}
+
 export function uiToast(msg) {
   const t = document.getElementById('toast');
   if (!t) return;
@@ -744,8 +752,9 @@ export function uiLoadUiPrefs() {
   } catch { return { theme: 'system', largeText: uiLiteBuild(), largeTextSet: false }; }
 }
 export function uiSaveUiPrefs(prefs) {
-  try { localStorage.setItem(uiPrefsKey(), JSON.stringify(prefs)); } catch { /* ignore */ }
+  const ok = uiSaveSmall(uiPrefsKey(), JSON.stringify(prefs), 'That setting was not saved; it applies until the app closes.');
   uiApplyUiPrefs(prefs);
+  return ok;
 }
 export function uiApplyUiPrefs(prefs = uiLoadUiPrefs()) {
   if (typeof document === 'undefined') return;
