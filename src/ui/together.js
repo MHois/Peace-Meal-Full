@@ -9,7 +9,7 @@ import { weekRecipeModal, weekGet } from './week.js';
 import { householdHTML, householdBind } from './household.js';
 import { groceryIcsForWeek, groceryComputeList } from './grocery.js';
 import { SHARE_PARTS, sendShare, listSharesForMe, openShare, listDevices } from '../engine/sync.js';
-import { sharingState, sharingLocalHTML, sharingPendingHTML, sharingSafe, sharingDeviceName, sharingPersonModal } from './sharing.js';
+import { sharingState, sharingLocalHTML, sharingPendingHTML, sharingSafe, sharingDeviceName, sharingShortFingerprint, sharingPersonModal } from './sharing.js';
 
 const TOGETHER_SLOT_LABEL = SLOT_LABEL;
 
@@ -165,13 +165,16 @@ function togetherRenderInbox(box, shares, devices) {
   const s = sharingState();
   const partLabel = id => { const p = SHARE_PARTS.find(x => x.id === id); return p ? p.label : id; };
   const rows = shares.slice().sort((a, b) => String(b.created || '').localeCompare(String(a.created || '')));
-  box.innerHTML = rows.length ? `<div class="list">${rows.map(sh => `<div class="list-row"><div class="list-main"><div class="list-title">${uiIcon('lock')} ${uiEsc(sh.personName || 'Profile')} <span class="muted" style="font-weight:400">from ${uiEsc(sh.fromName || sharingDeviceName(devices, sh.from))}</span></div><div class="list-sub">${(sh.parts || []).map(partLabel).map(uiEsc).join(', ')} · expires ${uiEsc(String(sh.expires || '').slice(0, 10))}</div></div><div class="list-actions"><button class="btn small" type="button" data-open-share="${uiEsc(sh.id)}">Open</button></div></div>`).join('')}</div>`
+  // P2-7: the sender is named from the device list (tied to its key), with the key's first characters, never from the
+  // share's own say-so. Shares made before October 2026 still carry a "fromName"; it is not shown.
+  const from = sh => `${sharingDeviceName(devices, sh.from)}, key ${sharingShortFingerprint(sh.from)}`;
+  box.innerHTML = rows.length ? `<div class="list">${rows.map(sh => `<div class="list-row"><div class="list-main"><div class="list-title">${uiIcon('lock')} ${uiEsc(sh.personName || 'Profile')} <span class="muted" style="font-weight:400">from ${uiEsc(from(sh))}</span></div><div class="list-sub">${(sh.parts || []).map(partLabel).map(uiEsc).join(', ')} · expires ${uiEsc(String(sh.expires || '').slice(0, 10))}</div></div><div class="list-actions"><button class="btn small" type="button" data-open-share="${uiEsc(sh.id)}">Open</button></div></div>`).join('')}</div>`
     : '<p class="small muted">Nothing has been shared with this device yet.</p>';
   box.querySelectorAll('[data-open-share]').forEach(b => b.addEventListener('click', async () => {
     const sh = rows.find(x => x.id === b.dataset.openShare);
     if (!sh) return;
     const pkg = await sharingSafe(() => openShare(s.db, s.identity, sh), null, 'That share could not be opened.');
-    if (!pkg) { uiToast('That share could not be decrypted on this device.'); return; }
-    sharingPersonModal(pkg, { subtitle: `Shared by ${sh.fromName || sharingDeviceName(devices, sh.from)}; expires ${String(sh.expires || '').slice(0, 10)}.`, sourceKey: 'share:' + (sh.personName || '') + ':' + sh.from });
+    if (!pkg) { uiToast('That share was not opened. Either it is not for this device, or it does not come from the device it names.'); return; }
+    sharingPersonModal(pkg, { subtitle: `Shared by ${from(sh)}; expires ${String(sh.expires || '').slice(0, 10)}.`, sourceKey: 'share:' + (sh.personName || '') + ':' + sh.from });
   }));
 }

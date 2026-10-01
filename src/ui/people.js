@@ -1113,6 +1113,8 @@ export async function peopleOpenSharedPerson(personId) {
   const s = sharingState();
   const res = await sharingSafe(() => openPerson(s.db, s.identity, personId), null, 'That profile could not be opened right now.');
   if (!res) { uiToast('That profile is not in the shared store any more.'); return; }
+  // P2-7: a profile that does not come from the device it names, or was changed or moved in the store, is refused.
+  if (res.locked && ['sender', 'moved', 'unreadable'].includes(res.reason)) { uiToast('That profile was not opened: it does not match the device that published it, or it was changed in the shared store. Ask that device to share it again.'); return; }
   if (res.locked) { uiToast('That profile is encrypted for another device. Only its device and the owner can open it.'); return; }
   sharingPersonModal(res.person, { subtitle: `From the shared store, updated ${String(res.updated || '').slice(0, 10)}. Read-only.`, sourceKey: 'store:' + personId });
 }
