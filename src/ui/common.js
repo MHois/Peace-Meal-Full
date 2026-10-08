@@ -718,8 +718,12 @@ export function uiEmptyState(sentence, action = '', illo = 'bowl') {
 }
 
 // Switch (a checkbox that looks like a toggle). Returns markup; bind the input by id.
+// A switch says On or Off in words beside the track (owner request, October 2026). The word is drawn by CSS from the
+// checkbox's live state, so it is right after every tap; screen readers hear the switch's own state instead. The
+// static aria-checked attribute went: on a checkbox the native checked state is what assistive technology reads, and a
+// fixed attribute went stale after a tap that did not redraw the screen.
 export function uiSwitch(id, title, desc, checked) {
-  return `<label class="switch" for="${uiEsc(id)}"><span class="switch-text"><span class="switch-title">${uiEsc(title)}</span>${desc ? `<span class="hint">${uiEsc(desc)}</span>` : ''}</span><input type="checkbox" id="${uiEsc(id)}" role="switch" ${checked ? 'checked' : ''} aria-checked="${checked ? 'true' : 'false'}"><span class="switch-track" aria-hidden="true"></span></label>`;
+  return `<label class="switch" for="${uiEsc(id)}"><span class="switch-text"><span class="switch-title">${uiEsc(title)}</span>${desc ? `<span class="hint">${uiEsc(desc)}</span>` : ''}</span><input type="checkbox" id="${uiEsc(id)}" role="switch" ${checked ? 'checked' : ''}><span class="switch-state" aria-hidden="true"></span><span class="switch-track" aria-hidden="true"></span></label>`;
 }
 
 // Time-of-day greeting.

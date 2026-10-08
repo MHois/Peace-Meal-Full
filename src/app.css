@@ -299,7 +299,9 @@ textarea { min-height: 120px; resize: vertical; line-height: 1.5; }
 .choice-list { display: flex; flex-direction: column; gap: 6px; }
 .choice { display: flex; align-items: flex-start; gap: 12px; padding: 10px 12px; min-height: 48px; border: 1px solid var(--hairline); border-radius: 10px; background: var(--surface); cursor: pointer; font-weight: 400; margin: 0; }
 .choice:hover { border-color: var(--primary); }
-.choice:has(input:checked) { background: var(--tint-olive); border-color: var(--primary); }
+.choice:has(input:checked) { background: var(--tint-olive); border-color: var(--primary); box-shadow: inset 0 0 0 1px var(--primary); }
+/* Inside a tinted sub-panel a ticked choice keeps a white card, so it never blends into the panel behind it. */
+.subpanel .choice:has(input:checked) { background: var(--surface); }
 .choice input { width: 22px; height: 22px; margin: 2px 0 0; flex: none; accent-color: var(--primary); }
 .choice .choice-body { flex: 1; min-width: 0; }
 .choice .choice-title { font-weight: 700; }
@@ -310,7 +312,12 @@ textarea { min-height: 120px; resize: vertical; line-height: 1.5; }
 .seg { display: inline-flex; flex-wrap: wrap; gap: 6px; }
 .seg label { display: inline-flex; align-items: center; min-height: 44px; padding: 6px 14px; border: 1px solid var(--hairline); border-radius: 999px; font-weight: 700; cursor: pointer; background: var(--surface); margin: 0; color: var(--ink); }
 .seg input { position: absolute; opacity: 0; width: 1px; height: 1px; }
-.seg label.on { background: var(--tint-olive); border-color: var(--primary); color: var(--primary-strong); }
+/* A selected choice is unmistakable (owner request, October 2026): a solid fill, contrasting text, and a check mark,
+   so on and off never depend on telling two pale tints apart. The old pale tint matched the sub-panel behind it.
+   Choices in setup and Settings use the green; filters and symptom picks use the plum. */
+.seg label.on { background: var(--primary); border-color: var(--primary); color: var(--on-primary); }
+.seg label:not(.on):hover { border-color: var(--primary); }
+.seg label.on::before, .filter-chip[aria-pressed="true"]::before, .today-chip.on::before, .lite-sym.on::before { content: "\2713"; font-weight: 800; margin-right: 6px; }
 .seg label:has(input:focus-visible) { outline: 3px solid var(--focus); outline-offset: 2px; }
 input[type="range"] { width: 100%; accent-color: var(--primary); min-height: 44px; }
 input[type="checkbox"] { accent-color: var(--primary); }
@@ -326,6 +333,11 @@ input[type="checkbox"] { accent-color: var(--primary); }
 .switch:has(input:checked) .switch-track { background: var(--primary); border-color: var(--primary); }
 .switch:has(input:checked) .switch-track::after { left: 23px; background: var(--on-primary); }
 .switch:has(input:focus-visible) .switch-track { outline: 3px solid var(--focus); outline-offset: 2px; }
+/* The word On or Off beside every switch, so the state can be read, not only seen (owner request, October 2026). */
+.switch .switch-state { flex: none; min-width: 2.2em; text-align: right; font-weight: 700; font-size: var(--fs-15); color: var(--muted); }
+.switch .switch-state::after { content: "Off"; }
+.switch:has(input:checked) .switch-state { color: var(--primary-strong); }
+.switch:has(input:checked) .switch-state::after { content: "On"; }
 
 /* ---------- Chips ---------- */
 .chip, .badge { display: inline-flex; align-items: center; gap: 4px; font-size: var(--fs-13); font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; padding: 2px 8px; border-radius: 999px; border: 1px solid transparent; vertical-align: middle; white-space: nowrap; line-height: 1.5; color: var(--ink); background: var(--track); }
@@ -512,7 +524,7 @@ td.num, th.num { text-align: right; white-space: nowrap; }
 .big-choice { position: relative; display: flex; min-width: 0; overflow-wrap: break-word; align-items: center; gap: 12px; min-height: 56px; padding: 10px 16px; border: 1px solid var(--hairline); border-radius: var(--radius); background: var(--surface); cursor: pointer; font-weight: 400; margin: 0; }
 .big-choice:hover { border-color: var(--primary); }
 .big-choice input { position: absolute; opacity: 0; width: 1px; height: 1px; }
-.big-choice.on { border-color: var(--primary); background: var(--tint-olive); color: var(--primary-strong); }
+.big-choice.on { border-color: var(--primary); background: var(--tint-olive); color: var(--primary-strong); box-shadow: inset 0 0 0 1px var(--primary); }
 .big-choice:has(input:focus-visible) { outline: 3px solid var(--focus); outline-offset: 2px; }
 .big-choice .big-choice-icon { width: 28px; height: 28px; flex: none; display: inline-flex; color: var(--muted); }
 .big-choice.on .big-choice-icon { color: var(--primary); }
@@ -601,7 +613,7 @@ td.num, th.num { text-align: right; white-space: nowrap; }
 .today-result > button.pick { flex: 1; text-align: left; background: none; border: 0; font: inherit; color: var(--ink); padding: 8px 4px; min-height: 44px; cursor: pointer; border-radius: 8px; }
 .today-result > button.pick:hover { background: var(--tint-olive); }
 .today-chip { display: inline-flex; align-items: center; gap: 6px; min-height: 40px; padding: 4px 14px; border: 1px solid var(--hairline); border-radius: 999px; background: var(--surface); color: var(--ink); font: inherit; font-weight: 700; cursor: pointer; }
-.today-chip.on { background: var(--tint-plum); border-color: var(--accent); color: var(--accent); }
+.today-chip.on { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
 .chart { width: 100%; max-width: 560px; height: auto; display: block; }
 .chart text { font-size: 11px; fill: var(--muted); font-family: var(--font-ui); }
 .chart .axis { stroke: var(--hairline); }
@@ -684,6 +696,7 @@ td.num, th.num { text-align: right; white-space: nowrap; }
 .filter-bar { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
 .filter-bar .filter-chip { min-height: 36px; padding: 4px 12px; text-transform: none; letter-spacing: 0; font-size: var(--fs-15); gap: 6px; }
 .filter-bar .filter-chip .ico { width: 16px; height: 16px; }
+.chip.filter-chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
 .filter-bar .filter-sep { width: 1px; height: 24px; background: var(--hairline); margin: 0 4px; }
 .filter-bar .filter-select { margin: 0; font-weight: 400; }
 .filter-bar .filter-select select { min-height: 36px; padding: 4px 32px 4px 12px; font-size: var(--fs-15); border-radius: 999px; width: auto; }
@@ -900,7 +913,7 @@ td.num, th.num { text-align: right; white-space: nowrap; }
 .roster-table thead th { font-size: var(--fs-13); text-transform: none; letter-spacing: 0; }
 .roster-btn { width: 40px; height: 36px; border-radius: 8px; border: 1px solid var(--hairline); background: var(--surface); color: var(--muted); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; font: inherit; }
 .roster-btn .ico { width: 18px; height: 18px; }
-.roster-btn.on { background: var(--tint-olive); border-color: var(--primary); color: var(--primary-strong); }
+.roster-btn.on { background: var(--primary); border-color: var(--primary); color: var(--on-primary); }
 .roster-btn:hover { border-color: var(--primary); }
 .week-meal .eaters { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
 .week-meal .eaters .avatar { width: 22px; height: 22px; font-size: 10px; }
@@ -940,7 +953,7 @@ td.num, th.num { text-align: right; white-space: nowrap; }
 .lite-logged { padding-left: 1.1rem; margin: 4px 0; }
 .lite-symptoms { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
 .lite-sym { min-height: 48px; padding: 8px 16px; border-radius: 999px; border: 1px solid var(--hairline); background: var(--surface); color: var(--ink); font: inherit; font-weight: 700; cursor: pointer; }
-.lite-sym.on { background: var(--tint-plum); border-color: var(--accent); color: var(--accent); }
+.lite-sym.on { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
 .lite-sym-row { border-left: 4px solid var(--accent); }
 .lite-sym-row .field { margin-top: 8px; }
 /* Logged meals and symptoms on lite Today: the name and a large Remove button on one row (2026-09 audit). */
