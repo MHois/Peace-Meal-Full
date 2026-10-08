@@ -7,6 +7,7 @@ import { learnArticleHTML } from './learn.js';
 import { CUISINES } from '../engine/cuisine.js';
 import { SPICE_LEVELS, spicePreference } from '../engine/spice.js';
 import { snackPlan } from '../engine/planner.js';
+import { optionalRulePicks } from '../engine/plan.js';
 import { listDirectory, openPerson } from '../engine/sync.js';
 import { sharingState, sharingLocalHTML, sharingPendingHTML, sharingSafe, sharingPublishIfShared, sharingPersonModal } from './sharing.js';
 
@@ -445,7 +446,7 @@ function peopleStepConditions(container, person) {
 }
 
 // Per-module controls: variants, flags, optional rules, configurable rules, required confirmations.
-function peopleModulePanelHTML(m, person) {
+export function peopleModulePanelHTML(m, person) {
   const parts = [];
   const flags = uiState.conditionsMeta.flags || {};
   if (Array.isArray(m.variants) && m.variants.length) {
@@ -455,21 +456,52 @@ function peopleModulePanelHTML(m, person) {
     const def = m.variants.find(v => v.default) || m.variants[0];
     const cur = chosen.length ? chosen : (multi ? [] : [def.id]);
     const opts = m.variants.map(v => ({ value: v.id, label: v.label || v.id }));
-    parts.push(`<div class="field"><span class="label">Which applies?</span>${multi ? uiMultiPills('variant-' + m.id, opts, cur, { label: m.name + ' options' }) : uiSegmented('variant-' + m.id, opts, cur[0], { label: m.name + ' options' })}${!chosen.length && !multi ? `<div class="hint">Default: ${uiEsc(def.label || def.id)}.</div>` : ''}${m.variants.some(v => v.note) ? `<div class="hint">${m.variants.filter(v => v.note).map(v => uiEsc(v.note)).join(' ')}</div>` : ''}</div>`);
+    parts.push(`<div class="field"><span class="label">${multi ? 'Which apply? Tap all that do.' : 'Which applies?'}</span>${multi ? uiMultiPills('variant-' + m.id, opts, cur, { label: m.name + ' options' }) : uiSegmented('variant-' + m.id, opts, cur[0], { label: m.name + ' options' })}${!chosen.length && !multi ? '<div class="hint">Already chosen for you. Tap the other one if it fits better.</div>' : ''}${m.variants.some(v => v.note) ? `<div class="hint">${m.variants.filter(v => v.note).map(v => uiEsc(v.note)).join(' ')}</div>` : ''}</div>`);
   }
-  for (const [fid, f] of Object.entries(flags)) if (f.module === m.id) parts.push(`<div class="field"><span class="label">${uiEsc(f.label)}</span>${uiYesNo('flag-' + fid, person.flags[fid] === true ? true : person.flags[fid] === false ? false : null)}</div>`);
+  for (const [fid, f] of Object.entries(flags)) if (f.module === m.id && peopleFlagAsked(fid, m)) parts.push(`<div class="field"><span class="label">${uiEsc(f.label)}</span>${uiYesNo('flag-' + fid, person.flags[fid] === true ? true : person.flags[fid] === false ? false : null)}</div>`);
   for (const r of m.rules || []) {
     if (r.required_confirmation) {
       const on = person.confirmations.includes(r.id);
       parts.push(`<label class="choice" style="background:var(--surface)"><input type="checkbox" data-confirm-rule="${uiEsc(r.id)}" ${on ? 'checked' : ''}><span class="choice-body"><span class="choice-title">Confirm before this module turns on</span><span class="small">${uiEsc(r.text)}</span></span></label>`);
     }
-    if (r.optional === true || r.default === 'off') {
-      const on = person.optional_rules.includes(r.id);
-      parts.push(`<label class="choice" style="background:var(--surface)"><input type="checkbox" data-optional-rule="${uiEsc(r.id)}" ${on ? 'checked' : ''}><span class="choice-body"><span class="choice-title">Optional rule ${on ? '(on)' : '(off)'}</span><span class="small">${uiEsc(r.text)}</span><span class="small muted"><br>Optional; evidence for blanket avoidance is limited.</span></span></label>`);
-    }
+    if (r.optional === true || r.default === 'off') parts.push(peopleOptionalRuleHTML(r, person));
     if (r.configurable) parts.push(peopleConfigurableRuleHTML(r, person));
   }
   return parts.length ? `<div class="subpanel">${parts.join('')}</div>` : '';
+}
+// A yes/no question under a condition is asked only when something reads it (UX pass, October 2026). Three repeated
+// the condition's own "Which applies?" choice right above them and changed nothing, because each condition's rules
+// follow that choice: "Older adult with an acute or chronic illness", "Currently in active cancer treatment", and
+// gestational diabetes (one of the pregnancy choices, and kept in step with it below). Answers already stored stay.
+let peopleFlagsReadByRules = null;
+function peopleFlagAsked(fid, m) {
+  if (!Array.isArray(m.variants) || !m.variants.length) return true;
+  if (!peopleFlagsReadByRules) {
+    peopleFlagsReadByRules = new Set();
+    const note = a => { if (a && a.flag) peopleFlagsReadByRules.add(a.flag); if (a && a.flag_not) peopleFlagsReadByRules.add(a.flag_not); };
+    for (const mod of uiState.data.conditions || []) for (const r of mod.rules || []) { note(r.applies_if); for (const a of (r.applies_if && r.applies_if.any) || []) note(a); }
+  }
+  return peopleFlagsReadByRules.has(fid);
+}
+// An optional rule (UX pass, October 2026, owner item 4). It used to be one checkbox titled "Optional rule (off)" over
+// the guideline's own sentence, which said what the guideline does not recommend, so nobody could tell what ticking
+// it did. A rule that lists several foods is now a set of foods to tap, one by one, as the guideline advises; the
+// words say exactly what a tapped food does. Saved as "<rule id>:<tag>" (optionalRulePicks in the plan engine).
+const PEOPLE_OPTIONAL_PICK_WORDS = {
+  'gerd-triggers-optional': { title: 'Foods that give you heartburn', none: 'None tapped: no food is avoided for reflux.' }
+};
+export function peopleOptionalRuleHTML(r, person) {
+  if (Array.isArray(r.tags) && r.tags.length > 1) {
+    const words = PEOPLE_OPTIONAL_PICK_WORDS[r.id] || { title: 'Foods to avoid (optional)', none: 'None tapped: none of these is avoided.' };
+    const picked = optionalRulePicks(r, person);
+    const opts = r.tags.map(tag => ({ value: tag, label: uiTagLabel(tag) }));
+    return `<div class="field optional-picks"><span class="label">${uiEsc(words.title)}</span>
+      <div class="hint">Optional. Tap only the ones that bother you. A food you tap is marked caution in recipes and labels and kept out of your meal plan.</div>
+      ${uiMultiPills('optpick-' + r.id, opts, picked, { label: words.title })}
+      <div class="hint optional-picks-state" aria-live="polite">${picked.length ? `Avoiding: ${uiEsc(picked.map(uiTagLabel).join(', '))}.` : uiEsc(words.none)}</div></div>`;
+  }
+  const on = person.optional_rules.includes(r.id);
+  return `<label class="choice"><input type="checkbox" data-optional-rule="${uiEsc(r.id)}" ${on ? 'checked' : ''}><span class="choice-body"><span class="choice-title">${on ? 'On' : 'Off'}: ${uiEsc(r.text)}</span><span class="small muted">Optional. Tick it to apply this rule to the plan; untick it to leave it out.</span></span></label>`;
 }
 function peopleConfigurableRuleHTML(r, person) {
   const def = r.default || r.default_for_allergy || (r.kind === 'avoid' ? 'exclude' : 'allow');
@@ -494,6 +526,8 @@ function peopleBindModulePanels(container, person, stepId) {
     const cur = new Set(person.variants[mid] || []);
     if (inp.checked) cur.add(inp.value); else cur.delete(inp.value);
     person.variants[mid] = [...cur];
+    // The gestational diabetes answer follows its pregnancy choice, so the two never disagree (see peopleFlagAsked).
+    if (mid === 'pregnancy-gdm-breastfeeding') person.flags.gdm = cur.has('gdm');
     peoplePersist(person); inp.closest('label').classList.toggle('on', inp.checked);
   }));
   container.querySelectorAll('input[data-seg^="flag-"]').forEach(inp => inp.addEventListener('change', () => {
@@ -509,6 +543,16 @@ function peopleBindModulePanels(container, person, stepId) {
     if (inp.checked && !person.confirmations.includes(id)) person.confirmations.push(id);
     if (!inp.checked) person.confirmations = person.confirmations.filter(x => x !== id);
     peopleRefresh(container, person, stepId, `[data-confirm-rule="${id}"]`);
+  }));
+  // Foods picked from an optional rule: the first change turns an old all-foods setting into one pick per food.
+  container.querySelectorAll('input[data-multi^="optpick-"]').forEach(inp => inp.addEventListener('change', () => {
+    const rid = inp.dataset.multi.slice('optpick-'.length);
+    const rule = (uiState.data.conditions || []).flatMap(mod => mod.rules || []).find(x => x.id === rid);
+    if (!rule) return;
+    const picks = new Set(optionalRulePicks(rule, person));
+    if (inp.checked) picks.add(inp.value); else picks.delete(inp.value);
+    person.optional_rules = person.optional_rules.filter(x => x !== rid && !(typeof x === 'string' && x.startsWith(rid + ':'))).concat([...picks].map(tag => rid + ':' + tag));
+    peopleRefresh(container, person, stepId, `input[data-multi="${inp.dataset.multi}"][value="${inp.value}"]`);
   }));
   container.querySelectorAll('[data-optional-rule]').forEach(inp => inp.addEventListener('change', () => {
     const id = inp.dataset.optionalRule;

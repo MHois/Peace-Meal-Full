@@ -65,11 +65,23 @@ function bmiOf(person) {
   const w = Number(person.weight_kg), h = Number(person.height_cm);
   return w > 0 && h > 0 ? w / Math.pow(h / 100, 2) : null;
 }
+// An optional rule that lists several foods can be turned on for only some of them (UX pass, October 2026). GERD's
+// trigger foods are chosen one by one, as the rule's own guideline says: avoid the ones that trigger you, not all of
+// them. Each pick is stored in optional_rules as "<rule id>:<tag>". The bare rule id, how the rule was stored before,
+// still means every food in the rule, so nothing saved earlier changes meaning.
+export function optionalRulePicks(rule, person) {
+  const on = (person && person.optional_rules) || [];
+  const tags = Array.isArray(rule.tags) ? rule.tags : [];
+  if (on.includes(rule.id)) return tags.slice();
+  const pre = rule.id + ':';
+  return on.filter(x => typeof x === 'string' && x.startsWith(pre)).map(x => x.slice(pre.length)).filter(t => tags.includes(t));
+}
+
 // Returns { apply: boolean, note?: string, asAvoid?: boolean }
 function ruleApplies(rule, m, person, ctx) {
   const settings = person.rule_settings || {};
   const optional = rule.optional === true || rule.default === 'off';
-  if (optional && !(person.optional_rules || []).includes(rule.id)) return { apply: false };
+  if (optional && !(person.optional_rules || []).includes(rule.id) && !optionalRulePicks(rule, person).length) return { apply: false };
   if (rule.configurable) {
     // rule.setting lets two rules share one choice: the soy allergy rule and the soy-free pattern ask the same
     // allergist question about refined soybean oil and soy lecithin (P0-2, fix pass of September 30, 2026).
@@ -385,6 +397,8 @@ export function buildPlan({ person, conditions, dictionaries, today = new Date()
       const app = ruleApplies(rule, m, person, ctx);
       if (!app.apply) { if (app.note === 'gated-by-screen') suppressed.push(ruleRef(m, rule, { reason: { reason: 'screen' } })); continue; }
       if (app.asAvoid) rule = { ...rule, kind: 'avoid' };
+      // Only the foods picked from an optional rule apply (see optionalRulePicks).
+      if ((rule.optional === true || rule.default === 'off') && Array.isArray(rule.tags) && !(person.optional_rules || []).includes(rule.id)) rule = { ...rule, tags: optionalRulePicks(rule, person) };
       // The allergy module lists all nine allergens; only the person's confirmed allergens apply.
       if (m.id === 'food-allergies' && rule.kind === 'avoid' && Array.isArray(rule.tags) && rule.tags.some(t => t.startsWith('allergen-'))) {
         const mine = new Set(person.allergens || []);
