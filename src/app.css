@@ -963,8 +963,15 @@ td.num, th.num { text-align: right; white-space: nowrap; }
 .lite-logged:has(.lite-logged-row) { padding-left: 0; }
 .lite-logged-row > span { flex: 1; min-width: 0; }
 .lite-logged-row .lite-note { display: block; }
-.lite-remove { flex: none; color: var(--stop); border-color: var(--stop); background: var(--surface); }
-.lite-remove .ico { width: 20px; height: 20px; }
+/* Remove is a quiet neutral button with a red trash icon (UX pass, October 2026): the bright red outline pulled the eye
+   away from what was eaten, and every Remove offers ten seconds to undo. */
+.lite-remove { flex: none; color: var(--ink); border-color: var(--hairline); background: var(--surface); }
+.lite-remove .ico { width: 20px; height: 20px; color: var(--stop); }
+/* A meal on lite Today once something is logged: "You ate:" in bold, the plan below it in small grey type. */
+.lite-ate-label { margin: 6px 0 0; font-size: var(--fs-17); }
+.lite-instead { margin: 2px 0 0; }
+.lite-slot-acts { margin-top: 8px; }
+.history-range { margin: 0 0 8px; }
 button[disabled].lite-big { opacity: 0.75; cursor: default; }
 .bring-data { display: flex; flex-direction: column; align-items: center; gap: 6px; }
 

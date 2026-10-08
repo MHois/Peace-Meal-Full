@@ -40,22 +40,12 @@ export function renderLiteTodayScreen(root) {
     ${todayWeightLossNoticeHTML(person, date)}
     ${settingsBackupReminderHTML()}
     ${plan.notices.filter(n => n.code === 'suggest-module' || n.code === 'phase-check-in' || n.code === 'medication-flag').map(n => uiNoticeHTML(n, { person })).join('')}
-    ${uiSection('What did you eat?', `<div class="lite-slots">${slots.map(slot => {
-      const planned = day ? day.meals.find(m => m.slot === slot) : null;
-      const logged = entries.filter(e => e.meal === LITE_SLOT_TO_DIARY[slot] || e.meal === slot);
-      return `<div class="lite-slot card">
-        <div class="lite-slot-head"><span class="slot">${SLOT_LABEL[slot] || slot}</span>${logged.length ? uiChip(`${logged.length} logged`, 'pass') : ''}</div>
-        ${planned && planned.recipe ? `<p class="lite-planned">Planned: <strong>${uiEsc(planned.name)}</strong></p>` : weekPending ? `<p class="small muted">Working out today's plan…</p>` : '<p class="small muted">Nothing planned for this slot.</p>'}
-        ${logged.length ? `<ul class="lite-logged">${logged.map(e => `<li class="lite-logged-row"><span>${uiEsc(todayEntryName(e))}</span>${removeBtn(uiState.profile.diary, e, todayEntryName(e))}</li>`).join('')}</ul>` : ''}
-        ${todayMealStackingHTML(plan, logged)}
-        <div class="btn-row">${planned && planned.recipe && !logged.some(e => e.ref === planned.recipe) ? `<button class="btn primary lite-big" type="button" data-ate="${uiEsc(slot)}">${uiIcon('check')}I ate this</button><button class="btn lite-big" type="button" data-ate-part="${uiEsc(slot)}">Only part of it</button>` : ''}<button class="btn lite-big" type="button" data-other="${uiEsc(slot)}">${uiIcon('plus')}Something else</button></div>
-      </div>`; }).join('')}</div>
+    ${uiSection('What did you eat?', `<div class="lite-slots">${slots.map(slot => liteSlotHTML(slot, day ? day.meals.find(m => m.slot === slot) : null, entries.filter(e => e.meal === LITE_SLOT_TO_DIARY[slot] || e.meal === slot), plan, weekPending, removeBtn)).join('')}</div>
       <div class="btn-row"><button class="btn lite-big" type="button" data-food-history>${uiIcon('list')}Past days: food and symptoms</button></div>`, { id: 'lite-eat-h' })}
     ${uiSection('How do you feel?', `<div class="card">
       ${symEntries.length ? `<ul class="lite-logged">${symEntries.map(e => { const words = Object.entries(e.symptoms).filter(([, v]) => v > 0).map(([k, v]) => `${liteSymptomLabel(k)} (${LITE_LEVELS.find(l => l.value === Number(v)) ? LITE_LEVELS.find(l => l.value === Number(v)).label.toLowerCase() : v})`).join(', '); return `<li class="lite-logged-row"><span><strong>${uiEsc(words)}</strong>${e.at && e.at.length > 10 ? ` <span class="muted small">at ${new Date(e.at).toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' })}</span>` : ''}${e.notes ? `<span class="small muted lite-note">${uiEsc(e.notes)}</span>` : ''}</span>${removeBtn(uiState.profile.log, e, words)}</li>`; }).join('')}</ul>` : fineToday ? '' : '<p class="small muted">Nothing logged today. If something comes on, tap the button and say what and how bad.</p>'}
       ${fineToday ? `<ul class="lite-logged"><li class="lite-logged-row"><span><strong>Feeling fine today</strong> <span class="muted small">noted</span></span>${removeBtn(uiState.profile.log, fineToday, 'feeling fine today')}</li></ul>` : ''}
       <div class="btn-row"><button class="btn primary lite-big" type="button" id="lite-feel">${uiIcon('note')}Log a symptom</button><button class="btn lite-big" type="button" id="lite-fine" ${fineToday ? 'disabled aria-disabled="true"' : ''}>${uiIcon('check-circle')}${fineToday ? 'Noted' : 'Feeling fine today'}</button></div>
-      <div class="btn-row"><button class="btn lite-big" type="button" data-food-history>${uiIcon('list')}Past days: symptoms and food</button></div>
     </div>`, { id: 'lite-feel-h' })}
     ${uiSection('Weight', `<div class="card"><div class="today-row"><div class="field"><label for="lite-weight">Today's weight (lb)</label><input id="lite-weight" type="number" inputmode="decimal" min="50" max="900" step="0.1" placeholder="${latestKg ? kgToLb(latestKg) : '150'}"></div><button class="btn primary lite-big" type="button" id="lite-weight-save">Save</button></div>
       <p class="small muted">${latestKg ? `Last logged: ${kgToLb(latestKg)} lb.` : 'No weight logged yet.'} ${person.goals && person.goals.calorie_target === 'gain' ? 'Your goal is to gain; the Report shows the trend.' : ''}</p>
@@ -111,6 +101,34 @@ export function renderLiteTodayScreen(root) {
     uiPersist(); uiToast(`Saved ${lb} lb.`); uiState.rerender();
   });
   if (weekPending) liteBuildWeekSoon();
+}
+
+// One meal on lite Today (owner item 6, October 8, 2026). Three states, each said in words:
+//  - Nothing logged: "Planned:" and the meal, with I ate this, Only part of it, and Something else.
+//  - Eaten as planned: "You ate:" and the meal, "as planned".
+//  - Something else eaten: "You ate:" in bold with what was eaten, and below it, smaller and grey, "Instead of the
+//    planned ..." The plan stays visible but quiet: what was eaten is what counts (it goes on the doctor report), and
+//    the plan line answers "where did my planned meal go?". The big three buttons give way to Add more, plus a small
+//    "I had the planned meal too" for a day with both.
+export function liteSlotHTML(slot, planned, logged, plan, weekPending, removeBtn) {
+  const plannedId = planned && planned.recipe ? planned.recipe : null;
+  const asPlanned = plannedId ? logged.filter(e => e.ref === plannedId) : [];
+  const other = logged.filter(e => !asPlanned.includes(e));
+  const row = (e, extra = '') => `<li class="lite-logged-row"><span>${uiEsc(todayEntryName(e))}${extra}</span>${removeBtn(uiState.profile.diary, e, todayEntryName(e))}</li>`;
+  const head = `<div class="lite-slot-head"><span class="slot">${SLOT_LABEL[slot] || slot}</span>${logged.length ? uiChip(logged.length === 1 ? 'Logged' : `${logged.length} logged`, 'pass') : ''}</div>`;
+  if (!logged.length) {
+    return `<div class="lite-slot card">${head}
+      ${plannedId ? `<p class="lite-planned">Planned: <strong>${uiEsc(planned.name)}</strong></p>` : weekPending ? `<p class="small muted">Working out today's plan…</p>` : '<p class="small muted">Nothing planned for this meal.</p>'}
+      <div class="btn-row lite-slot-acts">${plannedId ? `<button class="btn primary lite-big" type="button" data-ate="${uiEsc(slot)}">${uiIcon('check')}I ate this</button><button class="btn lite-big" type="button" data-ate-part="${uiEsc(slot)}">Only part of it</button>` : ''}<button class="btn lite-big" type="button" data-other="${uiEsc(slot)}">${uiIcon('plus')}Something else</button></div>
+    </div>`;
+  }
+  return `<div class="lite-slot card lite-slot-done">${head}
+    <p class="lite-ate-label"><strong>You ate:</strong></p>
+    <ul class="lite-logged">${asPlanned.map(e => row(e, ' <span class="muted small">as planned</span>')).join('')}${other.map(e => row(e)).join('')}</ul>
+    ${plannedId && !asPlanned.length ? `<p class="lite-instead small muted">Instead of the planned ${uiEsc(planned.name)}.</p>` : ''}
+    ${todayMealStackingHTML(plan, logged)}
+    <div class="btn-row lite-slot-acts"><button class="btn lite-big" type="button" data-other="${uiEsc(slot)}">${uiIcon('plus')}Add more</button>${plannedId && !asPlanned.length ? `<button class="btn link" type="button" data-ate="${uiEsc(slot)}">I had the planned meal too</button>` : ''}</div>
+  </div>`;
 }
 
 // P2-1 (fix pass of September 30, 2026): the week is built after Today has been painted, for whoever is active then
