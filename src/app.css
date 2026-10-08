@@ -1081,5 +1081,7 @@ html.lite .btn.small.icon, html.lite .heart-btn, html.lite .never-btn { min-widt
    "Samp..."). One person uses this build, so the header shows their initials only (the link still says their name to a
    screen reader), and the Lite tag gives way to the full name "Peace Meal for one", which already says which build it is. */
 @media (max-width: 439px) { html.lite .topbar .who-name, html.lite .topbar .lite-tag { display: none; } }
+/* At 320 px (an iPhone SE with Display Zoom, common with larger text) the name still clipped to "Peace Meal fo...". */
+@media (max-width: 359px) { html.lite .topbar .brand-name { font-size: var(--fs-17); } }
 /* A big check box's explanation sits on its own line under the bold title (it ran on: "...the weekThe week leans..."). */
 .choice.big-check .choice-body > .small { display: block; margin-top: 4px; }

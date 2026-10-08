@@ -368,7 +368,7 @@ export function renderRecipesScreen(root) {
         ${chip('quick', 'Under 20 minutes', recipesUi.quick)}
         <label class="filter-select"><span class="visually-hidden">Meal</span><select id="rc-meal"><option value="">Any meal</option>${['breakfast', 'lunch', 'dinner', 'snack', 'component'].map(s => `<option value="${s}" ${recipesUi.meal === s ? 'selected' : ''}>${RECIPES_SLOT_LABEL[s]}</option>`).join('')}</select></label>
       </div>
-      <details class="pick-more filter-more" ${recipesMoreOpen || recipesMoreActive().length ? 'open' : ''}><summary><span class="pick-title">More filters</span><span class="pick-summary" id="rc-more-summary">${uiEsc(recipesMoreActive().join(', ') || 'None on')}</span></summary>
+      <details class="pick-more filter-more" ${recipesMoreOpen || recipesMoreActive().length ? 'open' : ''}><summary><span class="pick-title">More filters</span><span class="pick-summary" id="rc-more-summary">${uiEsc(recipesMoreActive().join(', ') || 'None')}</span></summary>
         <div class="filter-bar" role="group" aria-label="More filters">
           ${chip('featured', `${uiIcon('star')}Featured`, recipesUi.featured)}
           ${chip('nutrition', 'Has nutrition', recipesUi.nutrition)}
@@ -386,7 +386,7 @@ export function renderRecipesScreen(root) {
     <p class="small muted recipes-foot">Recipes come from ${uiRecipeSourcesText()}. <a href="#/learn/sources">Where the recipes come from</a>.</p>
   `;
   const listEl = root.querySelector('#rc-list');
-  const moreSummary = () => { const el = root.querySelector('#rc-more-summary'); if (el) el.textContent = recipesMoreActive().join(', ') || 'None on'; };
+  const moreSummary = () => { const el = root.querySelector('#rc-more-summary'); if (el) el.textContent = recipesMoreActive().join(', ') || 'None'; };
   const draw = () => {
     const { rows, exact, more, skippedCount } = recipesFiltered(person, plan);
     const shown = rows.slice(0, recipesUi.shown);
