@@ -227,8 +227,8 @@ function todayMealsHTML(person, plan, entries) {
           const n = e.nutrients || {};
           return `<div class="entry-row">
             ${e.kind !== 'custom' ? `<button class="heart-btn ${fav ? 'on' : ''}" type="button" data-fav="${e.kind}:${uiEsc(e.ref)}" aria-pressed="${fav}" aria-label="${fav ? 'Remove from favorites' : 'Add to favorites'}">${uiIcon('heart', { fill: fav })}</button>` : '<span style="width:40px;flex:none"></span>'}
-            <div class="entry-main"><div><span class="entry-name">${uiEsc(todayEntryName(e))}</span> <span class="entry-amount">${uiEsc(todayAmountText(e))}</span></div><div class="entry-kcal">${e.nutrients ? uiFmtNum(n.kcal) + ' kcal' : 'no nutrition numbers'}</div>
-              ${e.nutrients ? `<div class="entry-nut">${uiFmtNum(n.protein_g, 1)} g protein · ${uiFmtNum(n.carb_g, 1)} g carb · ${uiFmtNum(n.fiber_g, 1)} g fiber · ${uiFmtNum(n.sodium_mg)} mg sodium · ${uiFmtNum(n.satfat_g, 1)} g sat fat</div>` : ''}
+            <div class="entry-main"><div><span class="entry-name">${uiEsc(todayEntryName(e))}</span> <span class="entry-amount">${uiEsc(todayAmountText(e))}</span></div><div class="entry-kcal">${e.nutrients ? uiFmtNum(n.kcal) + ' kcal' : ''}</div>
+              ${e.nutrients ? `<div class="entry-nut">${uiFmtNum(n.protein_g, 1)} g protein · ${uiFmtNum(n.carb_g, 1)} g carb · ${uiFmtNum(n.fiber_g, 1)} g fiber · ${uiFmtNum(n.sodium_mg)} mg sodium · ${uiFmtNum(n.satfat_g, 1)} g sat fat</div>` : '<div class="entry-nut">No nutrition numbers</div>'}
               ${e.note ? `<div class="entry-note">${uiEsc(e.note)}</div>` : ''}</div>
             <div class="entry-acts"><button class="btn small icon" type="button" data-edit="${uiEsc(e.id)}" aria-label="Edit ${uiEsc(todayEntryName(e))}" title="Edit">${uiIcon('edit')}</button><button class="btn small icon danger" type="button" data-remove="${uiEsc(e.id)}" aria-label="Remove ${uiEsc(todayEntryName(e))}" title="Remove">${uiIcon('trash')}</button></div>
           </div>`;

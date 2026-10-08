@@ -1083,5 +1083,7 @@ html.lite .btn.small.icon, html.lite .heart-btn, html.lite .never-btn { min-widt
 @media (max-width: 439px) { html.lite .topbar .who-name, html.lite .topbar .lite-tag { display: none; } }
 /* At 320 px (an iPhone SE with Display Zoom, common with larger text) the name still clipped to "Peace Meal fo...". */
 @media (max-width: 359px) { html.lite .topbar .brand-name { font-size: var(--fs-17); } }
+/* With the name hidden, the brand (logo only, next to Back) and the initials stay 44 px wide to tap (P2-5). */
+html.lite .topbar .brand, html.lite .topbar .who { min-width: 44px; justify-content: center; }
 /* A big check box's explanation sits on its own line under the bold title (it ran on: "...the weekThe week leans..."). */
 .choice.big-check .choice-body > .small { display: block; margin-top: 4px; }

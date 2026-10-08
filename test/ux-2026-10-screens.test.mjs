@@ -220,11 +220,12 @@ test('Peace Meal for one: the phone header shows the full name of the app, and t
   assert.match(css, /@media \(max-width: 439px\) \{ html\.lite \.topbar \.who-name, html\.lite \.topbar \.lite-tag \{ display: none; \} \}/);
   assert.match(css, /\.choice\.big-check \.choice-body > \.small \{ display: block;/, '"...the week" and its explanation no longer run together');
   assert.match(css, /@media \(max-width: 359px\) \{ html\.lite \.topbar \.brand-name \{ font-size: var\(--fs-17\); \} \}/, 'at 320 px (Display Zoom) the name still fits');
+  assert.match(css, /html\.lite \.topbar \.brand, html\.lite \.topbar \.who \{ min-width: 44px;/, 'logo-only and initials-only links stay 44 px wide (P2-5)');
 });
 
 test('Today and Home: an entry without numbers says so instead of printing empty units', () => {
   const t = R('src/ui/today.js');
-  assert.match(t, /'no nutrition numbers'/);
+  assert.match(t, /'<div class="entry-nut">No nutrition numbers<\/div>'/, 'on the full-width line, where it can wrap at large text sizes');
   assert.match(t, /\$\{e\.nutrients \? `<div class="entry-nut">/);
   assert.doesNotMatch(t, /'as entered'/);
   assert.doesNotMatch(t, /Stored in kilograms for the rules that need it/);
