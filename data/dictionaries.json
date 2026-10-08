@@ -102,11 +102,13 @@
       "label": "Soy",
       "family": "allergen",
       "hard": true,
-      "description": "Soybeans and soy protein foods (tofu, edamame, miso, soy sauce, TVP). Hard exclusion. Highly refined soybean oil (soy-refined-oil) and soy lecithin (soy-lecithin) are exempt from FALCPA and carry their own tags; the allergy module excludes them by default and lets the user relax that with allergist input.",
+      "description": "Soybeans and soy protein foods (tofu, edamame, miso, soy sauce, TVP). Hard exclusion. Highly refined soybean oil (soy-refined-oil) is exempt from FALCPA labeling; soy lecithin (soy-lecithin) is not exempt and is declared as soy. Both carry their own tags; the allergy module excludes them by default and lets the user relax that with allergist input.",
       "sources": [
         "fda-falcpa-2004",
         "aaaai-2014",
-        "fare-labels"
+        "fare-labels",
+        "fda-allergen-qa-2025",
+        "fda-food-allergies-page"
       ]
     },
     "allergen-sesame": {
@@ -892,6 +894,16 @@
       "sources": [
         "bailey-2013"
       ]
+    },
+    "sodium-high": {
+      "label": "High in salt",
+      "family": "sodium",
+      "hard": false,
+      "description": "Foods and ingredients that USDA FoodData Central lists above 600 mg sodium per 100 g, the UK front-of-pack \"high\" cutoff for foods (more than 1.5 g salt per 100 g; salt is sodium times 2.5). As may_contain: the word covers kinds above and below that cutoff (for example cheese: parmesan above, ricotta below). A fact about the food, not advice: it matters only when the plan has a daily sodium limit, and then the app says to check the sodium on the Nutrition Facts label. Evidence for each word: docs/VERIFY-log.md, fix pass F4.",
+      "sources": [
+        "usda-fdc",
+        "uk-fop-2016"
+      ]
     }
   },
   "entries": [
@@ -1051,7 +1063,8 @@
         "histamine-aged",
         "histamine-high",
         "full-fat-dairy",
-        "calcium-rich"
+        "calcium-rich",
+        "sodium-high"
       ],
       "match": "word",
       "note": "hard aged cheese: near-zero lactose; histamine rises with age. patient-reported and food-chemistry basis; not RCT-confirmed; freshness and storage matter more than the food name",
@@ -1077,6 +1090,9 @@
         "nih-lactose-2010",
         "comas-baste-2020",
         "sighi-list"
+      ],
+      "may_contain": [
+        "sodium-high"
       ]
     },
     {
@@ -1087,7 +1103,8 @@
         "histamine-aged",
         "histamine-high",
         "full-fat-dairy",
-        "calcium-rich"
+        "calcium-rich",
+        "sodium-high"
       ],
       "match": "word",
       "note": "hard aged cheese: near-zero lactose; histamine rises with age. patient-reported and food-chemistry basis; not RCT-confirmed; freshness and storage matter more than the food name",
@@ -1352,7 +1369,8 @@
         "allergen-milk",
         "phosphate-additive",
         "ultra-processed",
-        "calcium-rich"
+        "calcium-rich",
+        "sodium-high"
       ],
       "match": "word",
       "note": "pasteurized process cheese; phosphate emulsifying salts",
@@ -1402,6 +1420,9 @@
         "comas-baste-2020",
         "acr-gout-2020",
         "fda-epa-fish-2021"
+      ],
+      "may_contain": [
+        "sodium-high"
       ]
     },
     {
@@ -1410,7 +1431,8 @@
         "allergen-fish",
         "histamine-high",
         "histamine-aged",
-        "purine-high"
+        "purine-high",
+        "sodium-high"
       ],
       "match": "word",
       "note": "",
@@ -1873,7 +1895,8 @@
         "processed-meat",
         "red-meat",
         "histamine-high",
-        "histamine-aged"
+        "histamine-aged",
+        "sodium-high"
       ],
       "match": "word",
       "note": "cured and smoked pork; turkey bacon also matches and is processed meat too. patient-reported and food-chemistry basis; not RCT-confirmed; freshness and storage matter more than the food name",
@@ -1965,7 +1988,8 @@
     {
       "term": "barbecue sauce",
       "tags": [
-        "added-sugar"
+        "added-sugar",
+        "sodium-high"
       ],
       "match": "word",
       "note": "sugar or molasses base; some brands use soy sauce or Worcestershire",
@@ -2089,7 +2113,8 @@
     {
       "term": "bbq sauce",
       "tags": [
-        "added-sugar"
+        "added-sugar",
+        "sodium-high"
       ],
       "match": "word",
       "note": "",
@@ -2244,7 +2269,8 @@
         "processed-meat",
         "red-meat",
         "histamine-aged",
-        "tough-meat"
+        "tough-meat",
+        "sodium-high"
       ],
       "match": "word",
       "note": "",
@@ -2320,6 +2346,17 @@
       "note": "",
       "sources": [
         "acg-celiac-2023"
+      ]
+    },
+    {
+      "term": "artificial nuts",
+      "tags": [
+        "allergen-peanut"
+      ],
+      "match": "word",
+      "note": "FARE lists \"Artificial nuts\" among foods to avoid with a peanut allergy: they are usually peanuts, deflavored and reflavored (fix pass of September 30, 2026, N3)",
+      "sources": [
+        "fare-peanut-page"
       ]
     },
     {
@@ -2480,7 +2517,8 @@
       "match": "word",
       "note": "US biscuits use butter or buttermilk; UK biscuits are cookies",
       "may_contain": [
-        "allergen-milk"
+        "allergen-milk",
+        "sodium-high"
       ]
     },
     {
@@ -2518,7 +2556,8 @@
       "tags": [
         "allergen-soy",
         "soy",
-        "histamine-fermented"
+        "histamine-fermented",
+        "sodium-high"
       ],
       "match": "word",
       "note": "fermented black soybeans",
@@ -2640,7 +2679,8 @@
         "histamine-high",
         "unpasteurized",
         "full-fat-dairy",
-        "calcium-rich"
+        "calcium-rich",
+        "sodium-high"
       ],
       "match": "word",
       "note": "soft ripened blue-veined cheese: unless labeled pasteurized. patient-reported and food-chemistry basis; not RCT-confirmed; freshness and storage matter more than the food name",
@@ -2659,7 +2699,8 @@
         "histamine-high",
         "unpasteurized",
         "full-fat-dairy",
-        "calcium-rich"
+        "calcium-rich",
+        "sodium-high"
       ],
       "match": "word",
       "note": "unless labeled pasteurized. patient-reported and food-chemistry basis; not RCT-confirmed; freshness and storage matter more than the food name",
@@ -2720,7 +2761,8 @@
       "tags": [
         "processed-meat",
         "deli-meat",
-        "histamine-high"
+        "histamine-high",
+        "sodium-high"
       ],
       "match": "word",
       "note": "",
@@ -2777,7 +2819,8 @@
         "allergen-wheat",
         "gluten",
         "allergen-milk",
-        "fodmap-fructan"
+        "fodmap-fructan",
+        "sodium-high"
       ],
       "risk": "unknown"
     },
@@ -2890,7 +2933,8 @@
       "may_contain": [
         "gluten",
         "lactose-hidden",
-        "allergen-milk"
+        "allergen-milk",
+        "sodium-high"
       ],
       "sources": [
         "iarc-2015"
@@ -2938,6 +2982,47 @@
       "sources": [
         "biesiekierski-2011",
         "nih-lactose-2010"
+      ],
+      "may_contain": [
+        "sodium-high"
+      ]
+    },
+    {
+      "term": "baguette",
+      "tags": [
+        "allergen-wheat",
+        "gluten",
+        "refined-grain",
+        "fodmap-fructan",
+        "lactose-hidden"
+      ],
+      "match": "word",
+      "note": "tags copied from bread (fix pass of September 30, 2026, P2-12)",
+      "may_contain": [
+        "sodium-high"
+      ],
+      "sources": [
+        "biesiekierski-2011",
+        "nih-lactose-2010"
+      ]
+    },
+    {
+      "term": "french stick",
+      "tags": [
+        "allergen-wheat",
+        "gluten",
+        "refined-grain",
+        "fodmap-fructan",
+        "lactose-hidden"
+      ],
+      "match": "word",
+      "note": "UK name for a baguette; tags copied from bread (fix pass of September 30, 2026, P2-12)",
+      "may_contain": [
+        "sodium-high"
+      ],
+      "sources": [
+        "biesiekierski-2011",
+        "nih-lactose-2010"
       ]
     },
     {
@@ -2949,7 +3034,10 @@
         "fodmap-fructan"
       ],
       "match": "word",
-      "note": ""
+      "note": "",
+      "may_contain": [
+        "sodium-high"
+      ]
     },
     {
       "term": "bread flour",
@@ -2974,6 +3062,9 @@
       "note": "",
       "except": [
         "gluten-free breadcrumbs"
+      ],
+      "may_contain": [
+        "sodium-high"
       ]
     },
     {
@@ -3018,7 +3109,8 @@
         "histamine-high",
         "unpasteurized",
         "full-fat-dairy",
-        "calcium-rich"
+        "calcium-rich",
+        "sodium-high"
       ],
       "match": "word",
       "note": "soft ripened cheese: unless labeled pasteurized. patient-reported and food-chemistry basis; not RCT-confirmed; freshness and storage matter more than the food name",
@@ -3116,7 +3208,8 @@
         "cdf-sources-of-gluten"
       ],
       "may_contain": [
-        "gluten"
+        "gluten",
+        "sodium-high"
       ]
     },
     {
@@ -3268,6 +3361,9 @@
         "butter lettuce",
         "body butter",
         "fruit butter"
+      ],
+      "may_contain": [
+        "sodium-high"
       ]
     },
     {
@@ -3550,7 +3646,8 @@
         "histamine-high",
         "unpasteurized",
         "full-fat-dairy",
-        "calcium-rich"
+        "calcium-rich",
+        "sodium-high"
       ],
       "match": "word",
       "note": "soft ripened cheese: unless labeled pasteurized. patient-reported and food-chemistry basis; not RCT-confirmed; freshness and storage matter more than the food name",
@@ -3739,6 +3836,21 @@
       ]
     },
     {
+      "term": "cannellini",
+      "tags": [
+        "legume",
+        "fodmap-gos",
+        "potassium-high-food"
+      ],
+      "match": "word",
+      "note": "cannellini beans written without beans; tags copied from cannellini bean (fix pass of September 30, 2026, P2-12)",
+      "sources": [
+        "biesiekierski-2011",
+        "halmos-2014",
+        "nkf-potassium"
+      ]
+    },
+    {
       "term": "cantaloupe",
       "tags": [
         "fruit",
@@ -3796,10 +3908,17 @@
         "added-sugar"
       ],
       "match": "word",
-      "note": "the confection or sauce; caramel color is a colorant, not a sugar, and is excluded",
+      "note": "the confection or sauce; caramel color is a colorant, not a sugar, and is excluded; caramel candy and caramel sauce are usually made with milk, cream, or butter (FARE lists \"Caramel candies\" among possible sources of milk), so a milk allergy gets a label check; caramel color is its own entry (P2-11, September 30, 2026)",
       "except": [
         "caramel color",
         "caramel colour"
+      ],
+      "may_contain": [
+        "allergen-milk"
+      ],
+      "sources": [
+        "fare-milk-page",
+        "fda-food-allergies-page"
       ]
     },
     {
@@ -3961,7 +4080,8 @@
       "term": "catsup",
       "tags": [
         "added-sugar",
-        "histamine-high"
+        "histamine-high",
+        "sodium-high"
       ],
       "match": "word",
       "note": "",
@@ -3992,6 +4112,9 @@
       ],
       "match": "word",
       "note": "",
+      "except": [
+        "cava vinegar"
+      ],
       "sources": [
         "comas-baste-2020",
         "sighi-list"
@@ -4000,7 +4123,8 @@
     {
       "term": "caviar",
       "tags": [
-        "allergen-fish"
+        "allergen-fish",
+        "sodium-high"
       ],
       "match": "word",
       "note": "fish roe"
@@ -4107,6 +4231,10 @@
       ],
       "match": "word",
       "note": "patient-reported and food-chemistry basis; not RCT-confirmed; freshness and storage matter more than the food name",
+      "except": [
+        "champagne vinegar",
+        "champagne wine vinegar"
+      ],
       "sources": [
         "comas-baste-2020",
         "sighi-list"
@@ -4145,7 +4273,8 @@
         "histamine-aged",
         "histamine-high",
         "full-fat-dairy",
-        "calcium-rich"
+        "calcium-rich",
+        "sodium-high"
       ],
       "match": "word",
       "note": "hard aged cheese: near-zero lactose; histamine rises with age. patient-reported and food-chemistry basis; not RCT-confirmed; freshness and storage matter more than the food name",
@@ -4162,7 +4291,10 @@
         "calcium-rich"
       ],
       "match": "word",
-      "note": "generic; lactose and histamine depend on the type, which named-cheese entries carry"
+      "note": "generic; lactose and histamine depend on the type, which named-cheese entries carry",
+      "may_contain": [
+        "sodium-high"
+      ]
     },
     {
       "term": "cheese curds",
@@ -4172,7 +4304,10 @@
         "calcium-rich"
       ],
       "match": "word",
-      "note": ""
+      "note": "",
+      "may_contain": [
+        "sodium-high"
+      ]
     },
     {
       "term": "cheese spread",
@@ -4185,6 +4320,9 @@
       "note": "",
       "sources": [
         "nkf-potassium"
+      ],
+      "may_contain": [
+        "sodium-high"
       ]
     },
     {
@@ -4431,6 +4569,9 @@
         "butterscotch chips",
         "peanut butter chips",
         "white chocolate chips"
+      ],
+      "may_contain": [
+        "sodium-high"
       ]
     },
     {
@@ -4537,7 +4678,8 @@
         "histamine-aged",
         "histamine-high",
         "deli-meat",
-        "histamine-fermented"
+        "histamine-fermented",
+        "sodium-high"
       ],
       "match": "word",
       "note": "cured or fermented meat: high measured histamine (Comas-Baste 2020); IARC processed meat; ready-to-eat deli item, Listeria risk in pregnancy unless heated. patient-reported and food-chemistry basis; not RCT-confirmed; freshness and storage matter more than the food name",
@@ -4625,6 +4767,9 @@
         "fda-allergen-qa-2025",
         "acr-gout-2020",
         "fda-epa-fish-2021"
+      ],
+      "may_contain": [
+        "sodium-high"
       ]
     },
     {
@@ -4735,6 +4880,9 @@
       "note": "fermented coconut sap; soy-free and gluten-free soy-sauce substitute. patient-reported and food-chemistry basis; not RCT-confirmed; freshness and storage matter more than the food name",
       "sources": [
         "sighi-list"
+      ],
+      "may_contain": [
+        "sodium-high"
       ]
     },
     {
@@ -5135,7 +5283,10 @@
         "ultra-processed"
       ],
       "match": "word",
-      "note": "usually whole-grain corn masa, but fried"
+      "note": "usually whole-grain corn masa, but fried",
+      "may_contain": [
+        "sodium-high"
+      ]
     },
     {
       "term": "corn flakes",
@@ -5189,7 +5340,8 @@
       "may_contain": [
         "allergen-wheat",
         "allergen-milk",
-        "allergen-egg"
+        "allergen-egg",
+        "sodium-high"
       ]
     },
     {
@@ -5197,7 +5349,8 @@
       "tags": [
         "processed-meat",
         "red-meat",
-        "deli-meat"
+        "deli-meat",
+        "sodium-high"
       ],
       "match": "word",
       "note": "",
@@ -5238,7 +5391,10 @@
         "small-particle-friendly"
       ],
       "match": "word",
-      "note": "soft fresh cheese; lactose moderate; usually sold as low-fat but fat level varies, so no fat tag"
+      "note": "soft fresh cheese; lactose moderate; usually sold as low-fat but fat level varies, so no fat tag",
+      "may_contain": [
+        "sodium-high"
+      ]
     },
     {
       "term": "country ham",
@@ -5247,7 +5403,8 @@
         "red-meat",
         "histamine-aged",
         "histamine-high",
-        "deli-meat"
+        "deli-meat",
+        "sodium-high"
       ],
       "match": "word",
       "note": "cured or fermented meat: high measured histamine (Comas-Baste 2020); IARC processed meat; ready-to-eat deli item, Listeria risk in pregnancy unless heated. patient-reported and food-chemistry basis; not RCT-confirmed; freshness and storage matter more than the food name",
@@ -5302,6 +5459,9 @@
         "sighi-list",
         "acr-gout-2020",
         "fda-epa-fish-2021"
+      ],
+      "may_contain": [
+        "sodium-high"
       ]
     },
     {
@@ -5334,6 +5494,9 @@
         "sighi-list",
         "acr-gout-2020",
         "fda-epa-fish-2021"
+      ],
+      "may_contain": [
+        "sodium-high"
       ]
     },
     {
@@ -5351,6 +5514,9 @@
         "graham cracker",
         "gluten-free cracker",
         "seed cracker"
+      ],
+      "may_contain": [
+        "sodium-high"
       ]
     },
     {
@@ -5575,7 +5741,8 @@
         "allergen-wheat",
         "gluten",
         "refined-grain",
-        "fodmap-fructan"
+        "fodmap-fructan",
+        "sodium-high"
       ],
       "match": "word",
       "note": ""
@@ -5655,7 +5822,8 @@
       "term": "cured",
       "tags": [
         "histamine-aged",
-        "processed-meat"
+        "processed-meat",
+        "sodium-high"
       ],
       "match": "word",
       "note": "'cured' meat or fish; 'uncured' does not match but is still nitrite-cured via celery powder",
@@ -5677,7 +5845,8 @@
         "red-meat",
         "histamine-aged",
         "histamine-high",
-        "deli-meat"
+        "deli-meat",
+        "sodium-high"
       ],
       "match": "word",
       "note": "cured or fermented meat: high measured histamine (Comas-Baste 2020); IARC processed meat; ready-to-eat deli item, Listeria risk in pregnancy unless heated. patient-reported and food-chemistry basis; not RCT-confirmed; freshness and storage matter more than the food name",
@@ -5695,7 +5864,8 @@
         "histamine-aged",
         "histamine-high",
         "processed-meat",
-        "deli-meat"
+        "deli-meat",
+        "sodium-high"
       ],
       "match": "word",
       "note": "",
@@ -5877,7 +6047,8 @@
       "tags": [
         "processed-meat",
         "deli-meat",
-        "red-meat"
+        "red-meat",
+        "sodium-high"
       ],
       "match": "word",
       "note": "",
@@ -5894,7 +6065,8 @@
       "tags": [
         "processed-meat",
         "deli-meat",
-        "histamine-high"
+        "histamine-high",
+        "sodium-high"
       ],
       "match": "word",
       "note": "Listeria risk in pregnancy unless heated until steaming; processed meats are a hidden lactose and gluten source and often contain phosphate additives",
@@ -5917,7 +6089,8 @@
       "tags": [
         "processed-meat",
         "deli-meat",
-        "poultry"
+        "poultry",
+        "sodium-high"
       ],
       "match": "word",
       "note": "",
@@ -6165,7 +6338,8 @@
         "histamine-aged",
         "histamine-high",
         "deli-meat",
-        "histamine-fermented"
+        "histamine-fermented",
+        "sodium-high"
       ],
       "match": "word",
       "note": "cured or fermented meat: high measured histamine (Comas-Baste 2020); IARC processed meat; ready-to-eat deli item, Listeria risk in pregnancy unless heated. patient-reported and food-chemistry basis; not RCT-confirmed; freshness and storage matter more than the food name",
@@ -6195,7 +6369,8 @@
     {
       "term": "duck sauce",
       "tags": [
-        "added-sugar"
+        "added-sugar",
+        "sodium-high"
       ],
       "match": "word",
       "note": "sweet apricot or plum sauce; contains no duck"
@@ -6543,7 +6718,8 @@
       "term": "everything bagel seasoning",
       "tags": [
         "allergen-sesame",
-        "fodmap-fructan"
+        "fodmap-fructan",
+        "sodium-high"
       ],
       "match": "word",
       "note": "sesame, poppy, dried onion, dried garlic",
@@ -6714,7 +6890,8 @@
         "histamine-aged",
         "histamine-high",
         "deli-meat",
-        "histamine-fermented"
+        "histamine-fermented",
+        "sodium-high"
       ],
       "match": "word",
       "note": "cured or fermented meat: high measured histamine (Comas-Baste 2020); IARC processed meat; ready-to-eat deli item, Listeria risk in pregnancy unless heated. patient-reported and food-chemistry basis; not RCT-confirmed; freshness and storage matter more than the food name",
@@ -6815,7 +6992,8 @@
         "allergen-milk",
         "unpasteurized",
         "full-fat-dairy",
-        "calcium-rich"
+        "calcium-rich",
+        "sodium-high"
       ],
       "match": "word",
       "note": "soft brined cheese: unless labeled pasteurized",
@@ -6909,7 +7087,8 @@
       "tags": [
         "allergen-fish",
         "histamine-fermented",
-        "histamine-high"
+        "histamine-high",
+        "sodium-high"
       ],
       "match": "word",
       "note": "fermented anchovy; patient-reported and food-chemistry basis; not RCT-confirmed; freshness and storage matter more than the food name",
@@ -7046,7 +7225,10 @@
         "fodmap-fructan"
       ],
       "match": "word",
-      "note": ""
+      "note": "",
+      "may_contain": [
+        "sodium-high"
+      ]
     },
     {
       "term": "foie gras",
@@ -7113,7 +7295,8 @@
       "tags": [
         "processed-meat",
         "deli-meat",
-        "histamine-high"
+        "histamine-high",
+        "sodium-high"
       ],
       "match": "word",
       "note": "",
@@ -7524,7 +7707,8 @@
     {
       "term": "garlic salt",
       "tags": [
-        "fodmap-fructan"
+        "fodmap-fructan",
+        "sodium-high"
       ],
       "match": "word",
       "note": "",
@@ -7828,7 +8012,8 @@
         "histamine-high",
         "unpasteurized",
         "full-fat-dairy",
-        "calcium-rich"
+        "calcium-rich",
+        "sodium-high"
       ],
       "match": "word",
       "note": "unless labeled pasteurized. patient-reported and food-chemistry basis; not RCT-confirmed; freshness and storage matter more than the food name",
@@ -7846,7 +8031,8 @@
         "histamine-aged",
         "histamine-high",
         "full-fat-dairy",
-        "calcium-rich"
+        "calcium-rich",
+        "sodium-high"
       ],
       "match": "word",
       "note": "hard aged cheese: near-zero lactose; histamine rises with age. patient-reported and food-chemistry basis; not RCT-confirmed; freshness and storage matter more than the food name",
@@ -8266,7 +8452,8 @@
         "histamine-aged",
         "histamine-high",
         "full-fat-dairy",
-        "calcium-rich"
+        "calcium-rich",
+        "sodium-high"
       ],
       "match": "word",
       "note": "hard aged cheese: near-zero lactose; histamine rises with age. patient-reported and food-chemistry basis; not RCT-confirmed; freshness and storage matter more than the food name",
@@ -8408,7 +8595,8 @@
         "processed-meat",
         "red-meat",
         "deli-meat",
-        "histamine-high"
+        "histamine-high",
+        "sodium-high"
       ],
       "match": "word",
       "note": "cured pork; ready-to-eat sliced ham is a deli meat (Listeria risk in pregnancy unless heated); dry-cured ham is a measured histamine source. patient-reported and food-chemistry basis; not RCT-confirmed; freshness and storage matter more than the food name",
@@ -8428,7 +8616,8 @@
         "processed-meat",
         "red-meat",
         "histamine-high",
-        "histamine-aged"
+        "histamine-aged",
+        "sodium-high"
       ],
       "match": "word",
       "note": "cured and usually smoked pork; the SIGHI leaflet lists cured, dried, marinated, and smoked meat to avoid. Not a deli meat: hocks are cooked in the dish",
@@ -8477,6 +8666,9 @@
         "nih-lactose-2010",
         "comas-baste-2020",
         "sighi-list"
+      ],
+      "may_contain": [
+        "sodium-high"
       ]
     },
     {
@@ -8623,6 +8815,9 @@
         "comas-baste-2020",
         "acr-gout-2020",
         "fda-epa-fish-2021"
+      ],
+      "may_contain": [
+        "sodium-high"
       ]
     },
     {
@@ -8687,7 +8882,8 @@
       "tags": [
         "allergen-soy",
         "soy",
-        "added-sugar"
+        "added-sugar",
+        "sodium-high"
       ],
       "match": "word",
       "note": "fermented soybean paste with sugar; most brands contain wheat",
@@ -8702,7 +8898,8 @@
       "tags": [
         "allergen-soy",
         "soy",
-        "added-sugar"
+        "added-sugar",
+        "sodium-high"
       ],
       "match": "word",
       "note": "",
@@ -8813,7 +9010,8 @@
       "tags": [
         "processed-meat",
         "deli-meat",
-        "histamine-high"
+        "histamine-high",
+        "sodium-high"
       ],
       "match": "word",
       "note": "Listeria risk in pregnancy unless heated until steaming; cured; hidden lactose and gluten source",
@@ -9012,7 +9210,8 @@
         "gluten",
         "refined-grain",
         "ultra-processed",
-        "fried"
+        "fried",
+        "sodium-high"
       ],
       "match": "word",
       "note": "flash-fried wheat noodles; seasoning packets typically contain MSG and soy",
@@ -9229,7 +9428,8 @@
       "tags": [
         "processed-meat",
         "histamine-aged",
-        "tough-meat"
+        "tough-meat",
+        "sodium-high"
       ],
       "match": "word",
       "note": "dried cured meat; usually marinated in soy sauce",
@@ -9368,7 +9568,8 @@
       "tags": [
         "added-sugar",
         "histamine-high",
-        "tomato"
+        "tomato",
+        "sodium-high"
       ],
       "match": "word",
       "note": "tomato plus sugar or HFCS; no-sugar-added versions exist",
@@ -9438,7 +9639,8 @@
       "tags": [
         "processed-meat",
         "red-meat",
-        "histamine-aged"
+        "histamine-aged",
+        "sodium-high"
       ],
       "match": "word",
       "note": "",
@@ -9807,6 +10009,127 @@
       "may_contain": [
         "allergen-milk",
         "allergen-egg"
+      ],
+      "except": [
+        "whole wheat lasagna",
+        "wholewheat lasagna",
+        "wholemeal lasagna",
+        "whole grain lasagna",
+        "wholegrain lasagna",
+        "gluten-free lasagna",
+        "brown rice lasagna",
+        "rice lasagna"
+      ]
+    },
+    {
+      "term": "rice lasagna",
+      "tags": [
+        "basic-ingredient"
+      ],
+      "match": "word",
+      "note": "rice lasagna: tags copied from rice, with lasagna's own label checks (fix pass of September 30, 2026, N4)",
+      "may_contain": [
+        "allergen-milk",
+        "allergen-egg"
+      ]
+    },
+    {
+      "term": "brown rice lasagna",
+      "tags": [
+        "whole-grain"
+      ],
+      "match": "word",
+      "note": "brown rice lasagna: tags copied from brown rice, with lasagna's own label checks (fix pass of September 30, 2026, N4)",
+      "may_contain": [
+        "allergen-milk",
+        "allergen-egg"
+      ]
+    },
+    {
+      "term": "gluten-free lasagna",
+      "tags": [
+        "refined-grain"
+      ],
+      "match": "word",
+      "note": "gluten-free lasagna: tags copied from gluten-free pasta, with lasagna's own label checks (fix pass of September 30, 2026, N4)",
+      "may_contain": [
+        "allergen-milk",
+        "allergen-egg"
+      ]
+    },
+    {
+      "term": "wholegrain lasagna",
+      "tags": [
+        "allergen-wheat",
+        "gluten",
+        "whole-grain",
+        "fodmap-fructan"
+      ],
+      "match": "word",
+      "note": "wholegrain lasagna: tags copied from whole wheat pasta, with lasagna's own label checks (fix pass of September 30, 2026, N4)",
+      "may_contain": [
+        "allergen-milk",
+        "allergen-egg"
+      ]
+    },
+    {
+      "term": "whole grain lasagna",
+      "tags": [
+        "allergen-wheat",
+        "gluten",
+        "whole-grain",
+        "fodmap-fructan"
+      ],
+      "match": "word",
+      "note": "whole grain lasagna: tags copied from whole wheat pasta, with lasagna's own label checks (fix pass of September 30, 2026, N4)",
+      "may_contain": [
+        "allergen-milk",
+        "allergen-egg"
+      ]
+    },
+    {
+      "term": "wholemeal lasagna",
+      "tags": [
+        "allergen-wheat",
+        "gluten",
+        "whole-grain",
+        "fodmap-fructan"
+      ],
+      "match": "word",
+      "note": "wholemeal lasagna: tags copied from whole wheat pasta, with lasagna's own label checks (fix pass of September 30, 2026, N4)",
+      "may_contain": [
+        "allergen-milk",
+        "allergen-egg"
+      ]
+    },
+    {
+      "term": "wholewheat lasagna",
+      "tags": [
+        "allergen-wheat",
+        "gluten",
+        "whole-grain",
+        "fodmap-fructan"
+      ],
+      "match": "word",
+      "note": "wholewheat lasagna: tags copied from whole wheat pasta, with lasagna's own label checks (fix pass of September 30, 2026, N4)",
+      "may_contain": [
+        "allergen-milk",
+        "allergen-egg"
+      ]
+    },
+    {
+      "term": "whole wheat lasagna",
+      "tags": [
+        "allergen-wheat",
+        "gluten",
+        "whole-grain",
+        "fodmap-fructan"
+      ],
+      "match": "word",
+      "note": "whole wheat lasagna: tags copied from whole wheat pasta, with lasagna's own label checks (fix pass of September 30, 2026, N4)",
+      "may_contain": [
+        "allergen-milk",
+        "allergen-egg"
       ]
     },
     {
@@ -9981,6 +10304,42 @@
       ]
     },
     {
+      "term": "salad leaves",
+      "tags": [
+        "vegetable",
+        "raw-vegetable"
+      ],
+      "match": "word",
+      "note": "UK mixed salad leaves; tags copied from lettuce (fix pass of September 30, 2026, P2-12)",
+      "sources": [
+        "acg-gastroparesis-2022"
+      ]
+    },
+    {
+      "term": "cos lettuce",
+      "tags": [
+        "vegetable",
+        "raw-vegetable"
+      ],
+      "match": "word",
+      "note": "romaine; tags copied from lettuce (fix pass of September 30, 2026, P2-12)",
+      "sources": [
+        "acg-gastroparesis-2022"
+      ]
+    },
+    {
+      "term": "iceberg",
+      "tags": [
+        "vegetable",
+        "raw-vegetable"
+      ],
+      "match": "word",
+      "note": "iceberg lettuce; tags copied from lettuce (fix pass of September 30, 2026, P2-12)",
+      "sources": [
+        "acg-gastroparesis-2022"
+      ]
+    },
+    {
       "term": "light tuna",
       "tags": [
         "allergen-fish",
@@ -10090,7 +10449,8 @@
     {
       "term": "lite salt",
       "tags": [
-        "potassium-additive"
+        "potassium-additive",
+        "sodium-high"
       ],
       "match": "word",
       "note": "half sodium chloride, half potassium chloride",
@@ -10154,7 +10514,8 @@
       "tags": [
         "processed-meat",
         "deli-meat",
-        "purine-high"
+        "purine-high",
+        "sodium-high"
       ],
       "match": "word",
       "note": "",
@@ -10211,7 +10572,10 @@
         "low-fat-dairy"
       ],
       "match": "word",
-      "note": ""
+      "note": "",
+      "may_contain": [
+        "sodium-high"
+      ]
     },
     {
       "term": "low-fat milk",
@@ -10278,7 +10642,8 @@
         "deli-meat",
         "histamine-high",
         "histamine-aged",
-        "smoked-seafood-refrigerated"
+        "smoked-seafood-refrigerated",
+        "sodium-high"
       ],
       "match": "word",
       "note": "",
@@ -10307,7 +10672,8 @@
       "tags": [
         "processed-meat",
         "deli-meat",
-        "histamine-high"
+        "histamine-high",
+        "sodium-high"
       ],
       "match": "word",
       "note": "",
@@ -10328,18 +10694,26 @@
     {
       "term": "lupin",
       "tags": [
-        "legume"
+        "legume",
+        "allergen-peanut"
       ],
       "match": "word",
-      "note": "lupin flour cross-reacts with peanut allergy in a subset; it is an EU-declared allergen but not an FDA major allergen"
+      "note": "lupin flour cross-reacts with peanut allergy in a subset; it is an EU-declared allergen but not an FDA major allergen. FARE lists \"Lupin (or lupine)\" among foods to avoid with a peanut allergy, so it is a stop for one (fix pass of September 30, 2026, N3)",
+      "sources": [
+        "fare-peanut-page"
+      ]
     },
     {
       "term": "lupine",
       "tags": [
-        "legume"
+        "legume",
+        "allergen-peanut"
       ],
       "match": "word",
-      "note": "see lupin"
+      "note": "see lupin. FARE lists \"Lupin (or lupine)\" among foods to avoid with a peanut allergy, so it is a stop for one (fix pass of September 30, 2026, N3)",
+      "sources": [
+        "fare-peanut-page"
+      ]
     },
     {
       "term": "lychee",
@@ -10394,7 +10768,47 @@
         "fodmap-fructan"
       ],
       "match": "word",
-      "note": ""
+      "note": "",
+      "except": [
+        "whole wheat macaroni",
+        "wholewheat macaroni",
+        "wholemeal macaroni",
+        "whole grain macaroni",
+        "wholegrain macaroni",
+        "gluten-free macaroni",
+        "brown rice macaroni",
+        "rice macaroni"
+      ]
+    },
+    {
+      "term": "gluten-free macaroni",
+      "tags": [
+        "refined-grain"
+      ],
+      "match": "word",
+      "note": "gluten-free macaroni: tags copied from gluten-free pasta (fix pass of September 30, 2026, N4)"
+    },
+    {
+      "term": "wholegrain macaroni",
+      "tags": [
+        "allergen-wheat",
+        "gluten",
+        "whole-grain",
+        "fodmap-fructan"
+      ],
+      "match": "word",
+      "note": "wholegrain macaroni: tags copied from whole wheat pasta (fix pass of September 30, 2026, N4)"
+    },
+    {
+      "term": "whole grain macaroni",
+      "tags": [
+        "allergen-wheat",
+        "gluten",
+        "whole-grain",
+        "fodmap-fructan"
+      ],
+      "match": "word",
+      "note": "whole grain macaroni: tags copied from whole wheat pasta (fix pass of September 30, 2026, N4)"
     },
     {
       "term": "mackerel",
@@ -10562,10 +10976,12 @@
         "emulsifier-additive"
       ],
       "match": "word",
-      "note": "a starch hydrolysate, not counted as added sugar under the FDA definition, but a high-glycemic filler and a NOVA ultra-processed marker; wheat-derived maltodextrin must declare wheat on US labels",
+      "note": "a starch hydrolysate, not counted as added sugar under the FDA definition, but a high-glycemic filler and a NOVA ultra-processed marker; wheat-derived maltodextrin must declare wheat on US labels. Not a label check for wheat or gluten: wheat based maltodextrins are exempt from allergen labelling (Regulation (EU) No 1169/2011, Annex II, 1(b)), and FARE's wheat list does not name maltodextrin (P2-11, September 30, 2026)",
       "sources": [
         "nova-2019",
-        "fda-added-sugars-2016"
+        "fda-added-sugars-2016",
+        "eu-1169-2011-annex-ii",
+        "fare-wheat-page"
       ]
     },
     {
@@ -10733,7 +11149,8 @@
       "term": "marmite",
       "tags": [
         "histamine-high",
-        "purine-high"
+        "purine-high",
+        "sodium-high"
       ],
       "match": "word",
       "note": "yeast extract spread",
@@ -10852,7 +11269,10 @@
         "allergen-egg"
       ],
       "match": "word",
-      "note": ""
+      "note": "",
+      "may_contain": [
+        "sodium-high"
+      ]
     },
     {
       "term": "mayonnaise",
@@ -10860,7 +11280,10 @@
         "allergen-egg"
       ],
       "match": "word",
-      "note": "egg-based emulsion; vegan mayonnaise exists but the name alone is tagged conservatively"
+      "note": "egg-based emulsion; vegan mayonnaise exists but the name alone is tagged conservatively",
+      "may_contain": [
+        "sodium-high"
+      ]
     },
     {
       "term": "meat spread",
@@ -11116,7 +11539,8 @@
         "soy",
         "histamine-fermented",
         "histamine-high",
-        "fermented-live-culture"
+        "fermented-live-culture",
+        "sodium-high"
       ],
       "match": "word",
       "note": "fermented soybean paste; barley miso contains gluten, rice miso does not; unpasteurized miso carries live cultures. patient-reported and food-chemistry basis; not RCT-confirmed; freshness and storage matter more than the food name",
@@ -11152,6 +11576,14 @@
       ],
       "match": "word",
       "note": ""
+    },
+    {
+      "term": "forest fruits",
+      "tags": [
+        "fruit"
+      ],
+      "match": "word",
+      "note": "UK frozen mixed berries; tags copied from mixed berries (fix pass of September 30, 2026, P2-12)"
     },
     {
       "term": "mixed greens",
@@ -11217,9 +11649,15 @@
         "ultra-processed"
       ],
       "match": "word",
-      "note": "NOVA lists modified starches; wheat-derived versions must declare wheat on US labels",
+      "note": "NOVA lists modified starches; wheat-derived versions must declare wheat on US labels; the starch source is not named: FARE lists modified food starch where wheat is sometimes found, and a label may name wheat only in its \"Contains\" statement, so wheat allergy and celiac disease get a label check (P2-11, September 30, 2026)",
       "sources": [
-        "nova-2019"
+        "nova-2019",
+        "fare-wheat-page",
+        "fda-food-allergies-page"
+      ],
+      "may_contain": [
+        "allergen-wheat",
+        "gluten"
       ]
     },
     {
@@ -11228,9 +11666,15 @@
         "ultra-processed"
       ],
       "match": "word",
-      "note": "",
+      "note": "the starch source is not named: FARE lists modified food starch where wheat is sometimes found, and a label may name wheat only in its \"Contains\" statement, so wheat allergy and celiac disease get a label check (P2-11, September 30, 2026)",
       "sources": [
-        "nova-2019"
+        "nova-2019",
+        "fare-wheat-page",
+        "fda-food-allergies-page"
+      ],
+      "may_contain": [
+        "allergen-wheat",
+        "gluten"
       ]
     },
     {
@@ -11333,7 +11777,8 @@
       "term": "monosodium glutamate",
       "tags": [
         "ultra-processed",
-        "msg"
+        "msg",
+        "sodium-high"
       ],
       "match": "word",
       "note": "flavor enhancer; a Phase 1 D8 migraine self-report trigger with weak evidence",
@@ -11362,7 +11807,8 @@
         "red-meat",
         "histamine-aged",
         "histamine-high",
-        "deli-meat"
+        "deli-meat",
+        "sodium-high"
       ],
       "match": "word",
       "note": "cured or fermented meat: high measured histamine (Comas-Baste 2020); IARC processed meat; ready-to-eat deli item, Listeria risk in pregnancy unless heated. patient-reported and food-chemistry basis; not RCT-confirmed; freshness and storage matter more than the food name",
@@ -11385,13 +11831,17 @@
       "note": "fresh mozzarella has low to moderate lactose; not tagged either way",
       "except": [
         "part-skim mozzarella"
+      ],
+      "may_contain": [
+        "sodium-high"
       ]
     },
     {
       "term": "msg",
       "tags": [
         "ultra-processed",
-        "msg"
+        "msg",
+        "sodium-high"
       ],
       "match": "phrase",
       "note": "monosodium glutamate",
@@ -11623,6 +12073,21 @@
       ]
     },
     {
+      "term": "haricot bean",
+      "tags": [
+        "legume",
+        "fodmap-gos",
+        "potassium-high-food"
+      ],
+      "match": "word",
+      "note": "UK name for navy beans; tags copied from navy bean (fix pass of September 30, 2026, P2-12)",
+      "sources": [
+        "biesiekierski-2011",
+        "halmos-2014",
+        "nkf-potassium"
+      ]
+    },
+    {
       "term": "nectarine",
       "tags": [
         "fruit",
@@ -11756,7 +12221,9 @@
         "buckwheat noodles",
         "zucchini noodles",
         "kelp noodles",
-        "soba noodles"
+        "soba noodles",
+        "lasagna noodle",
+        "lasagna noodles"
       ]
     },
     {
@@ -11782,7 +12249,8 @@
         "fish",
         "deli-meat",
         "histamine-high",
-        "histamine-aged"
+        "histamine-aged",
+        "sodium-high"
       ],
       "match": "word",
       "note": "",
@@ -11799,14 +12267,50 @@
         "oxalate-high"
       ],
       "match": "word",
-      "note": "generic 'nuts' or 'mixed nuts'; tree nut tag is conservative because the species is unknown. Oxalate: AUA and Phase 1 D4 list nuts as a class; almonds and cashews are highest, macadamias low. pair with a calcium source in the same meal rather than eliminating (AUA)",
+      "note": "generic 'nuts' or 'mixed nuts'; tree nut tag is conservative because the species is unknown. Oxalate: AUA and Phase 1 D4 list nuts as a class; almonds and cashews are highest, macadamias low. pair with a calcium source in the same meal rather than eliminating (AUA). The kind is unknown, so a peanut is possible too: FARE lists \"Nut meat or nut meal\" and \"Nut pieces\" among foods to avoid with a peanut allergy. A peanut label check, as for nut butter; a named nut (pine nuts, cashew nuts) is judged as that nut (fix pass of September 30, 2026, N3)",
       "except": [
         "ground nut",
-        "ground nuts"
+        "ground nuts",
+        "pea nut",
+        "pea nuts",
+        "brazil nut",
+        "cashew nut",
+        "macadamia nut",
+        "pecan nut",
+        "pistachio nut",
+        "almond nut",
+        "pine nut",
+        "hazel nut",
+        "kola nut",
+        "lychee nut",
+        "shea nut",
+        "soy nut",
+        "tree nut"
+      ],
+      "may_contain": [
+        "allergen-peanut"
       ],
       "sources": [
         "aua-stones-2014",
-        "holmes-2000"
+        "holmes-2000",
+        "fare-peanut-page"
+      ]
+    },
+    {
+      "term": "nutmeat",
+      "tags": [
+        "allergen-tree-nut",
+        "nut",
+        "large-particle",
+        "oxalate-high"
+      ],
+      "match": "word",
+      "note": "nut meat written as one word (FARE lists \"Nut meat or nut meal\" among foods to avoid with a peanut allergy); tags and the peanut label check copied from nut (fix pass of September 30, 2026, N3)",
+      "may_contain": [
+        "allergen-peanut"
+      ],
+      "sources": [
+        "fare-peanut-page"
       ]
     },
     {
@@ -12159,7 +12663,47 @@
         "fodmap-fructan"
       ],
       "match": "word",
-      "note": ""
+      "note": "",
+      "except": [
+        "whole wheat orzo",
+        "wholewheat orzo",
+        "wholemeal orzo",
+        "whole grain orzo",
+        "wholegrain orzo",
+        "gluten-free orzo",
+        "brown rice orzo",
+        "rice orzo"
+      ]
+    },
+    {
+      "term": "gluten-free orzo",
+      "tags": [
+        "refined-grain"
+      ],
+      "match": "word",
+      "note": "gluten-free orzo: tags copied from gluten-free pasta (fix pass of September 30, 2026, N4)"
+    },
+    {
+      "term": "wholegrain orzo",
+      "tags": [
+        "allergen-wheat",
+        "gluten",
+        "whole-grain",
+        "fodmap-fructan"
+      ],
+      "match": "word",
+      "note": "wholegrain orzo: tags copied from whole wheat pasta (fix pass of September 30, 2026, N4)"
+    },
+    {
+      "term": "whole grain orzo",
+      "tags": [
+        "allergen-wheat",
+        "gluten",
+        "whole-grain",
+        "fodmap-fructan"
+      ],
+      "match": "word",
+      "note": "whole grain orzo: tags copied from whole wheat pasta (fix pass of September 30, 2026, N4)"
     },
     {
       "term": "ouzo",
@@ -12240,7 +12784,8 @@
       "tags": [
         "allergen-wheat",
         "gluten",
-        "refined-grain"
+        "refined-grain",
+        "sodium-high"
       ],
       "match": "word",
       "note": "small soup cracker; contains no oyster"
@@ -12253,7 +12798,8 @@
       "may_contain": [
         "gluten",
         "allergen-wheat",
-        "allergen-soy"
+        "allergen-soy",
+        "sodium-high"
       ],
       "risk": "unknown"
     },
@@ -12280,7 +12826,8 @@
         "processed-meat",
         "red-meat",
         "histamine-aged",
-        "histamine-high"
+        "histamine-high",
+        "sodium-high"
       ],
       "match": "word",
       "note": "cured or fermented meat: high measured histamine (Comas-Baste 2020); IARC processed meat; usually cooked before eating. patient-reported and food-chemistry basis; not RCT-confirmed; freshness and storage matter more than the food name",
@@ -12341,7 +12888,8 @@
         "histamine-aged",
         "histamine-high",
         "full-fat-dairy",
-        "calcium-rich"
+        "calcium-rich",
+        "sodium-high"
       ],
       "match": "word",
       "note": "hard aged cheese: near-zero lactose; histamine rises with age. patient-reported and food-chemistry basis; not RCT-confirmed; freshness and storage matter more than the food name",
@@ -12409,7 +12957,8 @@
       "tags": [
         "allergen-milk",
         "calcium-rich",
-        "low-fat-dairy"
+        "low-fat-dairy",
+        "sodium-high"
       ],
       "match": "word",
       "note": ""
@@ -12469,11 +13018,37 @@
         "buckwheat pasta",
         "edamame pasta",
         "gluten-free corn and rice pasta",
-        "corn and rice pasta"
+        "corn and rice pasta",
+        "wholewheat pasta",
+        "wholemeal pasta",
+        "whole grain pasta",
+        "wholegrain pasta"
       ],
       "sources": [
         "biesiekierski-2011"
       ]
+    },
+    {
+      "term": "wholegrain pasta",
+      "tags": [
+        "allergen-wheat",
+        "gluten",
+        "whole-grain",
+        "fodmap-fructan"
+      ],
+      "match": "word",
+      "note": "wholegrain pasta: tags copied from whole wheat pasta (fix pass of September 30, 2026, N4)"
+    },
+    {
+      "term": "whole grain pasta",
+      "tags": [
+        "allergen-wheat",
+        "gluten",
+        "whole-grain",
+        "fodmap-fructan"
+      ],
+      "match": "word",
+      "note": "whole grain pasta: tags copied from whole wheat pasta (fix pass of September 30, 2026, N4)"
     },
     {
       "term": "pastrami",
@@ -12482,7 +13057,8 @@
         "red-meat",
         "histamine-aged",
         "histamine-high",
-        "deli-meat"
+        "deli-meat",
+        "sodium-high"
       ],
       "match": "word",
       "note": "cured or fermented meat: high measured histamine (Comas-Baste 2020); IARC processed meat; ready-to-eat deli item, Listeria risk in pregnancy unless heated. patient-reported and food-chemistry basis; not RCT-confirmed; freshness and storage matter more than the food name",
@@ -12534,7 +13110,8 @@
         "pea protein",
         "pea milk",
         "pea flour",
-        "chick pea"
+        "chick pea",
+        "pea nut"
       ]
     },
     {
@@ -12616,7 +13193,8 @@
       "may_contain": [
         "allergen-soy",
         "allergen-wheat",
-        "added-sugar"
+        "added-sugar",
+        "sodium-high"
       ]
     },
     {
@@ -12679,7 +13257,8 @@
         "black-eyed peas",
         "black eyed peas",
         "pigeon peas",
-        "chick peas"
+        "chick peas",
+        "pea nuts"
       ]
     },
     {
@@ -12700,7 +13279,8 @@
         "histamine-aged",
         "histamine-high",
         "full-fat-dairy",
-        "calcium-rich"
+        "calcium-rich",
+        "sodium-high"
       ],
       "match": "word",
       "note": "hard aged cheese: near-zero lactose; histamine rises with age. patient-reported and food-chemistry basis; not RCT-confirmed; freshness and storage matter more than the food name",
@@ -12738,7 +13318,8 @@
         "histamine-aged",
         "histamine-high",
         "deli-meat",
-        "histamine-fermented"
+        "histamine-fermented",
+        "sodium-high"
       ],
       "match": "word",
       "note": "cured or fermented meat: high measured histamine (Comas-Baste 2020); IARC processed meat; ready-to-eat deli item, Listeria risk in pregnancy unless heated. patient-reported and food-chemistry basis; not RCT-confirmed; freshness and storage matter more than the food name",
@@ -12798,7 +13379,8 @@
         "allergen-tree-nut",
         "allergen-milk",
         "fodmap-fructan",
-        "olive-oil"
+        "olive-oil",
+        "sodium-high"
       ],
       "match": "word",
       "note": "traditional basil pesto: pine nuts, parmesan, garlic, olive oil; nut-free and dairy-free versions exist but the name alone is tagged conservatively",
@@ -12905,6 +13487,9 @@
       "note": "brined or vinegar-pickled; patient-reported and food-chemistry basis; not RCT-confirmed; freshness and storage matter more than the food name",
       "sources": [
         "sighi-list"
+      ],
+      "may_contain": [
+        "sodium-high"
       ]
     },
     {
@@ -12916,6 +13501,9 @@
       "note": "vinegar or brine fermented; patient-reported and food-chemistry basis; not RCT-confirmed; freshness and storage matter more than the food name",
       "sources": [
         "sighi-list"
+      ],
+      "may_contain": [
+        "sodium-high"
       ]
     },
     {
@@ -13232,6 +13820,9 @@
       "sources": [
         "acg-gastroparesis-2022",
         "aga-ibd-2024"
+      ],
+      "may_contain": [
+        "sodium-high"
       ]
     },
     {
@@ -13293,6 +13884,9 @@
       ],
       "match": "word",
       "note": "",
+      "except": [
+        "port wine vinegar"
+      ],
       "sources": [
         "comas-baste-2020",
         "sighi-list"
@@ -13490,6 +14084,9 @@
         "kdoqi-2020",
         "kdigo-2024",
         "nkf-potassium"
+      ],
+      "may_contain": [
+        "sodium-high"
       ]
     },
     {
@@ -13579,7 +14176,10 @@
         "refined-grain"
       ],
       "match": "word",
-      "note": ""
+      "note": "",
+      "may_contain": [
+        "sodium-high"
+      ]
     },
     {
       "term": "processed cheese",
@@ -13587,7 +14187,8 @@
         "allergen-milk",
         "phosphate-additive",
         "ultra-processed",
-        "calcium-rich"
+        "calcium-rich",
+        "sodium-high"
       ],
       "match": "word",
       "note": "emulsifying salts are sodium or potassium phosphates",
@@ -13626,7 +14227,8 @@
         "red-meat",
         "histamine-aged",
         "histamine-high",
-        "deli-meat"
+        "deli-meat",
+        "sodium-high"
       ],
       "match": "word",
       "note": "cured or fermented meat: high measured histamine (Comas-Baste 2020); IARC processed meat; ready-to-eat deli item, Listeria risk in pregnancy unless heated. patient-reported and food-chemistry basis; not RCT-confirmed; freshness and storage matter more than the food name",
@@ -13647,6 +14249,9 @@
       ],
       "match": "word",
       "note": "",
+      "except": [
+        "prosecco vinegar"
+      ],
       "sources": [
         "comas-baste-2020",
         "sighi-list"
@@ -13671,7 +14276,8 @@
         "histamine-aged",
         "histamine-high",
         "full-fat-dairy",
-        "calcium-rich"
+        "calcium-rich",
+        "sodium-high"
       ],
       "match": "word",
       "note": "hard aged cheese: near-zero lactose; histamine rises with age. patient-reported and food-chemistry basis; not RCT-confirmed; freshness and storage matter more than the food name",
@@ -13884,7 +14490,8 @@
         "allergen-milk",
         "unpasteurized",
         "lactose-high",
-        "calcium-rich"
+        "calcium-rich",
+        "sodium-high"
       ],
       "match": "word",
       "note": "unless labeled pasteurized",
@@ -13898,7 +14505,8 @@
         "allergen-milk",
         "unpasteurized",
         "lactose-high",
-        "calcium-rich"
+        "calcium-rich",
+        "sodium-high"
       ],
       "match": "word",
       "note": "Mexican-style fresh cheese, repeatedly linked to Listeria outbreaks: unless labeled pasteurized",
@@ -13990,6 +14598,20 @@
       ]
     },
     {
+      "term": "sultana",
+      "tags": [
+        "fruit",
+        "potassium-high-food"
+      ],
+      "match": "word",
+      "note": "golden raisin; tags copied from raisin (fix pass of September 30, 2026, P2-12)",
+      "sources": [
+        "kdoqi-2020",
+        "kdigo-2024",
+        "nkf-potassium"
+      ]
+    },
+    {
       "term": "rambutan",
       "tags": [
         "fruit"
@@ -14006,7 +14628,10 @@
         "fodmap-fructan"
       ],
       "match": "word",
-      "note": "wheat noodles; instant ramen seasoning commonly adds soy and MSG"
+      "note": "wheat noodles; instant ramen seasoning commonly adds soy and MSG",
+      "may_contain": [
+        "sodium-high"
+      ]
     },
     {
       "term": "rapadura",
@@ -14185,7 +14810,8 @@
         "histamine-fermented",
         "histamine-high",
         "vegetable",
-        "fermented-live-culture"
+        "fermented-live-culture",
+        "sodium-high"
       ],
       "match": "word",
       "note": "",
@@ -14362,6 +14988,9 @@
       ],
       "match": "word",
       "note": "patient-reported and food-chemistry basis; not RCT-confirmed; freshness and storage matter more than the food name",
+      "except": [
+        "red wine vinegar"
+      ],
       "sources": [
         "comas-baste-2020",
         "reese-2017",
@@ -14402,7 +15031,10 @@
         "low-fat-dairy"
       ],
       "match": "word",
-      "note": ""
+      "note": "",
+      "may_contain": [
+        "sodium-high"
+      ]
     },
     {
       "term": "reduced-fat milk",
@@ -14449,6 +15081,9 @@
       "note": "sweet pickle relish",
       "sources": [
         "sighi-list"
+      ],
+      "may_contain": [
+        "sodium-high"
       ]
     },
     {
@@ -14647,7 +15282,10 @@
         "allergen-fish"
       ],
       "match": "word",
-      "note": "fish eggs (ikura, tobiko, masago)"
+      "note": "fish eggs (ikura, tobiko, masago)",
+      "may_contain": [
+        "sodium-high"
+      ]
     },
     {
       "term": "rolled oats",
@@ -14684,7 +15322,8 @@
         "histamine-aged",
         "histamine-high",
         "full-fat-dairy",
-        "calcium-rich"
+        "calcium-rich",
+        "sodium-high"
       ],
       "match": "word",
       "note": "hard aged cheese: near-zero lactose; histamine rises with age. patient-reported and food-chemistry basis; not RCT-confirmed; freshness and storage matter more than the food name",
@@ -14715,7 +15354,8 @@
         "histamine-high",
         "unpasteurized",
         "full-fat-dairy",
-        "calcium-rich"
+        "calcium-rich",
+        "sodium-high"
       ],
       "match": "word",
       "note": "unless labeled pasteurized. patient-reported and food-chemistry basis; not RCT-confirmed; freshness and storage matter more than the food name",
@@ -14776,6 +15416,14 @@
       "note": ""
     },
     {
+      "term": "swede",
+      "tags": [
+        "vegetable"
+      ],
+      "match": "word",
+      "note": "UK name for rutabaga; tags copied from rutabaga (fix pass of September 30, 2026, P2-12)"
+    },
+    {
       "term": "rye",
       "tags": [
         "gluten",
@@ -14799,7 +15447,8 @@
       "match": "word",
       "note": "most US rye bread also contains wheat flour",
       "may_contain": [
-        "allergen-wheat"
+        "allergen-wheat",
+        "sodium-high"
       ],
       "sources": [
         "biesiekierski-2011"
@@ -14880,7 +15529,8 @@
         "histamine-aged",
         "histamine-high",
         "deli-meat",
-        "histamine-fermented"
+        "histamine-fermented",
+        "sodium-high"
       ],
       "match": "word",
       "note": "cured or fermented meat: high measured histamine (Comas-Baste 2020); IARC processed meat; ready-to-eat deli item, Listeria risk in pregnancy unless heated. patient-reported and food-chemistry basis; not RCT-confirmed; freshness and storage matter more than the food name",
@@ -14920,6 +15570,9 @@
         "comas-baste-2020",
         "sighi-list",
         "muir-2007"
+      ],
+      "may_contain": [
+        "sodium-high"
       ]
     },
     {
@@ -14984,7 +15637,8 @@
       "tags": [
         "histamine-fermented",
         "histamine-high",
-        "vegetable"
+        "vegetable",
+        "sodium-high"
       ],
       "match": "word",
       "note": "one of the highest-histamine plant foods measured (Comas-Baste 2020). Live cultures only in refrigerated raw sauerkraut; shelf-stable jars are pasteurized, so the live-culture tag sits on 'raw sauerkraut'. patient-reported and food-chemistry basis; not RCT-confirmed; freshness and storage matter more than the food name",
@@ -15006,7 +15660,8 @@
         "allergen-wheat",
         "lactose-hidden",
         "allergen-milk",
-        "allergen-soy"
+        "allergen-soy",
+        "sodium-high"
       ],
       "sources": [
         "iarc-2015",
@@ -15062,6 +15717,9 @@
         "fda-allergen-qa-2025",
         "acr-gout-2020",
         "fda-epa-fish-2021"
+      ],
+      "may_contain": [
+        "sodium-high"
       ]
     },
     {
@@ -15152,7 +15810,8 @@
         "allergen-wheat",
         "allergen-soy",
         "allergen-milk",
-        "allergen-sesame"
+        "allergen-sesame",
+        "sodium-high"
       ],
       "risk": "unknown"
     },
@@ -15166,7 +15825,8 @@
         "allergen-wheat",
         "allergen-soy",
         "allergen-milk",
-        "allergen-sesame"
+        "allergen-sesame",
+        "sodium-high"
       ],
       "risk": "unknown"
     },
@@ -15180,7 +15840,8 @@
         "allergen-wheat",
         "allergen-soy",
         "allergen-milk",
-        "allergen-sesame"
+        "allergen-sesame",
+        "sodium-high"
       ],
       "risk": "unknown"
     },
@@ -15190,7 +15851,10 @@
         "vegetable"
       ],
       "match": "word",
-      "note": "iodine-rich; kelp is the excess-iodine concern in thyroid disease (Phase 1 D9)"
+      "note": "iodine-rich; kelp is the excess-iodine concern in thyroid disease (Phase 1 D9)",
+      "may_contain": [
+        "sodium-high"
+      ]
     },
     {
       "term": "seed",
@@ -15259,7 +15923,8 @@
         "allergen-wheat",
         "gluten",
         "refined-grain",
-        "fodmap-fructan"
+        "fodmap-fructan",
+        "sodium-high"
       ],
       "match": "word",
       "note": "contains baking powder, usually a phosphate leavening",
@@ -15285,7 +15950,8 @@
         "red-meat",
         "histamine-aged",
         "histamine-high",
-        "deli-meat"
+        "deli-meat",
+        "sodium-high"
       ],
       "match": "word",
       "note": "cured or fermented meat: high measured histamine (Comas-Baste 2020); IARC processed meat; ready-to-eat deli item, Listeria risk in pregnancy unless heated. patient-reported and food-chemistry basis; not RCT-confirmed; freshness and storage matter more than the food name",
@@ -15511,7 +16177,8 @@
         "gluten",
         "gluten-hidden",
         "histamine-fermented",
-        "histamine-high"
+        "histamine-high",
+        "sodium-high"
       ],
       "match": "word",
       "note": "Japanese soy sauce; contains wheat",
@@ -15536,6 +16203,9 @@
         "sighi-list",
         "acr-gout-2020",
         "fda-epa-fish-2021"
+      ],
+      "may_contain": [
+        "sodium-high"
       ]
     },
     {
@@ -15550,6 +16220,9 @@
       "sources": [
         "comas-baste-2020",
         "sighi-list"
+      ],
+      "may_contain": [
+        "sodium-high"
       ]
     },
     {
@@ -15707,6 +16380,9 @@
       "sources": [
         "fda-pregnancy-food-safety",
         "sighi-list"
+      ],
+      "may_contain": [
+        "sodium-high"
       ]
     },
     {
@@ -15740,6 +16416,9 @@
       "sources": [
         "fda-pregnancy-food-safety",
         "sighi-list"
+      ],
+      "may_contain": [
+        "sodium-high"
       ]
     },
     {
@@ -15747,7 +16426,8 @@
       "tags": [
         "histamine-aged",
         "histamine-high",
-        "processed-meat"
+        "processed-meat",
+        "sodium-high"
       ],
       "match": "word",
       "note": "",
@@ -15771,6 +16451,9 @@
       "note": "",
       "sources": [
         "fda-pregnancy-food-safety"
+      ],
+      "may_contain": [
+        "sodium-high"
       ]
     },
     {
@@ -15779,7 +16462,8 @@
         "histamine-aged",
         "processed-meat",
         "poultry",
-        "deli-meat"
+        "deli-meat",
+        "sodium-high"
       ],
       "match": "word",
       "note": "",
@@ -15796,7 +16480,8 @@
         "fish",
         "deli-meat",
         "histamine-aged",
-        "smoked-seafood-refrigerated"
+        "smoked-seafood-refrigerated",
+        "sodium-high"
       ],
       "match": "word",
       "note": "",
@@ -15873,7 +16558,10 @@
         "gluten"
       ],
       "match": "word",
-      "note": "most soba blends buckwheat with wheat flour; 100 percent buckwheat (juwari) soba exists; tagged conservatively"
+      "note": "most soba blends buckwheat with wheat flour; 100 percent buckwheat (juwari) soba exists; tagged conservatively",
+      "may_contain": [
+        "sodium-high"
+      ]
     },
     {
       "term": "soda",
@@ -16158,7 +16846,10 @@
         "lactose-hidden"
       ],
       "match": "word",
-      "note": "traditional long-fermented wheat sourdough is lower in fructans (Monash; not in the cited publications), so no FODMAP tag; still wheat and gluten"
+      "note": "traditional long-fermented wheat sourdough is lower in fructans (Monash; not in the cited publications), so no FODMAP tag; still wheat and gluten",
+      "may_contain": [
+        "sodium-high"
+      ]
     },
     {
       "term": "soy",
@@ -16274,7 +16965,8 @@
         "gluten",
         "gluten-hidden",
         "histamine-fermented",
-        "histamine-high"
+        "histamine-high",
+        "sodium-high"
       ],
       "match": "word",
       "note": "brewed from soybeans and wheat; the classic hidden-gluten ingredient (Phase 1 Part A 4). Gluten-free tamari exists. patient-reported and food-chemistry basis; not RCT-confirmed; freshness and storage matter more than the food name",
@@ -16351,7 +17043,90 @@
       "match": "word",
       "note": "",
       "except": [
-        "spaghetti squash"
+        "spaghetti squash",
+        "whole wheat spaghetti",
+        "wholewheat spaghetti",
+        "wholemeal spaghetti",
+        "whole grain spaghetti",
+        "wholegrain spaghetti",
+        "gluten-free spaghetti",
+        "brown rice spaghetti",
+        "rice spaghetti"
+      ]
+    },
+    {
+      "term": "gluten-free spaghetti",
+      "tags": [
+        "refined-grain"
+      ],
+      "match": "word",
+      "note": "gluten-free spaghetti: tags copied from gluten-free pasta (fix pass of September 30, 2026, N4)"
+    },
+    {
+      "term": "wholegrain spaghetti",
+      "tags": [
+        "allergen-wheat",
+        "gluten",
+        "whole-grain",
+        "fodmap-fructan"
+      ],
+      "match": "word",
+      "note": "wholegrain spaghetti: tags copied from whole wheat pasta (fix pass of September 30, 2026, N4)"
+    },
+    {
+      "term": "whole grain spaghetti",
+      "tags": [
+        "allergen-wheat",
+        "gluten",
+        "whole-grain",
+        "fodmap-fructan"
+      ],
+      "match": "word",
+      "note": "whole grain spaghetti: tags copied from whole wheat pasta (fix pass of September 30, 2026, N4)"
+    },
+    {
+      "term": "linguini",
+      "tags": [
+        "allergen-wheat",
+        "gluten",
+        "refined-grain",
+        "fodmap-fructan"
+      ],
+      "match": "word",
+      "note": "a wheat pasta; tags copied from spaghetti; whole wheat linguini is whole grain (the whole wheat entry) (fix pass of September 30, 2026, P2-12)",
+      "except": [
+        "whole wheat linguini",
+        "wholewheat linguini"
+      ]
+    },
+    {
+      "term": "linguine",
+      "tags": [
+        "allergen-wheat",
+        "gluten",
+        "refined-grain",
+        "fodmap-fructan"
+      ],
+      "match": "word",
+      "note": "a wheat pasta; tags copied from spaghetti; whole wheat linguine is whole grain (the whole wheat entry) (fix pass of September 30, 2026, P2-12)",
+      "except": [
+        "whole wheat linguine",
+        "wholewheat linguine"
+      ]
+    },
+    {
+      "term": "tagliatelle",
+      "tags": [
+        "allergen-wheat",
+        "gluten",
+        "refined-grain",
+        "fodmap-fructan"
+      ],
+      "match": "word",
+      "note": "a wheat pasta; tags copied from spaghetti; whole wheat tagliatelle is whole grain (the whole wheat entry) (fix pass of September 30, 2026, P2-12)",
+      "except": [
+        "whole wheat tagliatelle",
+        "wholewheat tagliatelle"
       ]
     },
     {
@@ -16367,7 +17142,8 @@
       "tags": [
         "processed-meat",
         "red-meat",
-        "ultra-processed"
+        "ultra-processed",
+        "sodium-high"
       ],
       "match": "word",
       "note": "brand name canned pork",
@@ -16399,6 +17175,9 @@
       ],
       "match": "word",
       "note": "",
+      "except": [
+        "sparkling wine vinegar"
+      ],
       "sources": [
         "comas-baste-2020",
         "sighi-list"
@@ -16736,7 +17515,8 @@
       "match": "word",
       "note": "shop stock, liquid or concentrate: the name does not say what is in it. Shop stocks, broths, and stock cubes can contain gluten (wheat flour, barley, malt), so a gluten-free plan checks the label (Coeliac UK; CDF Sources of Gluten). Homemade stock is not flagged.",
       "may_contain": [
-        "gluten"
+        "gluten",
+        "sodium-high"
       ],
       "risk": "unknown",
       "except": [
@@ -16761,7 +17541,8 @@
       "match": "word",
       "note": "the UK name for a bouillon cube (see bouillon): what is in it is not settled by the name. Shop stocks, broths, and stock cubes can contain gluten (wheat flour, barley, malt), so a gluten-free plan checks the label (Coeliac UK; CDF Sources of Gluten).",
       "may_contain": [
-        "gluten"
+        "gluten",
+        "sodium-high"
       ],
       "risk": "unknown",
       "sources": [
@@ -16775,7 +17556,8 @@
       "match": "word",
       "note": "a concentrated jelly stock (see bouillon): what is in it is not settled by the name. Shop stocks, broths, and stock cubes can contain gluten (wheat flour, barley, malt), so a gluten-free plan checks the label (Coeliac UK; CDF Sources of Gluten).",
       "may_contain": [
-        "gluten"
+        "gluten",
+        "sodium-high"
       ],
       "risk": "unknown",
       "sources": [
@@ -16789,7 +17571,8 @@
       "match": "word",
       "note": "powdered stock (see bouillon): what is in it is not settled by the name. Shop stocks, broths, and stock cubes can contain gluten (wheat flour, barley, malt), so a gluten-free plan checks the label (Coeliac UK; CDF Sources of Gluten).",
       "may_contain": [
-        "gluten"
+        "gluten",
+        "sodium-high"
       ],
       "risk": "unknown",
       "sources": [
@@ -16805,7 +17588,8 @@
       "match": "word",
       "note": "the same as broth. Shop stocks, broths, and stock cubes can contain gluten (wheat flour, barley, malt), so a gluten-free plan checks the label (Coeliac UK; CDF Sources of Gluten). Homemade stock is not flagged.",
       "may_contain": [
-        "gluten"
+        "gluten",
+        "sodium-high"
       ],
       "except": [
         "homemade stock",
@@ -16832,7 +17616,8 @@
       "match": "word",
       "note": "the same as broth. Shop stocks, broths, and stock cubes can contain gluten (wheat flour, barley, malt), so a gluten-free plan checks the label (Coeliac UK; CDF Sources of Gluten). Homemade stock is not flagged.",
       "may_contain": [
-        "gluten"
+        "gluten",
+        "sodium-high"
       ],
       "except": [
         "homemade stock",
@@ -16927,7 +17712,10 @@
         "calcium-rich"
       ],
       "match": "word",
-      "note": "usually part-skim mozzarella; fat level varies"
+      "note": "usually part-skim mozzarella; fat level varies",
+      "may_contain": [
+        "sodium-high"
+      ]
     },
     {
       "term": "striped bass",
@@ -17095,7 +17883,8 @@
         "histamine-aged",
         "histamine-high",
         "deli-meat",
-        "histamine-fermented"
+        "histamine-fermented",
+        "sodium-high"
       ],
       "match": "word",
       "note": "cured or fermented meat: high measured histamine (Comas-Baste 2020); IARC processed meat; ready-to-eat deli item, Listeria risk in pregnancy unless heated. patient-reported and food-chemistry basis; not RCT-confirmed; freshness and storage matter more than the food name",
@@ -17251,6 +18040,9 @@
       "note": "sugar and garlic",
       "sources": [
         "muir-2007"
+      ],
+      "may_contain": [
+        "sodium-high"
       ]
     },
     {
@@ -17514,7 +18306,8 @@
         "allergen-soy",
         "soy",
         "histamine-fermented",
-        "histamine-high"
+        "histamine-high",
+        "sodium-high"
       ],
       "match": "word",
       "note": "traditionally wheat-free, but some tamari contains wheat; celiac guidance says verify the label",
@@ -17680,7 +18473,8 @@
         "gluten",
         "gluten-hidden",
         "added-sugar",
-        "histamine-fermented"
+        "histamine-fermented",
+        "sodium-high"
       ],
       "match": "word",
       "note": "soy sauce plus sugar or mirin",
@@ -17697,7 +18491,8 @@
         "gluten",
         "gluten-hidden",
         "added-sugar",
-        "histamine-fermented"
+        "histamine-fermented",
+        "sodium-high"
       ],
       "match": "word",
       "note": "",
@@ -17887,6 +18682,21 @@
       ]
     },
     {
+      "term": "passata",
+      "tags": [
+        "histamine-high",
+        "potassium-high-food",
+        "tomato"
+      ],
+      "match": "word",
+      "note": "sieved tomatoes; tags copied from tomato paste (fix pass of September 30, 2026, P2-12)",
+      "sources": [
+        "comas-baste-2020",
+        "sighi-list",
+        "nkf-potassium"
+      ]
+    },
+    {
       "term": "tomato sauce",
       "tags": [
         "histamine-high",
@@ -17938,7 +18748,8 @@
       "may_contain": [
         "allergen-wheat",
         "gluten",
-        "refined-grain"
+        "refined-grain",
+        "sodium-high"
       ],
       "risk": "unknown"
     },
@@ -17949,7 +18760,22 @@
         "ultra-processed"
       ],
       "match": "word",
-      "note": ""
+      "note": "",
+      "may_contain": [
+        "sodium-high"
+      ]
+    },
+    {
+      "term": "tree nut",
+      "tags": [
+        "allergen-tree-nut",
+        "nut"
+      ],
+      "match": "word",
+      "note": "the allergen group as a label names it (\"Contains: Tree Nuts (Cashew, Pecan)\"); a tree nut stop, and not a peanut, which labels name on its own (fix pass of September 30, 2026, N3)",
+      "sources": [
+        "fda-falcpa-2004"
+      ]
     },
     {
       "term": "trail mix",
@@ -18231,7 +19057,8 @@
         "histamine-fermented",
         "histamine-high",
         "vegetable",
-        "fermented-live-culture"
+        "fermented-live-culture",
+        "sodium-high"
       ],
       "match": "word",
       "note": "",
@@ -18270,7 +19097,8 @@
       "term": "vegemite",
       "tags": [
         "histamine-high",
-        "purine-high"
+        "purine-high",
+        "sodium-high"
       ],
       "match": "word",
       "note": "",
@@ -18309,7 +19137,8 @@
       "may_contain": [
         "allergen-soy",
         "fodmap-fructan",
-        "gluten"
+        "gluten",
+        "sodium-high"
       ],
       "risk": "unknown"
     },
@@ -18423,7 +19252,8 @@
       "tags": [
         "allergen-milk",
         "phosphate-additive",
-        "ultra-processed"
+        "ultra-processed",
+        "sodium-high"
       ],
       "match": "word",
       "note": "brand name for process cheese product",
@@ -18462,9 +19292,18 @@
         "histamine-fermented"
       ],
       "match": "word",
-      "note": "all vinegars are fermented; SIGHI lists vinegar as poorly tolerated, distilled white vinegar least so. patient-reported and food-chemistry basis; not RCT-confirmed; freshness and storage matter more than the food name",
+      "note": "all vinegars are fermented; SIGHI lists vinegar as poorly tolerated, distilled white vinegar least so. patient-reported and food-chemistry basis; not RCT-confirmed; freshness and storage matter more than the food name. Distilled white (spirit) vinegar and apple cider vinegar are left out of this entry: the SIGHI leaflet rates them well tolerated, and the low histamine list approves them (VERIFY-log A20, F6)",
+      "except": [
+        "distilled white vinegar",
+        "white vinegar",
+        "distilled vinegar",
+        "spirit vinegar",
+        "apple cider vinegar",
+        "cider vinegar"
+      ],
       "sources": [
-        "sighi-list"
+        "sighi-list",
+        "sighi-leaflet-2021"
       ]
     },
     {
@@ -18523,7 +19362,8 @@
     {
       "term": "wakame",
       "tags": [
-        "vegetable"
+        "vegetable",
+        "sodium-high"
       ],
       "match": "word",
       "note": "iodine-rich; kelp is the excess-iodine concern in thyroid disease (Phase 1 D9)"
@@ -19018,6 +19858,9 @@
       ],
       "match": "word",
       "note": "lower histamine than red; patient-reported and food-chemistry basis; not RCT-confirmed; freshness and storage matter more than the food name",
+      "except": [
+        "white wine vinegar"
+      ],
       "sources": [
         "comas-baste-2020",
         "reese-2017",
@@ -19087,6 +19930,14 @@
       ],
       "match": "word",
       "note": "label phrase; the grain that follows carries any allergen tag"
+    },
+    {
+      "term": "wholegrain",
+      "tags": [
+        "whole-grain"
+      ],
+      "match": "word",
+      "note": "UK spelling of whole grain; tags copied from whole grain (fix pass of September 30, 2026, P2-12)"
     },
     {
       "term": "whole grain bread",
@@ -19187,6 +20038,20 @@
       ]
     },
     {
+      "term": "wholewheat",
+      "tags": [
+        "allergen-wheat",
+        "gluten",
+        "fodmap-fructan",
+        "whole-grain"
+      ],
+      "match": "word",
+      "note": "UK spelling of whole wheat; tags copied from whole wheat (fix pass of September 30, 2026, P2-12)",
+      "sources": [
+        "biesiekierski-2011"
+      ]
+    },
+    {
       "term": "whole wheat bread",
       "tags": [
         "allergen-wheat",
@@ -19250,7 +20115,8 @@
       "tags": [
         "processed-meat",
         "deli-meat",
-        "histamine-high"
+        "histamine-high",
+        "sodium-high"
       ],
       "match": "word",
       "note": "",
@@ -19346,7 +20212,8 @@
     {
       "term": "worcestershire",
       "tags": [
-        "allergen-fish"
+        "allergen-fish",
+        "sodium-high"
       ],
       "match": "word",
       "note": "see worcestershire sauce",
@@ -19357,7 +20224,8 @@
     {
       "term": "worcestershire sauce",
       "tags": [
-        "allergen-fish"
+        "allergen-fish",
+        "sodium-high"
       ],
       "match": "word",
       "note": "contains anchovies; UK-style versions use malt vinegar (gluten); US Lea and Perrins uses distilled vinegar",
@@ -19624,7 +20492,21 @@
         "spicy"
       ],
       "match": "word",
-      "note": ""
+      "note": "",
+      "may_contain": [
+        "sodium-high"
+      ]
+    },
+    {
+      "term": "chilli powder",
+      "tags": [
+        "spicy"
+      ],
+      "match": "word",
+      "note": "UK spelling of chili powder; tags copied from chili powder (fix pass of September 30, 2026, P2-12)",
+      "may_contain": [
+        "sodium-high"
+      ]
     },
     {
       "term": "cayenne",
@@ -19637,7 +20519,8 @@
     {
       "term": "hot sauce",
       "tags": [
-        "spicy"
+        "spicy",
+        "sodium-high"
       ],
       "match": "word",
       "note": ""
@@ -19653,7 +20536,8 @@
     {
       "term": "sriracha",
       "tags": [
-        "spicy"
+        "spicy",
+        "sodium-high"
       ],
       "match": "word",
       "note": ""
@@ -19880,7 +20764,16 @@
         "emulsifier-additive"
       ],
       "match": "word",
-      "note": ""
+      "note": "lecithin with no source named. It is often soy, and a US label may name soy only in the separate \"Contains\" statement (FDA: \"lecithin (soy)\" is its own example), so a soy allergy that excludes soy lecithin gets a label check. P2-11, September 30, 2026.",
+      "may_contain": [
+        "soy-lecithin"
+      ],
+      "sources": [
+        "fda-food-allergies-page"
+      ],
+      "except": [
+        "sunflower lecithin"
+      ]
     },
     {
       "term": "xanthan gum",
@@ -19917,7 +20810,8 @@
     {
       "term": "salt",
       "tags": [
-        "basic-ingredient"
+        "basic-ingredient",
+        "sodium-high"
       ],
       "match": "word",
       "note": ""
@@ -19925,7 +20819,8 @@
     {
       "term": "sea salt",
       "tags": [
-        "basic-ingredient"
+        "basic-ingredient",
+        "sodium-high"
       ],
       "match": "word",
       "note": ""
@@ -19933,7 +20828,8 @@
     {
       "term": "kosher salt",
       "tags": [
-        "basic-ingredient"
+        "basic-ingredient",
+        "sodium-high"
       ],
       "match": "word",
       "note": ""
@@ -19941,7 +20837,8 @@
     {
       "term": "table salt",
       "tags": [
-        "basic-ingredient"
+        "basic-ingredient",
+        "sodium-high"
       ],
       "match": "word",
       "note": ""
@@ -19949,7 +20846,8 @@
     {
       "term": "iodized salt",
       "tags": [
-        "basic-ingredient"
+        "basic-ingredient",
+        "sodium-high"
       ],
       "match": "word",
       "note": ""
@@ -19989,7 +20887,8 @@
     {
       "term": "baking soda",
       "tags": [
-        "basic-ingredient"
+        "basic-ingredient",
+        "sodium-high"
       ],
       "match": "word",
       "note": ""
@@ -19997,7 +20896,8 @@
     {
       "term": "baking powder",
       "tags": [
-        "basic-ingredient"
+        "basic-ingredient",
+        "sodium-high"
       ],
       "match": "word",
       "note": ""
@@ -20027,6 +20927,14 @@
       "note": ""
     },
     {
+      "term": "cornflour",
+      "tags": [
+        "basic-ingredient"
+      ],
+      "match": "word",
+      "note": "UK name for cornstarch (one word; US corn flour is ground corn); tags copied from cornstarch (fix pass of September 30, 2026, P2-12)"
+    },
+    {
       "term": "corn starch",
       "tags": [
         "basic-ingredient"
@@ -20041,6 +20949,14 @@
       ],
       "match": "word",
       "note": ""
+    },
+    {
+      "term": "rapeseed oil",
+      "tags": [
+        "basic-ingredient"
+      ],
+      "match": "word",
+      "note": "UK name for canola oil; tags copied from canola oil (fix pass of September 30, 2026, P2-12)"
     },
     {
       "term": "sunflower oil",
@@ -20201,6 +21117,14 @@
       ],
       "match": "word",
       "note": ""
+    },
+    {
+      "term": "bay leaves",
+      "tags": [
+        "basic-ingredient"
+      ],
+      "match": "word",
+      "note": "plural of bay leaf; tags copied from bay leaf (fix pass of September 30, 2026, P2-12)"
     },
     {
       "term": "nutmeg",
@@ -20413,7 +21337,31 @@
         "basic-ingredient"
       ],
       "match": "word",
-      "note": ""
+      "note": "most cooking sprays are an oil with soy lecithin to stop sticking: in USDA FoodData Central branded records (searched September 30, 2026), 266 of 327 cooking sprays list soy lecithin and 80 list soybean oil. A soy allergy leaves both out by default, so they are a label check (fix pass of September 30, 2026, N2; VERIFY-log F9).",
+      "may_contain": [
+        "soy-lecithin",
+        "soy-refined-oil"
+      ],
+      "sources": [
+        "usda-fdc"
+      ]
+    },
+    {
+      "term": "baking spray",
+      "tags": [
+        "basic-ingredient"
+      ],
+      "match": "word",
+      "note": "a cooking spray made for baking pans: in USDA FoodData Central branded records (searched September 30, 2026), 18 of 20 baking sprays list soy lecithin and most list wheat flour; one gluten-free kind uses rice flour. So soy, wheat, and gluten are label checks (fix pass of September 30, 2026, N2; VERIFY-log F9).",
+      "may_contain": [
+        "allergen-wheat",
+        "gluten",
+        "soy-lecithin",
+        "soy-refined-oil"
+      ],
+      "sources": [
+        "usda-fdc"
+      ]
     },
     {
       "term": "grapefruit juice",
@@ -20746,7 +21694,8 @@
     {
       "term": "olives",
       "tags": [
-        "vegetable"
+        "vegetable",
+        "sodium-high"
       ],
       "match": "word",
       "note": "table olives; brined, so on a strict low histamine trial treat them as fermented and check"
@@ -20757,7 +21706,10 @@
         "basic-ingredient"
       ],
       "match": "word",
-      "note": "prepared mustard contains vinegar"
+      "note": "prepared mustard contains vinegar",
+      "may_contain": [
+        "sodium-high"
+      ]
     },
     {
       "term": "polenta",
@@ -20939,6 +21891,439 @@
         "sighi-leaflet-2021",
         "sighi-list"
       ]
+    },
+    {
+      "term": "pea nut",
+      "tags": [
+        "allergen-peanut",
+        "nut",
+        "legume",
+        "large-particle",
+        "histamine-high",
+        "oxalate-high"
+      ],
+      "match": "word",
+      "note": "a scanning split or misspelling of peanut (audit corpus lines L371, L375, L403); read as peanut, never as pea and a tree nut. Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized.",
+      "sources": [
+        "sighi-list",
+        "holmes-2000"
+      ]
+    },
+    {
+      "term": "margarine",
+      "tags": [
+        "basic-ingredient"
+      ],
+      "may_contain": [
+        "allergen-milk",
+        "allergen-soy",
+        "soy-refined-oil",
+        "soy-lecithin",
+        "sodium-high"
+      ],
+      "match": "word",
+      "note": "a vegetable-oil spread. The US standard of identity (21 CFR 166.110) lets its water phase hold milk and milk products, whey, casein, caseinate, or soy protein isolate, and allows emulsifiers; soybean oil and soy lecithin are common. So milk and soy are label checks, not a pass. Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized.",
+      "sources": [
+        "cfr-166-110"
+      ]
+    },
+    {
+      "term": "fat spread",
+      "tags": [
+        "basic-ingredient"
+      ],
+      "match": "word",
+      "note": "UK low-fat or reduced-fat spread, a margarine-type product; tags and label checks copied from margarine (fix pass of September 30, 2026, P2-12)",
+      "may_contain": [
+        "allergen-milk",
+        "allergen-soy",
+        "soy-refined-oil",
+        "soy-lecithin",
+        "sodium-high"
+      ],
+      "sources": [
+        "cfr-166-110"
+      ]
+    },
+    {
+      "term": "wholemeal",
+      "tags": [
+        "allergen-wheat",
+        "gluten",
+        "fodmap-fructan",
+        "whole-grain"
+      ],
+      "match": "word",
+      "note": "UK wording for whole wheat (wholemeal flour, bread, pasta, pitta), so wheat and gluten. Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized.",
+      "sources": [
+        "biesiekierski-2011"
+      ]
+    },
+    {
+      "term": "pitta",
+      "tags": [
+        "allergen-wheat",
+        "gluten",
+        "refined-grain",
+        "fodmap-fructan"
+      ],
+      "match": "word",
+      "note": "UK spelling of pita bread; the same tags as pita. Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized."
+    },
+    {
+      "term": "bun",
+      "tags": [
+        "allergen-wheat",
+        "gluten",
+        "refined-grain",
+        "fodmap-fructan",
+        "lactose-hidden"
+      ],
+      "match": "word",
+      "note": "a bread roll (hamburger or hot dog bun, dinner roll); the same tags as bread. Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized.",
+      "sources": [
+        "biesiekierski-2011",
+        "nih-lactose-2010"
+      ]
+    },
+    {
+      "term": "bread roll",
+      "tags": [
+        "allergen-wheat",
+        "gluten",
+        "refined-grain",
+        "fodmap-fructan",
+        "lactose-hidden"
+      ],
+      "match": "word",
+      "note": "a bread roll (hamburger or hot dog bun, dinner roll); the same tags as bread. Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized.",
+      "sources": [
+        "biesiekierski-2011",
+        "nih-lactose-2010"
+      ],
+      "may_contain": [
+        "sodium-high"
+      ]
+    },
+    {
+      "term": "chile pepper",
+      "tags": [
+        "spicy"
+      ],
+      "match": "word",
+      "note": "a hot pepper; the same tag as jalapeno and hot pepper. The word chili or chilli on its own is left out on purpose: it can mean the dish (chili con carne). Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized."
+    },
+    {
+      "term": "chili pepper",
+      "tags": [
+        "spicy"
+      ],
+      "match": "word",
+      "note": "a hot pepper; the same tag as jalapeno and hot pepper. The word chili or chilli on its own is left out on purpose: it can mean the dish (chili con carne). Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized."
+    },
+    {
+      "term": "chilli pepper",
+      "tags": [
+        "spicy"
+      ],
+      "match": "word",
+      "note": "a hot pepper; the same tag as jalapeno and hot pepper. The word chili or chilli on its own is left out on purpose: it can mean the dish (chili con carne). Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized."
+    },
+    {
+      "term": "green chile",
+      "tags": [
+        "spicy"
+      ],
+      "match": "word",
+      "note": "a hot pepper; the same tag as jalapeno and hot pepper. The word chili or chilli on its own is left out on purpose: it can mean the dish (chili con carne). Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized."
+    },
+    {
+      "term": "green chili",
+      "tags": [
+        "spicy"
+      ],
+      "match": "word",
+      "note": "a hot pepper; the same tag as jalapeno and hot pepper. The word chili or chilli on its own is left out on purpose: it can mean the dish (chili con carne). Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized."
+    },
+    {
+      "term": "green chilli",
+      "tags": [
+        "spicy"
+      ],
+      "match": "word",
+      "note": "a hot pepper; the same tag as jalapeno and hot pepper. The word chili or chilli on its own is left out on purpose: it can mean the dish (chili con carne). Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized."
+    },
+    {
+      "term": "red chile",
+      "tags": [
+        "spicy"
+      ],
+      "match": "word",
+      "note": "a hot pepper; the same tag as jalapeno and hot pepper. The word chili or chilli on its own is left out on purpose: it can mean the dish (chili con carne). Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized."
+    },
+    {
+      "term": "red chili",
+      "tags": [
+        "spicy"
+      ],
+      "match": "word",
+      "note": "a hot pepper; the same tag as jalapeno and hot pepper. The word chili or chilli on its own is left out on purpose: it can mean the dish (chili con carne). Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized."
+    },
+    {
+      "term": "red chilli",
+      "tags": [
+        "spicy"
+      ],
+      "match": "word",
+      "note": "a hot pepper; the same tag as jalapeno and hot pepper. The word chili or chilli on its own is left out on purpose: it can mean the dish (chili con carne). Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized."
+    },
+    {
+      "term": "scotch bonnet",
+      "tags": [
+        "spicy"
+      ],
+      "match": "word",
+      "note": "a hot pepper; the same tag as jalapeno and hot pepper. The word chili or chilli on its own is left out on purpose: it can mean the dish (chili con carne). Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized."
+    },
+    {
+      "term": "serrano pepper",
+      "tags": [
+        "spicy"
+      ],
+      "match": "word",
+      "note": "a hot pepper; the same tag as jalapeno and hot pepper. The word chili or chilli on its own is left out on purpose: it can mean the dish (chili con carne). Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized."
+    },
+    {
+      "term": "serrano chile",
+      "tags": [
+        "spicy"
+      ],
+      "match": "word",
+      "note": "a hot pepper; the same tag as jalapeno and hot pepper. The word chili or chilli on its own is left out on purpose: it can mean the dish (chili con carne). Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized."
+    },
+    {
+      "term": "serrano chili",
+      "tags": [
+        "spicy"
+      ],
+      "match": "word",
+      "note": "a hot pepper; the same tag as jalapeno and hot pepper. The word chili or chilli on its own is left out on purpose: it can mean the dish (chili con carne). Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized."
+    },
+    {
+      "term": "jalapeño",
+      "tags": [
+        "spicy"
+      ],
+      "match": "word",
+      "note": "a hot pepper; the same tag as jalapeno and hot pepper. The word chili or chilli on its own is left out on purpose: it can mean the dish (chili con carne). Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized."
+    },
+    {
+      "term": "monterey jack",
+      "tags": [
+        "allergen-milk",
+        "calcium-rich"
+      ],
+      "match": "word",
+      "note": "a semi-hard cheese; the same tags as cheese. Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized.",
+      "may_contain": [
+        "sodium-high"
+      ]
+    },
+    {
+      "term": "monterrey jack",
+      "tags": [
+        "allergen-milk",
+        "calcium-rich"
+      ],
+      "match": "word",
+      "note": "a semi-hard cheese; the same tags as cheese. Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized.",
+      "may_contain": [
+        "sodium-high"
+      ]
+    },
+    {
+      "term": "pepper jack",
+      "tags": [
+        "allergen-milk",
+        "calcium-rich"
+      ],
+      "match": "word",
+      "note": "a semi-hard cheese; the same tags as cheese. Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized.",
+      "may_contain": [
+        "sodium-high"
+      ]
+    },
+    {
+      "term": "colby jack",
+      "tags": [
+        "allergen-milk",
+        "calcium-rich",
+        "sodium-high"
+      ],
+      "match": "word",
+      "note": "a semi-hard cheese; the same tags as cheese. Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized."
+    },
+    {
+      "term": "jack cheese",
+      "tags": [
+        "allergen-milk",
+        "calcium-rich"
+      ],
+      "match": "word",
+      "note": "a semi-hard cheese; the same tags as cheese. Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized.",
+      "may_contain": [
+        "sodium-high"
+      ]
+    },
+    {
+      "term": "hard boiled egg",
+      "tags": [
+        "allergen-egg",
+        "small-particle-friendly"
+      ],
+      "match": "word",
+      "note": "egg; the same tags as egg. Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized."
+    },
+    {
+      "term": "hard cooked egg",
+      "tags": [
+        "allergen-egg",
+        "small-particle-friendly"
+      ],
+      "match": "word",
+      "note": "egg; the same tags as egg. Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized."
+    },
+    {
+      "term": "spicy",
+      "tags": [
+        "spicy"
+      ],
+      "match": "word",
+      "note": "the word itself says the food is hot (spicy sausage, spicy sauce). Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized."
+    },
+    {
+      "term": "gluten",
+      "tags": [
+        "gluten"
+      ],
+      "may_contain": [
+        "allergen-wheat"
+      ],
+      "match": "word",
+      "except": [
+        "gluten free",
+        "gluten-free",
+        "corn gluten",
+        "no gluten",
+        "without gluten"
+      ],
+      "note": "gluten named as an ingredient (wheat gluten, gluten added). Wheat is a label check because the grain is not named. Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized."
+    },
+    {
+      "term": "risotto rice",
+      "tags": [
+        "basic-ingredient"
+      ],
+      "match": "word",
+      "note": "the rice sold for risotto (arborio, carnaroli); the same tags as rice. The word risotto on its own is left out on purpose: the dish usually has butter and cheese. Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized."
+    },
+    {
+      "term": "rice paper",
+      "tags": [
+        "basic-ingredient"
+      ],
+      "match": "word",
+      "note": "rice paper wrappers (rice flour, tapioca, water, salt); the same tags as rice. Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized."
+    },
+    {
+      "term": "rice paper wrapper",
+      "tags": [
+        "basic-ingredient"
+      ],
+      "match": "word",
+      "note": "rice paper wrappers; the same tags as rice. Other wrappers (wonton, egg roll, spring roll) are wheat and are not this entry. Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized."
+    },
+    {
+      "term": "crustacean",
+      "tags": [
+        "allergen-crustacean",
+        "fish",
+        "histamine-high",
+        "purine-high"
+      ],
+      "match": "word",
+      "note": "the allergen name US labels use (Crustacean Shellfish); the same tags as shellfish. Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized.",
+      "sources": [
+        "comas-baste-2020",
+        "acr-gout-2020"
+      ]
+    },
+    {
+      "term": "hazel nut",
+      "tags": [
+        "allergen-tree-nut",
+        "nut",
+        "large-particle"
+      ],
+      "match": "word",
+      "note": "hazelnut written as two words; the same tags as hazelnut. Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized."
+    },
+    {
+      "term": "sesame paste",
+      "tags": [
+        "allergen-sesame",
+        "seed"
+      ],
+      "match": "word",
+      "note": "sesame paste is tahini; the same tags as tahini. Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized."
+    },
+    {
+      "term": "sunflower lecithin",
+      "tags": [
+        "emulsifier-additive"
+      ],
+      "match": "word",
+      "note": "lecithin from sunflower, named on the label; the same tags as lecithin. No soy. Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized."
+    },
+    {
+      "term": "arachis hypogaea",
+      "tags": [
+        "allergen-peanut"
+      ],
+      "match": "word",
+      "note": "the botanical name of peanut; the same tags as arachis. Added in the fix pass of September 30, 2026 (audit finding P0-1), so the words around it are placed instead of reported as not recognized."
+    },
+    {
+      "term": "toast",
+      "tags": [
+        "allergen-wheat",
+        "gluten",
+        "refined-grain",
+        "fodmap-fructan",
+        "lactose-hidden"
+      ],
+      "match": "word",
+      "note": "toasted bread; the same tags as bread. French toast (egg and milk) is not this entry: its first word stays not recognized. Added in the fix pass of September 30, 2026 (audit finding P2-15).",
+      "sources": [
+        "biesiekierski-2011",
+        "nih-lactose-2010"
+      ]
+    },
+    {
+      "term": "green tops",
+      "tags": [
+        "vegetable"
+      ],
+      "match": "word",
+      "note": "the green tops of scallions or leeks, written after the vegetable (\"1 scallion, green tops sliced\"); the vegetable itself is named before it. Added in the fix pass of September 30, 2026 (audit finding P2-15)."
+    },
+    {
+      "term": "capers",
+      "tags": [
+        "sodium-high"
+      ],
+      "match": "word",
+      "note": "Caper buds packed in brine or salt. Added September 30, 2026 (P1-3) so the word is recognized; USDA SR Legacy 172238, Capers, canned: 2,348 mg sodium per 100 g."
     }
   ],
   "unsure": [
@@ -21331,6 +22716,14 @@
     "phase1-partc": "Phase 1 Part C: may contain and shared-facility labels are user-configurable; the evidence on actual risk is mixed.",
     "bailey-2013": "Bailey DG, Dresser G, Arnold JMO. Grapefruit-medication interactions: forbidden fruit or avoidable consequences? CMAJ 2013;185(4):309-316. https://doi.org/10.1503/cmaj.120951",
     "coeliac-uk-cooking-tips": "Coeliac UK. Hints and tips for cooking at home (gluten-free diet). Patient material, read 2026-09-29: stock cubes, soups, and sauces as gluten sources; check the label.",
-    "sighi-leaflet-2021": "Swiss Interest Group Histamine Intolerance (SIGHI). Histamine Elimination Diet leaflet, version 2021-11-17. Patient material."
+    "sighi-leaflet-2021": "Swiss Interest Group Histamine Intolerance (SIGHI). Histamine Elimination Diet leaflet, version 2021-11-17. Patient material.",
+    "fda-food-allergies-page": "FDA. Food Allergies (web page on food allergen labeling), content current as of 03/11/2026. Declares the food source of a major food allergen in parentheses, with the example \"lecithin (soy)\".",
+    "cfr-166-110": "21 CFR 166.110, Margarine (standard of identity). Paragraph (a)(2): \"(i) Water and/or milk and/or milk products. (ii) Suitable edible protein including, but not limited to, the liquid, condensed, or dry form of whey, ... casein, caseinate, vegetable proteins, or soy protein isolate\"; paragraph (b)(4): \"Emulsifiers.\" Read 2026-09-30 from govinfo (CFR 2024, title 21, volume 2).",
+    "usda-fdc": "U.S. Department of Agriculture, Agricultural Research Service. FoodData Central. fdc.nal.usda.gov. SR Legacy (April 2018), FNDDS 2021-2023 (October 2024 release), Foundation Foods, and Branded Foods records; sodium, nutrient 1093, mg per 100 g.",
+    "uk-fop-2016": "Department of Health, Food Standards Agency, and devolved administrations. Guide to creating a front of pack (FoP) nutrition label for pre-packed products sold through retail outlets. Updated November 2016. Annex 3, Table 2 (criteria for 100 g of food).",
+    "fare-wheat-page": "Food Allergy Research and Education (FARE). Wheat Allergy (web page), https://www.foodallergy.org/living-food-allergies/food-allergy-essentials/common-allergens/wheat. Read 2026-09-30: under \"Wheat is sometimes found in the following:\", \"Starch (gelatinized starch, modified starch, modified food starch, vegetable starch)\". The page does not name maltodextrin or dextrin. Patient material.",
+    "fare-milk-page": "Food Allergy Research and Education (FARE). Milk (web page), https://www.foodallergy.org/living-food-allergies/food-allergy-essentials/common-allergens/milk. Read 2026-09-30: under \"Other Possible Sources of Milk:\", \"Caramel candies\" and \"Nougat\". Patient material.",
+    "eu-1169-2011-annex-ii": "Regulation (EU) No 1169/2011 on the provision of food information to consumers, Annex II (as amended by Delegated Regulation (EU) No 78/2014), https://www.legislation.gov.uk/eur/2011/1169/annex/II. Read 2026-09-30: \"1. Cereals containing gluten, namely: wheat ... and products thereof, except: (a) wheat based glucose syrups including dextrose; (b) wheat based maltodextrins; (c) glucose syrups based on barley\".",
+    "fare-peanut-page": "Food Allergy Research and Education (FARE). Peanut (web page), https://www.foodallergy.org/living-food-allergies/food-allergy-essentials/common-allergens/peanut. Read 2026-09-30: under \"Foods to avoid containing peanuts\": \"Artificial nuts\", \"Lupin (or lupine)\", \"Mixed nuts\", \"Nut meat or nut meal\", \"Nut pieces\". Patient material."
   }
 }

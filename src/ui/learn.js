@@ -6,7 +6,7 @@ const LEARN_RATING_SENTENCE = {
   strong: 'Strong: multiple randomized trials or a major society guideline with Class 1 / Level A backing.',
   moderate: 'Moderate: consistent trials or guideline recommendations with conditional strength.',
   limited: 'Limited: small trials, observational data, or expert consensus with little trial support.',
-  insufficient: 'Insufficient: no condition-specific dietary evidence; only general healthy-eating patterns apply.'
+  insufficient: 'Insufficient: not enough research. No diet has been shown to help this condition; general healthy eating still applies.'
 };
 
 export function renderLearnScreen(root, ctx) {

@@ -1,0 +1,172 @@
+[
+ {
+  "build": "lite",
+  "name": "20.1 the service worker registers and caches this build",
+  "pass": true,
+  "scope": "http://127.0.0.1:37449/Peace-Meal-Full/lite/",
+  "caches": [
+   "pm-pages-lite-aaaaaaaaaaaa"
+  ]
+ },
+ {
+  "build": "lite",
+  "name": true,
+  "pass": true,
+  "title": "Peace Meal for one",
+  "text": 1376
+ },
+ {
+  "build": "lite",
+  "name": "20.3 a changed build shows \"Update ready, tap to reload\"",
+  "pass": true
+ },
+ {
+  "build": "lite",
+  "name": "20.4 the tap switches to the new build and reloads, data intact",
+  "pass": true,
+  "caches": [
+   "pm-pages-full-aaaaaaaaaaaa",
+   "pm-pages-lite-bbbbbbbbbbbb"
+  ]
+ },
+ {
+  "build": "lite",
+  "name": "20.5 the full build's offline copy survives this build's update",
+  "pass": true,
+  "caches": [
+   "pm-pages-full-aaaaaaaaaaaa",
+   "pm-pages-lite-bbbbbbbbbbbb"
+  ]
+ },
+ {
+  "build": "full",
+  "name": "20.1 the service worker registers and caches this build",
+  "pass": true,
+  "scope": "http://127.0.0.1:37449/Peace-Meal-Full/full/",
+  "caches": [
+   "pm-pages-full-aaaaaaaaaaaa"
+  ]
+ },
+ {
+  "build": "full",
+  "name": true,
+  "pass": true,
+  "title": "Peace Meal",
+  "text": 1038
+ },
+ {
+  "build": "full",
+  "name": "20.3 a changed build shows \"Update ready, tap to reload\"",
+  "pass": true
+ },
+ {
+  "build": "full",
+  "name": "20.4 the tap switches to the new build and reloads, data intact",
+  "pass": true,
+  "caches": [
+   "pm-pages-lite-aaaaaaaaaaaa",
+   "pm-pages-full-bbbbbbbbbbbb"
+  ]
+ },
+ {
+  "build": "full",
+  "name": "20.5 the lite build's offline copy survives this build's update",
+  "pass": true,
+  "caches": [
+   "pm-pages-lite-aaaaaaaaaaaa",
+   "pm-pages-full-bbbbbbbbbbbb"
+  ]
+ },
+ {
+  "build": "lite",
+  "name": "21.1 in a Safari tab, the Add to Home Screen guide shows",
+  "pass": true
+ },
+ {
+  "build": "lite",
+  "name": "21.2 in a Safari tab, a \"Not saved safely\" banner warns that data here is kept apart",
+  "pass": false,
+  "note": "the code has no such banner; the guide shows once and Settings has a line"
+ },
+ {
+  "build": "lite",
+  "name": "21.3 the guide offers \"Save a backup\" when there is data in the tab",
+  "pass": true
+ },
+ {
+  "build": "lite",
+  "name": "21.4 \"Save a backup\" gives a file",
+  "pass": true
+ },
+ {
+  "build": "lite",
+  "name": "21.5 the guide shows once: not again after \"Got it\"",
+  "pass": true
+ },
+ {
+  "build": "lite",
+  "name": "21.6 in the Home Screen app, no Add to Home Screen guide",
+  "pass": true
+ },
+ {
+  "build": "lite",
+  "name": "21.7 the Home Screen app's first screen has \"Bring my data\"",
+  "pass": true
+ },
+ {
+  "build": "lite",
+  "name": "21.8 \"Bring my data\" brings the tab's data into the Home Screen app",
+  "pass": true
+ },
+ {
+  "build": "lite",
+  "name": "21.9 the Home Screen app does not show the Safari-tab line in Settings",
+  "pass": true
+ },
+ {
+  "build": "full",
+  "name": "21.1 in a Safari tab, the Add to Home Screen guide shows",
+  "pass": true
+ },
+ {
+  "build": "full",
+  "name": "21.2 in a Safari tab, a \"Not saved safely\" banner warns that data here is kept apart",
+  "pass": false,
+  "note": "the code has no such banner; the guide shows once and Settings has a line"
+ },
+ {
+  "build": "full",
+  "name": "21.3 the guide offers \"Save a backup\" when there is data in the tab",
+  "pass": true
+ },
+ {
+  "build": "full",
+  "name": "21.4 \"Save a backup\" gives a file",
+  "pass": true
+ },
+ {
+  "build": "full",
+  "name": "21.5 the guide shows once: not again after \"Got it\"",
+  "pass": true
+ },
+ {
+  "build": "full",
+  "name": "21.6 in the Home Screen app, no Add to Home Screen guide",
+  "pass": true
+ },
+ {
+  "build": "full",
+  "name": "21.7 the Home Screen app's first screen has \"Bring my data\"",
+  "pass": true
+ },
+ {
+  "build": "full",
+  "name": "21.8 \"Bring my data\" brings the tab's data into the Home Screen app",
+  "pass": true
+ },
+ {
+  "build": "full",
+  "name": "21.9 the Home Screen app does not show the Safari-tab line in Settings",
+  "pass": true
+ }
+]

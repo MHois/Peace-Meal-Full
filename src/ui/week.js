@@ -13,14 +13,33 @@ const WEEK_MINUTE_OPTIONS = [10, 15, 20, 30, 45, 60, 90];
 const WEEK_DAY_NAMES = { sun: 'Sunday', mon: 'Monday', tue: 'Tuesday', wed: 'Wednesday', thu: 'Thursday', fri: 'Friday', sat: 'Saturday' };
 const WEEK_DAY_SHORT = { sun: 'Sun', mon: 'Mon', tue: 'Tue', wed: 'Wed', thu: 'Thu', fri: 'Fri', sat: 'Sat' };
 
+// P2-1 (fix pass of September 30, 2026): a built week is kept until something it depends on changes, instead of being
+// thrown away on every save (each tap on lite Today rebuilt it). It depends on the person (allergies, conditions,
+// settings, likes, this week's changes), the recipe collections, linked ingredients, the person's own recipes, and the
+// recipe pool, which is a new list whenever it is put together again (src/app.js, appAssembleRecipes); the date and the
+// plan seed are in the key. The household week works the same way (src/ui/household.js, householdSignature).
+function weekInputs(person) {
+  const p = uiState.profile || {};
+  return JSON.stringify([person, p.recipe_collections || null, p.recipe_links || null, p.household || null, p.custom_recipes || null]);
+}
+const weekPool = () => (uiState.data && uiState.data.recipes) || null;
+// The built week for this person when it is ready and still current; null when it would have to be built.
+export function weekCached(person) {
+  const hit = uiState.weekCache.get(uiWeekKey(person));
+  return hit && hit.pool === weekPool() && hit.inputs === weekInputs(person) ? hit.week : null;
+}
+
 export function weekGet(person, plan) {
+  const ready = weekCached(person);
+  if (ready) return ready;
   const key = uiWeekKey(person);
-  if (uiState.weekCache.has(key)) return uiState.weekCache.get(key);
   const wo = weekThisWeek(person);
   const week = buildWeekPlan({ person, plan, recipes: uiState.recipesForPlan ? uiState.recipesForPlan(plan) : uiState.data.recipes, foodsById: uiState.foodsById, matcher: uiState.matcher, startDate: uiToday(), seed: person.planSeed || 0, dayOverrides: wo.days, snacksPerDay: wo.snacks_per_day });
   weekApplySnapshot(week, person);
   weekApplyOverrides(week, person, plan);
-  uiState.weekCache.set(key, week);
+  // One week per person: an older one (another day, another seed) is dropped. Inputs are read after the build, which can tidy the person.
+  for (const k of [...uiState.weekCache.keys()]) if (k !== key && k.startsWith(person.id + '|')) uiState.weekCache.delete(k);
+  uiState.weekCache.set(key, { week, pool: weekPool(), inputs: weekInputs(person) });
   return week;
 }
 
@@ -107,7 +126,7 @@ export function renderWeekScreen(root) {
   const unknownOn = !!(person.cooking && person.cooking.include_unknown_nutrition);
   // With a daily limit these recipes are never planned, switch or not (owner question 5): the switch says so.
   const hasLimit = plannerHasLimits(plan);
-  const limitNames = Object.keys(plan.limits || {}).map(k => uiNutrientLabel(k).toLowerCase()).join(', ');
+  const limitNames = weekLimitPhrase(plan.limits);
   // Wikibooks recipes not read yet in the full build (they have no numbers, so the planner would leave them out anyway)
   const later = uiDeferredRecipes();
   const laterOn = later && !(uiState.profile.recipe_collections && uiState.profile.recipe_collections.wikibooks === false);
@@ -117,9 +136,9 @@ export function renderWeekScreen(root) {
   const snackAuto = snackPlan(person, plan);
   const spiceWord = { none: 'no heat', mild: 'mild only', medium: 'medium', hot: 'bring the heat' }[spicePreference(person)] || '';
   root.innerHTML = `
-    ${uiPageHeader(uiState.lite ? 'Your meals this week' : `Week for ${uiEsc(person.name)}`, uiState.lite ? `Starting ${uiFmtDate(week.days[0].date)}. Every meal the app picks clears your rules. Tap a meal to read it, the arrows to swap it, and the heart to see it more often.` : `Starting ${uiFmtDate(week.days[0].date)}. ${week.eligibleCount} of ${uiState.data.recipes.length} recipes are eligible${skippedNoNutrition ? `; ${uiFmtNum(skippedNoNutrition)} without nutrition data are left out` : ''}. Cooking for ${household} most days (from the Cooking step); change any day's eaters in the people box on that day. Tap a day's cooking chip or minutes to change that one day, this week only. Only recipes that pass every check are planned; anything marked caution is left out unless you swap it in yourself.`, `<button class="btn small" type="button" id="week-regen">${uiIcon('swap')}${uiState.lite ? 'New week' : 'Regenerate'}</button><a class="btn small" href="#/recipes">${uiIcon('leaf')}Recipes</a>`)}
-    <div class="card tight">${uiSwitch('week-budget', 'Save money', 'Prefer recipes that reuse ingredients already on this week\'s grocery list, so you buy fewer things.', budget)}${(skippedNoNutrition || unknownOn) ? uiSwitch('week-unknown', 'Also use recipes that have no nutrition numbers', `${skippedNoNutrition ? uiFmtNum(skippedNoNutrition) + ' community recipes' : 'Some community recipes'} list their ingredients as plain text, so the app has no calories, sodium, or other numbers for them. Off: they stay out of your week and every planned meal counts toward your daily totals. ${hasLimit ? `Your plan has a daily limit (${uiEsc(limitNames)}), so they are never planned for you, even with this on: the app cannot count them toward it. You can still pick one by hand for a meal.` : 'On: far more variety, but those meals cannot be added to your daily totals or checked against a daily limit.'} Allergens and avoid lists are still checked either way.`, unknownOn) : ''}
-      <div class="switch" style="cursor:default"><div class="switch-text"><span class="switch-title">Snacks each day</span><span class="hint">${uiEsc(typeof wo.snacks_per_day === 'number' ? `This week only: ${snacks.count}. Your standing setting is ${snackAuto.count} (${snackAuto.why}).${wo.snacks_per_day > snacks.count ? ' The evening snack is left out for reflux.' : ''}` : snackAuto.auto ? `${snackAuto.count}, from ${snackAuto.why}. Change it here for this week only, or on the Cooking step for good.` : `${snackAuto.count}, your setting on the Cooking step. Change it here for this week only.`)}${spicePreference(person) !== 'any' ? ` Spice setting: ${uiEsc(spiceWord)}.` : ''}</span></div>
+    ${uiPageHeader(uiState.lite ? 'Your meals this week' : `Week for ${uiEsc(person.name)}`, uiState.lite ? `Starting ${uiFmtDate(week.days[0].date)}. Every meal the app picks clears your rules. Tap a meal to read it, the arrows to swap it, and the heart to see it more often.` : `Starting ${uiFmtDate(week.days[0].date)}. Only recipes that pass every check are planned: ${uiFmtNum(week.eligibleCount)} do${skippedNoNutrition ? `, and ${uiFmtNum(skippedNoNutrition)} more with no nutrition numbers are left out` : ''}. A recipe marked caution goes in only if you swap it in yourself. Cooking for ${household} most days; change a day's eaters, cooking, or minutes on that day, for this week only.`, `<button class="btn small" type="button" id="week-regen">${uiIcon('swap')}${uiState.lite ? 'New week' : 'Regenerate'}</button><a class="btn small" href="#/recipes">${uiIcon('leaf')}Recipes</a>`)}
+    <div class="card tight">${uiSwitch('week-budget', 'Save money', 'Prefer recipes that reuse ingredients already on this week\'s grocery list, so you buy fewer things.', budget)}${(skippedNoNutrition || unknownOn) && !weekHideUnknownSwitch(hasLimit, unknownOn) ? uiSwitch('week-unknown', 'Also use recipes that have no nutrition numbers', `${skippedNoNutrition ? uiFmtNum(skippedNoNutrition) + ' community recipes' : 'Some community recipes'} list their ingredients as plain text, so the app has no calories, sodium, or other numbers for them. Off: they stay out of your week, so every planned meal counts toward your daily totals. ${hasLimit ? `Your plan has ${uiEsc(limitNames)}, so they are never planned for you even with this on, because the app cannot count them toward it; you can still pick one by hand.` : 'On: far more variety, but those meals cannot be added to your daily totals or checked against a daily limit.'} Allergens and avoid lists are checked either way.`, unknownOn) : ''}
+      <div class="switch" style="cursor:default"><div class="switch-text"><span class="switch-title">Snacks each day</span><span class="hint">${uiEsc(typeof wo.snacks_per_day === 'number' ? `This week only: ${snacks.count}. Your standing setting is ${snackAuto.count} (${snackAuto.why}).${wo.snacks_per_day > snacks.count ? ' The evening snack is left out for reflux.' : ''}` : snackAuto.auto ? `${snackAuto.count} a day (${snackAuto.why}). Change it here for this week only, or on the Cooking step for good.` : `${snackAuto.count} a day, your setting on the Cooking step. Change it here for this week only.`)}${spicePreference(person) !== 'any' ? ` Spice setting: ${uiEsc(spiceWord)}.` : ''}</span></div>
         <label class="visually-hidden" for="week-snacks">Snacks each day this week</label><select id="week-snacks" style="width:auto"><option value="auto" ${typeof wo.snacks_per_day !== 'number' ? 'selected' : ''}>Usual (${snackAuto.count})</option>${[0, 1, 2, 3].map(n => `<option value="${n}" ${wo.snacks_per_day === n ? 'selected' : ''}>${n === 0 ? 'None' : n}</option>`).join('')}</select></div></div>
     ${week.unmet.length ? uiNoticeHTML({ level: 'warn', text: `${week.unmet.length} slot${week.unmet.length === 1 ? '' : 's'} could not be filled: ${week.unmet.map(u => `${uiFmtDate(u.date)} ${u.slot}`).join(', ')}. No recipe fit the plan for that slot.` }) : ''}
     <div class="week-grid">${week.days.map((d, di) => weekDayHTML(d, di, plan, person)).join('')}</div>
@@ -310,9 +329,51 @@ function weekHeatWord(recipeId) {
   return h.level ? ` · ${h.label.toLowerCase()}` : '';
 }
 
-// "Sodium (mg)" -> "Sodium mg"; whole numbers for milligram nutrients.
+// "Sodium (mg)" -> "Sodium mg"; whole numbers for milligram nutrients. weekShortLabel is no longer used by the day
+// totals (UX pass, October 2026: weekTotalChipsHTML below says limit or goal in words); kept, not deleted.
 function weekShortLabel(n) { return uiNutrientLabel(n).replace(/\s*\((.*)\)\s*$/, ' $1').replace('% of calories', '%'); }
 function weekDigits(n) { return /_mg$|^kcal$/.test(n) ? 0 : 1; }
+// A day's total in words a person reads at a glance (UX pass, October 2026): "Sodium 1,248 mg, within the 2,300 limit",
+// "Potassium 3,378 mg, below the 3,500 goal", "Protein 99.9 g, goal met". It was "Sodium mg 1,248, ok" and
+// "Protein g 99.9, over 81.6", which did not say whether the number was a limit or a goal.
+// Peace Meal for one carries the Wikibooks recipes too (owner request, October 8, 2026). Their switch on the week can do
+// nothing for a plan with a daily limit (those recipes are never planned then), so lite leaves it off the screen in that
+// case, to keep the screen short; the full build shows it with that explanation. A switch already on always shows.
+export function weekHideUnknownSwitch(hasLimit, unknownOn) { return !!uiState.lite && !!hasLimit && !unknownOn; }
+// "a daily sodium limit", "daily sodium and potassium limits" (UX pass, October 2026; it read "a daily limit (sodium (mg))").
+export function weekLimitPhrase(limits) {
+  const list = Object.keys(limits || {}).map(k => uiNutrientLabel(k).replace(/\s*\(.*\)\s*$/, '').toLowerCase());
+  if (!list.length) return '';
+  return list.length > 1 ? `daily ${list.slice(0, -1).join(', ')} and ${list[list.length - 1]} limits` : `a daily ${list[0]} limit`;
+}
+export function weekTotalChipsHTML(cmp) {
+  // A share of calories keeps its % sign on the limit too: "within the 10% limit", not "within the 10 limit".
+  const num = (x, v) => uiFmtNum(v, weekDigits(x.nutrient)) + (/_pct_kcal$/.test(x.nutrient) ? '%' : '');
+  return [
+    ...cmp.over.map(x => `<span class="nutrient-chip over">${uiEsc(weekChipAmount(x))}, over the ${num(x, x.limit)} limit</span>`),
+    ...cmp.under.map(x => `<span class="nutrient-chip under">${uiEsc(weekChipAmount(x))}, below the ${num(x, x.min)} goal</span>`),
+    ...cmp.ok.map(x => `<span class="nutrient-chip ok">${uiEsc(weekChipAmount(x))}, ${x.limit != null ? `within the ${num(x, x.limit)} limit` : 'goal met'}</span>`)
+  ].join('');
+}
+export function weekChipAmount(x) {
+  const label = uiNutrientLabel(x.nutrient), m = label.match(/^(.*?)\s*\((.*)\)\s*$/);
+  const name = m ? m[1] : label, unit = m ? m[2] : '';
+  return unit === '% of calories' ? `${name} ${uiFmtNum(x.value, weekDigits(x.nutrient))}% of calories` : `${name} ${uiFmtNum(x.value, weekDigits(x.nutrient))}${unit ? ' ' + unit : ''}`;
+}
+
+// The small line under a planned meal (UX pass, October 2026). Every meal the app plans passes the person's checks,
+// so "PASS" on every one said nothing and crowded the line; the word now shows only when it is not a pass (a caution
+// the person picked by hand). The colored dot and the button's spoken label still say the verdict for every meal.
+export function weekMealSubText(m) {
+  const parts = [];
+  if (m.check.verdict !== 'pass') parts.push(uiVerdictWord(m.check.verdict));
+  if (m.servingsMade && m.servingsMade > m.servings) parts.push(`make ${m.servingsMade}`);
+  if (m.chosenCaution) parts.push('your pick'); else if (m.swapped) parts.push('swapped');
+  if (m.repicked) parts.push('re-picked');
+  const heat = weekHeatWord(m.recipe).replace(/^ · /, '');
+  if (heat) parts.push(heat);
+  return parts.join(' · ');
+}
 
 // Source glyph for a meal: cook (flame), leftovers (clock), assembly (bowl).
 function weekSourceGlyph(source) {
@@ -335,7 +396,7 @@ function weekDayHTML(d, di, plan, person) {
     ${d.meals.map(m => {
       return `<div class="week-meal">
       <div class="slot">${WEEK_SLOT_LABEL[m.slot] || m.slot}</div>
-      ${m.recipe ? `<button type="button" class="meal-chip" data-recipe="${uiEsc(m.recipe)}" aria-label="${uiEsc(m.name)}, ${uiVerdictWord(m.check.verdict)}. Open recipe."><span class="dot ${m.check.verdict}" aria-hidden="true"></span><span class="meal-chip-text"><span class="meal-chip-name">${uiEsc(m.name)}</span><span class="meal-chip-sub">${weekSourceGlyph(m.source)}<span>${uiVerdictWord(m.check.verdict)}${m.servingsMade && m.servingsMade > m.servings ? ` · make ${m.servingsMade}` : ''}${m.chosenCaution ? ' · your pick' : m.swapped ? ' · swapped' : ''}${m.repicked ? ' · re-picked' : ''}${weekHeatWord(m.recipe)}</span></span></span></button>
+      ${m.recipe ? `<button type="button" class="meal-chip" data-recipe="${uiEsc(m.recipe)}" aria-label="${uiEsc(m.name)}, ${uiVerdictWord(m.check.verdict)}. Open recipe."><span class="dot ${m.check.verdict}" aria-hidden="true"></span><span class="meal-chip-text"><span class="meal-chip-name">${uiEsc(m.name)}</span><span class="meal-chip-sub">${weekSourceGlyph(m.source)}<span>${weekMealSubText(m)}</span></span></span></button>
         ${m.check.hits && m.check.hits.length ? `<div class="meal-note">Caution: ${m.check.hits.map(h => uiEsc(h.label)).join(', ')}</div>` : ''}
         ${weekMisfitNote(m, d)}
         ${m.check.exceeds && m.check.exceeds.length ? `<div class="meal-note">One serving exceeds the daily ${m.check.exceeds.map(uiNutrientLabel).map(uiEsc).join(', ')}.</div>` : ''}
@@ -349,9 +410,7 @@ function weekDayHTML(d, di, plan, person) {
       : `<div class="muted small">No recipe fit this slot.</div><div class="meal-acts"><button class="btn small icon" type="button" data-swap="${di}" data-slot="${uiEsc(m.slot)}" aria-label="Pick a meal for ${WEEK_SLOT_LABEL[m.slot] || m.slot}" title="Pick a meal">${uiIcon('swap')}</button></div>`}
     </div>`; }).join('')}
     <div class="week-totals" aria-label="Day totals versus plan">
-      ${cmp.over.map(x => `<span class="nutrient-chip over">${uiEsc(weekShortLabel(x.nutrient))} ${uiFmtNum(x.value, weekDigits(x.nutrient))}, over ${uiFmtNum(x.limit, weekDigits(x.nutrient))}</span>`).join('')}
-      ${cmp.under.map(x => `<span class="nutrient-chip under">${uiEsc(weekShortLabel(x.nutrient))} ${uiFmtNum(x.value, weekDigits(x.nutrient))}, under ${uiFmtNum(x.min, weekDigits(x.nutrient))}</span>`).join('')}
-      ${cmp.ok.map(x => `<span class="nutrient-chip ok">${uiEsc(weekShortLabel(x.nutrient))} ${uiFmtNum(x.value, weekDigits(x.nutrient))}, ok</span>`).join('')}
+      ${weekTotalChipsHTML(cmp)}
       ${!cmp.over.length && !cmp.under.length && !cmp.ok.length ? `<span class="muted">${uiFmtNum(d.totals.kcal)} kcal, ${uiFmtNum(d.totals.sodium_mg)} mg sodium. No numeric limits in the plan.</span>` : ''}
     </div>
   </section>`;
@@ -363,7 +422,7 @@ function weekGlanceHTML(week, plan, person) {
   const useKcal = info.state === 'ok' && info.kcal > 0;
   const limit = useKcal ? info.kcal : plan.limits.sodium_mg ? plan.limits.sodium_mg.value : null;
   const key = useKcal ? 'kcal' : 'sodium_mg';
-  const label = useKcal ? 'kcal' : 'mg sodium';
+  const label = useKcal ? 'calories' : 'mg sodium';
   const max = Math.max(limit || 0, ...week.days.map(d => d.totals[key] || 0)) || 1;
   return `<div class="week-glance" role="img" aria-label="Planned ${label} per day${limit ? ` against ${uiFmtNum(limit)}` : ''}">
     ${week.days.map(d => {
@@ -372,7 +431,7 @@ function weekGlanceHTML(week, plan, person) {
       return `<div class="glance-day"><div class="glance-col ${t.tone}" title="${uiEsc(uiFmtDate(d.date))}: ${uiFmtNum(v)} ${label}${limit ? `, ${t.word}` : ''}">${limit ? `<span class="glance-limit" style="bottom:${(limit / max * 100).toFixed(1)}%"></span>` : ''}<span style="height:${(v / max * 100).toFixed(1)}%"></span></div><div class="glance-label">${WEEK_DAY_SHORT[d.day] || ''}</div><div class="glance-value">${uiFmtNum(v)}</div></div>`;
     }).join('')}
   </div>
-  <p class="small muted">Planned ${label} per day from the recipes above${limit ? `; the dashed line is ${useKcal ? 'the estimated calorie target' : 'the sodium limit'} of ${uiFmtNum(limit)}` : '; no calorie target or sodium limit is active'}. Days over the line are marked "over" in the day's totals.</p>`;
+  <p class="small muted">Planned ${label} per day from the recipes above${limit ? `; the dashed line is ${useKcal ? 'the estimated calorie target' : 'the sodium limit'} of ${uiFmtNum(limit)}` : '; no calorie target or sodium limit is active'}.${limit && !useKcal ? ' A day over the line also says so in its totals.' : ''}</p>`;
 }
 
 function weekSwapModal(di, slot, person, plan, week) {

@@ -1,0 +1,1138 @@
+$ node --version
+v22.22.2
+$ npm --version
+10.9.7
+$ git rev-parse HEAD
+2a8853859b4eee164b86bcf1c1610dafd22bfc52
+$ uname -srm
+Linux 6.18.44-fc-v50 x86_64
+
+$ npm run check
+
+> peace-meal@0.1.0 check
+> npm run validate && npm test && npm run bundle
+
+
+> peace-meal@0.1.0 validate
+> node tools/validate.mjs
+
+sources 157, modules 43, rules 273, tags 89, dictionary entries 1619, foods 2143, recipes 4152, articles 43
+OK
+
+> peace-meal@0.1.0 test
+> node --test test/*.test.mjs
+
+TAP version 13
+# Subtest: [1] celiac, no allergens: a misspelled or unknown ingredient is a caution, never PASS
+ok 1 - [1] celiac, no allergens: a misspelled or unknown ingredient is a caution, never PASS
+  ---
+  duration_ms: 175.343265
+  type: 'test'
+  ...
+# Subtest: [1] the lite result for text the app cannot place reads "Not sure. Ask before eating."
+ok 2 - [1] the lite result for text the app cannot place reads "Not sure. Ask before eating."
+  ---
+  duration_ms: 0.919467
+  type: 'test'
+  ...
+# Subtest: [1] any restricting condition counts, not only an allergen; a preference alone does not
+ok 3 - [1] any restricting condition counts, not only an allergen; a preference alone does not
+  ---
+  duration_ms: 92.01455
+  type: 'test'
+  ...
+# Subtest: [1] an ambiguous term is a caution under a restricting plan; naming the kind settles it, and the label check stays
+ok 4 - [1] an ambiguous term is a caution under a restricting plan; naming the kind settles it, and the label check stays
+  ---
+  duration_ms: 6.984151
+  type: 'test'
+  ...
+# Subtest: [1] the label checker applies the strict FODMAP and histamine lists, as recipes do
+ok 5 - [1] the label checker applies the strict FODMAP and histamine lists, as recipes do
+  ---
+  duration_ms: 17.183618
+  type: 'test'
+  ...
+# Subtest: [2] MCAS: leftovers and stock cubes are not PASS even though chicken is on the approved list
+ok 6 - [2] MCAS: leftovers and stock cubes are not PASS even though chicken is on the approved list
+  ---
+  duration_ms: 5.271713
+  type: 'test'
+  ...
+# Subtest: [2] leave-out examples match what is written: "canned fish" does not catch white fish
+ok 7 - [2] leave-out examples match what is written: "canned fish" does not catch white fish
+  ---
+  duration_ms: 0.820737
+  type: 'test'
+  ...
+# Subtest: [2] a food the person marked as tolerated still wins over the general leave-out examples
+ok 8 - [2] a food the person marked as tolerated still wins over the general leave-out examples
+  ---
+  duration_ms: 0.361705
+  type: 'test'
+  ...
+# Subtest: [2] MCAS: Chicken and ginger rice congee (made with shop chicken broth) does not pass
+ok 9 - [2] MCAS: Chicken and ginger rice congee (made with shop chicken broth) does not pass
+  ---
+  duration_ms: 20.012141
+  type: 'test'
+  ...
+# Subtest: [2] every Peace Meal recipe written for low histamine uses water or a quick stock, never a long-cooked meat stock
+ok 10 - [2] every Peace Meal recipe written for low histamine uses water or a quick stock, never a long-cooked meat stock
+  ---
+  duration_ms: 505.790019
+  type: 'test'
+  ...
+# Subtest: [1] an adapted copy of a recipe without linked foods keeps "same amount" out of the checked text
+ok 11 - [1] an adapted copy of a recipe without linked foods keeps "same amount" out of the checked text
+  ---
+  duration_ms: 4.213886
+  type: 'test'
+  ...
+# Subtest: [1] measurement and preparation words alone are not "unrecognized"; a real unknown food next to them still is
+ok 12 - [1] measurement and preparation words alone are not "unrecognized"; a real unknown food next to them still is
+  ---
+  duration_ms: 7.462663
+  type: 'test'
+  ...
+# Subtest: [1] the single-food lookup on the Check screen applies the strict lists too
+ok 13 - [1] the single-food lookup on the Check screen applies the strict lists too
+  ---
+  duration_ms: 1.427487
+  type: 'test'
+  ...
+# Subtest: [3] celiac: stock cubes, broth, and stock ask for a label check; gravy mixes stay a hard stop
+ok 14 - [3] celiac: stock cubes, broth, and stock ask for a label check; gravy mixes stay a hard stop
+  ---
+  duration_ms: 3.379998
+  type: 'test'
+  ...
+# Subtest: [3] celiac: no lite recipe with shop stock, broth, bouillon, or gravy passes without a label check
+ok 15 - [3] celiac: no lite recipe with shop stock, broth, bouillon, or gravy passes without a label check
+  ---
+  duration_ms: 1157.467981
+  type: 'test'
+  ...
+# Subtest: [3] a stock cube is still a caution for allergy profiles (nothing got looser)
+ok 16 - [3] a stock cube is still a caution for allergy profiles (nothing got looser)
+  ---
+  duration_ms: 1.486674
+  type: 'test'
+  ...
+# Subtest: [3] MCAS: shop stock, stock cubes, bouillon, and gravy mixes are not approved; a quick homemade vegetable stock is
+ok 17 - [3] MCAS: shop stock, stock cubes, bouillon, and gravy mixes are not approved; a quick homemade vegetable stock is
+  ---
+  duration_ms: 4.406831
+  type: 'test'
+  ...
+# Subtest: [4] MCAS: jarred or brined roasted peppers are not a pass; fresh-roasted is
+ok 18 - [4] MCAS: jarred or brined roasted peppers are not a pass; fresh-roasted is
+  ---
+  duration_ms: 5.600077
+  type: 'test'
+  ...
+# Subtest: [4] the tomato swap for low histamine says fresh-roasted, and so does the Peace Meal quinoa bowl
+ok 19 - [4] the tomato swap for low histamine says fresh-roasted, and so does the Peace Meal quinoa bowl
+  ---
+  duration_ms: 3.20665
+  type: 'test'
+  ...
+# Subtest: [11] low FODMAP: two "small serve" foods in one recipe is a caution that names both and cites its sources
+ok 20 - [11] low FODMAP: two "small serve" foods in one recipe is a caution that names both and cites its sources
+  ---
+  duration_ms: 1.706241
+  type: 'test'
+  ...
+# Subtest: [11] one "small serve" food shows its portion note but stays a pass
+ok 21 - [11] one "small serve" food shows its portion note but stays a pass
+  ---
+  duration_ms: 1.456991
+  type: 'test'
+  ...
+# Subtest: [11] set amounts (oats, almonds) show a note and do not count toward the small-serve caution
+ok 22 - [11] set amounts (oats, almonds) show a note and do not count toward the small-serve caution
+  ---
+  duration_ms: 1.681214
+  type: 'test'
+  ...
+# Subtest: [11] the longer wording wins: corn tortillas and corn oil are not "corn, small serve"
+ok 23 - [11] the longer wording wins: corn tortillas and corn oil are not "corn, small serve"
+  ---
+  duration_ms: 2.306261
+  type: 'test'
+  ...
+# Subtest: [11] the check screen says plainly when several small serves are the only reason
+ok 24 - [11] the check screen says plainly when several small serves are the only reason
+  ---
+  duration_ms: 1.393487
+  type: 'test'
+  ...
+# Subtest: [11] no portion notes or small-serve caution when the plan does not restrict FODMAPs
+ok 25 - [11] no portion notes or small-serve caution when the plan does not restrict FODMAPs
+  ---
+  duration_ms: 0.257574
+  type: 'test'
+  ...
+# Subtest: [12] every low histamine item and leave-out example names its evidence basis, with sources
+ok 26 - [12] every low histamine item and leave-out example names its evidence basis, with sources
+  ---
+  duration_ms: 0.757531
+  type: 'test'
+  ...
+# Subtest: [12] after owner question 8 only the items the leaflet does not rate stay unchecked; banana, legumes, nuts, and black pepper are left out
+ok 27 - [12] after owner question 8 only the items the leaflet does not rate stay unchecked; banana, legumes, nuts, and black pepper are left out
+  ---
+  duration_ms: 0.841605
+  type: 'test'
+  ...
+# Subtest: the lite label check says plainly that reading a photo needs Wi-Fi the first time
+ok 28 - the lite label check says plainly that reading a photo needs Wi-Fi the first time
+  ---
+  duration_ms: 0.381096
+  type: 'test'
+  ...
+# Subtest: full build: the Wikibooks recipes ship in the same file but outside the launch data, and go back in their place
+ok 29 - full build: the Wikibooks recipes ship in the same file but outside the launch data, and go back in their place
+  ---
+  duration_ms: 854.222309
+  type: 'test'
+  ...
+# Subtest: [14] a person with a sodium limit gets no recipe without nutrition numbers in a default week
+ok 30 - [14] a person with a sodium limit gets no recipe without nutrition numbers in a default week
+  ---
+  duration_ms: 3448.376045
+  type: 'test'
+  ...
+# Subtest: [15] the September 2026 set: 30 breakfasts and dinners, on by default since the September 30 review, every ingredient a USDA food, passing both diets
+ok 31 - [15] the September 2026 set: 30 breakfasts and dinners, on by default since the September 30 review, every ingredient a USDA food, passing both diets
+  ---
+  duration_ms: 145.960258
+  type: 'test'
+  ...
+# Subtest: dietitian review: every number rule has a plain-words why, copied word for word from its own article
+ok 32 - dietitian review: every number rule has a plain-words why, copied word for word from its own article
+  ---
+  duration_ms: 3.796156
+  type: 'test'
+  ...
+# Subtest: dietitian review: a new person sees ten common conditions first; the list names real modules
+ok 33 - dietitian review: a new person sees ten common conditions first; the list names real modules
+  ---
+  duration_ms: 1.837254
+  type: 'test'
+  ...
+# Subtest: word matching respects boundaries and plurals
+ok 34 - word matching respects boundaries and plurals
+  ---
+  duration_ms: 4.898371
+  type: 'test'
+  ...
+# Subtest: hard hit fails; unknown-risk term is caution when allergens are selected
+ok 35 - hard hit fails; unknown-risk term is caution when allergens are selected
+  ---
+  duration_ms: 1.846579
+  type: 'test'
+  ...
+# Subtest: unrecognized text is caution when allergens are selected, never silently pass
+ok 36 - unrecognized text is caution when allergens are selected, never silently pass
+  ---
+  duration_ms: 0.282075
+  type: 'test'
+  ...
+# Subtest: recipe nutrients are summed by grams and compared to daily limits
+ok 37 - recipe nutrients are summed by grams and compared to daily limits
+  ---
+  duration_ms: 2.117556
+  type: 'test'
+  ...
+# Subtest: except phrases: butter does not fire inside peanut butter; milk not inside coconut milk
+ok 38 - except phrases: butter does not fire inside peanut butter; milk not inside coconut milk
+  ---
+  duration_ms: 4.191269
+  type: 'test'
+  ...
+# Subtest: hyphen and apostrophe normalization
+ok 39 - hyphen and apostrophe normalization
+  ---
+  duration_ms: 0.84255
+  type: 'test'
+  ...
+# Subtest: quantity and prep words alone are not reported as unrecognized
+ok 40 - quantity and prep words alone are not reported as unrecognized
+  ---
+  duration_ms: 0.733395
+  type: 'test'
+  ...
+# Subtest: imported recipes use their USDA per-serving nutrition and dictionary-tag their ingredient text
+ok 41 - imported recipes use their USDA per-serving nutrition and dictionary-tag their ingredient text
+  ---
+  duration_ms: 0.887062
+  type: 'test'
+  ...
+# Subtest: profile key wraps for two readers and only they can open it
+ok 42 - profile key wraps for two readers and only they can open it
+  ---
+  duration_ms: 28.296993
+  type: 'test'
+  ...
+# Subtest: owner backup round-trips with the passphrase and fails without it
+ok 43 - owner backup round-trips with the passphrase and fails without it
+  ---
+  duration_ms: 185.737363
+  type: 'test'
+  ...
+# Subtest: share package carries only the chosen parts
+ok 44 - share package carries only the chosen parts
+  ---
+  duration_ms: 2.848373
+  type: 'test'
+  ...
+# Subtest: cuisine comes from source categories first, then a keyword guess, marked as such
+ok 45 - cuisine comes from source categories first, then a keyword guess, marked as such
+  ---
+  duration_ms: 12.132907
+  type: 'test'
+  ...
+# Subtest: skip removes a cuisine from the week; love boosts it
+ok 46 - skip removes a cuisine from the week; love boosts it
+  ---
+  duration_ms: 9.220217
+  type: 'test'
+  ...
+# Subtest: file integrity: tags declared, sources present, no duplicate terms
+ok 47 - file integrity: tags declared, sources present, no duplicate terms
+  ---
+  duration_ms: 7.265011
+  type: 'test'
+  ...
+# Subtest: packaged label: enriched wheat flour, sugar, soybean oil, whey, soy lecithin, natural flavors
+ok 48 - packaged label: enriched wheat flour, sugar, soybean oil, whey, soy lecithin, natural flavors
+  ---
+  duration_ms: 52.61278
+  type: 'test'
+  ...
+# Subtest: recipe: salmon, olive oil, garlic, lemon
+ok 49 - recipe: salmon, olive oil, garlic, lemon
+  ---
+  duration_ms: 8.043516
+  type: 'test'
+  ...
+# Subtest: peanut butter is peanut, not milk
+ok 50 - peanut butter is peanut, not milk
+  ---
+  duration_ms: 4.562511
+  type: 'test'
+  ...
+# Subtest: plural and boundary handling
+ok 51 - plural and boundary handling
+  ---
+  duration_ms: 49.959694
+  type: 'test'
+  ...
+# Subtest: unknown-risk terms are flagged, not passed
+ok 52 - unknown-risk terms are flagged, not passed
+  ---
+  duration_ms: 2.44047
+  type: 'test'
+  ...
+# Subtest: unmatched ingredient produces no tags (engine must report it as not recognized, never as safe)
+ok 53 - unmatched ingredient produces no tags (engine must report it as not recognized, never as safe)
+  ---
+  duration_ms: 1.213216
+  type: 'test'
+  ...
+# Subtest: list matching strips amounts and matches word or phrase, singular or plural
+ok 54 - list matching strips amounts and matches word or phrase, singular or plural
+  ---
+  duration_ms: 41.787239
+  type: 'test'
+  ...
+# Subtest: strict mode: an unlisted ingredient is a caution named in the check; off, the avoid list alone decides
+ok 55 - strict mode: an unlisted ingredient is a caution named in the check; off, the avoid list alone decides
+  ---
+  duration_ms: 210.042916
+  type: 'test'
+  ...
+# Subtest: per-person lists: a tolerated food is approved; a food the person reacts to is a caution even though the list allows it
+ok 56 - per-person lists: a tolerated food is approved; a food the person reacts to is a caution even though the list allows it
+  ---
+  duration_ms: 3.64172
+  type: 'test'
+  ...
+# Subtest: every Peace Meal diet recipe passes strict mode for the diets it was written for
+ok 57 - every Peace Meal diet recipe passes strict mode for the diets it was written for
+  ---
+  duration_ms: 683.74967
+  type: 'test'
+  ...
+# Subtest: no rule, education, or article says the app screens for eating disorders or asks about pancreatitis
+ok 58 - no rule, education, or article says the app screens for eating disorders or asks about pancreatitis
+  ---
+  duration_ms: 7.857397
+  type: 'test'
+  ...
+# Subtest: the GLP-1 and PCOS screening rules keep their source sentence and say the app does not screen
+ok 59 - the GLP-1 and PCOS screening rules keep their source sentence and say the app does not screen
+  ---
+  duration_ms: 0.440472
+  type: 'test'
+  ...
+# Subtest: low-carb: an SGLT2 inhibitor gives a warning and does not block; pregnancy turns the pattern off
+ok 60 - low-carb: an SGLT2 inhibitor gives a warning and does not block; pregnancy turns the pattern off
+  ---
+  duration_ms: 6.463401
+  type: 'test'
+  ...
+# Subtest: the welcome screens count what the app has: conditions from the data, recipes within 3 percent
+ok 61 - the welcome screens count what the app has: conditions from the data, recipes within 3 percent
+  ---
+  duration_ms: 45.117811
+  type: 'test'
+  ...
+# Subtest: energy target: gain adds 300 to 500 kcal, loss subtracts 500 to 750, both cite sources
+ok 62 - energy target: gain adds 300 to 500 kcal, loss subtracts 500 to 750, both cite sources
+  ---
+  duration_ms: 1.651785
+  type: 'test'
+  ...
+# Subtest: GLP-1 flag turns the weight module on with the GLP-1 variant: guidance without the deficit rules
+ok 63 - GLP-1 flag turns the weight module on with the GLP-1 variant: guidance without the deficit rules
+  ---
+  duration_ms: 4.871171
+  type: 'test'
+  ...
+# Subtest: gain goal defaults to two snacks a day
+ok 64 - gain goal defaults to two snacks a day
+  ---
+  duration_ms: 0.519648
+  type: 'test'
+  ...
+# Subtest: roster: everyone in by default, guests out, weekly pattern and per-date exceptions
+ok 65 - roster: everyone in by default, guests out, weekly pattern and per-date exceptions
+  ---
+  duration_ms: 2.98403
+  type: 'test'
+  ...
+# Subtest: seating person: strictest spice, every allergen, everyone's never-agains, kids-only means assembly
+ok 66 - seating person: strictest spice, every allergen, everyone's never-agains, kids-only means assembly
+  ---
+  duration_ms: 0.550244
+  type: 'test'
+  ...
+# Subtest: household week: each seating is planned for its own eaters; servings follow the roster; kids-only seatings do not cook
+ok 67 - household week: each seating is planned for its own eaters; servings follow the roster; kids-only seatings do not cook
+  ---
+  duration_ms: 5635.708079
+  type: 'test'
+  ...
+# Subtest: householdRepick replaces only the named slot and keeps the week untouched
+ok 68 - householdRepick replaces only the named slot and keeps the week untouched
+  ---
+  duration_ms: 82.913266
+  type: 'test'
+  ...
+# Subtest: [1] the medicines-and-food module has its plain-language education and an article
+ok 69 - [1] the medicines-and-food module has its plain-language education and an article
+  ---
+  duration_ms: 1.080589
+  type: 'test'
+  ...
+# Subtest: [2] lime and marmalade are flagged only for someone whose medicine interacts with grapefruit; sweet oranges are not
+ok 70 - [2] lime and marmalade are flagged only for someone whose medicine interacts with grapefruit; sweet oranges are not
+  ---
+  duration_ms: 137.043362
+  type: 'test'
+  ...
+# Subtest: [3] the warfarin rule cites the systematic review on steady vitamin K and keeps Holbrook
+ok 71 - [3] the warfarin rule cites the systematic review on steady vitamin K and keeps Holbrook
+  ---
+  duration_ms: 1.404666
+  type: 'test'
+  ...
+# Subtest: [4] both levothyroxine rules say 60 minutes before breakfast or bedtime 3 or more hours after eating, and call the 4-hour gap untested
+ok 72 - [4] both levothyroxine rules say 60 minutes before breakfast or bedtime 3 or more hours after eating, and call the 4-hour gap untested
+  ---
+  duration_ms: 5.965466
+  type: 'test'
+  ...
+# Subtest: [6] meat and fish stocks are left out however they are made; a quick homemade vegetable stock is still water
+ok 73 - [6] meat and fish stocks are left out however they are made; a quick homemade vegetable stock is still water
+  ---
+  duration_ms: 38.469265
+  type: 'test'
+  ...
+# Subtest: [8] [9] the leaflet decides: its avoid and risky foods are left out, its well tolerated ones stay
+ok 74 - [8] [9] the leaflet decides: its avoid and risky foods are left out, its well tolerated ones stay
+  ---
+  duration_ms: 2.077952
+  type: 'test'
+  ...
+# Subtest: [8] [9] every Peace Meal recipe written for low histamine passes it, and those named for a food now left out are written for another diet or none
+ok 75 - [8] [9] every Peace Meal recipe written for low histamine passes it, and those named for a food now left out are written for another diet or none
+  ---
+  duration_ms: 428.136211
+  type: 'test'
+  ...
+# Subtest: [5] a person with a daily limit never gets a recipe without numbers in the week, even favorited with the switch on
+ok 76 - [5] a person with a daily limit never gets a recipe without numbers in the week, even favorited with the switch on
+  ---
+  duration_ms: 4870.90216
+  type: 'test'
+  ...
+# Subtest: [7] set amounts still show a note only; small serves logged separately in one meal add up; the histamine list shows its amounts
+ok 77 - [7] set amounts still show a note only; small serves logged separately in one meal add up; the histamine list shows its amounts
+  ---
+  duration_ms: 21.845443
+  type: 'test'
+  ...
+# Subtest: [10] the false alarms are gone and the real tags stay
+ok 78 - [10] the false alarms are gone and the real tags stay
+  ---
+  duration_ms: 28.128349
+  type: 'test'
+  ...
+# Subtest: [11] a new person sees ten common conditions first; rarer ones are listed below them and in search
+ok 79 - [11] a new person sees ten common conditions first; rarer ones are listed below them and in search
+  ---
+  duration_ms: 2.019645
+  type: 'test'
+  ...
+# Subtest: [12] the thirty recipes for both diets are on by default, existing profiles are switched on once, and the fish and steak recipes start with freshness
+ok 80 - [12] the thirty recipes for both diets are on by default, existing profiles are switched on once, and the fish and steak recipes start with freshness
+  ---
+  duration_ms: 3.243507
+  type: 'test'
+  ...
+# Subtest: [13] item 1: no new ADA consensus report yet; checked and dated, so no VERIFY flag (A36)
+ok 81 - [13] item 1: no new ADA consensus report yet; checked and dated, so no VERIFY flag (A36)
+  ---
+  duration_ms: 0.215234
+  type: 'test'
+  ...
+# Subtest: [13] item 2 and [15]: the CRPS source has its real citation, stays in the file, and nothing cites it
+ok 82 - [13] item 2 and [15]: the CRPS source has its real citation, stays in the file, and nothing cites it
+  ---
+  duration_ms: 1.102635
+  type: 'test'
+  ...
+# Subtest: [13] item 3: GLP-1 protein is 80 to 120 g a day whatever the weight, and needs no weight
+ok 83 - [13] item 3: GLP-1 protein is 80 to 120 g a day whatever the weight, and needs no weight
+  ---
+  duration_ms: 0.95084
+  type: 'test'
+  ...
+# Subtest: [13] item 4: vegetarian rules cite the 2025 Academy position; pregnancy and breastfeeding get a referral reminder
+ok 84 - [13] item 4: vegetarian rules cite the 2025 Academy position; pregnancy and breastfeeding get a referral reminder
+  ---
+  duration_ms: 0.867361
+  type: 'test'
+  ...
+# Subtest: [13] items 5 to 7: SCOFF, ACOG 190, and the Academy 2014 pregnancy position carry what was found
+ok 85 - [13] items 5 to 7: SCOFF, ACOG 190, and the Academy 2014 pregnancy position carry what was found
+  ---
+  duration_ms: 0.214209
+  type: 'test'
+  ...
+# Subtest: [13] item 8: coconut and chestnut stay tree nuts on purpose, and heartnut is now recognized
+ok 86 - [13] item 8: coconut and chestnut stay tree nuts on purpose, and heartnut is now recognized
+  ---
+  duration_ms: 3.454937
+  type: 'test'
+  ...
+# Subtest: [13] item 9: the support text gives the Alliance helpline and 988
+ok 87 - [13] item 9: the support text gives the Alliance helpline and 988
+  ---
+  duration_ms: 0.868367
+  type: 'test'
+  ...
+# Subtest: except phrases also match their plural, as the dictionary notes say
+ok 88 - except phrases also match their plural, as the dictionary notes say
+  ---
+  duration_ms: 5.064434
+  type: 'test'
+  ...
+# Subtest: [14] the fonts ship with the app: no request to Google, every font file is present, and the licence travels with them
+ok 89 - [14] the fonts ship with the app: no request to Google, every font file is present, and the licence travels with them
+  ---
+  duration_ms: 0.880924
+  type: 'test'
+  ...
+# Subtest: [10] plain rice passes for celiac, but crisped rice cereal, pilaf and rice mixes, fried rice, and vermicelli ask first
+ok 90 - [10] plain rice passes for celiac, but crisped rice cereal, pilaf and rice mixes, fried rice, and vermicelli ask first
+  ---
+  duration_ms: 11.649784
+  type: 'test'
+  ...
+# Subtest: other allergies: a food outside the nine is a hard stop on labels, foods, and recipes
+ok 91 - other allergies: a food outside the nine is a hard stop on labels, foods, and recipes
+  ---
+  duration_ms: 110.624815
+  type: 'test'
+  ...
+# Subtest: other allergies: a linked food with no display text is still checked by its name
+ok 92 - other allergies: a linked food with no display text is still checked by its name
+  ---
+  duration_ms: 1.751491
+  type: 'test'
+  ...
+# Subtest: other allergies: words that can hide an allergen become a caution, as they do for the nine
+ok 93 - other allergies: words that can hide an allergen become a caution, as they do for the nine
+  ---
+  duration_ms: 2.372124
+  type: 'test'
+  ...
+# Subtest: other allergies: short words must start a word ("oat" is not in "goat"); longer ones match anywhere
+ok 94 - other allergies: short words must start a word ("oat" is not in "goat"); longer ones match anywhere
+  ---
+  duration_ms: 0.305834
+  type: 'test'
+  ...
+# Subtest: other allergies: the plan brings in the food-allergies module and lists them; the promise in its rule is kept
+ok 95 - other allergies: the plan brings in the food-allergies module and lists them; the promise in its rule is kept
+  ---
+  duration_ms: 0.444183
+  type: 'test'
+  ...
+# Subtest: other allergies: shared meals and shared profiles keep them
+ok 96 - other allergies: shared meals and shared profiles keep them
+  ---
+  duration_ms: 0.821813
+  type: 'test'
+  ...
+# Subtest: meal search: a common word still shows plain foods, closest first, beside the recipes
+ok 97 - meal search: a common word still shows plain foods, closest first, beside the recipes
+  ---
+  duration_ms: 77.016787
+  type: 'test'
+  ...
+# Subtest: meal search: picking a result opens the amount sheet without closing it again
+ok 98 - meal search: picking a result opens the amount sheet without closing it again
+  ---
+  duration_ms: 0.533542
+  type: 'test'
+  ...
+# Subtest: VERIFY: no source or article reference carries a flag, and no article text says (VERIFY)
+ok 99 - VERIFY: no source or article reference carries a flag, and no article text says (VERIFY)
+  ---
+  duration_ms: 1.640485
+  type: 'test'
+  ...
+# Subtest: VERIFY: the four confirmed citations carry their issue numbers (A35)
+ok 100 - VERIFY: the four confirmed citations carry their issue numbers (A35)
+  ---
+  duration_ms: 0.459066
+  type: 'test'
+  ...
+# Subtest: VERIFY: the app no longer asks readers to check sources themselves
+ok 101 - VERIFY: the app no longer asks readers to check sources themselves
+  ---
+  duration_ms: 0.347797
+  type: 'test'
+  ...
+# Subtest: the Mediterranean diet is named as the anti-inflammatory diet and search finds it either way
+ok 102 - the Mediterranean diet is named as the anti-inflammatory diet and search finds it either way
+  ---
+  duration_ms: 0.11451
+  type: 'test'
+  ...
+# Subtest: recipe parts: a part written only as text is searched by its food words, never turned into numbers
+ok 103 - recipe parts: a part written only as text is searched by its food words, never turned into numbers
+  ---
+  duration_ms: 1.210748
+  type: 'test'
+  ...
+# Subtest: history: Today and lite Today have buttons for the weight history and the food and symptom history
+ok 104 - history: Today and lite Today have buttons for the weight history and the food and symptom history
+  ---
+  duration_ms: 0.348429
+  type: 'test'
+  ...
+# Subtest: hypertension alone applies sodium limit and potassium target
+ok 105 - hypertension alone applies sodium limit and potassium target
+  ---
+  duration_ms: 5.163368
+  type: 'test'
+  ...
+# Subtest: hypertension + POTS: no sodium number, hard-conflict notice, tier2 missing
+ok 106 - hypertension + POTS: no sodium number, hard-conflict notice, tier2 missing
+  ---
+  duration_ms: 0.842783
+  type: 'test'
+  ...
+# Subtest: hypertension + POTS with clinician sodium number applies that number
+ok 107 - hypertension + POTS with clinician sodium number applies that number
+  ---
+  duration_ms: 1.345698
+  type: 'test'
+  ...
+# Subtest: CKD suppresses hypertension potassium target
+ok 108 - CKD suppresses hypertension potassium target
+  ---
+  duration_ms: 0.693724
+  type: 'test'
+  ...
+# Subtest: per-kg rule without weight asks for weight and applies nothing
+ok 109 - per-kg rule without weight asks for weight and applies nothing
+  ---
+  duration_ms: 0.388053
+  type: 'test'
+  ...
+# Subtest: medication answer suppresses potassium target
+ok 110 - medication answer suppresses potassium target
+  ---
+  duration_ms: 0.229061
+  type: 'test'
+  ...
+# Subtest: POTS tier 2 without number runs in tier 1 only with notice
+ok 111 - POTS tier 2 without number runs in tier 1 only with notice
+  ---
+  duration_ms: 0.363809
+  type: 'test'
+  ...
+# Subtest: phase gating: elimination rules apply in elimination, not in reintroduction; a phase never ends on its own; a check-in asks
+ok 112 - phase gating: elimination rules apply in elimination, not in reintroduction; a phase never ends on its own; a check-in asks
+  ---
+  duration_ms: 3.525355
+  type: 'test'
+  ...
+# Subtest: pregnancy disables keto and elimination protocols
+ok 113 - pregnancy disables keto and elimination protocols
+  ---
+  duration_ms: 0.604639
+  type: 'test'
+  ...
+# Subtest: positive screen turns off calorie targets and new eliminations but keeps allergens
+ok 114 - positive screen turns off calorie targets and new eliminations but keeps allergens
+  ---
+  duration_ms: 0.466635
+  type: 'test'
+  ...
+# Subtest: allergens are hard even if also a preference
+ok 115 - allergens are hard even if also a preference
+  ---
+  duration_ms: 0.174157
+  type: 'test'
+  ...
+# Subtest: restriction load warns at three eliminations
+ok 116 - restriction load warns at three eliminations
+  ---
+  duration_ms: 0.265143
+  type: 'test'
+  ...
+# Subtest: IBD flare mode applies flare rules and expires
+ok 117 - IBD flare mode applies flare rules and expires
+  ---
+  duration_ms: 0.239479
+  type: 'test'
+  ...
+# Subtest: allergy module applies only the person's own allergens (real content shape)
+ok 118 - allergy module applies only the person's own allergens (real content shape)
+  ---
+  duration_ms: 0.132588
+  type: 'test'
+  ...
+# Subtest: elimination phases default to a 4-week check-in; an explicit 0 turns it off; a set number is kept
+ok 119 - elimination phases default to a 4-week check-in; an explicit 0 turns it off; a set number is kept
+  ---
+  duration_ms: 0.171851
+  type: 'test'
+  ...
+# Subtest: a medicine answered yes switches the interaction module on by itself; its levothyroxine rule yields to the thyroid module
+ok 120 - a medicine answered yes switches the interaction module on by itself; its levothyroxine rule yields to the thyroid module
+  ---
+  duration_ms: 0.425383
+  type: 'test'
+  ...
+# Subtest: higher protein is suggested at 65 and on a GLP-1 medicine, never added silently, and stays quiet once dismissed or added
+ok 121 - higher protein is suggested at 65 and on a GLP-1 medicine, never added silently, and stays quiet once dismissed or added
+  ---
+  duration_ms: 0.370561
+  type: 'test'
+  ...
+# Subtest: week plan never schedules a hard-excluded recipe and respects no-cook days
+ok 122 - week plan never schedules a hard-excluded recipe and respects no-cook days
+  ---
+  duration_ms: 11.082193
+  type: 'test'
+  ...
+# Subtest: week plan is deterministic for the same seed and changes with a new seed
+ok 123 - week plan is deterministic for the same seed and changes with a new seed
+  ---
+  duration_ms: 11.34994
+  type: 'test'
+  ...
+# Subtest: sodium-heavy recipe is scored down when it would break the daily limit
+ok 124 - sodium-heavy recipe is scored down when it would break the daily limit
+  ---
+  duration_ms: 6.335717
+  type: 'test'
+  ...
+# Subtest: grocery list sums grams across cooked meals and converts to portions
+ok 125 - grocery list sums grams across cooked meals and converts to portions
+  ---
+  duration_ms: 8.608514
+  type: 'test'
+  ...
+# Subtest: favorites score up and never-again recipes are excluded
+ok 126 - favorites score up and never-again recipes are excluded
+  ---
+  duration_ms: 2.109299
+  type: 'test'
+  ...
+# Subtest: text-only ingredients from imported recipes appear on the grocery list by name
+ok 127 - text-only ingredients from imported recipes appear on the grocery list by name
+  ---
+  duration_ms: 1.389152
+  type: 'test'
+  ...
+# Subtest: only recipes that pass every check are planned: a soft avoid, an avoid word, or a serving over a limit is left out
+ok 128 - only recipes that pass every check are planned: a soft avoid, an avoid word, or a serving over a limit is left out
+  ---
+  duration_ms: 2.980469
+  type: 'test'
+  ...
+# Subtest: episodes: only this person, only entries with a symptom above zero, in range
+ok 129 - episodes: only this person, only entries with a symptom above zero, in range
+  ---
+  duration_ms: 12.81105
+  type: 'test'
+  ...
+# Subtest: eaten before an episode: the 24 hours before it, this person only
+ok 130 - eaten before an episode: the 24 hours before it, this person only
+  ---
+  duration_ms: 0.807381
+  type: 'test'
+  ...
+# Subtest: foods before symptoms are ranked by how many episodes they preceded, and counts are honest
+ok 131 - foods before symptoms are ranked by how many episodes they preceded, and counts are honest
+  ---
+  duration_ms: 1.545486
+  type: 'test'
+  ...
+# Subtest: weight trend and the day list, with the symptom-only option
+ok 132 - weight trend and the day list, with the symptom-only option
+  ---
+  duration_ms: 2.059118
+  type: 'test'
+  ...
+# Subtest: average daily intake counts only days with food logged and only this person
+ok 133 - average daily intake counts only days with food logged and only this person
+  ---
+  duration_ms: 0.67306
+  type: 'test'
+  ...
+# Subtest: unintended weight loss: GLIM 5% within six months or 10% beyond; off when losing weight is the goal; needs a recent weight
+ok 134 - unintended weight loss: GLIM 5% within six months or 10% beyond; off when losing weight is the goal; needs a recent weight
+  ---
+  duration_ms: 0.639739
+  type: 'test'
+  ...
+# Subtest: the lite build copies the shared key to its own key, verifies it, and leaves the shared key in place
+ok 135 - the lite build copies the shared key to its own key, verifies it, and leaves the shared key in place
+  ---
+  duration_ms: 1.521486
+  type: 'test'
+  ...
+# Subtest: lite and full on the same address each get their own copy and stop overwriting each other
+ok 136 - lite and full on the same address each get their own copy and stop overwriting each other
+  ---
+  duration_ms: 1.673565
+  type: 'test'
+  ...
+# Subtest: nothing is lost when the copy fails partway: the build keeps using the old key and tries again next time
+ok 137 - nothing is lost when the copy fails partway: the build keeps using the old key and tries again next time
+  ---
+  duration_ms: 0.560739
+  type: 'test'
+  ...
+# Subtest: a copy that does not read back the same is thrown away and the old key stays in use
+ok 138 - a copy that does not read back the same is thrown away and the old key stays in use
+  ---
+  duration_ms: 0.305246
+  type: 'test'
+  ...
+# Subtest: the copy is verified even when the note that records it cannot be written
+ok 139 - the copy is verified even when the note that records it cannot be written
+  ---
+  duration_ms: 0.341517
+  type: 'test'
+  ...
+# Subtest: unreadable old data is left where it is and never overwritten
+ok 140 - unreadable old data is left where it is and never overwritten
+  ---
+  duration_ms: 1.33583
+  type: 'test'
+  ...
+# Subtest: a build that already has its own key is left alone; a new install starts empty
+ok 141 - a build that already has its own key is left alone; a new install starts empty
+  ---
+  duration_ms: 0.319413
+  type: 'test'
+  ...
+# Subtest: Clear all data does not bring the old copy back, and removes it only when the other build no longer needs it
+ok 142 - Clear all data does not bring the old copy back, and removes it only when the other build no longer needs it
+  ---
+  duration_ms: 0.504928
+  type: 'test'
+  ...
+# Subtest: the backup file format is unchanged: an export imports back to the same people and log
+ok 143 - the backup file format is unchanged: an export imports back to the same people and log
+  ---
+  duration_ms: 0.438531
+  type: 'test'
+  ...
+# Subtest: the backup reminder comes up a month after the last backup, or a month after first use when there has been none
+ok 144 - the backup reminder comes up a month after the last backup, or a month after first use when there has been none
+  ---
+  duration_ms: 0.752906
+  type: 'test'
+  ...
+# Subtest: root sw.js: serves the cached copy first; the network is not asked
+ok 145 - root sw.js: serves the cached copy first; the network is not asked
+  ---
+  duration_ms: 5.848746
+  type: 'test'
+  ...
+# Subtest: root sw.js: switches to a waiting version only when the page asks
+ok 146 - root sw.js: switches to a waiting version only when the page asks
+  ---
+  duration_ms: 3.136833
+  type: 'test'
+  ...
+# Subtest: root sw.js: files that are not cached yet come from the network and are kept
+ok 147 - root sw.js: files that are not cached yet come from the network and are kept
+  ---
+  duration_ms: 0.816341
+  type: 'test'
+  ...
+# Subtest: the Pages worker for /lite/ and /full/: serves the cached copy first; the network is not asked
+ok 148 - the Pages worker for /lite/ and /full/: serves the cached copy first; the network is not asked
+  ---
+  duration_ms: 1.243772
+  type: 'test'
+  ...
+# Subtest: the Pages worker for /lite/ and /full/: switches to a waiting version only when the page asks
+ok 149 - the Pages worker for /lite/ and /full/: switches to a waiting version only when the page asks
+  ---
+  duration_ms: 1.002428
+  type: 'test'
+  ...
+# Subtest: the Pages worker for /lite/ and /full/: files that are not cached yet come from the network and are kept
+ok 150 - the Pages worker for /lite/ and /full/: files that are not cached yet come from the network and are kept
+  ---
+  duration_ms: 0.962125
+  type: 'test'
+  ...
+# Subtest: the Pages workers for /full/ and /lite/ share one origin and never delete each other's copy
+ok 151 - the Pages workers for /full/ and /lite/ share one origin and never delete each other's copy
+  ---
+  duration_ms: 5.714038
+  type: 'test'
+  ...
+# Subtest: root sw.js lists every module, stylesheet, font, and data file the app loads
+ok 152 - root sw.js lists every module, stylesheet, font, and data file the app loads
+  ---
+  duration_ms: 1.067622
+  type: 'test'
+  ...
+# Subtest: a garlic, wheat, and milk recipe gets a low FODMAP copy that passes; nutrition is recomputed from linked foods
+ok 153 - a garlic, wheat, and milk recipe gets a low FODMAP copy that passes; nutrition is recomputed from linked foods
+  ---
+  duration_ms: 135.89945
+  type: 'test'
+  ...
+# Subtest: a published-nutrition recipe with tomato, cheddar, and vinegar gets a low histamine copy marked approximate; vinegar is left out
+ok 154 - a published-nutrition recipe with tomato, cheddar, and vinegar gets a low histamine copy marked approximate; vinegar is left out
+  ---
+  duration_ms: 8.752831
+  type: 'test'
+  ...
+# Subtest: an offending ingredient with no swap leaves the recipe alone; a recipe with nothing to swap returns null
+ok 155 - an offending ingredient with no swap leaves the recipe alone; a recipe with nothing to swap returns null
+  ---
+  duration_ms: 2.282906
+  type: 'test'
+  ...
+# Subtest: adapted copies belong only to pools whose plan restricts that family
+ok 156 - adapted copies belong only to pools whose plan restricts that family
+  ---
+  duration_ms: 1.994655
+  type: 'test'
+  ...
+# Subtest: buildAdaptedRecipes keeps only copies that pass the family plan
+ok 157 - buildAdaptedRecipes keeps only copies that pass the family plan
+  ---
+  duration_ms: 1.153562
+  type: 'test'
+  ...
+# Subtest: a plan with the MCAS freshness rule schedules no leftovers and batches nothing
+ok 158 - a plan with the MCAS freshness rule schedules no leftovers and batches nothing
+  ---
+  duration_ms: 365.550822
+  type: 'test'
+  ...
+# Subtest: VA recipes: about two hundred, each with its source, licence, attribution, and published nutrition
+ok 159 - VA recipes: about two hundred, each with its source, licence, attribution, and published nutrition
+  ---
+  duration_ms: 1.956635
+  type: 'test'
+  ...
+# Subtest: VA recipes: no card adapted from another source, and no staff names stored
+ok 160 - VA recipes: no card adapted from another source, and no staff names stored
+  ---
+  duration_ms: 4.141126
+  type: 'test'
+  ...
+# Subtest: VA recipes: the titles left out for cultural fit or for not being a dish stay out
+ok 161 - VA recipes: the titles left out for cultural fit or for not being a dish stay out
+  ---
+  duration_ms: 0.315284
+  type: 'test'
+  ...
+# Subtest: VA recipes: a collection switch in Settings, on by default, in both builds
+ok 162 - VA recipes: a collection switch in Settings, on by default, in both builds
+  ---
+  duration_ms: 0.947862
+  type: 'test'
+  ...
+# Subtest: VA recipes: checked like every other recipe (a peanut dressing fails for a peanut allergy)
+ok 163 - VA recipes: checked like every other recipe (a peanut dressing fails for a peanut allergy)
+  ---
+  duration_ms: 273.332786
+  type: 'test'
+  ...
+# Subtest: VA wording: "e.g." and percentages are not ingredients, and the foods after "e.g." are still checked
+ok 164 - VA wording: "e.g." and percentages are not ingredients, and the foods after "e.g." are still checked
+  ---
+  duration_ms: 40.186274
+  type: 'test'
+  ...
+# Subtest: units convert both ways
+ok 165 - units convert both ways
+  ---
+  duration_ms: 2.212755
+  type: 'test'
+  ...
+# Subtest: Mifflin-St Jeor and targets
+ok 166 - Mifflin-St Jeor and targets
+  ---
+  duration_ms: 0.379193
+  type: 'test'
+  ...
+# Subtest: group plan takes the strictest of everyone and keeps allergens hard
+ok 167 - group plan takes the strictest of everyone and keeps allergens hard
+  ---
+  duration_ms: 4.356485
+  type: 'test'
+  ...
+# Subtest: group plan sodium is the lowest limit among people
+ok 168 - group plan sodium is the lowest limit among people
+  ---
+  duration_ms: 1.007952
+  type: 'test'
+  ...
+# Subtest: custom user-defined pattern becomes rules with the user-defined source
+ok 169 - custom user-defined pattern becomes rules with the user-defined source
+  ---
+  duration_ms: 0.58957
+  type: 'test'
+  ...
+# Subtest: shared profile excludes logs and keeps rules
+ok 170 - shared profile excludes logs and keeps rules
+  ---
+  duration_ms: 0.560562
+  type: 'test'
+  ...
+# Subtest: pantry matching ranks by missing ingredients and treats staples as on hand
+ok 171 - pantry matching ranks by missing ingredients and treats staples as on hand
+  ---
+  duration_ms: 1.080272
+  type: 'test'
+  ...
+# Subtest: grocery adjustments and change log
+ok 172 - grocery adjustments and change log
+  ---
+  duration_ms: 0.513042
+  type: 'test'
+  ...
+# Subtest: component classifier: sauces, dressings, stocks, and doughs are components; dishes served with them are not
+ok 173 - component classifier: sauces, dressings, stocks, and doughs are components; dishes served with them are not
+  ---
+  duration_ms: 4.163639
+  type: 'test'
+  ...
+# Subtest: breakfast sanity drops desserts and party food, keeps real breakfasts
+ok 174 - breakfast sanity drops desserts and party food, keeps real breakfasts
+  ---
+  duration_ms: 2.126807
+  type: 'test'
+  ...
+# Subtest: data on disk: no component is tagged as a meal, and no plain hummus sits in breakfast
+ok 175 - data on disk: no component is tagged as a meal, and no plain hummus sits in breakfast
+  ---
+  duration_ms: 37.213816
+  type: 'test'
+  ...
+# Subtest: heat estimate: tiers, negation, pinches, and pepper
+ok 176 - heat estimate: tiers, negation, pinches, and pepper
+  ---
+  duration_ms: 22.519913
+  type: 'test'
+  ...
+# Subtest: spice preference excludes above the level and nudges within it
+ok 177 - spice preference excludes above the level and nudges within it
+  ---
+  duration_ms: 1.524103
+  type: 'test'
+  ...
+# Subtest: a per-date override changes that date only and never the standing weekday answer
+ok 178 - a per-date override changes that date only and never the standing weekday answer
+  ---
+  duration_ms: 0.260631
+  type: 'test'
+  ...
+# Subtest: mealFits: leftovers and assembly always fit; cooked meals need the time
+ok 179 - mealFits: leftovers and assembly always fit; cooked meals need the time
+  ---
+  duration_ms: 0.329547
+  type: 'test'
+  ...
+# Subtest: repickSlots replaces only the named slots of one day; every other meal in the week is untouched
+ok 180 - repickSlots replaces only the named slots of one day; every other meal in the week is untouched
+  ---
+  duration_ms: 10075.445055
+  type: 'test'
+  ...
+# Subtest: buildWeekPlan honours a per-date override on that date only
+ok 181 - buildWeekPlan honours a per-date override on that date only
+  ---
+  duration_ms: 337.175735
+  type: 'test'
+  ...
+# Subtest: snack slots: one by default, two for reflux without an evening snack, two with a bedtime snack for GDM, and the person can override
+ok 182 - snack slots: one by default, two for reflux without an evening snack, two with a bedtime snack for GDM, and the person can override
+  ---
+  duration_ms: 0.602591
+  type: 'test'
+  ...
+# Subtest: week plan: snack slots are filled from snack recipes, components are never scheduled, spice setting holds
+ok 183 - week plan: snack slots are filled from snack recipes, components are never scheduled, spice setting holds
+  ---
+  duration_ms: 751.993523
+  type: 'test'
+  ...
+1..183
+# tests 183
+# suites 0
+# pass 183
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 18822.198748
+
+> peace-meal@0.1.0 bundle
+> node tools/bundle.mjs
+
+dist/nutrition-app.html 11805 KB
+exit code: 0

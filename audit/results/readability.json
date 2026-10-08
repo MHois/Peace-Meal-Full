@@ -1,0 +1,1064 @@
+{
+ "summary": {
+  "texts": 1846,
+  "sentences": 3463,
+  "medianGrade": 9.1,
+  "over12": 930,
+  "over25words": 371,
+  "withAbbrev": 637,
+  "referenceSentences": 260,
+  "referenceMedianGrade": 13.3
+ },
+ "hardestToActOn": [
+  {
+   "where": "articles.json \"Hypertension (high blood pressure)\" / Numbers that matter",
+   "lite": true,
+   "sentence": "Numbers that require a clinician: your potassium intake if you have chronic kidney disease or take an ACE inhibitor, an ARB, spironolactone, or a potassium-sparing diuretic (serum potassium must be monitored and the app suppresses the target); your sodium intake if you have severe orthostatic hypotension; and, per Phase 1, any sodium number at all if a high-sodium condition such as POTS is also present.",
+   "words": 65,
+   "grade": 29.9,
+   "abbrev": [
+    "ACE",
+    "ARB",
+    "POTS"
+   ],
+   "long": 5,
+   "hardness": 41.2
+  },
+  {
+   "where": "articles.json \"IBS and the low FODMAP protocol\" / What this condition is",
+   "lite": true,
+   "sentence": "FODMAPs are short-chain carbohydrates that are poorly absorbed in the small intestine and fermented by gut bacteria: oligosaccharides (fructans and galacto-oligosaccharides in wheat, rye, onion, garlic, and legumes), disaccharides (lactose), monosaccharides (excess fructose in honey, apples, mango, and high-fructose corn syrup), and polyols (sorbitol and mannitol in stone fruits and sugar-free gum).",
+   "words": 52,
+   "grade": 28.1,
+   "abbrev": [
+    "FODMAPs"
+   ],
+   "long": 5,
+   "hardness": 34.4
+  },
+  {
+   "where": "articles.json \"Pregnancy, gestational diabetes, and breastfeeding\" / Pregnancy: what to eat more of and what to avoid",
+   "lite": true,
+   "sentence": "More of: folate-rich foods (leafy greens, beans, lentils, fortified grains) on top of the supplement; iron from lean meat, beans, and fortified cereal with vitamin C; iodine from iodized salt, dairy, and seafood; choline from eggs; calcium from dairy or fortified alternatives; and 8 to 12 oz a week of low-mercury fish such as salmon, sardines, trout, shrimp, cod, tilapia, and canned light tuna.",
+   "words": 64,
+   "grade": 27.3,
+   "abbrev": [],
+   "long": 3,
+   "hardness": 33.9
+  },
+  {
+   "where": "articles.json \"Dialysis\" / What to limit or avoid",
+   "lite": true,
+   "sentence": "Clinician-set rules: potassium limit (hemodialysis patients usually restrict; peritoneal dialysis patients often do not), phosphorus limit (natural phosphorus limits come from labs, after additives are cut), and fluid limit (hemodialysis is often limited by weight gain between sessions, commonly about 1 L a day plus urine output; peritoneal dialysis is more liberal).",
+   "words": 52,
+   "grade": 28.5,
+   "abbrev": [],
+   "long": 5,
+   "hardness": 33.3
+  },
+  {
+   "where": "articles.json \"MCAS and the low-histamine trial\" / What to limit or avoid",
+   "lite": true,
+   "sentence": "During the 4 to 6 week trial, the app steers away from foods tagged high-histamine, fermented, or aged, and from alcohol: aged cheeses, cured and processed meats, fermented foods (sauerkraut, kimchi, kombucha, soy sauce, vinegar), shellfish, canned and smoked fish, leftovers more than a day old, and the commonly reported triggers listed above (tomatoes, spinach, citrus, chocolate, nuts, spicy foods, food additives).",
+   "words": 62,
+   "grade": 26.5,
+   "abbrev": [],
+   "long": 1,
+   "hardness": 32.8
+  },
+  {
+   "where": "conditions.json low-carb-ketogenic / lc-screen",
+   "lite": true,
+   "sentence": "Contraindications and cautions to check with your clinician before starting: SGLT2 inhibitor use (euglycemic ketoacidosis risk), insulin or sulfonylurea use (hypoglycemia; dose adjustment needed), pregnancy and breastfeeding, kidney disease, history of pancreatitis, certain rare metabolic disorders, and history of disordered eating.",
+   "words": 41,
+   "grade": 27.5,
+   "abbrev": [
+    "SGLT2"
+   ],
+   "long": 8,
+   "hardness": 32.2
+  },
+  {
+   "where": "articles.json \"Heart failure\" / Numbers that matter",
+   "lite": true,
+   "sentence": "Whether you should eat more or less depends on your medications and blood tests, so the app suppresses potassium encouragement once you report a diuretic, ACE inhibitor, ARB, spironolactone or another MRA, or a potassium-sparing diuretic, and reminds you that your potassium should be monitored.",
+   "words": 45,
+   "grade": 22.9,
+   "abbrev": [
+    "ACE",
+    "ARB",
+    "MRA"
+   ],
+   "long": 5,
+   "hardness": 31.2
+  },
+  {
+   "where": "articles.json \"Soy-free\" / How this app applies it",
+   "lite": true,
+   "sentence": "This module carries an information rule pointing confirmed allergy to Food allergies, a soft avoid rule for preference soy avoidance that you can override at any time, a hidden-soy information note, and a configurable rule for refined soybean oil and soy lecithin that defaults to exclude when the soy allergen is selected.",
+   "words": 52,
+   "grade": 25.6,
+   "abbrev": [],
+   "long": 3,
+   "hardness": 30.4
+  },
+  {
+   "where": "articles.json \"Pregnancy, gestational diabetes, and breastfeeding\" / Numbers that matter",
+   "lite": true,
+   "sentence": "Pregnancy: folic acid 400 mcg a day supplemental (600 mcg dietary folate equivalents total); iodine 150 mcg a day supplemental per ACOG and the American Thyroid Association; caffeine under 200 mg a day; fish 8 to 12 oz a week; calories plus 340 kcal a day in the second trimester and plus 450 in the third.",
+   "words": 56,
+   "grade": 23.3,
+   "abbrev": [
+    "ACOG"
+   ],
+   "long": 5,
+   "hardness": 30.2
+  },
+  {
+   "where": "articles.json \"Celiac disease\" / How this app applies it",
+   "lite": true,
+   "sentence": "Compatible modules: low FODMAP (the FODMAP wheat restriction is about fructans, not gluten; certified gluten-free oats are low FODMAP in limited portions), pregnancy (celiac rules stay on), and iron-deficiency anemia (celiac disease is a common hidden cause; if iron deficiency is selected without celiac, the app mentions screening).",
+   "words": 48,
+   "grade": 25.5,
+   "abbrev": [],
+   "long": 3,
+   "hardness": 29.7
+  },
+  {
+   "where": "articles.json \"Pregnancy, gestational diabetes, and breastfeeding\" / How this app applies it",
+   "lite": true,
+   "sentence": "Pregnancy mode enforces the food-safety and mercury avoids, the alcohol ban, and the caffeine limit, shows the folic acid and prenatal-vitamin rules, and disables weight loss, ketogenic eating, low-carb under 175 g, intermittent fasting, and every elimination protocol except allergen and celiac rules.",
+   "words": 43,
+   "grade": 25.3,
+   "abbrev": [],
+   "long": 5,
+   "hardness": 28.8
+  },
+  {
+   "where": "articles.json \"IBS and the low FODMAP protocol\" / What to eat more of",
+   "lite": true,
+   "sentence": "During elimination, low-FODMAP staples in the portions the database allows: rice, oats, quinoa, potatoes, carrots, zucchini, spinach, tomatoes, cucumber, green beans, firm bananas, oranges, strawberries, kiwi, lactose-free milk, hard cheeses, eggs, plain meat, poultry, fish, firm tofu, and small servings of nuts and seeds.",
+   "words": 44,
+   "grade": 22.8,
+   "abbrev": [
+    "FODMAP"
+   ],
+   "long": 2,
+   "hardness": 27.9
+  },
+  {
+   "where": "articles.json \"Soy-free\" / What to eat more of",
+   "lite": true,
+   "sentence": "Other protein sources, which matter most if you are also vegetarian or vegan: lentils, chickpeas, black beans, kidney beans, peas, and peanuts (if no peanut allergy); quinoa; hemp seeds; seitan if gluten is not a problem; eggs and dairy if your pattern permits them; and meat, poultry, and fish if you eat them.",
+   "words": 53,
+   "grade": 22,
+   "abbrev": [],
+   "long": 1,
+   "hardness": 27
+  },
+  {
+   "where": "articles.json \"Type 2 diabetes and prediabetes\" / What to eat more of",
+   "lite": true,
+   "sentence": "A Mediterranean-style plate (olive oil, fish, vegetables, legumes, nuts) or a DASH plate (vegetables, fruit, whole grains, low-fat dairy, poultry, fish, legumes, nuts) also satisfies the blood pressure and cholesterol modules, so families managing several conditions can use one plan.",
+   "words": 40,
+   "grade": 22.4,
+   "abbrev": [
+    "DASH"
+   ],
+   "long": 4,
+   "hardness": 26.9
+  },
+  {
+   "where": "conditions.json mcas / mcas-counseling",
+   "lite": true,
+   "sentence": "The 2025 AGA update says low-histamine, low-FODMAP, gluten-free, and dairy-free elimination diets can be considered for GI symptoms when MCAS is suspected, delivered with nutrition counseling to avoid the harms of restrictive eating.",
+   "words": 33,
+   "grade": 18.7,
+   "abbrev": [
+    "AGA",
+    "FODMAP",
+    "GI",
+    "MCAS"
+   ],
+   "long": 2,
+   "hardness": 26.7
+  },
+  {
+   "where": "articles.json \"MCAS and the low-histamine trial\" / How this app applies it",
+   "lite": true,
+   "sentence": "Soft conflicts, all resolved by the time limit: heart-healthy and the Mediterranean pattern (nuts, fish, tomatoes, citrus, olive oil, and legumes overlap the avoid list, and the app asks you to acknowledge that), gut health (fermented and high-fiber foods are excluded, then restored in reintroduction), and type 2 diabetes.",
+   "words": 49,
+   "grade": 22.1,
+   "abbrev": [],
+   "long": 2,
+   "hardness": 26.5
+  },
+  {
+   "where": "articles.json \"Type 2 diabetes and prediabetes\" / How this app applies it",
+   "lite": true,
+   "sentence": "At onboarding it asks two medication questions: whether you take insulin or a sulfonylurea (which turns on hypoglycemia awareness notes and requires a clinician-set plan) and whether you take an SGLT2 inhibitor (which turns on the low-carb ketoacidosis caution).",
+   "words": 39,
+   "grade": 21.7,
+   "abbrev": [
+    "SGLT2"
+   ],
+   "long": 7,
+   "hardness": 26.1
+  },
+  {
+   "where": "articles.json \"Low-carbohydrate and ketogenic\" / When to talk to a clinician",
+   "lite": true,
+   "sentence": "Before starting if you take an SGLT2 inhibitor, insulin, or a sulfonylurea; if you are pregnant, breastfeeding, or trying to conceive; if you have kidney disease, a history of pancreatitis, a rare metabolic disorder, or a history of disordered eating.",
+   "words": 40,
+   "grade": 21.3,
+   "abbrev": [
+    "SGLT2"
+   ],
+   "long": 4,
+   "hardness": 25.8
+  },
+  {
+   "where": "articles.json \"Pregnancy, gestational diabetes, and breastfeeding\" / Pregnancy: what to eat more of and what to avoid",
+   "lite": true,
+   "sentence": "Hard rules (enforced): no alcohol; no unpasteurized dairy or juice; no raw or undercooked meat, fish, or eggs; no deli meats or hot dogs unless heated steaming hot; no refrigerated smoked seafood; no raw sprouts; no shark, swordfish, king mackerel, tilefish, bigeye tuna, orange roughy, or marlin.",
+   "words": 47,
+   "grade": 21.6,
+   "abbrev": [],
+   "long": 2,
+   "hardness": 25.7
+  },
+  {
+   "where": "conditions.json ibs-low-fodmap / fodmap-elim-avoid",
+   "lite": true,
+   "sentence": "Elimination, 2 to 6 weeks: restrict high-FODMAP foods (oligosaccharides: wheat, rye, onion, garlic, legumes; disaccharides: lactose; monosaccharides: excess fructose in honey, apples, mango, high-fructose corn syrup; polyols: sorbitol, mannitol, stone fruits, sugar-free gum).",
+   "words": 33,
+   "grade": 22,
+   "abbrev": [
+    "FODMAP"
+   ],
+   "long": 4,
+   "hardness": 25.5
+  },
+  {
+   "where": "articles.json \"Cancer nutrition\" / How this app applies it",
+   "lite": true,
+   "sentence": "Active treatment is Tier 2: turn on the 'currently in active cancer treatment' flag, enter the energy and protein targets from your oncology dietitian, and the app builds around them and offers symptom-specific recipes; without those numbers it shows education and a referral prompt.",
+   "words": 44,
+   "grade": 21.4,
+   "abbrev": [],
+   "long": 3,
+   "hardness": 25
+  },
+  {
+   "where": "articles.json \"Inflammatory bowel disease\" / Common mistakes and myths",
+   "lite": true,
+   "sentence": "The Specific Carbohydrate Diet was not better than a Mediterranean diet in DINE-CD; the Crohn's Disease Exclusion Diet has limited evidence; 'autoimmune protocol' and most online IBD diets have insufficient evidence.",
+   "words": 31,
+   "grade": 18.6,
+   "abbrev": [
+    "DINE",
+    "CD",
+    "IBD"
+   ],
+   "long": 3,
+   "hardness": 24.8
+  },
+  {
+   "where": "articles.json \"PCOS\" / What to eat more of",
+   "lite": true,
+   "sentence": "Lower glycemic index choices (intact grains, legumes, most fruit and vegetables over refined starches and sweets) and a Mediterranean-style pattern have supportive but not decisive evidence for insulin resistance, so they are reasonable defaults rather than requirements.",
+   "words": 37,
+   "grade": 22.1,
+   "abbrev": [],
+   "long": 4,
+   "hardness": 24.7
+  },
+  {
+   "where": "articles.json \"Pregnancy, gestational diabetes, and breastfeeding\" / Gestational diabetes: what changes",
+   "lite": true,
+   "sentence": "Carbohydrate is not eliminated; the minimum is 175 g a day (the Dietary Reference Intake for pregnancy), spread over three meals and two to three snacks, favoring whole grains, beans, vegetables, fruit, and fiber, and avoiding concentrated sweets and sugary drinks (a soft avoid).",
+   "words": 44,
+   "grade": 21.1,
+   "abbrev": [],
+   "long": 3,
+   "hardness": 24.7
+  },
+  {
+   "where": "articles.json \"IBS and the low FODMAP protocol\" / What to limit or avoid",
+   "lite": true,
+   "sentence": "During elimination (2 to 6 weeks), the app steers away from high-FODMAP foods: wheat and rye products, onion, garlic, most legumes, milk and soft cheeses, honey, apples, mango, high-fructose corn syrup, stone fruits, and sugar-free gum and candy sweetened with sorbitol or mannitol.",
+   "words": 43,
+   "grade": 19.6,
+   "abbrev": [
+    "FODMAP"
+   ],
+   "long": 1,
+   "hardness": 24.6
+  },
+  {
+   "where": "articles.json \"Gout\" / What to limit or avoid",
+   "lite": true,
+   "sentence": "Soft rules (recommended, not enforced): limit alcohol, with beer and spirits singled out; limit organ meats (liver, kidney, sweetbreads) and purine-rich seafood such as anchovies, sardines, and shellfish; limit high-fructose corn syrup and sugar-sweetened beverages; lose weight if you are overweight.",
+   "words": 41,
+   "grade": 21.4,
+   "abbrev": [],
+   "long": 2,
+   "hardness": 24.5
+  },
+  {
+   "where": "articles.json \"Osteoporosis and osteopenia\" / What to eat more of",
+   "lite": true,
+   "sentence": "In the app's USDA data, 100 g of 2 percent milk carries 126 mg of calcium, 100 g of plain nonfat yogurt 167 mg, 100 g of cheddar 707 mg, 100 g of calcium-set firm tofu 683 mg, 100 g of canned sardines with bones 382 mg, and 100 g of cooked kale 150 mg.",
+   "words": 55,
+   "grade": 17.7,
+   "abbrev": [
+    "USDA"
+   ],
+   "long": 0,
+   "hardness": 24.5
+  },
+  {
+   "where": "articles.json \"Vegetarian, vegan, and pescatarian\" / What to eat more of",
+   "lite": true,
+   "sentence": "Calcium from fortified plant milks, tofu set with calcium, and leafy greens; iodine from iodized salt or seaweed in modest amounts; omega-3 ALA from ground flax, chia, and walnuts, with algae-based EPA and DHA as an optional supplement.",
+   "words": 38,
+   "grade": 17.2,
+   "abbrev": [
+    "ALA",
+    "EPA",
+    "DHA"
+   ],
+   "long": 0,
+   "hardness": 24.4
+  },
+  {
+   "where": "articles.json \"Low-carbohydrate and ketogenic\" / summary",
+   "lite": true,
+   "sentence": "Before starting, talk with your clinician if you take an SGLT2 inhibitor, insulin, or a sulfonylurea; are pregnant or breastfeeding; or have kidney disease, past pancreatitis, a rare metabolic disorder, or a history of disordered eating.",
+   "words": 36,
+   "grade": 20.4,
+   "abbrev": [
+    "SGLT2"
+   ],
+   "long": 4,
+   "hardness": 24.3
+  },
+  {
+   "where": "conditions.json hypertension / htn-sodium",
+   "lite": true,
+   "sentence": "Contraindicated in severe symptomatic orthostatic hypotension.",
+   "words": 6,
+   "grade": 24.1,
+   "abbrev": [],
+   "long": 4,
+   "hardness": 24.1
+  },
+  {
+   "where": "src/ui/learn.js:9",
+   "lite": true,
+   "sentence": "Insufficient: no condition-specific dietary evidence; only general healthy-eating patterns apply.",
+   "words": 10,
+   "grade": 23.7,
+   "abbrev": [],
+   "long": 3,
+   "hardness": 23.7
+  },
+  {
+   "where": "articles.json \"Rheumatoid arthritis\" / summary",
+   "lite": true,
+   "sentence": "The American College of Rheumatology recommends against the other named diets sold for RA (vegan, ketogenic, elimination, nightshade-free, paleo, gluten-free without celiac disease) and against dietary supplements, including fish oil.",
+   "words": 30,
+   "grade": 22.1,
+   "abbrev": [],
+   "long": 5,
+   "hardness": 23.6
+  },
+  {
+   "where": "conditions.json pediatric / ped-no-restrictive-diets",
+   "lite": true,
+   "sentence": "Restrictive diets in children (low FODMAP, low histamine, ketogenic, elimination diets) carry growth and disordered-eating risk that pediatric GI and allergy societies warn about repeatedly.",
+   "words": 25,
+   "grade": 19.6,
+   "abbrev": [
+    "FODMAP",
+    "GI"
+   ],
+   "long": 4,
+   "hardness": 23.4
+  },
+  {
+   "where": "conditions.json hypertension / htn-potassium",
+   "lite": true,
+   "sentence": "Exception: chronic kidney disease or drugs that reduce potassium excretion (ACE inhibitors, ARBs, spironolactone, potassium-sparing diuretics), where serum potassium must be monitored.",
+   "words": 22,
+   "grade": 19.8,
+   "abbrev": [
+    "ACE",
+    "ARBs"
+   ],
+   "long": 3,
+   "hardness": 23.1
+  },
+  {
+   "where": "articles.json \"Chronic kidney disease, stages 1 to 4\" / When to talk to a clinician",
+   "lite": true,
+   "sentence": "Talk to them before starting any high-protein, low-carbohydrate, or ketogenic plan, and if you also have heart failure, take a diuretic, ACE inhibitor, ARB, or spironolactone, or have been told your potassium is high.",
+   "words": 34,
+   "grade": 17.8,
+   "abbrev": [
+    "ACE",
+    "ARB"
+   ],
+   "long": 4,
+   "hardness": 22.9
+  },
+  {
+   "where": "src/ui/recipes-edit.js:277",
+   "lite": true,
+   "sentence": "; d.equipment = (recipe.equipment || []).slice(); d.meal = (recipe.meal || []).slice(); d.leftovers = recipe.leftovers ||",
+   "words": 8,
+   "grade": 22.9,
+   "abbrev": [],
+   "long": 3,
+   "hardness": 22.9
+  },
+  {
+   "where": "articles.json \"IBS and the low FODMAP protocol\" / How this app applies it",
+   "lite": true,
+   "sentence": "Soft conflicts: the gut-health module's fiber and fermented-food advice runs against elimination, because many prebiotic foods are high FODMAP; the app states this, time-limits elimination, and restores those foods in reintroduction.",
+   "words": 31,
+   "grade": 19.7,
+   "abbrev": [
+    "FODMAP"
+   ],
+   "long": 5,
+   "hardness": 22.8
+  },
+  {
+   "where": "articles.json \"Vegetarian, vegan, and pescatarian\" / How this app applies it",
+   "lite": true,
+   "sentence": "Iron-deficiency anemia raises the iron guidance automatically.",
+   "words": 7,
+   "grade": 22.5,
+   "abbrev": [],
+   "long": 2,
+   "hardness": 22.5
+  },
+  {
+   "where": "articles.json \"Gout\" / How this app applies it",
+   "lite": true,
+   "sentence": "The app tags alcohol, high- and moderate-purine foods, sugar-sweetened beverages, and added sugar as soft avoids, prefers DASH and Mediterranean foods with low-fat dairy, and shows weight loss as a habit if the overweight flag is on.",
+   "words": 37,
+   "grade": 18.3,
+   "abbrev": [
+    "DASH"
+   ],
+   "long": 3,
+   "hardness": 22.4
+  },
+  {
+   "where": "articles.json \"Rheumatoid arthritis\" / What to limit or avoid",
+   "lite": true,
+   "sentence": "Not recommended, on guideline evidence: nightshade-free, elimination, vegan-for-RA, ketogenic, paleo, and gluten-free diets without celiac disease.",
+   "words": 16,
+   "grade": 20.9,
+   "abbrev": [
+    "RA"
+   ],
+   "long": 4,
+   "hardness": 22.4
+  },
+  {
+   "where": "articles.json \"Hypertension (high blood pressure)\" / When to talk to a clinician",
+   "lite": true,
+   "sentence": "Before raising potassium intake or using a potassium salt substitute if you have chronic kidney disease or take an ACE inhibitor, an ARB, spironolactone, or a potassium-sparing diuretic.",
+   "words": 28,
+   "grade": 18.1,
+   "abbrev": [
+    "ACE",
+    "ARB"
+   ],
+   "long": 3,
+   "hardness": 22.3
+  },
+  {
+   "where": "articles.json \"Celiac disease\" / What to eat more of",
+   "lite": true,
+   "sentence": "Foods rich in the nutrients that run low at diagnosis: iron (meat, beans, lentils, fortified gluten-free grains), folate (leafy greens, beans), B12 (animal foods, fortified products), vitamin D and calcium (dairy or fortified alternatives), and zinc (meat, seeds, legumes).",
+   "words": 39,
+   "grade": 19.3,
+   "abbrev": [],
+   "long": 1,
+   "hardness": 22.2
+  },
+  {
+   "where": "articles.json \"Heart failure\" / How this app applies it",
+   "lite": true,
+   "sentence": "The medication question about diuretics, ACE inhibitors, ARBs, and MRAs suppresses potassium encouragement and adds a monitoring reminder.",
+   "words": 18,
+   "grade": 17.7,
+   "abbrev": [
+    "ACE",
+    "ARBs",
+    "MRAs"
+   ],
+   "long": 4,
+   "hardness": 22.2
+  },
+  {
+   "where": "articles.json \"Gastroparesis\" / What to eat more of",
+   "lite": true,
+   "sentence": "Soft, mashable, and blended foods: mashed potatoes, well-cooked peeled carrots and squash, applesauce, ripe bananas, canned peaches and pears, smooth soups, yogurt, cottage cheese, eggs, ground or slow-cooked tender meat, flaked fish, tofu, smooth nut butter (not whole nuts), white rice, and refined pasta.",
+   "words": 44,
+   "grade": 18.5,
+   "abbrev": [],
+   "long": 0,
+   "hardness": 22.1
+  },
+  {
+   "where": "articles.json \"Cancer nutrition\" / What to limit or avoid",
+   "lite": true,
+   "sentence": "Hard refusals by the app: no alkaline diet, no 'sugar feeds cancer' restriction, no high-dose antioxidant supplements (which can interfere with chemotherapy and radiation), and no fasting protocols during treatment outside a clinical trial.",
+   "words": 34,
+   "grade": 19.9,
+   "abbrev": [],
+   "long": 2,
+   "hardness": 22
+  },
+  {
+   "where": "articles.json \"Vegetarian, vegan, and pescatarian\" / What to limit or avoid",
+   "lite": true,
+   "sentence": "The exclusions are soft, preference-based rules the app applies to recipes and foods: vegetarian excludes red meat, poultry, fish, and processed meat; vegan also excludes dairy and eggs; pescatarian excludes red meat, poultry, and processed meat and keeps fish.",
+   "words": 39,
+   "grade": 19,
+   "abbrev": [],
+   "long": 3,
+   "hardness": 21.9
+  },
+  {
+   "where": "articles.json \"Type 1 diabetes (adults)\" / How this app applies it",
+   "lite": true,
+   "sentence": "Two medication questions shape the module: \"Do you use insulin?\" turns on hypoglycemia awareness in meal notes, and \"Do you take an SGLT2 inhibitor?\" adds a ketoacidosis caution to any low-carbohydrate choice.",
+   "words": 32,
+   "grade": 18.6,
+   "abbrev": [
+    "SGLT2"
+   ],
+   "long": 6,
+   "hardness": 21.9
+  },
+  {
+   "where": "articles.json \"Weight management and GLP-1 medications\" / Numbers that matter",
+   "lite": true,
+   "sentence": "The joint advisory offers this fixed target because per-kilogram targets based on actual body weight can overstate needs in people with obesity; higher targets, such as 1.2 to 1.6 g per kg a day, have also been proposed during active loss.",
+   "words": 41,
+   "grade": 18.5,
+   "abbrev": [],
+   "long": 3,
+   "hardness": 21.7
+  },
+  {
+   "where": "articles.json \"Pregnancy, gestational diabetes, and breastfeeding\" / summary",
+   "lite": true,
+   "sentence": "Pregnancy: no alcohol, caffeine under 200 mg a day, 8 to 12 oz a week of low-mercury fish, and strict food safety (no unpasteurized dairy or juice, raw or undercooked meat, fish, or eggs, cold deli meats, refrigerated smoked seafood, or raw sprouts).",
+   "words": 43,
+   "grade": 18.2,
+   "abbrev": [],
+   "long": 3,
+   "hardness": 21.7
+  },
+  {
+   "where": "conditions.json pediatric / ped-early-introduction",
+   "lite": true,
+   "sentence": "Early allergen introduction (peanut at 4 to 6 months reduces allergy; LEAP and EAT trials; now AAP and AAAAI consensus) is background for caregivers, not an app feature.",
+   "words": 28,
+   "grade": 14.3,
+   "abbrev": [
+    "LEAP",
+    "EAT",
+    "AAP",
+    "AAAAI"
+   ],
+   "long": 2,
+   "hardness": 21.5
+  },
+  {
+   "where": "src/ui/people.js:389",
+   "lite": true,
+   "sentence": "vegetarian, Mediterranean (anti-inflammatory), DASH, low-carb, low added sugar",
+   "words": 8,
+   "grade": 20,
+   "abbrev": [
+    "DASH"
+   ],
+   "long": 3,
+   "hardness": 21.5
+  },
+  {
+   "where": "articles.json \"Lactose intolerance\" / Common mistakes and myths",
+   "lite": true,
+   "sentence": "Lactose intolerance is dose-dependent.",
+   "words": 4,
+   "grade": 21.4,
+   "abbrev": [],
+   "long": 2,
+   "hardness": 21.4
+  },
+  {
+   "where": "conditions.json medication-food-interactions / med-warfarin-vitamin-k",
+   "lite": true,
+   "sentence": "Eat about the same amount of leafy greens and other vitamin K foods from week to week, and tell the clinic that manages your INR before a big change in diet, a new supplement, or regular cranberry or grapefruit juice.",
+   "words": 40,
+   "grade": 16.8,
+   "abbrev": [
+    "INR"
+   ],
+   "long": 0,
+   "hardness": 21.3
+  },
+  {
+   "where": "articles.json \"Preference avoidances\" / Common mistakes",
+   "lite": true,
+   "sentence": "Avoiding all dairy here because of lactose intolerance and assuming the app is enforcing a medical rule; total dairy avoidance is a preference for most people with lactose intolerance, which is why it belongs here.",
+   "words": 35,
+   "grade": 19,
+   "abbrev": [],
+   "long": 2,
+   "hardness": 21.3
+  },
+  {
+   "where": "src/ui/people.js:195",
+   "lite": true,
+   "sentence": ": uiEmptyState('No people yet.",
+   "words": 3,
+   "grade": 21,
+   "abbrev": [],
+   "long": 1,
+   "hardness": 21
+  },
+  {
+   "where": "conditions.json food-allergies / allergen-may-contain",
+   "lite": true,
+   "sentence": "\"May contain\" and shared-facility labels are user-configurable.",
+   "words": 7,
+   "grade": 20.9,
+   "abbrev": [],
+   "long": 2,
+   "hardness": 20.9
+  },
+  {
+   "where": "conditions.json dialysis / dial-potassium",
+   "lite": true,
+   "sentence": "Potassium: individualized by serum level; hemodialysis patients typically restrict, peritoneal dialysis patients often do not.",
+   "words": 15,
+   "grade": 20.9,
+   "abbrev": [],
+   "long": 4,
+   "hardness": 20.9
+  },
+  {
+   "where": "conditions.json rheumatoid-arthritis / ra-med-pattern",
+   "lite": true,
+   "sentence": "The ACR guideline conditionally recommends it for people with RA; the certainty of evidence is low, and the benefit seen in trials is modest symptom improvement, not disease control.",
+   "words": 29,
+   "grade": 16.5,
+   "abbrev": [
+    "ACR",
+    "RA"
+   ],
+   "long": 2,
+   "hardness": 20.9
+  },
+  {
+   "where": "articles.json \"Osteoarthritis\" / How this app applies it",
+   "lite": true,
+   "sentence": "It activates only when you set the profile flag \"your clinician has said weight loss would help.\" With that flag on, the weight-management module carries the calorie and portion targets and this module points at the 5 to 10 percent goal.",
+   "words": 41,
+   "grade": 17.7,
+   "abbrev": [],
+   "long": 1,
+   "hardness": 20.8
+  },
+  {
+   "where": "conditions.json ckd-non-dialysis / ckd-potassium-additive",
+   "lite": true,
+   "sentence": "Additive potassium (including potassium-based salt substitutes) is more bioavailable than plant potassium; the hypertension salt-substitute suggestion does not apply in CKD.",
+   "words": 21,
+   "grade": 19,
+   "abbrev": [
+    "CKD"
+   ],
+   "long": 4,
+   "hardness": 20.7
+  },
+  {
+   "where": "conditions.json t2d / t2d-patterns",
+   "lite": true,
+   "sentence": "The ADA endorses several eating patterns with evidence: Mediterranean-style, low-carbohydrate, plant-based, and DASH.",
+   "words": 13,
+   "grade": 17.6,
+   "abbrev": [
+    "ADA",
+    "DASH"
+   ],
+   "long": 2,
+   "hardness": 20.6
+  },
+  {
+   "where": "articles.json \"Cancer nutrition\" / What to limit or avoid",
+   "lite": true,
+   "sentence": "Food safety matters when white blood cell counts are low (wash produce, cook meat and eggs thoroughly, avoid unpasteurized products), but the restrictive neutropenic diet is not supported by evidence and most centers no longer recommend it.",
+   "words": 37,
+   "grade": 18,
+   "abbrev": [],
+   "long": 2,
+   "hardness": 20.6
+  },
+  {
+   "where": "articles.json \"Type 1 diabetes (adults)\" / When to talk to a clinician",
+   "lite": true,
+   "sentence": "Before starting low-carbohydrate, ketogenic, or time-restricted eating, because fasting and very low carbohydrate with insulin raise the risk of hypoglycemia and ketoacidosis.",
+   "words": 22,
+   "grade": 20.3,
+   "abbrev": [],
+   "long": 6,
+   "hardness": 20.6
+  },
+  {
+   "where": "conditions.json osteoarthritis / oa-supplements",
+   "lite": true,
+   "sentence": "Glucosamine, chondroitin, fish oil, vitamin D and other supplements are conditionally recommended against for OA by the ACR/AF guideline.",
+   "words": 19,
+   "grade": 16,
+   "abbrev": [
+    "OA",
+    "ACR",
+    "AF"
+   ],
+   "long": 2,
+   "hardness": 20.5
+  },
+  {
+   "where": "articles.json \"Type 2 diabetes and prediabetes\" / When to talk to a clinician",
+   "lite": true,
+   "sentence": "Insulin and sulfonylureas raise hypoglycemia risk and doses may need adjusting; SGLT2 inhibitors carry a ketoacidosis caution with very low carbohydrate intake.",
+   "words": 22,
+   "grade": 18.7,
+   "abbrev": [
+    "SGLT2"
+   ],
+   "long": 5,
+   "hardness": 20.5
+  },
+  {
+   "where": "articles.json \"Low added sugar\" / How this app applies it",
+   "lite": true,
+   "sentence": "Sugar-sweetened beverages are a soft avoid tag; non-nutritive sweeteners carry an information note with both the ADA short-term position and the WHO long-term position, and you decide.",
+   "words": 27,
+   "grade": 16.4,
+   "abbrev": [
+    "ADA",
+    "WHO"
+   ],
+   "long": 3,
+   "hardness": 20.5
+  },
+  {
+   "where": "articles.json \"Heart failure\" / Common mistakes and myths",
+   "lite": true,
+   "sentence": "Mistake: loading up on potassium-rich foods or potassium salt substitutes while taking spironolactone or an ACE inhibitor; that combination can push blood potassium dangerously high.",
+   "words": 25,
+   "grade": 18.2,
+   "abbrev": [
+    "ACE"
+   ],
+   "long": 5,
+   "hardness": 20.5
+  },
+  {
+   "where": "articles.json \"Portfolio diet\" / What this eating pattern is (in one paragraph)",
+   "lite": true,
+   "sentence": "The Portfolio diet was built by David Jenkins and colleagues in Toronto as a plant-based pattern that combines every food with its own cholesterol-lowering evidence into one plan, on the idea that small effects add up.",
+   "words": 36,
+   "grade": 18.1,
+   "abbrev": [],
+   "long": 1,
+   "hardness": 20.5
+  },
+  {
+   "where": "conditions.json hyperlipidemia / lipid-cholesterol",
+   "lite": true,
+   "sentence": "Dietary cholesterol has no specific numeric limit in US guidance, but the AHA advisory still recommends a pattern low in cholesterol-rich foods because they travel with saturated fat.",
+   "words": 28,
+   "grade": 17.7,
+   "abbrev": [
+    "AHA"
+   ],
+   "long": 3,
+   "hardness": 20.4
+  },
+  {
+   "where": "articles.json \"MASLD (fatty liver disease)\" / How this app applies it",
+   "lite": true,
+   "sentence": "The app shows the 5 and 7 to 10 percent weight-loss targets as goals, prefers Mediterranean-pattern foods (vegetables, fruit, whole grains, legumes, nuts, fish, olive oil) in meal plans, and flags sugar-sweetened beverages and added sugar as soft avoids.",
+   "words": 39,
+   "grade": 17.5,
+   "abbrev": [],
+   "long": 3,
+   "hardness": 20.4
+  },
+  {
+   "where": "articles.json \"Heart failure\" / What this condition is",
+   "lite": true,
+   "sentence": "Medications (diuretics, ACE inhibitors, ARBs, mineralocorticoid receptor antagonists, and others) do most of the work; diet supports them and interacts with them.",
+   "words": 22,
+   "grade": 17.1,
+   "abbrev": [
+    "ACE",
+    "ARBs"
+   ],
+   "long": 4,
+   "hardness": 20.4
+  },
+  {
+   "where": "articles.json \"Iron-deficiency anemia\" / What this condition is (in one paragraph)",
+   "lite": true,
+   "sentence": "The usual causes in adults are blood loss (heavy periods, or slow bleeding from the gut), poor absorption (celiac disease is the common hidden one), or not enough iron in the diet, most often in people who eat little or no meat.",
+   "words": 42,
+   "grade": 17.1,
+   "abbrev": [],
+   "long": 0,
+   "hardness": 20.4
+  },
+  {
+   "where": "articles.json \"Diverticular disease\" / How this app applies it",
+   "lite": true,
+   "sentence": "It pushes down foods tagged high-fiber-insoluble, large-particle, raw-vegetable, and skin-or-seed, and it expires automatically after 10 days, at which point the app returns to the between-episodes mode and tells you so.",
+   "words": 31,
+   "grade": 18.6,
+   "abbrev": [],
+   "long": 5,
+   "hardness": 20.3
+  },
+  {
+   "where": "articles.json \"Portfolio diet\" / Numbers that matter",
+   "lite": true,
+   "sentence": "The app scores viscous fiber through the legume, whole-grain, and vegetable tags and does not compute a separate viscous-fiber gram target, because USDA data does not separate viscous from total fiber.",
+   "words": 31,
+   "grade": 17.1,
+   "abbrev": [
+    "USDA"
+   ],
+   "long": 2,
+   "hardness": 20.3
+  },
+  {
+   "where": "articles.json \"Soy-free\" / What to limit or avoid",
+   "lite": true,
+   "sentence": "For allergy (hard rule, no override, set under Food allergies): soybeans, edamame, tofu, tempeh, miso, natto, soy milk, soy protein isolate, textured vegetable protein, soy flour, and most soy sauce, which also contains wheat.",
+   "words": 34,
+   "grade": 18.1,
+   "abbrev": [],
+   "long": 1,
+   "hardness": 20.2
+  },
+  {
+   "where": "articles.json \"Weight management and GLP-1 medications\" / What to limit or avoid",
+   "lite": true,
+   "sentence": "Soft rules (recommended, not enforced): very large meals and high-fat meals, because they trigger nausea and reflux on a GLP-1; sugary drinks and snack foods that spend your small appetite on foods with little protein or fiber.",
+   "words": 37,
+   "grade": 16.1,
+   "abbrev": [
+    "GLP"
+   ],
+   "long": 0,
+   "hardness": 20.2
+  },
+  {
+   "where": "articles.json \"Heart-healthy / LDL-lowering (high cholesterol)\" / summary",
+   "lite": true,
+   "sentence": "The single biggest thing you can do for LDL cholesterol is swap saturated fat (butter, fatty meat, full-fat dairy, coconut oil) for unsaturated fat (olive oil, canola oil, nuts, seeds, avocado, fish).",
+   "words": 32,
+   "grade": 16.8,
+   "abbrev": [
+    "LDL"
+   ],
+   "long": 3,
+   "hardness": 20.1
+  },
+  {
+   "where": "conditions.json ibs-low-fodmap / fodmap-first-line",
+   "lite": true,
+   "sentence": "First-line IBS advice (regular meals; limit alcohol, caffeine, fat, and gas-producing foods; soluble fiber; peppermint oil) has a lower evidence bar than low FODMAP but is simpler.",
+   "words": 27,
+   "grade": 15.9,
+   "abbrev": [
+    "IBS",
+    "FODMAP"
+   ],
+   "long": 1,
+   "hardness": 20
+  },
+  {
+   "where": "articles.json \"Mediterranean diet (anti-inflammatory)\" / summary",
+   "lite": true,
+   "sentence": "The evidence-based version of an anti-inflammatory diet is the Mediterranean pattern: extra-virgin olive oil as the main fat; vegetables, fruit, whole grains, beans, and nuts every day; fish at least twice a week.",
+   "words": 33,
+   "grade": 18,
+   "abbrev": [],
+   "long": 5,
+   "hardness": 20
+  },
+  {
+   "where": "articles.json \"Food allergies\" / How this app applies it",
+   "lite": true,
+   "sentence": "Interactions: soy allergy plus vegetarian or vegan preferences narrows protein options, so the planner surfaces alternatives (other legumes, seitan if no gluten issue, eggs and dairy if permitted, quinoa, hemp).",
+   "words": 30,
+   "grade": 18.5,
+   "abbrev": [],
+   "long": 3,
+   "hardness": 20
+  }
+ ],
+ "hardestReference": [
+  {
+   "where": "articles.json \"MCAS and the low-histamine trial\" / What the evidence says",
+   "lite": true,
+   "sentence": "The governing sources are the AGA Clinical Practice Update on GI manifestations and autonomic or immune dysfunction in hypermobile Ehlers-Danlos syndrome (Aziz et al., 2025), which covers MCAS and POTS in that context and issues Best Practice Advice statements rather than graded recommendations; two reviews of the histamine intolerance literature (Comas-Baste et al., 2020; Evidence for Dietary Management of Histamine Intolerance, 2025); the Swiss Interest Group Histamine Intolerance (SIGHI) food compatibility list, which is widely used but not peer-reviewed; the Valent diagnostic criteria; and the 2017 German guideline on adverse reactions to ingested histamine (Reese et al.).",
+   "words": 97,
+   "grade": 44.5,
+   "abbrev": [
+    "AGA",
+    "GI",
+    "MCAS",
+    "POTS"
+   ],
+   "long": 11,
+   "hardness": 62.1
+  },
+  {
+   "where": "articles.json \"Mediterranean diet (anti-inflammatory)\" / What the evidence says",
+   "lite": true,
+   "sentence": "The governing sources are the PREDIMED randomized trial (Estruch et al., NEJM 2018 corrected re-analysis), in which a Mediterranean diet supplemented with extra-virgin olive oil or nuts reduced major cardiovascular events by about 30 percent in people at high risk; the Cochrane systematic review of Mediterranean-style diets for primary and secondary prevention of cardiovascular disease (Rees et al., 2019); the AHA 2021 Dietary Guidance to Improve Cardiovascular Health; and the Dietary Inflammatory Index literature for the concept.",
+   "words": 77,
+   "grade": 36.7,
+   "abbrev": [
+    "PREDIMED",
+    "NEJM",
+    "AHA"
+   ],
+   "long": 11,
+   "hardness": 49.8
+  },
+  {
+   "where": "articles.json \"Pregnancy, gestational diabetes, and breastfeeding\" / What the evidence says",
+   "lite": true,
+   "sentence": "The sources are society guidelines and government agencies: ACOG practice bulletins, including Bulletin 230 on obesity in pregnancy (2021) and Bulletin 190 on gestational diabetes (2018, reaffirmed 2026); the ADA Standards of Care 2026, Section 15 on diabetes in pregnancy; the Institute of Medicine 2009 weight-gain guidelines; the FDA and EPA 2021 fish advice; and the Academy of Nutrition and Dietetics 2014 pregnancy position, which is no longer a current Academy position.",
+   "words": 72,
+   "grade": 32.3,
+   "abbrev": [
+    "ACOG",
+    "ADA",
+    "FDA",
+    "EPA"
+   ],
+   "long": 4,
+   "hardness": 46.1
+  },
+  {
+   "where": "articles.json \"Low added sugar\" / What the evidence says",
+   "lite": true,
+   "sentence": "The governing sources are the American Heart Association scientific statement on dietary sugars (Johnson et al., Circulation 2009; a children's statement followed in 2016), which sets the 25 g and 36 g daily limits; the WHO guideline on sugars intake for adults and children (2015), which recommends free sugars under 10 percent of calories and suggests a further cut to under 5 percent; and the FDA Nutrition Facts label rule (2016) that created the Added Sugars line.",
+   "words": 77,
+   "grade": 32.2,
+   "abbrev": [
+    "WHO",
+    "FDA"
+   ],
+   "long": 3,
+   "hardness": 43.8
+  },
+  {
+   "where": "articles.json \"Inflammatory bowel disease\" / What the evidence says",
+   "lite": true,
+   "sentence": "The sources are the 2024 AGA Clinical Practice Update on diet in IBD (Gastroenterology), an expert review from the American gastroenterology society; the 2020 dietary guidance from the International Organization for the Study of IBD; and DINE-CD, a 2021 randomized trial in Gastroenterology that compared the Specific Carbohydrate Diet with a Mediterranean diet in adults with Crohn's disease and found the SCD was not superior.",
+   "words": 65,
+   "grade": 31,
+   "abbrev": [
+    "AGA",
+    "DINE",
+    "CD",
+    "SCD"
+   ],
+   "long": 8,
+   "hardness": 43.8
+  },
+  {
+   "where": "articles.json \"Gut health support\" / What the evidence says",
+   "lite": true,
+   "sentence": "The governing sources are a series of systematic reviews and meta-analyses commissioned by WHO (Reynolds et al., Lancet 2019), a randomized trial of fermented foods (Wastyk et al., Cell 2021), the American Gut Project observational study (McDonald et al., mSystems 2018), the AGA clinical practice guideline on probiotics (Su et al., 2020), ISAPP consensus statements on prebiotics, probiotics, and fermented foods, and the Institute of Medicine dietary reference intake for fiber.",
+   "words": 71,
+   "grade": 32.5,
+   "abbrev": [
+    "AGA",
+    "ISAPP"
+   ],
+   "long": 4,
+   "hardness": 43.2
+  },
+  {
+   "where": "articles.json \"Heart-healthy / LDL-lowering (high cholesterol)\" / What the evidence says",
+   "lite": true,
+   "sentence": "It rests on the 2018 AHA/ACC Multisociety Guideline on the Management of Blood Cholesterol, the AHA 2021 Dietary Guidance to Improve Cardiovascular Health, the AHA 2019 science advisory on dietary cholesterol, a Cochrane systematic review of randomized trials on reducing saturated fat (Hooper et al., 2020), and the PREDIMED randomized trial (NEJM 2018 corrected re-analysis).",
+   "words": 55,
+   "grade": 26.9,
+   "abbrev": [
+    "AHA",
+    "ACC",
+    "PREDIMED",
+    "NEJM"
+   ],
+   "long": 8,
+   "hardness": 38.2
+  },
+  {
+   "where": "articles.json \"Chronic constipation\" / What the evidence says",
+   "lite": true,
+   "sentence": "The governing sources are the AGA-ACG clinical practice guideline on chronic idiopathic constipation (Chang et al., Gastroenterology 2023), the multicenter randomized trial of green kiwifruit (Gearry et al., American Journal of Gastroenterology 2023), the Bharucha and Lacy review of mechanisms and management (Gastroenterology 2020), and the Institute of Medicine's Dietary Reference Intakes for fiber.",
+   "words": 54,
+   "grade": 29.9,
+   "abbrev": [
+    "AGA",
+    "ACG"
+   ],
+   "long": 8,
+   "hardness": 38
+  },
+  {
+   "where": "articles.json \"Rheumatoid arthritis\" / What the evidence says",
+   "lite": true,
+   "sentence": "The governing sources are the 2022 American College of Rheumatology guideline on exercise, rehabilitation, diet, and integrative interventions for RA (England et al., Arthritis Care and Research 2023), the 2021 EULAR lifestyle recommendations for rheumatic diseases (Gwinnutt et al., Annals of the Rheumatic Diseases 2023), and the PREDIMED trial for the general cardiovascular case for Mediterranean eating.",
+   "words": 57,
+   "grade": 29.4,
+   "abbrev": [
+    "EULAR",
+    "PREDIMED"
+   ],
+   "long": 9,
+   "hardness": 37.9
+  },
+  {
+   "where": "articles.json \"Celiac disease\" / What the evidence says",
+   "lite": true,
+   "sentence": "The governing sources are the American College of Gastroenterology clinical guideline on diagnosis and management of celiac disease (Rubio-Tapia et al., 2023), the Academy of Nutrition and Dietetics celiac evidence-based practice guideline, the FDA gluten-free labeling rule (21 CFR 101.91), and patient materials from the Celiac Disease Foundation and Beyond Celiac for practical food lists.",
+   "words": 55,
+   "grade": 29,
+   "abbrev": [
+    "FDA",
+    "CFR"
+   ],
+   "long": 6,
+   "hardness": 37.3
+  }
+ ]
+}

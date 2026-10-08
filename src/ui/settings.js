@@ -1,9 +1,9 @@
 // Settings: appearance (theme, large text), export, import, guests, clear, about.
-import { exportJSON, importJSON, clearAll, defaultProfile, backupDue, storeState } from '../store.js';
+import { exportJSON, importJSON, clearAll, defaultProfile, backupDue, storeState, unreadableCopies, keepBeforeImport, recipeCollectionsOn } from '../store.js';
 import { appCollectionCounts } from '../app.js';
-import { uiState, uiEsc, uiPersist, uiDownload, uiToast, uiNavigate, uiIsoDate, uiCopyText, uiEnsurePerson, uiPageHeader, uiSection, uiSwitch, uiSegmented, uiChip, uiIcon, uiLoadUiPrefs, uiSaveUiPrefs, uiNoticeHTML, uiModal } from './common.js';
+import { uiState, uiEsc, uiPersist, uiDownload, uiToast, uiNavigate, uiIsoDate, uiCopyText, uiEnsurePerson, uiPageHeader, uiSection, uiSwitch, uiSegmented, uiChip, uiIcon, uiLoadUiPrefs, uiSaveUiPrefs, uiNoticeHTML, uiModal, uiShareFile, uiUndoToast, uiRecipeSourcesText } from './common.js';
 import { claimOwner, registerDevice, sealOwnerBackup, restoreOwnerBackup, forgetDeviceIdentity, removePerson } from '../engine/sync.js';
-import { sharingState, sharingLocalHTML, sharingPendingHTML, sharingSafe, sharingPublishIfShared, sharingShortFingerprint } from './sharing.js';
+import { sharingState, sharingAvailable, sharingLocalHTML, sharingPendingHTML, sharingSafe, sharingPublishIfShared, sharingShortFingerprint } from './sharing.js';
 import { installInSafariTab, installInBrowserTab, installShowGuide } from './install.js';
 
 export function renderSettingsScreen(root) {
@@ -12,14 +12,14 @@ export function renderSettingsScreen(root) {
   const guests = profile.people.filter(p => p.guest);
   const prefs = uiLoadUiPrefs();
   root.innerHTML = `
-    ${uiPageHeader('Settings', 'Appearance, backup, guests, and what this app is.')}
+    ${uiPageHeader('Settings', uiState.lite ? 'Appearance, backup, and what this app is.' : 'Appearance, backup, guests, and what this app is.')}
     ${uiSection('Appearance', `<div class="card">
       <div class="field"><span class="label">Theme</span>${uiSegmented('set-theme', [{ value: 'system', label: 'System' }, { value: 'light', label: 'Light' }, { value: 'dark', label: 'Dark' }], prefs.theme, { label: 'Theme' })}<div class="hint">System follows the device setting.</div></div>
-      ${uiSwitch('set-large', 'Large text', 'Raises the base text size across the app.', prefs.largeText)}
+      ${uiSwitch('set-large', 'Large text', 'Bigger text on every screen.', prefs.largeText)}
     </div>`, { id: 'set-appearance-h' })}
     ${uiSection('Backup', `<div class="card">
-      <p>Everything lives in this browser's storage on this device. Export a JSON file to back it up or move it to another device.</p>
-      <div class="btn-row"><button class="btn primary lite-big" type="button" id="set-share">${uiIcon('share')}Send a backup</button><button class="btn" type="button" id="set-export">${uiIcon('share')}Export JSON</button><button class="btn" type="button" id="set-copy">${uiIcon('copy')}Copy JSON to clipboard</button></div>
+      <p>Everything is kept in this browser on this device, and nowhere else. A backup keeps a copy, or moves it all to another device.</p>
+      <div class="btn-row"><button class="btn primary lite-big" type="button" id="set-share">${uiIcon('share')}Send a backup</button><button class="btn" type="button" id="set-export">${uiIcon('share')}Save a backup file</button><button class="btn" type="button" id="set-copy">${uiIcon('copy')}Copy the backup as text</button></div>
       <p class="small muted">Send a backup opens your phone's share sheet: mail it to yourself, save it to Files or iCloud Drive, or AirDrop it. To restore on a new phone, open the app there and import the file below.</p>
       <p class="small">${profile.last_backup_at ? `Last backup: ${uiEsc(new Date(profile.last_backup_at).toLocaleDateString(undefined, { month: 'long', day: 'numeric', year: 'numeric' }))}. A reminder comes up a month after each one.` : 'No backup sent from this app yet. A reminder comes up once a month.'}</p>
       ${installInSafariTab() ? `<p class="small">This is open in a Safari tab. <button class="btn link small" type="button" id="set-home-screen">How to add it to the Home Screen and move your data</button></p>` : installInBrowserTab() ? `<p class="small">This is open in your browser. <button class="btn link small" type="button" id="set-home-screen">How to add it to the Home screen</button></p>` : ''}
@@ -30,11 +30,12 @@ export function renderSettingsScreen(root) {
       <input id="set-import" type="file" accept="application/json,.json" class="visually-hidden">
     </div>`, { id: 'set-import-h' })}
     ${uiSection('Recipe collections', settingsCollectionsHTML(profile), { id: 'set-coll-h' })}
-    ${uiSection('Guests', `<p class="small muted">Guests are profiles other people shared with you (Together screen). They can be picked when cooking together and removed here.</p>
+    ${uiState.lite && !guests.length ? '' : uiSection('Guests', `<p class="small muted">Guests are profiles other people shared with you (Together screen). They can be picked when cooking together and removed here.</p>
       ${guests.length ? `<div class="list boxed">${guests.map(g => `<div class="list-row"><div class="list-main"><div class="list-title">${uiEsc(g.name)} ${uiChip('Guest', 'plum')}</div><div class="list-sub">${(g.allergens || []).length ? 'allergens: ' + g.allergens.length : 'no allergens'}, ${(g.modules || []).length} module${(g.modules || []).length === 1 ? '' : 's'}</div></div><div class="list-actions"><button class="btn small danger" type="button" data-remove-guest="${uiEsc(g.id)}">Remove</button></div></div>`).join('')}</div>` : '<p class="small muted">No guests. Add one on the Together screen by pasting a shared profile or choosing a file.</p>'}`, { id: 'set-guests-h' })}
-    ${uiSection('Calendar export', `<p class="small">"Add to calendar (.ics)" on the Grocery and Together screens saves a standard calendar file with one all-day event per day listing that day's meals. Import it into Google Calendar (Settings, Import and export), Apple Calendar, Outlook, or a Skylight calendar. There is no direct Google Keep or Skylight list integration; use Share or Copy for the grocery list itself.</p>`, { id: 'set-cal-h' })}
-    ${uiSection('Sharing and privacy', settingsSharingHTML(profile), { id: 'set-share-h' })}
-    ${uiSection('Clear all data', `<p>Removes every person, log entry, and grocery tick from this device. Export first if you want a copy.</p>
+    ${uiState.lite ? '' : uiSection('Calendar export', `<p class="small">Calendar, at the bottom of the Grocery screen, saves a calendar file with one all-day event per day listing that day's meals. Import it into Google Calendar (Settings, Import and export), Apple Calendar, Outlook, or a Skylight calendar. For the grocery list itself, use Share or Copy; there is no direct Google Keep or Skylight list link.</p>`, { id: 'set-cal-h' })}
+    ${uiState.lite && !sharingAvailable() ? '' : uiSection('Sharing and privacy', settingsSharingHTML(profile), { id: 'set-share-h' })}
+    ${settingsUnreadableHTML()}
+    ${uiSection('Clear all data', `<p>Removes every person, log entry, and grocery tick from this device. Send a backup first if you want a copy.</p>
       <div><button class="btn danger" type="button" id="set-clear">${uiIcon('trash')}Clear all data</button></div>`, { id: 'set-clear-h' })}
     ${uiSection('About', `<dl class="kv">
         <dt>Version</dt><dd>${uiEsc(uiState.version)}</dd>
@@ -42,7 +43,7 @@ export function renderSettingsScreen(root) {
         <dt>Log entries</dt><dd>${(profile.log || []).length}</dd>
         <dt>Data loaded</dt><dd>${d.sources.length} sources, ${d.conditions.length} modules, ${Object.keys(d.dictionaries.tags || {}).length} tags, ${(d.dictionaries.entries || []).length} dictionary terms, ${d.foods.length} foods, ${d.recipes.length} recipes</dd>
         <dt>Storage</dt><dd>On this device only. Nothing is sent anywhere. There is no account and no server.${sharingState().db ? ' A person is copied to the shared store only when you switch that on above, and only encrypted.' : ''} <span class="small muted">Saved under ${uiEsc(storeState.key || '')}.${storeState.migration && storeState.migration.migrated ? ' Moved there from ' + uiEsc(storeState.migration.from) + ' on this launch; the old copy is kept.' : ''}${storeState.migration && storeState.migration.error ? ' ' + uiEsc(storeState.migration.error) + '.' : ''}</span></dd>
-        <dt>Recipes</dt><dd>Peace Meal, the NHS website (Open Government Licence v3.0), the Wikibooks Cookbook (CC BY-SA 4.0), and your own. <a href="#/learn/sources">Where the recipes come from</a>.</dd>
+        <dt>Recipes</dt><dd>${uiRecipeSourcesText()}. <a href="#/learn/sources">Where the recipes come from</a>.</dd>
         <dt>Language model</dt><dd>None. Every decision comes from readable data files.</dd>
       </dl>
       <p><strong>This app is for general wellness and education. It does not diagnose or treat any condition. Any medical targets, like a sodium or protein limit, come from your doctor or dietitian, never from the app.</strong></p>
@@ -54,7 +55,6 @@ export function renderSettingsScreen(root) {
   }));
   root.querySelector('#set-large').addEventListener('change', e => {
     uiSaveUiPrefs({ ...uiLoadUiPrefs(), largeText: e.target.checked, largeTextSet: true });
-    e.target.setAttribute('aria-checked', String(e.target.checked));
   });
   root.querySelectorAll('[data-remove-guest]').forEach(b => b.addEventListener('click', () => {
     const g = profile.people.find(p => p.id === b.dataset.removeGuest);
@@ -81,15 +81,51 @@ export function renderSettingsScreen(root) {
   });
   settingsBindSharing(root, profile);
   settingsBindCollections(root, profile);
+  settingsBindUnreadable(root);
   root.querySelector('#set-clear').addEventListener('click', () => {
-    if (!window.confirm('Clear all data on this device? This cannot be undone.')) return;
+    // P2-6: Clear data also removes this build's grocery ticks (not the other build's) and this device's shared-store key.
+    const s = uiState.sync || {};
+    const keyNote = s.identity ? (s.isOwner ? " This device's sharing key goes too, and with it the owner role, unless it was backed up." : " This device's sharing key goes too.") : '';
+    if (!window.confirm('Clear all data on this device? This cannot be undone.' + keyNote)) return;
     clearAll();
-    try { for (const k of Object.keys(localStorage)) if (k.startsWith('sn-grocery:')) localStorage.removeItem(k); } catch { /* ignore */ }
+    s.identity = null; s.isOwner = false;
     uiState.profile = defaultProfile();
     uiPersist();
     uiToast('Cleared.');
     uiNavigate('#/welcome');
   });
+}
+
+// ---- Saved data that could not be read (P0-4, fix pass of September 30, 2026) ----
+// store.js keeps each unreadable save under its own key. Clear data leaves these copies alone; only this list removes
+// one, and only after the person saves it as a file or confirms.
+function settingsUnreadableHTML() {
+  const copies = unreadableCopies();
+  if (!copies.length) return '';
+  return uiSection('Saved data that could not be read', `<div class="card">
+      <p>This device keeps ${copies.length === 1 ? 'a copy' : copies.length + ' copies'} of saved data the app could not read. Save ${copies.length === 1 ? 'it' : 'each one'} as a file for whoever looks after this app; they may be able to recover it.</p>
+      <div class="list boxed">${copies.map((c, i) => `<div class="list-row"><div class="list-main"><div class="list-title">Kept ${uiEsc(settingsUnreadableWhen(c.key))}</div><div class="list-sub">${uiEsc(String((c.text || '').length))} characters</div></div>
+        <div class="btn-row"><button class="btn small" type="button" data-unreadable-file="${i}">Save as a file</button><button class="btn small danger" type="button" data-unreadable-delete="${i}">Delete</button></div></div>`).join('')}</div>
+    </div>`, { id: 'set-unreadable-h' });
+}
+function settingsUnreadableWhen(key) {
+  const t = new Date(key.split(':unreadable:')[1] || '');
+  return Number.isFinite(t.getTime()) ? t.toLocaleString(undefined, { month: 'long', day: 'numeric', year: 'numeric', hour: 'numeric', minute: '2-digit' }) : key;
+}
+function settingsBindUnreadable(root) {
+  const copies = unreadableCopies();
+  root.querySelectorAll('[data-unreadable-file]').forEach(b => b.addEventListener('click', async () => {
+    const c = copies[Number(b.dataset.unreadableFile)];
+    if (!c) return;
+    const r = await uiShareFile(`peace-meal-could-not-read-${uiIsoDate()}.json`, c.text || '', 'Peace Meal: saved data that could not be read');
+    if (r === 'shared' || r === 'saved') uiToast('Saved as a file.'); else if (r === 'failed') uiToast('The file could not be saved here.');
+  }));
+  root.querySelectorAll('[data-unreadable-delete]').forEach(b => b.addEventListener('click', () => {
+    const c = copies[Number(b.dataset.unreadableDelete)];
+    if (!c || !window.confirm('Delete this copy of the data that could not be read? Save it as a file first if anyone may want it. This cannot be undone.')) return;
+    try { localStorage.removeItem(c.key); } catch { /* ignore */ }
+    uiToast('Deleted.'); uiState.rerender();
+  }));
 }
 
 // ---- Sharing and privacy (shared store on claude.ai; one calm sentence everywhere else) ----
@@ -157,7 +193,6 @@ function settingsBindSharing(root, profile) {
     if (!sw) return;
     sw.addEventListener('change', async () => {
       p.shared_store = sw.checked;
-      sw.setAttribute('aria-checked', String(sw.checked));
       uiPersist();
       if (sw.checked) sharingPublishIfShared(p, { now: true });
       else { const ok = await sharingSafe(() => removePerson(s.db, p.id), false); uiToast(ok ? `${p.name} was removed from the shared store.` : `${p.name} is no longer kept in sync; the stored copy could not be removed right now.`); }
@@ -212,23 +247,30 @@ function settingsRestoreModal(text) {
 // A plain note before the USDA recipes are switched on (owner request, September 30, 2026: the earlier joke text
 // was removed).
 const SETTINGS_USDA_NOTICE = 'These recipes come from USDA MyPlate Kitchen, a free US government collection. The app checks each one against your plan the same way it checks every other recipe, and the nutrition numbers per serving are the ones USDA publishes.';
-function settingsCollectionsHTML(profile) {
-  const on = Object.assign({ nhs: true, parentclub: true, nhlbi: true, va: true, wikibooks: true, usda: false, review_dual: true }, profile.recipe_collections || {});
+// A collection this build does not carry is not listed (owner item 1, October 8, 2026): listing one as "0 recipes" with a
+// switch that did nothing looked broken. Peace Meal for one left out the Wikibooks Cookbook and USDA MyPlate Kitchen then;
+// later that day the owner asked for it to carry them, so both builds now list them, and the line below only appears if a
+// copy of the app is ever built without one.
+const SETTINGS_COLLECTION_NAMES = { wikibooks: 'the Wikibooks Cookbook', usda: 'USDA MyPlate Kitchen' };
+export function settingsCollectionsHTML(profile) {
+  const on = recipeCollectionsOn(profile);
   const n = appCollectionCounts();
+  const missing = ['wikibooks', 'usda'].filter(k => !n[k]);
   return `<div class="card">
-    <p class="small">Tick a collection to include its recipes in search, the week plan, and Pantry. Untick it to leave all of them out. Recipes written for Peace Meal and your own are always included.</p>
-    ${uiSwitch('coll-wikibooks', `Wikibooks Cookbook (${n.wikibooks.toLocaleString()} recipes)`, 'Community recipes from around the world under a Creative Commons licence. They list ingredients as plain text, so the app has no calorie or sodium numbers for them; they only go into a week when the Week screen switch "Also use recipes that have no nutrition numbers" is on.', on.wikibooks)}
+    <p class="small">Switch a collection on to use its recipes in search, the week plan, and Pantry. Recipes written for Peace Meal and your own are always included.</p>
+    ${!n.wikibooks ? '' : uiSwitch('coll-wikibooks', `Wikibooks Cookbook (${n.wikibooks.toLocaleString()} recipes)`, 'Community recipes from around the world under a Creative Commons licence. They list ingredients as plain text, so the app has no calorie or sodium numbers for them; they go into a week only when the Week screen switch "Also use recipes that have no nutrition numbers" is on, and never when the plan has a daily limit such as sodium.', on.wikibooks)}
     ${uiSwitch('coll-nhs', `NHS recipes, United Kingdom (${n.nhs.toLocaleString()} recipes)`, 'Dietitian-written family recipes with calories, fat, sugar, and salt per serving. British dishes and measures.', on.nhs)}
     ${uiSwitch('coll-nhlbi', `NHLBI heart-healthy recipes, US National Institutes of Health (${n.nhlbi.toLocaleString()} recipes)`, 'Recipes from the National Heart, Lung, and Blood Institute with calories, fat, sodium, potassium, fiber, and protein per serving. Public domain. American measures.', on.nhlbi)}
     ${uiSwitch('coll-va', `VA Healthy Teaching Kitchen, US Department of Veterans Affairs (${n.va.toLocaleString()} recipes)`, 'Everyday American recipes written by VA dietitians, with calories, fat, sodium, carbohydrate, fiber, and protein per serving. Public domain. American measures.', on.va)}
     ${uiSwitch('coll-parentclub', `Parent Club, Scottish Government (${n.parentclub.toLocaleString()} recipes)`, 'Family recipes with full per-serving nutrition, including sodium in milligrams, and ingredient weights in grams. British dishes and measures.', on.parentclub)}
-    ${uiSwitch('coll-usda', `USDA MyPlate Kitchen, United States (${n.usda.toLocaleString()} recipes)`, n.usda ? 'American home cooking with per-serving nutrition. Public domain.' : 'Not loaded in this build.', on.usda)}
-    ${n.review_dual ? uiSwitch('coll-review_dual', `Peace Meal recipes for low FODMAP and low histamine together (${n.review_dual.toLocaleString()} recipes)`, 'Breakfasts and dinners written in September 2026 for someone on both diets at once. Every ingredient is linked to a USDA food and is on both approved lists, and each recipe passes both strict checks. Reviewed and switched on September 30, 2026.', on.review_dual) : ''}
+    ${!n.usda ? '' : uiSwitch('coll-usda', `USDA MyPlate Kitchen, United States (${n.usda.toLocaleString()} recipes)`, 'American home cooking with per-serving nutrition. Public domain.', on.usda)}
+    ${n.review_dual ? uiSwitch('coll-review_dual', `Peace Meal recipes for low FODMAP and low histamine together (${n.review_dual.toLocaleString()} recipes)`, 'Breakfasts and dinners for someone on both diets at once. Every ingredient is linked to a USDA food and is on both approved lists, and each recipe passes both strict checks.', on.review_dual) : ''}
+    ${missing.length ? `<p class="small muted">This copy of Peace Meal does not include ${missing.map(k => SETTINGS_COLLECTION_NAMES[k]).join(' or ')}.</p>` : ''}
   </div>`;
 }
 function settingsBindCollections(root, profile) {
   const setColl = (key, value) => {
-    profile.recipe_collections = Object.assign({ nhs: true, parentclub: true, nhlbi: true, va: true, wikibooks: true, usda: false, review_dual: true }, profile.recipe_collections || {}, { [key]: value });
+    profile.recipe_collections = Object.assign(recipeCollectionsOn(profile), { [key]: value });
     uiPersist();
     if (typeof uiState.refreshRecipes === 'function') uiState.refreshRecipes();
     uiToast(value ? 'Collection included.' : 'Collection left out.');
@@ -290,16 +332,29 @@ export function settingsImportFile(file, done) {
       const incoming = importJSON(String(reader.result));
       const n = incoming.people.length;
       const here = uiState.profile.people.length;
-      if (!window.confirm(here ? `Replace everything on this device with this file (${n} ${n === 1 ? 'person' : 'people'}, ${(incoming.log || []).length} log entries)?` : `Bring in this file (${n} ${n === 1 ? 'person' : 'people'}, ${(incoming.log || []).length} log entries)?`)) { if (done) done(false); return; }
+      const dropped = incoming._importDropped || 0;
+      const odd = dropped ? ` ${dropped} ${dropped === 1 ? 'value in it was' : 'values in it were'} not the right kind and will be left out.` : '';
+      if (!window.confirm((here ? `Replace everything on this device with this file (${n} ${n === 1 ? 'person' : 'people'}, ${(incoming.log || []).length} log entries)?` : `Bring in this file (${n} ${n === 1 ? 'person' : 'people'}, ${(incoming.log || []).length} log entries)?`) + odd)) { if (done) done(false); return; }
+      // Keep what was here, so the import can be undone (P1-2).
+      const before = here ? uiState.profile : null;
+      const beforeKey = here ? keepBeforeImport() : null;
       uiState.profile = incoming;
       if (!Array.isArray(uiState.profile.log)) uiState.profile.log = [];
       uiState.profile.people.forEach(uiEnsurePerson);
       if (!uiState.profile.activePerson && n) uiState.profile.activePerson = incoming.people[0].id;
       const saved = uiPersist();
       if (uiState.refreshRecipes) uiState.refreshRecipes();
-      uiToast(saved ? 'Imported.' : 'Imported for now, but not saved on this device. See the message at the top.');
       if (done) done(true);
       uiNavigate(uiState.lite ? '#/today' : '#/home');
+      if (before) uiUndoToast(saved ? 'Imported. The data from before is kept.' : 'Imported for now, but not saved on this device.', () => {
+        uiState.profile = before;
+        uiPersist();
+        if (uiState.refreshRecipes) uiState.refreshRecipes();
+        uiToast('Put back the data from before the import.');
+        uiState.rerender();
+      });
+      else uiToast(saved ? 'Imported.' : 'Imported for now, but not saved on this device. See the message at the top.');
+      if (beforeKey) uiState.lastBeforeImport = beforeKey;
     } catch (err) {
       uiToast('Import failed: ' + err.message);
       if (done) done(false);

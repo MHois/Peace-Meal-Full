@@ -2,6 +2,16 @@
 import { checkText } from '../engine/checker.js';
 import { uiState, uiEsc, uiActivePerson, uiPlanFor, uiPersist, uiIsoDate, uiToday, uiFmtDate, uiToast, uiPageHeader, uiSection, uiVerdictChip, uiNoticeHTML, uiEmptyState, uiIcon } from './common.js';
 import { weekGet } from './week.js';
+import { SLOT_LABEL } from '../engine/planner.js';
+
+// A meal or entry kind as a person reads it (UX pass, October 2026): the log showed stored ids such as "snack-am"
+// and "symptom".
+export function logMealLabel(id) {
+  if (!id) return '';
+  if (SLOT_LABEL[id]) return SLOT_LABEL[id];
+  if (id === 'symptom') return 'Symptoms';
+  return String(id).charAt(0).toUpperCase() + String(id).slice(1);
+}
 
 export const LOG_SYMPTOMS = [
   { id: 'bloating', label: 'Bloating', help: 'Belly feels swollen or tight' },
@@ -44,7 +54,7 @@ export function renderLogScreen(root) {
   const textCheck = d.text.trim() ? checkText(d.text, plan, uiState.matcher, person) : null;
 
   root.innerHTML = `
-    ${uiPageHeader('Log', 'What you ate and how you felt, day by day. The app records; it does not interpret.')}
+    ${uiPageHeader('Log', 'What you ate and how you felt, day by day, for you and your doctor or dietitian. The app records; it does not interpret or claim to find causes.')}
     ${inElimination.length ? uiNoticeHTML({ level: 'info', text: `${inElimination.map(p => `${p.moduleName} is in the ${p.label} phase.`).join(' ')} This log is how you identify your triggers: note what you ate and how you felt over the next day or so, then compare across the reintroduction of each food group.` }) : ''}
     <div class="card">
       <h2>New entry</h2>
@@ -53,10 +63,10 @@ export function renderLogScreen(root) {
         <div class="field"><label for="log-meal">Meal</label><select id="log-meal">${['breakfast', 'lunch', 'dinner', 'snack'].map(s => `<option value="${s}" ${d.meal === s ? 'selected' : ''}>${s.charAt(0).toUpperCase() + s.slice(1)}</option>`).join('')}</select></div>
       </div>
       <div class="field"><label for="log-recipe">Meal from this week's plan</label>
-        <select id="log-recipe"><option value="">Not from the plan</option>${dayMeals.map(m => `<option value="${uiEsc(m.recipe)}" ${d.recipe === m.recipe ? 'selected' : ''}>${uiEsc(m.slot)}: ${uiEsc(m.name)}</option>`).join('')}</select>
+        <select id="log-recipe"><option value="">Not from the plan</option>${dayMeals.map(m => `<option value="${uiEsc(m.recipe)}" ${d.recipe === m.recipe ? 'selected' : ''}>${uiEsc(logMealLabel(m.slot))}: ${uiEsc(m.name)}</option>`).join('')}</select>
         ${!dayMeals.length ? '<div class="hint">No planned meals for this date. Describe the meal below instead.</div>' : ''}</div>
       <div class="field"><label for="log-text">Or describe what you ate</label><textarea id="log-text" style="min-height:80px" placeholder="oatmeal with banana and almond butter">${uiEsc(d.text)}</textarea>
-        ${textCheck ? `<div class="small row" style="margin-top:6px">${uiVerdictChip(textCheck.verdict)} <span>${textCheck.hits.length ? 'Matched: ' + textCheck.hits.map(h => uiEsc(h.label)).join(', ') + '.' : ''} ${textCheck.unrecognized.length ? 'Not recognized: ' + textCheck.unrecognized.map(uiEsc).join('; ') + '.' : ''} ${(textCheck.notApproved || []).length ? 'Not on the approved list: ' + [...new Set(textCheck.notApproved.map(n => n.label))].map(uiEsc).join('; ') + '.' : ''}</span></div>` : ''}</div>
+        ${textCheck ? `<div class="small row" style="margin-top:6px">${uiVerdictChip(textCheck.verdict)} <span>${textCheck.hits.length ? 'Matched: ' + textCheck.hits.map(h => uiEsc(h.label)).join(', ') + '.' : ''} ${(textCheck.sodium || []).length ? (textCheck.sodium[0].terms.length ? 'High in salt: ' + textCheck.sodium[0].terms.map(uiEsc).join(', ') : 'Can be high in salt: ' + textCheck.sodium[0].mayTerms.map(uiEsc).join(', ')) + '.' : ''} ${textCheck.unrecognized.length ? 'Not recognized: ' + textCheck.unrecognized.map(uiEsc).join('; ') + '.' : ''} ${(textCheck.notApproved || []).length ? 'Not on the approved list: ' + [...new Set(textCheck.notApproved.map(n => n.label))].map(uiEsc).join('; ') + '.' : ''}</span></div>` : ''}</div>
       <h3>Symptoms</h3>
       <p class="small muted">Slide each one from 0 (none) to 3 (severe). Leave anything that did not happen at 0.</p>
       <div class="symptom-grid">
@@ -67,12 +77,11 @@ export function renderLogScreen(root) {
     </div>
 
     ${uiSection('Last 14 days', Object.keys(byDate).length ? `<div class="stack-2">${Object.entries(byDate).map(([date, list]) => `<section class="log-day"><h3>${uiFmtDate(date)}</h3>
-      <div class="list">${list.map(e => `<div class="list-row"><div class="list-main"><div class="list-title">${uiEsc(e.meal || '')} <span style="font-weight:400">${e.name ? uiEsc(e.name) : e.recipe && uiState.recipesById.get(e.recipe) ? uiEsc(uiState.recipesById.get(e.recipe).name) : ''}</span> ${e.text ? `<span class="muted" style="font-weight:400">${uiEsc(e.text)}</span>` : ''}</div>
+      <div class="list">${list.map(e => `<div class="list-row"><div class="list-main"><div class="list-title">${uiEsc(logMealLabel(e.meal))} <span style="font-weight:400">${e.name ? uiEsc(e.name) : e.recipe && uiState.recipesById.get(e.recipe) ? uiEsc(uiState.recipesById.get(e.recipe).name) : ''}</span> ${e.text ? `<span class="muted" style="font-weight:400">${uiEsc(e.text)}</span>` : ''}</div>
         <div class="list-sub">${Object.entries(e.symptoms || {}).filter(([, v]) => v > 0).map(([k, v]) => `${uiEsc((LOG_SYMPTOMS.find(s => s.id === k) || { label: LOG_LEGACY_LABELS[k] || k }).label)}: ${LOG_LEVELS[v] || v}`).join(', ') || 'no symptoms recorded'}</div>
         ${e.notes ? `<div class="small">${uiEsc(e.notes)}</div>` : ''}</div>
         <div class="list-actions"><button class="btn small danger" type="button" data-del="${uiEsc(e.logged_at || '')}|${uiEsc(e.date)}|${uiEsc(e.meal || '')}">Delete</button></div></div>`).join('')}</div>
     </section>`).join('')}</div>` : uiEmptyState('No entries in the last 14 days.', '', 'list'), { id: 'log-recent-h' })}
-    <p class="small muted">The log is a record for you and your doctor or dietitian. The app does not analyze it or claim to find causes.</p>
   `;
 
   root.querySelector('#log-date').addEventListener('change', e => { d.date = e.target.value || today; d.recipe = ''; uiState.rerender(); });

@@ -4,7 +4,7 @@
 // anything), pass.
 // Unrecognized text is always reported. It is never counted as safe (README safety rule 7).
 import { strictCheck, strictCheckText, portionCheck, portionCheckText } from './dietlists.js';
-import { segmentTextRaw } from './dictionary.js';
+import { segmentTextRaw, isNoiseOnly, normalizeText } from './dictionary.js';
 import { recipeTotals, derived, round } from './nutrition.js';
 
 function evaluateTags(tagMap, plan, matcher, opts = {}) {
@@ -33,10 +33,11 @@ export function planRestricts(plan, person = {}) {
   return false;
 }
 
-export function verdictFrom({ hits, unknownRisk, unrecognized, hasAllergens, restricting, termHits, verifyLabel, notApproved, smallServe }) {
+export function verdictFrom({ hits, unknownRisk, unrecognized, hasAllergens, restricting, termHits, verifyLabel, notApproved, smallServe, sodium }) {
   if (hits.some(h => h.hard) || (termHits || []).some(t => t.hard)) return 'fail';
   if (hits.length || (termHits || []).length) return 'caution';
   if (verifyLabel && verifyLabel.length) return 'caution';
+  if (sodium && sodium.length) return 'caution';
   if (notApproved && notApproved.length) return 'caution';
   if (smallServe && smallServe.length) return 'caution';
   const guarded = !!(hasAllergens || restricting);
@@ -55,8 +56,112 @@ function verifyLabelHits(mayContain, plan, matcher) {
   return out;
 }
 
-export function checkText(text, plan, matcher, person = {}) {
-  const r = matcher.tagText(text);
+// P1-3 (fix pass of September 30, 2026): high in salt. A food is high in salt when USDA FoodData Central lists more
+// than 600 mg sodium per 100 g: the UK front-of-pack "high" cutoff for foods, more than 1.5 g salt per 100 g, with salt
+// counted as sodium times 2.5 (source uk-fop-2016, Annex 3, Table 2). Dictionary words carry the tag sodium-high from
+// the same USDA records (docs/VERIFY-log.md, F4). This is a fact about the food, not advice: it matters only while the
+// plan has a daily sodium limit, and then it is a caution that says to check the sodium on the Nutrition Facts label,
+// citing that limit's own rules. A recipe compares its sodium per serving with the limit instead; only a salty line
+// that its total leaves out (no linked food, no published nutrition) makes it a caution.
+export const SODIUM_HIGH_MG_PER_100G = 600;
+export function foodIsSodiumHigh(food) {
+  const na = food && food.per100g && food.per100g.sodium_mg;
+  return typeof na === 'number' && na > SODIUM_HIGH_MG_PER_100G;
+}
+function foodTags(food) {
+  const tags = food.tags || [];
+  return foodIsSodiumHigh(food) && !tags.includes('sodium-high') ? [...tags, 'sodium-high'] : tags;
+}
+// One entry when the plan has a daily sodium limit and the text or food is, or can be, high in salt.
+function sodiumHits(tags, mayContain, plan, matcher, food = null) {
+  const lim = plan && plan.limits && plan.limits.sodium_mg;
+  if (!lim) return [];
+  // A word and a food name can both name the same thing ("soy sauce", "Soy sauce"): list it once.
+  const seen = new Set(), once = t => { const k = String(t).toLowerCase(); if (seen.has(k)) return false; seen.add(k); return true; };
+  const terms = ((tags && tags['sodium-high']) || []).filter(once);
+  const mayTerms = ((mayContain && mayContain['sodium-high']) || []).filter(once);
+  if (!terms.length && !mayTerms.length) return [];
+  const out = { tag: 'sodium-high', label: matcher ? matcher.tagLabel('sodium-high') : 'High in salt', terms, mayTerms, limit: lim.value, rules: lim.rules || [] };
+  if (food) out.per100g = food.per100g.sodium_mg;
+  return [out];
+}
+
+// P0-3 (fix pass of September 30, 2026): a label or dish typed by its plain name ("Caramels", "1 cup Grape-Nuts") gets
+// the tags that food carries in the food data (data/foods.json), the same tags the food box uses. Keys are the food's
+// name and short name with case, punctuation, and leading amounts ("1 cup") taken off; only an exact key counts.
+const FOOD_KEY_LEAD = new Set('cup cups tbsp tablespoon tablespoons tsp teaspoon teaspoons oz ounce ounces lb lbs pound pounds g gram grams kg ml l liter liters litre litres can cans jar jars package packages pkg bag bags box boxes slice slices piece pieces serving servings handful handfuls pinch dash of a an'.split(' '));
+export function foodNameKey(s) {
+  const words = normalizeText(s).replace(/[(),.;:!?"]/g, ' ').replace(/\s+/g, ' ').trim().split(' ').filter(Boolean);
+  let i = 0;
+  while (i < words.length && (FOOD_KEY_LEAD.has(words[i]) || /^[\d.,\/½¼¾⅓⅔⅛⅜⅝⅞x×-]+%?$/.test(words[i]) || /^\d+(g|ml|oz|lb|kg|l)$/.test(words[i]))) i++;
+  return words.slice(i).join(' ');
+}
+// A commercial or mixed product (several ingredients; brands differ) cannot vouch for every brand's ingredients, so its
+// name adds its tags but does not make unknown words known: USDA's "Salad dressing, italian dressing, commercial,
+// regular" has no milk, and some brands have cheese. A single-ingredient food ("Spices, saffron") is known by its name.
+// Composite: a USDA food group of mixed products, or the food data's ultra-processed tag.
+const FOOD_COMPOSITE_GROUPS = new Set(['Baked Products', 'Snacks', 'Sweets', 'Breakfast Cereals', 'Fast Foods', 'Meals, Entrees, and Side Dishes', 'Soups, Sauces, and Gravies', 'Sausages and Luncheon Meats', 'Restaurant Foods', 'Baby Foods']);
+export function foodIsComposite(food) {
+  return FOOD_COMPOSITE_GROUPS.has(food.group) || (food.tags || []).includes('ultra-processed');
+}
+// key -> { foods, tags (carried by every food with that name), mayContain (carried by only some), whole (every food
+// with that name is a single-ingredient food) }
+export function indexFoodNames(foods) {
+  const byKey = new Map();
+  for (const f of foods || []) for (const n of [f.name, f.short]) {
+    if (!n) continue;
+    const k = foodNameKey(n);
+    if (!k) continue;
+    if (!byKey.has(k)) byKey.set(k, []);
+    if (!byKey.get(k).includes(f)) byKey.get(k).push(f);
+  }
+  const out = new Map();
+  for (const [k, list] of byKey) {
+    const all = list.map(f => new Set(foodTags(f)));
+    const union = [...new Set(list.flatMap(f => foodTags(f)))];
+    out.set(k, { foods: list, tags: union.filter(t => all.every(s => s.has(t))), mayContain: union.filter(t => !all.every(s => s.has(t))), whole: list.every(f => !foodIsComposite(f)) });
+  }
+  return out;
+}
+// The foods a text names: the whole text, or one of its pieces, is exactly a food's name.
+function foodsNamedIn(text, matcher) {
+  if (!matcher.foodNames) return [];
+  const found = [];
+  for (const piece of [String(text || ''), ...segmentTextRaw(text)]) {
+    const hit = matcher.foodNames.get(foodNameKey(piece));
+    if (hit && !found.some(x => x.hit === hit)) found.push({ piece, hit });
+  }
+  return found;
+}
+
+// P3-6 (audit of September 30, 2026): the screens always pass the text box's string, but the checker no longer assumes
+// one. Input that cannot be turned into text (its toString is not a function, or throws) is checked as the words
+// "unreadable input", which the dictionary does not recognize, so a restricted plan gets "Not sure", never PASS
+// (README rule 7), and the checker never throws.
+function checkerTextOf(x) {
+  if (typeof x === 'string') return x;
+  if (x == null) return '';
+  try { return String(x); } catch { return 'unreadable input'; }
+}
+
+export function checkText(input, plan, matcher, person = {}) {
+  const text = checkerTextOf(input);
+  const r0 = matcher.tagText(text);
+  // Merge the named foods' tags into a copy; the matcher's cached result is never changed.
+  const named = foodsNamedIn(text, matcher);
+  const r = named.length ? { ...r0, tags: { ...r0.tags }, mayContain: { ...(r0.mayContain || {}) } } : r0;
+  for (const { hit } of named) {
+    const label = hit.foods[0].short || hit.foods[0].name;
+    for (const t of hit.tags) r.tags[t] = [...new Set([...(r.tags[t] || []), label])];
+    for (const t of hit.mayContain) if (!r.tags[t]) r.mayContain[t] = [...new Set([...(r.mayContain[t] || []), label])];
+  }
+  // A piece that is exactly a single-ingredient food's name is known from the food data, even when the dictionary cannot
+  // place a word in it. A commercial product's name stays not recognized (foodIsComposite).
+  if (named.some(n => n.hit.whole)) {
+    const keys = new Set(named.filter(n => n.hit.whole).map(n => foodNameKey(n.piece)));
+    r.unrecognized = (r0.unrecognized || []).filter(u => !keys.has(foodNameKey(u)));
+    r.unplaced = (r0.unplaced || []).filter(u => !keys.has(foodNameKey(u.segment)));
+  }
   const { hits, preferHits } = evaluateTags(r.tags, plan, matcher);
   const hasAllergens = !!((person.allergens && person.allergens.length) || otherAllergies(person).length);
   const restricting = planRestricts(plan, person);
@@ -66,10 +171,22 @@ export function checkText(text, plan, matcher, person = {}) {
   // ingredient statement must be on the list. A piece that is only an amount ("7 ounces") is approved as empty, but it
   // still meets the leave-out examples, so "1 jar (7 ounces) roasted red peppers" keeps its "jar".
   const raw = segmentTextRaw(text);
-  const strict = matcher.dietLists ? strictCheckText(raw, plan, matcher.dietLists, person) : { families: [], notApproved: [] };
+  // A piece is only preparation words (P2-15) when its words are all amounts or noise words and the dictionary finds no
+  // food in it: "half-and-half" is made of noise words, but it is cream.
+  const isNoise = seg => { if (!isNoiseOnly(normalizeText(seg))) return false; const t = matcher.tagText(seg); return !Object.keys(t.tags).length && !Object.keys(t.mayContain || {}).length && !t.unknownRisk.length; };
+  const strict = matcher.dietLists ? strictCheckText(raw, plan, matcher.dietLists, person, isNoise) : { families: [], notApproved: [] };
+  // A named food also gets the food box's strict-list check, so the two boxes agree about it (P0-3).
+  if (matcher.dietLists && named.length && strict.families.length) {
+    for (const { piece, hit } of named) for (const f of hit.foods) {
+      const one = { ingredients: [{ food: f.id }] };
+      const s2 = strictCheck(one, plan, matcher.dietLists, new Map([[f.id, f]]), person);
+      for (const n of s2.notApproved) if (!strict.notApproved.some(x => x.family === n.family && x.label === piece)) strict.notApproved.push({ ...n, label: piece });
+    }
+  }
   const portions = matcher.dietLists ? portionCheckText(raw, plan, matcher.dietLists) : { notes: [], stacked: [] };
-  const verdict = verdictFrom({ hits, unknownRisk: r.unknownRisk, unrecognized: r.unrecognized, hasAllergens, restricting, termHits, verifyLabel, notApproved: strict.notApproved, smallServe: portions.stacked });
-  return { verdict, hits, preferHits, termHits, verifyLabel, unknownRisk: r.unknownRisk, unrecognized: r.unrecognized, notes: r.notes, tags: r.tags, mayContain: r.mayContain, segments: r.segments, restricting, strictFamilies: strict.families, notApproved: strict.notApproved, portionNotes: portions.notes, smallServe: portions.stacked };
+  const sodium = sodiumHits(r.tags, r.mayContain, plan, matcher);
+  const verdict = verdictFrom({ hits, unknownRisk: r.unknownRisk, unrecognized: r.unrecognized, hasAllergens, restricting, termHits, verifyLabel, notApproved: strict.notApproved, smallServe: portions.stacked, sodium });
+  return { verdict, hits, preferHits, termHits, verifyLabel, sodium, unknownRisk: r.unknownRisk, unrecognized: r.unrecognized, unplaced: r.unplaced || [], notes: r.notes, tags: r.tags, mayContain: r.mayContain, segments: r.segments, restricting, strictFamilies: strict.families, notApproved: strict.notApproved, portionNotes: portions.notes, smallServe: portions.stacked };
 }
 
 // Other allergies (owner decision, September 30, 2026): foods outside the nine major allergens that a person typed on
@@ -114,8 +231,9 @@ export function checkFood(food, plan, matcher, person = {}) {
   const one = { ingredients: [{ food: food.id }] }, byId = new Map([[food.id, food]]);
   const strict = matcher && matcher.dietLists ? strictCheck(one, plan, matcher.dietLists, byId, person) : { families: [], notApproved: [] };
   const portions = matcher && matcher.dietLists ? portionCheck(one, plan, matcher.dietLists, byId) : { notes: [], stacked: [] };
-  const verdict = verdictFrom({ hits, unknownRisk: [], unrecognized: [], hasAllergens: false, termHits, notApproved: strict.notApproved, smallServe: portions.stacked });
-  return { verdict, hits, preferHits, termHits, tags: tagMap, strictFamilies: strict.families, notApproved: strict.notApproved, portionNotes: portions.notes, smallServe: portions.stacked };
+  const sodium = foodIsSodiumHigh(food) ? sodiumHits({ 'sodium-high': [food.short || food.name] }, {}, plan, matcher, food) : [];
+  const verdict = verdictFrom({ hits, unknownRisk: [], unrecognized: [], hasAllergens: false, termHits, notApproved: strict.notApproved, smallServe: portions.stacked, sodium });
+  return { verdict, hits, preferHits, termHits, sodium, tags: tagMap, strictFamilies: strict.families, notApproved: strict.notApproved, portionNotes: portions.notes, smallServe: portions.stacked };
 }
 
 export function checkRecipe(recipe, plan, matcher, foodsById, person = {}) {
@@ -124,6 +242,10 @@ export function checkRecipe(recipe, plan, matcher, foodsById, person = {}) {
   const unknownRisk = [];
   const unrecognized = [];
   const mayContain = {};
+  // P1-3: with a daily sodium limit, a salty line whose sodium the recipe's total leaves out (no linked food, and no
+  // published nutrition) is a caution: the app cannot count it toward the limit, and never counts it as zero.
+  const imported = !!(recipe.nutrition_per_serving && recipe.nutrition_source);
+  const saltUncounted = [], saltMayUncounted = [];
   for (const ing of recipe.ingredients || []) {
     const food = foodsById.get(ing.food);
     const label = ing.display || (food ? food.short || food.name : ing.food);
@@ -134,7 +256,16 @@ export function checkRecipe(recipe, plan, matcher, foodsById, person = {}) {
       for (const tag of Object.keys(r.tags)) addTag(tag, label);
       for (const [tag, terms] of Object.entries(r.mayContain || {})) (mayContain[tag] ||= []).push(...terms);
       for (const u of r.unknownRisk) unknownRisk.push(u);
-      if (!food && r.unrecognized.length) unrecognized.push(label);
+      // P0-3 follow-up: a line that is a food's plain name ("Ranch dressing", "2 Tablespoons (16g) Bran Flakes") carries
+      // that food's tags, as the same words do on the Check screen; a single-ingredient food's name is also not
+      // "not recognized".
+      const named = foodsNamedIn(ing.display, matcher);
+      const namedTags = new Set(named.flatMap(n => n.hit.tags)), namedMay = new Set(named.flatMap(n => n.hit.mayContain));
+      for (const tag of namedTags) addTag(tag, label);
+      for (const tag of namedMay) (mayContain[tag] ||= []).push(label);
+      const namedKeys = new Set(named.filter(n => n.hit.whole).map(n => foodNameKey(n.piece)));
+      if (!food && r.unrecognized.some(u => !namedKeys.has(foodNameKey(u)))) unrecognized.push(label);
+      if (!food && !imported) { if (r.tags['sodium-high'] || namedTags.has('sodium-high')) saltUncounted.push(label); else if ((r.mayContain || {})['sodium-high'] || namedMay.has('sodium-high')) saltMayUncounted.push(label); }
     }
     if (!food && !ing.display) unrecognized.push(ing.food);
   }
@@ -145,7 +276,8 @@ export function checkRecipe(recipe, plan, matcher, foodsById, person = {}) {
   const restricting = planRestricts(plan, person);
   for (const t of Object.keys(tagMap)) delete mayContain[t];
   const verifyLabel = verifyLabelHits(mayContain, plan, matcher);
-  const verdict = verdictFrom({ hits, unknownRisk, unrecognized, hasAllergens, restricting, termHits, verifyLabel });
+  const sodium = sodiumHits({ 'sodium-high': saltUncounted }, { 'sodium-high': saltMayUncounted }, plan, matcher).map(x => ({ ...x, uncounted: true }));
+  const verdict = verdictFrom({ hits, unknownRisk, unrecognized, hasAllergens, restricting, termHits, verifyLabel, sodium });
   const nut = recipeTotals(recipe, foodsById);
   const perServing = nut.perServing;
   const d = derived(perServing);
@@ -162,5 +294,5 @@ export function checkRecipe(recipe, plan, matcher, foodsById, person = {}) {
   // serve' foods in one meal.
   const portions = matcher && matcher.dietLists ? portionCheck(recipe, plan, matcher.dietLists, foodsById) : { notes: [], stacked: [] };
   const finalVerdict = (exceeds.length || strict.notApproved.length || portions.stacked.length) && verdict !== 'fail' ? 'caution' : verdict;
-  return { verdict: finalVerdict, hits, preferHits, termHits, verifyLabel, unknownRisk, unrecognized, restricting, tags: tagMap, perServing, vsLimits, exceeds, missingFoods: nut.missingFoods, strictFamilies: strict.families, notApproved: strict.notApproved, portionNotes: portions.notes, smallServe: portions.stacked };
+  return { verdict: finalVerdict, hits, preferHits, termHits, verifyLabel, sodium, unknownRisk, unrecognized, restricting, tags: tagMap, perServing, vsLimits, exceeds, missingFoods: nut.missingFoods, strictFamilies: strict.families, notApproved: strict.notApproved, portionNotes: portions.notes, smallServe: portions.stacked };
 }

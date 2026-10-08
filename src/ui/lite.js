@@ -2,9 +2,9 @@
 // Everything else (Meals, Recipes, Check, Learn, Breathe, setup) is the same code as the full app with fewer controls.
 import { symptomEpisodes, foodsBeforeSymptoms, weightTrend, reportDays, intakeAverages, unintendedWeightLoss } from '../engine/report.js';
 import { lbToKg, kgToLb } from '../engine/energy.js';
-import { uiState, uiEsc, uiActivePerson, uiPlanFor, uiPersist, uiToast, uiModal, uiIsoDate, uiToday, uiFmtDate, uiFmtNum, uiPageHeader, uiSection, uiChip, uiIcon, uiEmptyState, uiNoticeHTML, uiTagLabel, uiSourcesHTML, uiDownload, uiSegmented, uiUndoToast } from './common.js';
+import { uiState, uiEsc, uiActivePerson, uiPlanFor, uiPersist, uiToast, uiModal, uiIsoDate, uiToday, uiFmtDate, uiFmtNum, uiPageHeader, uiSection, uiChip, uiIcon, uiEmptyState, uiNoticeHTML, uiTagLabel, uiSourcesHTML, uiDownload, uiSegmented, uiUndoToast, uiNutrientLabel } from './common.js';
 import { todayAddDiaryEntry, todayAddModal, todayLatestWeightKg, todayChartSVG, todayShiftDate, todayEntryName, todayWeightLossNoticeHTML, todayMealStackingHTML, todayBindHistoryButtons, todayAmountModal } from './today.js';
-import { weekGet } from './week.js';
+import { weekGet, weekCached } from './week.js';
 import { LOG_SYMPTOMS } from './log.js';
 import { SLOT_LABEL } from '../engine/planner.js';
 import { settingsShareBackup, settingsBackupReminderHTML, settingsBindBackupReminder } from './settings.js';
@@ -20,7 +20,10 @@ export function renderLiteTodayScreen(root) {
   const person = uiActivePerson();
   const plan = uiPlanFor(person);
   const date = uiIsoDate(uiToday());
-  const week = uiState.data.recipes.length ? weekGet(person, plan) : null;
+  // P2-1 (fix pass of September 30, 2026): Today shows at once; when the week is not built yet, it is built right after
+  // the first paint and Today is drawn again (liteBuildWeekSoon).
+  const week = uiState.data.recipes.length ? weekCached(person, plan) : null;
+  const weekPending = uiState.data.recipes.length > 0 && !week;
   const day = week ? week.days.find(d => d.date === date) : null;
   const entries = (uiState.profile.diary || []).filter(e => e.person === person.id && e.date === date);
   // Today's symptom entries as stored (not copies), so each one can be removed; and today's "feeling fine", if any.
@@ -37,22 +40,12 @@ export function renderLiteTodayScreen(root) {
     ${todayWeightLossNoticeHTML(person, date)}
     ${settingsBackupReminderHTML()}
     ${plan.notices.filter(n => n.code === 'suggest-module' || n.code === 'phase-check-in' || n.code === 'medication-flag').map(n => uiNoticeHTML(n, { person })).join('')}
-    ${uiSection('What did you eat?', `<div class="lite-slots">${slots.map(slot => {
-      const planned = day ? day.meals.find(m => m.slot === slot) : null;
-      const logged = entries.filter(e => e.meal === LITE_SLOT_TO_DIARY[slot] || e.meal === slot);
-      return `<div class="lite-slot card">
-        <div class="lite-slot-head"><span class="slot">${SLOT_LABEL[slot] || slot}</span>${logged.length ? uiChip(`${logged.length} logged`, 'pass') : ''}</div>
-        ${planned && planned.recipe ? `<p class="lite-planned">Planned: <strong>${uiEsc(planned.name)}</strong></p>` : '<p class="small muted">Nothing planned for this slot.</p>'}
-        ${logged.length ? `<ul class="lite-logged">${logged.map(e => `<li class="lite-logged-row"><span>${uiEsc(todayEntryName(e))}</span>${removeBtn(uiState.profile.diary, e, todayEntryName(e))}</li>`).join('')}</ul>` : ''}
-        ${todayMealStackingHTML(plan, logged)}
-        <div class="btn-row">${planned && planned.recipe && !logged.some(e => e.ref === planned.recipe) ? `<button class="btn primary lite-big" type="button" data-ate="${uiEsc(slot)}">${uiIcon('check')}I ate this</button><button class="btn lite-big" type="button" data-ate-part="${uiEsc(slot)}">Only part of it</button>` : ''}<button class="btn lite-big" type="button" data-other="${uiEsc(slot)}">${uiIcon('plus')}Something else</button></div>
-      </div>`; }).join('')}</div>
+    ${uiSection('What did you eat?', `<div class="lite-slots">${slots.map(slot => liteSlotHTML(slot, day ? day.meals.find(m => m.slot === slot) : null, entries.filter(e => e.meal === LITE_SLOT_TO_DIARY[slot] || e.meal === slot), plan, weekPending, removeBtn)).join('')}</div>
       <div class="btn-row"><button class="btn lite-big" type="button" data-food-history>${uiIcon('list')}Past days: food and symptoms</button></div>`, { id: 'lite-eat-h' })}
     ${uiSection('How do you feel?', `<div class="card">
       ${symEntries.length ? `<ul class="lite-logged">${symEntries.map(e => { const words = Object.entries(e.symptoms).filter(([, v]) => v > 0).map(([k, v]) => `${liteSymptomLabel(k)} (${LITE_LEVELS.find(l => l.value === Number(v)) ? LITE_LEVELS.find(l => l.value === Number(v)).label.toLowerCase() : v})`).join(', '); return `<li class="lite-logged-row"><span><strong>${uiEsc(words)}</strong>${e.at && e.at.length > 10 ? ` <span class="muted small">at ${new Date(e.at).toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' })}</span>` : ''}${e.notes ? `<span class="small muted lite-note">${uiEsc(e.notes)}</span>` : ''}</span>${removeBtn(uiState.profile.log, e, words)}</li>`; }).join('')}</ul>` : fineToday ? '' : '<p class="small muted">Nothing logged today. If something comes on, tap the button and say what and how bad.</p>'}
       ${fineToday ? `<ul class="lite-logged"><li class="lite-logged-row"><span><strong>Feeling fine today</strong> <span class="muted small">noted</span></span>${removeBtn(uiState.profile.log, fineToday, 'feeling fine today')}</li></ul>` : ''}
       <div class="btn-row"><button class="btn primary lite-big" type="button" id="lite-feel">${uiIcon('note')}Log a symptom</button><button class="btn lite-big" type="button" id="lite-fine" ${fineToday ? 'disabled aria-disabled="true"' : ''}>${uiIcon('check-circle')}${fineToday ? 'Noted' : 'Feeling fine today'}</button></div>
-      <div class="btn-row"><button class="btn lite-big" type="button" data-food-history>${uiIcon('list')}Past days: symptoms and food</button></div>
     </div>`, { id: 'lite-feel-h' })}
     ${uiSection('Weight', `<div class="card"><div class="today-row"><div class="field"><label for="lite-weight">Today's weight (lb)</label><input id="lite-weight" type="number" inputmode="decimal" min="50" max="900" step="0.1" placeholder="${latestKg ? kgToLb(latestKg) : '150'}"></div><button class="btn primary lite-big" type="button" id="lite-weight-save">Save</button></div>
       <p class="small muted">${latestKg ? `Last logged: ${kgToLb(latestKg)} lb.` : 'No weight logged yet.'} ${person.goals && person.goals.calorie_target === 'gain' ? 'Your goal is to gain; the Report shows the trend.' : ''}</p>
@@ -106,6 +99,57 @@ export function renderLiteTodayScreen(root) {
     uiState.profile.weights.push({ date, person: person.id, kg });
     person.weight_kg = kg;
     uiPersist(); uiToast(`Saved ${lb} lb.`); uiState.rerender();
+  });
+  if (weekPending) liteBuildWeekSoon();
+}
+
+// One meal on lite Today (owner item 6, October 8, 2026). Three states, each said in words:
+//  - Nothing logged: "Planned:" and the meal, with I ate this, Only part of it, and Something else.
+//  - Eaten as planned: "You ate:" and the meal, "as planned".
+//  - Something else eaten: "You ate:" in bold with what was eaten, and below it, smaller and grey, "Instead of the
+//    planned ..." The plan stays visible but quiet: what was eaten is what counts (it goes on the doctor report), and
+//    the plan line answers "where did my planned meal go?". The big three buttons give way to Add more, plus a small
+//    "I had the planned meal too" for a day with both.
+export function liteSlotHTML(slot, planned, logged, plan, weekPending, removeBtn) {
+  const plannedId = planned && planned.recipe ? planned.recipe : null;
+  const asPlanned = plannedId ? logged.filter(e => e.ref === plannedId) : [];
+  const other = logged.filter(e => !asPlanned.includes(e));
+  const row = (e, extra = '') => `<li class="lite-logged-row"><span>${uiEsc(todayEntryName(e))}${extra}</span>${removeBtn(uiState.profile.diary, e, todayEntryName(e))}</li>`;
+  const head = `<div class="lite-slot-head"><span class="slot">${SLOT_LABEL[slot] || slot}</span>${logged.length ? uiChip(logged.length === 1 ? 'Logged' : `${logged.length} logged`, 'pass') : ''}</div>`;
+  if (!logged.length) {
+    return `<div class="lite-slot card">${head}
+      ${plannedId ? `<p class="lite-planned">Planned: <strong>${uiEsc(planned.name)}</strong></p>` : weekPending ? `<p class="small muted">Working out today's plan…</p>` : '<p class="small muted">Nothing planned for this meal.</p>'}
+      <div class="btn-row lite-slot-acts">${plannedId ? `<button class="btn primary lite-big" type="button" data-ate="${uiEsc(slot)}">${uiIcon('check')}I ate this</button><button class="btn lite-big" type="button" data-ate-part="${uiEsc(slot)}">Only part of it</button>` : ''}<button class="btn lite-big" type="button" data-other="${uiEsc(slot)}">${uiIcon('plus')}Something else</button></div>
+    </div>`;
+  }
+  return `<div class="lite-slot card lite-slot-done">${head}
+    <p class="lite-ate-label"><strong>You ate:</strong></p>
+    <ul class="lite-logged">${asPlanned.map(e => row(e, ' <span class="muted small">as planned</span>')).join('')}${other.map(e => row(e)).join('')}</ul>
+    ${plannedId && !asPlanned.length ? `<p class="lite-instead small muted">Instead of the planned ${uiEsc(planned.name)}.</p>` : ''}
+    ${todayMealStackingHTML(plan, logged)}
+    <div class="btn-row lite-slot-acts"><button class="btn lite-big" type="button" data-other="${uiEsc(slot)}">${uiIcon('plus')}Add more</button>${plannedId && !asPlanned.length ? `<button class="btn link" type="button" data-ate="${uiEsc(slot)}">I had the planned meal too</button>` : ''}</div>
+  </div>`;
+}
+
+// P2-1 (fix pass of September 30, 2026): the week is built after Today has been painted, for whoever is active then
+// (with their plan as it is then), and Today is drawn again with the planned meals. While the person is typing or has
+// a sheet open, the redraw waits until they are done (checked every 1.5 seconds), so nothing they typed is lost.
+let liteWeekBuilding = false;
+function liteBuildWeekSoon() {
+  if (liteWeekBuilding) return;
+  liteWeekBuilding = true;
+  // Two frames, then a task: Today's first frame is on screen before the build starts.
+  const afterPaint = fn => (typeof requestAnimationFrame === 'function' ? requestAnimationFrame(() => requestAnimationFrame(() => setTimeout(fn, 0))) : setTimeout(fn, 0));
+  afterPaint(() => {
+    try { const p = uiActivePerson(); if (p) weekGet(p, uiPlanFor(p)); } catch (e) { console.warn(e); }
+    const busy = () => { const a = document.activeElement; return !!uiState.modalClose || !!(a && /^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName)); };
+    const redraw = () => {
+      if (!uiState.route || uiState.route.screen !== 'today') { liteWeekBuilding = false; return; }
+      if (busy()) { setTimeout(redraw, 1500); return; }
+      liteWeekBuilding = false;
+      uiState.rerender();
+    };
+    redraw();
   });
 }
 
@@ -197,6 +241,12 @@ function liteSymptomModal(person, date) {
 }
 
 // ---------- Doctor report ----------
+// "sodium at most 2,300 mg", "saturated fat at most 10% of calories" (it read "sodium mg at most 2,300").
+export function liteLimitText(n, value) {
+  const m = /^(.*?)\s*\((.*)\)\s*$/.exec(uiNutrientLabel(n));
+  const name = (m ? m[1] : uiNutrientLabel(n)).toLowerCase(), unit = m ? m[2] : '';
+  return unit === '% of calories' ? `${name} at most ${uiFmtNum(value, 1)}% of calories` : `${name} at most ${uiFmtNum(value, 1)}${unit ? ' ' + unit : ''}`;
+}
 let liteReportUi = { days: 30, mode: 'all' };
 
 export function renderLiteReportScreen(root) {
@@ -213,29 +263,31 @@ export function renderLiteReportScreen(root) {
   const meds = [];
   for (const mod of uiState.conditionsById.values()) for (const q of mod.medication_questions || []) if (person.medications && person.medications[q.id] && !meds.some(m => m.id === q.id)) meds.push({ id: q.id, text: q.text });
   const intake = intakeAverages(uiState.profile.diary, person.id, from, to);
+  // Food logged without numbers is still food logged: the report said "No food logged" over a diary full of typed meals.
+  const loggedNoNumbers = !intake.days && (uiState.profile.diary || []).some(e => e.person === person.id && e.date >= from && e.date <= to);
   const wl = unintendedWeightLoss(uiState.profile.weights, person.id, to, { intended: !!(person.goals && person.goals.calorie_target === 'loss') });
   const intakeRows = [['kcal', 'Calories', ''], ['protein_g', 'Protein', 'g'], ['carb_g', 'Carbohydrate', 'g'], ['fat_g', 'Fat', 'g'], ['fiber_g', 'Fiber', 'g'], ['sodium_mg', 'Sodium', 'mg'], ['potassium_mg', 'Potassium', 'mg']];
   const body = `
     <div class="report-sheet" id="lite-report">
       <h1 class="report-title">Food and symptom report</h1>
-      <p class="report-meta">${uiEsc(person.name)}${person.age ? `, age ${person.age}` : ''}. ${uiFmtDate(from)} to ${uiFmtDate(to)} (${liteReportUi.days} days)${onlySym ? ', days with symptoms only' : ', full diary'}. Printed from Peace Meal on ${uiFmtDate(to)}. Self-reported by the patient; the app records, it does not diagnose.</p>
+      <p class="report-meta">${uiEsc(person.name)}${person.age ? `, age ${uiEsc(person.age)}` : ''}. ${uiFmtDate(from)} to ${uiFmtDate(to)} (${liteReportUi.days} days)${onlySym ? ', days with symptoms only' : ', full diary'}. Printed from Peace Meal on ${uiFmtDate(to)}. Self-reported by the patient; the app records, it does not diagnose.</p>
       <h2>Current restrictions</h2>
       ${(person.allergens || []).length || (plan.otherAllergies || []).length ? `<p class="small"><strong>Allergies (never):</strong> ${[...(person.allergens || []).map(uiTagLabel), ...(plan.otherAllergies || [])].map(uiEsc).join(', ')}.</p>` : ''}
       ${plan.modules.length ? `<ul class="report-list">${plan.modules.map(m => { const mod = uiState.conditionsById.get(m.id); const hard = avoid.filter(([, a]) => a.hard && a.rules.some(r => r.module === m.id)).map(([t]) => uiTagLabel(t)); const soft = avoid.filter(([, a]) => !a.hard && a.rules.some(r => r.module === m.id)).map(([t]) => uiTagLabel(t)); const srcs = [...new Set(avoid.flatMap(([, a]) => a.rules.filter(r => r.module === m.id).flatMap(r => r.sources || [])).concat((mod && mod.sources) || []))].slice(0, 2); return `<li><strong>${uiEsc(m.name)}</strong>${hard.length ? `. Never: ${hard.map(uiEsc).join(', ')}` : ''}${soft.length ? `. Avoid: ${soft.map(uiEsc).join(', ')}` : ''}${!hard.length && !soft.length ? '. Guidance only, no foods excluded' : ''}.${srcs.length ? ` <span class="small muted">${uiSourcesHTML(srcs)}</span>` : ''}</li>`; }).join('')}</ul>` : '<p class="small muted">No conditions selected.</p>'}
-      ${Object.keys(plan.limits || {}).length ? `<p class="small"><strong>Daily limits:</strong> ${Object.entries(plan.limits).map(([n, l]) => `${uiEsc(n.replace(/_/g, ' '))} at most ${uiFmtNum(l.value, 1)}`).join('; ')}.</p>` : ''}
+      ${Object.keys(plan.limits || {}).length ? `<p class="small"><strong>Daily limits:</strong> ${Object.entries(plan.limits).map(([n, l]) => uiEsc(liteLimitText(n, l.value))).join('; ')}.</p>` : ''}
       <h2>Weight</h2>
-      ${wt.points.length ? `<p class="small">${wt.points.length} entr${wt.points.length === 1 ? 'y' : 'ies'}. ${kgToLb(wt.first.kg)} lb on ${uiFmtDate(wt.first.date)} to ${kgToLb(wt.last.kg)} lb on ${uiFmtDate(wt.last.date)}: <strong>${wt.changeKg > 0 ? '+' : ''}${kgToLb(Math.abs(wt.changeKg)) * Math.sign(wt.changeKg) || 0} lb</strong>.${person.goals && person.goals.calorie_target === 'gain' ? ' Goal: gain.' : ''}</p>${wt.points.length > 1 ? todayChartSVG(wt.points) : ''}` : '<p class="small muted">No weights logged in this range.</p>'}
+      ${wt.points.length === 1 ? `<p class="small">1 entry: ${kgToLb(wt.first.kg)} lb on ${uiFmtDate(wt.first.date)}.</p>` : wt.points.length ? `<p class="small">${wt.points.length} entries. ${kgToLb(wt.first.kg)} lb on ${uiFmtDate(wt.first.date)} to ${kgToLb(wt.last.kg)} lb on ${uiFmtDate(wt.last.date)}: <strong>${wt.changeKg > 0 ? '+' : ''}${kgToLb(Math.abs(wt.changeKg)) * Math.sign(wt.changeKg) || 0} lb</strong>.${person.goals && person.goals.calorie_target === 'gain' ? ' Goal: gain.' : ''}</p>${wt.points.length > 1 ? todayChartSVG(wt.points) : ''}` : '<p class="small muted">No weights logged in this range.</p>'}
       ${wl ? `<p class="small"><strong>Weight loss flag:</strong> down ${wl.pct}% between ${uiFmtDate(wl.fromDate)} and ${uiFmtDate(wl.toDate)} (${wl.weeks} weeks) with no weight-loss goal set. This meets the GLIM screening threshold for unintended weight loss (more than ${wl.threshold}% over this span).</p>` : ''}
       <h2>Medicines that change the food rules</h2>
       ${meds.length ? `<ul class="report-list">${meds.map(m => `<li>Yes: ${uiEsc(m.text)}</li>`).join('')}</ul>` : '<p class="small muted">None answered yes.</p>'}
       <h2>Average daily intake</h2>
       ${intake.days ? `<p class="small muted">Averaged over the ${intake.days} day${intake.days === 1 ? '' : 's'} in this range with food logged. Amounts come from USDA values by grams or a recipe's published per-serving numbers; anything logged without numbers is not counted.</p>
-      <table class="report-table"><thead><tr><th>Nutrient</th><th class="num">Average per day</th><th class="num">Daily limit in the plan</th></tr></thead><tbody>${intakeRows.map(([k, label, unit]) => `<tr><td>${label}</td><td class="num">${typeof intake.avg[k] === 'number' ? uiFmtNum(Math.round(intake.avg[k])) + (unit ? ' ' + unit : '') : '-'}</td><td class="num">${plan.limits && plan.limits[k] ? uiFmtNum(plan.limits[k].value) + (unit ? ' ' + unit : '') : '-'}</td></tr>`).join('')}</tbody></table>` : '<p class="small muted">No food logged in this range.</p>'}
+      <div class="table-wrap" role="region" aria-label="Average daily intake" tabindex="0"><table class="report-table"><thead><tr><th>Nutrient</th><th class="num">Average per day</th><th class="num">Daily limit in the plan</th></tr></thead><tbody>${intakeRows.map(([k, label, unit]) => `<tr><td>${label}</td><td class="num">${typeof intake.avg[k] === 'number' ? uiFmtNum(Math.round(intake.avg[k])) + (unit ? ' ' + unit : '') : '-'}</td><td class="num">${plan.limits && plan.limits[k] ? uiFmtNum(plan.limits[k].value) + (unit ? ' ' + unit : '') : '-'}</td></tr>`).join('')}</tbody></table></div>` : `<p class="small muted">${loggedNoNumbers ? 'Food was logged in this range, but without nutrition numbers, so there is nothing to average.' : 'No food logged in this range.'}</p>`}
       <h2>Symptoms: ${eps.length} episode${eps.length === 1 ? '' : 's'}</h2>
       ${eps.length ? `<p class="small">Most frequent: ${liteTopSymptoms(eps).map(([id, n]) => `${uiEsc(liteSymptomLabel(id))} (${n})`).join(', ')}.</p>` : '<p class="small muted">None logged in this range.</p>'}
       ${foods.length ? `<h2>Foods eaten in the 24 hours before symptoms</h2>
       <p class="small muted">Counts only, and an association is not a cause. A food eaten every day shows up before everything, and a food that appears before most episodes still needs a supervised trial off and back on before anyone calls it a trigger.</p>
-      <table class="report-table"><thead><tr><th>Food or meal</th><th class="num">Before episodes</th><th class="num">Times eaten</th></tr></thead><tbody>${foods.map(f => `<tr><td>${uiEsc(f.name)}</td><td class="num">${f.episodes} of ${eps.length}</td><td class="num">${f.total}</td></tr>`).join('')}</tbody></table>` : ''}
+      <div class="table-wrap" role="region" aria-label="Foods eaten before symptoms" tabindex="0"><table class="report-table"><thead><tr><th>Food or meal</th><th class="num">Before episodes</th><th class="num">Times eaten</th></tr></thead><tbody>${foods.map(f => `<tr><td>${uiEsc(f.name)}</td><td class="num">${f.episodes} of ${eps.length}</td><td class="num">${f.total}</td></tr>`).join('')}</tbody></table></div>` : ''}
       <h2>${onlySym ? 'Days with symptoms' : 'Day by day'}</h2>
       ${days.length ? days.map(d => `<div class="report-day">
         <h3>${uiEsc(uiFmtDate(d.date))}${d.weight ? ` <span class="muted small">${kgToLb(d.weight.kg)} lb</span>` : ''}</h3>

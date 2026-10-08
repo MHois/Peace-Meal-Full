@@ -1,0 +1,332 @@
+{
+ "seed": 20260930,
+ "generated": "by audit/tests/checker-fuzz.test.mjs",
+ "A1-term-own-segment": {
+  "runs": 3000,
+  "failed": 0,
+  "examples": []
+ },
+ "A2-term-with-unknown-words": {
+  "runs": 3000,
+  "failed": 0,
+  "examples": []
+ },
+ "B1-unknown-own-segment": {
+  "runs": 3000,
+  "failed": 0,
+  "examples": []
+ },
+ "B2-unknown-beside-known-word": {
+  "runs": 3000,
+  "failed": 2825,
+  "examples": [
+   {
+    "profile": "tree-nut",
+    "word": "ywcnhctdp",
+    "known": "honey",
+    "order": true,
+    "text": "ywcnhctdp honey"
+   },
+   {
+    "profile": "sesame",
+    "word": "veyx",
+    "known": "apple",
+    "order": false,
+    "text": "apple veyx"
+   },
+   {
+    "profile": "tree-nut",
+    "word": "bzwcnau",
+    "known": "vinegar",
+    "order": true,
+    "text": "bzwcnau vinegar"
+   },
+   {
+    "profile": "crustacean",
+    "word": "ueywrdwye",
+    "known": "water",
+    "order": true,
+    "text": "ueywrdwye water"
+   },
+   {
+    "profile": "crustacean",
+    "word": "dcallc",
+    "known": "corn starch",
+    "order": true,
+    "text": "dcallc corn starch"
+   },
+   {
+    "profile": "ibs",
+    "word": "bakhsayy",
+    "known": "sugar",
+    "order": true,
+    "text": "bakhsayy sugar"
+   },
+   {
+    "profile": "soy",
+    "word": "zxdroxpnc",
+    "known": "potato",
+    "order": true,
+    "text": "zxdroxpnc potato"
+   },
+   {
+    "profile": "ibs",
+    "word": "arguments",
+    "known": "tomato",
+    "order": false,
+    "text": "tomato arguments"
+   },
+   {
+    "profile": "milk",
+    "word": "dhttt",
+    "known": "water",
+    "order": false,
+    "text": "water dhttt"
+   },
+   {
+    "profile": "mcas",
+    "word": "xlme",
+    "known": "rice",
+    "order": false,
+    "text": "rice xlme"
+   },
+   {
+    "profile": "sesame",
+    "word": "awckdvmfw",
+    "known": "vinegar",
+    "order": false,
+    "text": "vinegar awckdvmfw"
+   },
+   {
+    "profile": "sesame",
+    "word": "okvwjzvgy",
+    "known": "olive oil",
+    "order": true,
+    "text": "okvwjzvgy olive oil"
+   },
+   {
+    "profile": "mcas",
+    "word": "vjgfhq",
+    "known": "carrot",
+    "order": true,
+    "text": "vjgfhq carrot"
+   },
+   {
+    "profile": "celiac",
+    "word": "nciu",
+    "known": "sugar",
+    "order": false,
+    "text": "sugar nciu"
+   },
+   {
+    "profile": "peanut",
+    "word": "ucvm",
+    "known": "salt",
+    "order": false,
+    "text": "salt ucvm"
+   },
+   {
+    "profile": "sesame",
+    "word": "iof",
+    "known": "tomato",
+    "order": true,
+    "text": "iof tomato"
+   },
+   {
+    "profile": "fish",
+    "word": "ebqckdsa",
+    "known": "lemon juice",
+    "order": true,
+    "text": "ebqckdsa lemon juice"
+   },
+   {
+    "profile": "celiac",
+    "word": "dzc",
+    "known": "seeds",
+    "order": false,
+    "text": "seeds dzc"
+   },
+   {
+    "profile": "ibs",
+    "word": "adebzdcnd",
+    "known": "salt",
+    "order": false,
+    "text": "salt adebzdcnd"
+   },
+   {
+    "profile": "crustacean",
+    "word": "txyyv",
+    "known": "lemon juice",
+    "order": true,
+    "text": "txyyv lemon juice"
+   },
+   {
+    "profile": "celiac",
+    "word": "ilkeytcal",
+    "known": "vinegar",
+    "order": true,
+    "text": "ilkeytcal vinegar"
+   },
+   {
+    "profile": "celiac",
+    "word": "xysyaei",
+    "known": "corn starch",
+    "order": false,
+    "text": "corn starch xysyaei"
+   },
+   {
+    "profile": "tree-nut",
+    "word": "hnbsyxf",
+    "known": "chicken",
+    "order": false,
+    "text": "chicken hnbsyxf"
+   },
+   {
+    "profile": "egg",
+    "word": "lhcou",
+    "known": "seeds",
+    "order": false,
+    "text": "seeds lhcou"
+   },
+   {
+    "profile": "hypertension",
+    "word": "qdcgoet",
+    "known": "potato",
+    "order": true,
+    "text": "qdcgoet potato"
+   },
+   {
+    "profile": "celiac",
+    "word": "oap",
+    "known": "onion",
+    "order": false,
+    "text": "onion oap"
+   },
+   {
+    "profile": "ibs",
+    "word": "mbh",
+    "known": "sugar",
+    "order": false,
+    "text": "sugar mbh"
+   },
+   {
+    "profile": "soy",
+    "word": "tlwscq",
+    "known": "rice",
+    "order": false,
+    "text": "rice tlwscq"
+   },
+   {
+    "profile": "fish",
+    "word": "lpngt",
+    "known": "apple",
+    "order": true,
+    "text": "lpngt apple"
+   },
+   {
+    "profile": "celiac",
+    "word": "xvy",
+    "known": "rice",
+    "order": false,
+    "text": "rice xvy"
+   },
+   {
+    "profile": "celiac",
+    "word": "otdfdo",
+    "known": "corn starch",
+    "order": true,
+    "text": "otdfdo corn starch"
+   },
+   {
+    "profile": "celiac",
+    "word": "emhsw",
+    "known": "onion",
+    "order": false,
+    "text": "onion emhsw"
+   },
+   {
+    "profile": "ibs",
+    "word": "mjvu",
+    "known": "lemon juice",
+    "order": true,
+    "text": "mjvu lemon juice"
+   },
+   {
+    "profile": "fish",
+    "word": "oyubkdrgu",
+    "known": "salt",
+    "order": true,
+    "text": "oyubkdrgu salt"
+   },
+   {
+    "profile": "peanut",
+    "word": "nupm",
+    "known": "seeds",
+    "order": true,
+    "text": "nupm seeds"
+   },
+   {
+    "profile": "sesame",
+    "word": "uucwukmtb",
+    "known": "chicken",
+    "order": false,
+    "text": "chicken uucwukmtb"
+   },
+   {
+    "profile": "wheat",
+    "word": "aer",
+    "known": "carrot",
+    "order": false,
+    "text": "carrot aer"
+   },
+   {
+    "profile": "ibs",
+    "word": "drvbwcdvv",
+    "known": "lemon juice",
+    "order": true,
+    "text": "drvbwcdvv lemon juice"
+   },
+   {
+    "profile": "peanut",
+    "word": "vpkgo",
+    "known": "vinegar",
+    "order": false,
+    "text": "vinegar vpkgo"
+   },
+   {
+    "profile": "celiac",
+    "word": "ujknfeyf",
+    "known": "seeds",
+    "order": true,
+    "text": "ujknfeyf seeds"
+   }
+  ]
+ },
+ "C-never-throws": {
+  "runs": 5000,
+  "failed": 1,
+  "examples": [
+   {
+    "x": {
+     "toString": [
+      "E",
+      "B dH%QI",
+      "kR`iXy?",
+      false,
+      true,
+      "CF",
+      true,
+      true,
+      "~!_lQ"
+     ]
+    },
+    "error": "Cannot convert object to primitive value"
+   }
+  ]
+ },
+ "C2-long-label": {
+  "chars": 35598,
+  "ms": 764,
+  "verdict": "caution"
+ }
+}

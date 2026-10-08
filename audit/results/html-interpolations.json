@@ -1,0 +1,3737 @@
+[
+ {
+  "file": "src/app.js",
+  "line": 133,
+  "expr": "s.id"
+ },
+ {
+  "file": "src/app.js",
+  "line": 133,
+  "expr": "cur === s.id ? 'aria-current=\"page\"' : ''"
+ },
+ {
+  "file": "src/app.js",
+  "line": 133,
+  "expr": "s.label"
+ },
+ {
+  "file": "src/app.js",
+  "line": 144,
+  "expr": "uiAvatar(person.name)"
+ },
+ {
+  "file": "src/app.js",
+  "line": 147,
+  "expr": "canBack ? uiBackButtonHTML('back-phone') : ''"
+ },
+ {
+  "file": "src/app.js",
+  "line": 147,
+  "expr": "APP_HOME"
+ },
+ {
+  "file": "src/app.js",
+  "line": 147,
+  "expr": "uiBrandMark({ label: APP_BRAND })"
+ },
+ {
+  "file": "src/app.js",
+  "line": 147,
+  "expr": "APP_BRAND"
+ },
+ {
+  "file": "src/app.js",
+  "line": 147,
+  "expr": "APP_LITE ? '<span class=\"chip plum lite-tag\">Lite</span>' : ''"
+ },
+ {
+  "file": "src/app.js",
+  "line": 147,
+  "expr": "who"
+ },
+ {
+  "file": "src/app.js",
+  "line": 150,
+  "expr": "APP_HOME"
+ },
+ {
+  "file": "src/app.js",
+  "line": 150,
+  "expr": "uiBrandMark({ label: APP_BRAND })"
+ },
+ {
+  "file": "src/app.js",
+  "line": 150,
+  "expr": "APP_BRAND"
+ },
+ {
+  "file": "src/app.js",
+  "line": 151,
+  "expr": "APP_SCREENS.map(s => appNavLink(s, cur)).join('')"
+ },
+ {
+  "file": "src/app.js",
+  "line": 152,
+  "expr": "person ? `<a class=\"rail-person\" href=\"#/people\" aria-label=\"Active person: ${uiEsc(person.name)}. Open People.\">${uiAvatar(person.name)}<span class=\"rail-perso"
+ },
+ {
+  "file": "src/app.js",
+  "line": 159,
+  "expr": "moreActive ? 'on' : ''"
+ },
+ {
+  "file": "src/app.js",
+  "line": 159,
+  "expr": "appMoreOpen"
+ },
+ {
+  "file": "src/app.js",
+  "line": 167,
+  "expr": "title"
+ },
+ {
+  "file": "src/app.js",
+  "line": 227,
+  "expr": "uiBackButtonHTML('back-desktop')"
+ },
+ {
+  "file": "src/ui/breathe.js",
+  "line": 8,
+  "expr": "uiPageHeader('Take a minute to breathe', 'A short visual reset. Nothing here is tracked or saved. Press play, follow the screen, and come back when you are read"
+ },
+ {
+  "file": "src/ui/breathe.js",
+  "line": 10,
+  "expr": "inline ? '' : 'src=\"breathe.html\"'"
+ },
+ {
+  "file": "src/ui/check.js",
+  "line": 84,
+  "expr": "uiPageHeader('Check a food', `Two questions, both answered against ${uiEsc(person.name)}'s plan. Anything the app does not recognize is reported, never assumed "
+ },
+ {
+  "file": "src/ui/check.js",
+  "line": 91,
+  "expr": "checkOcrNote(!!uiState.lite)"
+ },
+ {
+  "file": "src/ui/check.js",
+  "line": 97,
+  "expr": "foods.length ? '' : 'disabled'"
+ },
+ {
+  "file": "src/ui/check.js",
+  "line": 99,
+  "expr": "foods.length ? '' : '<p class=\"small muted\">The food database (data/foods.json) is not loaded.</p>'"
+ },
+ {
+  "file": "src/ui/check.js",
+  "line": 160,
+  "expr": "h.hard ? 'A hard stop: never overridden by a preference, a mode, or an acknowledgment.' : 'A soft rule: shown as a caution; your call.'"
+ },
+ {
+  "file": "src/ui/check.js",
+  "line": 160,
+  "expr": "uiRulesList(h.rules)"
+ },
+ {
+  "file": "src/ui/check.js",
+  "line": 191,
+  "expr": "verdict"
+ },
+ {
+  "file": "src/ui/check.js",
+  "line": 191,
+  "expr": "verdict === 'fail' ? 'alert' : 'status'"
+ },
+ {
+  "file": "src/ui/check.js",
+  "line": 192,
+  "expr": "uiVerdictWord(verdict)"
+ },
+ {
+  "file": "src/ui/check.js",
+  "line": 193,
+  "expr": "headline"
+ },
+ {
+  "file": "src/ui/check.js",
+  "line": 194,
+  "expr": "opts.food && opts.food.group ? ` <span class=\"muted\">${uiEsc(opts.food.group)}</span>` : ''"
+ },
+ {
+  "file": "src/ui/check.js",
+  "line": 195,
+  "expr": "unrec.length && verdict === 'caution' ? '<div class=\"small\"><strong>Some ingredients were not recognized.</strong> With restrictions on file, that alone is a ca"
+ },
+ {
+  "file": "src/ui/check.js",
+  "line": 197,
+  "expr": "r.hits.length ? uiSection('Matches', `<div class=\"list boxed\">${r.hits.map((h, i) => `<div class=\"match-row\"> ${uiChip(h.hard ? 'hard stop' : 'soft', h.hard ? '"
+ },
+ {
+  "file": "src/ui/check.js",
+  "line": 202,
+  "expr": "(r.termHits || []).some(t => t.allergy) ? uiSection('On your allergy list', `<div class=\"list boxed\">${r.termHits.filter(t => t.allergy).map(t => `<div class=\"m"
+ },
+ {
+  "file": "src/ui/check.js",
+  "line": 203,
+  "expr": "(r.termHits || []).some(t => !t.allergy) ? uiSection('Your avoid words', `<div class=\"list boxed\">${r.termHits.filter(t => !t.allergy).map(t => `<div class=\"mat"
+ },
+ {
+  "file": "src/ui/check.js",
+  "line": 204,
+  "expr": "(r.verifyLabel || []).length ? uiSection('Check the label', `<div class=\"list boxed\">${r.verifyLabel.map(v => `<div class=\"rule\"><strong>${uiEsc(v.label)}</stro"
+ },
+ {
+  "file": "src/ui/check.js",
+  "line": 205,
+  "expr": "(r.unknownRisk || []).length ? uiSection('Terms that can hide something', `<div class=\"list boxed\">${r.unknownRisk.map(u => `<div class=\"rule\"><strong>${uiEsc(u"
+ },
+ {
+  "file": "src/ui/check.js",
+  "line": 206,
+  "expr": "(r.notes || []).length ? uiSection('Portion notes', `<div class=\"list boxed\">${r.notes.map(n => `<div class=\"rule\"><strong>${uiEsc(n.term)}</strong><div class=\""
+ },
+ {
+  "file": "src/ui/check.js",
+  "line": 207,
+  "expr": "uiPortionsHTML(r) ? uiSection('Portions on the approved list', uiPortionsHTML(r), { id: 'check-portions-h' }) : ''"
+ },
+ {
+  "file": "src/ui/check.js",
+  "line": 208,
+  "expr": "notApproved.length ? uiSection('Not on the approved list', `<ul class=\"small\">${notApproved.map(n => `<li>${uiEsc(n.label)} <span class=\"muted\">(${uiEsc(famLabe"
+ },
+ {
+  "file": "src/ui/check.js",
+  "line": 209,
+  "expr": "unrec.length ? uiSection('Not recognized', `<ul class=\"small\">${unrec.map(u => `<li>${uiEsc(u)}</li>`).join('')}</ul><p class=\"small muted\">The app does not ass"
+ },
+ {
+  "file": "src/ui/check.js",
+  "line": 210,
+  "expr": "(r.preferHits || []).length ? uiSection('Fits a preference', `<div class=\"chip-cloud\">${r.preferHits.map(p => uiChip(p.label, 'pass')).join('')}</div>`, { id: '"
+ },
+ {
+  "file": "src/ui/check.js",
+  "line": 211,
+  "expr": "opts.food ? checkFoodNutrientsHTML(opts.food, plan) : ''"
+ },
+ {
+  "file": "src/ui/check.js",
+  "line": 212,
+  "expr": "opts.food && opts.food.tags && opts.food.tags.length ? `<p class=\"small muted\">Tags: ${opts.food.tags.map(t => `<code>${uiEsc(t)}</code>`).join(' ')}</p>` : ''"
+ },
+ {
+  "file": "src/ui/check.js",
+  "line": 213,
+  "expr": "opts.food && opts.food.fdcId ? `<p class=\"small muted\">USDA FoodData Central ID ${uiEsc(opts.food.fdcId)}${opts.food.dataset ? ` (${uiEsc(opts.food.dataset)})` "
+ },
+ {
+  "file": "src/ui/check.js",
+  "line": 236,
+  "expr": "missing ? '<span class=\"muted\">no data</span>' : uiFmtNum(v100, 1)"
+ },
+ {
+  "file": "src/ui/check.js",
+  "line": 236,
+  "expr": "perPortion ? (missing ? '<span class=\"muted\">no data</span>' : uiFmtNum(vPortion, 1)) : ''"
+ },
+ {
+  "file": "src/ui/check.js",
+  "line": 236,
+  "expr": "daily != null ? uiFmtNum(daily, 1) : ''"
+ },
+ {
+  "file": "src/ui/check.js",
+  "line": 236,
+  "expr": "lim && lim.clinician || tg && tg.clinician ? ' ' + uiChip('doctor or dietitian', 'plum') : ''"
+ },
+ {
+  "file": "src/ui/check.js",
+  "line": 236,
+  "expr": "cls"
+ },
+ {
+  "file": "src/ui/check.js",
+  "line": 236,
+  "expr": "pct != null ? pct + '%' + word : ''"
+ },
+ {
+  "file": "src/ui/check.js",
+  "line": 239,
+  "expr": "portion ? 'Per ' + uiEsc(portion.label) + ' (' + portion.grams + ' g)' : 'Per portion'"
+ },
+ {
+  "file": "src/ui/check.js",
+  "line": 240,
+  "expr": "rows"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 145,
+  "expr": "cls"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 162,
+  "expr": "citeHTML"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 162,
+  "expr": "s && s.type ? ` <span class=\"muted\">[${uiEsc(s.type)}${s.year ? ', ' + s.year : ''}]</span>` : ''"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 162,
+  "expr": "kind ? ` <span class=\"muted small\">(${kind})</span>` : ''"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 162,
+  "expr": "verify ? ' <span class=\"chip caution\">verify</span>' : ''"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 162,
+  "expr": "s && s.verify_note ? `<div class=\"small muted\">${uiEsc(s.verify_note)}</div>` : ''"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 164,
+  "expr": "items"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 169,
+  "expr": "n"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 169,
+  "expr": "ruleVerify ? ' <span class=\"chip caution\">verify</span>' : ''"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 169,
+  "expr": "uiSourcesHTML(sourceIds, ruleVerify)"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 177,
+  "expr": "rule.strength === 'must' ? 'stop' : rule.strength === 'should' ? 'info' : 'neutral'"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 188,
+  "expr": "meta.join(' ')"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 189,
+  "expr": "(rule.sources && rule.sources.length) || verify ? uiSourcesDisclosure(rule.sources, verify) : ''"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 212,
+  "expr": "action"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 212,
+  "expr": "dismiss"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 213,
+  "expr": "level"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 213,
+  "expr": "level === 'block' ? 'alert' : 'status'"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 213,
+  "expr": "head"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 213,
+  "expr": "ack"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 213,
+  "expr": "confirm"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 213,
+  "expr": "link"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 213,
+  "expr": "acts"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 234,
+  "expr": "stacked.map(x => uiNoticeHTML({ level: 'warn', text: `Several small serves in one meal: ${x.terms.join(', ')}. ${x.text}` })).join('')"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 235,
+  "expr": "notes.map(n => `<li><strong>${uiEsc(cap(n.term))}</strong>: ${uiEsc(n.portion)}${n.note ? `. ${uiEsc(cap(n.note))}` : ''}${n.labels && n.labels.length && n.labe"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 236,
+  "expr": "uiSourcesHTML(sources)"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 314,
+  "expr": "uiBackButtonHTML('modal-back')"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 314,
+  "expr": "html"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 363,
+  "expr": "options.map(o => `<label class=\"${String(o.value) === String(current) ? 'on' : ''}\"><input type=\"radio\" name=\"${uiEsc(name)}\" value=\"${uiEsc(o.value)}\" ${String"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 368,
+  "expr": "options.map(o => `<label class=\"${cur.has(o.value) ? 'on' : ''}\"><input type=\"checkbox\" name=\"${uiEsc(name)}\" value=\"${uiEsc(o.value)}\" ${cur.has(o.value) ? 'ch"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 454,
+  "expr": "opts.cols ? 'cols-' + opts.cols : ''"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 454,
+  "expr": "options.map(o => { const on = String(o.value) === String(current); return `<label class=\"big-choice ${on ? 'on' : ''}\"><input type=\"radio\" name=\"${uiEsc(name)}\""
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 463,
+  "expr": "opts.cols ? 'cols-' + opts.cols : ''"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 463,
+  "expr": "options.map(o => { const on = cur.has(o.value); return `<label class=\"big-choice ${on ? 'on' : ''}\"><input type=\"checkbox\" name=\"${uiEsc(name)}\" value=\"${uiEsc("
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 548,
+  "expr": "cls"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 548,
+  "expr": "fill"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 548,
+  "expr": "a11y"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 548,
+  "expr": "opts.style ? ` style=\"${uiEsc(opts.style)}\"` : ''"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 548,
+  "expr": "d"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 554,
+  "expr": "opts.cls ? ' ' + opts.cls : ''"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 554,
+  "expr": "a11y"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 567,
+  "expr": "title"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 567,
+  "expr": "actions ? `<div class=\"page-head-actions\">${actions}</div>` : ''"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 567,
+  "expr": "lede ? `<p class=\"lede\">${lede}</p>` : ''"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 574,
+  "expr": "opts.cls ? ' ' + opts.cls : ''"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 574,
+  "expr": "lab"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 574,
+  "expr": "id"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 574,
+  "expr": "title"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 574,
+  "expr": "opts.action ? `<div class=\"section-action\">${opts.action}</div>` : ''"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 574,
+  "expr": "body"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 579,
+  "expr": "value"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 579,
+  "expr": "label"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 579,
+  "expr": "note ? `<span class=\"tile-note\">${note}</span>` : ''"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 580,
+  "expr": "tone"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 580,
+  "expr": "inner"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 580,
+  "expr": "tone"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 580,
+  "expr": "inner"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 605,
+  "expr": "r"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 606,
+  "expr": "r"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 606,
+  "expr": "c.toFixed(2)"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 606,
+  "expr": "offset.toFixed(2)"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 606,
+  "expr": "c.toFixed(2)"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 607,
+  "expr": "unit ? -4 : 0"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 607,
+  "expr": "shown"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 608,
+  "expr": "unit ? `<text class=\"ring-unit\" x=\"50\" y=\"64\" text-anchor=\"middle\">${uiEsc(unit)}</text>` : ''"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 610,
+  "expr": "label ? `<span class=\"ring-label\">${label}</span>` : ''"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 612,
+  "expr": "t.tone"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 612,
+  "expr": "style"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 612,
+  "expr": "svg"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 612,
+  "expr": "foot"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 612,
+  "expr": "t.tone"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 612,
+  "expr": "style"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 612,
+  "expr": "svg"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 612,
+  "expr": "foot"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 620,
+  "expr": "t.tone"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 621,
+  "expr": "label"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 621,
+  "expr": "labelExtra"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 622,
+  "expr": "why ? `<div class=\"meter-why\">${uiEsc(why)}</div>` : ''"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 623,
+  "expr": "prefix"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 623,
+  "expr": "unit ? ' ' + uiEsc(unit) : ''"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 624,
+  "expr": "t.tone"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 624,
+  "expr": "pct.toFixed(1)"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 625,
+  "expr": "wordExtra"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 632,
+  "expr": "cls"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 632,
+  "expr": "opts.attrs || ''"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 632,
+  "expr": "opts.raw ? text : uiEsc(text)"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 633,
+  "expr": "cls"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 633,
+  "expr": "opts.attrs || ''"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 633,
+  "expr": "opts.raw ? text : uiEsc(text)"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 642,
+  "expr": "opts.size || ''"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 642,
+  "expr": "opts.tone || ''"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 652,
+  "expr": "art"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 652,
+  "expr": "sentence"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 652,
+  "expr": "action"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 657,
+  "expr": "desc ? `<span class=\"hint\">${uiEsc(desc)}</span>` : ''"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 657,
+  "expr": "checked ? 'checked' : ''"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 657,
+  "expr": "checked ? 'true' : 'false'"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 724,
+  "expr": "cls"
+ },
+ {
+  "file": "src/ui/dietlist.js",
+  "line": 17,
+  "expr": "fams.map(f => `<div class=\"card tight\"> ${uiSwitch('strict-' + f.id, `Strict mode for ${f.label}`, f.strict ? 'On: a recipe counts as safe only when every ingre"
+ },
+ {
+  "file": "src/ui/dietlist.js",
+  "line": 60,
+  "expr": "uiChip('basis: ' + it.basis, it.basis === 'measured histamine' ? 'info' : 'neutral', { soft: true })"
+ },
+ {
+  "file": "src/ui/dietlist.js",
+  "line": 60,
+  "expr": "it.basis_note ? ` ${uiEsc(it.basis_note)}` : ''"
+ },
+ {
+  "file": "src/ui/dietlist.js",
+  "line": 77,
+  "expr": "uiPageHeader(`Approved foods: ${uiEsc(fam.label)}`, uiEsc(fam.intro || ''), `<button class=\"btn small\" type=\"button\" id=\"diet-print\">${uiIcon('cite')}Print</but"
+ },
+ {
+  "file": "src/ui/dietlist.js",
+  "line": 78,
+  "expr": "!restricts ? uiNoticeHTML({ level: 'info', text: `${person.name}'s plan does not restrict ${fam.label} foods right now, so this list is for reading only.` }) : "
+ },
+ {
+  "file": "src/ui/dietlist.js",
+  "line": 79,
+  "expr": "uiSwitch('strict-' + family, `Strict mode for ${fam.label}`, strict ? 'On: a recipe counts as safe only when every ingredient is on this list, or on your own to"
+ },
+ {
+  "file": "src/ui/dietlist.js",
+  "line": 80,
+  "expr": "uiSourcesHTML(fam.sources || [])"
+ },
+ {
+  "file": "src/ui/dietlist.js",
+  "line": 80,
+  "expr": "unverified ? ` ${unverified} item${unverified === 1 ? '' : 's'} marked \"not re-checked\" came from the app's dictionary and general practice and were not re-veri"
+ },
+ {
+  "file": "src/ui/dietlist.js",
+  "line": 81,
+  "expr": "uiSection('Your own changes', `<div class=\"grid-2\"> <div class=\"card\"><h3>Foods you tolerate ${uiChip(String(mine.tolerated.length), 'pass')}</h3><p class=\"smal"
+ },
+ {
+  "file": "src/ui/dietlist.js",
+  "line": 93,
+  "expr": "groups.length ? groups.map(g => `<h2>${uiEsc(g.name)}</h2><ul class=\"list\">${g.items.map(it => `<li class=\"list-row\"><div class=\"list-main\"><div class=\"list-tit"
+ },
+ {
+  "file": "src/ui/dietlist.js",
+  "line": 94,
+  "expr": "mine.tolerated.map(t => `<li>${uiEsc(t.term)}${t.note ? `: ${uiEsc(t.note)}` : ''}</li>`).join('')"
+ },
+ {
+  "file": "src/ui/dietlist.js",
+  "line": 95,
+  "expr": "mine.reacts.map(t => `<li>${uiEsc(t.term)}${t.note ? `: ${uiEsc(t.note)}` : ''}</li>`).join('')"
+ },
+ {
+  "file": "src/ui/dietlist.js",
+  "line": 96,
+  "expr": "fam.basis_legend ? `<ul class=\"list\">${fam.avoid_examples.map(a => `<li class=\"list-row\"><div class=\"list-main\"><div class=\"list-title\">${uiEsc(a.term)}</div><d"
+ },
+ {
+  "file": "src/ui/dietlist.js",
+  "line": 97,
+  "expr": "Object.entries(fam.basis_legend).map(([k, v]) => `<dt>${uiEsc(k)}</dt><dd>${uiEsc(v)}</dd>`).join('')"
+ },
+ {
+  "file": "src/ui/dietlist.js",
+  "line": 97,
+  "expr": "uiSourcesHTML(fam.basis_sources || [])"
+ },
+ {
+  "file": "src/ui/grocery.js",
+  "line": 167,
+  "expr": "uiState.profile.people.map(p => `<option value=\"${uiEsc(p.id)}\" ${!isHousehold && p.id === person.id ? 'selected' : ''}>${uiEsc(p.name)}'s week</option>`).join("
+ },
+ {
+  "file": "src/ui/grocery.js",
+  "line": 167,
+  "expr": "canHousehold ? `<option value=\"household\" ${isHousehold ? 'selected' : ''}>Household week</option>` : ''"
+ },
+ {
+  "file": "src/ui/grocery.js",
+  "line": 196,
+  "expr": "changes.slice().reverse().map(c => `<li><span class=\"change-word\">${groceryChangeWord(c.type)}</span>${uiEsc(c.name)}: ${c.type === 'added' ? `now ${uiEsc(c.to)"
+ },
+ {
+  "file": "src/ui/home.js",
+  "line": 26,
+  "expr": "uiBrandMark({ label: 'Peace Meal' })"
+ },
+ {
+  "file": "src/ui/home.js",
+  "line": 34,
+  "expr": "homeConditionCount()"
+ },
+ {
+  "file": "src/ui/home.js",
+  "line": 43,
+  "expr": "homeBringDataHTML()"
+ },
+ {
+  "file": "src/ui/home.js",
+  "line": 53,
+  "expr": "uiBrandMark({ label: 'Peace Meal for one' })"
+ },
+ {
+  "file": "src/ui/home.js",
+  "line": 60,
+  "expr": "homeConditionCount()"
+ },
+ {
+  "file": "src/ui/home.js",
+  "line": 67,
+  "expr": "homeBringDataHTML()"
+ },
+ {
+  "file": "src/ui/home.js",
+  "line": 85,
+  "expr": "entries.length ? `${entries.length} entr${entries.length === 1 ? 'y' : 'ies'} today.` : 'Nothing logged yet today.'"
+ },
+ {
+  "file": "src/ui/home.js",
+  "line": 89,
+  "expr": "entries.length ? `${entries.length} entr${entries.length === 1 ? 'y' : 'ies'} today, ${uiFmtNum(kcal)} kcal.` : 'Nothing logged yet today.'"
+ },
+ {
+  "file": "src/ui/home.js",
+  "line": 89,
+  "expr": "plan.limits.sodium_mg.clinician ? ' Limit set by your doctor or dietitian.' : ''"
+ },
+ {
+  "file": "src/ui/home.js",
+  "line": 92,
+  "expr": "info.state === 'off' ? '<a href=\"#/today\">Set a calorie target</a> if you want one.' : ''"
+ },
+ {
+  "file": "src/ui/home.js",
+  "line": 94,
+  "expr": "ring"
+ },
+ {
+  "file": "src/ui/home.js",
+  "line": 94,
+  "expr": "text"
+ },
+ {
+  "file": "src/ui/home.js",
+  "line": 114,
+  "expr": "uiPageHeader(uiGreeting(person.name), `${dateLine}. ${plan.modules.length ? plan.modules.map(m => uiEsc(m.name)).join(', ') + '.' : 'No conditions or patterns s"
+ },
+ {
+  "file": "src/ui/home.js",
+  "line": 115,
+  "expr": "person.setup_complete ? '' : uiNoticeHTML({ level: 'warn', text: 'Setup is not finished. The plan is built from what has been entered so far.' })"
+ },
+ {
+  "file": "src/ui/home.js",
+  "line": 116,
+  "expr": "settingsBackupReminderHTML()"
+ },
+ {
+  "file": "src/ui/home.js",
+  "line": 118,
+  "expr": "uiStatTile({ value: uiFmtNum((plan.applied || []).length), label: 'Rules applied', note: `${plan.modules.length} module${plan.modules.length === 1 ? '' : 's'}`,"
+ },
+ {
+  "file": "src/ui/home.js",
+  "line": 119,
+  "expr": "uiStatTile({ value: uiFmtNum(hard), label: 'Hard exclusions', note: hard ? 'never overridden' : 'none', tone: hard ? 'stop' : '', href: '#/plan' })"
+ },
+ {
+  "file": "src/ui/home.js",
+  "line": 120,
+  "expr": "missing ? uiStatTile({ value: uiFmtNum(missing), label: 'Doctor or dietitian numbers missing', note: 'not applied yet', tone: 'caution', href: `#/people/${uiEsc"
+ },
+ {
+  "file": "src/ui/home.js",
+  "line": 122,
+  "expr": "uiSection('Notices', notices.length ? `<div class=\"stack\" id=\"home-notices\">${blocks.map(n => uiNoticeHTML(n, { person })).join('')}${warns.map(n => uiNoticeHTM"
+ },
+ {
+  "file": "src/ui/home.js",
+  "line": 123,
+  "expr": "uiSection('Today so far', homeTodayRing(person, plan), { id: 'home-today-h' })"
+ },
+ {
+  "file": "src/ui/home.js",
+  "line": 124,
+  "expr": "uiSection('Quick actions', `<div class=\"quick-actions\"> <a class=\"quick-action\" href=\"#/check\">${uiIcon('check-circle')}<span>Check a food</span><small>Paste an"
+ },
+ {
+  "file": "src/ui/household.js",
+  "line": 120,
+  "expr": "people.filter(p => !p.guest).map(p => `<option value=\"${uiEsc(p.id)}\" ${cook && cook.id === p.id ? 'selected' : ''}>${uiEsc(p.name)}${p.adult === false ? ' (chi"
+ },
+ {
+  "file": "src/ui/household.js",
+  "line": 121,
+  "expr": "[0, 1, 2, 3].map(n => `<option value=\"${n}\" ${(typeof h.snacks_per_day === 'number' ? h.snacks_per_day : 1) === n ? 'selected' : ''}>${n === 0 ? 'None' : n}</op"
+ },
+ {
+  "file": "src/ui/household.js",
+  "line": 123,
+  "expr": "uiSwitch('hh-budget', 'Save money', 'Prefer recipes that reuse ingredients already on this week\\'s list, across everyone\\'s meals.', h.budget !== false)"
+ },
+ {
+  "file": "src/ui/household.js",
+  "line": 124,
+  "expr": "built ? 'Rebuild the household week' : 'Plan the household week'"
+ },
+ {
+  "file": "src/ui/household.js",
+  "line": 124,
+  "expr": "built ? `<button class=\"btn\" type=\"button\" id=\"hh-regen\">${uiIcon('swap')}Regenerate</button><button class=\"btn\" type=\"button\" id=\"hh-grocery\">${uiIcon('cart')}"
+ },
+ {
+  "file": "src/ui/household.js",
+  "line": 129,
+  "expr": "people.map(p => `<button class=\"btn small\" type=\"button\" data-pattern=\"${uiEsc(p.id)}\">${uiAvatar(p.name, { tone: p.guest ? 'plum' : '' })} ${uiEsc(p.name)}: us"
+ },
+ {
+  "file": "src/ui/household.js",
+  "line": 130,
+  "expr": "dates.map(date => { const day = dayOf(date); const explicit = h.roster[date] && Object.keys(h.roster[date]).length; return `<section class=\"roster-day\" aria-lab"
+ },
+ {
+  "file": "src/ui/household.js",
+  "line": 139,
+  "expr": "stale.length ? uiNoticeHTML({ level: 'warn', text: `The roster changed for ${stale.length} meal${stale.length === 1 ? '' : 's'} since this week was planned. Tho"
+ },
+ {
+  "file": "src/ui/household.js",
+  "line": 140,
+  "expr": "stale.length ? `<div class=\"btn-row\"><button class=\"btn primary\" type=\"button\" id=\"hh-update\">Update just those ${stale.length} meal${stale.length === 1 ? '' : "
+ },
+ {
+  "file": "src/ui/household.js",
+  "line": 141,
+  "expr": "week.seatings.length"
+ },
+ {
+  "file": "src/ui/household.js",
+  "line": 141,
+  "expr": "week.seatings.length === 1 ? '' : 's'"
+ },
+ {
+  "file": "src/ui/household.js",
+  "line": 141,
+  "expr": "cookedCount"
+ },
+ {
+  "file": "src/ui/household.js",
+  "line": 141,
+  "expr": "week.unmet.length ? `; ${week.unmet.length} slot${week.unmet.length === 1 ? '' : 's'} had nothing that fit everyone` : ''"
+ },
+ {
+  "file": "src/ui/household.js",
+  "line": 142,
+  "expr": "week.days.map((d, di) => householdDayHTML(d, di, people)).join('')"
+ },
+ {
+  "file": "src/ui/household.js",
+  "line": 143,
+  "expr": "week.seatings.map(s => `<li><strong>${uiEsc(s.names.join(', '))}</strong>: ${uiFmtNum(s.eligible)} recipes clear everyone's rules${s.kidsOnly ? ' (children only"
+ },
+ {
+  "file": "src/ui/household.js",
+  "line": 154,
+  "expr": "isToday ? 'today' : ''"
+ },
+ {
+  "file": "src/ui/household.js",
+  "line": 154,
+  "expr": "di"
+ },
+ {
+  "file": "src/ui/household.js",
+  "line": 156,
+  "expr": "di"
+ },
+ {
+  "file": "src/ui/household.js",
+  "line": 156,
+  "expr": "HH_DAY_NAMES[d.day]"
+ },
+ {
+  "file": "src/ui/household.js",
+  "line": 156,
+  "expr": "isToday ? ' · today' : ''"
+ },
+ {
+  "file": "src/ui/household.js",
+  "line": 157,
+  "expr": "uiChip(d.canCook ? 'can cook' : 'no cooking', d.canCook ? 'pass' : 'neutral', { button: true, attrs: `data-hh-cook=\"${di}\" aria-pressed=\"${d.canCook}\" title=\"Ta"
+ },
+ {
+  "file": "src/ui/household.js",
+  "line": 158,
+  "expr": "HH_DAY_NAMES[d.day]"
+ },
+ {
+  "file": "src/ui/household.js",
+  "line": 158,
+  "expr": "di"
+ },
+ {
+  "file": "src/ui/household.js",
+  "line": 158,
+  "expr": "(HH_MINUTES.includes(d.minutes) ? HH_MINUTES : HH_MINUTES.concat(d.minutes).sort((a, b) => a - b)).map(m => `<option value=\"${m}\" ${m === d.minutes ? 'selected'"
+ },
+ {
+  "file": "src/ui/household.js",
+  "line": 159,
+  "expr": "d.overridden ? '<span class=\"muted\">· this week</span>' : ''"
+ },
+ {
+  "file": "src/ui/household.js",
+  "line": 161,
+  "expr": "d.meals.map(m => `<div class=\"week-meal\"> <div class=\"slot\">${SLOT_LABEL[m.slot] || m.slot}</div> <div class=\"eaters\">${(m.eaters || []).length ? `<span class=\""
+ },
+ {
+  "file": "src/ui/household.js",
+  "line": 164,
+  "expr": "m.recipe ? `<button type=\"button\" class=\"meal-chip\" data-hh-recipe=\"${di}:${uiEsc(m.slot)}\" aria-label=\"${uiEsc(m.name)}, ${uiVerdictWord(m.check.verdict)}. Ope"
+ },
+ {
+  "file": "src/ui/household.js",
+  "line": 251,
+  "expr": "HH_DAY_SHORT[d]"
+ },
+ {
+  "file": "src/ui/household.js",
+  "line": 252,
+  "expr": "HH_SLOT_SHORT[slot] || slot"
+ },
+ {
+  "file": "src/ui/household.js",
+  "line": 252,
+  "expr": "days.map(d => `<td><button type=\"button\" class=\"roster-btn ${isIn(d, slot) ? 'on' : ''}\" data-pat=\"${d}|${slot}\" aria-pressed=\"${isIn(d, slot)}\" aria-label=\"${H"
+ },
+ {
+  "file": "src/ui/household.js",
+  "line": 293,
+  "expr": "rows.map(x => `<div class=\"list-row\"><div class=\"list-main\"> <div class=\"list-title\"><span class=\"dot ${x.check.verdict}\" aria-hidden=\"true\"></span>${uiEsc(x.r."
+ },
+ {
+  "file": "src/ui/household.js",
+  "line": 325,
+  "expr": "p.recipe ? uiEsc(p.name) : 'nothing fits this seating'"
+ },
+ {
+  "file": "src/ui/install.js",
+  "line": 63,
+  "expr": "android ? 'your browser' : 'a Safari tab'"
+ },
+ {
+  "file": "src/ui/install.js",
+  "line": 64,
+  "expr": "android ? 'On an Android phone' : 'On an iPhone or iPad'"
+ },
+ {
+  "file": "src/ui/install.js",
+  "line": 65,
+  "expr": "android ? androidSteps : iosSteps"
+ },
+ {
+  "file": "src/ui/install.js",
+  "line": 66,
+  "expr": "android ? 'On an iPhone or iPad instead' : 'On an Android phone instead'"
+ },
+ {
+  "file": "src/ui/install.js",
+  "line": 66,
+  "expr": "android ? iosSteps : androidSteps"
+ },
+ {
+  "file": "src/ui/install.js",
+  "line": 67,
+  "expr": "android ? '<p class=\"small\">On Android the Home screen app keeps the same data as Chrome, so nothing needs moving.</p>' : `<div class=\"install-move ${hasData ? "
+ },
+ {
+  "file": "src/ui/learn.js",
+  "line": 26,
+  "expr": "uiPageHeader('Learn', 'The evidence behind every module, in plain language, with its sources.')"
+ },
+ {
+  "file": "src/ui/learn.js",
+  "line": 29,
+  "expr": "groups.map(([key, title]) => { const list = mods.filter(m => m.category === key); if (!list.length) return ''; return uiSection(title, `<ul class=\"topic-list\">$"
+ },
+ {
+  "file": "src/ui/learn.js",
+  "line": 34,
+  "expr": "mods.length ? '' : uiEmptyState('No modules are loaded (data/conditions.json is missing or empty).', '', 'list')"
+ },
+ {
+  "file": "src/ui/learn.js",
+  "line": 40,
+  "expr": "uiRatingBadge(rating)"
+ },
+ {
+  "file": "src/ui/learn.js",
+  "line": 40,
+  "expr": "uiChip(m.category, 'neutral')"
+ },
+ {
+  "file": "src/ui/learn.js",
+  "line": 40,
+  "expr": "m.phase1_ref ? `<span class=\"small muted\">Phase 1: ${uiEsc(m.phase1_ref)}</span>` : ''"
+ },
+ {
+  "file": "src/ui/learn.js",
+  "line": 41,
+  "expr": "/-to-/.test(String(rating)) ? ` <span>Rated ${uiEsc(String(rating).replace(/-to-/g, ' to '))}: the evidence sits between those two levels.</span>` : ''"
+ },
+ {
+  "file": "src/ui/learn.js",
+  "line": 54,
+  "expr": "arr.map(x => `<li>${uiEsc(x)}</li>`).join('')"
+ },
+ {
+  "file": "src/ui/learn.js",
+  "line": 61,
+  "expr": "mainPoints.length ? `<ul class=\"main-points\">${mainPoints.map(x => `<li>${uiEsc(x)}</li>`).join('')}</ul>` : '<p class=\"muted\">No plain-language summary recorde"
+ },
+ {
+  "file": "src/ui/learn.js",
+  "line": 62,
+  "expr": "learnRatingHTML(m)"
+ },
+ {
+  "file": "src/ui/learn.js",
+  "line": 63,
+  "expr": "m.evidence && m.evidence.summary && !art ? `<p><strong>${uiEsc(m.evidence.summary)}</strong></p>` : ''"
+ },
+ {
+  "file": "src/ui/learn.js",
+  "line": 64,
+  "expr": "sections.length ? sections.map(s => `${s.heading ? `<h2 class=\"article-h\">${uiEsc(s.heading)}</h2>` : ''}${(Array.isArray(s.paragraphs) ? s.paragraphs : []).map"
+ },
+ {
+  "file": "src/ui/learn.js",
+  "line": 69,
+  "expr": "links.length ? `<h2 class=\"article-h\">Helpful links</h2><ul class=\"links\">${links.map(l => { const u = learnSafeUrl(l.url); return `<li>${u ? `<a href=\"${uiEsc("
+ },
+ {
+  "file": "src/ui/learn.js",
+  "line": 70,
+  "expr": "refs.length ? `<h2 class=\"article-h\">References</h2><ol class=\"references\">${refs.map(r => { const u = learnSafeUrl(r.url); return `<li id=\"ref-${uiEsc(r.id || "
+ },
+ {
+  "file": "src/ui/learn.js",
+  "line": 71,
+  "expr": "opts.full ? `<details><summary>Rules in this module (${(m.rules || []).length})</summary>${(m.rules || []).map(r => uiRuleHTML({ ...r, moduleName: m.name }, { h"
+ },
+ {
+  "file": "src/ui/learn.js",
+  "line": 72,
+  "expr": "opts.full && Array.isArray(m.tier2) && m.tier2.length ? `<h3>Numbers from your doctor or dietitian (Tier 2)</h3><ul>${m.tier2.map(t => `<li><strong>${uiEsc(t.la"
+ },
+ {
+  "file": "src/ui/learn.js",
+  "line": 73,
+  "expr": "opts.full && Array.isArray(m.phases) && m.phases.length ? `<h3>Phases</h3><ul>${m.phases.map(p => `<li><strong>${uiEsc(p.label || p.id)}</strong>${p.min_weeks |"
+ },
+ {
+  "file": "src/ui/learn.js",
+  "line": 74,
+  "expr": "refs.length ? `<details><summary>Sources the rules cite (${(m.sources || []).length})</summary>${uiSourcesHTML(m.sources)}</details>` : `<h2 class=\"article-h\">S"
+ },
+ {
+  "file": "src/ui/learn.js",
+  "line": 85,
+  "expr": "uiPageHeader('How this app decides', 'The rules the engine follows, and where they come from.', `<a class=\"btn small\" href=\"#/learn\">${uiIcon('book')}All topics"
+ },
+ {
+  "file": "src/ui/learn.js",
+  "line": 125,
+  "expr": "uiPageHeader('Where the recipes come from', 'Every outside recipe collection imported into the app, the licence each one carries, the exact attribution wording "
+ },
+ {
+  "file": "src/ui/learn.js",
+  "line": 126,
+  "expr": "uiNoticeHTML({ level: 'info', text: 'Information from the NHS website is licensed under the Open Government Licence v3.0.' }).replace('</div></div>', ` ${ext(OG"
+ },
+ {
+  "file": "src/ui/learn.js",
+  "line": 128,
+  "expr": "uiStatTile({ value: uiFmtNum(c.total), label: 'Shipped recipes', note: `${uiFmtNum(c.peaceMeal)} Peace Meal` })"
+ },
+ {
+  "file": "src/ui/learn.js",
+  "line": 129,
+  "expr": "uiStatTile({ value: uiFmtNum(c.nhs), label: 'NHS website', note: `${uiFmtNum(c.nhsWithNutrition)} with nutrition` })"
+ },
+ {
+  "file": "src/ui/learn.js",
+  "line": 130,
+  "expr": "uiStatTile({ value: uiFmtNum(c.parentclub), label: 'Parent Club Scotland', note: `${uiFmtNum(c.parentclubWithSodium)} with sodium` })"
+ },
+ {
+  "file": "src/ui/learn.js",
+  "line": 131,
+  "expr": "uiStatTile({ value: uiFmtNum(c.nhlbi), label: 'NHLBI (NIH)', note: `${uiFmtNum(c.nhlbiWithPotassium)} with potassium` })"
+ },
+ {
+  "file": "src/ui/learn.js",
+  "line": 132,
+  "expr": "uiStatTile({ value: uiFmtNum(c.wikibooks), label: 'Wikibooks Cookbook', note: `${uiFmtNum(c.wikibooksFeatured)} featured` })"
+ },
+ {
+  "file": "src/ui/learn.js",
+  "line": 134,
+  "expr": "c.linked === 1 ? '' : 's'"
+ },
+ {
+  "file": "src/ui/learn.js",
+  "line": 140,
+  "expr": "ext(OGL, 'Open Government Licence v3.0')"
+ },
+ {
+  "file": "src/ui/learn.js",
+  "line": 142,
+  "expr": "ext('https://www.nhs.uk/healthier-families/recipes/')"
+ },
+ {
+  "file": "src/ui/learn.js",
+  "line": 143,
+  "expr": "ext(OGL)"
+ },
+ {
+  "file": "src/ui/learn.js",
+  "line": 154,
+  "expr": "ext('https://en.wikibooks.org/wiki/Cookbook:Table_of_Contents')"
+ },
+ {
+  "file": "src/ui/learn.js",
+  "line": 155,
+  "expr": "ext(CC)"
+ },
+ {
+  "file": "src/ui/learn.js",
+  "line": 156,
+  "expr": "ext('https://en.wikibooks.org/wiki/Cookbook:20-Minute_Beef_Stroganoff')"
+ },
+ {
+  "file": "src/ui/learn.js",
+  "line": 156,
+  "expr": "ext(CC)"
+ },
+ {
+  "file": "src/ui/learn.js",
+  "line": 166,
+  "expr": "ext(OGL, 'Open Government Licence v3.0')"
+ },
+ {
+  "file": "src/ui/learn.js",
+  "line": 168,
+  "expr": "ext('https://www.parentclub.scot/recipes')"
+ },
+ {
+  "file": "src/ui/learn.js",
+  "line": 181,
+  "expr": "ext('https://www.nhlbi.nih.gov/health/heart-healthy-living/healthy-foods/healthy-eating-recipes')"
+ },
+ {
+  "file": "src/ui/learn.js",
+  "line": 190,
+  "expr": "ext('https://department.va.gov/copyright-policy/')"
+ },
+ {
+  "file": "src/ui/learn.js",
+  "line": 192,
+  "expr": "ext('https://www.nutrition.va.gov/NUTRITION/Recipes.asp')"
+ },
+ {
+  "file": "src/ui/lite.js",
+  "line": 31,
+  "expr": "removable.length - 1"
+ },
+ {
+  "file": "src/ui/lite.js",
+  "line": 36,
+  "expr": "uiPageHeader(`Hello, ${uiEsc(person.name)}`, dateLine, person.setup_complete ? '' : `<a class=\"btn small primary\" href=\"#/people/${uiEsc(person.id)}/basics\">Fin"
+ },
+ {
+  "file": "src/ui/lite.js",
+  "line": 37,
+  "expr": "todayWeightLossNoticeHTML(person, date)"
+ },
+ {
+  "file": "src/ui/lite.js",
+  "line": 38,
+  "expr": "settingsBackupReminderHTML()"
+ },
+ {
+  "file": "src/ui/lite.js",
+  "line": 39,
+  "expr": "plan.notices.filter(n => n.code === 'suggest-module' || n.code === 'phase-check-in' || n.code === 'medication-flag').map(n => uiNoticeHTML(n, { person })).join("
+ },
+ {
+  "file": "src/ui/lite.js",
+  "line": 40,
+  "expr": "uiSection('What did you eat?', `<div class=\"lite-slots\">${slots.map(slot => { const planned = day ? day.meals.find(m => m.slot === slot) : null; const logged = "
+ },
+ {
+  "file": "src/ui/lite.js",
+  "line": 51,
+  "expr": "uiSection('How do you feel?', `<div class=\"card\"> ${symEntries.length ? `<ul class=\"lite-logged\">${symEntries.map(e => { const words = Object.entries(e.symptoms"
+ },
+ {
+  "file": "src/ui/lite.js",
+  "line": 53,
+  "expr": "fineToday ? `<ul class=\"lite-logged\"><li class=\"lite-logged-row\"><span><strong>Feeling fine today</strong> <span class=\"muted small\">noted</span></span>${remove"
+ },
+ {
+  "file": "src/ui/lite.js",
+  "line": 54,
+  "expr": "fineToday ? 'disabled aria-disabled=\"true\"' : ''"
+ },
+ {
+  "file": "src/ui/lite.js",
+  "line": 54,
+  "expr": "fineToday ? 'Noted' : 'Feeling fine today'"
+ },
+ {
+  "file": "src/ui/lite.js",
+  "line": 57,
+  "expr": "latestKg ? kgToLb(latestKg) : '150'"
+ },
+ {
+  "file": "src/ui/lite.js",
+  "line": 58,
+  "expr": "latestKg ? `Last logged: ${kgToLb(latestKg)} lb.` : 'No weight logged yet.'"
+ },
+ {
+  "file": "src/ui/lite.js",
+  "line": 58,
+  "expr": "person.goals && person.goals.calorie_target === 'gain' ? 'Your goal is to gain; the Report shows the trend.' : ''"
+ },
+ {
+  "file": "src/ui/lite.js",
+  "line": 59,
+  "expr": "latestKg ? `<div class=\"btn-row\"><button class=\"btn lite-big\" type=\"button\" data-weight-history>${uiIcon('list')}Weight history</button></div>` : ''"
+ },
+ {
+  "file": "src/ui/lite.js",
+  "line": 144,
+  "expr": "n"
+ },
+ {
+  "file": "src/ui/lite.js",
+  "line": 144,
+  "expr": "state.when === 'yesterday' ? 'What time yesterday' : 'What time today'"
+ },
+ {
+  "file": "src/ui/lite.js",
+  "line": 144,
+  "expr": "n"
+ },
+ {
+  "file": "src/ui/lite.js",
+  "line": 144,
+  "expr": "state.when === 'earlier' ? `max=\"${now}\"` : ''"
+ },
+ {
+  "file": "src/ui/lite.js",
+  "line": 223,
+  "expr": "[...(person.allergens || []).map(uiTagLabel), ...(plan.otherAllergies || [])].map(uiEsc).join(', ')"
+ },
+ {
+  "file": "src/ui/lite.js",
+  "line": 224,
+  "expr": "plan.modules.map(m => { const mod = uiState.conditionsById.get(m.id); const hard = avoid.filter(([, a]) => a.hard && a.rules.some(r => r.module === m.id)).map(("
+ },
+ {
+  "file": "src/ui/lite.js",
+  "line": 225,
+  "expr": "Object.entries(plan.limits).map(([n, l]) => `${uiEsc(n.replace(/_/g, ' '))} at most ${uiFmtNum(l.value, 1)}`).join('; ')"
+ },
+ {
+  "file": "src/ui/lite.js",
+  "line": 227,
+  "expr": "wt.points.length"
+ },
+ {
+  "file": "src/ui/lite.js",
+  "line": 227,
+  "expr": "wt.points.length === 1 ? 'y' : 'ies'"
+ },
+ {
+  "file": "src/ui/lite.js",
+  "line": 227,
+  "expr": "kgToLb(wt.first.kg)"
+ },
+ {
+  "file": "src/ui/lite.js",
+  "line": 227,
+  "expr": "kgToLb(wt.last.kg)"
+ },
+ {
+  "file": "src/ui/lite.js",
+  "line": 227,
+  "expr": "wt.changeKg > 0 ? '+' : ''"
+ },
+ {
+  "file": "src/ui/lite.js",
+  "line": 227,
+  "expr": "kgToLb(Math.abs(wt.changeKg)) * Math.sign(wt.changeKg) || 0"
+ },
+ {
+  "file": "src/ui/lite.js",
+  "line": 227,
+  "expr": "person.goals && person.goals.calorie_target === 'gain' ? ' Goal: gain.' : ''"
+ },
+ {
+  "file": "src/ui/lite.js",
+  "line": 227,
+  "expr": "wt.points.length > 1 ? todayChartSVG(wt.points) : ''"
+ },
+ {
+  "file": "src/ui/lite.js",
+  "line": 228,
+  "expr": "wl.pct"
+ },
+ {
+  "file": "src/ui/lite.js",
+  "line": 228,
+  "expr": "wl.weeks"
+ },
+ {
+  "file": "src/ui/lite.js",
+  "line": 228,
+  "expr": "wl.threshold"
+ },
+ {
+  "file": "src/ui/lite.js",
+  "line": 230,
+  "expr": "meds.map(m => `<li>Yes: ${uiEsc(m.text)}</li>`).join('')"
+ },
+ {
+  "file": "src/ui/lite.js",
+  "line": 232,
+  "expr": "intake.days"
+ },
+ {
+  "file": "src/ui/lite.js",
+  "line": 232,
+  "expr": "intake.days === 1 ? '' : 's'"
+ },
+ {
+  "file": "src/ui/lite.js",
+  "line": 233,
+  "expr": "intakeRows.map(([k, label, unit]) => `<tr><td>${label}</td><td class=\"num\">${typeof intake.avg[k] === 'number' ? uiFmtNum(Math.round(intake.avg[k])) + (unit ? '"
+ },
+ {
+  "file": "src/ui/lite.js",
+  "line": 235,
+  "expr": "liteTopSymptoms(eps).map(([id, n]) => `${uiEsc(liteSymptomLabel(id))} (${n})`).join(', ')"
+ },
+ {
+  "file": "src/ui/lite.js",
+  "line": 238,
+  "expr": "foods.map(f => `<tr><td>${uiEsc(f.name)}</td><td class=\"num\">${f.episodes} of ${eps.length}</td><td class=\"num\">${f.total}</td></tr>`).join('')"
+ },
+ {
+  "file": "src/ui/lite.js",
+  "line": 241,
+  "expr": "d.weight ? ` <span class=\"muted small\">${kgToLb(d.weight.kg)} lb</span>` : ''"
+ },
+ {
+  "file": "src/ui/lite.js",
+  "line": 242,
+  "expr": "d.episodes.length ? `<ul class=\"report-list sym\">${d.episodes.map(e => `<li><strong>${Object.entries(e.symptoms).filter(([, v]) => v > 0).map(([k, v]) => `${uiE"
+ },
+ {
+  "file": "src/ui/lite.js",
+  "line": 243,
+  "expr": "['breakfast', 'lunch', 'snacks', 'dinner'].map(meal => { const es = d.eaten.filter(e => e.meal === meal); return es.length ? `<strong>${meal[0].toUpperCase() + "
+ },
+ {
+  "file": "src/ui/lite.js",
+  "line": 247,
+  "expr": "uiPageHeader('Doctor report', 'What you ate, how you felt, and your weight, ready to print or send. Nothing leaves this device unless you send it.', `<button cl"
+ },
+ {
+  "file": "src/ui/lite.js",
+  "line": 249,
+  "expr": "uiSegmented('lite-range', [{ value: 7, label: '7 days' }, { value: 14, label: '14 days' }, { value: 30, label: '30 days' }, { value: 90, label: '90 days' }, { v"
+ },
+ {
+  "file": "src/ui/lite.js",
+  "line": 250,
+  "expr": "uiSegmented('lite-mode', [{ value: 'all', label: 'Full diary' }, { value: 'symptoms', label: 'Only days with symptoms' }], liteReportUi.mode, { label: 'Include'"
+ },
+ {
+  "file": "src/ui/lite.js",
+  "line": 252,
+  "expr": "body"
+ },
+ {
+  "file": "src/ui/lite.js",
+  "line": 257,
+  "expr": "root.querySelector('#lite-report').innerHTML"
+ },
+ {
+  "file": "src/ui/log.js",
+  "line": 47,
+  "expr": "uiPageHeader('Log', 'What you ate and how you felt, day by day. The app records; it does not interpret.')"
+ },
+ {
+  "file": "src/ui/log.js",
+  "line": 48,
+  "expr": "inElimination.length ? uiNoticeHTML({ level: 'info', text: `${inElimination.map(p => `${p.moduleName} is in the ${p.label} phase.`).join(' ')} This log is how y"
+ },
+ {
+  "file": "src/ui/log.js",
+  "line": 52,
+  "expr": "today"
+ },
+ {
+  "file": "src/ui/log.js",
+  "line": 53,
+  "expr": "['breakfast', 'lunch', 'dinner', 'snack'].map(s => `<option value=\"${s}\" ${d.meal === s ? 'selected' : ''}>${s.charAt(0).toUpperCase() + s.slice(1)}</option>`)."
+ },
+ {
+  "file": "src/ui/log.js",
+  "line": 56,
+  "expr": "dayMeals.map(m => `<option value=\"${uiEsc(m.recipe)}\" ${d.recipe === m.recipe ? 'selected' : ''}>${uiEsc(m.slot)}: ${uiEsc(m.name)}</option>`).join('')"
+ },
+ {
+  "file": "src/ui/log.js",
+  "line": 57,
+  "expr": "!dayMeals.length ? '<div class=\"hint\">No planned meals for this date. Describe the meal below instead.</div>' : ''"
+ },
+ {
+  "file": "src/ui/log.js",
+  "line": 59,
+  "expr": "textCheck ? `<div class=\"small row\" style=\"margin-top:6px\">${uiVerdictChip(textCheck.verdict)} <span>${textCheck.hits.length ? 'Matched: ' + textCheck.hits.map("
+ },
+ {
+  "file": "src/ui/log.js",
+  "line": 63,
+  "expr": "LOG_SYMPTOMS.map(s => `<div class=\"field symptom\"><label for=\"log-sym-${s.id}\"><span class=\"symptom-name\">${s.label}</span> <span class=\"symptom-val\" id=\"log-sy"
+ },
+ {
+  "file": "src/ui/log.js",
+  "line": 69,
+  "expr": "uiSection('Last 14 days', Object.keys(byDate).length ? `<div class=\"stack-2\">${Object.entries(byDate).map(([date, list]) => `<section class=\"log-day\"><h3>${uiFm"
+ },
+ {
+  "file": "src/ui/owner.js",
+  "line": 19,
+  "expr": "uiPageHeader('Owner dashboard', `This device holds the owner key (${sharingShortFingerprint(s.identity && s.identity.fingerprint)}). Profiles in the store are e"
+ },
+ {
+  "file": "src/ui/owner.js",
+  "line": 21,
+  "expr": "uiStatTile({ value: '…', label: 'People in the store' })"
+ },
+ {
+  "file": "src/ui/owner.js",
+  "line": 22,
+  "expr": "uiStatTile({ value: '…', label: 'Devices' })"
+ },
+ {
+  "file": "src/ui/owner.js",
+  "line": 23,
+  "expr": "uiStatTile({ value: '…', label: 'Shares this month' })"
+ },
+ {
+  "file": "src/ui/owner.js",
+  "line": 25,
+  "expr": "uiSection('People in the store', '<div id=\"owner-people\" class=\"card\"><p class=\"small muted\">Loading...</p></div>', { id: 'owner-people-h' })"
+ },
+ {
+  "file": "src/ui/owner.js",
+  "line": 26,
+  "expr": "uiSection('Devices', '<div id=\"owner-devices\" class=\"card\"><p class=\"small muted\">Loading...</p></div>', { id: 'owner-devices-h' })"
+ },
+ {
+  "file": "src/ui/owner.js",
+  "line": 42,
+  "expr": "list.map(r => `<tr><td>${uiIcon('lock')} ${uiEsc(r.name || '')}</td><td>${uiEsc(r.initials || '')}</td><td>${uiEsc(sharingDeviceName(devices, r.deviceFingerprin"
+ },
+ {
+  "file": "src/ui/owner.js",
+  "line": 46,
+  "expr": "devs.map(d => `<div class=\"list-row\"><div class=\"list-main\"><div class=\"list-title\">${uiEsc(d.name || 'Device')} ${d.fingerprint === (s.identity && s.identity.f"
+ },
+ {
+  "file": "src/ui/pantry.js",
+  "line": 27,
+  "expr": "uiPageHeader('Pantry', `Type what is in the kitchen and the app ranks recipes by how few ingredients you would still need. Each recipe is checked against ${uiEs"
+ },
+ {
+  "file": "src/ui/pantry.js",
+  "line": 34,
+  "expr": "results ? pantryResultsHTML(results, person) : ''"
+ },
+ {
+  "file": "src/ui/pantry.js",
+  "line": 56,
+  "expr": "v"
+ },
+ {
+  "file": "src/ui/pantry.js",
+  "line": 56,
+  "expr": "uiVerdictWord(v)"
+ },
+ {
+  "file": "src/ui/pantry.js",
+  "line": 56,
+  "expr": "uiVerdictChip(v)"
+ },
+ {
+  "file": "src/ui/pantry.js",
+  "line": 57,
+  "expr": "m.missingCount === 0 ? 'nothing missing' : `${m.missingCount} missing`"
+ },
+ {
+  "file": "src/ui/pantry.js",
+  "line": 57,
+  "expr": "r.active_min"
+ },
+ {
+  "file": "src/ui/pantry.js",
+  "line": 57,
+  "expr": "r.total_min"
+ },
+ {
+  "file": "src/ui/pantry.js",
+  "line": 58,
+  "expr": "m.check.hits && m.check.hits.length ? `<div class=\"small\">${v === 'fail' ? 'Hard exclusion' : 'Caution'}: ${m.check.hits.map(h => uiEsc(h.label)).join(', ')}</d"
+ },
+ {
+  "file": "src/ui/pantry.js",
+  "line": 59,
+  "expr": "m.present.map(uiEsc).join(', ') || '<span class=\"muted\">nothing matched</span>'"
+ },
+ {
+  "file": "src/ui/pantry.js",
+  "line": 59,
+  "expr": "m.missing.map(uiEsc).join(', ') || '<span class=\"muted\">nothing</span>'"
+ },
+ {
+  "file": "src/ui/pantry.js",
+  "line": 60,
+  "expr": "m.missingCount && v !== 'fail' ? `<button class=\"btn small\" type=\"button\" data-missing=\"${uiEsc(r.id)}\">${uiIcon('cart')}Add missing to grocery list</button>` :"
+ },
+ {
+  "file": "src/ui/pantry.js",
+  "line": 60,
+  "expr": "recipesTasteHTML(person, r.id)"
+ },
+ {
+  "file": "src/ui/people.js",
+  "line": 197,
+  "expr": "peopleDirectoryShellHTML()"
+ },
+ {
+  "file": "src/ui/people.js",
+  "line": 255,
+  "expr": "i < idx ? 'done' : i === idx ? 'current' : ''"
+ },
+ {
+  "file": "src/ui/people.js",
+  "line": 259,
+  "expr": "s.id"
+ },
+ {
+  "file": "src/ui/people.js",
+  "line": 259,
+  "expr": "s.id === stepId ? 'aria-current=\"step\"' : ''"
+ },
+ {
+  "file": "src/ui/people.js",
+  "line": 259,
+  "expr": "i < idx ? 'done' : ''"
+ },
+ {
+  "file": "src/ui/people.js",
+  "line": 259,
+  "expr": "clickable ? '' : 'disabled aria-disabled=\"true\"'"
+ },
+ {
+  "file": "src/ui/people.js",
+  "line": 259,
+  "expr": "i + 1"
+ },
+ {
+  "file": "src/ui/people.js",
+  "line": 259,
+  "expr": "s.label"
+ },
+ {
+  "file": "src/ui/people.js",
+  "line": 265,
+  "expr": "prev.hash"
+ },
+ {
+  "file": "src/ui/people.js",
+  "line": 266,
+  "expr": "next.hash"
+ },
+ {
+  "file": "src/ui/people.js",
+  "line": 339,
+  "expr": "person.sex === 'male' ? 'hidden' : ''"
+ },
+ {
+  "file": "src/ui/people.js",
+  "line": 339,
+  "expr": "uiYesNo('pregnancy', !!person.pregnancy)"
+ },
+ {
+  "file": "src/ui/people.js",
+  "line": 340,
+  "expr": "uiYesNo('breastfeeding', !!person.breastfeeding)"
+ },
+ {
+  "file": "src/ui/people.js",
+  "line": 411,
+  "expr": "chosen.map(m => row(m) + peopleModulePanelHTML(m, person)).join('')"
+ },
+ {
+  "file": "src/ui/people.js",
+  "line": 414,
+  "expr": "allCount"
+ },
+ {
+  "file": "src/ui/people.js",
+  "line": 415,
+  "expr": "commonList.length ? `<div class=\"choice-list\">${commonList.map(row).join('')}</div>` : '<p class=\"small muted\">All of these are selected.</p>'"
+ },
+ {
+  "file": "src/ui/people.js",
+  "line": 424,
+  "expr": "open ? 'open' : ''"
+ },
+ {
+  "file": "src/ui/people.js",
+  "line": 424,
+  "expr": "title"
+ },
+ {
+  "file": "src/ui/people.js",
+  "line": 424,
+  "expr": "g.hint"
+ },
+ {
+  "file": "src/ui/people.js",
+  "line": 424,
+  "expr": "list.length"
+ },
+ {
+  "file": "src/ui/people.js",
+  "line": 424,
+  "expr": "q ? ` of ${total}` : ''"
+ },
+ {
+  "file": "src/ui/people.js",
+  "line": 425,
+  "expr": "list.length ? `<div class=\"choice-list\">${list.map(row).join('')}</div>` : `<p class=\"small muted\" style=\"padding-bottom:12px\">Nothing here matches \"${uiEsc(peo"
+ },
+ {
+  "file": "src/ui/people.js",
+  "line": 458,
+  "expr": "m.variants.filter(v => v.note).map(v => uiEsc(v.note)).join(' ')"
+ },
+ {
+  "file": "src/ui/people.js",
+  "line": 482,
+  "expr": "uiYesNo('flag-' + fid, person.flags[fid] === true ? true : person.flags[fid] === false ? false : null)"
+ },
+ {
+  "file": "src/ui/people.js",
+  "line": 536,
+  "expr": "a.tag"
+ },
+ {
+  "file": "src/ui/people.js",
+  "line": 536,
+  "expr": "sel.has(a.tag) ? 'checked' : ''"
+ },
+ {
+  "file": "src/ui/people.js",
+  "line": 536,
+  "expr": "a.label"
+ },
+ {
+  "file": "src/ui/people.js",
+  "line": 536,
+  "expr": "a.hint ? `<br><span class=\"small muted\">${uiEsc(a.hint)}</span>` : ''"
+ },
+ {
+  "file": "src/ui/people.js",
+  "line": 542,
+  "expr": "peopleOtherAllergies(person).map(uiEsc).join(', ')"
+ },
+ {
+  "file": "src/ui/people.js",
+  "line": 544,
+  "expr": "configurable.map(r => peopleConfigurableRuleHTML(r, person)).join('')"
+ },
+ {
+  "file": "src/ui/people.js",
+  "line": 593,
+  "expr": "id"
+ },
+ {
+  "file": "src/ui/people.js",
+  "line": 593,
+  "expr": "prefs.patterns.includes(id) ? 'checked' : ''"
+ },
+ {
+  "file": "src/ui/people.js",
+  "line": 606,
+  "expr": "c.id"
+ },
+ {
+  "file": "src/ui/people.js",
+  "line": 606,
+  "expr": "(prefs.cuisines_skip || []).includes(c.id) ? 'checked' : ''"
+ },
+ {
+  "file": "src/ui/people.js",
+  "line": 607,
+  "expr": "c.id"
+ },
+ {
+  "file": "src/ui/people.js",
+  "line": 607,
+  "expr": "(prefs.cuisines_love || []).includes(c.id) ? 'checked' : ''"
+ },
+ {
+  "file": "src/ui/people.js",
+  "line": 717,
+  "expr": "existing.map(cm => `<div class=\"card tight custom-card\"> <div class=\"row\"><strong>${uiEsc(cm.name)}</strong> ${uiUserDefinedBadge()}</div> ${cm.summary ? `<div "
+ },
+ {
+  "file": "src/ui/people.js",
+  "line": 730,
+  "expr": "famTitle[f]"
+ },
+ {
+  "file": "src/ui/people.js",
+  "line": 730,
+  "expr": "uiMultiPills('cd-avoid', fam(f), d.avoid_tags, { label: famTitle[f] })"
+ },
+ {
+  "file": "src/ui/people.js",
+  "line": 733,
+  "expr": "uiMultiPills('cd-prefer', preferOptions, d.prefer_tags, { label: 'Prefer tags' })"
+ },
+ {
+  "file": "src/ui/people.js",
+  "line": 736,
+  "expr": "l.key"
+ },
+ {
+  "file": "src/ui/people.js",
+  "line": 736,
+  "expr": "l.label"
+ },
+ {
+  "file": "src/ui/people.js",
+  "line": 736,
+  "expr": "l.key"
+ },
+ {
+  "file": "src/ui/people.js",
+  "line": 736,
+  "expr": "l.key"
+ },
+ {
+  "file": "src/ui/people.js",
+  "line": 736,
+  "expr": "typeof d.limits[l.key] === 'number' ? d.limits[l.key] : ''"
+ },
+ {
+  "file": "src/ui/people.js",
+  "line": 736,
+  "expr": "l.unit"
+ },
+ {
+  "file": "src/ui/people.js",
+  "line": 897,
+  "expr": "q.global ? 'Asked of everyone.' : `Asked by ${uiEsc(q.moduleName)}.`"
+ },
+ {
+  "file": "src/ui/people.js",
+  "line": 898,
+  "expr": "uiYesNo('med-' + q.id, person.medications[q.id] === true ? true : person.medications[q.id] === false ? false : null)"
+ },
+ {
+  "file": "src/ui/people.js",
+  "line": 932,
+  "expr": "/per_kg/.test(t.param) ? ' ' + uiChip('per kilogram', 'neutral') : ''"
+ },
+ {
+  "file": "src/ui/people.js",
+  "line": 933,
+  "expr": "t.when ? ` (applies when: ${uiEsc(t.when)})` : ''"
+ },
+ {
+  "file": "src/ui/people.js",
+  "line": 934,
+  "expr": "t.consensus ? `<div class=\"small\"><strong>Published range:</strong> ${uiEsc(t.consensus)}</div>` : ''"
+ },
+ {
+  "file": "src/ui/people.js",
+  "line": 935,
+  "expr": "t.why ? `<div class=\"small muted\">${uiEsc(t.why)}</div>` : ''"
+ },
+ {
+  "file": "src/ui/people.js",
+  "line": 937,
+  "expr": "typeof person.tier2[t.param] === 'number' ? person.tier2[t.param] : ''"
+ },
+ {
+  "file": "src/ui/people.js",
+  "line": 939,
+  "expr": "applied.has(t.param) ? uiChip('from your doctor or dietitian, applied', 'plum') : typeof person.tier2[t.param] === 'number' ? uiChip('saved, not currently used'"
+ },
+ {
+  "file": "src/ui/people.js",
+  "line": 1077,
+  "expr": "v"
+ },
+ {
+  "file": "src/ui/people.js",
+  "line": 1078,
+  "expr": "plan.notices.filter(n => n.level !== 'info').map(n => uiNoticeHTML(n)).join('')"
+ },
+ {
+  "file": "src/ui/people.js",
+  "line": 1105,
+  "expr": "list.map(r => { const yours = r.deviceFingerprint === s.identity.fingerprint || mineIds.has(r.personId); return `<div class=\"list-row\"><span class=\"avatar\" aria"
+ },
+ {
+  "file": "src/ui/plan.js",
+  "line": 57,
+  "expr": "l.ideal != null ? `<span class=\"muted\">· ideally ${uiFmtNum(l.ideal, 1)}</span>` : ''"
+ },
+ {
+  "file": "src/ui/plan.js",
+  "line": 57,
+  "expr": "l.rules.length"
+ },
+ {
+  "file": "src/ui/plan.js",
+  "line": 58,
+  "expr": "t.max != null ? `<span class=\"muted\">· at most ${uiFmtNum(t.max, 1)}</span>` : ''"
+ },
+ {
+  "file": "src/ui/plan.js",
+  "line": 58,
+  "expr": "t.rules.length"
+ },
+ {
+  "file": "src/ui/plan.js",
+  "line": 61,
+  "expr": "tone"
+ },
+ {
+  "file": "src/ui/plan.js",
+  "line": 73,
+  "expr": "uiChip(String(avoidHard.length + (plan.otherAllergies || []).length), 'stop')"
+ },
+ {
+  "file": "src/ui/plan.js",
+  "line": 74,
+  "expr": "avoidHard.length || (plan.otherAllergies || []).length ? `<div class=\"chip-cloud\">${avoidHard.map(([tag, v]) => tagChip(tag, v, 'stop')).join('')}${(plan.otherA"
+ },
+ {
+  "file": "src/ui/plan.js",
+  "line": 75,
+  "expr": "uiChip(String(avoidSoft.length), 'caution')"
+ },
+ {
+  "file": "src/ui/plan.js",
+  "line": 76,
+  "expr": "avoidSoft.length ? `<div class=\"chip-cloud\">${avoidSoft.map(([tag, v]) => tagChip(tag, v, 'caution')).join('')}</div>` : '<p class=\"muted small\">None.</p>'"
+ },
+ {
+  "file": "src/ui/plan.js",
+  "line": 79,
+  "expr": "prefer.map(([tag, v]) => tagChip(tag, v, 'pass')).join('')"
+ },
+ {
+  "file": "src/ui/plan.js",
+  "line": 81,
+  "expr": "uiRulesList(plan.timing)"
+ },
+ {
+  "file": "src/ui/plan.js",
+  "line": 82,
+  "expr": "uiRulesList(plan.behavior)"
+ },
+ {
+  "file": "src/ui/plan.js",
+  "line": 83,
+  "expr": "uiRulesList(plan.info)"
+ },
+ {
+  "file": "src/ui/plan.js",
+  "line": 85,
+  "expr": "plan.conflicts.map(c => `<div class=\"card conflict\"> <div class=\"conflict-side\">${uiEsc(c.aName)}</div><div class=\"conflict-vs\">versus</div><div class=\"conflict"
+ },
+ {
+  "file": "src/ui/plan.js",
+  "line": 92,
+  "expr": "plan.phases.map(ph => planPhaseCard(ph)).join('')"
+ },
+ {
+  "file": "src/ui/plan.js",
+  "line": 94,
+  "expr": "plan.modes.map(md => planModeCard(md, person)).join('')"
+ },
+ {
+  "file": "src/ui/plan.js",
+  "line": 96,
+  "expr": "plan.suppressed.map(s => `<div class=\"rule\"><div class=\"rule-text\">${uiEsc(s.text || s.rule)}</div><div class=\"rule-meta\">${uiChip(s.moduleName || uiModuleName("
+ },
+ {
+  "file": "src/ui/plan.js",
+  "line": 98,
+  "expr": "plan.tier2.missing.map(t => `<div class=\"rule\"><div class=\"rule-text\"><strong>${uiEsc(t.label)}</strong> ${uiChip('not applied', 'caution')}</div><div class=\"sm"
+ },
+ {
+  "file": "src/ui/plan.js",
+  "line": 102,
+  "expr": "plan.restrictionLoad.count"
+ },
+ {
+  "file": "src/ui/plan.js",
+  "line": 102,
+  "expr": "plan.restrictionLoad.count === 1 ? '' : 's'"
+ },
+ {
+  "file": "src/ui/plan.js",
+  "line": 102,
+  "expr": "plan.restrictionLoad.warn ? uiChip('check in', 'caution') : uiChip('ok', 'pass')"
+ },
+ {
+  "file": "src/ui/plan.js",
+  "line": 103,
+  "expr": "plan.restrictionLoad.modules.length ? `<div class=\"small muted\">${plan.restrictionLoad.modules.map(m => uiEsc(uiModuleName(m))).join(', ')}</div>` : ''"
+ },
+ {
+  "file": "src/ui/plan.js",
+  "line": 104,
+  "expr": "loadNotice ? uiNoticeHTML(loadNotice) : `<p class=\"small muted\">The plan checks in when ${plan.restrictionLoad.threshold || 3} or more run at once.</p>`"
+ },
+ {
+  "file": "src/ui/plan.js",
+  "line": 122,
+  "expr": "uiChip(s.tone === 'stop' ? 'hard stop' : s.tone === 'caution' ? 'soft' : 'prefer', s.tone)"
+ },
+ {
+  "file": "src/ui/plan.js",
+  "line": 122,
+  "expr": "s.whys.map(w => `<p>${uiEsc(w)}</p>`).join('')"
+ },
+ {
+  "file": "src/ui/plan.js",
+  "line": 176,
+  "expr": "rows.join('')"
+ },
+ {
+  "file": "src/ui/plan.js",
+  "line": 178,
+  "expr": "avoidHard.map(([tag]) => `<li>${uiEsc(uiTagLabel(tag))}</li>`).join('')"
+ },
+ {
+  "file": "src/ui/plan.js",
+  "line": 178,
+  "expr": "(plan.otherAllergies || []).map(t => `<li>${uiEsc(t)} (allergy)</li>`).join('')"
+ },
+ {
+  "file": "src/ui/plan.js",
+  "line": 179,
+  "expr": "avoidSoft.map(([tag]) => `<li>${uiEsc(uiTagLabel(tag))}</li>`).join('')"
+ },
+ {
+  "file": "src/ui/plan.js",
+  "line": 182,
+  "expr": "plan.timing.map(r => `<li>${uiEsc(r.text || r.rule)}</li>`).join('')"
+ },
+ {
+  "file": "src/ui/plan.js",
+  "line": 195,
+  "expr": "i < curIdx ? 'done' : i === curIdx ? 'current' : ''"
+ },
+ {
+  "file": "src/ui/plan.js",
+  "line": 195,
+  "expr": "i === curIdx ? ' (now)' : ''"
+ },
+ {
+  "file": "src/ui/plan.js",
+  "line": 195,
+  "expr": "i === curIdx ? `Since ${uiEsc(ph.started)}, ${ph.weeks} weeks. ` : ''"
+ },
+ {
+  "file": "src/ui/plan.js",
+  "line": 195,
+  "expr": "sug ? `The protocol usually runs this for ${sug}; ` : ''"
+ },
+ {
+  "file": "src/ui/plan.js",
+  "line": 197,
+  "expr": "v"
+ },
+ {
+  "file": "src/ui/plan.js",
+  "line": 197,
+  "expr": "(ph.check_in_weeks || 0) === v ? 'selected' : ''"
+ },
+ {
+  "file": "src/ui/plan.js",
+  "line": 197,
+  "expr": "l"
+ },
+ {
+  "file": "src/ui/plan.js",
+  "line": 199,
+  "expr": "ph.check_in_weeks ? `, ask again in ${ph.check_in_weeks} weeks` : ''"
+ },
+ {
+  "file": "src/ui/plan.js",
+  "line": 200,
+  "expr": "ph.check_in_due ? '' : 'primary'"
+ },
+ {
+  "file": "src/ui/plan.js",
+  "line": 231,
+  "expr": "rules.length"
+ },
+ {
+  "file": "src/ui/plan.js",
+  "line": 231,
+  "expr": "uiRulesList(rules)"
+ },
+ {
+  "file": "src/ui/plan.js",
+  "line": 248,
+  "expr": "x.id === md.mode ? 'olive' : ''"
+ },
+ {
+  "file": "src/ui/plan.js",
+  "line": 248,
+  "expr": "x.id === md.mode ? 'aria-pressed=\"true\"' : 'aria-pressed=\"false\"'"
+ },
+ {
+  "file": "src/ui/plan.js",
+  "line": 248,
+  "expr": "x.expires_days ? ` (${x.expires_days}-day check-in)` : ''"
+ },
+ {
+  "file": "src/ui/recipes-edit.js",
+  "line": 157,
+  "expr": "i"
+ },
+ {
+  "file": "src/ui/recipes-edit.js",
+  "line": 159,
+  "expr": "opts.editableDisplay ? `<input type=\"text\" class=\"ing-display\" value=\"${uiEsc(line.display || '')}\" placeholder=\"2 cups chopped onion\" aria-label=\"Ingredient li"
+ },
+ {
+  "file": "src/ui/recipes-edit.js",
+  "line": 160,
+  "expr": "opts.editableDisplay ? `<button class=\"btn small icon\" type=\"button\" data-remove-line=\"${i}\" aria-label=\"Remove line ${i + 1}\" title=\"Remove\">${uiIcon('trash')}"
+ },
+ {
+  "file": "src/ui/recipes-edit.js",
+  "line": 164,
+  "expr": "i + 1"
+ },
+ {
+  "file": "src/ui/recipes-edit.js",
+  "line": 166,
+  "expr": "food ? `<div class=\"small muted ing-picked\">${uiIcon('link')} ${uiEsc(food.name)} <span class=\"muted\">· ${uiEsc(food.group || '')}</span> <button class=\"btn lin"
+ },
+ {
+  "file": "src/ui/recipes-edit.js",
+  "line": 170,
+  "expr": "i + 1"
+ },
+ {
+  "file": "src/ui/recipes-edit.js",
+  "line": 170,
+  "expr": "line.grams != null ? uiEsc(Math.round(line.grams * 10) / 10) : ''"
+ },
+ {
+  "file": "src/ui/recipes-edit.js",
+  "line": 170,
+  "expr": "food ? '' : 'disabled'"
+ },
+ {
+  "file": "src/ui/recipes-edit.js",
+  "line": 170,
+  "expr": "how"
+ },
+ {
+  "file": "src/ui/recipes-edit.js",
+  "line": 176,
+  "expr": "lines.map((l, i) => recipesEdLineHTML(l, i, opts)).join('')"
+ },
+ {
+  "file": "src/ui/recipes-edit.js",
+  "line": 176,
+  "expr": "opts.editableDisplay ? `<div class=\"btn-row\"><button class=\"btn small\" type=\"button\" id=\"ing-add\">${uiIcon('plus')}Add an ingredient line</button></div>` : ''"
+ },
+ {
+  "file": "src/ui/recipes-edit.js",
+  "line": 226,
+  "expr": "linked"
+ },
+ {
+  "file": "src/ui/recipes-edit.js",
+  "line": 226,
+  "expr": "linked === 1 ? '' : 's'"
+ },
+ {
+  "file": "src/ui/recipes-edit.js",
+  "line": 227,
+  "expr": "unlinked.length ? `<p class=\"small muted\">Not counted (display only): ${unlinked.map(l => uiEsc(l.display)).join('; ')}.</p>` : ''"
+ },
+ {
+  "file": "src/ui/recipes-edit.js",
+  "line": 238,
+  "expr": "recipesEdLinesHTML(lines)"
+ },
+ {
+  "file": "src/ui/recipes-edit.js",
+  "line": 239,
+  "expr": "recipesEdPreviewHTML(lines, recipe.servings)"
+ },
+ {
+  "file": "src/ui/recipes-edit.js",
+  "line": 290,
+  "expr": "d.derived_from ? uiNoticeHTML({ level: 'info', text: `Adapted from \"${d.derived_from.name}\" (${d.derived_from.source}). The copy keeps that attribution${d.deriv"
+ },
+ {
+  "file": "src/ui/recipes-edit.js",
+  "line": 297,
+  "expr": "uiSegmented('re-skill', [{ value: 'beginner', label: 'Beginner' }, { value: 'comfortable', label: 'Comfortable' }, { value: 'confident', label: 'Confident' }], "
+ },
+ {
+  "file": "src/ui/recipes-edit.js",
+  "line": 298,
+  "expr": "uiMultiPills('re-equipment', RECIPES_ED_EQUIPMENT, d.equipment)"
+ },
+ {
+  "file": "src/ui/recipes-edit.js",
+  "line": 299,
+  "expr": "uiMultiPills('re-meal', RECIPES_ED_MEALS, d.meal)"
+ },
+ {
+  "file": "src/ui/recipes-edit.js",
+  "line": 300,
+  "expr": "uiSegmented('re-leftovers', [{ value: 'good', label: 'Keep well' }, { value: 'ok', label: 'Ok' }, { value: 'poor', label: 'Eat fresh' }], d.leftovers)"
+ },
+ {
+  "file": "src/ui/recipes-edit.js",
+  "line": 302,
+  "expr": "recipesEdLinesHTML(d.lines, { editableDisplay: true })"
+ },
+ {
+  "file": "src/ui/recipes-edit.js",
+  "line": 303,
+  "expr": "recipesEdPreviewHTML(d.lines, d.servings)"
+ },
+ {
+  "file": "src/ui/recipes-edit.js",
+  "line": 306,
+  "expr": "d.id ? 'Save changes' : 'Save to Mine'"
+ },
+ {
+  "file": "src/ui/recipes-edit.js",
+  "line": 437,
+  "expr": "parsed.ingredients.length"
+ },
+ {
+  "file": "src/ui/recipes-edit.js",
+  "line": 437,
+  "expr": "parsed.ingredients.length === 1 ? '' : 's'"
+ },
+ {
+  "file": "src/ui/recipes-edit.js",
+  "line": 437,
+  "expr": "parsed.steps.length"
+ },
+ {
+  "file": "src/ui/recipes-edit.js",
+  "line": 437,
+  "expr": "parsed.steps.length === 1 ? '' : 's'"
+ },
+ {
+  "file": "src/ui/recipes-edit.js",
+  "line": 437,
+  "expr": "parsed.servings ? `, serves ${parsed.servings}` : ''"
+ },
+ {
+  "file": "src/ui/recipes-edit.js",
+  "line": 437,
+  "expr": "parsed.total_min ? `, ${parsed.total_min} min` : ''"
+ },
+ {
+  "file": "src/ui/recipes-edit.js",
+  "line": 438,
+  "expr": "parsed.ingredients.map(x => `<li>${uiEsc(x)}</li>`).join('')"
+ },
+ {
+  "file": "src/ui/recipes-edit.js",
+  "line": 438,
+  "expr": "parsed.steps.map(x => `<li>${uiEsc(x)}</li>`).join('') || '<li class=\"muted\">None found; you can type them in the editor.</li>'"
+ },
+ {
+  "file": "src/ui/recipes-edit.js",
+  "line": 453,
+  "expr": "recipesEdLinesHTML(lines)"
+ },
+ {
+  "file": "src/ui/recipes-edit.js",
+  "line": 454,
+  "expr": "recipesEdPreviewHTML(lines, servings)"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 107,
+  "expr": "fav ? 'on' : ''"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 107,
+  "expr": "fav"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 107,
+  "expr": "fav ? 'Remove from favorites' : 'Add to favorites'"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 107,
+  "expr": "fav ? 'Favorite' : 'Add to favorites'"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 107,
+  "expr": "never ? 'on' : ''"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 107,
+  "expr": "never"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 107,
+  "expr": "never ? 'Allow this recipe to be suggested again' : 'Never suggest this recipe again'"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 107,
+  "expr": "never ? 'Never again (tap to allow)' : 'Never again'"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 135,
+  "expr": "u"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 135,
+  "expr": "u"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 142,
+  "expr": "licUrl"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 143,
+  "expr": "line"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 147,
+  "expr": "d.attribution ? ' ' + recipesLinkify(d.attribution) : ''"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 147,
+  "expr": "d.license && RECIPES_LICENSE_URL[d.license] && !/creativecommons|nationalarchives/.test(d.attribution || '') ? ` Licence: <a href=\"${RECIPES_LICENSE_URL[d.licen"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 172,
+  "expr": "RECIPES_SLOT_LABEL[s] || s"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 175,
+  "expr": "s"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 175,
+  "expr": "RECIPES_SLOT_LABEL[s]"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 178,
+  "expr": "di"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 178,
+  "expr": "RECIPES_DAY_NAMES[d.day] || uiFmtDate(d.date)"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 183,
+  "expr": "check.verdict"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 183,
+  "expr": "uiVerdictWord(check.verdict)"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 183,
+  "expr": "check.hits.length || (check.termHits || []).some(t => t.allergy) ? 'Matches: ' + [...check.hits.map(h => uiEsc(h.label) + (h.hard ? ' (hard)' : '')), ...(check."
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 183,
+  "expr": "check.notApproved && check.notApproved.length ? ' Not on the approved ' + uiEsc([...new Set(check.notApproved.map(n => n.family.replace('low-', 'low ').replace("
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 183,
+  "expr": "check.exceeds.length ? ' One serving exceeds the daily ' + check.exceeds.map(e => uiEsc(uiNutrientLabel(e.nutrient))).join(', ') + '.' : ''"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 183,
+  "expr": "check.verifyLabel && check.verifyLabel.length ? ' Check the label for: ' + check.verifyLabel.map(v => uiEsc(v.label)).join(', ') + '.' : ''"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 183,
+  "expr": "(check.smallServe || []).length ? ' Several small serves in one meal: ' + [...new Set(check.smallServe.flatMap(x => x.terms))].map(uiEsc).join(', ') + '.' : ''"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 183,
+  "expr": "check.verdict === 'caution' && (check.unknownRisk || []).length ? ' Could hide something: ' + [...new Set(check.unknownRisk.map(u => u.term))].map(uiEsc).join('"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 183,
+  "expr": "check.verdict === 'caution' && (check.unrecognized || []).length ? ' Not recognized, so not counted as safe: ' + check.unrecognized.slice(0, 4).map(uiEsc).join("
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 184,
+  "expr": "r.adapted ? uiNoticeHTML({ level: 'info', text: `Adapted from \"${r.adapted.fromName}\" for a ${r.adapted.label} diet. ${r.adapted.swaps.map(sw => sw.to ? `${sw.f"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 185,
+  "expr": "r.adapted ? `<p class=\"small muted\">Swap sources: ${uiSourcesHTML([...new Set(r.adapted.swaps.flatMap(sw => sw.sources || []))])}</p>` : ''"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 186,
+  "expr": "recipesSourceChip(r)"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 186,
+  "expr": "r.featured ? `<span class=\"featured-star\">${uiIcon('star', { fill: true })}Featured</span>` : ''"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 186,
+  "expr": "r.linked_by_household ? uiChip('linked by you', 'pass') : ''"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 186,
+  "expr": "!hasNut ? uiChip('no nutrition data', 'caution') : ''"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 186,
+  "expr": "component ? uiChip('sauce or basic', 'neutral', { attrs: 'title=\"A component: kept in the library, never scheduled as a meal on its own\"' }) : ''"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 186,
+  "expr": "heat.level ? uiChip(heat.label, heat.level >= 3 ? 'stop' : heat.level === 2 ? 'caution' : 'info', { soft: true, attrs: `title=\"Estimated from: ${uiEsc(heat.term"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 188,
+  "expr": "r.active_min"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 188,
+  "expr": "r.total_min"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 188,
+  "expr": "r.times_estimated ? ' <span class=\"muted\">(estimated)</span>' : ''"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 189,
+  "expr": "r.skill_estimated ? ' <span class=\"muted\">(estimated)</span>' : ''"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 190,
+  "expr": "(r.equipment || []).map(uiEsc).join(', ') || 'none'"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 191,
+  "expr": "r.servings"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 191,
+  "expr": "r.servings_estimated ? ' <span class=\"muted\">(estimated)</span>' : ''"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 191,
+  "expr": "r.leftovers ? `, leftovers ${uiEsc(r.leftovers)}` : ''"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 192,
+  "expr": "r.meal ? `<dt>Meal</dt><dd>${r.meal.map(s => RECIPES_SLOT_LABEL[s] || s).map(uiEsc).join(', ')}</dd>` : ''"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 193,
+  "expr": "heat.level ? `<dt>Heat</dt><dd>${uiEsc(heat.label)} <span class=\"muted\">(estimated from ${uiEsc(heat.terms.join(', '))})</span>${spiceSkipped(r, person) ? ' <sp"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 195,
+  "expr": "swaps.length ? `<div class=\"stack\">${swaps.map(s => uiNoticeHTML({ level: 'warn', text: `${uiTagLabel(s.if_tag)} is on your avoid list. ${s.then}` })).join('')}"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 197,
+  "expr": "canAct ? `<div class=\"row\">${recipesTasteHTML(person, r.id)}<span class=\"small muted\">Heart to see it first in the week; never again removes it from every sugge"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 199,
+  "expr": "week ? `<div class=\"row action-line\"><label class=\"visually-hidden\" for=\"rd-day\">Day</label><select id=\"rd-day\" style=\"width:auto\">${dayOpts}</select><label cla"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 201,
+  "expr": "r.custom ? `<button class=\"btn small\" type=\"button\" id=\"rd-edit\">${uiIcon('edit')}Edit</button><button class=\"btn small danger\" type=\"button\" id=\"rd-delete\">${u"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 202,
+  "expr": "!r.custom && (r.ingredients || []).some(i => !i.food) ? `<button class=\"btn small\" type=\"button\" id=\"rd-link\">${uiIcon('link')}${linkedCount ? 'Edit ingredient "
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 203,
+  "expr": "!r.custom && linkedCount && (r.ingredients || []).every(i => i.food) && r.linked_by_household ? `<button class=\"btn small\" type=\"button\" id=\"rd-link\">${uiIcon('"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 209,
+  "expr": "(r.ingredients || []).map(i => { const f = i.food ? uiState.foodsById.get(i.food) : null; const label = (i.display || (f ? f.short || f.name : i.food)) + (i.amo"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 210,
+  "expr": "check.unrecognized.length ? `<p class=\"small\"><strong>Not recognized:</strong> ${check.unrecognized.map(uiEsc).join('; ')}. The app does not assume these are sa"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 211,
+  "expr": "uiPortionsHTML(check) ? `<h3>Portions</h3>${uiPortionsHTML(check)}` : ''"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 213,
+  "expr": "(r.steps || []).map(s => `<li>${uiEsc(s)}</li>`).join('')"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 214,
+  "expr": "r.notes && r.notes.sodium_tip ? `<p class=\"small\"><strong>Sodium:</strong> ${uiEsc(r.notes.sodium_tip)}</p>` : ''"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 215,
+  "expr": "r.notes && r.notes.text ? `<p class=\"small\"><strong>Notes:</strong> ${uiEsc(r.notes.text)}</p>` : ''"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 218,
+  "expr": "hasNut ? `<div class=\"table-wrap\"><table> <thead><tr><th>Nutrient</th><th class=\"num\">Per serving</th><th class=\"num\">Daily number</th><th class=\"num\">% of dail"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 228,
+  "expr": "recipesAttributionHTML(r)"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 229,
+  "expr": "r.tags && r.tags.length ? `<p class=\"small muted\">Tags: ${r.tags.map(t => `<code>${uiEsc(t)}</code>`).join(' ')}</p>` : ''"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 307,
+  "expr": "h.level"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 315,
+  "expr": "(c.smallServe || []).length ? 'verdict-word-sm caution' : 'muted'"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 322,
+  "expr": "uiVerdictWord(v)"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 323,
+  "expr": "v"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 325,
+  "expr": "r.featured ? ` <span class=\"featured-star\" title=\"Featured\">${uiIcon('star', { fill: true })}</span>` : ''"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 326,
+  "expr": "recipesSourceChip(r)"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 326,
+  "expr": "r.total_min"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 326,
+  "expr": "r.servings"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 326,
+  "expr": "r.servings === 1 ? '' : 's'"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 326,
+  "expr": "v"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 326,
+  "expr": "uiVerdictWord(v)"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 326,
+  "expr": "!recipesHasNutrition(r) ? '<span class=\"muted\">no nutrition data</span>' : ''"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 326,
+  "expr": "isComponent(r) ? '<span class=\"muted\">sauce or basic</span>' : ''"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 326,
+  "expr": "recipesHeatSpan(r)"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 326,
+  "expr": "recipesPortionSpan(c)"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 329,
+  "expr": "recipesTasteHTML(person, r.id)"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 341,
+  "expr": "on ? 'plum' : 'neutral'"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 341,
+  "expr": "id"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 341,
+  "expr": "on"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 341,
+  "expr": "label"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 343,
+  "expr": "uiPageHeader('Recipes', `${uiFmtNum(total)} recipes from Peace Meal, the NHS website, the NHLBI, the VA, Parent Club, ${uiState.lite ? '' : 'the Wikibooks Cookb"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 348,
+  "expr": "chip('fav', `${uiIcon('heart')}Favorites`, recipesUi.fav)"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 349,
+  "expr": "chip('featured', `${uiIcon('star')}Featured`, recipesUi.featured)"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 350,
+  "expr": "chip('nutrition', 'Has nutrition', recipesUi.nutrition)"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 351,
+  "expr": "chip('fits', 'Fits my plan', recipesUi.fits)"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 352,
+  "expr": "chip('quick', 'Under 20 minutes', recipesUi.quick)"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 354,
+  "expr": "['peace-meal', 'nhs', 'parentclub', 'nhlbi', 'va', 'wikibooks', 'usda', 'mine'].filter(s => (s !== 'usda' || uiState.data.recipes.some(r => r.source === 'USDA M"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 356,
+  "expr": "chip('veg:vegetarian', 'Vegetarian', recipesUi.veg === 'vegetarian')"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 357,
+  "expr": "chip('veg:vegan', 'Vegan', recipesUi.veg === 'vegan')"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 358,
+  "expr": "['breakfast', 'lunch', 'dinner', 'snack', 'component'].map(s => `<option value=\"${s}\" ${recipesUi.meal === s ? 'selected' : ''}>${RECIPES_SLOT_LABEL[s]}</option"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 359,
+  "expr": "idx.cuisines.map(c => `<option value=\"${uiEsc(c)}\" ${recipesUi.cuisine === c ? 'selected' : ''}>${uiEsc(CUISINE_LABEL[c] || c)}</option>`).join('')"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 364,
+  "expr": "uiState.lite ? '' : 'the Wikibooks Cookbook (CC BY-SA 4.0), '"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 372,
+  "expr": "count"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 372,
+  "expr": "skippedCount ? ` <button type=\"button\" class=\"btn link small\" id=\"rc-show-skipped\">${uiFmtNum(skippedCount)} hidden by your cuisine or spice settings; show them"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 373,
+  "expr": "shown.map(r => recipesCardHTML(r, person, plan)).join('')"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 374,
+  "expr": "hasMore ? `<div class=\"btn-row\"><button class=\"btn\" type=\"button\" id=\"rc-more\">Show ${RECIPES_PAGE} more</button></div>` : ''"
+ },
+ {
+  "file": "src/ui/settings.js",
+  "line": 34,
+  "expr": "guests.length ? `<div class=\"list boxed\">${guests.map(g => `<div class=\"list-row\"><div class=\"list-main\"><div class=\"list-title\">${uiEsc(g.name)} ${uiChip('Gues"
+ },
+ {
+  "file": "src/ui/settings.js",
+  "line": 41,
+  "expr": "profile.people.length"
+ },
+ {
+  "file": "src/ui/settings.js",
+  "line": 42,
+  "expr": "(profile.log || []).length"
+ },
+ {
+  "file": "src/ui/settings.js",
+  "line": 43,
+  "expr": "d.sources.length"
+ },
+ {
+  "file": "src/ui/settings.js",
+  "line": 43,
+  "expr": "d.conditions.length"
+ },
+ {
+  "file": "src/ui/settings.js",
+  "line": 43,
+  "expr": "Object.keys(d.dictionaries.tags || {}).length"
+ },
+ {
+  "file": "src/ui/settings.js",
+  "line": 43,
+  "expr": "(d.dictionaries.entries || []).length"
+ },
+ {
+  "file": "src/ui/settings.js",
+  "line": 43,
+  "expr": "d.foods.length"
+ },
+ {
+  "file": "src/ui/settings.js",
+  "line": 43,
+  "expr": "d.recipes.length"
+ },
+ {
+  "file": "src/ui/settings.js",
+  "line": 44,
+  "expr": "sharingState().db ? ' A person is copied to the shared store only when you switch that on above, and only encrypted.' : ''"
+ },
+ {
+  "file": "src/ui/settings.js",
+  "line": 44,
+  "expr": "storeState.migration && storeState.migration.migrated ? ' Moved there from ' + uiEsc(storeState.migration.from) + ' on this launch; the old copy is kept.' : ''"
+ },
+ {
+  "file": "src/ui/settings.js",
+  "line": 44,
+  "expr": "storeState.migration && storeState.migration.error ? ' ' + uiEsc(storeState.migration.error) + '.' : ''"
+ },
+ {
+  "file": "src/ui/settings.js",
+  "line": 49,
+  "expr": "uiState.dataProblems.length ? uiNoticeHTML({ level: 'warn', text: uiState.dataProblems.join(' ') }) : ''"
+ },
+ {
+  "file": "src/ui/settings.js",
+  "line": 108,
+  "expr": "s.owner ? 'disabled' : ''"
+ },
+ {
+  "file": "src/ui/settings.js",
+  "line": 113,
+  "expr": "sharingShortFingerprint(s.owner.fingerprint)"
+ },
+ {
+  "file": "src/ui/sharing.js",
+  "line": 12,
+  "expr": "SHARING_LOCAL_SENTENCE"
+ },
+ {
+  "file": "src/ui/sharing.js",
+  "line": 69,
+  "expr": "uiAvatar(person.name, { size: 'lg', tone: 'plum' })"
+ },
+ {
+  "file": "src/ui/sharing.js",
+  "line": 69,
+  "expr": "opts.subtitle ? uiEsc(opts.subtitle) : 'Read-only view. Nothing here changes the other person’s profile.'"
+ },
+ {
+  "file": "src/ui/sharing.js",
+  "line": 70,
+  "expr": "parts ? `<div class=\"row\">${parts.map(p => uiChip(p, 'plum')).join('')}</div>` : ''"
+ },
+ {
+  "file": "src/ui/sharing.js",
+  "line": 71,
+  "expr": "hasRules ? ` <h3>Allergens</h3>${(person.allergens || []).length || (person.allergens_other || []).length ? `<div class=\"row\">${(person.allergens || []).map(t ="
+ },
+ {
+  "file": "src/ui/sharing.js",
+  "line": 84,
+  "expr": "week ? `<h3>Meal plan</h3><div class=\"stack\">${week.days.map(d => `<div><strong>${uiEsc(uiFmtDate(d.date))}</strong><ul class=\"small\">${(d.meals || []).filter(m"
+ },
+ {
+  "file": "src/ui/sharing.js",
+  "line": 85,
+  "expr": "grocery ? `<h3>Grocery list</h3><ul class=\"small\">${grocery.items.filter(i => !i.removed).map(i => `<li>${uiEsc(i.name)}: ${uiEsc(i.quantity)}</li>`).join('') |"
+ },
+ {
+  "file": "src/ui/sharing.js",
+  "line": 86,
+  "expr": "hasRules ? `<div class=\"btn-row\"><button class=\"btn primary\" type=\"button\" id=\"sh-guest\">${uiIcon('people')}Add as guest</button></div><p class=\"small muted\">A "
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 83,
+  "expr": "uiChip('caution', 'caution')"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 164,
+  "expr": "uiPageHeader('Today', `${uiFmtDate(date)}${date === today ? ' (today)' : ''} for ${uiEsc(person.name)}. Summed from USDA values by grams for what you logged.`)"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 170,
+  "expr": "todayWeightLossNoticeHTML(person, today)"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 171,
+  "expr": "todayTargetCardHTML(person, plan, totals, exerciseKcal)"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 172,
+  "expr": "todayMealsHTML(person, plan, entries)"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 173,
+  "expr": "todayWeightHTML(person)"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 174,
+  "expr": "todayExerciseHTML(person, exercise, exerciseKcal)"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 196,
+  "expr": "meters.join('')"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 200,
+  "expr": "uiStatTile({ value: uiFmtNum(totals.kcal), label: 'kcal logged', note: 'no target' })"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 202,
+  "expr": "uiStatTile({ value: uiFmtNum(totals.kcal), label: 'kcal logged', note: 'No target set' })"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 204,
+  "expr": "uiStatTile({ value: uiFmtNum(totals.kcal), label: 'kcal logged', note: 'No target yet', tone: 'caution' })"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 204,
+  "expr": "info.missing.join(', ')"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 210,
+  "expr": "uiRing({ value: totals.kcal, max: target, kind: 'kcal', unit: 'kcal', label: `of ${uiFmtNum(target)} target`, size: 148 })"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 211,
+  "expr": "diff >= 0 ? `${uiFmtNum(diff)} kcal under` : `${uiFmtNum(-diff)} kcal over`"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 211,
+  "expr": "uiChip('estimate', 'neutral')"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 212,
+  "expr": "goalWord"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 212,
+  "expr": "count && exerciseKcal ? ` Includes ${uiFmtNum(exerciseKcal)} kcal of exercise added back today.` : ''"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 213,
+  "expr": "(info.notes || []).map(n => `<li>${uiEsc(n)}</li>`).join('')"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 216,
+  "expr": "head"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 216,
+  "expr": "nutTable"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 220,
+  "expr": "TODAY_MEALS.map(m => { const list = entries.filter(e => e.meal === m.id); const kcal = list.reduce((s, e) => s + ((e.nutrients && e.nutrients.kcal) || 0), 0); r"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 238,
+  "expr": "uiState.profile.people.length > 1 && uiState.profile.household && uiState.profile.household.built ? `<button class=\"btn small\" type=\"button\" id=\"today-from-hous"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 246,
+  "expr": "all.length ? kgToLb(all[all.length - 1].kg) : '150'"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 248,
+  "expr": "chart.length ? todayChartSVG(chart) : '<p class=\"small muted\">No weights in the last 90 days to chart.</p>'"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 249,
+  "expr": "all.length ? `<div class=\"btn-row\"><button class=\"btn\" type=\"button\" data-weight-history>${uiIcon('list')}Weight history (${all.length} entr${all.length === 1 ?"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 264,
+  "expr": "all.length > 1 ? todayChartSVG(all) : ''"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 265,
+  "expr": "rows.length ? `<ul class=\"today-list\">${rows.map(({ w, prev }) => { const d = prev ? Math.round((kgToLb(w.kg) - kgToLb(prev.kg)) * 10) / 10 : null; return `<li>"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 297,
+  "expr": "es.map(e => { const kcal = todayNutrientsFor(e).kcal; return uiEsc(todayEntryName(e)) + (kcal ? ` <span class=\"muted small\">${uiFmtNum(kcal)} kcal</span>` : '')"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 300,
+  "expr": "sym.length ? `<p><strong>Symptoms:</strong> ${sym.join('; ')}</p>` : fine.has(d.date) ? '<p><strong>Feeling fine</strong></p>' : ''"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 301,
+  "expr": "meals ? `<ul class=\"small history-meals\">${meals}</ul>` : '<p class=\"small muted\">No food logged.</p>'"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 302,
+  "expr": "d.weight ? `<p class=\"small\">Weight: ${kgToLb(d.weight.kg)} lb</p>` : ''"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 304,
+  "expr": "state.days"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 305,
+  "expr": "days.length ? `<div class=\"stack\">${days.map(dayHTML).join('')}</div>` : uiEmptyState(`Nothing logged in the last ${state.days} days.`, '', 'list')"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 331,
+  "expr": "W"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 331,
+  "expr": "H"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 331,
+  "expr": "lbs[0]"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 331,
+  "expr": "lbs[lbs.length - 1]"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 332,
+  "expr": "L"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 332,
+  "expr": "T"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 332,
+  "expr": "L"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 332,
+  "expr": "H - B"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 332,
+  "expr": "L"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 332,
+  "expr": "H - B"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 332,
+  "expr": "W - R"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 332,
+  "expr": "H - B"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 333,
+  "expr": "L"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 333,
+  "expr": "y(mid).toFixed(1)"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 333,
+  "expr": "W - R"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 333,
+  "expr": "y(mid).toFixed(1)"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 333,
+  "expr": "L"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 333,
+  "expr": "T"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 333,
+  "expr": "W - R"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 333,
+  "expr": "T"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 334,
+  "expr": "L - 6"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 334,
+  "expr": "T + 4"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 334,
+  "expr": "hi"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 334,
+  "expr": "L - 6"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 334,
+  "expr": "y(mid).toFixed(1)"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 334,
+  "expr": "mid"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 334,
+  "expr": "L - 6"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 334,
+  "expr": "H - B"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 334,
+  "expr": "lo"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 335,
+  "expr": "L - 6"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 335,
+  "expr": "H - B + 14"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 336,
+  "expr": "L"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 336,
+  "expr": "H - 8"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 336,
+  "expr": "W - R"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 336,
+  "expr": "H - 8"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 337,
+  "expr": "path"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 338,
+  "expr": "points.map(p => `<circle class=\"pt\" cx=\"${x(p).toFixed(1)}\" cy=\"${y(kgToLb(p.kg)).toFixed(1)}\" r=\"3.5\"><title>${uiEsc(uiFmtDate(p.date))}: ${kgToLb(p.kg)} lb</t"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 346,
+  "expr": "exercise.length ? `<div class=\"list\">${exercise.map(e => `<div class=\"list-row\"><div class=\"list-main\"><div class=\"list-title\">${uiEsc(e.name || (ACTIVITIES.fin"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 347,
+  "expr": "a.id"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 462,
+  "expr": "l.id"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 462,
+  "expr": "l.id === draft.activity ? 'selected' : ''"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 538,
+  "expr": "it.fav ? 'on' : ''"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 538,
+  "expr": "it.fav"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 538,
+  "expr": "it.fav ? 'Remove from favorites' : 'Add to favorites'"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 592,
+  "expr": "[...check.hits.map(h => uiEsc(h.label) + (h.hard ? ' (hard)' : '')), ...(check.termHits || []).filter(t => t.allergy).map(t => uiEsc(t.term) + ' (your allergy, "
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 594,
+  "expr": "x.id"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 594,
+  "expr": "x.id === draft.meal ? 'selected' : ''"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 594,
+  "expr": "x.label"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 595,
+  "expr": "obj.servings"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 596,
+  "expr": "portions.map(p => `<option value=\"${uiEsc(p.label)}\" data-grams=\"${p.grams}\" ${draft.unit === p.label ? 'selected' : ''}>${uiEsc(p.label)} (${p.grams} g)</optio"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 596,
+  "expr": "draft.unit === 'g' ? 'selected' : ''"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 597,
+  "expr": "draft.unit === 'g' ? 'Grams' : 'How many'"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 597,
+  "expr": "draft.unit === 'g' ? '1' : '0.25'"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 598,
+  "expr": "portions.length ? `<div class=\"btn-row\" style=\"margin-top:0\"><button class=\"btn small\" type=\"button\" id=\"today-a-one\">1 serving (${uiEsc(portions[0].label)})</b"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 731,
+  "expr": "x.id"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 731,
+  "expr": "x.id === entry.meal ? 'selected' : ''"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 731,
+  "expr": "x.label"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 732,
+  "expr": "k"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 732,
+  "expr": "l"
+ },
+ {
+  "file": "src/ui/today.js",
+  "line": 732,
+  "expr": "k"
+ },
+ {
+  "file": "src/ui/together.js",
+  "line": 136,
+  "expr": "mine.map(p => `<option value=\"${uiEsc(p.id)}\" ${p.id === togetherShareUi.person ? 'selected' : ''}>${uiEsc(p.name)}</option>`).join('')"
+ },
+ {
+  "file": "src/ui/together.js",
+  "line": 137,
+  "expr": "others.length ? '' : 'disabled'"
+ },
+ {
+  "file": "src/ui/together.js",
+  "line": 137,
+  "expr": "others.length ? others.map(d => `<option value=\"${uiEsc(d.fingerprint)}\" ${d.fingerprint === togetherShareUi.device ? 'selected' : ''}>${uiEsc(d.name || 'Device"
+ },
+ {
+  "file": "src/ui/together.js",
+  "line": 139,
+  "expr": "SHARE_PARTS.map(p => `<label class=\"choice\"><input type=\"checkbox\" data-part=\"${p.id}\" ${togetherShareUi.parts.includes(p.id) ? 'checked' : ''}><span class=\"cho"
+ },
+ {
+  "file": "src/ui/together.js",
+  "line": 140,
+  "expr": "wantWeek ? '' : 'hidden'"
+ },
+ {
+  "file": "src/ui/together.js",
+  "line": 140,
+  "expr": "dayOpts.length ? uiMultiPills('ts-days', dayOpts, togetherShareUi.days.length ? togetherShareUi.days : dayOpts.map(d => d.value), { label: 'Days to share' }) : "
+ },
+ {
+  "file": "src/ui/together.js",
+  "line": 141,
+  "expr": "uiSegmented('ts-expiry', [{ value: 7, label: '7 days' }, { value: 30, label: '30 days' }, { value: 90, label: '90 days' }], togetherShareUi.expiry)"
+ },
+ {
+  "file": "src/ui/together.js",
+  "line": 142,
+  "expr": "others.length ? '' : 'disabled'"
+ },
+ {
+  "file": "src/ui/together.js",
+  "line": 168,
+  "expr": "rows.map(sh => `<div class=\"list-row\"><div class=\"list-main\"><div class=\"list-title\">${uiIcon('lock')} ${uiEsc(sh.personName || 'Profile')} <span class=\"muted\" "
+ },
+ {
+  "file": "src/ui/week.js",
+  "line": 120,
+  "expr": "uiPageHeader(uiState.lite ? 'Your meals this week' : `Week for ${uiEsc(person.name)}`, uiState.lite ? `Starting ${uiFmtDate(week.days[0].date)}. Every meal the "
+ },
+ {
+  "file": "src/ui/week.js",
+  "line": 121,
+  "expr": "uiSwitch('week-budget', 'Save money', 'Prefer recipes that reuse ingredients already on this week\\'s grocery list, so you buy fewer things.', budget)"
+ },
+ {
+  "file": "src/ui/week.js",
+  "line": 121,
+  "expr": "(skippedNoNutrition || unknownOn) ? uiSwitch('week-unknown', 'Also use recipes that have no nutrition numbers', `${skippedNoNutrition ? uiFmtNum(skippedNoNutrit"
+ },
+ {
+  "file": "src/ui/week.js",
+  "line": 122,
+  "expr": "spicePreference(person) !== 'any' ? ` Spice setting: ${uiEsc(spiceWord)}.` : ''"
+ },
+ {
+  "file": "src/ui/week.js",
+  "line": 123,
+  "expr": "typeof wo.snacks_per_day !== 'number' ? 'selected' : ''"
+ },
+ {
+  "file": "src/ui/week.js",
+  "line": 123,
+  "expr": "snackAuto.count"
+ },
+ {
+  "file": "src/ui/week.js",
+  "line": 123,
+  "expr": "[0, 1, 2, 3].map(n => `<option value=\"${n}\" ${wo.snacks_per_day === n ? 'selected' : ''}>${n === 0 ? 'None' : n}</option>`).join('')"
+ },
+ {
+  "file": "src/ui/week.js",
+  "line": 124,
+  "expr": "week.unmet.length ? uiNoticeHTML({ level: 'warn', text: `${week.unmet.length} slot${week.unmet.length === 1 ? '' : 's'} could not be filled: ${week.unmet.map(u "
+ },
+ {
+  "file": "src/ui/week.js",
+  "line": 125,
+  "expr": "week.days.map((d, di) => weekDayHTML(d, di, plan, person)).join('')"
+ },
+ {
+  "file": "src/ui/week.js",
+  "line": 126,
+  "expr": "uiSection('Week at a glance', weekGlanceHTML(week, plan, person), { id: 'week-glance-h' })"
+ },
+ {
+  "file": "src/ui/week.js",
+  "line": 127,
+  "expr": "week.excluded.length"
+ },
+ {
+  "file": "src/ui/week.js",
+  "line": 129,
+  "expr": "week.excluded.length ? `<ul>${week.excluded.map(x => `<li><span class=\"dot ${x.verdict || 'fail'}\" aria-hidden=\"true\"></span><strong>${uiEsc(x.name)}</strong>: "
+ },
+ {
+  "file": "src/ui/week.js",
+  "line": 213,
+  "expr": "misfits.length === 1 ? 'One meal' : `${misfits.length} meals`"
+ },
+ {
+  "file": "src/ui/week.js",
+  "line": 213,
+  "expr": "misfits.length === 1 ? 's' : ''"
+ },
+ {
+  "file": "src/ui/week.js",
+  "line": 214,
+  "expr": "misfits.map(x => `<li><strong>${uiEsc(WEEK_SLOT_LABEL[x.slot] || x.slot)}:</strong> ${uiEsc(x.name)}. ${uiEsc(mealFits(uiState.recipesById.get(x.recipe), x, { ."
+ },
+ {
+  "file": "src/ui/week.js",
+  "line": 215,
+  "expr": "day.meals.length > misfits.length ? `<p class=\"small muted\">The other ${day.meals.length - misfits.length} meal${day.meals.length - misfits.length === 1 ? '' : "
+ },
+ {
+  "file": "src/ui/week.js",
+  "line": 217,
+  "expr": "picked.meals.map(p => `<li><strong>${uiEsc(WEEK_SLOT_LABEL[p.slot] || p.slot)}:</strong> ${p.recipe ? uiEsc(p.name) : 'nothing fits this slot'}</li>`).join('')"
+ },
+ {
+  "file": "src/ui/week.js",
+  "line": 218,
+  "expr": "lim ? `; the sodium limit is ${uiFmtNum(lim)} mg` : ''"
+ },
+ {
+  "file": "src/ui/week.js",
+  "line": 261,
+  "expr": "added.length ? `<p>Adds ${added.map(label).map(uiEsc).join(' and ')} to every day (${added.length * 7} new snack${added.length * 7 === 1 ? '' : 's'}).</p>` : ''"
+ },
+ {
+  "file": "src/ui/week.js",
+  "line": 262,
+  "expr": "removed.length ? `<p>Removes ${removed.map(label).map(uiEsc).join(' and ')} from every day (${removed.length * 7} snack${removed.length * 7 === 1 ? '' : 's'} dr"
+ },
+ {
+  "file": "src/ui/week.js",
+  "line": 264,
+  "expr": "added.length && !removed.length ? 'Add the snacks, keep everything else' : removed.length && !added.length ? 'Remove them, keep everything else' : 'Change the s"
+ },
+ {
+  "file": "src/ui/week.js",
+  "line": 328,
+  "expr": "isToday ? 'today' : ''"
+ },
+ {
+  "file": "src/ui/week.js",
+  "line": 328,
+  "expr": "di"
+ },
+ {
+  "file": "src/ui/week.js",
+  "line": 330,
+  "expr": "di"
+ },
+ {
+  "file": "src/ui/week.js",
+  "line": 330,
+  "expr": "WEEK_DAY_NAMES[d.day] || uiFmtDate(d.date)"
+ },
+ {
+  "file": "src/ui/week.js",
+  "line": 330,
+  "expr": "isToday ? ' · today' : ''"
+ },
+ {
+  "file": "src/ui/week.js",
+  "line": 331,
+  "expr": "uiState.lite ? 'hidden' : ''"
+ },
+ {
+  "file": "src/ui/week.js",
+  "line": 331,
+  "expr": "uiChip(d.canCook ? 'can cook' : 'no cooking', d.canCook ? 'pass' : 'neutral', { button: true, attrs: `data-cook-toggle=\"${di}\" aria-pressed=\"${d.canCook}\" title"
+ },
+ {
+  "file": "src/ui/week.js",
+  "line": 332,
+  "expr": "WEEK_DAY_NAMES[d.day]"
+ },
+ {
+  "file": "src/ui/week.js",
+  "line": 332,
+  "expr": "di"
+ },
+ {
+  "file": "src/ui/week.js",
+  "line": 332,
+  "expr": "WEEK_DAY_NAMES[d.day]"
+ },
+ {
+  "file": "src/ui/week.js",
+  "line": 332,
+  "expr": "(WEEK_MINUTE_OPTIONS.includes(d.minutes) ? WEEK_MINUTE_OPTIONS : WEEK_MINUTE_OPTIONS.concat(d.minutes).sort((a, b) => a - b)).map(m => `<option value=\"${m}\" ${m"
+ },
+ {
+  "file": "src/ui/week.js",
+  "line": 332,
+  "expr": "d.overridden ? `<span class=\"muted\" title=\"Changed for this week only\">this week</span>` : ''"
+ },
+ {
+  "file": "src/ui/week.js",
+  "line": 333,
+  "expr": "d.eaters"
+ },
+ {
+  "file": "src/ui/week.js",
+  "line": 335,
+  "expr": "d.meals.map(m => { return `<div class=\"week-meal\"> <div class=\"slot\">${WEEK_SLOT_LABEL[m.slot] || m.slot}</div> ${m.recipe ? `<button type=\"button\" class=\"meal-"
+ },
+ {
+  "file": "src/ui/week.js",
+  "line": 352,
+  "expr": "cmp.over.map(x => `<span class=\"nutrient-chip over\">${uiEsc(weekShortLabel(x.nutrient))} ${uiFmtNum(x.value, weekDigits(x.nutrient))}, over ${uiFmtNum(x.limit, "
+ },
+ {
+  "file": "src/ui/week.js",
+  "line": 353,
+  "expr": "cmp.under.map(x => `<span class=\"nutrient-chip under\">${uiEsc(weekShortLabel(x.nutrient))} ${uiFmtNum(x.value, weekDigits(x.nutrient))}, under ${uiFmtNum(x.min,"
+ },
+ {
+  "file": "src/ui/week.js",
+  "line": 354,
+  "expr": "cmp.ok.map(x => `<span class=\"nutrient-chip ok\">${uiEsc(weekShortLabel(x.nutrient))} ${uiFmtNum(x.value, weekDigits(x.nutrient))}, ok</span>`).join('')"
+ },
+ {
+  "file": "src/ui/week.js",
+  "line": 355,
+  "expr": "!cmp.over.length && !cmp.under.length && !cmp.ok.length ? `<span class=\"muted\">${uiFmtNum(d.totals.kcal)} kcal, ${uiFmtNum(d.totals.sodium_mg)} mg sodium. No nu"
+ },
+ {
+  "file": "src/ui/week.js",
+  "line": 368,
+  "expr": "label"
+ },
+ {
+  "file": "src/ui/week.js",
+  "line": 368,
+  "expr": "limit ? ` against ${uiFmtNum(limit)}` : ''"
+ },
+ {
+  "file": "src/ui/week.js",
+  "line": 369,
+  "expr": "week.days.map(d => { const v = d.totals[key] || 0; const t = limit ? uiMeterTone(v, limit, useKcal ? 'kcal' : 'limit') : { tone: 'neutral', word: '' }; return `"
+ },
+ {
+  "file": "src/ui/week.js",
+  "line": 375,
+  "expr": "label"
+ },
+ {
+  "file": "src/ui/week.js",
+  "line": 375,
+  "expr": "limit ? `; the dashed line is ${useKcal ? 'the estimated calorie target' : 'the sodium limit'} of ${uiFmtNum(limit)}` : '; no calorie target or sodium limit is "
+ },
+ {
+  "file": "src/ui/week.js",
+  "line": 405,
+  "expr": "WEEK_SLOT_LABEL[slot] || slot"
+ },
+ {
+  "file": "src/ui/week.js",
+  "line": 406,
+  "expr": "scored.length ? `<div class=\"list\">${scored.map(x => `<div class=\"list-row\"><div class=\"list-main\"> <div class=\"list-title\"><span class=\"dot ${x.check.verdict}\""
+ },
+ {
+  "file": "src/ui/week.js",
+  "line": 412,
+  "expr": "cautions.length ? `<details class=\"week-cautions\" style=\"margin-top:12px\"><summary>Marked caution (${cautions.length})</summary> <p class=\"small muted\">Not plan"
+ }
+]

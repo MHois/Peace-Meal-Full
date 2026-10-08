@@ -1,0 +1,367 @@
+{
+ "runs": 9,
+ "cold": [
+  {
+   "build": "lite",
+   "cpuSlowdown": 1,
+   "firstScreenMs": 5054,
+   "firstContentfulPaintMs": 80,
+   "firstTapMs": 73,
+   "heapMB": 22.2,
+   "all": {
+    "first": [
+     5218,
+     5143,
+     5022,
+     5079,
+     4898,
+     4997,
+     5054,
+     5608,
+     5040
+    ],
+    "tap": [
+     69,
+     63,
+     82,
+     71,
+     95,
+     67,
+     73,
+     76,
+     95
+    ]
+   }
+  },
+  {
+   "build": "lite",
+   "cpuSlowdown": 4,
+   "firstScreenMs": 24457,
+   "firstContentfulPaintMs": 344,
+   "firstTapMs": 352,
+   "heapMB": 26.5,
+   "all": {
+    "first": [
+     23637,
+     24564,
+     22933,
+     24028,
+     24063,
+     24976,
+     24457,
+     25378,
+     25810
+    ],
+    "tap": [
+     451,
+     349,
+     303,
+     347,
+     352,
+     389,
+     398,
+     476,
+     327
+    ]
+   }
+  },
+  {
+   "build": "lite",
+   "cpuSlowdown": 6,
+   "firstScreenMs": 37470,
+   "firstContentfulPaintMs": 588,
+   "firstTapMs": 599,
+   "heapMB": 26.3,
+   "all": {
+    "first": [
+     37072,
+     37436,
+     38044,
+     37470,
+     39038,
+     37718,
+     37314,
+     36879,
+     39349
+    ],
+    "tap": [
+     544,
+     563,
+     646,
+     599,
+     599,
+     641,
+     526,
+     690,
+     589
+    ]
+   }
+  },
+  {
+   "build": "full",
+   "cpuSlowdown": 1,
+   "firstScreenMs": 640,
+   "firstContentfulPaintMs": 84,
+   "firstTapMs": 411,
+   "heapMB": 14.8,
+   "all": {
+    "first": [
+     610,
+     643,
+     640,
+     650,
+     597,
+     633,
+     665,
+     631,
+     668
+    ],
+    "tap": [
+     390,
+     414,
+     409,
+     407,
+     411,
+     429,
+     482,
+     482,
+     350
+    ]
+   }
+  },
+  {
+   "build": "full",
+   "cpuSlowdown": 4,
+   "firstScreenMs": 2997,
+   "firstContentfulPaintMs": 384,
+   "firstTapMs": 1946,
+   "heapMB": 14.7,
+   "all": {
+    "first": [
+     2678,
+     3087,
+     2997,
+     3218,
+     3075,
+     2860,
+     2987,
+     3001,
+     2940
+    ],
+    "tap": [
+     1980,
+     1946,
+     1814,
+     2224,
+     1907,
+     2065,
+     2203,
+     1861,
+     1912
+    ]
+   }
+  },
+  {
+   "build": "full",
+   "cpuSlowdown": 6,
+   "firstScreenMs": 4646,
+   "firstContentfulPaintMs": 572,
+   "firstTapMs": 2908,
+   "heapMB": 14.8,
+   "all": {
+    "first": [
+     4196,
+     4646,
+     5140,
+     5196,
+     4548,
+     4668,
+     4608,
+     4651,
+     4295
+    ],
+    "tap": [
+     2707,
+     3039,
+     3236,
+     3296,
+     2783,
+     2908,
+     2701,
+     2976,
+     2822
+    ]
+   }
+  }
+ ],
+ "profile": {
+  "lite": {
+   "totalMs": 29702,
+   "topSelfMs": [
+    {
+     "fn": "fires",
+     "ms": 5129
+    },
+    {
+     "fn": "(program)",
+     "ms": 1804
+    },
+    {
+     "fn": "matchSegment",
+     "ms": 835
+    },
+    {
+     "fn": "tagTextUncached",
+     "ms": 699
+    },
+    {
+     "fn": "(anonymous)",
+     "ms": 576
+    },
+    {
+     "fn": "(idle)",
+     "ms": 472
+    },
+    {
+     "fn": "checkRecipe",
+     "ms": 358
+    },
+    {
+     "fn": "addTag",
+     "ms": 259
+    },
+    {
+     "fn": "emptyTotals",
+     "ms": 237
+    },
+    {
+     "fn": "tagText",
+     "ms": 232
+    },
+    {
+     "fn": "segmentTextRaw",
+     "ms": 201
+    },
+    {
+     "fn": "isNoiseOnly",
+     "ms": 192
+    },
+    {
+     "fn": "(garbage collector)",
+     "ms": 166
+    },
+    {
+     "fn": "normalizeText",
+     "ms": 116
+    },
+    {
+     "fn": "recipeTotals",
+     "ms": 107
+    }
+   ]
+  },
+  "full": {
+   "totalMs": 4346,
+   "topSelfMs": [
+    {
+     "fn": "(program)",
+     "ms": 3067
+    },
+    {
+     "fn": "(idle)",
+     "ms": 523
+    },
+    {
+     "fn": "(anonymous)",
+     "ms": 179
+    },
+    {
+     "fn": "appRender",
+     "ms": 110
+    },
+    {
+     "fn": "classifyCuisine",
+     "ms": 76
+    },
+    {
+     "fn": "renderHomeScreen",
+     "ms": 63
+    },
+    {
+     "fn": "buildRegex",
+     "ms": 35
+    },
+    {
+     "fn": "(garbage collector)",
+     "ms": 35
+    },
+    {
+     "fn": "uiFmtNum",
+     "ms": 13
+    },
+    {
+     "fn": "uiPlanFor",
+     "ms": 13
+    },
+    {
+     "fn": "query",
+     "ms": 11
+    },
+    {
+     "fn": "RegExp: \\b(filipino|adobo|sinigang|pancit|lumpia|indonesian|nasi goreng|rendang|satay|sate|malaysian|laksa|singapore)\\b",
+     "ms": 11
+    },
+    {
+     "fn": "RegExp: \\b(african|nigerian|jollof|egusi|ethiopian|injera|berbere|doro wat|suya|fufu|ghanaian|kenyan|south african|bobotie|peri[- ]peri|moin moin|efo|ogbono|pepper soup|akara|puff puff)\\b",
+     "ms": 11
+    },
+    {
+     "fn": "appRenderNav",
+     "ms": 10
+    },
+    {
+     "fn": "RegExp: \\b(indian|curry|garam masala|tikka|tandoori|paneer|dal\\b|dhal|daal|naan|chapati|roti|biryani|korma|vindaloo|masala|ghee|cardamom.*cumin|samosa|chana|raita|saag|kofta)\\b",
+     "ms": 9
+    }
+   ]
+  }
+ },
+ "sizes": {
+  "lite": {
+   "total": 5847582,
+   "data: sources": 44126,
+   "data: conditions": 211947,
+   "data: dictionaries": 349801,
+   "data: foods": 1815196,
+   "data: recipes": 268173,
+   "data: recipes-open": 1356278,
+   "data: recipes-usda": 2,
+   "data: articles": 327403,
+   "data: swaps": 13615,
+   "data: diet-lists": 63391,
+   "data: breatheHtml": 235134,
+   "fonts (base64 in CSS)": 405408,
+   "CSS without fonts": 107450,
+   "app code (JavaScript)": 807985
+  },
+  "full": {
+   "total": 12103383,
+   "data: sources": 44126,
+   "data: conditions": 211947,
+   "data: dictionaries": 349801,
+   "data: foods": 1815196,
+   "data: recipes": 268173,
+   "data: recipes-open": 1356278,
+   "data: recipes-usda": 2453797,
+   "data: articles": 327403,
+   "data: swaps": 13615,
+   "data: diet-lists": 63391,
+   "data: deferred": 236,
+   "data: breatheHtml": 235134,
+   "deferred Wikibooks JSON (not run at launch)": 3801735,
+   "fonts (base64 in CSS)": 405408,
+   "CSS without fonts": 107450,
+   "app code (JavaScript)": 807985
+  }
+ }
+}

@@ -1,0 +1,1702 @@
+{
+ "citedButMissing": [],
+ "sourcesNeverCited": [
+  "hrs-pots-2015",
+  "ccs-pots-2020",
+  "vernino-pots-2021",
+  "garland-2021",
+  "nct05924646",
+  "pen-pots-2023",
+  "crps-sr-2025",
+  "zhu-crps-2024",
+  "vitamin-c-crps-2021",
+  "rsdsa-budapest",
+  "skodje-2018",
+  "biesiekierski-2013",
+  "catassi-2017",
+  "lebwohl-2017",
+  "fda-cds-2026",
+  "fda-whoop-warning-2025",
+  "fda-tempo-pilot-2025",
+  "colorado-hb25-1220",
+  "michigan-mnt-licensure-2026",
+  "california-bpc-2586",
+  "scoff-questionnaire",
+  "national-alliance-eating-disorders",
+  "ajh-dash-delivery-2026",
+  "ahs-ihs-materials",
+  "ramsden-2021",
+  "mifflin-1990",
+  "ainsworth-compendium-2011",
+  "user-defined",
+  "glim-2019"
+ ],
+ "ingredients": {
+  "Peace Meal (recipes.json)": {
+   "recipes": 193,
+   "lines": 1573,
+   "linkedToFoods": 1573,
+   "brokenLinks": 0,
+   "textOnly": 0,
+   "textWithWordsTheCheckerCannotPlace": 0,
+   "pctUnreadable": 0
+  },
+  "NHS website": {
+   "recipes": 189,
+   "lines": 1828,
+   "linkedToFoods": 0,
+   "brokenLinks": 0,
+   "textOnly": 1828,
+   "textWithWordsTheCheckerCannotPlace": 242,
+   "pctUnreadable": 13.2
+  },
+  "Wikibooks Cookbook": {
+   "recipes": 2268,
+   "lines": 20191,
+   "linkedToFoods": 0,
+   "brokenLinks": 0,
+   "textOnly": 20191,
+   "textWithWordsTheCheckerCannotPlace": 4069,
+   "pctUnreadable": 20.2
+  },
+  "Parent Club Scotland": {
+   "recipes": 197,
+   "lines": 1609,
+   "linkedToFoods": 0,
+   "brokenLinks": 0,
+   "textOnly": 1609,
+   "textWithWordsTheCheckerCannotPlace": 193,
+   "pctUnreadable": 12
+  },
+  "NHLBI (NIH)": {
+   "recipes": 52,
+   "lines": 466,
+   "linkedToFoods": 0,
+   "brokenLinks": 0,
+   "textOnly": 466,
+   "textWithWordsTheCheckerCannotPlace": 61,
+   "pctUnreadable": 13.1
+  },
+  "VA Healthy Teaching Kitchen": {
+   "recipes": 210,
+   "lines": 2009,
+   "linkedToFoods": 0,
+   "brokenLinks": 0,
+   "textOnly": 2009,
+   "textWithWordsTheCheckerCannotPlace": 249,
+   "pctUnreadable": 12.4
+  },
+  "USDA MyPlate Kitchen": {
+   "recipes": 1043,
+   "lines": 8404,
+   "linkedToFoods": 0,
+   "brokenLinks": 0,
+   "textOnly": 8404,
+   "textWithWordsTheCheckerCannotPlace": 1395,
+   "pctUnreadable": 16.6
+  }
+ },
+ "nutrientNumbers": {
+  "ownRecipesStoringNumbers": [],
+  "importedNumbersWithoutASource": [],
+  "numbersAndFoodLinksTogether": []
+ },
+ "numericRules": {
+  "total": 44,
+  "logged": 1,
+  "notLogged": [
+   "t2d:t2d-sodium",
+   "t2d:t2d-fiber",
+   "hypertension:htn-sodium",
+   "hypertension:htn-potassium",
+   "hyperlipidemia:lipid-satfat",
+   "hyperlipidemia:lipid-transfat",
+   "hyperlipidemia:lipid-soluble-fiber",
+   "anti-inflammatory-mediterranean:med-fish",
+   "low-added-sugar:sugar-aha-women",
+   "low-added-sugar:sugar-aha-men",
+   "low-added-sugar:sugar-who-percent",
+   "gut-health:gut-fiber",
+   "ckd-non-dialysis:ckd-sodium",
+   "ckd-non-dialysis:ckd-protein",
+   "ckd-non-dialysis:ckd-protein-ceiling",
+   "heart-failure:hf-sodium",
+   "heart-failure:hf-fluid",
+   "low-carb-ketogenic:lc-tier-low-carb",
+   "low-carb-ketogenic:lc-tier-keto",
+   "higher-protein-older-adult:hp-protein-healthy",
+   "higher-protein-older-adult:hp-protein-illness",
+   "higher-protein-older-adult:hp-per-meal",
+   "pregnancy-gdm-breastfeeding:preg-folic-acid",
+   "pregnancy-gdm-breastfeeding:preg-fish",
+   "pregnancy-gdm-breastfeeding:preg-caffeine",
+   "pregnancy-gdm-breastfeeding:gdm-carb",
+   "pregnancy-gdm-breastfeeding:bf-iodine",
+   "cancer-nutrition:ca-tx-energy",
+   "cancer-nutrition:ca-tx-protein",
+   "dialysis:dial-protein",
+   "dialysis:dial-sodium",
+   "dialysis:dial-calories",
+   "kidney-stones:stone-calcium",
+   "kidney-stones:stone-sodium",
+   "osteoporosis:osteo-calcium-1000",
+   "osteoporosis:osteo-calcium-1200",
+   "osteoporosis:osteo-vitamin-d",
+   "osteoporosis:osteo-protein",
+   "thyroid:thyroid-iodine",
+   "constipation:cons-fiber",
+   "dash:dash-sodium",
+   "dash:dash-satfat",
+   "portfolio-diet:pf-satfat"
+  ],
+  "notLoggedNorInPhase1": []
+ },
+ "dietLists": {
+  "low-fodmap": {
+   "items": 125,
+   "duplicates": [
+    {
+     "name": "lemongrass",
+     "items": [
+      "lemongrass",
+      "herbs"
+     ]
+    },
+    {
+     "name": "rice malt syrup",
+     "items": [
+      "rice",
+      "rice malt syrup"
+     ]
+    }
+   ],
+   "onBothSides": [],
+   "approvedButTaggedByDictionary": [
+    {
+     "approvedName": "french beans",
+     "item": "green beans",
+     "dictionaryTags": [
+      "fodmap-gos"
+     ]
+    }
+   ],
+   "approvesAFoodWithTheFamilysAvoidTags": [
+    {
+     "food": "Granola bars, soft, coated, milk chocolate coating, peanut butter",
+     "approvedBy": "peanuts",
+     "foodTags": [
+      "fodmap-lactose"
+     ]
+    },
+    {
+     "food": "Potato chips, made from dried potatoes, sour-cream and onion-flavor",
+     "approvedBy": "potato",
+     "foodTags": [
+      "fodmap-fructan",
+      "fodmap-lactose"
+     ]
+    },
+    {
+     "food": "Ice creams, vanilla, light",
+     "approvedBy": "vanilla extract",
+     "foodTags": [
+      "fodmap-lactose"
+     ]
+    },
+    {
+     "food": "Ice creams, vanilla, rich",
+     "approvedBy": "vanilla extract",
+     "foodTags": [
+      "fodmap-lactose"
+     ]
+    },
+    {
+     "food": "Ice cream, vanilla",
+     "approvedBy": "vanilla extract",
+     "foodTags": [
+      "fodmap-lactose"
+     ]
+    },
+    {
+     "food": "Ice creams, vanilla, light, soft-serve",
+     "approvedBy": "vanilla extract",
+     "foodTags": [
+      "fodmap-lactose"
+     ]
+    },
+    {
+     "food": "Apple juice, frozen concentrate, unsweetened, diluted with 3 volume water, with added ascorbic acid",
+     "approvedBy": "homemade stock without onion or garlic",
+     "foodTags": [
+      "fodmap-fructose",
+      "fodmap-sorbitol"
+     ]
+    },
+    {
+     "food": "Bread, potato",
+     "approvedBy": "potato",
+     "foodTags": [
+      "fodmap-fructan"
+     ]
+    },
+    {
+     "food": "Corn-based, extruded, onion-flavor",
+     "approvedBy": "corn",
+     "foodTags": [
+      "fodmap-fructan"
+     ]
+    },
+    {
+     "food": "Potato chips, sour-cream-and-onion-flavor",
+     "approvedBy": "potato",
+     "foodTags": [
+      "fodmap-fructan",
+      "fodmap-lactose"
+     ]
+    },
+    {
+     "food": "Ice creams, french vanilla, soft-serve",
+     "approvedBy": "vanilla extract",
+     "foodTags": [
+      "fodmap-lactose"
+     ]
+    },
+    {
+     "food": "Milk chocolate coated peanuts",
+     "approvedBy": "peanuts",
+     "foodTags": [
+      "fodmap-lactose"
+     ]
+    },
+    {
+     "food": "Frozen yogurts, chocolate, nonfat milk, sweetened without sugar",
+     "approvedBy": "sugar",
+     "foodTags": [
+      "fodmap-lactose"
+     ]
+    },
+    {
+     "food": "Beans, baked, canned, no salt",
+     "approvedBy": "salt",
+     "foodTags": [
+      "fodmap-gos"
+     ]
+    },
+    {
+     "food": "HONEY BUNCHES OF OATS, honey roasted",
+     "approvedBy": "oats",
+     "foodTags": [
+      "fodmap-fructose"
+     ]
+    },
+    {
+     "food": "Beets, canned, no salt",
+     "approvedBy": "salt",
+     "foodTags": [
+      "fodmap-fructan"
+     ]
+    },
+    {
+     "food": "Cashew butter, salted",
+     "approvedBy": "butter",
+     "foodTags": [
+      "fodmap-gos"
+     ]
+    },
+    {
+     "food": "Milk chocolate, with almonds",
+     "approvedBy": "almonds",
+     "foodTags": [
+      "fodmap-lactose"
+     ]
+    },
+    {
+     "food": "Milk chocolate, with rice cereal",
+     "approvedBy": "rice",
+     "foodTags": [
+      "fodmap-lactose"
+     ]
+    },
+    {
+     "food": "Puddings, vanilla, dry mix, instant, prepared with whole milk",
+     "approvedBy": "vanilla extract",
+     "foodTags": [
+      "fodmap-lactose"
+     ]
+    },
+    {
+     "food": "Egg custards, dry mix, prepared with 2% milk",
+     "approvedBy": "egg",
+     "foodTags": [
+      "fodmap-lactose"
+     ]
+    },
+    {
+     "food": "Puddings, vanilla, dry mix, regular, prepared with 2% milk",
+     "approvedBy": "vanilla extract",
+     "foodTags": [
+      "fodmap-lactose"
+     ]
+    },
+    {
+     "food": "Ice creams, strawberry",
+     "approvedBy": "strawberries",
+     "foodTags": [
+      "fodmap-lactose"
+     ]
+    },
+    {
+     "food": "Frozen yogurts, vanilla, soft-serve",
+     "approvedBy": "vanilla extract",
+     "foodTags": [
+      "fodmap-lactose"
+     ]
+    },
+    {
+     "food": "Fruit butters, apple",
+     "approvedBy": "butter",
+     "foodTags": [
+      "fodmap-fructose",
+      "fodmap-sorbitol"
+     ]
+    },
+    {
+     "food": "Sesame sticks, wheat-based, salted",
+     "approvedBy": "sesame seeds",
+     "foodTags": [
+      "fodmap-fructan"
+     ]
+    },
+    {
+     "food": "Pasta mix, classic beef, unprepared",
+     "approvedBy": "beef",
+     "foodTags": [
+      "fodmap-fructan"
+     ]
+    },
+    {
+     "food": "Sweet potato, canned, mashed",
+     "approvedBy": "potato",
+     "foodTags": [
+      "fodmap-mannitol"
+     ]
+    },
+    {
+     "food": "Sweet potato, frozen, unprepared",
+     "approvedBy": "potato",
+     "foodTags": [
+      "fodmap-mannitol"
+     ]
+    },
+    {
+     "food": "Sweet potato, frozen, cooked, baked",
+     "approvedBy": "potato",
+     "foodTags": [
+      "fodmap-mannitol"
+     ]
+    },
+    {
+     "food": "Asparagus, canned, no salt",
+     "approvedBy": "salt",
+     "foodTags": [
+      "fodmap-fructan",
+      "fodmap-fructose"
+     ]
+    },
+    {
+     "food": "Lima beans, canned, no salt",
+     "approvedBy": "salt",
+     "foodTags": [
+      "fodmap-gos"
+     ]
+    },
+    {
+     "food": "Pickles, cucumber, sweet",
+     "approvedBy": "cucumber",
+     "foodTags": [
+      "fodmap-fructan"
+     ]
+    },
+    {
+     "food": "Pickles, cucumber, sweet, low sodium",
+     "approvedBy": "cucumber",
+     "foodTags": [
+      "fodmap-fructan"
+     ]
+    },
+    {
+     "food": "Puddings, vanilla, dry mix, regular, prepared with whole milk",
+     "approvedBy": "vanilla extract",
+     "foodTags": [
+      "fodmap-lactose"
+     ]
+    },
+    {
+     "food": "Ice creams, vanilla, light, no sugar added",
+     "approvedBy": "sugar",
+     "foodTags": [
+      "fodmap-lactose"
+     ]
+    },
+    {
+     "food": "Ice creams, chocolate, light, no sugar added",
+     "approvedBy": "sugar",
+     "foodTags": [
+      "fodmap-lactose"
+     ]
+    },
+    {
+     "food": "Dark chocolate coated coffee beans",
+     "approvedBy": "dark chocolate",
+     "foodTags": [
+      "fodmap-gos"
+     ]
+    },
+    {
+     "food": "Syrups, corn, high-fructose",
+     "approvedBy": "corn",
+     "foodTags": [
+      "fodmap-fructose"
+     ]
+    },
+    {
+     "food": "Egg noodles, dry",
+     "approvedBy": "egg",
+     "foodTags": [
+      "fodmap-fructan"
+     ]
+    },
+    {
+     "food": "Egg noodles, cooked",
+     "approvedBy": "egg",
+     "foodTags": [
+      "fodmap-fructan"
+     ]
+    },
+    {
+     "food": "Cashew butter, plain, unsalted",
+     "approvedBy": "butter",
+     "foodTags": [
+      "fodmap-gos"
+     ]
+    },
+    {
+     "food": "Jams and preserves, apricot",
+     "approvedBy": "jam",
+     "foodTags": [
+      "fodmap-sorbitol"
+     ]
+    },
+    {
+     "food": "Sesame sticks, wheat-based, unsalted",
+     "approvedBy": "sesame seeds",
+     "foodTags": [
+      "fodmap-fructan"
+     ]
+    },
+    {
+     "food": "Ice creams, vanilla, fat free",
+     "approvedBy": "vanilla extract",
+     "foodTags": [
+      "fodmap-lactose"
+     ]
+    },
+    {
+     "food": "Ice creams, regular, low carbohydrate, vanilla",
+     "approvedBy": "vanilla extract",
+     "foodTags": [
+      "fodmap-lactose"
+     ]
+    },
+    {
+     "food": "Breadstick, soft, prepared with garlic and parmesan cheese",
+     "approvedBy": "hard cheese",
+     "foodTags": [
+      "fodmap-fructan"
+     ]
+    },
+    {
+     "food": "Cheese, mozzarella, whole milk, low moisture",
+     "approvedBy": "mozzarella",
+     "foodTags": [
+      "fodmap-lactose"
+     ]
+    },
+    {
+     "food": "Cheese, mozzarella, part skim milk",
+     "approvedBy": "mozzarella",
+     "foodTags": [
+      "fodmap-lactose"
+     ]
+    },
+    {
+     "food": "Yogurt, vanilla, low fat.",
+     "approvedBy": "vanilla extract",
+     "foodTags": [
+      "fodmap-lactose"
+     ]
+    },
+    {
+     "food": "Yogurt, vanilla, non-fat",
+     "approvedBy": "vanilla extract",
+     "foodTags": [
+      "fodmap-lactose"
+     ]
+    },
+    {
+     "food": "Dressing, mayonnaise, soybean and safflower oil, salted",
+     "approvedBy": "mayonnaise",
+     "foodTags": [
+      "fodmap-gos"
+     ]
+    },
+    {
+     "food": "Dressing, honey mustard dressing, reduced calorie",
+     "approvedBy": "mustard",
+     "foodTags": [
+      "fodmap-fructose"
+     ]
+    },
+    {
+     "food": "Dressing, honey mustard, regular",
+     "approvedBy": "mustard",
+     "foodTags": [
+      "fodmap-fructose"
+     ]
+    },
+    {
+     "food": "Soup, bean with ham, canned, chunky",
+     "approvedBy": "beef",
+     "foodTags": [
+      "fodmap-gos"
+     ]
+    },
+    {
+     "food": "Milk, chocolate beverage, hot cocoa, homemade",
+     "approvedBy": "dark chocolate",
+     "foodTags": [
+      "fodmap-lactose"
+     ]
+    },
+    {
+     "food": "Chicken noodle soup, condensed",
+     "approvedBy": "chicken",
+     "foodTags": [
+      "fodmap-fructan"
+     ]
+    },
+    {
+     "food": "Soup, lentil with ham, canned",
+     "approvedBy": "beef",
+     "foodTags": [
+      "fodmap-gos"
+     ]
+    },
+    {
+     "food": "Soup, beef mushroom, canned",
+     "approvedBy": "beef",
+     "foodTags": [
+      "fodmap-mannitol"
+     ]
+    },
+    {
+     "food": "Soup, cream of chicken, canned, condensed, reduced sodium",
+     "approvedBy": "chicken",
+     "foodTags": [
+      "fodmap-lactose"
+     ]
+    },
+    {
+     "food": "Grape-Nuts",
+     "approvedBy": "grapes",
+     "foodTags": [
+      "fodmap-fructan"
+     ]
+    },
+    {
+     "food": "Bread, cinnamon",
+     "approvedBy": "spices",
+     "foodTags": [
+      "fodmap-fructan"
+     ]
+    },
+    {
+     "food": "Beef macaroni with tomato sauce, frozen entree, reduced fat",
+     "approvedBy": "tomato",
+     "foodTags": [
+      "fodmap-fructan"
+     ]
+    },
+    {
+     "food": "Pasta with Sliced Franks in Tomato Sauce, canned entree",
+     "approvedBy": "tomato",
+     "foodTags": [
+      "fodmap-fructan"
+     ]
+    },
+    {
+     "food": "Chili con carne with beans, canned entree",
+     "approvedBy": "chilli",
+     "foodTags": [
+      "fodmap-gos"
+     ]
+    },
+    {
+     "food": "Chili, no beans, canned entree",
+     "approvedBy": "chilli",
+     "foodTags": [
+      "fodmap-gos"
+     ]
+    },
+    {
+     "food": "Pasta with tomato sauce, no meat, canned",
+     "approvedBy": "tomato",
+     "foodTags": [
+      "fodmap-fructan"
+     ]
+    },
+    {
+     "food": "Chili with beans, microwavable bowls",
+     "approvedBy": "chilli",
+     "foodTags": [
+      "fodmap-gos"
+     ]
+    },
+    {
+     "food": "Tempeh, cooked",
+     "approvedBy": "tempeh",
+     "foodTags": [
+      "fodmap-gos"
+     ]
+    },
+    {
+     "food": "Bagels, cinnamon-raisin",
+     "approvedBy": "spices",
+     "foodTags": [
+      "fodmap-fructan"
+     ]
+    },
+    {
+     "food": "Bagels, oat bran",
+     "approvedBy": "oats",
+     "foodTags": [
+      "fodmap-fructan"
+     ]
+    },
+    {
+     "food": "Bread, egg",
+     "approvedBy": "egg",
+     "foodTags": [
+      "fodmap-fructan"
+     ]
+    },
+    {
+     "food": "Bread, oat bran",
+     "approvedBy": "oats",
+     "foodTags": [
+      "fodmap-fructan"
+     ]
+    },
+    {
+     "food": "Bread, oatmeal",
+     "approvedBy": "oats",
+     "foodTags": [
+      "fodmap-fructan"
+     ]
+    },
+    {
+     "food": "Bread, reduced-calorie, oat bran",
+     "approvedBy": "oats",
+     "foodTags": [
+      "fodmap-fructan"
+     ]
+    },
+    {
+     "food": "Crackers, matzo, egg",
+     "approvedBy": "egg",
+     "foodTags": [
+      "fodmap-fructan"
+     ]
+    },
+    {
+     "food": "Muffins, English, raisin-cinnamon, toasted",
+     "approvedBy": "spices",
+     "foodTags": [
+      "fodmap-fructose",
+      "fodmap-sorbitol"
+     ]
+    },
+    {
+     "food": "Muffin, blueberry",
+     "approvedBy": "blueberries",
+     "foodTags": [
+      "fodmap-fructan"
+     ]
+    },
+    {
+     "food": "Crackers, whole-wheat, low salt",
+     "approvedBy": "salt",
+     "foodTags": [
+      "fodmap-fructan"
+     ]
+    },
+    {
+     "food": "Soup, cream of potato, canned",
+     "approvedBy": "potato",
+     "foodTags": [
+      "fodmap-lactose"
+     ]
+    },
+    {
+     "food": "Burrito, with beans and beef",
+     "approvedBy": "beef",
+     "foodTags": [
+      "fodmap-gos"
+     ]
+    },
+    {
+     "food": "Burrito, with beans, cheese, and beef",
+     "approvedBy": "beef",
+     "foodTags": [
+      "fodmap-gos"
+     ]
+    },
+    {
+     "food": "Bagel, with egg, sausage patty, cheese, and condiments",
+     "approvedBy": "egg",
+     "foodTags": [
+      "fodmap-fructan"
+     ]
+    },
+    {
+     "food": "Burrito, beef and bean, frozen",
+     "approvedBy": "beef",
+     "foodTags": [
+      "fodmap-gos"
+     ]
+    },
+    {
+     "food": "Margarine, 80% fat, stick, includes regular and hydrogenated corn and soybean oils",
+     "approvedBy": "corn",
+     "foodTags": [
+      "fodmap-gos"
+     ]
+    },
+    {
+     "food": "Beans, pinto, canned, drained, rinsed in tap water",
+     "approvedBy": "homemade stock without onion or garlic",
+     "foodTags": [
+      "fodmap-gos"
+     ]
+    },
+    {
+     "food": "100% Natural Granola, Oats, Wheat and Honey",
+     "approvedBy": "oats",
+     "foodTags": [
+      "fodmap-fructan",
+      "fodmap-fructose"
+     ]
+    },
+    {
+     "food": "Apple juice, frozen concentrate, unsweetened, diluted with 3 volume water without added ascorbic acid",
+     "approvedBy": "homemade stock without onion or garlic",
+     "foodTags": [
+      "fodmap-fructose",
+      "fodmap-sorbitol"
+     ]
+    },
+    {
+     "food": "Soup, beef barley",
+     "approvedBy": "beef",
+     "foodTags": [
+      "fodmap-fructan"
+     ]
+    },
+    {
+     "food": "Soybeans, roasted, no salt",
+     "approvedBy": "salt",
+     "foodTags": [
+      "fodmap-gos"
+     ]
+    },
+    {
+     "food": "Soup, cream of chicken, canned",
+     "approvedBy": "chicken",
+     "foodTags": [
+      "fodmap-lactose"
+     ]
+    },
+    {
+     "food": "Soup, cream of chicken, dry, mix",
+     "approvedBy": "chicken",
+     "foodTags": [
+      "fodmap-lactose"
+     ]
+    },
+    {
+     "food": "Ham, honey, smoked, cooked",
+     "approvedBy": "beef",
+     "foodTags": [
+      "fodmap-fructose"
+     ]
+    },
+    {
+     "food": "Sweet potato chips, unsalted",
+     "approvedBy": "potato",
+     "foodTags": [
+      "fodmap-mannitol"
+     ]
+    },
+    {
+     "food": "Bagels, egg",
+     "approvedBy": "egg",
+     "foodTags": [
+      "fodmap-fructan"
+     ]
+    },
+    {
+     "food": "Bread, reduced-calorie, oatmeal",
+     "approvedBy": "oats",
+     "foodTags": [
+      "fodmap-fructan"
+     ]
+    },
+    {
+     "food": "Muffins, English, raisin-cinnamon",
+     "approvedBy": "spices",
+     "foodTags": [
+      "fodmap-fructose",
+      "fodmap-sorbitol"
+     ]
+    },
+    {
+     "food": "Crackers, wheat, low salt",
+     "approvedBy": "salt",
+     "foodTags": [
+      "fodmap-fructan"
+     ]
+    },
+    {
+     "food": "Liqueur, coffee with cream, 34 proof",
+     "approvedBy": "coffee",
+     "foodTags": [
+      "fodmap-lactose"
+     ]
+    },
+    {
+     "food": "Chili with beans, canned",
+     "approvedBy": "chilli",
+     "foodTags": [
+      "fodmap-gos"
+     ]
+    }
+   ],
+   "notReChecked": []
+  },
+  "low-histamine": {
+   "items": 82,
+   "duplicates": [
+    {
+     "name": "corn",
+     "items": [
+      "corn",
+      "corn"
+     ]
+    },
+    {
+     "name": "coconut milk",
+     "items": [
+      "coconut",
+      "almond milk"
+     ]
+    }
+   ],
+   "onBothSides": [],
+   "approvedButTaggedByDictionary": [
+    {
+     "approvedName": "distilled white vinegar",
+     "item": "distilled white vinegar",
+     "dictionaryTags": [
+      "histamine-fermented"
+     ]
+    },
+    {
+     "approvedName": "white vinegar",
+     "item": "distilled white vinegar",
+     "dictionaryTags": [
+      "histamine-fermented"
+     ]
+    },
+    {
+     "approvedName": "distilled vinegar",
+     "item": "distilled white vinegar",
+     "dictionaryTags": [
+      "histamine-fermented"
+     ]
+    },
+    {
+     "approvedName": "spirit vinegar",
+     "item": "distilled white vinegar",
+     "dictionaryTags": [
+      "histamine-fermented"
+     ]
+    },
+    {
+     "approvedName": "apple cider vinegar",
+     "item": "distilled white vinegar",
+     "dictionaryTags": [
+      "histamine-fermented"
+     ]
+    },
+    {
+     "approvedName": "cider vinegar",
+     "item": "distilled white vinegar",
+     "dictionaryTags": [
+      "histamine-fermented"
+     ]
+    }
+   ],
+   "approvesAFoodWithTheFamilysAvoidTags": [
+    {
+     "food": "Beef jerky",
+     "approvedBy": "fresh beef",
+     "foodTags": [
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Bologna, beef and pork, low fat",
+     "approvedBy": "fresh beef",
+     "foodTags": [
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Dressing, blue or roquefort cheese dressing, light",
+     "approvedBy": "ricotta",
+     "foodTags": [
+      "histamine-aged",
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Frankfurter, beef, low fat",
+     "approvedBy": "fresh beef",
+     "foodTags": [
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Dressing, blue or roquefort cheese dressing, fat-free",
+     "approvedBy": "ricotta",
+     "foodTags": [
+      "histamine-aged",
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Pork, leg (ham), rump half, raw",
+     "approvedBy": "fresh beef",
+     "foodTags": [
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Pork, leg (ham), rump half, cooked, roasted",
+     "approvedBy": "fresh beef",
+     "foodTags": [
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Ham, turkey, sliced, extra lean, prepackaged or deli",
+     "approvedBy": "fresh chicken",
+     "foodTags": [
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Bologna, beef, low fat",
+     "approvedBy": "fresh beef",
+     "foodTags": [
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Beef, bologna, reduced sodium",
+     "approvedBy": "fresh beef",
+     "foodTags": [
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Pork, leg (ham), whole, raw",
+     "approvedBy": "fresh beef",
+     "foodTags": [
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Pork, leg (ham), whole, cooked, roasted",
+     "approvedBy": "fresh beef",
+     "foodTags": [
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Pickles, cucumber, sour, low sodium",
+     "approvedBy": "cucumber",
+     "foodTags": [
+      "histamine-fermented"
+     ]
+    },
+    {
+     "food": "Pickles, cucumber, dill, reduced sodium",
+     "approvedBy": "cucumber",
+     "foodTags": [
+      "histamine-fermented"
+     ]
+    },
+    {
+     "food": "Orange juice, frozen concentrate, unsweetened, diluted with 3 volume water",
+     "approvedBy": "water",
+     "foodTags": [
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Pickles, cucumber, sweet",
+     "approvedBy": "cucumber",
+     "foodTags": [
+      "histamine-fermented"
+     ]
+    },
+    {
+     "food": "Pickles, cucumber, sour",
+     "approvedBy": "cucumber",
+     "foodTags": [
+      "histamine-fermented"
+     ]
+    },
+    {
+     "food": "Pickles, cucumber, sweet, low sodium",
+     "approvedBy": "cucumber",
+     "foodTags": [
+      "histamine-fermented"
+     ]
+    },
+    {
+     "food": "Ginger root, pickled, canned, with artificial sweetener",
+     "approvedBy": "ginger",
+     "foodTags": [
+      "histamine-fermented"
+     ]
+    },
+    {
+     "food": "Beef, cured, corned beef, brisket, raw",
+     "approvedBy": "fresh beef",
+     "foodTags": [
+      "histamine-aged"
+     ]
+    },
+    {
+     "food": "Beef, cured, corned beef, brisket, cooked",
+     "approvedBy": "fresh beef",
+     "foodTags": [
+      "histamine-aged"
+     ]
+    },
+    {
+     "food": "Beef, cured, pastrami",
+     "approvedBy": "fresh beef",
+     "foodTags": [
+      "histamine-aged",
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Chicken fillet sandwich, plain with pickles",
+     "approvedBy": "fresh chicken",
+     "foodTags": [
+      "histamine-fermented"
+     ]
+    },
+    {
+     "food": "Beets, pickled, canned",
+     "approvedBy": "beetroot",
+     "foodTags": [
+      "histamine-fermented"
+     ]
+    },
+    {
+     "food": "Beef, cured, corned beef, canned",
+     "approvedBy": "fresh beef",
+     "foodTags": [
+      "histamine-aged"
+     ]
+    },
+    {
+     "food": "Beef, cured, dried",
+     "approvedBy": "fresh beef",
+     "foodTags": [
+      "histamine-aged"
+     ]
+    },
+    {
+     "food": "Sausage, beef, cured, cooked, smoked",
+     "approvedBy": "fresh beef",
+     "foodTags": [
+      "histamine-aged"
+     ]
+    },
+    {
+     "food": "Breadstick, soft, prepared with garlic and parmesan cheese",
+     "approvedBy": "garlic",
+     "foodTags": [
+      "histamine-aged",
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Cheese, gouda",
+     "approvedBy": "ricotta",
+     "foodTags": [
+      "histamine-aged",
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Cheese, gruyere",
+     "approvedBy": "ricotta",
+     "foodTags": [
+      "histamine-aged",
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Cheese, romano",
+     "approvedBy": "ricotta",
+     "foodTags": [
+      "histamine-aged",
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Cheese, roquefort",
+     "approvedBy": "ricotta",
+     "foodTags": [
+      "histamine-aged",
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Cheese, cheddar, reduced fat",
+     "approvedBy": "ricotta",
+     "foodTags": [
+      "histamine-aged",
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Sauce, pasta, spaghetti/marinara, low sodium",
+     "approvedBy": "wheat flour",
+     "foodTags": [
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Beerwurst, beer salami, pork",
+     "approvedBy": "fresh beef",
+     "foodTags": [
+      "histamine-aged",
+      "histamine-fermented",
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Frankfurter, chicken",
+     "approvedBy": "fresh chicken",
+     "foodTags": [
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Hot dog, turkey",
+     "approvedBy": "fresh chicken",
+     "foodTags": [
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Ham and cheese loaf or roll",
+     "approvedBy": "ricotta",
+     "foodTags": [
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Turkey bacon, cooked",
+     "approvedBy": "fresh chicken",
+     "foodTags": [
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Bacon, turkey, low sodium",
+     "approvedBy": "fresh chicken",
+     "foodTags": [
+      "histamine-aged",
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Bologna, beef",
+     "approvedBy": "fresh beef",
+     "foodTags": [
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Bologna, beef and pork",
+     "approvedBy": "fresh beef",
+     "foodTags": [
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Biscuit, with egg, cheese, and bacon",
+     "approvedBy": "egg",
+     "foodTags": [
+      "histamine-aged",
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Cheese, blue",
+     "approvedBy": "ricotta",
+     "foodTags": [
+      "histamine-aged",
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Cheese, brie",
+     "approvedBy": "ricotta",
+     "foodTags": [
+      "histamine-aged"
+     ]
+    },
+    {
+     "food": "Cheese, camembert",
+     "approvedBy": "ricotta",
+     "foodTags": [
+      "histamine-aged",
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Pastrami, turkey",
+     "approvedBy": "fresh chicken",
+     "foodTags": [
+      "histamine-aged",
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Salami, cooked, beef",
+     "approvedBy": "fresh beef",
+     "foodTags": [
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Salami, cooked, beef and pork",
+     "approvedBy": "fresh beef",
+     "foodTags": [
+      "histamine-aged",
+      "histamine-fermented",
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Salami, cooked, turkey",
+     "approvedBy": "fresh chicken",
+     "foodTags": [
+      "histamine-aged",
+      "histamine-fermented",
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Salami, dry or hard, pork",
+     "approvedBy": "fresh beef",
+     "foodTags": [
+      "histamine-aged",
+      "histamine-fermented",
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Thuringer, cervelat, summer sausage, beef, pork",
+     "approvedBy": "fresh beef",
+     "foodTags": [
+      "histamine-aged",
+      "histamine-fermented",
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Frankfurter, beef, pork, and turkey, fat free",
+     "approvedBy": "fresh chicken",
+     "foodTags": [
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Luncheon meat, pork, ham, and chicken, minced, canned, reduced sodium, added ascorbic acid, includes SPAM, 25% less sodium",
+     "approvedBy": "fresh chicken",
+     "foodTags": [
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Luncheon meat, pork with ham, minced, canned, includes Spam (Hormel)",
+     "approvedBy": "fresh beef",
+     "foodTags": [
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Sausage, pork and beef, with cheddar cheese, smoked",
+     "approvedBy": "fresh beef",
+     "foodTags": [
+      "histamine-aged",
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Pastrami, beef, 98% fat-free",
+     "approvedBy": "fresh beef",
+     "foodTags": [
+      "histamine-aged",
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Frankfurter, pork",
+     "approvedBy": "fresh beef",
+     "foodTags": [
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Salami, Italian, pork and beef, dry, sliced, 50% less sodium",
+     "approvedBy": "fresh beef",
+     "foodTags": [
+      "histamine-aged",
+      "histamine-fermented",
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Biscuit, with egg and bacon",
+     "approvedBy": "egg",
+     "foodTags": [
+      "histamine-aged",
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Rice bowl with chicken, frozen entree, prepared",
+     "approvedBy": "rice",
+     "foodTags": [
+      "histamine-fermented"
+     ]
+    },
+    {
+     "food": "Cheese, parmesan, shredded",
+     "approvedBy": "ricotta",
+     "foodTags": [
+      "histamine-aged",
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Cheese, low fat, cheddar or colby",
+     "approvedBy": "ricotta",
+     "foodTags": [
+      "histamine-aged",
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Dressing, blue or roquefort cheese dressing, commercial, regular",
+     "approvedBy": "ricotta",
+     "foodTags": [
+      "histamine-aged",
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Drink mix, QUAKER OATS, GATORADE, orange flavor, powder",
+     "approvedBy": "oats",
+     "foodTags": [
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Smoked salmon (lox)",
+     "approvedBy": "salmon",
+     "foodTags": [
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Bologna, pork",
+     "approvedBy": "fresh beef",
+     "foodTags": [
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Bologna, turkey",
+     "approvedBy": "fresh chicken",
+     "foodTags": [
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Bologna, chicken, pork",
+     "approvedBy": "fresh chicken",
+     "foodTags": [
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Fish sauce",
+     "approvedBy": "fresh white fish",
+     "foodTags": [
+      "histamine-fermented",
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Luncheon meat, pork, canned",
+     "approvedBy": "fresh beef",
+     "foodTags": [
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Turkey breast, low salt, prepackaged or deli, luncheon meat",
+     "approvedBy": "fresh chicken",
+     "foodTags": [
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Mortadella, beef, pork",
+     "approvedBy": "fresh beef",
+     "foodTags": [
+      "histamine-aged",
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Pickle and pimiento loaf, pork",
+     "approvedBy": "fresh beef",
+     "foodTags": [
+      "histamine-fermented"
+     ]
+    },
+    {
+     "food": "Salami, dry or hard, pork, beef",
+     "approvedBy": "fresh beef",
+     "foodTags": [
+      "histamine-aged",
+      "histamine-fermented",
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Smoked sausage, pork",
+     "approvedBy": "fresh beef",
+     "foodTags": [
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Bacon, turkey, unprepared",
+     "approvedBy": "fresh chicken",
+     "foodTags": [
+      "histamine-aged",
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Luncheon meat, pork and chicken, minced, canned, includes Spam Lite",
+     "approvedBy": "fresh chicken",
+     "foodTags": [
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Salami, pork, beef, less sodium",
+     "approvedBy": "fresh beef",
+     "foodTags": [
+      "histamine-aged",
+      "histamine-fermented",
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Sausage, summer, pork and beef, sticks, with cheddar cheese",
+     "approvedBy": "fresh beef",
+     "foodTags": [
+      "histamine-aged",
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Bacon and beef sticks",
+     "approvedBy": "fresh beef",
+     "foodTags": [
+      "histamine-aged",
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Salami, Italian, pork",
+     "approvedBy": "fresh beef",
+     "foodTags": [
+      "histamine-aged",
+      "histamine-fermented",
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Kielbasa, Polish, turkey and beef, smoked",
+     "approvedBy": "fresh chicken",
+     "foodTags": [
+      "histamine-aged"
+     ]
+    },
+    {
+     "food": "Ham, honey, smoked, cooked",
+     "approvedBy": "maple syrup",
+     "foodTags": [
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Frankfurter, beef, heated",
+     "approvedBy": "fresh beef",
+     "foodTags": [
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Crackers, saltines, low salt",
+     "approvedBy": "bread",
+     "foodTags": [
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Crackers, saltines, unsalted tops",
+     "approvedBy": "bread",
+     "foodTags": [
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Tuna, albacore (white), canned in water",
+     "approvedBy": "water",
+     "foodTags": [
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Salmon, pink, canned",
+     "approvedBy": "salmon",
+     "foodTags": [
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Hot dog, beef",
+     "approvedBy": "fresh beef",
+     "foodTags": [
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Cheese, cheddar",
+     "approvedBy": "ricotta",
+     "foodTags": [
+      "histamine-aged",
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Tuna, light, canned in water",
+     "approvedBy": "water",
+     "foodTags": [
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Cheese, Swiss",
+     "approvedBy": "ricotta",
+     "foodTags": [
+      "histamine-aged",
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Yogurt, plain, whole milk",
+     "approvedBy": "milk",
+     "foodTags": [
+      "histamine-fermented"
+     ]
+    },
+    {
+     "food": "Greek yogurt, plain, whole milk",
+     "approvedBy": "milk",
+     "foodTags": [
+      "histamine-fermented"
+     ]
+    },
+    {
+     "food": "Cheese, parmesan, grated",
+     "approvedBy": "ricotta",
+     "foodTags": [
+      "histamine-aged",
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Cheese, feta",
+     "approvedBy": "ricotta",
+     "foodTags": [
+      "histamine-aged",
+      "histamine-high"
+     ]
+    },
+    {
+     "food": "Cheese, provolone",
+     "approvedBy": "ricotta",
+     "foodTags": [
+      "histamine-aged",
+      "histamine-high"
+     ]
+    }
+   ],
+   "notReChecked": [
+    "chia seeds",
+    "sunflower seeds",
+    "cinnamon"
+   ]
+  }
+ }
+}

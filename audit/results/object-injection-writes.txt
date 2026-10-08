@@ -1,0 +1,123 @@
+src/app.js:40 | for (const n of APP_DATA_FILES) out[n] = global[n] != null ? global[n] : appEmptyFor(n);
+src/app.js:45 | for (const n of APP_DATA_FILES) out[n] = appEmptyFor(n);
+src/app.js:53 | out[n] = await res.json();
+src/app.js:55 | out[n] = appEmptyFor(n);
+src/app.js:254 | for (const r of uiState.baseRecipes || []) { const k = appCollectionOf(r); if (k) counts[k]++; }
+src/engine/checker.js:109 | for (const tag of food.tags || []) tagMap[tag] = [food.short || food.name];
+src/engine/checker.js:123 | const addTag = (tag, src) => { if (!tagMap[tag]) tagMap[tag] = []; if (!tagMap[tag].includes(src)) tagMap[tag].push(src); };
+src/engine/checker.js:123 | const addTag = (tag, src) => { if (!tagMap[tag]) tagMap[tag] = []; if (!tagMap[tag].includes(src)) tagMap[tag].push(src); };
+src/engine/checker.js:135 | for (const [tag, terms] of Object.entries(r.mayContain || {})) (mayContain[tag] ||= []).push(...terms);
+src/engine/group.js:12 | if (!limits[n] || l.value < limits[n].value) limits[n] = { ...l, people: [person.name], rules: l.rules.map(r => ({ ...r, person: person.name })) };
+src/engine/group.js:12 | if (!limits[n] || l.value < limits[n].value) limits[n] = { ...l, people: [person.name], rules: l.rules.map(r => ({ ...r, person: person.name })) };
+src/engine/group.js:12 | if (!limits[n] || l.value < limits[n].value) limits[n] = { ...l, people: [person.name], rules: l.rules.map(r => ({ ...r, person: person.name })) };
+src/engine/group.js:16 | if (!targets[n] || t.min > targets[n].min) targets[n] = { ...t, people: [person.name], rules: t.rules.map(r => ({ ...r, person: person.name })) };
+src/engine/group.js:16 | if (!targets[n] || t.min > targets[n].min) targets[n] = { ...t, people: [person.name], rules: t.rules.map(r => ({ ...r, person: person.name })) };
+src/engine/group.js:16 | if (!targets[n] || t.min > targets[n].min) targets[n] = { ...t, people: [person.name], rules: t.rules.map(r => ({ ...r, person: person.name })) };
+src/engine/group.js:20 | if (!avoid[tag]) avoid[tag] = { hard: false, rules: [], people: [] };
+src/engine/group.js:20 | if (!avoid[tag]) avoid[tag] = { hard: false, rules: [], people: [] };
+src/engine/group.js:26 | if (!prefer[tag]) prefer[tag] = { rules: [], people: [] };
+src/engine/group.js:26 | if (!prefer[tag]) prefer[tag] = { rules: [], people: [] };
+src/engine/group.js:42 | for (const k of keep) if (person[k] !== undefined) out[k] = JSON.parse(JSON.stringify(person[k]));
+src/engine/group.js:42 | for (const k of keep) if (person[k] !== undefined) out[k] = JSON.parse(JSON.stringify(person[k]));
+src/engine/household.js:18 | for (const k of Object.keys(d)) if (h[k] === undefined) h[k] = d[k];
+src/engine/household.js:18 | for (const k of Object.keys(d)) if (h[k] === undefined) h[k] = d[k];
+src/engine/nutrition.js:7 | for (const k of NUTRIENT_KEYS) t[k] = 0;
+src/engine/nutrition.js:17 | if (v == null) { out._missing[k] = (out._missing[k] || 0) + 1; continue; }
+src/engine/nutrition.js:18 | out[k] = v * f;
+src/engine/nutrition.js:25 | for (const k of NUTRIENT_KEYS) out[k] = (a[k] || 0) + (b[k] || 0);
+src/engine/nutrition.js:26 | for (const k of new Set([...Object.keys(a._missing || {}), ...Object.keys(b._missing || {})])) out._missing[k] = (a._missing?.[k] || 0) + (b._missing?.[k] || 0)
+src/engine/nutrition.js:32 | for (const k of NUTRIENT_KEYS) out[k] = (a[k] || 0) * factor;
+src/engine/nutrition.js:43 | for (const k of NUTRIENT_KEYS) { const v = recipe.nutrition_per_serving[k]; if (v == null) per._missing[k] = 1; else per[k] = Number(v) || 0; }
+src/engine/nutrition.js:43 | for (const k of NUTRIENT_KEYS) { const v = recipe.nutrition_per_serving[k]; if (v == null) per._missing[k] = 1; else per[k] = Number(v) || 0; }
+src/engine/nutrition.js:43 | for (const k of NUTRIENT_KEYS) { const v = recipe.nutrition_per_serving[k]; if (v == null) per._missing[k] = 1; else per[k] = Number(v) || 0; }
+src/engine/plan.js:386 | if (idx === -1) tier2Missing.push(entry); else if (!tier2Missing[idx].declared && decl) tier2Missing[idx] = entry;
+src/engine/plan.js:386 | if (idx === -1) tier2Missing.push(entry); else if (!tier2Missing[idx].declared && decl) tier2Missing[idx] = entry;
+src/engine/plan.js:414 | if (!avoid[tag]) avoid[tag] = { hard: false, rules: [] };
+src/engine/plan.js:414 | if (!avoid[tag]) avoid[tag] = { hard: false, rules: [] };
+src/engine/plan.js:422 | if (!prefer[tag]) prefer[tag] = { rules: [] };
+src/engine/plan.js:422 | if (!prefer[tag]) prefer[tag] = { rules: [] };
+src/engine/plan.js:454 | const limitsMap = per === 'day' ? limits : (periodic[per] ||= { limits: {}, targets: {} }).limits;
+src/engine/plan.js:455 | const targetsMap = per === 'day' ? targets : (periodic[per] ||= { limits: {}, targets: {} }).targets;
+src/engine/plan.js:459 | if (!cur) limitsMap[nut] = { value: v, ideal, per, rules: [ref], clinician: !!meta.clinician, unit: rule.unit || null };
+src/engine/plan.js:468 | if (!cur) targetsMap[nut] = { min: v, max, per, rules: [ref], clinician: !!meta.clinician, unit: rule.unit || null };
+src/engine/plan.js:493 | if (!avoid[tag]) avoid[tag] = { hard: false, rules: [] };
+src/engine/plan.js:493 | if (!avoid[tag]) avoid[tag] = { hard: false, rules: [] };
+src/engine/plan.js:501 | if (!avoid[tag]) avoid[tag] = { hard: true, rules: [] };
+src/engine/plan.js:501 | if (!avoid[tag]) avoid[tag] = { hard: true, rules: [] };
+src/engine/plan.js:507 | if (!avoid[tag]) avoid[tag] = { hard: false, rules: [] };
+src/engine/plan.js:507 | if (!avoid[tag]) avoid[tag] = { hard: false, rules: [] };
+src/engine/report.js:75 | for (const [k, v] of Object.entries(e.nutrients)) if (k[0] !== '_') d[k] = (d[k] || 0) + (Number(v) || 0);
+src/engine/report.js:81 | for (const d of days.values()) for (const [k, v] of Object.entries(d)) avg[k] = (avg[k] || 0) + v / n;
+src/engine/report.js:82 | for (const k of Object.keys(avg)) avg[k] = Math.round(avg[k] * 10) / 10;
+src/store.js:90 | for (const k of Object.keys(d)) if (p[k] === undefined) p[k] = d[k];
+src/store.js:90 | for (const k of Object.keys(d)) if (p[k] === undefined) p[k] = d[k];
+src/store.js:93 | for (const k of Object.keys(np)) if (person[k] === undefined && k !== 'id' && k !== 'name') person[k] = JSON.parse(JSON.stringify(np[k]));
+src/store.js:93 | for (const k of Object.keys(np)) if (person[k] === undefined && k !== 'id' && k !== 'name') person[k] = JSON.parse(JSON.stringify(np[k]));
+src/ui/dietlist.js:27 | person.strict_diets[family] = el.checked;
+src/ui/dietlist.js:35 | person.diet_lists[family] = person.diet_lists[family] || { tolerated: [], reacts: [] };
+src/ui/grocery.js:34 | p.grocery_adjustments[key] = p.grocery_adjustments[key] || {};
+src/ui/grocery.js:35 | p.grocery_changes[key] = p.grocery_changes[key] || [];
+src/ui/grocery.js:66 | snapshots[key] = { items: base.items.map(i => ({ food: i.food, name: i.name, grams: i.grams, quantity: i.quantity })) };
+src/ui/grocery.js:81 | if (after === household) delete person.servings_by_day[dateKey]; else person.servings_by_day[dateKey] = after;
+src/ui/grocery.js:81 | if (after === household) delete person.servings_by_day[dateKey]; else person.servings_by_day[dateKey] = after;
+src/ui/grocery.js:106 | adjustments[food] = { extra: true, grams: Number(grams) || 0, quantity: quantity || `${uiFmtNum(grams)} g`, note: note || '', uses: use ? [use] : [] };
+src/ui/grocery.js:230 | adjustments[food] = { ...prev, quantity: q || item.quantity, grams: g === '' ? item.grams : Number(g), note, removed: false };
+src/ui/grocery.js:239 | adjustments[food] = { ...(adjustments[food] || {}), note, removed: true };
+src/ui/household.js:199 | h.roster[date] = h.roster[date] || {};
+src/ui/household.js:200 | h.roster[date][slot] = next;
+src/ui/household.js:200 | h.roster[date][slot] = next;
+src/ui/household.js:257 | m.el.querySelectorAll('[data-pat]').forEach(b => b.addEventListener('click', () => { const k = b.dataset.pat; state[k] = !state[k]; b.classList.toggle('on', sta
+src/ui/household.js:258 | m.el.querySelector('#pat-all').addEventListener('click', () => { for (const k of Object.keys(state)) state[k] = true; m.el.querySelectorAll('[data-pat]').forEac
+src/ui/household.js:263 | if (person.guest ? v : !v) { next[d] = next[d] || {}; next[d][s] = person.guest ? true : false; }
+src/ui/household.js:263 | if (person.guest ? v : !v) { next[d] = next[d] || {}; next[d][s] = person.guest ? true : false; }
+src/ui/household.js:263 | if (person.guest ? v : !v) { next[d] = next[d] || {}; next[d][s] = person.guest ? true : false; }
+src/ui/household.js:263 | if (person.guest ? v : !v) { next[d] = next[d] || {}; next[d][s] = person.guest ? true : false; }
+src/ui/household.js:274 | if (want !== has) { h.roster[date] = h.roster[date] || {}; h.roster[date][s] = want ? cur.concat(person.id) : cur.filter(x => x !== person.id); }
+src/ui/household.js:274 | if (want !== has) { h.roster[date] = h.roster[date] || {}; h.roster[date][s] = want ? cur.concat(person.id) : cur.filter(x => x !== person.id); }
+src/ui/household.js:274 | if (want !== has) { h.roster[date] = h.roster[date] || {}; h.roster[date][s] = want ? cur.concat(person.id) : cur.filter(x => x !== person.id); }
+src/ui/household.js:274 | if (want !== has) { h.roster[date] = h.roster[date] || {}; h.roster[date][s] = want ? cur.concat(person.id) : cur.filter(x => x !== person.id); }
+src/ui/people.js:487 | person.variants[mid] = [inp.value];
+src/ui/people.js:495 | person.variants[mid] = [...cur];
+src/ui/people.js:813 | if (i >= 0) person.custom_modules[i] = entry; else person.custom_modules.push(entry);
+src/ui/people.js:871 | for (const [k, v] of Object.entries(p.limits)) if (typeof d.limits[k] !== 'number') d.limits[k] = v;
+src/ui/people.js:871 | for (const [k, v] of Object.entries(p.limits)) if (typeof d.limits[k] !== 'number') d.limits[k] = v;
+src/ui/plan.js:15 | for (const k of NUTRIENT_KEYS) x[k] = (e.nutrients && e.nutrients[k]) || 0;
+src/ui/recipes.js:60 | if (cuisine && cuisine !== 'other') cuisineCount[cuisine] = (cuisineCount[cuisine] || 0) + 1;
+src/ui/recipes.js:396 | else recipesUi[f] = !recipesUi[f];
+src/ui/today.js:28 | for (const k of ['diary', 'weights', 'exercise']) if (!Array.isArray(p[k])) p[k] = [];
+src/ui/today.js:28 | for (const k of ['diary', 'weights', 'exercise']) if (!Array.isArray(p[k])) p[k] = [];
+src/ui/today.js:35 | function todayPlain(t) { const o = {}; for (const k of NUTRIENT_KEYS) o[k] = round(t[k] || 0, 2); return o; }
+src/ui/today.js:50 | for (const k of NUTRIENT_KEYS) if (entry.nutrients && entry.nutrients[k] != null) t[k] = Number(entry.nutrients[k]) || 0;
+src/ui/today.js:50 | for (const k of NUTRIENT_KEYS) if (entry.nutrients && entry.nutrients[k] != null) t[k] = Number(entry.nutrients[k]) || 0;
+src/ui/today.js:118 | function todaySum(entries) { let t = emptyTotals(); for (const e of entries) { const x = emptyTotals(); for (const k of NUTRIENT_KEYS) x[k] = (e.nutrients && e.
+src/ui/today.js:740 | for (const k of fields) nut[k] = Number(m.el.querySelector('#today-ce-' + k).value) || 0;
+src/ui/together.js:38 | for (const k of keep) if (obj[k] !== undefined) p[k] = JSON.parse(JSON.stringify(obj[k]));
+src/ui/together.js:38 | for (const k of keep) if (obj[k] !== undefined) p[k] = JSON.parse(JSON.stringify(obj[k]));
+src/ui/week.js:90 | person.mealOverrides[key] = person.mealOverrides[key] || {};
+src/ui/week.js:91 | person.mealOverrides[key][`${di}:${slot}`] = recipeId;
+tools/build-foods.mjs:380 | for (const key of Object.keys(NUTRIENT_KEYS)) stats.nonNull[key] = 0;
+tools/build-foods.mjs:397 | if (!hit && fm) { const fh = pick(fm, ids); if (fh) { hit = fh; per100gSources[key] = `fdc-${fillId}`; } }
+tools/build-foods.mjs:398 | if (!hit && key === 'fiber_g') { const ah = pick(m, [2033]); if (ah) { hit = ah; per100gSources[key] = 'aoac-2033'; } }
+tools/build-foods.mjs:399 | if (!hit) { per100g[key] = null; continue; }
+tools/build-foods.mjs:404 | per100g[key] = round2(value);
+tools/build-foods.mjs:405 | stats.nonNull[key]++;
+tools/bundle.mjs:34 | data[f] = fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, 'utf8')) : (f === 'dictionaries' ? { tags: {}, entries: [] } : f === 'articles' ? {} : f === 'swaps' 
+tools/expand-selection.mjs:82 | header.forEach((h, i) => { rec[h] = fields[i]; });
+tools/expand-selection.mjs:755 | perCategory[cat] = chosen;
+tools/expand-selection.mjs:775 | dropped[cat] = (dropped[cat] || 0) + 1;
+tools/food-autotag.mjs:364 | for (const t of tags) stats.byTag[t] = (stats.byTag[t] || 0) + 1;
+tools/food-autotag.mjs:365 | for (const t of pending) stats.pending[t] = (stats.pending[t] || 0) + 1;
+tools/food-autotag.mjs:366 | if (reviewArr.length) { stats.review++; reviewList.push(`${entry.fdcId} ${d} -> ${reviewArr.join(', ')}`); for (const t of reviewArr) stats.reviewTags[t] = (sta
+tools/food-autotag.mjs:377 | stats.allergenByTag[t] = stats.allergenByTag[t] || { dictionary: 0, rules: 0, both: 0 };
+tools/food-autotag.mjs:378 | stats.allergenByTag[t][src]++;
+tools/food-autotag.mjs:378 | stats.allergenByTag[t][src]++;
+tools/import-open-recipes.mjs:388 | if (v && out[k] == null) out[k] = v;
+tools/import-open-recipes.mjs:388 | if (v && out[k] == null) out[k] = v;
+tools/import-usda-recipes.mjs:207 | if (/^n\/?a$/i.test(val) || val === '') { if (!(key in out)) out[key] = null; continue; }
+tools/import-usda-recipes.mjs:214 | if (out[key] == null || String(n).length > String(out[key]).length) out[key] = n;
+tools/import-usda-recipes.mjs:214 | if (out[key] == null || String(n).length > String(out[key]).length) out[key] = n;
+tools/import-usda-recipes.mjs:214 | if (out[key] == null || String(n).length > String(out[key]).length) out[key] = n;
+tools/import-usda-recipes.mjs:244 | for (const [k, key] of Object.entries(map)) { const v = pick(n[k]); if (v !== undefined) out[key] = v; }
+tools/import-usda-recipes.mjs:244 | for (const [k, key] of Object.entries(map)) { const v = pick(n[k]); if (v !== undefined) out[key] = v; }
+tools/import-usda-recipes.mjs:280 | if (label) details[label] = data;
+tools/import-usda-recipes.mjs:329 | for (const k of NUTRIENT_KEYS) nutrition[k] = typeof p.nutrition[k] === 'number' ? p.nutrition[k] : null;

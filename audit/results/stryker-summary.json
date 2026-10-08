@@ -1,0 +1,2882 @@
+{
+ "files": {
+  "src/engine/checker.js": {
+   "Killed": 259,
+   "Survived": 149,
+   "total": 408,
+   "score": 63.5
+  },
+  "src/engine/dietlists.js": {
+   "Killed": 389,
+   "Survived": 192,
+   "Timeout": 1,
+   "total": 582,
+   "score": 67
+  }
+ },
+ "survivors": [
+  {
+   "file": "src/engine/checker.js",
+   "line": 12,
+   "fn": "evaluateTags",
+   "mutator": "ArrayDeclaration",
+   "original": "[]",
+   "replacement": "[\"Stryker was here\"]"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 18,
+   "fn": "evaluateTags",
+   "mutator": "ArrowFunction",
+   "original": "(a, b) => (b.hard - a.hard)",
+   "replacement": "() => undefined"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 15,
+   "fn": "evaluateTags",
+   "mutator": "ArrayDeclaration",
+   "original": "[]",
+   "replacement": "[\"Stryker was here\"]"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 18,
+   "fn": "evaluateTags",
+   "mutator": "MethodExpression",
+   "original": "hits.sort((a, b) => (b.hard - a.hard))",
+   "replacement": "hits"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 18,
+   "fn": "evaluateTags",
+   "mutator": "ArithmeticOperator",
+   "original": "b.hard - a.hard",
+   "replacement": "b.hard + a.hard"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 26,
+   "fn": "planRestricts",
+   "mutator": "ConditionalExpression",
+   "original": "person.allergens && person.allergens.length",
+   "replacement": "false"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 26,
+   "fn": "planRestricts",
+   "mutator": "LogicalOperator",
+   "original": "(person.allergens && person.allergens.length) || otherAllergies(person).length",
+   "replacement": "person.allergens && person.allergens.length && otherAllergies(person).length"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 26,
+   "fn": "planRestricts",
+   "mutator": "ConditionalExpression",
+   "original": "person && ((person.allergens && person.allergens.length) || otherAllergies(person).length)",
+   "replacement": "false"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 26,
+   "fn": "planRestricts",
+   "mutator": "BooleanLiteral",
+   "original": "true",
+   "replacement": "false"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 28,
+   "fn": "planRestricts",
+   "mutator": "ArrayDeclaration",
+   "original": "[]",
+   "replacement": "[\"Stryker was here\"]"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 29,
+   "fn": "planRestricts",
+   "mutator": "LogicalOperator",
+   "original": "(a && a.hard) || !rules.length",
+   "replacement": "a && a.hard && !rules.length"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 29,
+   "fn": "planRestricts",
+   "mutator": "ConditionalExpression",
+   "original": "a && a.hard",
+   "replacement": "false"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 29,
+   "fn": "planRestricts",
+   "mutator": "MethodExpression",
+   "original": "rules.some(r => !r.preference)",
+   "replacement": "rules.every(r => !r.preference)"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 31,
+   "fn": "planRestricts",
+   "mutator": "ConditionalExpression",
+   "original": "plan && plan.limits && Object.keys(plan.limits).length",
+   "replacement": "false"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 31,
+   "fn": "planRestricts",
+   "mutator": "LogicalOperator",
+   "original": "plan && plan.limits",
+   "replacement": "plan || plan.limits"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 31,
+   "fn": "planRestricts",
+   "mutator": "ConditionalExpression",
+   "original": "plan && plan.limits",
+   "replacement": "true"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 31,
+   "fn": "planRestricts",
+   "mutator": "BooleanLiteral",
+   "original": "true",
+   "replacement": "false"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 32,
+   "fn": "planRestricts",
+   "mutator": "ConditionalExpression",
+   "original": "(plan && plan.periodic) || {}",
+   "replacement": "true"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 32,
+   "fn": "planRestricts",
+   "mutator": "ConditionalExpression",
+   "original": "(plan && plan.periodic) || {}",
+   "replacement": "false"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 32,
+   "fn": "planRestricts",
+   "mutator": "ConditionalExpression",
+   "original": "plan && plan.periodic",
+   "replacement": "false"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 32,
+   "fn": "planRestricts",
+   "mutator": "LogicalOperator",
+   "original": "plan && plan.periodic",
+   "replacement": "plan || plan.periodic"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 32,
+   "fn": "planRestricts",
+   "mutator": "ConditionalExpression",
+   "original": "per && per.limits && Object.keys(per.limits).length",
+   "replacement": "true"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 32,
+   "fn": "planRestricts",
+   "mutator": "LogicalOperator",
+   "original": "per && per.limits && Object.keys(per.limits).length",
+   "replacement": "per && per.limits || Object.keys(per.limits).length"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 32,
+   "fn": "planRestricts",
+   "mutator": "ConditionalExpression",
+   "original": "per && per.limits && Object.keys(per.limits).length",
+   "replacement": "false"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 32,
+   "fn": "planRestricts",
+   "mutator": "ConditionalExpression",
+   "original": "per && per.limits",
+   "replacement": "true"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 32,
+   "fn": "planRestricts",
+   "mutator": "LogicalOperator",
+   "original": "per && per.limits",
+   "replacement": "per || per.limits"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 32,
+   "fn": "planRestricts",
+   "mutator": "BooleanLiteral",
+   "original": "true",
+   "replacement": "false"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 37,
+   "fn": "verdictFrom",
+   "mutator": "ArrayDeclaration",
+   "original": "[]",
+   "replacement": "[\"Stryker was here\"]"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 38,
+   "fn": "verdictFrom",
+   "mutator": "ArrayDeclaration",
+   "original": "[]",
+   "replacement": "[\"Stryker was here\"]"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 53,
+   "fn": "verifyLabelHits",
+   "mutator": "BooleanLiteral",
+   "original": "!!av.hard",
+   "replacement": "!av.hard"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 61,
+   "fn": "checkText",
+   "mutator": "ConditionalExpression",
+   "original": "(person.allergens && person.allergens.length) || otherAllergies(person).length",
+   "replacement": "false"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 53,
+   "fn": "verifyLabelHits",
+   "mutator": "BooleanLiteral",
+   "original": "!av.hard",
+   "replacement": "av.hard"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 61,
+   "fn": "checkText",
+   "mutator": "LogicalOperator",
+   "original": "(person.allergens && person.allergens.length) || otherAllergies(person).length",
+   "replacement": "person.allergens && person.allergens.length && otherAllergies(person).length"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 61,
+   "fn": "checkText",
+   "mutator": "ConditionalExpression",
+   "original": "person.allergens && person.allergens.length",
+   "replacement": "false"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 69,
+   "fn": "checkText",
+   "mutator": "ObjectLiteral",
+   "original": "{ families: [], notApproved: [] }",
+   "replacement": "{}"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 69,
+   "fn": "checkText",
+   "mutator": "ArrayDeclaration",
+   "original": "[]",
+   "replacement": "[\"Stryker was here\"]"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 70,
+   "fn": "checkText",
+   "mutator": "ObjectLiteral",
+   "original": "{ notes: [], stacked: [] }",
+   "replacement": "{}"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 70,
+   "fn": "checkText",
+   "mutator": "ArrayDeclaration",
+   "original": "[]",
+   "replacement": "[\"Stryker was here\"]"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 82,
+   "fn": "otherAllergies",
+   "mutator": "StringLiteral",
+   "original": "''",
+   "replacement": "\"Stryker was here!\""
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 82,
+   "fn": "otherAllergies",
+   "mutator": "EqualityOperator",
+   "original": "x.length >= 2",
+   "replacement": "x.length > 2"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 86,
+   "fn": "allergyTermRe",
+   "mutator": "StringLiteral",
+   "original": "'\\\\$&'",
+   "replacement": "\"\""
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 91,
+   "fn": "matchOtherAllergies",
+   "mutator": "StringLiteral",
+   "original": "''",
+   "replacement": "\"Stryker was here!\""
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 98,
+   "fn": "recipeWordsText",
+   "mutator": "ArrayDeclaration",
+   "original": "[]",
+   "replacement": "[\"Stryker was here\"]"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 98,
+   "fn": "recipeWordsText",
+   "mutator": "StringLiteral",
+   "original": "''",
+   "replacement": "\"Stryker was here!\""
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 98,
+   "fn": "recipeWordsText",
+   "mutator": "ConditionalExpression",
+   "original": "f.name || ''",
+   "replacement": "true"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 98,
+   "fn": "recipeWordsText",
+   "mutator": "ConditionalExpression",
+   "original": "f.name || ''",
+   "replacement": "false"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 98,
+   "fn": "recipeWordsText",
+   "mutator": "LogicalOperator",
+   "original": "f.name || ''",
+   "replacement": "f.name && ''"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 98,
+   "fn": "recipeWordsText",
+   "mutator": "StringLiteral",
+   "original": "''",
+   "replacement": "\"Stryker was here!\""
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 98,
+   "fn": "recipeWordsText",
+   "mutator": "StringLiteral",
+   "original": "' '",
+   "replacement": "\"\""
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 98,
+   "fn": "recipeWordsText",
+   "mutator": "ConditionalExpression",
+   "original": "f.short || ''",
+   "replacement": "true"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 98,
+   "fn": "recipeWordsText",
+   "mutator": "ConditionalExpression",
+   "original": "f.short || ''",
+   "replacement": "false"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 98,
+   "fn": "recipeWordsText",
+   "mutator": "LogicalOperator",
+   "original": "f.short || ''",
+   "replacement": "f.short && ''"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 98,
+   "fn": "recipeWordsText",
+   "mutator": "StringLiteral",
+   "original": "''",
+   "replacement": "\"Stryker was here!\""
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 98,
+   "fn": "recipeWordsText",
+   "mutator": "StringLiteral",
+   "original": "''",
+   "replacement": "\"Stryker was here!\""
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 98,
+   "fn": "recipeWordsText",
+   "mutator": "StringLiteral",
+   "original": "' '",
+   "replacement": "\"\""
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 98,
+   "fn": "recipeWordsText",
+   "mutator": "StringLiteral",
+   "original": "' '",
+   "replacement": "\"\""
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 102,
+   "fn": "matchAvoidTerms",
+   "mutator": "ArrayDeclaration",
+   "original": "[]",
+   "replacement": "[\"Stryker was here\"]"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 103,
+   "fn": "matchAvoidTerms",
+   "mutator": "StringLiteral",
+   "original": "''",
+   "replacement": "\"Stryker was here!\""
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 104,
+   "fn": "matchAvoidTerms",
+   "mutator": "MethodExpression",
+   "original": "terms.filter(x => x && t.includes(String(x).toLowerCase()))",
+   "replacement": "terms"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 104,
+   "fn": "matchAvoidTerms",
+   "mutator": "ConditionalExpression",
+   "original": "x && t.includes(String(x).toLowerCase())",
+   "replacement": "true"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 104,
+   "fn": "matchAvoidTerms",
+   "mutator": "LogicalOperator",
+   "original": "x && t.includes(String(x).toLowerCase())",
+   "replacement": "x || t.includes(String(x).toLowerCase())"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 104,
+   "fn": "matchAvoidTerms",
+   "mutator": "ObjectLiteral",
+   "original": "{ term, hard: false }",
+   "replacement": "{}"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 104,
+   "fn": "matchAvoidTerms",
+   "mutator": "BooleanLiteral",
+   "original": "false",
+   "replacement": "true"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 109,
+   "fn": "checkFood",
+   "mutator": "LogicalOperator",
+   "original": "food.tags || []",
+   "replacement": "food.tags && []"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 109,
+   "fn": "checkFood",
+   "mutator": "ArrayDeclaration",
+   "original": "[]",
+   "replacement": "[\"Stryker was here\"]"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 109,
+   "fn": "checkFood",
+   "mutator": "ArrayDeclaration",
+   "original": "[food.short || food.name]",
+   "replacement": "[]"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 109,
+   "fn": "checkFood",
+   "mutator": "ConditionalExpression",
+   "original": "food.short || food.name",
+   "replacement": "true"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 109,
+   "fn": "checkFood",
+   "mutator": "ConditionalExpression",
+   "original": "food.short || food.name",
+   "replacement": "false"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 109,
+   "fn": "checkFood",
+   "mutator": "LogicalOperator",
+   "original": "food.short || food.name",
+   "replacement": "food.short && food.name"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 111,
+   "fn": "checkFood",
+   "mutator": "StringLiteral",
+   "original": "' '",
+   "replacement": "\"\""
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 111,
+   "fn": "checkFood",
+   "mutator": "ConditionalExpression",
+   "original": "food.short || ''",
+   "replacement": "true"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 111,
+   "fn": "checkFood",
+   "mutator": "ConditionalExpression",
+   "original": "food.short || ''",
+   "replacement": "false"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 111,
+   "fn": "checkFood",
+   "mutator": "LogicalOperator",
+   "original": "food.short || ''",
+   "replacement": "food.short && ''"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 111,
+   "fn": "checkFood",
+   "mutator": "StringLiteral",
+   "original": "''",
+   "replacement": "\"Stryker was here!\""
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 111,
+   "fn": "checkFood",
+   "mutator": "StringLiteral",
+   "original": "' '",
+   "replacement": "\"\""
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 111,
+   "fn": "checkFood",
+   "mutator": "ConditionalExpression",
+   "original": "food.short || ''",
+   "replacement": "true"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 111,
+   "fn": "checkFood",
+   "mutator": "ConditionalExpression",
+   "original": "food.short || ''",
+   "replacement": "false"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 111,
+   "fn": "checkFood",
+   "mutator": "LogicalOperator",
+   "original": "food.short || ''",
+   "replacement": "food.short && ''"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 111,
+   "fn": "checkFood",
+   "mutator": "StringLiteral",
+   "original": "''",
+   "replacement": "\"Stryker was here!\""
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 115,
+   "fn": "checkFood",
+   "mutator": "ConditionalExpression",
+   "original": "matcher && matcher.dietLists",
+   "replacement": "true"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 115,
+   "fn": "checkFood",
+   "mutator": "LogicalOperator",
+   "original": "matcher && matcher.dietLists",
+   "replacement": "matcher || matcher.dietLists"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 115,
+   "fn": "checkFood",
+   "mutator": "ObjectLiteral",
+   "original": "{ families: [], notApproved: [] }",
+   "replacement": "{}"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 115,
+   "fn": "checkFood",
+   "mutator": "ArrayDeclaration",
+   "original": "[]",
+   "replacement": "[\"Stryker was here\"]"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 115,
+   "fn": "checkFood",
+   "mutator": "ArrayDeclaration",
+   "original": "[]",
+   "replacement": "[\"Stryker was here\"]"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 116,
+   "fn": "checkFood",
+   "mutator": "ConditionalExpression",
+   "original": "matcher && matcher.dietLists",
+   "replacement": "true"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 116,
+   "fn": "checkFood",
+   "mutator": "ConditionalExpression",
+   "original": "matcher && matcher.dietLists",
+   "replacement": "false"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 116,
+   "fn": "checkFood",
+   "mutator": "LogicalOperator",
+   "original": "matcher && matcher.dietLists",
+   "replacement": "matcher || matcher.dietLists"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 116,
+   "fn": "checkFood",
+   "mutator": "ObjectLiteral",
+   "original": "{ notes: [], stacked: [] }",
+   "replacement": "{}"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 116,
+   "fn": "checkFood",
+   "mutator": "ArrayDeclaration",
+   "original": "[]",
+   "replacement": "[\"Stryker was here\"]"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 116,
+   "fn": "checkFood",
+   "mutator": "ArrayDeclaration",
+   "original": "[]",
+   "replacement": "[\"Stryker was here\"]"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 117,
+   "fn": "checkFood",
+   "mutator": "ArrayDeclaration",
+   "original": "[]",
+   "replacement": "[\"Stryker was here\"]"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 117,
+   "fn": "checkFood",
+   "mutator": "ArrayDeclaration",
+   "original": "[]",
+   "replacement": "[\"Stryker was here\"]"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 117,
+   "fn": "checkFood",
+   "mutator": "BooleanLiteral",
+   "original": "false",
+   "replacement": "true"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 123,
+   "fn": "checkRecipe",
+   "mutator": "ConditionalExpression",
+   "original": "!tagMap[tag]",
+   "replacement": "true"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 123,
+   "fn": "checkRecipe",
+   "mutator": "ArrayDeclaration",
+   "original": "[]",
+   "replacement": "[\"Stryker was here\"]"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 123,
+   "fn": "checkRecipe",
+   "mutator": "BooleanLiteral",
+   "original": "!tagMap[tag].includes(src)",
+   "replacement": "tagMap[tag].includes(src)"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 123,
+   "fn": "checkRecipe",
+   "mutator": "ConditionalExpression",
+   "original": "!tagMap[tag].includes(src)",
+   "replacement": "true"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 123,
+   "fn": "checkRecipe",
+   "mutator": "ConditionalExpression",
+   "original": "!tagMap[tag].includes(src)",
+   "replacement": "false"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 123,
+   "fn": "checkRecipe",
+   "mutator": "CallExpression",
+   "original": "tagMap[tag].push(src);",
+   "replacement": ";"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 127,
+   "fn": "checkRecipe",
+   "mutator": "ArrayDeclaration",
+   "original": "[]",
+   "replacement": "[\"Stryker was here\"]"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 129,
+   "fn": "checkRecipe",
+   "mutator": "ConditionalExpression",
+   "original": "ing.display || (food ? food.short || food.name : ing.food)",
+   "replacement": "true"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 129,
+   "fn": "checkRecipe",
+   "mutator": "ConditionalExpression",
+   "original": "ing.display || (food ? food.short || food.name : ing.food)",
+   "replacement": "false"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 129,
+   "fn": "checkRecipe",
+   "mutator": "LogicalOperator",
+   "original": "ing.display || (food ? food.short || food.name : ing.food)",
+   "replacement": "ing.display && (food ? food.short || food.name : ing.food)"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 129,
+   "fn": "checkRecipe",
+   "mutator": "ConditionalExpression",
+   "original": "food.short || food.name",
+   "replacement": "true"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 129,
+   "fn": "checkRecipe",
+   "mutator": "ConditionalExpression",
+   "original": "food.short || food.name",
+   "replacement": "false"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 129,
+   "fn": "checkRecipe",
+   "mutator": "LogicalOperator",
+   "original": "food.short || food.name",
+   "replacement": "food.short && food.name"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 130,
+   "fn": "checkRecipe",
+   "mutator": "ArrayDeclaration",
+   "original": "[]",
+   "replacement": "[\"Stryker was here\"]"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 132,
+   "fn": "checkRecipe",
+   "mutator": "ConditionalExpression",
+   "original": "matcher && ing.display",
+   "replacement": "true"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 132,
+   "fn": "checkRecipe",
+   "mutator": "LogicalOperator",
+   "original": "matcher && ing.display",
+   "replacement": "matcher || ing.display"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 135,
+   "fn": "checkRecipe",
+   "mutator": "ArrayDeclaration",
+   "original": "[]",
+   "replacement": "[\"Stryker was here\"]"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 136,
+   "fn": "checkRecipe",
+   "mutator": "CallExpression",
+   "original": "unknownRisk.push(u);",
+   "replacement": ";"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 137,
+   "fn": "checkRecipe",
+   "mutator": "ConditionalExpression",
+   "original": "!food && r.unrecognized.length",
+   "replacement": "false"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 137,
+   "fn": "checkRecipe",
+   "mutator": "CallExpression",
+   "original": "unrecognized.push(label);",
+   "replacement": ";"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 139,
+   "fn": "checkRecipe",
+   "mutator": "ConditionalExpression",
+   "original": "!food && !ing.display",
+   "replacement": "false"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 139,
+   "fn": "checkRecipe",
+   "mutator": "CallExpression",
+   "original": "unrecognized.push(ing.food);",
+   "replacement": ";"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 141,
+   "fn": "checkRecipe",
+   "mutator": "ArrayDeclaration",
+   "original": "[]",
+   "replacement": "[\"Stryker was here\"]"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 141,
+   "fn": "checkRecipe",
+   "mutator": "StringLiteral",
+   "original": "'recipe'",
+   "replacement": "\"\""
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 143,
+   "fn": "checkRecipe",
+   "mutator": "StringLiteral",
+   "original": "' '",
+   "replacement": "\"\""
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 143,
+   "fn": "checkRecipe",
+   "mutator": "LogicalOperator",
+   "original": "recipe.ingredients || []",
+   "replacement": "recipe.ingredients && []"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 143,
+   "fn": "checkRecipe",
+   "mutator": "ArrayDeclaration",
+   "original": "[]",
+   "replacement": "[\"Stryker was here\"]"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 143,
+   "fn": "checkRecipe",
+   "mutator": "ArrowFunction",
+   "original": "i => i.display || ''",
+   "replacement": "() => undefined"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 143,
+   "fn": "checkRecipe",
+   "mutator": "ConditionalExpression",
+   "original": "i.display || ''",
+   "replacement": "true"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 143,
+   "fn": "checkRecipe",
+   "mutator": "ConditionalExpression",
+   "original": "i.display || ''",
+   "replacement": "false"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 143,
+   "fn": "checkRecipe",
+   "mutator": "LogicalOperator",
+   "original": "i.display || ''",
+   "replacement": "i.display && ''"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 143,
+   "fn": "checkRecipe",
+   "mutator": "StringLiteral",
+   "original": "''",
+   "replacement": "\"Stryker was here!\""
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 143,
+   "fn": "checkRecipe",
+   "mutator": "StringLiteral",
+   "original": "' '",
+   "replacement": "\"\""
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 144,
+   "fn": "checkRecipe",
+   "mutator": "BooleanLiteral",
+   "original": "!!((person.allergens && person.allergens.length) || otherAllergies(person).length)",
+   "replacement": "!(person.allergens && person.allergens.length || otherAllergies(person).length)"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 144,
+   "fn": "checkRecipe",
+   "mutator": "BooleanLiteral",
+   "original": "!((person.allergens && person.allergens.length) || otherAllergies(person).length)",
+   "replacement": "person.allergens && person.allergens.length || otherAllergies(person).length"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 144,
+   "fn": "checkRecipe",
+   "mutator": "ConditionalExpression",
+   "original": "(person.allergens && person.allergens.length) || otherAllergies(person).length",
+   "replacement": "true"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 144,
+   "fn": "checkRecipe",
+   "mutator": "ConditionalExpression",
+   "original": "(person.allergens && person.allergens.length) || otherAllergies(person).length",
+   "replacement": "false"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 144,
+   "fn": "checkRecipe",
+   "mutator": "LogicalOperator",
+   "original": "(person.allergens && person.allergens.length) || otherAllergies(person).length",
+   "replacement": "person.allergens && person.allergens.length && otherAllergies(person).length"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 144,
+   "fn": "checkRecipe",
+   "mutator": "ConditionalExpression",
+   "original": "person.allergens && person.allergens.length",
+   "replacement": "false"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 152,
+   "fn": "checkRecipe",
+   "mutator": "ArrayDeclaration",
+   "original": "[]",
+   "replacement": "[\"Stryker was here\"]"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 155,
+   "fn": "checkRecipe",
+   "mutator": "ConditionalExpression",
+   "original": "v == null",
+   "replacement": "false"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 156,
+   "fn": "checkRecipe",
+   "mutator": "ArithmeticOperator",
+   "original": "v / lim.value",
+   "replacement": "v * lim.value"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 156,
+   "fn": "checkRecipe",
+   "mutator": "ArithmeticOperator",
+   "original": "v / lim.value * 100",
+   "replacement": "v / lim.value / 100"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 156,
+   "fn": "checkRecipe",
+   "mutator": "BooleanLiteral",
+   "original": "!!(perServing._missing && perServing._missing[n])",
+   "replacement": "!(perServing._missing && perServing._missing[n])"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 156,
+   "fn": "checkRecipe",
+   "mutator": "ConditionalExpression",
+   "original": "perServing._missing && perServing._missing[n]",
+   "replacement": "true"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 156,
+   "fn": "checkRecipe",
+   "mutator": "BooleanLiteral",
+   "original": "!(perServing._missing && perServing._missing[n])",
+   "replacement": "perServing._missing && perServing._missing[n]"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 156,
+   "fn": "checkRecipe",
+   "mutator": "ConditionalExpression",
+   "original": "perServing._missing && perServing._missing[n]",
+   "replacement": "false"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 156,
+   "fn": "checkRecipe",
+   "mutator": "LogicalOperator",
+   "original": "perServing._missing && perServing._missing[n]",
+   "replacement": "perServing._missing || perServing._missing[n]"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 160,
+   "fn": "checkRecipe",
+   "mutator": "ConditionalExpression",
+   "original": "matcher && matcher.dietLists",
+   "replacement": "true"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 160,
+   "fn": "checkRecipe",
+   "mutator": "LogicalOperator",
+   "original": "matcher && matcher.dietLists",
+   "replacement": "matcher || matcher.dietLists"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 160,
+   "fn": "checkRecipe",
+   "mutator": "ArrayDeclaration",
+   "original": "[]",
+   "replacement": "[\"Stryker was here\"]"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 163,
+   "fn": "checkRecipe",
+   "mutator": "ConditionalExpression",
+   "original": "matcher && matcher.dietLists",
+   "replacement": "true"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 163,
+   "fn": "checkRecipe",
+   "mutator": "LogicalOperator",
+   "original": "matcher && matcher.dietLists",
+   "replacement": "matcher || matcher.dietLists"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 163,
+   "fn": "checkRecipe",
+   "mutator": "ArrayDeclaration",
+   "original": "[]",
+   "replacement": "[\"Stryker was here\"]"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 164,
+   "fn": "checkRecipe",
+   "mutator": "ConditionalExpression",
+   "original": "verdict !== 'fail'",
+   "replacement": "true"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 164,
+   "fn": "checkRecipe",
+   "mutator": "StringLiteral",
+   "original": "'fail'",
+   "replacement": "\"\""
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 16,
+   "fn": "(top level)",
+   "mutator": "Regex",
+   "original": "/\\b(\\d+[\\d\\/.,½¼¾⅓⅔-]*|cups?|tbsps?|tablespoons?|tsps?|teaspoons?|oz|ounces?|lbs?|pounds?|g|grams?|kg|ml|l|litres?|liter",
+   "replacement": "/\\b(\\d[\\d\\/.,½¼¾⅓⅔-]*|cups?|tbsps?|tablespoons?|tsps?|teaspoons?|oz|ounces?|lbs?|pounds?|g|grams?|kg|ml|l|litres?|liters"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 16,
+   "fn": "(top level)",
+   "mutator": "Regex",
+   "original": "/\\b(\\d+[\\d\\/.,½¼¾⅓⅔-]*|cups?|tbsps?|tablespoons?|tsps?|teaspoons?|oz|ounces?|lbs?|pounds?|g|grams?|kg|ml|l|litres?|liter",
+   "replacement": "/\\b(\\d+[\\d\\/.,½¼¾⅓⅔-]*|cups|tbsps?|tablespoons?|tsps?|teaspoons?|oz|ounces?|lbs?|pounds?|g|grams?|kg|ml|l|litres?|liters"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 16,
+   "fn": "(top level)",
+   "mutator": "Regex",
+   "original": "/\\b(\\d+[\\d\\/.,½¼¾⅓⅔-]*|cups?|tbsps?|tablespoons?|tsps?|teaspoons?|oz|ounces?|lbs?|pounds?|g|grams?|kg|ml|l|litres?|liter",
+   "replacement": "/\\b(\\d+[\\d\\/.,½¼¾⅓⅔-]*|cups?|tbsps|tablespoons?|tsps?|teaspoons?|oz|ounces?|lbs?|pounds?|g|grams?|kg|ml|l|litres?|liters"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 16,
+   "fn": "(top level)",
+   "mutator": "Regex",
+   "original": "/\\b(\\d+[\\d\\/.,½¼¾⅓⅔-]*|cups?|tbsps?|tablespoons?|tsps?|teaspoons?|oz|ounces?|lbs?|pounds?|g|grams?|kg|ml|l|litres?|liter",
+   "replacement": "/\\b(\\d+[\\d\\/.,½¼¾⅓⅔-]*|cups?|tbsps?|tablespoons|tsps?|teaspoons?|oz|ounces?|lbs?|pounds?|g|grams?|kg|ml|l|litres?|liters"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 16,
+   "fn": "(top level)",
+   "mutator": "Regex",
+   "original": "/\\b(\\d+[\\d\\/.,½¼¾⅓⅔-]*|cups?|tbsps?|tablespoons?|tsps?|teaspoons?|oz|ounces?|lbs?|pounds?|g|grams?|kg|ml|l|litres?|liter",
+   "replacement": "/\\b(\\d+[\\d\\/.,½¼¾⅓⅔-]*|cups?|tbsps?|tablespoons?|tsps|teaspoons?|oz|ounces?|lbs?|pounds?|g|grams?|kg|ml|l|litres?|liters"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 16,
+   "fn": "(top level)",
+   "mutator": "Regex",
+   "original": "/\\b(\\d+[\\d\\/.,½¼¾⅓⅔-]*|cups?|tbsps?|tablespoons?|tsps?|teaspoons?|oz|ounces?|lbs?|pounds?|g|grams?|kg|ml|l|litres?|liter",
+   "replacement": "/\\b(\\d+[\\d\\/.,½¼¾⅓⅔-]*|cups?|tbsps?|tablespoons?|tsps?|teaspoons|oz|ounces?|lbs?|pounds?|g|grams?|kg|ml|l|litres?|liters"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 16,
+   "fn": "(top level)",
+   "mutator": "Regex",
+   "original": "/\\b(\\d+[\\d\\/.,½¼¾⅓⅔-]*|cups?|tbsps?|tablespoons?|tsps?|teaspoons?|oz|ounces?|lbs?|pounds?|g|grams?|kg|ml|l|litres?|liter",
+   "replacement": "/\\b(\\d+[\\d\\/.,½¼¾⅓⅔-]*|cups?|tbsps?|tablespoons?|tsps?|teaspoons?|oz|ounces|lbs?|pounds?|g|grams?|kg|ml|l|litres?|liters"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 16,
+   "fn": "(top level)",
+   "mutator": "Regex",
+   "original": "/\\b(\\d+[\\d\\/.,½¼¾⅓⅔-]*|cups?|tbsps?|tablespoons?|tsps?|teaspoons?|oz|ounces?|lbs?|pounds?|g|grams?|kg|ml|l|litres?|liter",
+   "replacement": "/\\b(\\d+[\\d\\/.,½¼¾⅓⅔-]*|cups?|tbsps?|tablespoons?|tsps?|teaspoons?|oz|ounces?|lbs|pounds?|g|grams?|kg|ml|l|litres?|liters"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 16,
+   "fn": "(top level)",
+   "mutator": "Regex",
+   "original": "/\\b(\\d+[\\d\\/.,½¼¾⅓⅔-]*|cups?|tbsps?|tablespoons?|tsps?|teaspoons?|oz|ounces?|lbs?|pounds?|g|grams?|kg|ml|l|litres?|liter",
+   "replacement": "/\\b(\\d+[\\d\\/.,½¼¾⅓⅔-]*|cups?|tbsps?|tablespoons?|tsps?|teaspoons?|oz|ounces?|lbs?|pounds|g|grams?|kg|ml|l|litres?|liters"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 16,
+   "fn": "(top level)",
+   "mutator": "Regex",
+   "original": "/\\b(\\d+[\\d\\/.,½¼¾⅓⅔-]*|cups?|tbsps?|tablespoons?|tsps?|teaspoons?|oz|ounces?|lbs?|pounds?|g|grams?|kg|ml|l|litres?|liter",
+   "replacement": "/\\b(\\d+[\\d\\/.,½¼¾⅓⅔-]*|cups?|tbsps?|tablespoons?|tsps?|teaspoons?|oz|ounces?|lbs?|pounds?|g|grams|kg|ml|l|litres?|liters"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 16,
+   "fn": "(top level)",
+   "mutator": "Regex",
+   "original": "/\\b(\\d+[\\d\\/.,½¼¾⅓⅔-]*|cups?|tbsps?|tablespoons?|tsps?|teaspoons?|oz|ounces?|lbs?|pounds?|g|grams?|kg|ml|l|litres?|liter",
+   "replacement": "/\\b(\\d+[\\d\\/.,½¼¾⅓⅔-]*|cups?|tbsps?|tablespoons?|tsps?|teaspoons?|oz|ounces?|lbs?|pounds?|g|grams?|kg|ml|l|litres|liters"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 16,
+   "fn": "(top level)",
+   "mutator": "Regex",
+   "original": "/\\b(\\d+[\\d\\/.,½¼¾⅓⅔-]*|cups?|tbsps?|tablespoons?|tsps?|teaspoons?|oz|ounces?|lbs?|pounds?|g|grams?|kg|ml|l|litres?|liter",
+   "replacement": "/\\b(\\d+[\\d\\/.,½¼¾⅓⅔-]*|cups?|tbsps?|tablespoons?|tsps?|teaspoons?|oz|ounces?|lbs?|pounds?|g|grams?|kg|ml|l|litres?|liter"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 16,
+   "fn": "(top level)",
+   "mutator": "Regex",
+   "original": "/\\b(\\d+[\\d\\/.,½¼¾⅓⅔-]*|cups?|tbsps?|tablespoons?|tsps?|teaspoons?|oz|ounces?|lbs?|pounds?|g|grams?|kg|ml|l|litres?|liter",
+   "replacement": "/\\b(\\d+[\\d\\/.,½¼¾⅓⅔-]*|cups?|tbsps?|tablespoons?|tsps?|teaspoons?|oz|ounces?|lbs?|pounds?|g|grams?|kg|ml|l|litres?|liter"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 16,
+   "fn": "(top level)",
+   "mutator": "Regex",
+   "original": "/\\b(\\d+[\\d\\/.,½¼¾⅓⅔-]*|cups?|tbsps?|tablespoons?|tsps?|teaspoons?|oz|ounces?|lbs?|pounds?|g|grams?|kg|ml|l|litres?|liter",
+   "replacement": "/\\b(\\d+[\\d\\/.,½¼¾⅓⅔-]*|cups?|tbsps?|tablespoons?|tsps?|teaspoons?|oz|ounces?|lbs?|pounds?|g|grams?|kg|ml|l|litres?|liter"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 16,
+   "fn": "(top level)",
+   "mutator": "Regex",
+   "original": "/\\b(\\d+[\\d\\/.,½¼¾⅓⅔-]*|cups?|tbsps?|tablespoons?|tsps?|teaspoons?|oz|ounces?|lbs?|pounds?|g|grams?|kg|ml|l|litres?|liter",
+   "replacement": "/\\b(\\d+[\\d\\/.,½¼¾⅓⅔-]*|cups?|tbsps?|tablespoons?|tsps?|teaspoons?|oz|ounces?|lbs?|pounds?|g|grams?|kg|ml|l|litres?|liter"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 16,
+   "fn": "(top level)",
+   "mutator": "Regex",
+   "original": "/\\b(\\d+[\\d\\/.,½¼¾⅓⅔-]*|cups?|tbsps?|tablespoons?|tsps?|teaspoons?|oz|ounces?|lbs?|pounds?|g|grams?|kg|ml|l|litres?|liter",
+   "replacement": "/\\b(\\d+[\\d\\/.,½¼¾⅓⅔-]*|cups?|tbsps?|tablespoons?|tsps?|teaspoons?|oz|ounces?|lbs?|pounds?|g|grams?|kg|ml|l|litres?|liter"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 16,
+   "fn": "(top level)",
+   "mutator": "Regex",
+   "original": "/\\b(\\d+[\\d\\/.,½¼¾⅓⅔-]*|cups?|tbsps?|tablespoons?|tsps?|teaspoons?|oz|ounces?|lbs?|pounds?|g|grams?|kg|ml|l|litres?|liter",
+   "replacement": "/\\b(\\d+[\\d\\/.,½¼¾⅓⅔-]*|cups?|tbsps?|tablespoons?|tsps?|teaspoons?|oz|ounces?|lbs?|pounds?|g|grams?|kg|ml|l|litres?|liter"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 16,
+   "fn": "(top level)",
+   "mutator": "Regex",
+   "original": "/\\b(\\d+[\\d\\/.,½¼¾⅓⅔-]*|cups?|tbsps?|tablespoons?|tsps?|teaspoons?|oz|ounces?|lbs?|pounds?|g|grams?|kg|ml|l|litres?|liter",
+   "replacement": "/\\b(\\d+[\\d\\/.,½¼¾⅓⅔-]*|cups?|tbsps?|tablespoons?|tsps?|teaspoons?|oz|ounces?|lbs?|pounds?|g|grams?|kg|ml|l|litres?|liter"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 16,
+   "fn": "(top level)",
+   "mutator": "Regex",
+   "original": "/\\b(\\d+[\\d\\/.,½¼¾⅓⅔-]*|cups?|tbsps?|tablespoons?|tsps?|teaspoons?|oz|ounces?|lbs?|pounds?|g|grams?|kg|ml|l|litres?|liter",
+   "replacement": "/\\b(\\d+[\\d\\/.,½¼¾⅓⅔-]*|cups?|tbsps?|tablespoons?|tsps?|teaspoons?|oz|ounces?|lbs?|pounds?|g|grams?|kg|ml|l|litres?|liter"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 16,
+   "fn": "(top level)",
+   "mutator": "Regex",
+   "original": "/\\b(\\d+[\\d\\/.,½¼¾⅓⅔-]*|cups?|tbsps?|tablespoons?|tsps?|teaspoons?|oz|ounces?|lbs?|pounds?|g|grams?|kg|ml|l|litres?|liter",
+   "replacement": "/\\b(\\d+[\\d\\/.,½¼¾⅓⅔-]*|cups?|tbsps?|tablespoons?|tsps?|teaspoons?|oz|ounces?|lbs?|pounds?|g|grams?|kg|ml|l|litres?|liter"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 16,
+   "fn": "(top level)",
+   "mutator": "Regex",
+   "original": "/\\b(\\d+[\\d\\/.,½¼¾⅓⅔-]*|cups?|tbsps?|tablespoons?|tsps?|teaspoons?|oz|ounces?|lbs?|pounds?|g|grams?|kg|ml|l|litres?|liter",
+   "replacement": "/\\b(\\d+[\\d\\/.,½¼¾⅓⅔-]*|cups?|tbsps?|tablespoons?|tsps?|teaspoons?|oz|ounces?|lbs?|pounds?|g|grams?|kg|ml|l|litres?|liter"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 16,
+   "fn": "(top level)",
+   "mutator": "Regex",
+   "original": "/\\b(\\d+[\\d\\/.,½¼¾⅓⅔-]*|cups?|tbsps?|tablespoons?|tsps?|teaspoons?|oz|ounces?|lbs?|pounds?|g|grams?|kg|ml|l|litres?|liter",
+   "replacement": "/\\b(\\d+[\\d\\/.,½¼¾⅓⅔-]*|cups?|tbsps?|tablespoons?|tsps?|teaspoons?|oz|ounces?|lbs?|pounds?|g|grams?|kg|ml|l|litres?|liter"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 16,
+   "fn": "(top level)",
+   "mutator": "Regex",
+   "original": "/\\b(\\d+[\\d\\/.,½¼¾⅓⅔-]*|cups?|tbsps?|tablespoons?|tsps?|teaspoons?|oz|ounces?|lbs?|pounds?|g|grams?|kg|ml|l|litres?|liter",
+   "replacement": "/\\b(\\d+[\\d\\/.,½¼¾⅓⅔-]*|cups?|tbsps?|tablespoons?|tsps?|teaspoons?|oz|ounces?|lbs?|pounds?|g|grams?|kg|ml|l|litres?|liter"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 19,
+   "fn": "dietNormalize",
+   "mutator": "StringLiteral",
+   "original": "''",
+   "replacement": "\"Stryker was here!\""
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 19,
+   "fn": "dietNormalize",
+   "mutator": "StringLiteral",
+   "original": "''",
+   "replacement": "\"Stryker was here!\""
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 19,
+   "fn": "dietNormalize",
+   "mutator": "Regex",
+   "original": "/\\([^)]*\\)/g",
+   "replacement": "/\\([^)]\\)/g"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 19,
+   "fn": "dietNormalize",
+   "mutator": "Regex",
+   "original": "/\\([^)]*\\)/g",
+   "replacement": "/\\([)]*\\)/g"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 19,
+   "fn": "dietNormalize",
+   "mutator": "StringLiteral",
+   "original": "' '",
+   "replacement": "\"\""
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 19,
+   "fn": "dietNormalize",
+   "mutator": "StringLiteral",
+   "original": "' '",
+   "replacement": "\"\""
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 19,
+   "fn": "dietNormalize",
+   "mutator": "StringLiteral",
+   "original": "' '",
+   "replacement": "\"\""
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 19,
+   "fn": "dietNormalize",
+   "mutator": "Regex",
+   "original": "/\\s+/g",
+   "replacement": "/\\s/g"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 23,
+   "fn": "dietTermRegex",
+   "mutator": "StringLiteral",
+   "original": "'\\\\$&'",
+   "replacement": "\"\""
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 23,
+   "fn": "dietTermRegex",
+   "mutator": "Regex",
+   "original": "/\\s+/g",
+   "replacement": "/\\s/g"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 24,
+   "fn": "dietTermRegex",
+   "mutator": "ConditionalExpression",
+   "original": "!t",
+   "replacement": "false"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 26,
+   "fn": "dietTermRegex",
+   "mutator": "StringLiteral",
+   "original": "'i'",
+   "replacement": "\"\""
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 36,
+   "fn": "dietFamilyIndex",
+   "mutator": "ArrayDeclaration",
+   "original": "[]",
+   "replacement": "[\"Stryker was here\"]"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 32,
+   "fn": "dietFamilyIndex",
+   "mutator": "ConditionalExpression",
+   "original": "!byFam",
+   "replacement": "true"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 32,
+   "fn": "dietFamilyIndex",
+   "mutator": "CallExpression",
+   "original": "DIET_INDEX.set(lists, byFam);",
+   "replacement": ";"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 33,
+   "fn": "dietFamilyIndex",
+   "mutator": "ConditionalExpression",
+   "original": "byFam.has(family)",
+   "replacement": "false"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 37,
+   "fn": "dietFamilyIndex",
+   "mutator": "ArrayDeclaration",
+   "original": "[]",
+   "replacement": "[\"Stryker was here\"]"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 37,
+   "fn": "dietFamilyIndex",
+   "mutator": "ArrayDeclaration",
+   "original": "[]",
+   "replacement": "[\"Stryker was here\"]"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 38,
+   "fn": "dietFamilyIndex",
+   "mutator": "ArrayDeclaration",
+   "original": "[]",
+   "replacement": "[\"Stryker was here\"]"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 41,
+   "fn": "dietFamilyIndex",
+   "mutator": "ArrayDeclaration",
+   "original": "[]",
+   "replacement": "[\"Stryker was here\"]"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 42,
+   "fn": "dietFamilyIndex",
+   "mutator": "StringLiteral",
+   "original": "'i'",
+   "replacement": "\"\""
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 43,
+   "fn": "dietFamilyIndex",
+   "mutator": "ArrayDeclaration",
+   "original": "[]",
+   "replacement": "[\"Stryker was here\"]"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 43,
+   "fn": "dietFamilyIndex",
+   "mutator": "ConditionalExpression",
+   "original": "re",
+   "replacement": "true"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 47,
+   "fn": "dietFamilyIndex",
+   "mutator": "ArrayDeclaration",
+   "original": "[]",
+   "replacement": "[\"Stryker was here\"]"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 47,
+   "fn": "dietFamilyIndex",
+   "mutator": "ArrayDeclaration",
+   "original": "[]",
+   "replacement": "[\"Stryker was here\"]"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 47,
+   "fn": "dietFamilyIndex",
+   "mutator": "ArrayDeclaration",
+   "original": "[]",
+   "replacement": "[\"Stryker was here\"]"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 47,
+   "fn": "dietFamilyIndex",
+   "mutator": "ConditionalExpression",
+   "original": "re",
+   "replacement": "true"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 56,
+   "fn": "strictFamiliesFor",
+   "mutator": "MethodExpression",
+   "original": "(f.tags || []).some(t => avoid[t])",
+   "replacement": "(f.tags || []).every(t => avoid[t])"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 56,
+   "fn": "strictFamiliesFor",
+   "mutator": "ArrayDeclaration",
+   "original": "[]",
+   "replacement": "[\"Stryker was here\"]"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 49,
+   "fn": "dietFamilyIndex",
+   "mutator": "CallExpression",
+   "original": "byFam.set(family, idx);",
+   "replacement": ";"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 62,
+   "fn": "strictOn",
+   "mutator": "ConditionalExpression",
+   "original": "s[family] === false",
+   "replacement": "true"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 67,
+   "fn": "dietPersonLists",
+   "mutator": "MethodExpression",
+   "original": "(p.tolerated || []).map(x => ({ ...x, re: dietTermRegex(x.term) })).filter(x => x.re)",
+   "replacement": "(p.tolerated || []).map(x => ({\n  ...x,\n  re: dietTermRegex(x.term)\n}))"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 67,
+   "fn": "dietPersonLists",
+   "mutator": "ArrayDeclaration",
+   "original": "[]",
+   "replacement": "[\"Stryker was here\"]"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 67,
+   "fn": "dietPersonLists",
+   "mutator": "MethodExpression",
+   "original": "(p.reacts || []).map(x => ({ ...x, re: dietTermRegex(x.term) })).filter(x => x.re)",
+   "replacement": "(p.reacts || []).map(x => ({\n  ...x,\n  re: dietTermRegex(x.term)\n}))"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 67,
+   "fn": "dietPersonLists",
+   "mutator": "ArrayDeclaration",
+   "original": "[]",
+   "replacement": "[\"Stryker was here\"]"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 73,
+   "fn": "dietAvoidNormalize",
+   "mutator": "MethodExpression",
+   "original": "String(text || '').toLowerCase().normalize('NFKD').replace(/[̀-ͯ]/g, '').replace(/[‘’']/g, '').replace(/[^a-z0-9%\\s-]/g,",
+   "replacement": "String(text || '').toLowerCase().normalize('NFKD').replace(/[̀-ͯ]/g, '').replace(/[‘’']/g, '').replace(/[^a-z0-9%\\s-]/g,"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 73,
+   "fn": "dietAvoidNormalize",
+   "mutator": "StringLiteral",
+   "original": "''",
+   "replacement": "\"Stryker was here!\""
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 73,
+   "fn": "dietAvoidNormalize",
+   "mutator": "StringLiteral",
+   "original": "''",
+   "replacement": "\"Stryker was here!\""
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 73,
+   "fn": "dietAvoidNormalize",
+   "mutator": "StringLiteral",
+   "original": "''",
+   "replacement": "\"Stryker was here!\""
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 73,
+   "fn": "dietAvoidNormalize",
+   "mutator": "Regex",
+   "original": "/[^a-z0-9%\\s-]/g",
+   "replacement": "/[^a-z0-9%\\S-]/g"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 73,
+   "fn": "dietAvoidNormalize",
+   "mutator": "StringLiteral",
+   "original": "' '",
+   "replacement": "\"\""
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 73,
+   "fn": "dietAvoidNormalize",
+   "mutator": "Regex",
+   "original": "/\\s+/g",
+   "replacement": "/\\s/g"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 80,
+   "fn": "dietAvoidRegex",
+   "mutator": "ConditionalExpression",
+   "original": "!t",
+   "replacement": "false"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 81,
+   "fn": "dietAvoidRegex",
+   "mutator": "StringLiteral",
+   "original": "'\\\\$&'",
+   "replacement": "\"\""
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 85,
+   "fn": "dietAvoidRegex",
+   "mutator": "ConditionalExpression",
+   "original": "/ies$/.test(last)",
+   "replacement": "false"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 85,
+   "fn": "dietAvoidRegex",
+   "mutator": "Regex",
+   "original": "/ies$/",
+   "replacement": "/ies/"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 85,
+   "fn": "dietAvoidRegex",
+   "mutator": "MethodExpression",
+   "original": "last.slice(0, -3)",
+   "replacement": "last"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 85,
+   "fn": "dietAvoidRegex",
+   "mutator": "UnaryOperator",
+   "original": "-3",
+   "replacement": "+3"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 85,
+   "fn": "dietAvoidRegex",
+   "mutator": "StringLiteral",
+   "original": "'y'",
+   "replacement": "\"\""
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 86,
+   "fn": "dietAvoidRegex",
+   "mutator": "ConditionalExpression",
+   "original": "/(ch|sh|x|ss)es$/.test(last)",
+   "replacement": "false"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 86,
+   "fn": "dietAvoidRegex",
+   "mutator": "Regex",
+   "original": "/(ch|sh|x|ss)es$/",
+   "replacement": "/(ch|sh|x|ss)es/"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 86,
+   "fn": "dietAvoidRegex",
+   "mutator": "MethodExpression",
+   "original": "last.slice(0, -2)",
+   "replacement": "last"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 86,
+   "fn": "dietAvoidRegex",
+   "mutator": "UnaryOperator",
+   "original": "-2",
+   "replacement": "+2"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 87,
+   "fn": "dietAvoidRegex",
+   "mutator": "ConditionalExpression",
+   "original": "/[^su]s$/.test(last)",
+   "replacement": "true"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 87,
+   "fn": "dietAvoidRegex",
+   "mutator": "Regex",
+   "original": "/[^su]s$/",
+   "replacement": "/[^su]s/"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 88,
+   "fn": "dietAvoidRegex",
+   "mutator": "Regex",
+   "original": "/[^aeiou]y$/",
+   "replacement": "/[^aeiou]y/"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 88,
+   "fn": "dietAvoidRegex",
+   "mutator": "Regex",
+   "original": "/[^aeiou]y$/",
+   "replacement": "/[aeiou]y$/"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 88,
+   "fn": "dietAvoidRegex",
+   "mutator": "UnaryOperator",
+   "original": "-1",
+   "replacement": "+1"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 88,
+   "fn": "dietAvoidRegex",
+   "mutator": "MethodExpression",
+   "original": "f.slice(0, -1)",
+   "replacement": "f"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 88,
+   "fn": "dietAvoidRegex",
+   "mutator": "StringLiteral",
+   "original": "'(?:y|ies)'",
+   "replacement": "\"\""
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 88,
+   "fn": "dietAvoidRegex",
+   "mutator": "StringLiteral",
+   "original": "'(?:e?s)?'",
+   "replacement": "\"\""
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 90,
+   "fn": "dietAvoidRegex",
+   "mutator": "StringLiteral",
+   "original": "'(?:^|[^a-z0-9])'",
+   "replacement": "\"\""
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 90,
+   "fn": "dietAvoidRegex",
+   "mutator": "StringLiteral",
+   "original": "'i'",
+   "replacement": "\"\""
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 96,
+   "fn": "avoidExampleFor",
+   "mutator": "ConditionalExpression",
+   "original": "!raw",
+   "replacement": "false"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 109,
+   "fn": "approvedFor",
+   "mutator": "ConditionalExpression",
+   "original": "n",
+   "replacement": "true"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 111,
+   "fn": "approvedFor",
+   "mutator": "ConditionalExpression",
+   "original": "t.re.test(n)",
+   "replacement": "true"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 114,
+   "fn": "approvedFor",
+   "mutator": "ConditionalExpression",
+   "original": "!n",
+   "replacement": "false"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 114,
+   "fn": "approvedFor",
+   "mutator": "ObjectLiteral",
+   "original": "{ approved: true, why: 'empty' }",
+   "replacement": "{}"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 114,
+   "fn": "approvedFor",
+   "mutator": "BooleanLiteral",
+   "original": "true",
+   "replacement": "false"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 114,
+   "fn": "approvedFor",
+   "mutator": "StringLiteral",
+   "original": "'empty'",
+   "replacement": "\"\""
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 116,
+   "fn": "approvedFor",
+   "mutator": "StringLiteral",
+   "original": "'list'",
+   "replacement": "\"\""
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 126,
+   "fn": "strictCheck",
+   "mutator": "ConditionalExpression",
+   "original": "!families.length",
+   "replacement": "false"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 127,
+   "fn": "strictCheck",
+   "mutator": "ArrayDeclaration",
+   "original": "[]",
+   "replacement": "[\"Stryker was here\"]"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 128,
+   "fn": "strictCheck",
+   "mutator": "ConditionalExpression",
+   "original": "ing.food && foodsById",
+   "replacement": "true"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 128,
+   "fn": "strictCheck",
+   "mutator": "LogicalOperator",
+   "original": "ing.food && foodsById",
+   "replacement": "ing.food || foodsById"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 129,
+   "fn": "strictCheck",
+   "mutator": "ConditionalExpression",
+   "original": "food.short || food.name",
+   "replacement": "false"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 129,
+   "fn": "strictCheck",
+   "mutator": "ConditionalExpression",
+   "original": "food.short || food.name",
+   "replacement": "true"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 129,
+   "fn": "strictCheck",
+   "mutator": "LogicalOperator",
+   "original": "food.short || food.name",
+   "replacement": "food.short && food.name"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 129,
+   "fn": "strictCheck",
+   "mutator": "StringLiteral",
+   "original": "''",
+   "replacement": "\"Stryker was here!\""
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 135,
+   "fn": "strictCheck",
+   "mutator": "ConditionalExpression",
+   "original": "r.why === 'reacts' || r.why === 'avoid'",
+   "replacement": "true"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 138,
+   "fn": "strictCheck",
+   "mutator": "ConditionalExpression",
+   "original": "verdict && verdict.why === 'avoid'",
+   "replacement": "false"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 138,
+   "fn": "strictCheck",
+   "mutator": "ConditionalExpression",
+   "original": "verdict.why === 'avoid'",
+   "replacement": "true"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 138,
+   "fn": "strictCheck",
+   "mutator": "EqualityOperator",
+   "original": "verdict.why === 'avoid'",
+   "replacement": "verdict.why !== 'avoid'"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 138,
+   "fn": "strictCheck",
+   "mutator": "StringLiteral",
+   "original": "'avoid'",
+   "replacement": "\"\""
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 138,
+   "fn": "strictCheck",
+   "mutator": "ObjectLiteral",
+   "original": "{ avoid: verdict.item.term }",
+   "replacement": "{}"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 149,
+   "fn": "strictCheckText",
+   "mutator": "ConditionalExpression",
+   "original": "!families.length",
+   "replacement": "false"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 150,
+   "fn": "strictCheckText",
+   "mutator": "ArrayDeclaration",
+   "original": "[]",
+   "replacement": "[\"Stryker was here\"]"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 152,
+   "fn": "strictCheckText",
+   "mutator": "ConditionalExpression",
+   "original": "r.why === 'avoid'",
+   "replacement": "false"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 152,
+   "fn": "strictCheckText",
+   "mutator": "StringLiteral",
+   "original": "'avoid'",
+   "replacement": "\"\""
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 152,
+   "fn": "strictCheckText",
+   "mutator": "ObjectLiteral",
+   "original": "{ avoid: r.item.term }",
+   "replacement": "{}"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 170,
+   "fn": "dietPortionMatches",
+   "mutator": "ConditionalExpression",
+   "original": "!n",
+   "replacement": "false"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 170,
+   "fn": "dietPortionMatches",
+   "mutator": "ArrayDeclaration",
+   "original": "[]",
+   "replacement": "[\"Stryker was here\"]"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 172,
+   "fn": "dietPortionMatches",
+   "mutator": "ArithmeticOperator",
+   "original": "m.index + m[1].length",
+   "replacement": "m.index - m[1].length"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 172,
+   "fn": "dietPortionMatches",
+   "mutator": "ArithmeticOperator",
+   "original": "m.index + m[0].length - m[3].length",
+   "replacement": "m.index + m[0].length + m[3].length"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 173,
+   "fn": "dietPortionMatches",
+   "mutator": "ArrayDeclaration",
+   "original": "[]",
+   "replacement": "[\"Stryker was here\"]"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 175,
+   "fn": "dietPortionMatches",
+   "mutator": "ArrayDeclaration",
+   "original": "[]",
+   "replacement": "[\"Stryker was here\"]"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 177,
+   "fn": "dietPortionMatches",
+   "mutator": "ConditionalExpression",
+   "original": "g !== f && g.start <= f.start && g.end >= f.end",
+   "replacement": "true"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 177,
+   "fn": "dietPortionMatches",
+   "mutator": "LogicalOperator",
+   "original": "g !== f && g.start <= f.start && g.end >= f.end",
+   "replacement": "g !== f && g.start <= f.start || g.end >= f.end"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 177,
+   "fn": "dietPortionMatches",
+   "mutator": "ConditionalExpression",
+   "original": "g !== f && g.start <= f.start",
+   "replacement": "true"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 177,
+   "fn": "dietPortionMatches",
+   "mutator": "LogicalOperator",
+   "original": "g !== f && g.start <= f.start",
+   "replacement": "g !== f || g.start <= f.start"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 177,
+   "fn": "dietPortionMatches",
+   "mutator": "ConditionalExpression",
+   "original": "g !== f",
+   "replacement": "true"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 177,
+   "fn": "dietPortionMatches",
+   "mutator": "ConditionalExpression",
+   "original": "g.start <= f.start",
+   "replacement": "true"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 177,
+   "fn": "dietPortionMatches",
+   "mutator": "ConditionalExpression",
+   "original": "g.end >= f.end",
+   "replacement": "true"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 177,
+   "fn": "dietPortionMatches",
+   "mutator": "EqualityOperator",
+   "original": "g.end >= f.end",
+   "replacement": "g.end > f.end"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 178,
+   "fn": "dietPortionMatches",
+   "mutator": "ConditionalExpression",
+   "original": "x.item === f.item && x.start <= f.start && x.end >= f.end",
+   "replacement": "true"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 178,
+   "fn": "dietPortionMatches",
+   "mutator": "LogicalOperator",
+   "original": "x.item === f.item && x.start <= f.start && x.end >= f.end",
+   "replacement": "x.item === f.item && x.start <= f.start || x.end >= f.end"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 178,
+   "fn": "dietPortionMatches",
+   "mutator": "ConditionalExpression",
+   "original": "x.item === f.item && x.start <= f.start",
+   "replacement": "true"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 178,
+   "fn": "dietPortionMatches",
+   "mutator": "LogicalOperator",
+   "original": "x.item === f.item && x.start <= f.start",
+   "replacement": "x.item === f.item || x.start <= f.start"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 178,
+   "fn": "dietPortionMatches",
+   "mutator": "ConditionalExpression",
+   "original": "x.item === f.item",
+   "replacement": "true"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 178,
+   "fn": "dietPortionMatches",
+   "mutator": "ConditionalExpression",
+   "original": "x.start <= f.start",
+   "replacement": "true"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 178,
+   "fn": "dietPortionMatches",
+   "mutator": "ConditionalExpression",
+   "original": "x.end >= f.end",
+   "replacement": "true"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 178,
+   "fn": "dietPortionMatches",
+   "mutator": "EqualityOperator",
+   "original": "x.end >= f.end",
+   "replacement": "x.end > f.end"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 185,
+   "fn": "dietPortionLimited",
+   "mutator": "ConditionalExpression",
+   "original": "item && item.portion",
+   "replacement": "true"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 185,
+   "fn": "dietPortionLimited",
+   "mutator": "LogicalOperator",
+   "original": "item && item.portion",
+   "replacement": "item || item.portion"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 190,
+   "fn": "dietPortionFamilies",
+   "mutator": "MethodExpression",
+   "original": "strictFamiliesFor(plan, lists).filter(f => lists.families[f] && lists.families[f].stacking)",
+   "replacement": "strictFamiliesFor(plan, lists)"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 190,
+   "fn": "dietPortionFamilies",
+   "mutator": "ConditionalExpression",
+   "original": "lists.families[f] && lists.families[f].stacking",
+   "replacement": "true"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 190,
+   "fn": "dietPortionFamilies",
+   "mutator": "LogicalOperator",
+   "original": "lists.families[f] && lists.families[f].stacking",
+   "replacement": "lists.families[f] || lists.families[f].stacking"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 202,
+   "fn": "dietPortionsFor",
+   "mutator": "ArrayDeclaration",
+   "original": "[]",
+   "replacement": "[\"Stryker was here\"]"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 203,
+   "fn": "dietPortionsFor",
+   "mutator": "ConditionalExpression",
+   "original": "items.length",
+   "replacement": "true"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 203,
+   "fn": "dietPortionsFor",
+   "mutator": "ConditionalExpression",
+   "original": "items.length",
+   "replacement": "false"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 205,
+   "fn": "dietPortionsFor",
+   "mutator": "ConditionalExpression",
+   "original": "!byTerm.has(it.term)",
+   "replacement": "true"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 205,
+   "fn": "dietPortionsFor",
+   "mutator": "StringLiteral",
+   "original": "''",
+   "replacement": "\"Stryker was here!\""
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 205,
+   "fn": "dietPortionsFor",
+   "mutator": "ArrayDeclaration",
+   "original": "[]",
+   "replacement": "[\"Stryker was here\"]"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 207,
+   "fn": "dietPortionsFor",
+   "mutator": "ConditionalExpression",
+   "original": "p.label && !n.labels.includes(p.label)",
+   "replacement": "true"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 207,
+   "fn": "dietPortionsFor",
+   "mutator": "ConditionalExpression",
+   "original": "p.label && !n.labels.includes(p.label)",
+   "replacement": "false"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 207,
+   "fn": "dietPortionsFor",
+   "mutator": "LogicalOperator",
+   "original": "p.label && !n.labels.includes(p.label)",
+   "replacement": "p.label || !n.labels.includes(p.label)"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 207,
+   "fn": "dietPortionsFor",
+   "mutator": "BooleanLiteral",
+   "original": "!n.labels.includes(p.label)",
+   "replacement": "n.labels.includes(p.label)"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 207,
+   "fn": "dietPortionsFor",
+   "mutator": "CallExpression",
+   "original": "n.labels.push(p.label);",
+   "replacement": ";"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 216,
+   "fn": "dietPortionsFor",
+   "mutator": "ConditionalExpression",
+   "original": "fam.stacking.counts === 'limited'",
+   "replacement": "false"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 216,
+   "fn": "dietPortionsFor",
+   "mutator": "StringLiteral",
+   "original": "'limited'",
+   "replacement": "\"\""
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 216,
+   "fn": "dietPortionsFor",
+   "mutator": "MethodExpression",
+   "original": "mine.filter(n => !/^usual serve/.test(n.portion))",
+   "replacement": "mine"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 216,
+   "fn": "dietPortionsFor",
+   "mutator": "ArrowFunction",
+   "original": "n => !/^usual serve/.test(n.portion)",
+   "replacement": "() => undefined"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 216,
+   "fn": "dietPortionsFor",
+   "mutator": "BooleanLiteral",
+   "original": "!/^usual serve/.test(n.portion)",
+   "replacement": "/^usual serve/.test(n.portion)"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 216,
+   "fn": "dietPortionsFor",
+   "mutator": "Regex",
+   "original": "/^usual serve/",
+   "replacement": "/usual serve/"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 218,
+   "fn": "dietPortionsFor",
+   "mutator": "LogicalOperator",
+   "original": "fam.stacking.caution_at || 2",
+   "replacement": "fam.stacking.caution_at && 2"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 218,
+   "fn": "dietPortionsFor",
+   "mutator": "ArrayDeclaration",
+   "original": "[]",
+   "replacement": "[\"Stryker was here\"]"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 224,
+   "fn": "portionCheck",
+   "mutator": "ArrayDeclaration",
+   "original": "[]",
+   "replacement": "[\"Stryker was here\"]"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 225,
+   "fn": "portionCheck",
+   "mutator": "ConditionalExpression",
+   "original": "!families.length",
+   "replacement": "false"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 226,
+   "fn": "portionCheck",
+   "mutator": "ArrayDeclaration",
+   "original": "[]",
+   "replacement": "[\"Stryker was here\"]"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 227,
+   "fn": "portionCheck",
+   "mutator": "ConditionalExpression",
+   "original": "ing.food && foodsById",
+   "replacement": "true"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 227,
+   "fn": "portionCheck",
+   "mutator": "ConditionalExpression",
+   "original": "ing.food && foodsById",
+   "replacement": "false"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 227,
+   "fn": "portionCheck",
+   "mutator": "LogicalOperator",
+   "original": "ing.food && foodsById",
+   "replacement": "ing.food || foodsById"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 228,
+   "fn": "portionCheck",
+   "mutator": "ConditionalExpression",
+   "original": "ing.display || (food ? food.short || food.name : ing.food) || ''",
+   "replacement": "true"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 228,
+   "fn": "portionCheck",
+   "mutator": "ConditionalExpression",
+   "original": "ing.display || (food ? food.short || food.name : ing.food) || ''",
+   "replacement": "false"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 228,
+   "fn": "portionCheck",
+   "mutator": "LogicalOperator",
+   "original": "ing.display || (food ? food.short || food.name : ing.food) || ''",
+   "replacement": "(ing.display || (food ? food.short || food.name : ing.food)) && ''"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 228,
+   "fn": "portionCheck",
+   "mutator": "ConditionalExpression",
+   "original": "ing.display || (food ? food.short || food.name : ing.food)",
+   "replacement": "false"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 228,
+   "fn": "portionCheck",
+   "mutator": "LogicalOperator",
+   "original": "ing.display || (food ? food.short || food.name : ing.food)",
+   "replacement": "ing.display && (food ? food.short || food.name : ing.food)"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 228,
+   "fn": "portionCheck",
+   "mutator": "ConditionalExpression",
+   "original": "food.short || food.name",
+   "replacement": "true"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 228,
+   "fn": "portionCheck",
+   "mutator": "ConditionalExpression",
+   "original": "food.short || food.name",
+   "replacement": "false"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 228,
+   "fn": "portionCheck",
+   "mutator": "LogicalOperator",
+   "original": "food.short || food.name",
+   "replacement": "food.short && food.name"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 228,
+   "fn": "portionCheck",
+   "mutator": "StringLiteral",
+   "original": "''",
+   "replacement": "\"Stryker was here!\""
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 228,
+   "fn": "portionCheck",
+   "mutator": "MethodExpression",
+   "original": "[ing.display, food ? food.short : null, food ? food.name : null].filter(Boolean)",
+   "replacement": "[ing.display, food ? food.short : null, food ? food.name : null]"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 234,
+   "fn": "portionCheckText",
+   "mutator": "ArrayDeclaration",
+   "original": "[]",
+   "replacement": "[\"Stryker was here\"]"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 235,
+   "fn": "portionCheckText",
+   "mutator": "ConditionalExpression",
+   "original": "!families.length",
+   "replacement": "false"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 235,
+   "fn": "portionCheckText",
+   "mutator": "ObjectLiteral",
+   "original": "{ notes: [], stacked: [] }",
+   "replacement": "{}"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 235,
+   "fn": "portionCheckText",
+   "mutator": "ArrayDeclaration",
+   "original": "[]",
+   "replacement": "[\"Stryker was here\"]"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 236,
+   "fn": "portionCheckText",
+   "mutator": "ArrayDeclaration",
+   "original": "[]",
+   "replacement": "[\"Stryker was here\"]"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 242,
+   "fn": "portionCheckPieces",
+   "mutator": "ArrayDeclaration",
+   "original": "[]",
+   "replacement": "[\"Stryker was here\"]"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 243,
+   "fn": "portionCheckPieces",
+   "mutator": "ConditionalExpression",
+   "original": "!families.length",
+   "replacement": "false"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 243,
+   "fn": "portionCheckPieces",
+   "mutator": "ObjectLiteral",
+   "original": "{ notes: [], stacked: [] }",
+   "replacement": "{}"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 243,
+   "fn": "portionCheckPieces",
+   "mutator": "ArrayDeclaration",
+   "original": "[]",
+   "replacement": "[\"Stryker was here\"]"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 243,
+   "fn": "portionCheckPieces",
+   "mutator": "ArrayDeclaration",
+   "original": "[]",
+   "replacement": "[\"Stryker was here\"]"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 244,
+   "fn": "portionCheckPieces",
+   "mutator": "ArrayDeclaration",
+   "original": "[]",
+   "replacement": "[\"Stryker was here\"]"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 247,
+   "fn": "familyLabel",
+   "mutator": "BlockStatement",
+   "original": "{ const f = lists && lists.families && lists.families[family]; return f ? f.label : family; }",
+   "replacement": "{}"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 247,
+   "fn": "familyLabel",
+   "mutator": "ConditionalExpression",
+   "original": "lists && lists.families && lists.families[family]",
+   "replacement": "true"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 247,
+   "fn": "familyLabel",
+   "mutator": "ConditionalExpression",
+   "original": "lists && lists.families && lists.families[family]",
+   "replacement": "false"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 247,
+   "fn": "familyLabel",
+   "mutator": "LogicalOperator",
+   "original": "lists && lists.families && lists.families[family]",
+   "replacement": "lists && lists.families || lists.families[family]"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 247,
+   "fn": "familyLabel",
+   "mutator": "ConditionalExpression",
+   "original": "lists && lists.families",
+   "replacement": "true"
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 247,
+   "fn": "familyLabel",
+   "mutator": "LogicalOperator",
+   "original": "lists && lists.families",
+   "replacement": "lists || lists.families"
+  }
+ ],
+ "score": 65.6,
+ "byFunction": [
+  [
+   "checker.js checkRecipe",
+   56
+  ],
+  [
+   "checker.js checkFood",
+   30
+  ],
+  [
+   "dietlists.js (top level)",
+   23
+  ],
+  [
+   "checker.js planRestricts",
+   22
+  ],
+  [
+   "dietlists.js dietPortionMatches",
+   22
+  ],
+  [
+   "dietlists.js dietAvoidRegex",
+   21
+  ],
+  [
+   "dietlists.js dietPortionsFor",
+   19
+  ],
+  [
+   "dietlists.js dietFamilyIndex",
+   16
+  ],
+  [
+   "dietlists.js portionCheck",
+   16
+  ],
+  [
+   "checker.js recipeWordsText",
+   14
+  ],
+  [
+   "dietlists.js strictCheck",
+   14
+  ],
+  [
+   "dietlists.js dietNormalize",
+   8
+  ],
+  [
+   "checker.js checkText",
+   7
+  ],
+  [
+   "checker.js matchAvoidTerms",
+   7
+  ],
+  [
+   "dietlists.js dietAvoidNormalize",
+   7
+  ],
+  [
+   "dietlists.js approvedFor",
+   7
+  ],
+  [
+   "dietlists.js portionCheckPieces",
+   6
+  ],
+  [
+   "dietlists.js familyLabel",
+   6
+  ],
+  [
+   "checker.js evaluateTags",
+   5
+  ],
+  [
+   "dietlists.js strictCheckText",
+   5
+  ],
+  [
+   "dietlists.js portionCheckText",
+   5
+  ],
+  [
+   "dietlists.js dietTermRegex",
+   4
+  ],
+  [
+   "dietlists.js dietPersonLists",
+   4
+  ],
+  [
+   "dietlists.js dietPortionFamilies",
+   3
+  ],
+  [
+   "checker.js verdictFrom",
+   2
+  ],
+  [
+   "checker.js verifyLabelHits",
+   2
+  ],
+  [
+   "checker.js otherAllergies",
+   2
+  ],
+  [
+   "dietlists.js strictFamiliesFor",
+   2
+  ],
+  [
+   "dietlists.js dietPortionLimited",
+   2
+  ],
+  [
+   "checker.js allergyTermRe",
+   1
+  ],
+  [
+   "checker.js matchOtherAllergies",
+   1
+  ],
+  [
+   "dietlists.js strictOn",
+   1
+  ],
+  [
+   "dietlists.js avoidExampleFor",
+   1
+  ]
+ ]
+}

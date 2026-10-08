@@ -5,7 +5,7 @@
 // the Home Screen app's first screen (the same backup file format as Settings). Shown once; Settings can open it again.
 // Android (owner request, September 30, 2026): the guide also shows in an Android browser tab, with Chrome and Samsung
 // Internet steps. There the Home screen app shares the browser's storage, so nothing needs moving.
-import { uiState, uiEsc, uiIcon } from './common.js';
+import { uiState, uiEsc, uiIcon, uiIsoDate, uiToday, uiTrapTab, uiSaveSmall } from './common.js';
 import { settingsShareBackup } from './settings.js';
 
 function installGuideKey() { return (uiState.lite ? 'peace-meal-lite' : 'peace-meal-full') + ':home-screen-guide'; }
@@ -32,6 +32,32 @@ export function installInBrowserTab() {
 export function installShouldGuide() {
   if (!installInBrowserTab()) return false;
   try { return !localStorage.getItem(installGuideKey()); } catch { return true; }
+}
+
+// P1-5 (fix pass of September 30, 2026): in a Safari tab on iOS, every screen says the data is not saved safely.
+// WebKit: Safari deletes "all of a website's script-writable storage after seven days of Safari use without user
+// interaction on the site", while "Web applications added to the home screen are not part of Safari and thus have their
+// own counter of days of use" (WebKit blog, Full Third-Party Cookie Blocking and More, March 24, 2020). The banner opens
+// the guide, which has the move-your-data steps. It can be hidden for the day, never for good.
+function installBannerKey() { return (uiState.lite ? 'peace-meal-lite' : 'peace-meal-full') + ':safari-banner-hidden'; }
+export function installHideBannerToday(today = uiToday()) {
+  try { localStorage.setItem(installBannerKey(), uiIsoDate(today)); } catch { /* storage refused: it shows again next screen */ }
+}
+export function installBannerHTML(today = uiToday()) {
+  if (!installInSafariTab()) return '';
+  let hidden = null;
+  try { hidden = localStorage.getItem(installBannerKey()); } catch { hidden = null; }
+  if (hidden === uiIsoDate(today)) return '';
+  const name = uiState.lite ? 'Peace Meal for one' : 'Peace Meal';
+  return `<div class="notice warn safari-banner" id="safari-banner" role="region" aria-labelledby="safari-banner-h">${uiIcon('alert', { cls: 'notice-icon' })}<div class="notice-head" id="safari-banner-h">Not saved safely. Add to Home Screen.</div>
+    <div class="notice-body"><p>This is a Safari tab. Safari erases what ${uiEsc(name)} saves here if you use Safari for 7 days without opening it. On your Home Screen it stays, and it works without internet.</p>
+    <div class="btn-row"><button class="btn primary lite-big" type="button" data-safari-how>Show me how</button><button class="btn lite-big" type="button" data-safari-hide>Hide for today</button></div></div></div>`;
+}
+export function installBindBanner(root) {
+  const el = root && root.querySelector('#safari-banner');
+  if (!el) return;
+  el.querySelector('[data-safari-how]').addEventListener('click', () => installShowGuide());
+  el.querySelector('[data-safari-hide]').addEventListener('click', () => { installHideBannerToday(); el.remove(); });
 }
 
 export function installShowGuide() {
@@ -76,11 +102,11 @@ export function installShowGuide() {
     <div class="btn-row"><button class="btn primary lite-big" type="button" data-install-done>Got it</button></div>
     <p class="small muted">This guide shows once. Settings has a link to open it again.</p>
   </div>`;
-  const close = () => { try { localStorage.setItem(installGuideKey(), new Date().toISOString()); } catch { /* ignore */ } el.remove(); };
+  const close = () => { uiSaveSmall(installGuideKey(), new Date().toISOString(), 'This guide will show again next time: the device did not keep the "done" mark.'); el.remove(); };   // P3-10
   el.querySelector('[data-install-done]').addEventListener('click', close);
   const b = el.querySelector('[data-install-backup]');
   if (b) b.addEventListener('click', () => settingsShareBackup());
-  el.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+  el.addEventListener('keydown', e => { if (e.key === 'Escape') close(); else uiTrapTab(e, el); });
   document.body.appendChild(el);
   const h = el.querySelector('h1'); if (h) { h.setAttribute('tabindex', '-1'); h.focus(); }
 }

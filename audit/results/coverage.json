@@ -1,0 +1,142 @@
+[
+ {
+  "file": "src/engine/checker.js",
+  "line": 100,
+  "branch": 86.15,
+  "funcs": 100,
+  "uncovered": ""
+ },
+ {
+  "file": "src/engine/crypto.js",
+  "line": 100,
+  "branch": 96,
+  "funcs": 90.48,
+  "uncovered": ""
+ },
+ {
+  "file": "src/engine/cuisine.js",
+  "line": 97.44,
+  "branch": 75,
+  "funcs": 85.71,
+  "uncovered": "101-103"
+ },
+ {
+  "file": "src/engine/dictionary.js",
+  "line": 100,
+  "branch": 92.86,
+  "funcs": 91.67,
+  "uncovered": ""
+ },
+ {
+  "file": "src/engine/dietlists.js",
+  "line": 100,
+  "branch": 86.7,
+  "funcs": 95.35,
+  "uncovered": ""
+ },
+ {
+  "file": "src/engine/energy.js",
+  "line": 96.43,
+  "branch": 67.57,
+  "funcs": 100,
+  "uncovered": "31-32 34"
+ },
+ {
+  "file": "src/engine/grocery.js",
+  "line": 100,
+  "branch": 71.25,
+  "funcs": 100,
+  "uncovered": ""
+ },
+ {
+  "file": "src/engine/group.js",
+  "line": 100,
+  "branch": 97.14,
+  "funcs": 85,
+  "uncovered": ""
+ },
+ {
+  "file": "src/engine/household.js",
+  "line": 89.61,
+  "branch": 76.54,
+  "funcs": 94,
+  "uncovered": "208-231"
+ },
+ {
+  "file": "src/engine/nutrition.js",
+  "line": 81.61,
+  "branch": 86.54,
+  "funcs": 88.89,
+  "uncovered": "72-87"
+ },
+ {
+  "file": "src/engine/pantry.js",
+  "line": 100,
+  "branch": 65.71,
+  "funcs": 100,
+  "uncovered": ""
+ },
+ {
+  "file": "src/engine/plan.js",
+  "line": 96.16,
+  "branch": 86.6,
+  "funcs": 89.29,
+  "uncovered": "83-85 100-110 481-488"
+ },
+ {
+  "file": "src/engine/planner.js",
+  "line": 98.77,
+  "branch": 82.93,
+  "funcs": 90.48,
+  "uncovered": "110-113"
+ },
+ {
+  "file": "src/engine/report.js",
+  "line": 100,
+  "branch": 76.64,
+  "funcs": 100,
+  "uncovered": ""
+ },
+ {
+  "file": "src/engine/screen.js",
+  "line": 90.32,
+  "branch": 100,
+  "funcs": 0,
+  "uncovered": "17-19"
+ },
+ {
+  "file": "src/engine/search.js",
+  "line": 100,
+  "branch": 90.48,
+  "funcs": 100,
+  "uncovered": ""
+ },
+ {
+  "file": "src/engine/spice.js",
+  "line": 99.07,
+  "branch": 88.37,
+  "funcs": 94.74,
+  "uncovered": "93"
+ },
+ {
+  "file": "src/engine/swaps.js",
+  "line": 100,
+  "branch": 77.63,
+  "funcs": 100,
+  "uncovered": ""
+ },
+ {
+  "file": "src/engine/sync.js",
+  "line": 40.69,
+  "branch": 77.78,
+  "funcs": 16,
+  "uncovered": "15-16 18-25 29-33 35 38-40 43-45 48-51 54 58-71 74-76 79-81 85-96 112-121 123-129 131-132 134-136 141-145"
+ },
+ {
+  "file": "src/store.js",
+  "line": 98.68,
+  "branch": 67.78,
+  "funcs": 77.78,
+  "uncovered": "16-17"
+ }
+]

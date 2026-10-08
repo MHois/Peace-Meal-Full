@@ -9,7 +9,9 @@ export const FEATURE_MODULES = {
   'weight-loss': ['weight-management-glp1'],
   'ketogenic': ['low-carb-ketogenic'],
   'low-carb-under-175g': ['low-carb-ketogenic'],
-  'intermittent-fasting': [],
+  // P1-1 (fix pass of September 30, 2026): this mapped to nothing, so pregnancy and a child's profile left the
+  // time-restricted eating pattern on. README safety rule 6.
+  'intermittent-fasting': ['time-restricted-eating'],
   'elimination-protocols-except-allergen-celiac': ['ibs-low-fodmap', 'mcas', 'gluten-free-non-celiac'],
   'new-elimination-protocols': ['ibs-low-fodmap', 'mcas', 'gluten-free-non-celiac'],
   'calorie-targets': []
@@ -63,13 +65,27 @@ function bmiOf(person) {
   const w = Number(person.weight_kg), h = Number(person.height_cm);
   return w > 0 && h > 0 ? w / Math.pow(h / 100, 2) : null;
 }
+// An optional rule that lists several foods can be turned on for only some of them (UX pass, October 2026). GERD's
+// trigger foods are chosen one by one, as the rule's own guideline says: avoid the ones that trigger you, not all of
+// them. Each pick is stored in optional_rules as "<rule id>:<tag>". The bare rule id, how the rule was stored before,
+// still means every food in the rule, so nothing saved earlier changes meaning.
+export function optionalRulePicks(rule, person) {
+  const on = (person && person.optional_rules) || [];
+  const tags = Array.isArray(rule.tags) ? rule.tags : [];
+  if (on.includes(rule.id)) return tags.slice();
+  const pre = rule.id + ':';
+  return on.filter(x => typeof x === 'string' && x.startsWith(pre)).map(x => x.slice(pre.length)).filter(t => tags.includes(t));
+}
+
 // Returns { apply: boolean, note?: string, asAvoid?: boolean }
 function ruleApplies(rule, m, person, ctx) {
   const settings = person.rule_settings || {};
   const optional = rule.optional === true || rule.default === 'off';
-  if (optional && !(person.optional_rules || []).includes(rule.id)) return { apply: false };
+  if (optional && !(person.optional_rules || []).includes(rule.id) && !optionalRulePicks(rule, person).length) return { apply: false };
   if (rule.configurable) {
-    const setting = settings[rule.id] ?? rule.default ?? rule.default_for_allergy ?? null;
+    // rule.setting lets two rules share one choice: the soy allergy rule and the soy-free pattern ask the same
+    // allergist question about refined soybean oil and soy lecithin (P0-2, fix pass of September 30, 2026).
+    const setting = settings[rule.setting || rule.id] ?? rule.default ?? rule.default_for_allergy ?? null;
     if ((rule.kind === 'avoid') && (setting === 'allow' || setting === 'off')) return { apply: false };
     if (rule.kind === 'info' && setting === 'exclude' && Array.isArray(rule.tags) && rule.tags.length) return { apply: true, asAvoid: true };
   }
@@ -114,6 +130,30 @@ function ruleApplies(rule, m, person, ctx) {
     if (!(flag || (bmi != null && bmi >= 25))) return { apply: false, note: 'not-overweight-or-unknown' };
   }
   return { apply: true };
+}
+
+// P2-10 (plain words): what each medicine answer's flag and requirement mean, said the way a person would. Each restates
+// its effect name and the rule text it comes from (low-carb lc-screen: "SGLT2 inhibitor use (euglycemic ketoacidosis
+// risk), insulin or sulfonylurea use (hypoglycemia; dose adjustment needed)"); none adds advice. An effect missing here
+// keeps the old wording.
+const MEDICATION_FLAG_WORDS = {
+  'hypoglycemia-awareness': 'watch for low blood sugar (hypoglycemia)',
+  'hypoglycemia-dose-adjustment': 'watch for low blood sugar (hypoglycemia); your doctor needs to adjust your medicine doses',
+  'hypoglycemia-risk-with-fasting-windows': 'watch for low blood sugar (hypoglycemia) during long gaps without food',
+  'low-carb-ketoacidosis-caution': 'take care with low-carb eating: with this medicine it can lead to ketoacidosis (a dangerous build-up of acid in the blood)',
+  'ketoacidosis-caution-with-low-carb': 'take care with low-carb eating: with this medicine it can lead to ketoacidosis (a dangerous build-up of acid in the blood)',
+  'euglycemic-ketoacidosis-risk': 'know the risk of ketoacidosis (a dangerous build-up of acid in the blood), which can happen even when blood sugar looks normal',
+  'serum-potassium-monitoring': 'have your blood potassium checked as your doctor advises'
+};
+const MEDICATION_REQUIRE_WORDS = {
+  'clinician-plan': 'a plan set with your doctor',
+  'clinician-signoff': 'your doctor\'s OK'
+};
+// ", which is about 70 to 84 grams a day for you": the higher-protein module's 1.0 to 1.2 g per kg, in the person's grams.
+function proteinGramsFor(person) {
+  const w = Number(person && person.weight_kg);
+  if (!(w > 0)) return '';
+  return `, which is about ${Math.round(w)} to ${Math.round(w * 1.2)} grams a day for you`;
 }
 
 export function buildPlan({ person, conditions, dictionaries, today = new Date() }) {
@@ -186,9 +226,10 @@ export function buildPlan({ person, conditions, dictionaries, today = new Date()
     const dismissed = (person.dismissed_suggestions || []).includes('higher-protein-older-adult');
     if (byId.has('higher-protein-older-adult') && !activeIds.has('higher-protein-older-adult') && !dismissed && person.adult !== false && ((ageNum && ageNum >= 65) || glp1On)) {
       notices.push({ level: 'info', code: 'suggest-module', module: 'higher-protein-older-adult', sources: ['espen-geriatrics-2022'],
+        // P2-10: plain words, and the person's own grams when their weight is on file (the module's 1.0 to 1.2 g/kg/day).
         text: ageNum && ageNum >= 65
-          ? `At ${ageNum}, dietitians recommend more protein than the standard adult amount, about 1.0 to 1.2 g per kg of body weight a day, to hold on to muscle. The higher-protein module sets that target and spreads it across meals.`
-          : 'On a GLP-1 medicine, appetite drops and muscle goes with the fat unless protein stays up. The higher-protein module sets a protein target of about 1.0 to 1.2 g per kg a day and spreads it across meals.',
+          ? `At your age, dietitians suggest a little more protein to keep your muscles strong: about 1 to 1.2 grams a day for each kilogram you weigh${proteinGramsFor(person)}. Tap Add it and the app spreads it over your meals.`
+          : `On a GLP-1 medicine, appetite drops, and you can lose muscle along with fat unless you keep your protein up. Tap Add it to set a protein target of about 1 to 1.2 grams a day for each kilogram you weigh${proteinGramsFor(person)}, spread over your meals.`,
         action: 'add-module:higher-protein-older-adult', actionLabel: 'Add it', dismiss: 'higher-protein-older-adult' });
     }
   }
@@ -220,8 +261,8 @@ export function buildPlan({ person, conditions, dictionaries, today = new Date()
         const [verb, arg] = eff.split(':');
         if (verb === 'suppress') suppressedRules.set(arg, { reason: 'medication', text: q.text, module: m.id });
         else if (verb === 'enable') enabledRules.add(arg);
-        else if (verb === 'flag') notices.push({ level: 'warn', code: 'medication-flag', module: m.id, text: `${m.name}: because you answered yes to "${q.text}", note: ${String(arg || '').replace(/-/g, ' ')}.` });
-        else if (verb === 'require') notices.push({ level: 'warn', code: 'medication-require', module: m.id, text: `${m.name}: because you answered yes to "${q.text}", this pattern needs ${String(arg || '').replace(/-/g, ' ')} before you follow it.` });
+        else if (verb === 'flag') notices.push({ level: 'warn', code: 'medication-flag', module: m.id, text: `${m.name}: you answered yes to "${q.text}", so ${MEDICATION_FLAG_WORDS[arg] || 'note: ' + String(arg || '').replace(/-/g, ' ')}.` });
+        else if (verb === 'require') notices.push({ level: 'warn', code: 'medication-require', module: m.id, text: `${m.name}: you answered yes to "${q.text}", so this pattern needs ${MEDICATION_REQUIRE_WORDS[arg] || String(arg || '').replace(/-/g, ' ')} before you follow it.` });
       }
     }
   }
@@ -356,11 +397,15 @@ export function buildPlan({ person, conditions, dictionaries, today = new Date()
       const app = ruleApplies(rule, m, person, ctx);
       if (!app.apply) { if (app.note === 'gated-by-screen') suppressed.push(ruleRef(m, rule, { reason: { reason: 'screen' } })); continue; }
       if (app.asAvoid) rule = { ...rule, kind: 'avoid' };
+      // Only the foods picked from an optional rule apply (see optionalRulePicks).
+      if ((rule.optional === true || rule.default === 'off') && Array.isArray(rule.tags) && !(person.optional_rules || []).includes(rule.id)) rule = { ...rule, tags: optionalRulePicks(rule, person) };
       // The allergy module lists all nine allergens; only the person's confirmed allergens apply.
       if (m.id === 'food-allergies' && rule.kind === 'avoid' && Array.isArray(rule.tags) && rule.tags.some(t => t.startsWith('allergen-'))) {
         const mine = new Set(person.allergens || []);
         if (!rule.tags.some(t => t.startsWith('allergen-') && mine.has(t))) continue;
       }
+      // A rule that belongs to one allergy (rule.allergen) applies only with that allergy on file.
+      if (m.id === 'food-allergies' && rule.allergen && !(person.allergens || []).includes(rule.allergen)) continue;
       // conflict suppression on module+param
       const nut = rule.nutrient || null;
       const sup = suppressedModuleParams.find(s => s.module === m.id && (s.param === 'all' || s.param === null || (nut && paramMatches(nut, s.param))));
@@ -465,11 +510,24 @@ export function buildPlan({ person, conditions, dictionaries, today = new Date()
     } else {
       const cur = targetsMap[nut];
       const max = rule.max != null && !meta.clinician ? (perKg ? Math.round(rule.max * weight * 10) / 10 : rule.max) : null;
-      if (!cur) targetsMap[nut] = { min: v, max, per, rules: [ref], clinician: !!meta.clinician, unit: rule.unit || null };
+      // UX pass, October 2026: a target's upper number is one of two things. For most it is a cap the source sets (the
+      // pregnancy fish advice, kidney-stone calcium, the potassium range with its kidney exception). For protein and
+      // fiber it is only the top of the usual range (rule.upper "range-top"): PROT-AGE says "at least in the range of
+      // 1.0 to 1.2" g/kg, and the fiber range is 25 g for women to 38 g for men (VERIFY-log U1). Two usual ranges
+      // combine to the higher top, a cap always wins over a usual top, and two caps keep the lower one, as before. The
+      // old rule kept the lower top every time: a 72-year-old on a GLP-1 got protein "at least 80, at most 81.6" and
+      // every day of the week marked "over".
+      const top = max != null && rule.upper === 'range-top';
+      if (!cur) targetsMap[nut] = { min: v, max, maxIsTop: top, per, rules: [ref], clinician: !!meta.clinician, unit: rule.unit || null };
       else {
         if (v > cur.min) { cur.min = v; cur.clinician = !!meta.clinician; }
-        if (max != null && (cur.max == null || max < cur.max) && max >= cur.min) cur.max = max;
-        if (cur.max != null && cur.max < cur.min) cur.max = null;
+        if (max != null) {
+          if (cur.max == null) { cur.max = max; cur.maxIsTop = top; }
+          else if (top && cur.maxIsTop) cur.max = Math.max(cur.max, max);
+          else if (!top && cur.maxIsTop) { cur.max = max; cur.maxIsTop = false; }
+          else if (!top && max < cur.max && max >= cur.min) cur.max = max;
+        }
+        if (cur.max != null && cur.max < cur.min) { cur.max = null; cur.maxIsTop = false; }
         cur.rules.push(ref);
       }
     }

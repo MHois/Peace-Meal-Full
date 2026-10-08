@@ -147,11 +147,15 @@ test('[1] measurement and preparation words alone are not "unrecognized"; a real
   assert.deepEqual(unrec('1 Tin (400g) Chopped Tomatoes'), []);
   assert.deepEqual(unrec('250g broccoli, broken into florets'), []);
   assert.deepEqual(unrec('1 onion, cut into 5cm chunks'), []);
-  assert.deepEqual(unrec('2 bay leaves'), ['2 bay leaves'], 'bay is not in the dictionary, so the line is still reported');
-  assert.deepEqual(unrec('1 french stick'), ['1 french stick']);
+  // P2-12 (fix pass of September 30, 2026) taught the dictionary "bay leaves", "french stick", and "low fat spread", which
+  // these lines used as unknown foods. The same checks now use foods it still does not know (pandan leaves, a bloomer,
+  // dairy spread), and the French stick is checked as the wheat bread it is: a stop, still never a pass.
+  assert.deepEqual(unrec('2 pandan leaves'), ['2 pandan leaves'], 'pandan is not in the dictionary, so the line is still reported');
+  assert.deepEqual(unrec('1 bloomer'), ['1 bloomer']);
   assert.deepEqual(unrec('2 sprigs lovage'), ['2 sprigs lovage']);
-  assert.deepEqual(unrec('4 tablespoons low fat spread'), ['4 tablespoons low fat spread']);
-  assert.equal(checkText('1 french stick', celiacPlan, matcher, celiac).verdict, 'caution', 'celiac: an unknown bread is never a pass');
+  assert.deepEqual(unrec('4 tablespoons dairy spread'), ['4 tablespoons dairy spread']);
+  assert.equal(checkText('1 bloomer', celiacPlan, matcher, celiac).verdict, 'caution', 'celiac: an unknown bread is never a pass');
+  assert.equal(checkText('1 french stick', celiacPlan, matcher, celiac).verdict, 'fail', 'celiac: a French stick is wheat bread');
 });
 
 test('[1] the single-food lookup on the Check screen applies the strict lists too', async () => {

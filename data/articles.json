@@ -71,8 +71,8 @@
       {
         "heading": "How this app applies it",
         "paragraphs": [
-          "This module has no phases and no modes. It runs all the time once selected. At onboarding it asks two medication questions: whether you take insulin or a sulfonylurea (which turns on hypoglycemia awareness notes and requires a clinician-set plan) and whether you take an SGLT2 inhibitor (which turns on the low-carb ketoacidosis caution).",
-          "Compatible modules: hypertension, heart-healthy, and MASLD. DASH and Mediterranean patterns satisfy all of them at once, so the plan does not change much when they are combined.",
+          "This module has no phases and no modes. It runs all the time once selected. When you set it up, the app asks two questions about medicines. If you take insulin or a sulfonylurea, it reminds you to watch for low blood sugar (hypoglycemia) and says this pattern needs a plan set with your doctor. If you take an SGLT2 inhibitor, it adds a caution about low-carb eating, which with that medicine can lead to ketoacidosis (a dangerous build-up of acid in the blood).",
+          "Works alongside: hypertension, heart-healthy, and MASLD. DASH and Mediterranean patterns satisfy all of them at once, so the plan does not change much when they are combined.",
           "Soft conflicts: the low-histamine trial (MCAS) excludes many foods this pattern relies on, so that trial is time-limited. Low-carb or ketogenic eating is allowed but asks for acknowledgment and the medication screen. Gastroparesis wins on food texture; fiber then comes from soluble, cooked, or blended sources.",
           "Hard conflict: pregnancy. Carbohydrate targets in pregnancy and gestational diabetes are clinician-set, and the app will not generate them."
         ]
@@ -177,7 +177,7 @@
           "Sodium: under 2,300 mg a day; ideal under 1,500 mg a day.",
           "Potassium: 3,500 to 5,000 mg a day, preferably from food.",
           "Weight: at least 5 percent loss if overweight.",
-          "Numbers that require a clinician: your potassium intake if you have chronic kidney disease or take an ACE inhibitor, an ARB, spironolactone, or a potassium-sparing diuretic (serum potassium must be monitored and the app suppresses the target); your sodium intake if you have severe orthostatic hypotension; and, per Phase 1, any sodium number at all if a high-sodium condition such as POTS is also present. Blood pressure targets themselves come from your clinician, not this app."
+          "Numbers that need your doctor: your potassium intake if you have chronic kidney disease or take an ACE inhibitor, an ARB, spironolactone, or a potassium-sparing water pill (your blood potassium must be checked, and the app sets no potassium target); your sodium intake if you have severe orthostatic hypotension (you get very dizzy or faint when you stand up); and any sodium number at all if you also have a condition treated with extra salt, such as POTS (postural orthostatic tachycardia syndrome, where the heart races when you stand up). Blood pressure targets themselves come from your clinician, not this app."
         ]
       },
       {
@@ -203,7 +203,7 @@
         "paragraphs": [
           "No phases, no modes. One medication question at onboarding: do you take an ACE inhibitor, ARB, spironolactone, or a potassium-sparing diuretic? A yes suppresses the potassium target and the salt-substitute note, and the app says why.",
           "Hard conflicts: chronic kidney disease (non-dialysis) and dialysis. The kidney module wins on potassium; the hypertension potassium target is suppressed with a visible notice. The sodium ceiling is the same in both, so it stays.",
-          "Compatible modules: type 2 diabetes, heart-healthy, and MASLD (DASH and Mediterranean satisfy all of them) and heart failure (same sodium ceiling, same DASH pattern; heart failure does not push the 1,500 mg ideal).",
+          "Works alongside: type 2 diabetes, heart-healthy, and MASLD (DASH and Mediterranean satisfy all of them) and heart failure (same sodium ceiling, same DASH pattern; heart failure does not push the 1,500 mg ideal).",
           "The sodium and potassium numbers are summed from the food database by grams, never estimated from text. Rotisserie chicken, canned goods, bread, and sauces are where the sodium hides, and the app counts them."
         ]
       }
@@ -323,7 +323,7 @@
         "heading": "How this app applies it",
         "paragraphs": [
           "No phases, no modes, no medication questions. Saturated fat and trans fat are summed from the food database by grams. Soluble fiber is a target the planner tries to reach.",
-          "Compatible modules: type 2 diabetes, hypertension, and MASLD. The Mediterranean pattern satisfies all of them.",
+          "Works alongside: type 2 diabetes, hypertension, and MASLD. The Mediterranean pattern satisfies all of them.",
           "Soft conflicts: the low-histamine trial (MCAS) excludes nuts, fish, tomatoes, citrus, olive oil, and legumes, which are the backbone of this pattern; the app time-limits that trial and asks you to acknowledge the overlap. Kidney stones share high-oxalate foods (nuts, spinach, beets) with this list; the fix is pairing them with calcium in the same meal, not removing them. Gastroparesis texture rules win over nuts and whole grains, with fiber then coming from soluble, cooked, or blended sources. Low-carb or ketogenic eating is allowed, but the saturated fat limit still applies: a low-carb diet built on processed meat and butter is not heart-healthy."
         ]
       }
@@ -446,7 +446,7 @@
         "paragraphs": [
           "No phases, no modes. The gluten rules are hard: no setting, preference, or acknowledgment can override them. The ingredient screener uses a maintained hidden-gluten dictionary with exact matching. Anything it does not recognize is reported as not recognized, never assumed safe.",
           "Certified gluten-free oats are allowed by default with a toggle to exclude them. Regular oats are always excluded.",
-          "Compatible modules: low FODMAP (the FODMAP wheat restriction is about fructans, not gluten; certified gluten-free oats are low FODMAP in limited portions), pregnancy (celiac rules stay on), and iron-deficiency anemia (celiac disease is a common hidden cause; if iron deficiency is selected without celiac, the app mentions screening).",
+          "Works alongside: low FODMAP (its wheat limit is about fructans, a kind of fiber, not gluten; certified gluten-free oats are low FODMAP in small portions), pregnancy (celiac rules stay on), and iron-deficiency anemia (celiac disease is a common hidden cause of low iron; if iron deficiency is on your list without celiac disease, the app suggests asking about a celiac test).",
           "Caregiver mode lets an adult manage a child's celiac and allergen rules under the same hard-exclusion logic."
         ]
       }
@@ -622,7 +622,7 @@
       {
         "heading": "What this condition is",
         "paragraphs": [
-          "Irritable bowel syndrome (IBS) is a disorder of how the gut and brain communicate, producing abdominal pain with bloating, diarrhea, constipation, or both, without visible damage on testing. FODMAPs are short-chain carbohydrates that are poorly absorbed in the small intestine and fermented by gut bacteria: oligosaccharides (fructans and galacto-oligosaccharides in wheat, rye, onion, garlic, and legumes), disaccharides (lactose), monosaccharides (excess fructose in honey, apples, mango, and high-fructose corn syrup), and polyols (sorbitol and mannitol in stone fruits and sugar-free gum). In people with IBS, the gas and water they draw into the gut trigger symptoms."
+          "Irritable bowel syndrome (IBS) is a disorder of how the gut and brain communicate, producing abdominal pain with bloating, diarrhea, constipation, or both, without visible damage on testing. FODMAPs are sugars and fibers (short-chain carbohydrates) that the small intestine absorbs poorly and gut bacteria ferment. There are four kinds: fructans and galacto-oligosaccharides (in wheat, rye, onion, garlic, and legumes), lactose (milk sugar), excess fructose (in honey, apples, mango, and high-fructose corn syrup), and the sugar alcohols sorbitol and mannitol (in stone fruits and sugar-free gum). In people with IBS, the gas and water they draw into the gut trigger symptoms."
         ]
       },
       {
@@ -760,7 +760,7 @@
       {
         "heading": "What the evidence says",
         "paragraphs": [
-          "The evidence rating for this module is LIMITED. It rests on expert consensus and one 2025 professional-society practice update, with little controlled trial evidence. The governing sources are the AGA Clinical Practice Update on GI manifestations and autonomic or immune dysfunction in hypermobile Ehlers-Danlos syndrome (Aziz et al., 2025), which covers MCAS and POTS in that context and issues Best Practice Advice statements rather than graded recommendations; two reviews of the histamine intolerance literature (Comas-Baste et al., 2020; Evidence for Dietary Management of Histamine Intolerance, 2025); the Swiss Interest Group Histamine Intolerance (SIGHI) food compatibility list, which is widely used but not peer-reviewed; the Valent diagnostic criteria; and the 2017 German guideline on adverse reactions to ingested histamine (Reese et al.).",
+          "The evidence rating for this module is LIMITED. It rests on expert consensus and one 2025 professional-society practice update, with little controlled trial evidence. The governing sources start with the American Gastroenterological Association (AGA) Clinical Practice Update on GI manifestations and autonomic or immune dysfunction in hypermobile Ehlers-Danlos syndrome (Aziz et al., 2025). That update covers MCAS and POTS in that setting and gives Best Practice Advice statements rather than graded recommendations. The others are two reviews of the histamine intolerance literature (Comas-Baste et al., 2020; Evidence for Dietary Management of Histamine Intolerance, 2025); the Swiss Interest Group Histamine Intolerance (SIGHI) food compatibility list, which is widely used but not peer-reviewed; the Valent diagnostic criteria; and the 2017 German guideline on adverse reactions to ingested histamine (Reese et al.).",
           "The strongest professional-society language available is the 2025 AGA update, which says that low-histamine, low-FODMAP, gluten-free, and dairy-free elimination diets can be considered for GI symptoms when MCAS is suspected, delivered with nutrition counseling to avoid the harms of restrictive eating. That is permissive language, not a recommendation.",
           "Only one systematic review has examined restrictive low-histamine diets in mastocytosis, and it found no clinical trial evidence of a histamine-release mechanism in foods; the support is in vitro and animal data. Food histamine content varies enormously by freshness, storage, fermentation, and cooking method, and published food lists disagree with each other."
         ]
@@ -777,7 +777,7 @@
       {
         "heading": "What to limit or avoid",
         "paragraphs": [
-          "During the 4 to 6 week trial, the app steers away from foods tagged high-histamine, fermented, or aged, and from alcohol: aged cheeses, cured and processed meats, fermented foods (sauerkraut, kimchi, kombucha, soy sauce, vinegar), shellfish, canned and smoked fish, leftovers more than a day old, and the commonly reported triggers listed above (tomatoes, spinach, citrus, chocolate, nuts, spicy foods, food additives).",
+          "During the 4 to 6 week trial, the app steers you away from foods marked high in histamine, fermented, or aged, and from alcohol. That means aged cheeses, cured and processed meats, shellfish, canned and smoked fish, and leftovers more than a day old. It also means fermented foods (sauerkraut, kimchi, kombucha, soy sauce, and vinegar, except distilled white and apple cider vinegar) and the commonly reported triggers listed above (tomatoes, spinach, citrus, chocolate, nuts, spicy foods, food additives).",
           "All of these are soft rules, and the app labels them may-strength on purpose. They are patient-reported and clinician-observed patterns, not trial-confirmed, and the published lists disagree. Nothing in this module is a hard, allergen-style block.",
           "After the trial, foods come back one at a time. The must-strength rule in this module is reintroduction: the trial ends, and you test what you removed.",
           "Not part of this module at all: DAO enzyme supplements, and foods promoted as mast cell stabilizers (quercetin, luteolin, high-dose vitamin C). The evidence is preclinical and Phase 1 classed those claims as supplement marketing."
@@ -1176,7 +1176,7 @@
       {
         "heading": "How this app applies it",
         "paragraphs": [
-          "No phases, no modes. This module carries an information rule pointing confirmed allergy to Food allergies, a soft avoid rule for preference soy avoidance that you can override at any time, a hidden-soy information note, and a configurable rule for refined soybean oil and soy lecithin that defaults to exclude when the soy allergen is selected.",
+          "No phases, no modes. A soy allergy is handled under Food allergies, not here. This module is for avoiding soy by choice: the app warns you about soy, and you decide. It also notes where soy hides. Refined soybean oil and soy lecithin are left out when you have a soy allergy; you can allow them on the Allergies step if your allergist says they are safe for you.",
           "Soft conflict with vegetarian and vegan preferences: soy avoidance narrows the plant-protein base, so the planner surfaces the alternatives listed above rather than leaving a gap."
         ]
       }
@@ -2357,7 +2357,7 @@
         "heading": "Numbers that matter",
         "paragraphs": [
           "Sodium: under 2,300 mg a day. Fluid: 1.5 to 2 L (about 50 to 68 fl oz) a day only when your clinician tells you to restrict. The app never sets a fluid limit; if you have been told to restrict, enter the number your cardiologist gave you and turn on the advanced heart failure flag.",
-          "Potassium: no target is set. Whether you should eat more or less depends on your medications and blood tests, so the app suppresses potassium encouragement once you report a diuretic, ACE inhibitor, ARB, spironolactone or another MRA, or a potassium-sparing diuretic, and reminds you that your potassium should be monitored."
+          "Potassium: no target is set. Whether you should eat more or less depends on your medications and blood tests, so once you tell the app you take a water pill (diuretic), an ACE inhibitor, an ARB, spironolactone or a similar medicine (an MRA), or a potassium-sparing water pill, it stops encouraging potassium (with high blood pressure also on your list, that condition's potassium target is set aside) and reminds you to have your blood potassium checked."
         ]
       },
       {
@@ -2377,7 +2377,7 @@
       {
         "heading": "How this app applies it",
         "paragraphs": [
-          "Sodium under 2,300 mg is applied as a Tier 1 limit. The fluid rule appears only when you set the 'told by your cardiologist to restrict fluids' flag, and then only with the number you enter; the app never generates one. DASH foods are preferred. The medication question about diuretics, ACE inhibitors, ARBs, and MRAs suppresses potassium encouragement and adds a monitoring reminder.",
+          "Sodium under 2,300 mg is applied as a Tier 1 limit. The fluid rule appears only when you set the 'told by your cardiologist to restrict fluids' flag, and then only with the number you enter; the app never generates one. DASH foods are preferred. The medicine question about water pills (diuretics), ACE inhibitors, ARBs, and MRAs turns off potassium encouragement and adds a reminder to have your blood potassium checked.",
           "Conflicts: with chronic kidney disease, any potassium encouragement is suppressed because CKD potassium is set by labs. With hypertension the sodium ceiling and DASH pattern match, and heart failure does not push the 1,500 mg ideal. With dialysis, both modules carry clinician-set fluid limits and your clinicians reconcile them."
         ]
       }
@@ -4165,7 +4165,7 @@
         "heading": "How this app applies it",
         "paragraphs": [
           "The app shows carbohydrate grams on every food and recipe and scores recipes toward the Mediterranean, DASH, and plant-forward pattern shared with the type 2 module. Sugar-sweetened beverages are flagged except in the context of treating a low. The hypoglycemia rule and the low-carb caution appear as must-read notices.",
-          "Two medication questions shape the module: \"Do you use insulin?\" turns on hypoglycemia awareness in meal notes, and \"Do you take an SGLT2 inhibitor?\" adds a ketoacidosis caution to any low-carbohydrate choice. Selecting the low-carb or ketogenic pattern with type 1 is a hard conflict that waits for clinician sign-off. Time-restricted eating with type 1 is the same. Celiac disease and type 2 modules coexist without conflict.",
+          "Two medicine questions shape this plan: a yes to \"Do you use insulin?\" adds a reminder to watch for low blood sugar (hypoglycemia), and a yes to \"Do you take an SGLT2 inhibitor?\" adds a caution that low-carb eating with that medicine can lead to ketoacidosis (a dangerous build-up of acid in the blood). Selecting the low-carb or ketogenic pattern with type 1 is a hard conflict that waits for clinician sign-off. Time-restricted eating with type 1 is the same. Celiac disease and type 2 modules coexist without conflict.",
           "Insulin dosing is listed in the app's data as a Tier 2 item that is never applied: the app has no field for a ratio or a dose and never computes one."
         ]
       }

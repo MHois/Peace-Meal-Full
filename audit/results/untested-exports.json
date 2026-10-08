@@ -1,0 +1,948 @@
+{
+ "exported": 136,
+ "untested": 57,
+ "list": [
+  "src/engine/checker.js: verdictFrom",
+  "src/engine/crypto.js: cryptoAvailable",
+  "src/engine/crypto.js: fingerprintOf",
+  "src/engine/crypto.js: passphraseKey",
+  "src/engine/crypto.js: shortId",
+  "src/engine/cuisine.js: annotateCuisines",
+  "src/engine/dictionary.js: normalizeText",
+  "src/engine/dictionary.js: segmentText",
+  "src/engine/dictionary.js: segmentTextRaw",
+  "src/engine/dictionary.js: isNoiseOnly",
+  "src/engine/dietlists.js: dietAvoidNormalize",
+  "src/engine/dietlists.js: avoidExampleFor",
+  "src/engine/dietlists.js: strictCheckText",
+  "src/engine/dietlists.js: portionCheck",
+  "src/engine/dietlists.js: portionCheckText",
+  "src/engine/dietlists.js: familyLabel",
+  "src/engine/grocery.js: groceryTextKey",
+  "src/engine/household.js: ensureHousehold",
+  "src/engine/household.js: isRostered",
+  "src/engine/household.js: seatingKey",
+  "src/engine/household.js: makeSeatingCache",
+  "src/engine/household.js: householdCandidates",
+  "src/engine/nutrition.js: emptyTotals",
+  "src/engine/nutrition.js: nutrientsForGrams",
+  "src/engine/nutrition.js: addTotals",
+  "src/engine/nutrition.js: scaleTotals",
+  "src/engine/nutrition.js: derived",
+  "src/engine/nutrition.js: compareToPlan",
+  "src/engine/plan.js: tier2ParamFor",
+  "src/engine/plan.js: normalizeConditions",
+  "src/engine/plan.js: labelNutrient",
+  "src/engine/planner.js: isSnackSlot",
+  "src/engine/planner.js: cautionWhy",
+  "src/engine/planner.js: plannerHasLimits",
+  "src/engine/planner.js: summarizeCheck",
+  "src/engine/report.js: eatenBetween",
+  "src/engine/screen.js: scoreScoff",
+  "src/engine/spice.js: spicePreference",
+  "src/engine/spice.js: spiceResetCache",
+  "src/engine/sync.js: loadDeviceIdentity",
+  "src/engine/sync.js: ensureDeviceIdentity",
+  "src/engine/sync.js: forgetDeviceIdentity",
+  "src/engine/sync.js: getDb",
+  "src/engine/sync.js: registerDevice",
+  "src/engine/sync.js: readOwner",
+  "src/engine/sync.js: claimOwner",
+  "src/engine/sync.js: isOwner",
+  "src/engine/sync.js: publishPerson",
+  "src/engine/sync.js: removePerson",
+  "src/engine/sync.js: listDirectory",
+  "src/engine/sync.js: openPerson",
+  "src/engine/sync.js: sendShare",
+  "src/engine/sync.js: listSharesForMe",
+  "src/engine/sync.js: openShare",
+  "src/engine/sync.js: listDevices",
+  "src/engine/sync.js: sealOwnerBackup",
+  "src/engine/sync.js: restoreOwnerBackup"
+ ],
+ "all": [
+  {
+   "file": "src/engine/checker.js",
+   "name": "planRestricts",
+   "tests": [
+    "audit-2026-09.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/checker.js",
+   "name": "verdictFrom",
+   "tests": []
+  },
+  {
+   "file": "src/engine/checker.js",
+   "name": "checkText",
+   "tests": [
+    "audit-2026-09.test.mjs",
+    "checker.test.mjs",
+    "owner-answers-2026-09.test.mjs",
+    "owner-requests-2026-09-30.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/checker.js",
+   "name": "otherAllergies",
+   "tests": [
+    "owner-requests-2026-09-30.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/checker.js",
+   "name": "matchOtherAllergies",
+   "tests": [
+    "owner-requests-2026-09-30.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/checker.js",
+   "name": "checkFood",
+   "tests": [
+    "audit-2026-09.test.mjs",
+    "owner-requests-2026-09-30.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/checker.js",
+   "name": "checkRecipe",
+   "tests": [
+    "audit-2026-09.test.mjs",
+    "checker.test.mjs",
+    "dietlists.test.mjs",
+    "owner-answers-2026-09.test.mjs",
+    "owner-requests-2026-09-30.test.mjs",
+    "swaps.test.mjs",
+    "va-recipes.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/crypto.js",
+   "name": "cryptoAvailable",
+   "tests": []
+  },
+  {
+   "file": "src/engine/crypto.js",
+   "name": "generateDeviceKey",
+   "tests": [
+    "crypto.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/crypto.js",
+   "name": "fingerprintOf",
+   "tests": []
+  },
+  {
+   "file": "src/engine/crypto.js",
+   "name": "newContentKey",
+   "tests": [
+    "crypto.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/crypto.js",
+   "name": "encryptJson",
+   "tests": [
+    "crypto.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/crypto.js",
+   "name": "decryptJson",
+   "tests": [
+    "crypto.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/crypto.js",
+   "name": "wrapKeyFor",
+   "tests": [
+    "crypto.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/crypto.js",
+   "name": "unwrapKey",
+   "tests": [
+    "crypto.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/crypto.js",
+   "name": "passphraseKey",
+   "tests": []
+  },
+  {
+   "file": "src/engine/crypto.js",
+   "name": "sealWithPassphrase",
+   "tests": [
+    "crypto.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/crypto.js",
+   "name": "openWithPassphrase",
+   "tests": [
+    "crypto.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/crypto.js",
+   "name": "shortId",
+   "tests": []
+  },
+  {
+   "file": "src/engine/cuisine.js",
+   "name": "classifyCuisine",
+   "tests": [
+    "cuisine.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/cuisine.js",
+   "name": "annotateCuisines",
+   "tests": []
+  },
+  {
+   "file": "src/engine/cuisine.js",
+   "name": "cuisineSkipped",
+   "tests": [
+    "cuisine.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/cuisine.js",
+   "name": "cuisineLoved",
+   "tests": [
+    "cuisine.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/dictionary.js",
+   "name": "normalizeText",
+   "tests": []
+  },
+  {
+   "file": "src/engine/dictionary.js",
+   "name": "segmentText",
+   "tests": []
+  },
+  {
+   "file": "src/engine/dictionary.js",
+   "name": "segmentTextRaw",
+   "tests": []
+  },
+  {
+   "file": "src/engine/dictionary.js",
+   "name": "isNoiseOnly",
+   "tests": []
+  },
+  {
+   "file": "src/engine/dictionary.js",
+   "name": "buildMatcher",
+   "tests": [
+    "audit-2026-09.test.mjs",
+    "checker.test.mjs",
+    "cuisine.test.mjs",
+    "dietlists.test.mjs",
+    "household.test.mjs",
+    "owner-answers-2026-09.test.mjs",
+    "owner-requests-2026-09-30.test.mjs",
+    "planner.test.mjs",
+    "swaps.test.mjs",
+    "va-recipes.test.mjs",
+    "wave3.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "name": "dietNormalize",
+   "tests": [
+    "dietlists.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "name": "strictFamiliesFor",
+   "tests": [
+    "dietlists.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "name": "strictOn",
+   "tests": [
+    "dietlists.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "name": "dietAvoidNormalize",
+   "tests": []
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "name": "avoidExampleFor",
+   "tests": []
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "name": "approvedFor",
+   "tests": [
+    "audit-2026-09.test.mjs",
+    "dietlists.test.mjs",
+    "owner-answers-2026-09.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "name": "strictCheck",
+   "tests": [
+    "dietlists.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "name": "strictCheckText",
+   "tests": []
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "name": "listItemsFor",
+   "tests": [
+    "audit-2026-09.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "name": "portionCheck",
+   "tests": []
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "name": "portionCheckText",
+   "tests": []
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "name": "portionCheckPieces",
+   "tests": [
+    "owner-answers-2026-09.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "name": "familyLabel",
+   "tests": []
+  },
+  {
+   "file": "src/engine/energy.js",
+   "name": "restingEnergy",
+   "tests": [
+    "wave2.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/energy.js",
+   "name": "energyTarget",
+   "tests": [
+    "goals.test.mjs",
+    "wave2.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/energy.js",
+   "name": "activityCalories",
+   "tests": [
+    "wave2.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/energy.js",
+   "name": "lbToKg",
+   "tests": [
+    "wave2.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/energy.js",
+   "name": "kgToLb",
+   "tests": [
+    "wave2.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/energy.js",
+   "name": "ftInToCm",
+   "tests": [
+    "wave2.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/energy.js",
+   "name": "cmToFtIn",
+   "tests": [
+    "wave2.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/grocery.js",
+   "name": "buildGroceryList",
+   "tests": [
+    "planner.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/grocery.js",
+   "name": "groceryTextKey",
+   "tests": []
+  },
+  {
+   "file": "src/engine/grocery.js",
+   "name": "applyAdjustments",
+   "tests": [
+    "wave2.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/grocery.js",
+   "name": "diffGrocery",
+   "tests": [
+    "wave2.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/grocery.js",
+   "name": "groceryText",
+   "tests": [
+    "wave2.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/group.js",
+   "name": "buildGroupPlan",
+   "tests": [
+    "wave2.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/group.js",
+   "name": "exportPersonForSharing",
+   "tests": [
+    "owner-requests-2026-09-30.test.mjs",
+    "wave2.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/household.js",
+   "name": "householdDefaults",
+   "tests": [
+    "household.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/household.js",
+   "name": "ensureHousehold",
+   "tests": []
+  },
+  {
+   "file": "src/engine/household.js",
+   "name": "householdSlots",
+   "tests": [
+    "household.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/household.js",
+   "name": "cookFor",
+   "tests": [
+    "household.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/household.js",
+   "name": "rosterFor",
+   "tests": [
+    "household.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/household.js",
+   "name": "isRostered",
+   "tests": []
+  },
+  {
+   "file": "src/engine/household.js",
+   "name": "seatingKey",
+   "tests": []
+  },
+  {
+   "file": "src/engine/household.js",
+   "name": "seatingPerson",
+   "tests": [
+    "household.test.mjs",
+    "owner-requests-2026-09-30.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/household.js",
+   "name": "makeSeatingCache",
+   "tests": []
+  },
+  {
+   "file": "src/engine/household.js",
+   "name": "buildHouseholdWeek",
+   "tests": [
+    "household.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/household.js",
+   "name": "householdRepick",
+   "tests": [
+    "household.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/household.js",
+   "name": "householdCandidates",
+   "tests": []
+  },
+  {
+   "file": "src/engine/nutrition.js",
+   "name": "emptyTotals",
+   "tests": []
+  },
+  {
+   "file": "src/engine/nutrition.js",
+   "name": "nutrientsForGrams",
+   "tests": []
+  },
+  {
+   "file": "src/engine/nutrition.js",
+   "name": "addTotals",
+   "tests": []
+  },
+  {
+   "file": "src/engine/nutrition.js",
+   "name": "scaleTotals",
+   "tests": []
+  },
+  {
+   "file": "src/engine/nutrition.js",
+   "name": "recipeTotals",
+   "tests": [
+    "checker.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/nutrition.js",
+   "name": "derived",
+   "tests": []
+  },
+  {
+   "file": "src/engine/nutrition.js",
+   "name": "round",
+   "tests": [
+    "checker.test.mjs",
+    "crypto.test.mjs",
+    "wave2.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/nutrition.js",
+   "name": "compareToPlan",
+   "tests": []
+  },
+  {
+   "file": "src/engine/pantry.js",
+   "name": "matchRecipes",
+   "tests": [
+    "wave2.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/plan.js",
+   "name": "tier2ParamFor",
+   "tests": []
+  },
+  {
+   "file": "src/engine/plan.js",
+   "name": "normalizeConditions",
+   "tests": []
+  },
+  {
+   "file": "src/engine/plan.js",
+   "name": "buildPlan",
+   "tests": [
+    "audit-2026-09.test.mjs",
+    "dietlists.test.mjs",
+    "final-review-2026-09.test.mjs",
+    "goals.test.mjs",
+    "owner-answers-2026-09.test.mjs",
+    "owner-requests-2026-09-30.test.mjs",
+    "plan.test.mjs",
+    "swaps.test.mjs",
+    "va-recipes.test.mjs",
+    "wave2.test.mjs",
+    "wave3.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/plan.js",
+   "name": "labelNutrient",
+   "tests": []
+  },
+  {
+   "file": "src/engine/planner.js",
+   "name": "isSnackSlot",
+   "tests": []
+  },
+  {
+   "file": "src/engine/planner.js",
+   "name": "snackPlan",
+   "tests": [
+    "goals.test.mjs",
+    "wave3.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/planner.js",
+   "name": "daySlots",
+   "tests": [
+    "wave3.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/planner.js",
+   "name": "minutesAvailable",
+   "tests": [
+    "wave3.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/planner.js",
+   "name": "canCookOn",
+   "tests": [
+    "wave3.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/planner.js",
+   "name": "mealFits",
+   "tests": [
+    "wave3.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/planner.js",
+   "name": "scoreRecipe",
+   "tests": [
+    "wave3.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/planner.js",
+   "name": "cautionWhy",
+   "tests": []
+  },
+  {
+   "file": "src/engine/planner.js",
+   "name": "planNoLeftovers",
+   "tests": [
+    "swaps.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/planner.js",
+   "name": "isComponent",
+   "tests": [
+    "wave3.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/planner.js",
+   "name": "plannerHasNutrition",
+   "tests": [
+    "owner-answers-2026-09.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/planner.js",
+   "name": "plannerHasLimits",
+   "tests": []
+  },
+  {
+   "file": "src/engine/planner.js",
+   "name": "plannerMayUse",
+   "tests": [
+    "owner-answers-2026-09.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/planner.js",
+   "name": "buildWeekPlan",
+   "tests": [
+    "audit-2026-09.test.mjs",
+    "cuisine.test.mjs",
+    "owner-answers-2026-09.test.mjs",
+    "planner.test.mjs",
+    "swaps.test.mjs",
+    "wave3.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/planner.js",
+   "name": "repickSlots",
+   "tests": [
+    "wave3.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/planner.js",
+   "name": "recipeMeal",
+   "tests": [
+    "wave3.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/planner.js",
+   "name": "summarizeCheck",
+   "tests": []
+  },
+  {
+   "file": "src/engine/report.js",
+   "name": "symptomEpisodes",
+   "tests": [
+    "report.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/report.js",
+   "name": "eatenBetween",
+   "tests": []
+  },
+  {
+   "file": "src/engine/report.js",
+   "name": "eatenBefore",
+   "tests": [
+    "report.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/report.js",
+   "name": "foodsBeforeSymptoms",
+   "tests": [
+    "report.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/report.js",
+   "name": "weightTrend",
+   "tests": [
+    "report.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/report.js",
+   "name": "reportDays",
+   "tests": [
+    "report.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/report.js",
+   "name": "intakeAverages",
+   "tests": [
+    "report.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/report.js",
+   "name": "unintendedWeightLoss",
+   "tests": [
+    "report.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/screen.js",
+   "name": "scoreScoff",
+   "tests": []
+  },
+  {
+   "file": "src/engine/search.js",
+   "name": "searchRank",
+   "tests": [
+    "owner-requests-2026-09-30.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/search.js",
+   "name": "searchGroupMatches",
+   "tests": [
+    "owner-requests-2026-09-30.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/spice.js",
+   "name": "recipeHeat",
+   "tests": [
+    "household.test.mjs",
+    "wave3.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/spice.js",
+   "name": "spicePreference",
+   "tests": []
+  },
+  {
+   "file": "src/engine/spice.js",
+   "name": "spiceSkipped",
+   "tests": [
+    "wave3.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/spice.js",
+   "name": "spiceBonus",
+   "tests": [
+    "wave3.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/spice.js",
+   "name": "spiceResetCache",
+   "tests": []
+  },
+  {
+   "file": "src/engine/swaps.js",
+   "name": "familiesFor",
+   "tests": [
+    "swaps.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/swaps.js",
+   "name": "adaptedApplies",
+   "tests": [
+    "swaps.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/swaps.js",
+   "name": "adaptRecipe",
+   "tests": [
+    "audit-2026-09.test.mjs",
+    "swaps.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/swaps.js",
+   "name": "buildAdaptedRecipes",
+   "tests": [
+    "swaps.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/sync.js",
+   "name": "loadDeviceIdentity",
+   "tests": []
+  },
+  {
+   "file": "src/engine/sync.js",
+   "name": "ensureDeviceIdentity",
+   "tests": []
+  },
+  {
+   "file": "src/engine/sync.js",
+   "name": "forgetDeviceIdentity",
+   "tests": []
+  },
+  {
+   "file": "src/engine/sync.js",
+   "name": "getDb",
+   "tests": []
+  },
+  {
+   "file": "src/engine/sync.js",
+   "name": "registerDevice",
+   "tests": []
+  },
+  {
+   "file": "src/engine/sync.js",
+   "name": "readOwner",
+   "tests": []
+  },
+  {
+   "file": "src/engine/sync.js",
+   "name": "claimOwner",
+   "tests": []
+  },
+  {
+   "file": "src/engine/sync.js",
+   "name": "isOwner",
+   "tests": []
+  },
+  {
+   "file": "src/engine/sync.js",
+   "name": "publishPerson",
+   "tests": []
+  },
+  {
+   "file": "src/engine/sync.js",
+   "name": "removePerson",
+   "tests": []
+  },
+  {
+   "file": "src/engine/sync.js",
+   "name": "listDirectory",
+   "tests": []
+  },
+  {
+   "file": "src/engine/sync.js",
+   "name": "openPerson",
+   "tests": []
+  },
+  {
+   "file": "src/engine/sync.js",
+   "name": "buildSharePackage",
+   "tests": [
+    "crypto.test.mjs"
+   ]
+  },
+  {
+   "file": "src/engine/sync.js",
+   "name": "sendShare",
+   "tests": []
+  },
+  {
+   "file": "src/engine/sync.js",
+   "name": "listSharesForMe",
+   "tests": []
+  },
+  {
+   "file": "src/engine/sync.js",
+   "name": "openShare",
+   "tests": []
+  },
+  {
+   "file": "src/engine/sync.js",
+   "name": "listDevices",
+   "tests": []
+  },
+  {
+   "file": "src/engine/sync.js",
+   "name": "sealOwnerBackup",
+   "tests": []
+  },
+  {
+   "file": "src/engine/sync.js",
+   "name": "restoreOwnerBackup",
+   "tests": []
+  }
+ ]
+}

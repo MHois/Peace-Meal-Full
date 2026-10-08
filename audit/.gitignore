@@ -1,0 +1,5 @@
+node_modules/
+results/tmp/
+.stryker-tmp/
+reports/
+results/stryker/

@@ -86,7 +86,7 @@ export function todayMealStackingHTML(plan, list) {
 function todayAmountText(entry) {
   if (entry.kind === 'recipe') return `${uiFmtNum(entry.amount, 2)} serving${Number(entry.amount) === 1 ? '' : 's'}`;
   if (entry.kind === 'food') return entry.unit && entry.unit !== 'g' ? `${uiFmtNum(entry.amount, 2)} x ${entry.unit} (${uiFmtNum(entry.grams)} g)` : `${uiFmtNum(entry.grams)} g`;
-  return 'as entered';
+  return '';   // a typed entry has no amount of its own (it read "as entered")
 }
 
 // Adds a diary entry for a person and persists it. Used here and by the Week screen's "Add to Today".
@@ -208,7 +208,7 @@ function todayTargetCardHTML(person, plan, totals, exerciseKcal) {
     const diff = target - totals.kcal;
     const goalWord = info.manual ? 'your own number' : person.goals.calorie_target === 'loss' ? `weight loss, ${person.goals.deficit || 500} kcal a day below maintenance` : person.goals.calorie_target === 'gain' ? `weight gain, ${person.goals.surplus || 400} kcal a day above maintenance` : 'maintain weight';
     head = `<div class="ring-row">${uiRing({ value: totals.kcal, max: target, kind: 'kcal', unit: 'kcal', label: `of ${uiFmtNum(target)} target`, size: 148 })}
-      <div class="ring-text"><p><strong>${diff >= 0 ? `${uiFmtNum(diff)} kcal under` : `${uiFmtNum(-diff)} kcal over`}</strong> the estimated target of ${uiFmtNum(target)} kcal ${uiChip('estimate', 'neutral')}</p>
+      <div class="ring-text"><p><strong>${diff >= 0 ? `${uiFmtNum(diff)} kcal under` : `${uiFmtNum(-diff)} kcal over`}</strong> the estimated target ${uiChip('estimate', 'neutral')}</p>
       <p class="small muted">Goal: ${goalWord}.${count && exerciseKcal ? ` Includes ${uiFmtNum(exerciseKcal)} kcal of exercise added back today.` : ''} An estimate from a published equation, not a measurement; appetite, sleep, and how you feel matter too.</p>
       <details><summary>How this was estimated</summary><ul class="small">${(info.notes || []).map(n => `<li>${uiEsc(n)}</li>`).join('')}<li>Resting energy: Mifflin-St Jeor equation (Mifflin 1990), multiplied by an activity factor. Errors of 10 percent or more for an individual are normal.</li></ul></details>
       <div><button class="btn small" type="button" id="today-set-target">${uiIcon('edit')}Change target</button></div></div></div>`;
@@ -227,8 +227,8 @@ function todayMealsHTML(person, plan, entries) {
           const n = e.nutrients || {};
           return `<div class="entry-row">
             ${e.kind !== 'custom' ? `<button class="heart-btn ${fav ? 'on' : ''}" type="button" data-fav="${e.kind}:${uiEsc(e.ref)}" aria-pressed="${fav}" aria-label="${fav ? 'Remove from favorites' : 'Add to favorites'}">${uiIcon('heart', { fill: fav })}</button>` : '<span style="width:40px;flex:none"></span>'}
-            <div class="entry-main"><div><span class="entry-name">${uiEsc(todayEntryName(e))}</span> <span class="entry-amount">${uiEsc(todayAmountText(e))}</span></div><div class="entry-kcal">${e.nutrients ? uiFmtNum(n.kcal) + ' kcal' : 'no numbers'}</div>
-              <div class="entry-nut">${uiFmtNum(n.protein_g, 1)} g protein · ${uiFmtNum(n.carb_g, 1)} g carb · ${uiFmtNum(n.fiber_g, 1)} g fiber · ${uiFmtNum(n.sodium_mg)} mg sodium · ${uiFmtNum(n.satfat_g, 1)} g sat fat</div>
+            <div class="entry-main"><div><span class="entry-name">${uiEsc(todayEntryName(e))}</span> <span class="entry-amount">${uiEsc(todayAmountText(e))}</span></div><div class="entry-kcal">${e.nutrients ? uiFmtNum(n.kcal) + ' kcal' : ''}</div>
+              ${e.nutrients ? `<div class="entry-nut">${uiFmtNum(n.protein_g, 1)} g protein · ${uiFmtNum(n.carb_g, 1)} g carb · ${uiFmtNum(n.fiber_g, 1)} g fiber · ${uiFmtNum(n.sodium_mg)} mg sodium · ${uiFmtNum(n.satfat_g, 1)} g sat fat</div>` : '<div class="entry-nut">No nutrition numbers</div>'}
               ${e.note ? `<div class="entry-note">${uiEsc(e.note)}</div>` : ''}</div>
             <div class="entry-acts"><button class="btn small icon" type="button" data-edit="${uiEsc(e.id)}" aria-label="Edit ${uiEsc(todayEntryName(e))}" title="Edit">${uiIcon('edit')}</button><button class="btn small icon danger" type="button" data-remove="${uiEsc(e.id)}" aria-label="Remove ${uiEsc(todayEntryName(e))}" title="Remove">${uiIcon('trash')}</button></div>
           </div>`;
@@ -244,8 +244,8 @@ function todayWeightHTML(person) {
   const chart = all.filter(w => w.date >= cutoff);
   return `<section class="card" aria-labelledby="today-weight-h"><h2 id="today-weight-h">Weight</h2>
     <div class="today-row"><div class="field"><label for="today-weight-lb">Weight (lb)</label><input id="today-weight-lb" type="number" inputmode="decimal" min="50" max="900" step="0.1" placeholder="${all.length ? kgToLb(all[all.length - 1].kg) : '150'}"></div><button class="btn primary" type="button" id="today-log-weight">${uiIcon('scale')}Log weight</button></div>
-    <p class="small muted">Stored in kilograms for the rules that need it; shown in pounds. Logging a weight updates the calorie estimate.</p>
-    ${chart.length ? todayChartSVG(chart) : '<p class="small muted">No weights in the last 90 days to chart.</p>'}
+    <p class="small muted">Logging a weight updates the calorie estimate.</p>
+    ${chart.length > 1 ? todayChartSVG(chart) : chart.length ? '<p class="small muted">The chart starts with your second weight.</p>' : '<p class="small muted">No weights in the last 90 days to chart.</p>'}
     ${all.length ? `<div class="btn-row"><button class="btn" type="button" data-weight-history>${uiIcon('list')}Weight history (${all.length} entr${all.length === 1 ? 'y' : 'ies'})</button></div>` : ''}
   </section>`;
 }
@@ -283,33 +283,58 @@ function todaySymptomName(id) {
   return s ? s.label : String(id).replace(/^custom:/, '').replace(/_/g, ' ');
 }
 
+// Food and symptom history (owner item 5, October 8, 2026): "Show 30 earlier days" seemed to do nothing. It did add the
+// days, but the sheet jumped back to the top, where the newest days had not changed, and when nothing was logged before
+// the first 30 days nothing changed at all. Now the sheet says which days it shows, keeps the place after loading
+// earlier days (the first newly shown day comes into view and takes focus), says so when those 30 days are empty, and
+// offers no more when everything logged is already on screen.
+function todayHistoryEarliest(person) {
+  const p = uiState.profile || {};
+  const dates = [...(p.diary || []), ...(p.log || []), ...(p.weights || [])].filter(e => e && e.person === person.id && e.date).map(e => e.date).sort();
+  return dates[0] || null;
+}
+export function todayFoodHistoryHTML(person, dayCount, earliest = todayHistoryEarliest(person)) {
+  const to = uiIsoDate(uiToday()), from = todayShiftDate(to, -(dayCount - 1));
+  const days = reportDays({ diary: uiState.profile.diary, log: uiState.profile.log, weights: uiState.profile.weights, personId: person.id, from, to, onlySymptomDays: false }).reverse();
+  const fine = new Set((uiState.profile.log || []).filter(e => e.person === person.id && e.fine && e.date >= from && e.date <= to).map(e => e.date));
+  for (const date of fine) if (!days.some(d => d.date === date)) days.push({ date, eaten: [], episodes: [], weight: null });
+  days.sort((a, b) => b.date.localeCompare(a.date));
+  const dayHTML = d => {
+    const known = new Set(TODAY_HISTORY_MEALS.map(([k]) => k));
+    const groups = [...TODAY_HISTORY_MEALS, ...[...new Set(d.eaten.map(e => e.meal).filter(x => !known.has(x)))].map(k => [k, String(k).replace(/-/g, ' ')])];
+    const meals = groups.map(([k, label]) => { const es = d.eaten.filter(e => e.meal === k); return es.length ? `<li><strong>${uiEsc(label[0].toUpperCase() + label.slice(1))}:</strong> ${es.map(e => { const kcal = todayNutrientsFor(e).kcal; return uiEsc(todayEntryName(e)) + (kcal ? ` <span class="muted small">${uiFmtNum(kcal)} kcal</span>` : ''); }).join(', ')}</li>` : ''; }).join('');
+    const sym = d.episodes.map(e => Object.entries(e.symptoms).filter(([, v]) => Number(v) > 0).map(([k, v]) => `${uiEsc(todaySymptomName(k))} (${TODAY_SEVERITY[Number(v)] || v})`).join(', ')).filter(Boolean);
+    return `<div class="card history-day" data-date="${uiEsc(d.date)}" tabindex="-1"><h3>${uiEsc(uiFmtDate(d.date))}</h3>
+      ${sym.length ? `<p><strong>Symptoms:</strong> ${sym.join('; ')}</p>` : fine.has(d.date) ? '<p><strong>Feeling fine</strong></p>' : ''}
+      ${meals ? `<ul class="small history-meals">${meals}</ul>` : '<p class="small muted">No food logged.</p>'}
+      ${d.weight ? `<p class="small">Weight: ${kgToLb(d.weight.kg)} lb</p>` : ''}</div>`;
+  };
+  const more = !!(earliest && earliest < from);
+  return `<p class="history-range"><strong>The last ${dayCount} days</strong>, from ${uiEsc(uiFmtDate(from))} to today. Newest first.</p>
+    ${days.length ? `<div class="stack">${days.map(dayHTML).join('')}</div>` : uiEmptyState(`Nothing logged in the last ${dayCount} days.`, '', 'list')}
+    <p class="small muted history-status" role="status" aria-live="polite"></p>
+    <div class="btn-row">${more ? '<button class="btn" type="button" data-history-more>Show 30 earlier days</button>' : `<p class="small muted history-end">${earliest ? `That is everything: nothing was logged before ${uiEsc(uiFmtDate(earliest))}.` : 'Nothing logged yet.'}</p>`}<a class="btn" href="#/report">Open the doctor report</a></div>`;
+}
+
 export function todayFoodHistoryModal(person) {
   const state = { days: 30 };
-  const draw = () => {
-    const to = uiIsoDate(uiToday()), from = todayShiftDate(to, -(state.days - 1));
-    const days = reportDays({ diary: uiState.profile.diary, log: uiState.profile.log, weights: uiState.profile.weights, personId: person.id, from, to, onlySymptomDays: false }).reverse();
-    const fine = new Set((uiState.profile.log || []).filter(e => e.person === person.id && e.fine && e.date >= from && e.date <= to).map(e => e.date));
-    for (const date of fine) if (!days.some(d => d.date === date)) days.push({ date, eaten: [], episodes: [], weight: null });
-    days.sort((a, b) => b.date.localeCompare(a.date));
-    const dayHTML = d => {
-      const known = new Set(TODAY_HISTORY_MEALS.map(([k]) => k));
-      const groups = [...TODAY_HISTORY_MEALS, ...[...new Set(d.eaten.map(e => e.meal).filter(x => !known.has(x)))].map(k => [k, String(k).replace(/-/g, ' ')])];
-      const meals = groups.map(([k, label]) => { const es = d.eaten.filter(e => e.meal === k); return es.length ? `<li><strong>${uiEsc(label[0].toUpperCase() + label.slice(1))}:</strong> ${es.map(e => { const kcal = todayNutrientsFor(e).kcal; return uiEsc(todayEntryName(e)) + (kcal ? ` <span class="muted small">${uiFmtNum(kcal)} kcal</span>` : ''); }).join(', ')}</li>` : ''; }).join('');
-      const sym = d.episodes.map(e => Object.entries(e.symptoms).filter(([, v]) => Number(v) > 0).map(([k, v]) => `${uiEsc(todaySymptomName(k))} (${TODAY_SEVERITY[Number(v)] || v})`).join(', ')).filter(Boolean);
-      return `<div class="card history-day"><h3>${uiEsc(uiFmtDate(d.date))}</h3>
-        ${sym.length ? `<p><strong>Symptoms:</strong> ${sym.join('; ')}</p>` : fine.has(d.date) ? '<p><strong>Feeling fine</strong></p>' : ''}
-        ${meals ? `<ul class="small history-meals">${meals}</ul>` : '<p class="small muted">No food logged.</p>'}
-        ${d.weight ? `<p class="small">Weight: ${kgToLb(d.weight.kg)} lb</p>` : ''}</div>`;
-    };
-    return `<p class="small muted">What you ate and how you felt, newest first, for the last ${state.days} days. The Report turns the same diary into a printout for your doctor.</p>
-      ${days.length ? `<div class="stack">${days.map(dayHTML).join('')}</div>` : uiEmptyState(`Nothing logged in the last ${state.days} days.`, '', 'list')}
-      <div class="btn-row"><button class="btn" type="button" data-history-more>Show 30 earlier days</button><a class="btn" href="#/report">Open the Report</a></div>`;
-  };
-  const m = uiModal(draw(), { title: 'Food and symptom history' });
+  const earliest = todayHistoryEarliest(person);
+  const m = uiModal(todayFoodHistoryHTML(person, state.days, earliest), { title: 'Food and symptom history' });
   if (!m) return;
   const bind = () => {
     const more = m.el.querySelector('[data-history-more]');
-    if (more) more.addEventListener('click', () => { state.days += 30; m.el.innerHTML = draw(); bind(); });
+    if (more) more.addEventListener('click', () => {
+      const before = new Set([...m.el.querySelectorAll('.history-day')].map(d => d.dataset.date));
+      state.days += 30;
+      m.el.innerHTML = todayFoodHistoryHTML(person, state.days, earliest);
+      bind();
+      const added = [...m.el.querySelectorAll('.history-day')].filter(d => !before.has(d.dataset.date));
+      const status = m.el.querySelector('.history-status');
+      if (status) status.textContent = added.length ? `${added.length} more day${added.length === 1 ? '' : 's'} with entries.` : 'Nothing was logged in those 30 days.';
+      // Keep the place: the first newly shown day, or (when those days were empty) the buttons just below.
+      const target = added[0] || m.el.querySelector('.history-status');
+      if (target) { target.scrollIntoView({ block: 'start' }); if (added[0]) added[0].focus({ preventScroll: true }); }
+    });
     const rep = m.el.querySelector('a[href="#/report"]');
     if (rep) rep.addEventListener('click', () => { if (uiState.modalClose) uiState.modalClose({ silent: true }); });
   };
@@ -445,7 +470,6 @@ function todayBind(root, person, plan, date) {
   }));
   root.querySelector('#today-count-ex').addEventListener('change', e => {
     person.goals.count_exercise = e.target.checked;
-    e.target.setAttribute('aria-checked', String(e.target.checked));
     uiPersist(); uiState.rerender();
   });
 }

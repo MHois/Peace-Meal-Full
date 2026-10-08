@@ -1,0 +1,62 @@
+{
+ "options": 53,
+ "plans": 1419,
+ "throws": [],
+ "contradictionsWithoutNotice": [],
+ "tier2Unvalued": [],
+ "tier2NoNotice": [],
+ "pregnancy": [
+  {
+   "option": "ibs-low-fodmap",
+   "stillActive": false,
+   "notices": [
+    "module-disabled"
+   ]
+  },
+  {
+   "option": "mcas",
+   "stillActive": false,
+   "notices": [
+    "module-disabled"
+   ]
+  },
+  {
+   "option": "weight-management-glp1/loss",
+   "stillActive": false,
+   "notices": [
+    "module-disabled"
+   ]
+  },
+  {
+   "option": "weight-management-glp1/glp1",
+   "stillActive": false,
+   "notices": [
+    "module-disabled"
+   ]
+  },
+  {
+   "option": "low-carb-ketogenic/low-carb",
+   "stillActive": false,
+   "notices": [
+    "module-disabled"
+   ]
+  },
+  {
+   "option": "low-carb-ketogenic/ketogenic",
+   "stillActive": false,
+   "notices": [
+    "module-disabled"
+   ]
+  },
+  {
+   "option": "time-restricted-eating",
+   "stillActive": true,
+   "notices": []
+  }
+ ],
+ "pregnancyKeeps": {
+  "celiac": true,
+  "glutenAvoidHard": true,
+  "peanutAvoidHard": true
+ }
+}

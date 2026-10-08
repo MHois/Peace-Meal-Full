@@ -1118,5 +1118,45 @@
     "year": 2026,
     "url": "https://www.coeliac.org.uk/living-with-coeliac-disease/food-and-drink/cooking-at-home/hints-and-tips-for-cooking-at-home/",
     "note": "Quoted for stock cubes and soups as gluten sources: \"look out for it in foods such as soups, sauces, stock cubes, ready meals and processed foods like sausages ... it is important to check labels of products such as stock cubes and seasonings ... to ensure they don't contain gluten.\""
+  },
+  {
+    "id": "fda-allergen-qa-2025",
+    "citation": "FDA. Questions and Answers Regarding Food Allergens, Including the Food Allergen Labeling Requirements of the Federal Food, Drug, and Cosmetic Act (Edition 5): Guidance for Industry. January 2025.",
+    "type": "regulation",
+    "year": 2025,
+    "url": "https://www.fda.gov/media/117410/download",
+    "note": "Read 2026-09-30. Question 9: \"Highly refined oils, which are intended to signify refined, bleached, deodorized oils, that are derived from major food allergens are exempt from section 403(w) of the FD&C Act.\" Question 8: \"Besides highly refined oils, which are specifically exempt from the definition of major food allergen, food ingredients (including flavors, colors, and incidental additives) derived from a major food allergen are not subject to the food allergen labeling requirements of the FD&C Act when the food ingredients do not contain a protein derived from the major food allergen (section 201(qq)(2) of the FD&C Act).\""
+  },
+  {
+    "id": "fda-food-allergies-page",
+    "citation": "FDA. Food Allergies (web page on food allergen labeling). Content current as of 03/11/2026.",
+    "type": "regulation",
+    "year": 2026,
+    "url": "https://www.fda.gov/food/nutrition-food-labeling-and-critical-foods/food-allergies",
+    "note": "Read 2026-09-30: \"The name of the food source of a major food allergen must appear: In parentheses following the name of the ingredient. Examples: lecithin (soy), flour (wheat), and whey (milk) - OR - Immediately after or next to the list of ingredients in a contains statement. Example: Contains wheat, milk, and soy.\""
+  },
+  {
+    "id": "cfr-166-110",
+    "citation": "21 CFR 166.110, Margarine (standard of identity).",
+    "type": "regulation",
+    "year": 2024,
+    "url": "https://www.govinfo.gov/content/pkg/CFR-2024-title21-vol2/xml/CFR-2024-title21-vol2-sec166-110.xml",
+    "note": "Read 2026-09-30. Paragraph (a)(2): \"(i) Water and/or milk and/or milk products. (ii) Suitable edible protein including, but not limited to, the liquid, condensed, or dry form of whey, whey modified by the reduction of lactose and/or minerals, nonlactose containing whey components, albumin, casein, caseinate, vegetable proteins, or soy protein isolate\". Paragraph (b)(4): \"Emulsifiers.\""
+  },
+  {
+    "id": "usda-fdc",
+    "citation": "U.S. Department of Agriculture, Agricultural Research Service. FoodData Central. SR Legacy (April 2018), FNDDS 2021-2023 (October 2024 release), Foundation Foods, and Branded Foods.",
+    "type": "other",
+    "year": 2024,
+    "url": "https://fdc.nal.usda.gov/",
+    "note": "Food-composition measurement, not dietary advice (README, Sources policy). Read 2026-09-30: sodium (nutrient 1093) per 100 g for the records listed in docs/VERIFY-log.md, fix pass F4. Branded Foods values are the manufacturer's label, used only for words with no SR Legacy, FNDDS, or Foundation record."
+  },
+  {
+    "id": "uk-fop-2016",
+    "citation": "Department of Health, Food Standards Agency, and devolved administrations in Scotland, Northern Ireland and Wales. Guide to creating a front of pack (FoP) nutrition label for pre-packed products sold through retail outlets. Updated November 2016.",
+    "type": "regulation",
+    "year": 2016,
+    "url": "https://assets.publishing.service.gov.uk/media/5a80cd03ed915d74e33fc7c5/FoP_Nutrition_labelling_UK_guidance.pdf",
+    "note": "Read 2026-09-30. Annex 3, Table 2, \"Criteria for 100g of food\": \"Salt ≤ 0.3g/100g > 0.3g to ≤ 1.5g/100g >1.5g/100g >1.8g/portion\" (LOW, MEDIUM, HIGH). Footnote 5: \"Sodium from all sources expressed as salt. This can be determined by multiplying the sodium content of a food by 2.5.\" Used only as the cutoff for the sodium-high tag (more than 600 mg sodium per 100 g); it is a labelling criterion, not dietary advice."
   }
 ]

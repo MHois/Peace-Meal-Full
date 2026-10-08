@@ -33,10 +33,11 @@ function checkLoadOcr() {
   });
   return checkOcrLoading;
 }
-// One pinned file, after the browser has checked its hash.
-async function checkPinnedFetch(f) {
+// One pinned file, after the browser has checked its hash. P3-11 (audit of September 30, 2026): the browser's own error
+// is kept as the cause, so the console says why (offline, blocked, or a changed file). Exported for the P3-11 test.
+export async function checkPinnedFetch(f) {
   let res;
-  try { res = await fetch(f.url, { integrity: f.integrity, mode: 'cors', credentials: 'omit' }); } catch (e) { throw new Error('a reader file did not load or did not match its hash'); }
+  try { res = await fetch(f.url, { integrity: f.integrity, mode: 'cors', credentials: 'omit' }); } catch (e) { throw new Error('a reader file did not load or did not match its hash', { cause: e }); }
   if (!res.ok) throw new Error('a reader file did not load (' + res.status + ')');
   return res;
 }
@@ -81,10 +82,10 @@ export function renderCheckScreen(root) {
   const plan = uiPlanFor(person);
   const foods = uiState.data.foods;
   root.innerHTML = `
-    ${uiPageHeader('Check a food', `Two questions, both answered against ${uiEsc(person.name)}'s plan. Anything the app does not recognize is reported, never assumed safe.`)}
+    ${uiPageHeader('Check a food', `Answers are checked against ${uiEsc(person.name)}'s plan. Anything the app does not recognize is reported, never assumed safe.`)}
     <div class="card">
       <h2>Is this product okay?</h2>
-      <p class="small muted">Copy the ingredient list off a package (or type a dish) and get a plain answer: fine, caution, or no, and why.</p>
+      <p class="small muted">Paste the ingredient list from a package, or type a dish, for a plain answer: fine, caution, or no, and why.</p>
       <label for="check-text" class="visually-hidden">Ingredient list</label>
       <textarea id="check-text" placeholder="Ingredients: water, roasted peanuts, salt, natural flavors">${uiEsc(checkLastText)}</textarea>
       <div class="btn-row"><button class="btn primary" type="button" id="check-run">${uiIcon('check')}Check this list</button><label class="btn" for="check-photo">${uiIcon('search')}Photo of the label</label><input id="check-photo" type="file" accept="image/*" capture="environment" class="visually-hidden"><button class="btn" type="button" id="check-clear">Clear</button></div>
@@ -92,7 +93,7 @@ export function renderCheckScreen(root) {
     </div>
     <div class="card">
       <h2>What is in one food?</h2>
-      <p class="small muted">Look up a single food to see its numbers (sodium, potassium, sugar, fiber, and whatever else ${uiEsc(person.name)}'s plan watches) and whether it fits. Same ${uiFmtNum(foods.length)} foods Today uses when you log a meal.</p>
+      <p class="small muted">Look up one food to see its numbers (sodium, potassium, sugar, fiber, and whatever else the plan watches) and whether it fits.</p>
       <label for="check-search" class="visually-hidden">Look up a food</label>
       <input id="check-search" type="search" placeholder="Type a food: banana, Greek yogurt, canned tuna" autocomplete="off" ${foods.length ? '' : 'disabled'}>
       <ul class="search-results" id="check-results" hidden></ul>
@@ -126,6 +127,7 @@ export function renderCheckScreen(root) {
       status.textContent = 'Text added. Look it over, fix anything the camera misread, then tap Check this list.';
       ta.focus();
     } catch (err) {
+      console.warn('The label reader did not load:', err, err && err.cause);   // P3-11: the cause, for whoever looks at the console
       status.textContent = uiState.lite
         ? 'The label reader could not load. It needs Wi-Fi the first time. Or use your phone camera to copy the text, then paste it above.'
         : 'The label reader could not load here (' + (err && err.message ? err.message : 'no internet or blocked') + '). It needs the internet the first time. Or use your phone camera to copy the text, then paste it above.';
@@ -152,12 +154,17 @@ export function renderCheckScreen(root) {
   });
 }
 
+// What a stop and a caution mean, on the Why sheet (P2-10: plain words; the app's own terms were "hard stop",
+// "soft rule", and "acknowledgment").
+export const CHECK_WHY_HARD = 'Never eat this. No preference, mode, or "I understand" tap turns this rule off.';
+export const CHECK_WHY_SOFT = 'A caution, not a stop. You decide.';
+
 // Wires the "why" links (rules behind a match) to a sheet.
 export function checkBindResult(root) {
   root.querySelectorAll('[data-why]').forEach(b => b.addEventListener('click', () => {
     const h = checkLastRules[Number(b.dataset.why)];
     if (!h) return;
-    uiModal(`<p class="small muted">${h.hard ? 'A hard stop: never overridden by a preference, a mode, or an acknowledgment.' : 'A soft rule: shown as a caution; your call.'}</p>${uiRulesList(h.rules)}`, { title: `Why: ${h.label}` });
+    uiModal(`<p class="small muted">${uiEsc(h.note ? h.note : h.hard ? CHECK_WHY_HARD : CHECK_WHY_SOFT)}</p>${uiRulesList(h.rules)}`, { title: `Why: ${h.label}` });
   }));
 }
 
@@ -165,15 +172,20 @@ export function checkBindResult(root) {
 // term that can hide something, or not on a strict approved list) is a "not sure", never a pass.
 export function checkHeadline(r, lite = false) {
   const verdict = r.verdict;
-  if (verdict === 'fail') return 'Contains a hard exclusion.';
+  // P2-10: the stop in plain words ("Contains a hard exclusion." until September 30, 2026).
+  if (verdict === 'fail') return lite ? 'No. This has something you must not eat.' : 'No: contains something this plan never allows.';
   const known = (r.notApproved || []).filter(n => n.why === 'avoid' || n.why === 'reacts').length;   // on a leave-out list: a known problem
   const unsure = (r.unrecognized || []).length || (r.unknownRisk || []).length || (r.notApproved || []).length - known;
-  const flagged = (r.hits || []).length || (r.termHits || []).length || (r.verifyLabel || []).length || known;
+  const salt = (r.sodium || [])[0];
+  const flagged = (r.hits || []).length || (r.termHits || []).length || (r.verifyLabel || []).length || known || !!salt;
   if (verdict === 'caution') {
     if (unsure && !flagged) return lite ? 'Not sure. Ask before eating.' : 'Not sure: the app cannot say these ingredients are safe for this plan.';
     if ((r.smallServe || []).length && !flagged && !(r.exceeds || []).length) return 'Several small-serve foods together. Keep each one to a small serve.';
-    const onlyLabel = (r.verifyLabel || []).length && !(r.hits || []).length && !(r.termHits || []).length && !known;
+    const onlyLabel = (r.verifyLabel || []).length && !(r.hits || []).length && !(r.termHits || []).length && !known && !salt;
     if (onlyLabel) { const what = [...new Set(r.verifyLabel.map(v => String(v.label || v.tag).toLowerCase()))].join(' and '); return lite ? `Check the label for ${what} before eating.` : `Check the label for ${what}.`; }
+    // P1-3: salt is the only flag. A food from the food list has its USDA number; a label has its Nutrition Facts panel.
+    const onlySalt = salt && !(r.hits || []).length && !(r.termHits || []).length && !(r.verifyLabel || []).length && !known && !unsure && !(r.smallServe || []).length;
+    if (onlySalt) return salt.per100g != null ? `High in salt: ${uiFmtNum(salt.per100g)} mg sodium per 100 g.` : `${salt.terms.length ? 'High in salt.' : 'Can be high in salt.'} Check the sodium on the label.`;
     return 'Something here needs a look.';
   }
   if ((r.unrecognized || []).length) return 'Nothing is restricted in this plan, so nothing is flagged. Some words were not recognized.';
@@ -185,7 +197,8 @@ export function checkResultHTML(r, person, plan, opts = {}) {
   const unrec = r.unrecognized || [];
   const notApproved = r.notApproved || [];
   const headline = checkHeadline(r, !!uiState.lite);
-  checkLastRules = r.hits.slice();
+  // The Why buttons: the avoid rules behind each match, then the sodium limit's own rules (P1-3).
+  checkLastRules = [...r.hits, ...(r.sodium || []).map(s => ({ label: 'Sodium limit', hard: false, note: 'The plan\'s daily sodium limit. Salt is not a stop: check how much sodium is in it and count it toward the day.', rules: s.rules }))];
   const famLabel = f => { const l = uiState.data['diet-lists'] && uiState.data['diet-lists'].families && uiState.data['diet-lists'].families[f]; return l ? l.label : f; };
   return `
     <div class="verdict ${verdict}" role="${verdict === 'fail' ? 'alert' : 'status'}">
@@ -202,11 +215,17 @@ export function checkResultHTML(r, person, plan, opts = {}) {
     ${(r.termHits || []).some(t => t.allergy) ? uiSection('On your allergy list', `<div class="list boxed">${r.termHits.filter(t => t.allergy).map(t => `<div class="match-row">${uiChip('hard stop', 'stop')}<div><strong>${uiEsc(t.term)}</strong><div class="match-term">other allergy you listed on the Allergies step</div></div><span></span></div>`).join('')}</div>`, { id: 'check-allergy-terms-h' }) : ''}
     ${(r.termHits || []).some(t => !t.allergy) ? uiSection('Your avoid words', `<div class="list boxed">${r.termHits.filter(t => !t.allergy).map(t => `<div class="match-row">${uiChip('soft', 'caution')}<div><strong>${uiEsc(t.term)}</strong><div class="match-term">personal preference</div></div><span></span></div>`).join('')}</div>`, { id: 'check-terms-h' }) : ''}
     ${(r.verifyLabel || []).length ? uiSection('Check the label', `<div class="list boxed">${r.verifyLabel.map(v => `<div class="rule"><strong>${uiEsc(v.label)}</strong> <span class="small muted">can be in: ${(v.terms || []).map(uiEsc).join(', ')}</span><div class="small">Often, but not always. The package's ingredient list and allergy statement settle it.</div></div>`).join('')}</div>`, { id: 'check-label-h' }) : ''}
+    ${(r.sodium || []).length ? uiSection('Salt', `<div class="list boxed">${r.sodium.map((s, i) => `<div class="match-row">
+        ${uiChip('soft', 'caution')}
+        <div>${s.terms.length ? `<strong>High in salt:</strong> ${s.terms.map(uiEsc).join(', ')}` : ''}${s.terms.length && s.mayTerms.length ? '<br>' : ''}${s.mayTerms.length ? `<strong>Can be high in salt:</strong> ${s.mayTerms.map(uiEsc).join(', ')}` : ''}
+        <div class="small">${s.per100g != null ? `USDA lists ${uiFmtNum(s.per100g)} mg sodium per 100 g. This plan's sodium limit is ${uiFmtNum(s.limit)} mg a day; the table below shows how much a portion adds.` : `This plan's sodium limit is ${uiFmtNum(s.limit)} mg a day. Look at the sodium on the Nutrition Facts label and count it toward the day.`}</div></div>
+        <button class="btn link small" type="button" data-why="${r.hits.length + i}">Why (${s.rules.length})</button>
+      </div>`).join('')}</div>`, { id: 'check-salt-h' }) : ''}
     ${(r.unknownRisk || []).length ? uiSection('Terms that can hide something', `<div class="list boxed">${r.unknownRisk.map(u => `<div class="rule"><strong>${uiEsc(u.term)}</strong>${u.segment ? ` <span class="small muted">in "${uiEsc(u.segment)}"</span>` : ''}<div class="small">${uiEsc(u.note || 'This term does not say what it contains.')}</div></div>`).join('')}</div>`, { id: 'check-hide-h' }) : ''}
     ${(r.notes || []).length ? uiSection('Portion notes', `<div class="list boxed">${r.notes.map(n => `<div class="rule"><strong>${uiEsc(n.term)}</strong><div class="small">${uiEsc(n.note)}</div></div>`).join('')}</div>`, { id: 'check-notes-h' }) : ''}
     ${uiPortionsHTML(r) ? uiSection('Portions on the approved list', uiPortionsHTML(r), { id: 'check-portions-h' }) : ''}
     ${notApproved.length ? uiSection('Not on the approved list', `<ul class="small">${notApproved.map(n => `<li>${uiEsc(n.label)} <span class="muted">(${uiEsc(famLabel(n.family))}${n.why === 'avoid' ? `: on the list's leave-out foods${n.avoid ? ', ' + uiEsc(n.avoid) : ''}` : n.why === 'reacts' ? ': you marked it as a food you react to' : ''})</span></li>`).join('')}</ul><p class="small muted">Strict mode is on, so only foods on the approved list, or on your own tolerated list, count as safe.</p>`, { id: 'check-strict-h' }) : ''}
-    ${unrec.length ? uiSection('Not recognized', `<ul class="small">${unrec.map(u => `<li>${uiEsc(u)}</li>`).join('')}</ul><p class="small muted">The app does not assume these are safe. Check the label yourself or add the term to the dictionary.</p>`, { id: 'check-unrec-h' }) : ''}
+    ${unrec.length ? uiSection('Not recognized', `<ul class="small">${unrec.map(u => { const p = (r.unplaced || []).find(x => x.segment === u); return `<li>${uiEsc(u)}${p ? ` <span class="muted">(the word${p.words.length > 1 ? 's' : ''} ${p.words.map(w => '"' + uiEsc(w) + '"').join(', ')})</span>` : ''}</li>`; }).join('')}</ul><p class="small muted">The app does not assume these are safe. Check the label yourself or add the term to the dictionary.</p>`, { id: 'check-unrec-h' }) : ''}
     ${(r.preferHits || []).length ? uiSection('Fits a preference', `<div class="chip-cloud">${r.preferHits.map(p => uiChip(p.label, 'pass')).join('')}</div>`, { id: 'check-prefer-h' }) : ''}
     ${opts.food ? checkFoodNutrientsHTML(opts.food, plan) : ''}
     ${opts.food && opts.food.tags && opts.food.tags.length ? `<p class="small muted">Tags: ${opts.food.tags.map(t => `<code>${uiEsc(t)}</code>`).join(' ')}</p>` : ''}

@@ -113,6 +113,15 @@ No recipe was dropped for a missing food: every food needed was already in `data
 
 About 0.27 MB of each increase is the two fonts, which ship inside the file since September 30 (question 14).
 
+**Updated October 1, 2026 (audit P3-8).** The "Now" column above was measured before the VA recipes were merged. Rebuilt and measured again:
+
+| Build | After the VA recipes were merged (commit 2a88538) | October 1, after the fix pass of the September 30 audit |
+|---|---|---|
+| Full, `dist/nutrition-app.html` | 12,103,383 bytes | 12,219,162 bytes |
+| Lite, `dist/peace-meal-lite.html` | 5,847,582 bytes | 5,963,172 bytes |
+
+Each build gained 115,779 bytes in the fix pass: 70,251 of app code, 2,631 of styles, and the rest data (dictionary, conditions, articles, diet lists). In the full build the USDA recipes moved out of the launch data into a block read only when that collection is on (P2-14): launch data fell from 7,139,294 to 4,728,330 bytes, and the blocks read later grew by the same amount.
+
 Reading the Wikibooks recipes on the first search did not change the full file's size (the recipes are still inside it, 5 KB larger from escaping), but in desktop Chromium the first screen appeared in 645 ms instead of 821 ms (median of 9 cold starts) and memory after launch fell from 37.5 MB to 25.0 MB. Phones are slower, so the saving there is larger in seconds. Reading the recipes when needed takes about 14 ms.
 
 Bundling instead of downloading, if wanted later: the photo reader's pinned files are 11,020,226 bytes with both recognition cores (7,081,949 with the fast one only, which older iPhones cannot run). Inlined as text they grow by a third, about 14.7 MB, which would take the lite file from about 5.0 MB to about 19.7 MB. The Google fonts are 198,972 bytes (about 0.27 MB inlined); they were bundled on September 30. The photo reader was not.

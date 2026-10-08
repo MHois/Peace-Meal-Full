@@ -168,6 +168,12 @@ export function cautionWhy(check) {
   const terms = (check.termHits || []).filter(t => !t.hard).map(t => t.term || t.label).filter(Boolean);
   if (terms.length) parts.push('avoid word: ' + [...new Set(terms)].join(', '));
   if (check.verifyLabel && check.verifyLabel.length) parts.push('label must be checked for ' + check.verifyLabel.map(v => v.label).join(', '));
+  // P1-3: salt while the plan has a daily sodium limit: a food or label high in salt, or a recipe line whose sodium is not counted.
+  if (check.sodium && check.sodium.length) {
+    const s = check.sodium[0], limit = Number(s.limit).toLocaleString('en-US');
+    parts.push(s.uncounted ? 'salty ingredients with no sodium numbers (' + [...s.terms, ...s.mayTerms].slice(0, 3).join(', ') + '): the app cannot count this toward the ' + limit + ' mg a day sodium limit'
+      : (s.terms.length ? 'high in salt' : 'can be high in salt') + ': count its sodium toward the ' + limit + ' mg a day limit');
+  }
   if (check.exceeds && check.exceeds.length) parts.push('one serving is over the daily ' + check.exceeds.map(e => String(e.nutrient).replace(/_(mg|mcg|g|kcal)$/, '').replace(/_/g, ' ')).join(', '));
   if (check.notApproved && check.notApproved.length) parts.push('not on the approved list: ' + [...new Set(check.notApproved.map(n => n.label))].slice(0, 3).join(', ') + (check.notApproved.some(n => n.why === 'reacts') ? ' (you reacted to it)' : ''));
   if (check.smallServe && check.smallServe.length) parts.push('several small serves in one meal: ' + [...new Set(check.smallServe.flatMap(s => s.terms))].join(', '));
@@ -262,7 +268,11 @@ export function buildWeekPlan({ person, plan, recipes, foodsById, matcher, start
       const per = recipeTotals(pick.r, foodsById).perServing;
       dayTotals = addTotals(dayTotals, per);
       const batch = !noLeftovers && !snack && canCook && (cooking.leftovers !== 'poor') && (pick.r.leftovers === 'good' || pick.r.leftovers === 'ok');
-      const servingsMade = batch ? Math.max(pick.r.servings || eaters, eaters * 2) : eaters;
+      // A batch is never more than the table can eat inside the three-day leftover window (UX pass, October 2026): one
+      // person was told to make all 16 servings of a 16-serving recipe. Up to 6 servings a person when leftovers are
+      // welcome, 4 otherwise; the recipe and the grocery list scale to that.
+      const maxBatch = eaters * (cooking.leftovers === 'good' ? 6 : 4);
+      const servingsMade = batch ? Math.min(Math.max(pick.r.servings || eaters, eaters * 2), maxBatch) : eaters;
       if (servingsMade > eaters) leftovers.push({ recipe: pick.r, servings: servingsMade - eaters, madeOn: i });
       for (const ing of pick.r.ingredients || []) if (ing.food) weekFoods.add(ing.food);
       dayMeals.push({ slot, recipe: pick.r.id, name: pick.r.name, source: pick.r.assembly_only ? 'assembly' : 'cook', servings: eaters, servingsMade, score: Math.round(pick.score), reasons: pick.reasons, check: summarize(pick.check) });

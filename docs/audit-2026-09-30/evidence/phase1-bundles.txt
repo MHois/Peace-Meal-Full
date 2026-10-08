@@ -1,0 +1,12 @@
+$ node tools/bundle.mjs --lite
+dist/peace-meal-lite.html 5707 KB
+exit code: 0
+
+$ ls -l dist/*.html
+-rw-r--r-- 1 root root 12103383 Sep 30 07:36 dist/nutrition-app.html
+-rw-r--r-- 1 root root  5847582 Sep 30 07:36 dist/peace-meal-lite.html
+
+$ wc -c dist/*.html
+12103383 dist/nutrition-app.html
+ 5847582 dist/peace-meal-lite.html
+17950965 total

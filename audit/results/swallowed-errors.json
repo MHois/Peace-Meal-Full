@@ -1,0 +1,520 @@
+[
+ {
+  "file": "src/app.js",
+  "line": 54,
+  "kind": "silent",
+  "body": "out[n] = appEmptyFor(n); problems.push(`data/${n}.json did not load (${e.message}). Features that need it will be empty.`);",
+  "context": "} catch (e) {"
+ },
+ {
+  "file": "src/app.js",
+  "line": 221,
+  "kind": "shown or returned as an error",
+  "body": "console.error(e); main.innerHTML = `<div class=\"notice block\">${uiIcon('stop', { cls: 'notice-icon' })}<div class=\"notice-head\">Stop</div><d",
+  "context": "} catch (e) {"
+ },
+ {
+  "file": "src/app.js",
+  "line": 298,
+  "kind": "logged",
+  "body": "console.error(e);",
+  "context": "} catch (e) { console.error(e); }"
+ },
+ {
+  "file": "src/app.js",
+  "line": 342,
+  "kind": "silent",
+  "body": "return true;",
+  "context": "} catch { return true; }"
+ },
+ {
+  "file": "src/app.js",
+  "line": 351,
+  "kind": "logged",
+  "body": "console.error(e); list = null;",
+  "context": "try { list = el ? JSON.parse(el.textContent) : null; } catch (e) { console.error(e); list = null; }"
+ },
+ {
+  "file": "src/app.js",
+  "line": 383,
+  "kind": "shown or returned as an error",
+  "body": "console.warn(e); s.db = null; s.identity = null; s.owner = null; s.isOwner = false; uiToast('The shared store could not be reached. Everythi",
+  "context": "} catch (e) {"
+ },
+ {
+  "file": "src/app.js",
+  "line": 495,
+  "kind": "silent",
+  "body": "/* not offered here */",
+  "context": "} catch { /* not offered here */ }"
+ },
+ {
+  "file": "src/store.js",
+  "line": 17,
+  "kind": "silent",
+  "body": "return null;",
+  "context": "function storeLocal() { try { return typeof localStorage !== 'undefined' ? localStorage : null; } catch { return null; } }"
+ },
+ {
+  "file": "src/store.js",
+  "line": 29,
+  "kind": "shown or returned as an error",
+  "body": "return { key: LEGACY_KEYS[0], migrated: false, error: 'storage could not be read: ' + e.message };",
+  "context": "} catch (e) { return { key: LEGACY_KEYS[0], migrated: false, error: 'storage could not be read: ' + e.message }; }"
+ },
+ {
+  "file": "src/store.js",
+  "line": 32,
+  "kind": "silent",
+  "body": "ok = false;",
+  "context": "try { const p = JSON.parse(raw); ok = !!(p && Array.isArray(p.people)); } catch { ok = false; }"
+ },
+ {
+  "file": "src/store.js",
+  "line": 36,
+  "kind": "shown or returned as an error",
+  "body": "try { storage.removeItem(key); } catch { /* nothing more to do */ } return { key: from, migrated: false, from, error: 'the copy could not be",
+  "context": "} catch (e) {"
+ },
+ {
+  "file": "src/store.js",
+  "line": 37,
+  "kind": "silent",
+  "body": "/* nothing more to do */",
+  "context": "try { storage.removeItem(key); } catch { /* nothing more to do */ }"
+ },
+ {
+  "file": "src/store.js",
+  "line": 41,
+  "kind": "silent",
+  "body": "back = null;",
+  "context": "try { back = storage.getItem(key); } catch { back = null; }"
+ },
+ {
+  "file": "src/store.js",
+  "line": 43,
+  "kind": "silent",
+  "body": "/* nothing more to do */",
+  "context": "try { storage.removeItem(key); } catch { /* nothing more to do */ }"
+ },
+ {
+  "file": "src/store.js",
+  "line": 46,
+  "kind": "silent",
+  "body": "/* the copy is verified; the note only stops a cleared build from copying again */",
+  "context": "try { storage.setItem(key + STORE_MIGRATED_SUFFIX, JSON.stringify({ from, at: new Date().toISOString(), chars: raw.length })); } catch { /* the copy is verified"
+ },
+ {
+  "file": "src/store.js",
+  "line": 84,
+  "kind": "silent",
+  "body": "return defaultProfile();",
+  "context": "} catch { return defaultProfile(); }"
+ },
+ {
+  "file": "src/store.js",
+  "line": 108,
+  "kind": "silent",
+  "body": "return false;",
+  "context": "} catch { return false; }"
+ },
+ {
+  "file": "src/store.js",
+  "line": 127,
+  "kind": "silent",
+  "body": "/* ignore */",
+  "context": "try { storage.removeItem(key); } catch { /* ignore */ }"
+ },
+ {
+  "file": "src/store.js",
+  "line": 128,
+  "kind": "silent",
+  "body": "/* ignore */",
+  "context": "try { if (key === own) storage.setItem(own + STORE_MIGRATED_SUFFIX, JSON.stringify({ cleared: new Date().toISOString() })); } catch { /* ignore */ }"
+ },
+ {
+  "file": "src/store.js",
+  "line": 130,
+  "kind": "silent",
+  "body": "/* ignore */",
+  "context": "try { otherHasOwn = storage.getItem(other) != null || storage.getItem(other + STORE_MIGRATED_SUFFIX) != null; } catch { /* ignore */ }"
+ },
+ {
+  "file": "src/store.js",
+  "line": 131,
+  "kind": "silent",
+  "body": "/* ignore */",
+  "context": "if (otherHasOwn || LEGACY_KEYS.includes(key)) for (const k of LEGACY_KEYS) { try { storage.removeItem(k); } catch { /* ignore */ } }"
+ },
+ {
+  "file": "src/engine/sync.js",
+  "line": 15,
+  "kind": "silent",
+  "body": "return null;",
+  "context": "try { const raw = localStorage.getItem(LS_KEY); return raw ? JSON.parse(raw) : null; } catch { return null; }"
+ },
+ {
+  "file": "src/engine/sync.js",
+  "line": 23,
+  "kind": "silent",
+  "body": "/* ignore */",
+  "context": "try { localStorage.setItem(LS_KEY, JSON.stringify(id)); } catch { /* ignore */ }"
+ },
+ {
+  "file": "src/engine/sync.js",
+  "line": 26,
+  "kind": "silent",
+  "body": "/* ignore */",
+  "context": "export function forgetDeviceIdentity() { try { localStorage.removeItem(LS_KEY); } catch { /* ignore */ } }"
+ },
+ {
+  "file": "src/engine/sync.js",
+  "line": 32,
+  "kind": "silent",
+  "body": "return null;",
+  "context": "} catch { return null; }"
+ },
+ {
+  "file": "src/engine/sync.js",
+  "line": 39,
+  "kind": "silent",
+  "body": "return false;",
+  "context": "try { await db.doc('devices/' + identity.fingerprint).set({ fingerprint: identity.fingerprint, publicJwk: publicPart(identity), name: identity.name || 'Device',"
+ },
+ {
+  "file": "src/engine/sync.js",
+  "line": 44,
+  "kind": "silent",
+  "body": "return null;",
+  "context": "try { const s = await db.doc('meta/owner').get(); return s && s.exists ? s.data() : null; } catch { return null; }"
+ },
+ {
+  "file": "src/engine/sync.js",
+  "line": 50,
+  "kind": "shown or returned as an error",
+  "body": "return { ok: false, reason: e && e.code || 'error' };",
+  "context": "try { await db.doc('meta/owner').set({ fingerprint: identity.fingerprint, publicJwk: publicPart(identity), name: name || identity.name || 'Owner', created: cur "
+ },
+ {
+  "file": "src/engine/sync.js",
+  "line": 70,
+  "kind": "shown or returned as an error",
+  "body": "return { ok: false, reason: e && e.code || 'error' };",
+  "context": "} catch (e) { return { ok: false, reason: e && e.code || 'error' }; }"
+ },
+ {
+  "file": "src/engine/sync.js",
+  "line": 75,
+  "kind": "silent",
+  "body": "return false;",
+  "context": "try { await db.doc('profiles/' + personId).delete(); await db.doc('directory/' + personId).delete(); return true; } catch { return false; }"
+ },
+ {
+  "file": "src/engine/sync.js",
+  "line": 80,
+  "kind": "silent",
+  "body": "return [];",
+  "context": "try { const q = await db.collection('directory').get(); return (q.docs || q).map(d => (typeof d.data === 'function' ? d.data() : d)).filter(Boolean); } catch { "
+ },
+ {
+  "file": "src/engine/sync.js",
+  "line": 95,
+  "kind": "shown or returned as an error",
+  "body": "return { locked: true, personId, error: true };",
+  "context": "} catch { return { locked: true, personId, error: true }; }"
+ },
+ {
+  "file": "src/engine/sync.js",
+  "line": 120,
+  "kind": "shown or returned as an error",
+  "body": "return { ok: false, reason: e && e.code || 'error' };",
+  "context": "try { await db.doc('shares/' + id).set({ id, from: identity.fingerprint, fromName: identity.name || '', to: recipientDevice.fingerprint, personName: person.name"
+ },
+ {
+  "file": "src/engine/sync.js",
+  "line": 128,
+  "kind": "silent",
+  "body": "return [];",
+  "context": "} catch { return []; }"
+ },
+ {
+  "file": "src/engine/sync.js",
+  "line": 131,
+  "kind": "silent",
+  "body": "return null;",
+  "context": "try { const key = await C.unwrapKey(share.key, identity.privateJwk); return await C.decryptJson(key, share.box); } catch { return null; }"
+ },
+ {
+  "file": "src/engine/sync.js",
+  "line": 135,
+  "kind": "silent",
+  "body": "return [];",
+  "context": "try { const q = await db.collection('devices').get(); return (q.docs || q).map(d => (typeof d.data === 'function' ? d.data() : d)).filter(Boolean); } catch { re"
+ },
+ {
+  "file": "src/engine/sync.js",
+  "line": 143,
+  "kind": "silent",
+  "body": "/* ignore */",
+  "context": "try { localStorage.setItem(LS_KEY, JSON.stringify(id)); } catch { /* ignore */ }"
+ },
+ {
+  "file": "src/ui/check.js",
+  "line": 39,
+  "kind": "shown or returned as an error",
+  "body": "throw new Error('a reader file did not load or did not match its hash');",
+  "context": "try { res = await fetch(f.url, { integrity: f.integrity, mode: 'cors', credentials: 'omit' }); } catch (e) { throw new Error('a reader file did not load or did "
+ },
+ {
+  "file": "src/ui/check.js",
+  "line": 44,
+  "kind": "silent",
+  "body": "return false;",
+  "context": "function checkHasSimd() { try { return WebAssembly.validate(new Uint8Array([0, 97, 115, 109, 1, 0, 0, 0, 1, 5, 1, 96, 0, 1, 123, 3, 2, 1, 0, 10, 10, 1, 8, 0, 65"
+ },
+ {
+  "file": "src/ui/check.js",
+  "line": 128,
+  "kind": "shown or returned as an error",
+  "body": "status.textContent = uiState.lite ? 'The label reader could not load. It needs Wi-Fi the first time. Or use your phone camera to copy the te",
+  "context": "} catch (err) {"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 317,
+  "kind": "silent",
+  "body": "/* ignore */",
+  "context": "if (!inHistory) { try { history.pushState({ pmModal: true }, ''); inHistory = true; } catch { /* ignore */ } }"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 323,
+  "kind": "silent",
+  "body": "/* ignore */",
+  "context": "if (inHistory && !o.fromPop && !o.silent) { try { history.back(); } catch { /* ignore */ } }"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 387,
+  "kind": "silent",
+  "body": "return false;",
+  "context": "} catch { return false; }"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 399,
+  "kind": "silent",
+  "body": "return false;",
+  "context": "} catch { return false; }"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 405,
+  "kind": "silent",
+  "body": "/* fall through */",
+  "context": "} catch { /* fall through */ }"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 413,
+  "kind": "silent",
+  "body": "return false;",
+  "context": "} catch { return false; }"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 675,
+  "kind": "silent",
+  "body": "return { theme: 'system', largeText: uiLiteBuild(), largeTextSet: false };",
+  "context": "} catch { return { theme: 'system', largeText: uiLiteBuild(), largeTextSet: false }; }"
+ },
+ {
+  "file": "src/ui/common.js",
+  "line": 678,
+  "kind": "silent",
+  "body": "/* ignore */",
+  "context": "try { localStorage.setItem(UI_PREFS_KEY, JSON.stringify(prefs)); } catch { /* ignore */ }"
+ },
+ {
+  "file": "src/ui/dietlist.js",
+  "line": 118,
+  "kind": "shown or returned as an error",
+  "body": "uiToast('Could not copy on this device. Use Save text instead.');",
+  "context": "root.querySelector('#diet-copy').addEventListener('click', async () => { try { await navigator.clipboard.writeText(dietListText(fam, mine)); uiToast('Copied.');"
+ },
+ {
+  "file": "src/ui/grocery.js",
+  "line": 12,
+  "kind": "silent",
+  "body": "return new Set();",
+  "context": "try { return new Set(JSON.parse(localStorage.getItem(groceryStorageKey(person)) || '[]')); } catch { return new Set(); }"
+ },
+ {
+  "file": "src/ui/grocery.js",
+  "line": 15,
+  "kind": "silent",
+  "body": "/* ignore */",
+  "context": "try { localStorage.setItem(groceryStorageKey(person), JSON.stringify([...set])); } catch { /* ignore */ }"
+ },
+ {
+  "file": "src/ui/grocery.js",
+  "line": 268,
+  "kind": "silent",
+  "body": "if (e && e.name === 'AbortError') return;",
+  "context": "try { await navigator.share({ title: `Grocery list, week of ${week.days[0].date}`, text }); return; } catch (e) { if (e && e.name === 'AbortError') return; }"
+ },
+ {
+  "file": "src/ui/household.js",
+  "line": 285,
+  "kind": "silent",
+  "body": "return uiState.data.recipes;",
+  "context": "try { return uiState.recipesForPlans ? uiState.recipesForPlans(people.map(p => uiPlanFor(p))) : uiState.data.recipes; } catch { return uiState.data.recipes; }"
+ },
+ {
+  "file": "src/ui/install.js",
+  "line": 34,
+  "kind": "silent",
+  "body": "return true;",
+  "context": "try { return !localStorage.getItem(installGuideKey()); } catch { return true; }"
+ },
+ {
+  "file": "src/ui/install.js",
+  "line": 79,
+  "kind": "silent",
+  "body": "/* ignore */",
+  "context": "const close = () => { try { localStorage.setItem(installGuideKey(), new Date().toISOString()); } catch { /* ignore */ } el.remove(); };"
+ },
+ {
+  "file": "src/ui/owner.js",
+  "line": 13,
+  "kind": "silent",
+  "body": "return null;",
+  "context": "} catch { return null; }"
+ },
+ {
+  "file": "src/ui/people.js",
+  "line": 123,
+  "kind": "silent",
+  "body": "return true;",
+  "context": "try { plan = uiPlanFor(person); } catch { return true; }"
+ },
+ {
+  "file": "src/ui/people.js",
+  "line": 438,
+  "kind": "silent",
+  "body": "/* ignore */",
+  "context": "search.addEventListener('input', () => { peopleCondQuery = search.value; const pos = search.selectionStart; peopleRenderStep(container, person, 'conditions', nu"
+ },
+ {
+  "file": "src/ui/people.js",
+  "line": 854,
+  "kind": "shown or returned as an error",
+  "body": "const code = e && e.code; d.status = code === 'not_granted' || code === 'sampling_disabled' ? 'Claude is not allowed for this page. You can ",
+  "context": "} catch (e) {"
+ },
+ {
+  "file": "src/ui/people.js",
+  "line": 1024,
+  "kind": "silent",
+  "body": "plan = null;",
+  "context": "try { plan = uiPlanFor(person); } catch { plan = null; }"
+ },
+ {
+  "file": "src/ui/people.js",
+  "line": 1169,
+  "kind": "silent",
+  "body": "/* cancelled */",
+  "context": "const share = root.querySelector('#inv-share'); if (share) share.addEventListener('click', async () => { try { await navigator.share({ title: subject, text: peo"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 50,
+  "kind": "silent",
+  "body": "return uiState.data.recipes;",
+  "context": "try { const p = uiActivePerson(); const plan = p ? uiPlanFor(p) : null; return plan && uiState.recipesForPlan ? uiState.recipesForPlan(plan) : uiState.data.reci"
+ },
+ {
+  "file": "src/ui/recipes.js",
+  "line": 177,
+  "kind": "silent",
+  "body": "week = null;",
+  "context": "try { week = uiState.data.recipes.length && person && !person.guest && person.id !== 'group' && !component ? weekGet(person, plan) : null; } catch { week = null"
+ },
+ {
+  "file": "src/ui/settings.js",
+  "line": 87,
+  "kind": "silent",
+  "body": "/* ignore */",
+  "context": "try { for (const k of Object.keys(localStorage)) if (k.startsWith('sn-grocery:')) localStorage.removeItem(k); } catch { /* ignore */ }"
+ },
+ {
+  "file": "src/ui/settings.js",
+  "line": 127,
+  "kind": "silent",
+  "body": "/* ignore */",
+  "context": "try { localStorage.setItem('peace-meal:device', JSON.stringify(s.identity)); } catch { /* ignore */ }"
+ },
+ {
+  "file": "src/ui/settings.js",
+  "line": 190,
+  "kind": "shown or returned as an error",
+  "body": "uiToast('That file is not a Peace Meal owner key.'); return;",
+  "context": "try { box = JSON.parse(text); } catch { uiToast('That file is not a Peace Meal owner key.'); return; }"
+ },
+ {
+  "file": "src/ui/settings.js",
+  "line": 201,
+  "kind": "shown or returned as an error",
+  "body": "uiToast('Could not open the backup: wrong passphrase or not an owner key.'); return;",
+  "context": "try { id = await restoreOwnerBackup(box, pass); } catch (e) { uiToast('Could not open the backup: wrong passphrase or not an owner key.'); return; }"
+ },
+ {
+  "file": "src/ui/settings.js",
+  "line": 268,
+  "kind": "silent",
+  "body": "if (e && e.name === 'AbortError') return false; // they closed the share sheet",
+  "context": "} catch (e) {"
+ },
+ {
+  "file": "src/ui/settings.js",
+  "line": 303,
+  "kind": "shown or returned as an error",
+  "body": "uiToast('Import failed: ' + err.message); if (done) done(false);",
+  "context": "} catch (err) {"
+ },
+ {
+  "file": "src/ui/sharing.js",
+  "line": 17,
+  "kind": "shown or returned as an error",
+  "body": "console.warn(e); uiToast(message); return fallback;",
+  "context": "try { return await work(); } catch (e) { console.warn(e); uiToast(message); return fallback; }"
+ },
+ {
+  "file": "src/ui/sharing.js",
+  "line": 62,
+  "kind": "logged",
+  "body": "console.warn(e); plan = null;",
+  "context": "if (hasRules) { try { plan = buildPlan({ person: { ...person, id: person.id || 'shared', preferences: person.preferences || { avoid_tags: [], avoid_terms: [], p"
+ },
+ {
+  "file": "src/ui/sharing.js",
+  "line": 89,
+  "kind": "shown or returned as an error",
+  "body": "uiToast('Could not add guest: ' + (e && e.message ? e.message : 'invalid profile'));",
+  "context": "if (btn) btn.addEventListener('click', () => { try { sharingAddGuest(person, opts.sourceKey); if (uiState.modalClose) uiState.modalClose(); uiState.rerender(); "
+ },
+ {
+  "file": "src/ui/together.js",
+  "line": 87,
+  "kind": "shown or returned as an error",
+  "body": "uiToast('Could not add guest: ' + (err && err.message ? err.message : 'not valid JSON'));",
+  "context": "} catch (err) { uiToast('Could not add guest: ' + (err && err.message ? err.message : 'not valid JSON')); }"
+ },
+ {
+  "file": "src/ui/together.js",
+  "line": 130,
+  "kind": "silent",
+  "body": "week = null;",
+  "context": "try { week = uiState.data.recipes.length ? weekGet(person, uiPlanFor(person)) : null; } catch { week = null; }"
+ }
+]

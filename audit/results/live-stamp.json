@@ -1,0 +1,25 @@
+{
+ "checkedAt": "2026-09-30T08:58:28.892Z",
+ "live": "https://mchoisington.github.io/Peace-Meal-Full/",
+ "mainOnGitHub": "2a8853859b4e",
+ "builds": {
+  "lite": {
+   "stamp": "2a8853859b4e",
+   "matchesMain": true,
+   "liveBytes": 5845335,
+   "liveSha256": "3b2028699d5a3980",
+   "localBytes": 5845335,
+   "localSha256": "3b2028699d5a3980",
+   "identicalToLocalBuild": true
+  },
+  "full": {
+   "stamp": "2a8853859b4e",
+   "matchesMain": true,
+   "liveBytes": 12101128,
+   "liveSha256": "9e33c5c81996ede7",
+   "localBytes": 12101128,
+   "localSha256": "9e33c5c81996ede7",
+   "identicalToLocalBuild": true
+  }
+ }
+}

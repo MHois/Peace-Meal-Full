@@ -1,0 +1,114 @@
+[
+ {
+  "rule": 1,
+  "readme": "Allergens are absolute.",
+  "mutation": "a person's allergens become soft avoids (a caution, not a stop)",
+  "where": "src/engine/plan.js",
+  "testsFailed": 8,
+  "protectedBy": [
+   "[10] the false alarms are gone and the real tags stay",
+   "[13] item 8: coconut and chestnut stay tree nuts on purpose, and heartnut is now recognized",
+   "except phrases also match their plural, as the dictionary notes say",
+   "positive screen turns off calorie targets and new eliminations but keeps allergens",
+   "allergens are hard even if also a preference"
+  ]
+ },
+ {
+  "rule": 1,
+  "readme": "Allergens are absolute.",
+  "mutation": "the checker never returns FAIL",
+  "where": "src/engine/checker.js",
+  "testsFailed": 10,
+  "protectedBy": [
+   "[3] celiac: stock cubes, broth, and stock ask for a label check; gravy mixes stay a hard stop",
+   "hard hit fails; unknown-risk term is caution when allergens are selected",
+   "imported recipes use their USDA per-serving nutrition and dictionary-tag their ingredient text",
+   "[10] the false alarms are gone and the real tags stay",
+   "[13] item 8: coconut and chestnut stay tree nuts on purpose, and heartnut is now recognized"
+  ]
+ },
+ {
+  "rule": 2,
+  "readme": "Hard conflicts stop the number, not the plan.",
+  "mutation": "a hard conflict no longer stops the number",
+  "where": "src/engine/plan.js",
+  "testsFailed": 2,
+  "protectedBy": [
+   "hypertension + POTS: no sodium number, hard-conflict notice, tier2 missing",
+   "hypertension + POTS with clinician sodium number applies that number"
+  ]
+ },
+ {
+  "rule": 3,
+  "readme": "Tier 2 numbers are never generated.",
+  "mutation": "Tier 2 rules apply their published default without a clinician's number",
+  "where": "src/engine/plan.js",
+  "testsFailed": 2,
+  "protectedBy": [
+   "POTS tier 2 without number runs in tier 1 only with notice",
+   "group plan takes the strictest of everyone and keeps allergens hard"
+  ]
+ },
+ {
+  "rule": 4,
+  "readme": "Elimination phases expire. The app prompts reintroduction and requires acknowledgment to continue past the maximum.",
+  "mutation": "no check-in prompt ever (the closest behavior the code has; phases do not expire since September 10)",
+  "where": "src/engine/plan.js",
+  "testsFailed": 2,
+  "protectedBy": [
+   "phase gating: elimination rules apply in elimination, not in reintroduction; a phase never ends on its own; a check-in asks",
+   "elimination phases default to a 4-week check-in; an explicit 0 turns it off; a set number is kept"
+  ]
+ },
+ {
+  "rule": 5,
+  "readme": "A positive eating-disorder screen turns off calorie targets, weight-loss plans, and new elimination protocols.",
+  "mutation": "a positive screen is ignored",
+  "where": "src/engine/plan.js",
+  "testsFailed": 1,
+  "protectedBy": [
+   "positive screen turns off calorie targets and new eliminations but keeps allergens"
+  ]
+ },
+ {
+  "rule": 6,
+  "readme": "Pregnancy disables weight loss, ketogenic and very low carbohydrate patterns, intermittent fasting, and every elimination protocol except allergen and celiac rules.",
+  "mutation": "pregnancy no longer turns off low FODMAP and low histamine",
+  "where": "data/conditions.json",
+  "testsFailed": 0,
+  "protectedBy": []
+ },
+ {
+  "rule": 6,
+  "readme": "Pregnancy disables ... ketogenic and very low carbohydrate patterns ...",
+  "mutation": "pregnancy no longer turns off the low-carb pattern (the ketogenic feature still gates it)",
+  "where": "src/engine/plan.js",
+  "testsFailed": 2,
+  "protectedBy": [
+   "low-carb: an SGLT2 inhibitor gives a warning and does not block; pregnancy turns the pattern off",
+   "pregnancy disables keto and elimination protocols"
+  ]
+ },
+ {
+  "rule": 7,
+  "readme": "Ingredient text the dictionary does not recognize is reported as not recognized. It is never counted as safe.",
+  "mutation": "unrecognized text counts as safe",
+  "where": "src/engine/checker.js",
+  "testsFailed": 5,
+  "protectedBy": [
+   "[1] celiac, no allergens: a misspelled or unknown ingredient is a caution, never PASS",
+   "[1] the lite result for text the app cannot place reads \"Not sure. Ask before eating.\"",
+   "[1] any restricting condition counts, not only an allergen; a preference alone does not",
+   "[1] measurement and preparation words alone are not \"unrecognized\"; a real unknown food next to them still is",
+   "unrecognized text is caution when allergens are selected, never silently pass"
+  ]
+ },
+ {
+  "rule": 8,
+  "readme": "There is no language model in the app.",
+  "mutation": "the app calls a language model API at start",
+  "where": "src/app.js",
+  "testsFailed": 0,
+  "protectedBy": []
+ }
+]

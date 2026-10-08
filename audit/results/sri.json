@@ -1,0 +1,65 @@
+{
+ "checkedAt": "2026-09-30T08:41:01.074Z",
+ "files": [
+  {
+   "name": "script",
+   "line": "src/ui/check.js:15",
+   "url": "https://cdnjs.cloudflare.com/ajax/libs/tesseract.js/5.1.1/tesseract.min.js",
+   "pinned": "sha384-GJqSu7vueQ9qN0E9yLPb3Wtpd7OrgK8KmYzC8T1IysG1bcvxvIO4qtYR/D3A991F",
+   "status": 200,
+   "bytes": 66695,
+   "actual": "sha384-GJqSu7vueQ9qN0E9yLPb3Wtpd7OrgK8KmYzC8T1IysG1bcvxvIO4qtYR/D3A991F",
+   "match": true,
+   "cacheControl": "no-transform, public, s-maxage=30672000, max-age=30672000, immutable",
+   "ms": 579
+  },
+  {
+   "name": "worker",
+   "line": "src/ui/check.js:16",
+   "url": "https://cdnjs.cloudflare.com/ajax/libs/tesseract.js/5.1.1/worker.min.js",
+   "pinned": "sha384-zxn+VqofFzXpH99dUb3fa4ywoSBQJPy6/6oEaJHPlblZXr53a0g1Jl6720vgSzB7",
+   "status": 200,
+   "bytes": 123724,
+   "actual": "sha384-zxn+VqofFzXpH99dUb3fa4ywoSBQJPy6/6oEaJHPlblZXr53a0g1Jl6720vgSzB7",
+   "match": true,
+   "cacheControl": "no-transform, public, s-maxage=30672000, max-age=30672000, immutable",
+   "ms": 96
+  },
+  {
+   "name": "core",
+   "line": "src/ui/check.js:17",
+   "url": "https://cdn.jsdelivr.net/npm/tesseract.js-core@5.1.1/tesseract-core-lstm.wasm.js",
+   "pinned": "sha384-EKWY5JDwphQoyxhvYU7eaCcyQ0EdV6fZK3L2vzfZcv2ichRdNd6pSnyWPNv6fMuR",
+   "status": 200,
+   "bytes": 3938277,
+   "actual": "sha384-EKWY5JDwphQoyxhvYU7eaCcyQ0EdV6fZK3L2vzfZcv2ichRdNd6pSnyWPNv6fMuR",
+   "match": true,
+   "cacheControl": "public, max-age=31536000, s-maxage=31536000, immutable",
+   "ms": 557
+  },
+  {
+   "name": "coreSimd",
+   "line": "src/ui/check.js:18",
+   "url": "https://cdn.jsdelivr.net/npm/tesseract.js-core@5.1.1/tesseract-core-simd-lstm.wasm.js",
+   "pinned": "sha384-YM1G+zaWYy9VSRP2C101LCgzh7n3Hqb6OEm9qDoZYgCADsni3nnECskC3WialQB7",
+   "status": 200,
+   "bytes": 3938657,
+   "actual": "sha384-YM1G+zaWYy9VSRP2C101LCgzh7n3Hqb6OEm9qDoZYgCADsni3nnECskC3WialQB7",
+   "match": true,
+   "cacheControl": "public, max-age=31536000, s-maxage=31536000, immutable",
+   "ms": 109
+  },
+  {
+   "name": "eng",
+   "line": "src/ui/check.js:19",
+   "url": "https://cdn.jsdelivr.net/npm/@tesseract.js-data/eng@1.0.0/4.0.0_best_int/eng.traineddata.gz",
+   "pinned": "sha384-JI+fraGAoc5GBGIliuqzHRnP1nJyrukg5ggNSBv/TO+YOVj+6Te6XXQOx7ia10xq",
+   "status": 200,
+   "bytes": 2952873,
+   "actual": "sha384-JI+fraGAoc5GBGIliuqzHRnP1nJyrukg5ggNSBv/TO+YOVj+6Te6XXQOx7ia10xq",
+   "match": true,
+   "cacheControl": "public, max-age=31536000, s-maxage=31536000, immutable",
+   "ms": 101
+  }
+ ]
+}

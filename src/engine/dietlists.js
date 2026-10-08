@@ -12,8 +12,15 @@
 // vinegar, and others). They are checked before the approved list, on the ingredient as written, so "leftover roast
 // chicken" is leftovers, not chicken. An example can carry "unless", a regular expression that exempts the forms the
 // list itself allows (a quick homemade vegetable stock, for instance).
+//
+// An approved item can also name food-data records by id ("foods"). USDA writes names head word first ("Vinegar,
+// distilled"), which neither the approved names nor the leave-out "unless" read the list's way, so the food box called
+// the approved vinegars left out (fix pass of September 30, 2026, P2-9). A listed record is approved as that item; a
+// recipe's own wording is still checked first.
 
-const DIET_NOISE = /\b(\d+[\d\/.,½¼¾⅓⅔-]*|cups?|tbsps?|tablespoons?|tsps?|teaspoons?|oz|ounces?|lbs?|pounds?|g|grams?|kg|ml|l|litres?|liters?|cans?|tins?|jars?|packets?|packages?|pkg|cloves?|slices?|pieces?|pinch|dash|handfuls?|large|medium|small|extra|about|approx\w*|to taste|optional|fresh|frozen|canned|tinned|dried|dry|chopped|diced|minced|sliced|cubed|shredded|grated|crushed|rinsed|drained|cooked|raw|peeled|seeded|halved|quartered|trimmed|thawed|softened|melted|divided|packed|heaping|heaped|level|thinly|thickly|finely|coarsely|roughly|plus|or|of|and|for|the|a|an|into|cut|torn|whole|ripe|firm|young|baby|plain|uncooked|unsalted|salted|low-fat|reduced-fat|lean)\b/gi;
+import { isNoiseOnly, isDescriptor } from './dictionary.js';
+
+const DIET_NOISE = /\b(\d+[\d\/.,½¼¾⅓⅔-]*|cups?|tbsps?|tablespoons?|tsps?|teaspoons?|oz|ounces?|lbs?|pounds?|g|grams?|kg|ml|l|litres?|liters?|cans?|tins?|jars?|packets?|packages?|pkg|cloves?|slices?|pieces?|pinch|dash|handfuls?|large|medium|small|extra|about|approx\w*|to taste|optional|frozen|canned|tinned|dried|dry|chopped|diced|minced|sliced|cubed|shredded|grated|crushed|rinsed|drained|cooked|raw|peeled|seeded|halved|quartered|trimmed|thawed|softened|melted|divided|packed|heaping|heaped|level|thinly|thickly|finely|coarsely|roughly|plus|or|of|and|for|the|a|an|into|cut|torn|whole|ripe|firm|baby|plain|uncooked|unsalted|salted|low-fat|reduced-fat|lean)\b/gi;
 
 export function dietNormalize(text) {
   return String(text || '').toLowerCase().normalize('NFKD').replace(/[̀-ͯ]/g, '').replace(/\([^)]*\)/g, ' ').replace(/[^a-z0-9%\s-]/g, ' ').replace(DIET_NOISE, ' ').replace(/\s+/g, ' ').trim();
@@ -45,7 +52,9 @@ function dietFamilyIndex(lists, family) {
   // portion_except: wordings that name a different product ("corn oil" is not corn), so they get no portion note.
   const portionExcept = [];
   for (const g of (fam && fam.groups) || []) for (const it of g.items || []) for (const ex of it.portion_except || []) { const re = dietTermRegex(ex); if (re) portionExcept.push({ re, item: it }); }
-  const idx = { approved, avoid, portionExcept };
+  const foods = new Map();
+  for (const g of (fam && fam.groups) || []) for (const it of g.items || []) for (const id of it.foods || []) if (!foods.has(id)) foods.set(id, { item: it, group: g.name });
+  const idx = { approved, avoid, portionExcept, foods };
   byFam.set(family, idx);
   return idx;
 }
@@ -98,24 +107,104 @@ export function avoidExampleFor(text, family, lists) {
   return null;
 }
 
+// P2-13 (fix pass of September 30, 2026): a list name approves a text only when it covers the whole name. Before, a
+// name matched a word anywhere in the text, so the alias "beef" approved "corned beef" on the low histamine list, and
+// "potato" approved "potato chips, sour cream and onion flavor" on the low FODMAP list. Words outside the matched names
+// may only be amounts, preparation words, or descriptors that do not change the food for these diets.
+// "fresh" and "young" are no longer stripped as noise (they were until this fix): the list's "fresh cheese" and "young
+// cheese" then approved any cheese. Aging words decide a cheese's histamine, so they are not ignored either.
+const DIET_SENSITIVE = new Set('sweet sour juice juices concentrate extract essence flavor flavour flavored flavoured flavoring flavouring condensed dehydrated overripe unripe ripened cultured pickling blue mature sharp strong'.split(' '));
+// Words that name a part or a claim, not a food, for these two diets: "with skin", "gluten-free corn and rice pasta".
+const DIET_IGNORABLE = new Set(['skin', 'skins', 'gluten', 'unpeeled', 'popped', 'air']);
+function dietIgnorable(word) {
+  if (!/[a-z0-9]/.test(word)) return true;   // punctuation or a lone "%"
+  return isNoiseOnly(word) || DIET_IGNORABLE.has(word) || (isDescriptor(word) && !DIET_SENSITIVE.has(word));
+}
+function dietSpans(re, n) {
+  const g = re._all || (re._all = new RegExp(re.source, re.flags.includes('g') ? re.flags : re.flags + 'g'));
+  g.lastIndex = 0;
+  const out = [];
+  let m;
+  while ((m = g.exec(n))) {
+    const start = m.index + m[1].length;
+    const end = m.index + m[0].length - (m[3] || '').length;
+    out.push({ start, end });
+    g.lastIndex = Math.max(end, m.index + 1);   // the trailing boundary may start the next name
+  }
+  return out;
+}
+// The first entry (in list order) that matches, when the matches together leave no food word uncovered; else null.
+function dietCovering(n, entries) {
+  const spans = [];
+  let first = null;
+  const matched = [];
+  for (const a of entries) { const s = dietSpans(a.re, n); if (s.length) { spans.push(...s); matched.push(a); if (!first) first = a; } }
+  if (!first) return null;
+  // A word the diet cares about ("juice", "sweet") is fine when the list itself names the matched food with it: the
+  // lemon item lists "lemon juice", so "juice of 4 lemons" is on the list; "orange juice concentrate" is not.
+  const listed = new Set(matched.flatMap(a => { const it = a.item || a; return [it.term, ...(it.aliases || [])]; }).flatMap(x => dietNormalize(x).split(/[\s-]+/)));
+  let pos = 0;
+  const words = n.split(' ');
+  for (let i = 0; i < words.length; i++) {
+    const w = words[i];
+    const start = n.indexOf(w, pos), end = start + w.length;
+    pos = end;
+    if (!w || spans.some(s => s.start <= start && s.end >= end)) continue;
+    // A claim word is not a food: "no salt added", "low-sodium", "reduced-fat", "part-skim", "sugar-free".
+    if (DIET_CLAIM_NOUNS.has(w) && (DIET_CLAIM_BEFORE.has(words[i - 1]) || DIET_CLAIM_AFTER.has(words[i + 1]))) continue;
+    const parts = w.split('-').filter(Boolean);
+    if (parts.length > 1 && parts.some(p => DIET_CLAIM_BEFORE.has(p) || DIET_CLAIM_AFTER.has(p)) && parts.every(p => dietIgnorable(p) || DIET_CLAIM_NOUNS.has(p))) continue;
+    if (parts.every(p => dietIgnorable(p) || (DIET_SENSITIVE.has(p) && listed.has(p)))) continue;
+    return null;
+  }
+  return first;
+}
+const DIET_CLAIM_NOUNS = new Set(['salt', 'sodium', 'fat', 'sugar', 'skim', 'calorie', 'lactose', 'dairy']);
+const DIET_CLAIM_BEFORE = new Set(['no', 'low', 'lower', 'reduced', 'less', 'part', 'zero', 'non']);
+const DIET_CLAIM_AFTER = new Set(['free', 'added', 'reduced']);
+
 // Is this ingredient text on the approved list for the family, for this person?
 // Returns { approved, why, item } where why is 'reacts' | 'tolerated' | 'avoid' | 'list' | 'unlisted' | 'empty'.
 // Order: the person's own lists, then the family's leave-out examples, then the family's approved list.
 // opts.avoid = false skips the leave-out examples (strictCheck uses that for a linked food's generic USDA name when the
-// recipe's own wording is checked already).
+// recipe's own wording is checked already). opts.foodId, given with a food's own name, finds the food-data records an
+// approved item names; the person's own lists still come first.
 export function approvedFor(text, family, lists, person, opts = {}) {
   const n = dietNormalize(text);
   const mine = dietPersonLists(person, family);
   if (n) {
     for (const r of mine.reacts) if (r.re.test(n)) return { approved: false, why: 'reacts', item: r };
-    for (const t of mine.tolerated) if (t.re.test(n)) return { approved: true, why: 'tolerated', item: t };
+    const t = dietCovering(n, mine.tolerated);
+    if (t) return { approved: true, why: 'tolerated', item: t };
   }
+  if (opts.foodId) { const f = dietFamilyIndex(lists, family).foods.get(opts.foodId); if (f) return { approved: true, why: 'list', item: f.item, group: f.group }; }
   if (opts.avoid !== false) { const ex = avoidExampleFor(text, family, lists); if (ex) return { approved: false, why: 'avoid', item: ex }; }
-  if (!n) return { approved: true, why: 'empty' };
+  // opts.noise: the piece is only amounts and preparation words (P2-15), so it names no food; like an empty piece it is
+  // approved once the leave-out examples have had their say ("1 jar" is still a jar).
+  if (!n || opts.noise) return { approved: true, why: 'empty' };
   const idx = dietFamilyIndex(lists, family);
-  for (const a of idx.approved) if (a.re.test(n)) return { approved: true, why: 'list', item: a.item, group: a.group };
+  const a = dietCovering(n, idx.approved);
+  if (a) return { approved: true, why: 'list', item: a.item, group: a.group };
+  // A food-data name ("Squash, summer, zucchini, frozen, cooked") names its food among category, kind, and form words
+  // that no list could cover, so for those names a list name may still match a word anywhere, as before, unless the
+  // name says the food was made into something else ("Snacks, beef jerky", "Beef, cured, corned beef", "Soup, cream of
+  // mushroom"). Typed text and recipe lines keep the whole-name rule above.
+  if (opts.foodName) {
+    const words = n.split(/[\s-]+/);
+    if (!words.some(w => DIET_FOOD_NAME_DENY.has(w)) && idx.approved.some(x => x.re.test(n))) {
+      const hit = idx.approved.find(x => x.re.test(n));
+      return { approved: true, why: 'list', item: hit.item, group: hit.group };
+    }
+  }
   return { approved: false, why: 'unlisted' };
 }
+// Words in a food-data name that mean the food was made into something else (fix pass of September 30, 2026, P2-13).
+const DIET_FOOD_NAME_DENY = new Set(('snacks snack jerky cured smoked breaded battered fried sausage sausages salami bologna frankfurter frankfurters ' +
+  'bratwurst bockwurst thuringer cervelat beerwurst pepperoni pastrami corned bacon ham luncheon deli prepackaged soup soups stock broth ' +
+  'bouillon sauce dressing gravy chips crisps crackers cookies cake cakes pie pies pudding puddings ice cream creams sherbet candies candy ' +
+  'jams jam preserves jelly syrup syrups concentrate drink drinks carbonated soda nuggets sandwich burger cheeseburger hamburger burrito ' +
+  'rolls dumpling dumplings ravioli entree fast mix mixes coated caramel pickled kimchi sauerkraut dehydrated spread margarine imitation ' +
+  'flavored flavor seasoned marinated').split(' '));
 
 // Strict check for a recipe. Returns { families, notApproved: [{ label, family, why }] }.
 // The leave-out examples are checked against the ingredient as the recipe writes it (or the food's short name when the
@@ -131,7 +220,8 @@ export function strictCheck(recipe, plan, lists, foodsById, person = {}) {
     for (const family of families) {
       let verdict = null;
       for (let i = 0; i < texts.length; i++) {
-        const r = approvedFor(texts[i], family, lists, person, { avoid: i === 0 });
+        const isFoodName = food && (texts[i] === food.short || texts[i] === food.name) && texts[i] !== ing.display;
+        const r = approvedFor(texts[i], family, lists, person, { avoid: i === 0, foodName: !!isFoodName, foodId: isFoodName ? food.id : undefined });
         if (r.why === 'reacts' || r.why === 'avoid') { verdict = r; break; }
         if (r.approved) verdict = r;
       }
@@ -142,13 +232,14 @@ export function strictCheck(recipe, plan, lists, foodsById, person = {}) {
 }
 
 // Strict check for free text (a label, a typed dish): each segment of the ingredient statement must be on the list.
-// segments are the raw pieces from segmentTextRaw; pieces that are only amounts or preparation words are skipped by the caller.
-export function strictCheckText(segments, plan, lists, person = {}) {
+// segments are the raw pieces from segmentTextRaw. isNoise(segment), when given, says a piece is only amounts and
+// preparation words (P2-15): such a piece meets the leave-out examples but is otherwise approved as empty.
+export function strictCheckText(segments, plan, lists, person = {}, isNoise = null) {
   const families = strictFamiliesFor(plan, lists).filter(f => strictOn(person, f));
   const notApproved = [];
   if (!families.length) return { families, notApproved };
   for (const seg of segments || []) for (const family of families) {
-    const r = approvedFor(seg, family, lists, person);
+    const r = approvedFor(seg, family, lists, person, { noise: !!(isNoise && isNoise(seg)) });
     if (!r.approved) notApproved.push({ label: seg, family, why: r.why, ...(r.why === 'avoid' ? { avoid: r.item.term } : {}) });
   }
   return { families, notApproved };

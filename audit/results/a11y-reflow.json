@@ -1,0 +1,1436 @@
+{
+ "reflow320": [
+  {
+   "build": "lite",
+   "screen": "today",
+   "rootFont": "20px",
+   "width": 320,
+   "scrollWidth": 320,
+   "sideways": false,
+   "offenders": [],
+   "textCutOff": [],
+   "textShortenedWithDots": [
+    "span.brand-name \"Peace Meal for one\"",
+    "span.who-name \"Sample Person\""
+   ]
+  },
+  {
+   "build": "lite",
+   "screen": "week",
+   "rootFont": "20px",
+   "width": 320,
+   "scrollWidth": 320,
+   "sideways": false,
+   "offenders": [],
+   "textCutOff": [
+    "label.visually-hidden \"Snacks each day this week\""
+   ],
+   "textShortenedWithDots": [
+    "span.who-name \"Sample Person\"",
+    "div.glance-value \"1,199\"",
+    "div.glance-value \"1,684\"",
+    "div.glance-value \"1,346\"",
+    "div.glance-value \"1,343\"",
+    "div.glance-value \"1,188\""
+   ]
+  },
+  {
+   "build": "lite",
+   "screen": "recipes",
+   "rootFont": "20px",
+   "width": 320,
+   "scrollWidth": 320,
+   "sideways": false,
+   "offenders": [],
+   "textCutOff": [
+    "label.visually-hidden \"Search recipes\"",
+    "span.visually-hidden \"Meal\"",
+    "span.visually-hidden \"Cuisine\""
+   ],
+   "textShortenedWithDots": [
+    "span.who-name \"Sample Person\""
+   ]
+  },
+  {
+   "build": "lite",
+   "screen": "report",
+   "rootFont": "20px",
+   "width": 320,
+   "scrollWidth": 419,
+   "sideways": true,
+   "offenders": [
+    "table.report-table (419px)",
+    "a (333px)",
+    "button#more-btn (417px)"
+   ],
+   "textCutOff": [],
+   "textShortenedWithDots": [
+    "span.who-name \"Sample Person\""
+   ]
+  },
+  {
+   "build": "lite",
+   "screen": "check",
+   "rootFont": "20px",
+   "width": 320,
+   "scrollWidth": 320,
+   "sideways": false,
+   "offenders": [],
+   "textCutOff": [
+    "label.visually-hidden \"Ingredient list\"",
+    "label.visually-hidden \"Look up a food\""
+   ],
+   "textShortenedWithDots": [
+    "span.who-name \"Sample Person\"",
+    "input#check-photo.visually-hidden \"\""
+   ]
+  },
+  {
+   "build": "lite",
+   "screen": "plan",
+   "rootFont": "20px",
+   "width": 320,
+   "scrollWidth": 320,
+   "sideways": false,
+   "offenders": [],
+   "textCutOff": [],
+   "textShortenedWithDots": [
+    "span.who-name \"Sample Person\""
+   ]
+  },
+  {
+   "build": "lite",
+   "screen": "grocery",
+   "rootFont": "20px",
+   "width": 320,
+   "scrollWidth": 320,
+   "sideways": false,
+   "offenders": [],
+   "textCutOff": [
+    "label.visually-hidden \"List for\""
+   ],
+   "textShortenedWithDots": [
+    "span.who-name \"Sample Person\""
+   ]
+  },
+  {
+   "build": "lite",
+   "screen": "pantry",
+   "rootFont": "20px",
+   "width": 320,
+   "scrollWidth": 320,
+   "sideways": false,
+   "offenders": [],
+   "textCutOff": [],
+   "textShortenedWithDots": [
+    "span.who-name \"Sample Person\""
+   ]
+  },
+  {
+   "build": "lite",
+   "screen": "people",
+   "rootFont": "20px",
+   "width": 320,
+   "scrollWidth": 320,
+   "sideways": false,
+   "offenders": [],
+   "textCutOff": [],
+   "textShortenedWithDots": [
+    "span.who-name \"Sample Person\""
+   ]
+  },
+  {
+   "build": "lite",
+   "screen": "log",
+   "rootFont": "20px",
+   "width": 320,
+   "scrollWidth": 320,
+   "sideways": false,
+   "offenders": [],
+   "textCutOff": [
+    "span#log-symhelp-bloating.visually-hidden \"Belly feels swollen or tight. \"",
+    "span#log-symhelp-gas.visually-hidden \"More wind than usual. 0 none, \"",
+    "span#log-symhelp-stomach_pain.visually-hidden \"Cramps or aching in the belly.\"",
+    "span#log-symhelp-nausea.visually-hidden \"Feeling sick or queasy. 0 none\"",
+    "span#log-symhelp-heartburn.visually-hidden \"Burning in the chest or throat\"",
+    "span#log-symhelp-diarrhea.visually-hidden \"Loose or urgent stools. 0 none\""
+   ],
+   "textShortenedWithDots": [
+    "span.who-name \"Sample Person\""
+   ]
+  },
+  {
+   "build": "lite",
+   "screen": "breathe",
+   "rootFont": "20px",
+   "width": 320,
+   "scrollWidth": 320,
+   "sideways": false,
+   "offenders": [],
+   "textCutOff": [],
+   "textShortenedWithDots": [
+    "span.who-name \"Sample Person\""
+   ]
+  },
+  {
+   "build": "lite",
+   "screen": "learn",
+   "rootFont": "20px",
+   "width": 320,
+   "scrollWidth": 320,
+   "sideways": false,
+   "offenders": [],
+   "textCutOff": [],
+   "textShortenedWithDots": [
+    "span.who-name \"Sample Person\""
+   ]
+  },
+  {
+   "build": "lite",
+   "screen": "settings",
+   "rootFont": "20px",
+   "width": 320,
+   "scrollWidth": 320,
+   "sideways": false,
+   "offenders": [],
+   "textCutOff": [],
+   "textShortenedWithDots": [
+    "span.who-name \"Sample Person\"",
+    "input#set-import.visually-hidden \"\""
+   ]
+  },
+  {
+   "build": "full",
+   "screen": "home",
+   "rootFont": "17px",
+   "width": 320,
+   "scrollWidth": 320,
+   "sideways": false,
+   "offenders": [],
+   "textCutOff": [
+    "label.visually-hidden \"Active person\""
+   ],
+   "textShortenedWithDots": [
+    "span.brand-name \"Peace Meal\"",
+    "span.who-name \"Sample A\""
+   ]
+  },
+  {
+   "build": "full",
+   "screen": "people",
+   "rootFont": "17px",
+   "width": 320,
+   "scrollWidth": 320,
+   "sideways": false,
+   "offenders": [],
+   "textCutOff": [],
+   "textShortenedWithDots": []
+  },
+  {
+   "build": "full",
+   "screen": "plan",
+   "rootFont": "17px",
+   "width": 320,
+   "scrollWidth": 320,
+   "sideways": false,
+   "offenders": [],
+   "textCutOff": [],
+   "textShortenedWithDots": []
+  },
+  {
+   "build": "full",
+   "screen": "check",
+   "rootFont": "17px",
+   "width": 320,
+   "scrollWidth": 320,
+   "sideways": false,
+   "offenders": [],
+   "textCutOff": [
+    "label.visually-hidden \"Ingredient list\"",
+    "label.visually-hidden \"Look up a food\""
+   ],
+   "textShortenedWithDots": [
+    "input#check-photo.visually-hidden \"\""
+   ]
+  },
+  {
+   "build": "full",
+   "screen": "today",
+   "rootFont": "17px",
+   "width": 320,
+   "scrollWidth": 320,
+   "sideways": false,
+   "offenders": [],
+   "textCutOff": [],
+   "textShortenedWithDots": []
+  },
+  {
+   "build": "full",
+   "screen": "week",
+   "rootFont": "17px",
+   "width": 320,
+   "scrollWidth": 320,
+   "sideways": false,
+   "offenders": [],
+   "textCutOff": [
+    "label.visually-hidden \"Snacks each day this week\"",
+    "span.visually-hidden \"Minutes to cook on Wednesday\"",
+    "span.visually-hidden \"Minutes to cook on Thursday\"",
+    "span.visually-hidden \"Minutes to cook on Friday\"",
+    "span.visually-hidden \"Minutes to cook on Saturday\"",
+    "span.visually-hidden \"Minutes to cook on Sunday\""
+   ],
+   "textShortenedWithDots": []
+  },
+  {
+   "build": "full",
+   "screen": "recipes",
+   "rootFont": "17px",
+   "width": 320,
+   "scrollWidth": 320,
+   "sideways": false,
+   "offenders": [],
+   "textCutOff": [
+    "label.visually-hidden \"Search recipes\"",
+    "span.visually-hidden \"Meal\"",
+    "span.visually-hidden \"Cuisine\""
+   ],
+   "textShortenedWithDots": []
+  },
+  {
+   "build": "full",
+   "screen": "grocery",
+   "rootFont": "17px",
+   "width": 320,
+   "scrollWidth": 320,
+   "sideways": false,
+   "offenders": [],
+   "textCutOff": [
+    "label.visually-hidden \"List for\""
+   ],
+   "textShortenedWithDots": []
+  },
+  {
+   "build": "full",
+   "screen": "pantry",
+   "rootFont": "17px",
+   "width": 320,
+   "scrollWidth": 320,
+   "sideways": false,
+   "offenders": [],
+   "textCutOff": [],
+   "textShortenedWithDots": []
+  },
+  {
+   "build": "full",
+   "screen": "together",
+   "rootFont": "17px",
+   "width": 320,
+   "scrollWidth": 320,
+   "sideways": false,
+   "offenders": [],
+   "textCutOff": [],
+   "textShortenedWithDots": [
+    "input#tg-file.visually-hidden \"\""
+   ]
+  },
+  {
+   "build": "full",
+   "screen": "log",
+   "rootFont": "17px",
+   "width": 320,
+   "scrollWidth": 320,
+   "sideways": false,
+   "offenders": [],
+   "textCutOff": [
+    "span#log-symhelp-bloating.visually-hidden \"Belly feels swollen or tight. \"",
+    "span#log-symhelp-gas.visually-hidden \"More wind than usual. 0 none, \"",
+    "span#log-symhelp-stomach_pain.visually-hidden \"Cramps or aching in the belly.\"",
+    "span#log-symhelp-nausea.visually-hidden \"Feeling sick or queasy. 0 none\"",
+    "span#log-symhelp-heartburn.visually-hidden \"Burning in the chest or throat\"",
+    "span#log-symhelp-diarrhea.visually-hidden \"Loose or urgent stools. 0 none\""
+   ],
+   "textShortenedWithDots": []
+  },
+  {
+   "build": "full",
+   "screen": "breathe",
+   "rootFont": "17px",
+   "width": 320,
+   "scrollWidth": 320,
+   "sideways": false,
+   "offenders": [],
+   "textCutOff": [],
+   "textShortenedWithDots": []
+  },
+  {
+   "build": "full",
+   "screen": "learn",
+   "rootFont": "17px",
+   "width": 320,
+   "scrollWidth": 320,
+   "sideways": false,
+   "offenders": [],
+   "textCutOff": [],
+   "textShortenedWithDots": []
+  },
+  {
+   "build": "full",
+   "screen": "settings",
+   "rootFont": "17px",
+   "width": 320,
+   "scrollWidth": 320,
+   "sideways": false,
+   "offenders": [],
+   "textCutOff": [],
+   "textShortenedWithDots": [
+    "input#set-import.visually-hidden \"\""
+   ]
+  }
+ ],
+ "text200": [
+  {
+   "build": "lite",
+   "screen": "today",
+   "rootFontFrom": 20,
+   "rootFontTo": 40,
+   "width": 390,
+   "scrollWidth": 443,
+   "sideways": true,
+   "offenders": [
+    "div.lite-slot (443px)",
+    "div.lite-slot (443px)",
+    "div.lite-slot (443px)",
+    "div.lite-slot (443px)",
+    "a.quick-action (402px)",
+    "a.quick-action (402px)"
+   ],
+   "textCutOff": [],
+   "textShortenedWithDots": [
+    "span.brand-name \"Peace Meal for one\"",
+    "span.who-name \"Sample Person\""
+   ]
+  },
+  {
+   "build": "lite",
+   "screen": "week",
+   "rootFontFrom": 20,
+   "rootFontTo": 40,
+   "width": 390,
+   "scrollWidth": 390,
+   "sideways": false,
+   "offenders": [
+    "a (403px)",
+    "button#more-btn (480px)"
+   ],
+   "textCutOff": [],
+   "textShortenedWithDots": [
+    "span.who-name \"Sample Person\"",
+    "div.glance-value \"1,199\"",
+    "div.glance-value \"1,684\"",
+    "div.glance-value \"1,346\"",
+    "div.glance-value \"1,343\"",
+    "div.glance-value \"1,188\""
+   ]
+  },
+  {
+   "build": "lite",
+   "screen": "recipes",
+   "rootFontFrom": 20,
+   "rootFontTo": 40,
+   "width": 390,
+   "scrollWidth": 495,
+   "sideways": true,
+   "offenders": [
+    "label.filter-select (495px)",
+    "a (403px)",
+    "button#more-btn (493px)"
+   ],
+   "textCutOff": [],
+   "textShortenedWithDots": [
+    "span.who-name \"Sample Person\""
+   ]
+  },
+  {
+   "build": "lite",
+   "screen": "report",
+   "rootFontFrom": 20,
+   "rootFontTo": 40,
+   "width": 390,
+   "scrollWidth": 738,
+   "sideways": true,
+   "offenders": [
+    "table.report-table (738px)",
+    "a (441px)",
+    "a (588px)",
+    "button#more-btn (736px)"
+   ],
+   "textCutOff": [],
+   "textShortenedWithDots": [
+    "span.who-name \"Sample Person\""
+   ]
+  },
+  {
+   "build": "lite",
+   "screen": "check",
+   "rootFontFrom": 20,
+   "rootFontTo": 40,
+   "width": 390,
+   "scrollWidth": 390,
+   "sideways": false,
+   "offenders": [
+    "a (403px)",
+    "button#more-btn.on (480px)"
+   ],
+   "textCutOff": [],
+   "textShortenedWithDots": [
+    "span.who-name \"Sample Person\"",
+    "input#check-photo.visually-hidden \"\""
+   ]
+  },
+  {
+   "build": "lite",
+   "screen": "plan",
+   "rootFontFrom": 20,
+   "rootFontTo": 40,
+   "width": 390,
+   "scrollWidth": 556,
+   "sideways": true,
+   "offenders": [
+    "div.meter (556px)",
+    "div.meter (556px)",
+    "button.chip (542px)",
+    "button.chip (493px)",
+    "button.chip (520px)",
+    "button.chip (440px)"
+   ],
+   "textCutOff": [],
+   "textShortenedWithDots": [
+    "span.who-name \"Sample Person\""
+   ]
+  },
+  {
+   "build": "lite",
+   "screen": "grocery",
+   "rootFontFrom": 20,
+   "rootFontTo": 40,
+   "width": 390,
+   "scrollWidth": 453,
+   "sideways": true,
+   "offenders": [
+    "div.page-head-actions (453px)",
+    "a (403px)",
+    "button#more-btn.on (480px)"
+   ],
+   "textCutOff": [],
+   "textShortenedWithDots": [
+    "span.who-name \"Sample Person\""
+   ]
+  },
+  {
+   "build": "lite",
+   "screen": "pantry",
+   "rootFontFrom": 20,
+   "rootFontTo": 40,
+   "width": 390,
+   "scrollWidth": 390,
+   "sideways": false,
+   "offenders": [
+    "a (403px)",
+    "button#more-btn.on (480px)"
+   ],
+   "textCutOff": [],
+   "textShortenedWithDots": [
+    "span.who-name \"Sample Person\""
+   ]
+  },
+  {
+   "build": "lite",
+   "screen": "people",
+   "rootFontFrom": 20,
+   "rootFontTo": 40,
+   "width": 390,
+   "scrollWidth": 405,
+   "sideways": true,
+   "offenders": [
+    "a.chip (405px)",
+    "a (403px)",
+    "button#more-btn.on (480px)"
+   ],
+   "textCutOff": [],
+   "textShortenedWithDots": [
+    "span.who-name \"Sample Person\""
+   ]
+  },
+  {
+   "build": "lite",
+   "screen": "log",
+   "rootFontFrom": 20,
+   "rootFontTo": 40,
+   "width": 390,
+   "scrollWidth": 390,
+   "sideways": false,
+   "offenders": [
+    "a (403px)",
+    "button#more-btn.on (480px)"
+   ],
+   "textCutOff": [],
+   "textShortenedWithDots": [
+    "span.who-name \"Sample Person\""
+   ]
+  },
+  {
+   "build": "lite",
+   "screen": "breathe",
+   "rootFontFrom": 20,
+   "rootFontTo": 40,
+   "width": 390,
+   "scrollWidth": 390,
+   "sideways": false,
+   "offenders": [
+    "a (403px)",
+    "button#more-btn.on (480px)"
+   ],
+   "textCutOff": [],
+   "textShortenedWithDots": [
+    "span.who-name \"Sample Person\""
+   ]
+  },
+  {
+   "build": "lite",
+   "screen": "learn",
+   "rootFontFrom": 20,
+   "rootFontTo": 40,
+   "width": 390,
+   "scrollWidth": 576,
+   "sideways": true,
+   "offenders": [
+    "span.chip (576px)",
+    "a (460px)",
+    "button#more-btn.on (574px)"
+   ],
+   "textCutOff": [],
+   "textShortenedWithDots": [
+    "span.who-name \"Sample Person\""
+   ]
+  },
+  {
+   "build": "lite",
+   "screen": "settings",
+   "rootFontFrom": 20,
+   "rootFontTo": 40,
+   "width": 390,
+   "scrollWidth": 390,
+   "sideways": false,
+   "offenders": [
+    "a (403px)",
+    "button#more-btn.on (480px)"
+   ],
+   "textCutOff": [],
+   "textShortenedWithDots": [
+    "span.who-name \"Sample Person\"",
+    "input#set-import.visually-hidden \"\""
+   ]
+  },
+  {
+   "build": "full",
+   "screen": "home",
+   "rootFontFrom": 17,
+   "rootFontTo": 34,
+   "width": 390,
+   "scrollWidth": 402,
+   "sideways": true,
+   "offenders": [
+    "a.quick-action (396px)",
+    "a.quick-action (396px)",
+    "button#more-btn (400px)"
+   ],
+   "textCutOff": [],
+   "textShortenedWithDots": [
+    "span.brand-name \"Peace Meal\"",
+    "span.who-name \"Sample A\""
+   ]
+  },
+  {
+   "build": "full",
+   "screen": "people",
+   "rootFontFrom": 17,
+   "rootFontTo": 34,
+   "width": 390,
+   "scrollWidth": 390,
+   "sideways": false,
+   "offenders": [],
+   "textCutOff": [],
+   "textShortenedWithDots": [
+    "span.who-name \"Sample A\""
+   ]
+  },
+  {
+   "build": "full",
+   "screen": "plan",
+   "rootFontFrom": 17,
+   "rootFontTo": 34,
+   "width": 390,
+   "scrollWidth": 468,
+   "sideways": true,
+   "offenders": [
+    "button.chip (467px)",
+    "button.chip (448px)",
+    "button#more-btn.on (466px)"
+   ],
+   "textCutOff": [],
+   "textShortenedWithDots": [
+    "span.who-name \"Sample A\""
+   ]
+  },
+  {
+   "build": "full",
+   "screen": "check",
+   "rootFontFrom": 17,
+   "rootFontTo": 34,
+   "width": 390,
+   "scrollWidth": 390,
+   "sideways": false,
+   "offenders": [],
+   "textCutOff": [],
+   "textShortenedWithDots": [
+    "span.who-name \"Sample A\"",
+    "input#check-photo.visually-hidden \"\""
+   ]
+  },
+  {
+   "build": "full",
+   "screen": "today",
+   "rootFontFrom": 17,
+   "rootFontTo": 34,
+   "width": 390,
+   "scrollWidth": 400,
+   "sideways": true,
+   "offenders": [
+    "div.entry-kcal (400px)",
+    "div.entry-nut (400px)",
+    "button#more-btn (398px)"
+   ],
+   "textCutOff": [],
+   "textShortenedWithDots": [
+    "span.who-name \"Sample A\""
+   ]
+  },
+  {
+   "build": "full",
+   "screen": "week",
+   "rootFontFrom": 17,
+   "rootFontTo": 34,
+   "width": 390,
+   "scrollWidth": 390,
+   "sideways": false,
+   "offenders": [],
+   "textCutOff": [],
+   "textShortenedWithDots": [
+    "span.who-name \"Sample A\"",
+    "div.glance-value \"1,479\"",
+    "div.glance-value \"1,448\"",
+    "div.glance-value \"1,591\"",
+    "div.glance-value \"1,311\"",
+    "div.glance-value \"1,401\""
+   ]
+  },
+  {
+   "build": "full",
+   "screen": "recipes",
+   "rootFontFrom": 17,
+   "rootFontTo": 34,
+   "width": 390,
+   "scrollWidth": 436,
+   "sideways": true,
+   "offenders": [
+    "label.filter-select (436px)",
+    "button#more-btn.on (434px)"
+   ],
+   "textCutOff": [],
+   "textShortenedWithDots": [
+    "span.who-name \"Sample A\""
+   ]
+  },
+  {
+   "build": "full",
+   "screen": "grocery",
+   "rootFontFrom": 17,
+   "rootFontTo": 34,
+   "width": 390,
+   "scrollWidth": 390,
+   "sideways": false,
+   "offenders": [],
+   "textCutOff": [],
+   "textShortenedWithDots": [
+    "span.who-name \"Sample A\""
+   ]
+  },
+  {
+   "build": "full",
+   "screen": "pantry",
+   "rootFontFrom": 17,
+   "rootFontTo": 34,
+   "width": 390,
+   "scrollWidth": 390,
+   "sideways": false,
+   "offenders": [],
+   "textCutOff": [],
+   "textShortenedWithDots": [
+    "span.who-name \"Sample A\""
+   ]
+  },
+  {
+   "build": "full",
+   "screen": "together",
+   "rootFontFrom": 17,
+   "rootFontTo": 34,
+   "width": 390,
+   "scrollWidth": 390,
+   "sideways": false,
+   "offenders": [],
+   "textCutOff": [],
+   "textShortenedWithDots": [
+    "span.who-name \"Sample A\"",
+    "input#tg-file.visually-hidden \"\""
+   ]
+  },
+  {
+   "build": "full",
+   "screen": "log",
+   "rootFontFrom": 17,
+   "rootFontTo": 34,
+   "width": 390,
+   "scrollWidth": 390,
+   "sideways": false,
+   "offenders": [],
+   "textCutOff": [],
+   "textShortenedWithDots": [
+    "span.who-name \"Sample A\""
+   ]
+  },
+  {
+   "build": "full",
+   "screen": "breathe",
+   "rootFontFrom": 17,
+   "rootFontTo": 34,
+   "width": 390,
+   "scrollWidth": 390,
+   "sideways": false,
+   "offenders": [],
+   "textCutOff": [],
+   "textShortenedWithDots": [
+    "span.who-name \"Sample A\""
+   ]
+  },
+  {
+   "build": "full",
+   "screen": "learn",
+   "rootFontFrom": 17,
+   "rootFontTo": 34,
+   "width": 390,
+   "scrollWidth": 495,
+   "sideways": true,
+   "offenders": [
+    "span.chip (495px)",
+    "a (394px)",
+    "button#more-btn.on (493px)"
+   ],
+   "textCutOff": [],
+   "textShortenedWithDots": [
+    "span.who-name \"Sample A\""
+   ]
+  },
+  {
+   "build": "full",
+   "screen": "settings",
+   "rootFontFrom": 17,
+   "rootFontTo": 34,
+   "width": 390,
+   "scrollWidth": 390,
+   "sideways": false,
+   "offenders": [],
+   "textCutOff": [],
+   "textShortenedWithDots": [
+    "span.who-name \"Sample A\"",
+    "input#set-import.visually-hidden \"\""
+   ]
+  }
+ ],
+ "contrast": [
+  {
+   "build": "lite",
+   "theme": "light",
+   "screen": "today",
+   "passes": 70,
+   "violations": 0,
+   "undecided": 0,
+   "undecidedWhy": [],
+   "undecidedSample": []
+  },
+  {
+   "build": "lite",
+   "theme": "light",
+   "screen": "week",
+   "passes": 161,
+   "violations": 0,
+   "undecided": 0,
+   "undecidedWhy": [],
+   "undecidedSample": []
+  },
+  {
+   "build": "lite",
+   "theme": "light",
+   "screen": "recipes",
+   "passes": 289,
+   "violations": 0,
+   "undecided": 0,
+   "undecidedWhy": [],
+   "undecidedSample": []
+  },
+  {
+   "build": "lite",
+   "theme": "light",
+   "screen": "report",
+   "passes": 76,
+   "violations": 0,
+   "undecided": 1,
+   "undecidedWhy": [
+    "Element's background color could not be determined because it's partially obscur"
+   ],
+   "undecidedSample": [
+    "th:nth-child(3)"
+   ]
+  },
+  {
+   "build": "lite",
+   "theme": "light",
+   "screen": "check",
+   "passes": 22,
+   "violations": 0,
+   "undecided": 0,
+   "undecidedWhy": [],
+   "undecidedSample": []
+  },
+  {
+   "build": "lite",
+   "theme": "light",
+   "screen": "plan",
+   "passes": 133,
+   "violations": 0,
+   "undecided": 0,
+   "undecidedWhy": [],
+   "undecidedSample": []
+  },
+  {
+   "build": "lite",
+   "theme": "light",
+   "screen": "grocery",
+   "passes": 778,
+   "violations": 0,
+   "undecided": 0,
+   "undecidedWhy": [],
+   "undecidedSample": []
+  },
+  {
+   "build": "lite",
+   "theme": "light",
+   "screen": "pantry",
+   "passes": 16,
+   "violations": 0,
+   "undecided": 0,
+   "undecidedWhy": [],
+   "undecidedSample": []
+  },
+  {
+   "build": "lite",
+   "theme": "light",
+   "screen": "people",
+   "passes": 26,
+   "violations": 0,
+   "undecided": 0,
+   "undecidedWhy": [],
+   "undecidedSample": []
+  },
+  {
+   "build": "lite",
+   "theme": "light",
+   "screen": "log",
+   "passes": 80,
+   "violations": 0,
+   "undecided": 0,
+   "undecidedWhy": [],
+   "undecidedSample": []
+  },
+  {
+   "build": "lite",
+   "theme": "light",
+   "screen": "breathe",
+   "passes": 12,
+   "violations": 0,
+   "undecided": 0,
+   "undecidedWhy": [],
+   "undecidedSample": []
+  },
+  {
+   "build": "lite",
+   "theme": "light",
+   "screen": "learn",
+   "passes": 188,
+   "violations": 0,
+   "undecided": 0,
+   "undecidedWhy": [],
+   "undecidedSample": []
+  },
+  {
+   "build": "lite",
+   "theme": "light",
+   "screen": "settings",
+   "passes": 76,
+   "violations": 0,
+   "undecided": 0,
+   "undecidedWhy": [],
+   "undecidedSample": []
+  },
+  {
+   "build": "lite",
+   "theme": "dark",
+   "screen": "today",
+   "passes": 70,
+   "violations": 0,
+   "undecided": 0,
+   "undecidedWhy": [],
+   "undecidedSample": []
+  },
+  {
+   "build": "lite",
+   "theme": "dark",
+   "screen": "week",
+   "passes": 161,
+   "violations": 0,
+   "undecided": 0,
+   "undecidedWhy": [],
+   "undecidedSample": []
+  },
+  {
+   "build": "lite",
+   "theme": "dark",
+   "screen": "recipes",
+   "passes": 289,
+   "violations": 0,
+   "undecided": 0,
+   "undecidedWhy": [],
+   "undecidedSample": []
+  },
+  {
+   "build": "lite",
+   "theme": "dark",
+   "screen": "report",
+   "passes": 76,
+   "violations": 0,
+   "undecided": 1,
+   "undecidedWhy": [
+    "Element's background color could not be determined because it's partially obscur"
+   ],
+   "undecidedSample": [
+    "th:nth-child(3)"
+   ]
+  },
+  {
+   "build": "lite",
+   "theme": "dark",
+   "screen": "check",
+   "passes": 22,
+   "violations": 0,
+   "undecided": 0,
+   "undecidedWhy": [],
+   "undecidedSample": []
+  },
+  {
+   "build": "lite",
+   "theme": "dark",
+   "screen": "plan",
+   "passes": 133,
+   "violations": 0,
+   "undecided": 0,
+   "undecidedWhy": [],
+   "undecidedSample": []
+  },
+  {
+   "build": "lite",
+   "theme": "dark",
+   "screen": "grocery",
+   "passes": 778,
+   "violations": 0,
+   "undecided": 0,
+   "undecidedWhy": [],
+   "undecidedSample": []
+  },
+  {
+   "build": "lite",
+   "theme": "dark",
+   "screen": "pantry",
+   "passes": 16,
+   "violations": 0,
+   "undecided": 0,
+   "undecidedWhy": [],
+   "undecidedSample": []
+  },
+  {
+   "build": "lite",
+   "theme": "dark",
+   "screen": "people",
+   "passes": 26,
+   "violations": 0,
+   "undecided": 0,
+   "undecidedWhy": [],
+   "undecidedSample": []
+  },
+  {
+   "build": "lite",
+   "theme": "dark",
+   "screen": "log",
+   "passes": 80,
+   "violations": 0,
+   "undecided": 0,
+   "undecidedWhy": [],
+   "undecidedSample": []
+  },
+  {
+   "build": "lite",
+   "theme": "dark",
+   "screen": "breathe",
+   "passes": 12,
+   "violations": 0,
+   "undecided": 0,
+   "undecidedWhy": [],
+   "undecidedSample": []
+  },
+  {
+   "build": "lite",
+   "theme": "dark",
+   "screen": "learn",
+   "passes": 188,
+   "violations": 0,
+   "undecided": 0,
+   "undecidedWhy": [],
+   "undecidedSample": []
+  },
+  {
+   "build": "lite",
+   "theme": "dark",
+   "screen": "settings",
+   "passes": 76,
+   "violations": 0,
+   "undecided": 0,
+   "undecidedWhy": [],
+   "undecidedSample": []
+  },
+  {
+   "build": "full",
+   "theme": "light",
+   "screen": "home",
+   "passes": 42,
+   "violations": 0,
+   "undecided": 2,
+   "undecidedWhy": [
+    "Element content is too short to determine if it is actual text content",
+    "Element's background color could not be determined because it is overlapped by a"
+   ],
+   "undecidedSample": [
+    ".ring-value",
+    ".ring-unit"
+   ]
+  },
+  {
+   "build": "full",
+   "theme": "light",
+   "screen": "people",
+   "passes": 48,
+   "violations": 0,
+   "undecided": 0,
+   "undecidedWhy": [],
+   "undecidedSample": []
+  },
+  {
+   "build": "full",
+   "theme": "light",
+   "screen": "plan",
+   "passes": 92,
+   "violations": 0,
+   "undecided": 0,
+   "undecidedWhy": [],
+   "undecidedSample": []
+  },
+  {
+   "build": "full",
+   "theme": "light",
+   "screen": "check",
+   "passes": 21,
+   "violations": 0,
+   "undecided": 0,
+   "undecidedWhy": [],
+   "undecidedSample": []
+  },
+  {
+   "build": "full",
+   "theme": "light",
+   "screen": "today",
+   "passes": 80,
+   "violations": 0,
+   "undecided": 8,
+   "undecidedWhy": [
+    "Element content is too short to determine if it is actual text content",
+    "Element's background color could not be determined because it is overlapped by a",
+    "Element's background color could not be determined because element contains an i"
+   ],
+   "undecidedSample": [
+    ".ring-value",
+    ".ring-unit"
+   ]
+  },
+  {
+   "build": "full",
+   "theme": "light",
+   "screen": "week",
+   "passes": 23,
+   "violations": 0,
+   "undecided": 0,
+   "undecidedWhy": [],
+   "undecidedSample": []
+  },
+  {
+   "build": "full",
+   "theme": "light",
+   "screen": "recipes",
+   "passes": 289,
+   "violations": 0,
+   "undecided": 0,
+   "undecidedWhy": [],
+   "undecidedSample": []
+  },
+  {
+   "build": "full",
+   "theme": "light",
+   "screen": "grocery",
+   "passes": 756,
+   "violations": 0,
+   "undecided": 0,
+   "undecidedWhy": [],
+   "undecidedSample": []
+  },
+  {
+   "build": "full",
+   "theme": "light",
+   "screen": "pantry",
+   "passes": 15,
+   "violations": 0,
+   "undecided": 0,
+   "undecidedWhy": [],
+   "undecidedSample": []
+  },
+  {
+   "build": "full",
+   "theme": "light",
+   "screen": "together",
+   "passes": 99,
+   "violations": 0,
+   "undecided": 0,
+   "undecidedWhy": [],
+   "undecidedSample": []
+  },
+  {
+   "build": "full",
+   "theme": "light",
+   "screen": "log",
+   "passes": 79,
+   "violations": 0,
+   "undecided": 0,
+   "undecidedWhy": [],
+   "undecidedSample": []
+  },
+  {
+   "build": "full",
+   "theme": "light",
+   "screen": "breathe",
+   "passes": 11,
+   "violations": 0,
+   "undecided": 0,
+   "undecidedWhy": [],
+   "undecidedSample": []
+  },
+  {
+   "build": "full",
+   "theme": "light",
+   "screen": "learn",
+   "passes": 187,
+   "violations": 0,
+   "undecided": 0,
+   "undecidedWhy": [],
+   "undecidedSample": []
+  },
+  {
+   "build": "full",
+   "theme": "light",
+   "screen": "settings",
+   "passes": 75,
+   "violations": 0,
+   "undecided": 0,
+   "undecidedWhy": [],
+   "undecidedSample": []
+  },
+  {
+   "build": "full",
+   "theme": "dark",
+   "screen": "home",
+   "passes": 42,
+   "violations": 0,
+   "undecided": 2,
+   "undecidedWhy": [
+    "Element content is too short to determine if it is actual text content",
+    "Element's background color could not be determined because it is overlapped by a"
+   ],
+   "undecidedSample": [
+    ".ring-value",
+    ".ring-unit"
+   ]
+  },
+  {
+   "build": "full",
+   "theme": "dark",
+   "screen": "people",
+   "passes": 48,
+   "violations": 0,
+   "undecided": 0,
+   "undecidedWhy": [],
+   "undecidedSample": []
+  },
+  {
+   "build": "full",
+   "theme": "dark",
+   "screen": "plan",
+   "passes": 92,
+   "violations": 0,
+   "undecided": 0,
+   "undecidedWhy": [],
+   "undecidedSample": []
+  },
+  {
+   "build": "full",
+   "theme": "dark",
+   "screen": "check",
+   "passes": 21,
+   "violations": 0,
+   "undecided": 0,
+   "undecidedWhy": [],
+   "undecidedSample": []
+  },
+  {
+   "build": "full",
+   "theme": "dark",
+   "screen": "today",
+   "passes": 80,
+   "violations": 0,
+   "undecided": 8,
+   "undecidedWhy": [
+    "Element content is too short to determine if it is actual text content",
+    "Element's background color could not be determined because it is overlapped by a",
+    "Element's background color could not be determined because element contains an i"
+   ],
+   "undecidedSample": [
+    ".ring-value",
+    ".ring-unit"
+   ]
+  },
+  {
+   "build": "full",
+   "theme": "dark",
+   "screen": "week",
+   "passes": 23,
+   "violations": 0,
+   "undecided": 0,
+   "undecidedWhy": [],
+   "undecidedSample": []
+  },
+  {
+   "build": "full",
+   "theme": "dark",
+   "screen": "recipes",
+   "passes": 289,
+   "violations": 0,
+   "undecided": 0,
+   "undecidedWhy": [],
+   "undecidedSample": []
+  },
+  {
+   "build": "full",
+   "theme": "dark",
+   "screen": "grocery",
+   "passes": 756,
+   "violations": 0,
+   "undecided": 0,
+   "undecidedWhy": [],
+   "undecidedSample": []
+  },
+  {
+   "build": "full",
+   "theme": "dark",
+   "screen": "pantry",
+   "passes": 15,
+   "violations": 0,
+   "undecided": 0,
+   "undecidedWhy": [],
+   "undecidedSample": []
+  },
+  {
+   "build": "full",
+   "theme": "dark",
+   "screen": "together",
+   "passes": 99,
+   "violations": 0,
+   "undecided": 0,
+   "undecidedWhy": [],
+   "undecidedSample": []
+  },
+  {
+   "build": "full",
+   "theme": "dark",
+   "screen": "log",
+   "passes": 79,
+   "violations": 0,
+   "undecided": 0,
+   "undecidedWhy": [],
+   "undecidedSample": []
+  },
+  {
+   "build": "full",
+   "theme": "dark",
+   "screen": "breathe",
+   "passes": 11,
+   "violations": 0,
+   "undecided": 0,
+   "undecidedWhy": [],
+   "undecidedSample": []
+  },
+  {
+   "build": "full",
+   "theme": "dark",
+   "screen": "learn",
+   "passes": 187,
+   "violations": 0,
+   "undecided": 0,
+   "undecidedWhy": [],
+   "undecidedSample": []
+  },
+  {
+   "build": "full",
+   "theme": "dark",
+   "screen": "settings",
+   "passes": 75,
+   "violations": 0,
+   "undecided": 0,
+   "undecidedWhy": [],
+   "undecidedSample": []
+  }
+ ]
+}

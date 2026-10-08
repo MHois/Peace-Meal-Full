@@ -1,0 +1,68 @@
+[
+ {
+  "module": "mcas",
+  "label": "corned beef",
+  "basis": "data/articles.json:780 \"cured and processed meats\"; foods.json tags \"Beef, cured, corned beef\" histamine-aged",
+  "verdict": "pass"
+ },
+ {
+  "module": "mcas",
+  "label": "pastrami",
+  "basis": "same",
+  "verdict": "caution"
+ },
+ {
+  "module": "mcas",
+  "label": "salami",
+  "basis": "same",
+  "verdict": "caution"
+ },
+ {
+  "module": "mcas",
+  "label": "beef jerky",
+  "basis": "same",
+  "verdict": "caution"
+ },
+ {
+  "module": "mcas",
+  "label": "sauerkraut",
+  "basis": "data/articles.json:780 \"fermented foods (sauerkraut, ...)\"",
+  "verdict": "caution"
+ },
+ {
+  "module": "mcas",
+  "label": "aged cheddar",
+  "basis": "data/articles.json:780 \"aged cheeses\"",
+  "verdict": "caution"
+ },
+ {
+  "module": "hypertension",
+  "label": "salt",
+  "basis": "data/conditions.json:368 sodium under 2,300 mg a day",
+  "verdict": "pass"
+ },
+ {
+  "module": "hypertension",
+  "label": "soy sauce",
+  "basis": "same",
+  "verdict": "pass"
+ },
+ {
+  "module": "hypertension",
+  "label": "garlic salt",
+  "basis": "same",
+  "verdict": "pass"
+ },
+ {
+  "module": "celiac",
+  "label": "malt vinegar",
+  "basis": "celiac rules: malt is a gluten source",
+  "verdict": "fail"
+ },
+ {
+  "module": "celiac",
+  "label": "barley",
+  "basis": "celiac rules",
+  "verdict": "fail"
+ }
+]

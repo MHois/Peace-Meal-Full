@@ -7,7 +7,8 @@
 //   directory/<personId>            { personId, name, initials, deviceFingerprint, updated } names only, visible to everyone
 //   profiles/<personId>             { box, keys: { <fingerprint>: wrapped }, deviceFingerprint, updated }
 //   shares/<shareId>                { from, to (fingerprint), personName, parts: [..], box, key: wrapped, created, expires }
-import * as C from './crypto.js';
+// Named imports, not a namespace: tools/bundle.mjs pastes the modules together, and a namespace object would not exist (N5).
+import { cryptoAvailable, decryptJson, encryptJson, fingerprintOf, generateDeviceKey, newContentKey, openWithPassphrase, sealWithPassphrase, shortId, unwrapKey, wrapKeyFor } from './crypto.js';
 
 const LS_KEY = 'peace-meal:device';
 
@@ -17,8 +18,8 @@ export function loadDeviceIdentity() {
 export async function ensureDeviceIdentity(name = 'This device') {
   let id = loadDeviceIdentity();
   if (id && id.fingerprint) return id;
-  if (!C.cryptoAvailable()) return null;
-  const k = await C.generateDeviceKey();
+  if (!cryptoAvailable()) return null;
+  const k = await generateDeviceKey();
   id = { ...k, name, created: new Date().toISOString() };
   try { localStorage.setItem(LS_KEY, JSON.stringify(id)); } catch { /* ignore */ }
   return id;
@@ -33,6 +34,27 @@ export async function getDb() {
 }
 
 function publicPart(id) { return { kty: id.publicJwk.kty, crv: id.publicJwk.crv, x: id.publicJwk.x, y: id.publicJwk.y }; }
+
+// P2-7 (audit of September 30, 2026). What each new box and wrapped key is bound to (format 2, src/engine/crypto.js):
+// a box copied into another person's record or another share, or a key wrapped for another reader, does not open.
+const SYNC_AD = {
+  profile: (personId, publisherFp) => `peace-meal/profile/${personId}/${publisherFp}`,
+  profileKey: (personId, publisherFp, readerFp) => `peace-meal/profile-key/${personId}/${publisherFp}/${readerFp}`,
+  share: (id, fromFp, toFp) => `peace-meal/share/${id}/${fromFp}/${toFp}`,
+  shareKey: (id, fromFp, toFp) => `peace-meal/share-key/${id}/${fromFp}/${toFp}`
+};
+// A wrapped key names the public key it was made with. It is accepted only when that key is the one the named device
+// registered in the store, so nobody can write a profile or share that opens as if another device had made it. A
+// device that never registered cannot be checked, so its records are refused.
+async function syncSenderOk(db, wrapped, claimedFp) {
+  if (!wrapped || !wrapped.sender || !claimedFp) return false;
+  if ((await fingerprintOf(wrapped.sender)) !== claimedFp) return false;
+  try {
+    const s = await db.doc('devices/' + claimedFp).get();
+    const k = s && s.exists ? (s.data() || {}).publicJwk : null;
+    return !!(k && k.kty === wrapped.sender.kty && k.crv === wrapped.sender.crv && k.x === wrapped.sender.x && k.y === wrapped.sender.y);
+  } catch { return false; }
+}
 
 export async function registerDevice(db, identity) {
   if (!db || !identity) return false;
@@ -57,11 +79,11 @@ function initials(name) { return String(name || '?').split(/\s+/).map(w => w[0])
 export async function publishPerson(db, identity, person) {
   if (!db || !identity) return { ok: false, reason: 'unavailable' };
   const owner = await readOwner(db);
-  const contentKey = await C.newContentKey();
-  const box = await C.encryptJson(contentKey, person);
+  const contentKey = await newContentKey();
+  const box = await encryptJson(contentKey, person, SYNC_AD.profile(person.id, identity.fingerprint));
   const keys = {};
-  keys[identity.fingerprint] = await C.wrapKeyFor(contentKey, identity.privateJwk, identity.publicJwk, publicPart(identity));
-  if (owner && owner.fingerprint !== identity.fingerprint) keys[owner.fingerprint] = await C.wrapKeyFor(contentKey, identity.privateJwk, identity.publicJwk, owner.publicJwk);
+  keys[identity.fingerprint] = await wrapKeyFor(contentKey, identity.privateJwk, identity.publicJwk, publicPart(identity), SYNC_AD.profileKey(person.id, identity.fingerprint, identity.fingerprint));
+  if (owner && owner.fingerprint !== identity.fingerprint) keys[owner.fingerprint] = await wrapKeyFor(contentKey, identity.privateJwk, identity.publicJwk, owner.publicJwk, SYNC_AD.profileKey(person.id, identity.fingerprint, owner.fingerprint));
   const now = new Date().toISOString();
   try {
     await db.doc('profiles/' + person.id).set({ box, keys, deviceFingerprint: identity.fingerprint, updated: now });
@@ -89,8 +111,14 @@ export async function openPerson(db, identity, personId) {
     const rec = s.data();
     const wrapped = rec.keys && rec.keys[identity.fingerprint];
     if (!wrapped) return { locked: true, personId };
-    const key = await C.unwrapKey(wrapped, identity.privateJwk);
-    const person = await C.decryptJson(key, rec.box);
+    if (!(await syncSenderOk(db, wrapped, rec.deviceFingerprint))) return { locked: true, personId, error: true, reason: 'sender' };
+    let person = null;
+    try {
+      const key = await unwrapKey(wrapped, identity.privateJwk, SYNC_AD.profileKey(personId, rec.deviceFingerprint, identity.fingerprint));
+      person = await decryptJson(key, rec.box, SYNC_AD.profile(personId, rec.deviceFingerprint));
+    } catch { return { locked: true, personId, error: true, reason: 'unreadable' }; }   // changed, moved (format 2), or damaged
+    // Format 1 records carry no context, so a moved one is caught here: the person inside must be the one asked for.
+    if (!person || person.id !== personId) return { locked: true, personId, error: true, reason: 'moved' };
     return { locked: false, personId, person, updated: rec.updated, deviceFingerprint: rec.deviceFingerprint };
   } catch { return { locked: true, personId, error: true }; }
 }
@@ -111,13 +139,15 @@ export function buildSharePackage(person, partIds, extra = {}) {
 export async function sendShare(db, identity, recipientDevice, person, partIds, extra = {}, days = 30) {
   if (!db || !identity || !recipientDevice) return { ok: false, reason: 'unavailable' };
   const pkg = buildSharePackage(person, partIds, extra);
-  const contentKey = await C.newContentKey();
-  const box = await C.encryptJson(contentKey, pkg);
-  const key = await C.wrapKeyFor(contentKey, identity.privateJwk, identity.publicJwk, recipientDevice.publicJwk);
-  const id = C.shortId();
+  const id = shortId();
+  const contentKey = await newContentKey();
+  const box = await encryptJson(contentKey, pkg, SYNC_AD.share(id, identity.fingerprint, recipientDevice.fingerprint));
+  const key = await wrapKeyFor(contentKey, identity.privateJwk, identity.publicJwk, recipientDevice.publicJwk, SYNC_AD.shareKey(id, identity.fingerprint, recipientDevice.fingerprint));
   const created = new Date();
   const expires = new Date(created.getTime() + days * 86400000);
-  try { await db.doc('shares/' + id).set({ id, from: identity.fingerprint, fromName: identity.name || '', to: recipientDevice.fingerprint, personName: person.name, parts: pkg.parts, box, key, created: created.toISOString(), expires: expires.toISOString() }); return { ok: true, id }; } catch (e) { return { ok: false, reason: e && e.code || 'error' }; }
+  // P2-7: no "fromName" any more: it was the sender's own say-so, in plain text. The inbox names the sender from the
+  // device list, which is tied to the sender's key.
+  try { await db.doc('shares/' + id).set({ id, from: identity.fingerprint, to: recipientDevice.fingerprint, personName: person.name, parts: pkg.parts, box, key, created: created.toISOString(), expires: expires.toISOString() }); return { ok: true, id }; } catch (e) { return { ok: false, reason: e && e.code || 'error' }; }
 }
 export async function listSharesForMe(db, identity) {
   if (!db || !identity) return [];
@@ -127,8 +157,14 @@ export async function listSharesForMe(db, identity) {
     return (q.docs || q).map(d => (typeof d.data === 'function' ? d.data() : d)).filter(s => s && (!s.expires || Date.parse(s.expires) > now));
   } catch { return []; }
 }
+// Null when the share is not for this device, does not come from the device it names (P2-7), was moved, or is damaged.
 export async function openShare(db, identity, share) {
-  try { const key = await C.unwrapKey(share.key, identity.privateJwk); return await C.decryptJson(key, share.box); } catch { return null; }
+  try {
+    if (!share || !identity || share.to !== identity.fingerprint) return null;
+    if (!(await syncSenderOk(db, share.key, share.from))) return null;
+    const key = await unwrapKey(share.key, identity.privateJwk, SYNC_AD.shareKey(share.id, share.from, share.to));
+    return await decryptJson(key, share.box, SYNC_AD.share(share.id, share.from, share.to));
+  } catch { return null; }
 }
 export async function listDevices(db) {
   if (!db) return [];
@@ -136,9 +172,9 @@ export async function listDevices(db) {
 }
 
 // Owner recovery: seal the owner's device identity with a passphrase so it can be restored on another device.
-export async function sealOwnerBackup(identity, passphrase) { return C.sealWithPassphrase(passphrase, identity); }
+export async function sealOwnerBackup(identity, passphrase) { return sealWithPassphrase(passphrase, identity); }
 export async function restoreOwnerBackup(box, passphrase) {
-  const id = await C.openWithPassphrase(passphrase, box);
+  const id = await openWithPassphrase(passphrase, box);
   if (!id || !id.fingerprint || !id.privateJwk) throw new Error('Not an owner backup.');
   try { localStorage.setItem(LS_KEY, JSON.stringify(id)); } catch { /* ignore */ }
   return id;

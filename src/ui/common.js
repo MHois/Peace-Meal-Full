@@ -1,6 +1,6 @@
 // Shared UI state and helpers. Every screen module imports from here.
 // Names are prefixed with "ui" so nothing collides when tools/bundle.mjs concatenates all modules into one scope.
-import { save } from '../store.js';
+import { save, storeState, releaseUnreadable } from '../store.js';
 import { buildPlan, labelNutrient } from '../engine/plan.js';
 
 export const uiState = {
@@ -60,7 +60,9 @@ export function uiFmtNum(v, digits = 0) {
 
 export function uiPersist() {
   uiState.planCache.clear();
-  uiState.weekCache.clear();
+  // P2-1 (fix pass of September 30, 2026): the built week is no longer cleared on every save; weekGet rebuilds it when
+  // something it depends on changed (src/ui/week.js, weekInputs). Kept here, not deleted, for review:
+  // uiState.weekCache.clear();
   const ok = save(uiState.profile);
   uiSaveStatus(ok);
   return ok;
@@ -84,6 +86,45 @@ export function uiSaveStatus(ok) {
     <div class="btn-row"><button class="btn primary lite-big" type="button" data-save-retry>Try again</button><button class="btn lite-big" type="button" data-save-backup>Send a backup</button></div>`;
   bar.querySelector('[data-save-retry]').onclick = () => { if (uiPersist()) uiToast('Saved.'); };
   bar.querySelector('[data-save-backup]').onclick = () => { if (uiState.shareBackup) uiState.shareBackup(); };
+}
+
+// Hand a file to the person: the share sheet where there is one (the iPhone's "Save to Files"), else a download.
+// Returns 'shared', 'saved', 'closed' (they closed the share sheet), or 'failed'.
+export async function uiShareFile(filename, text, title) {
+  try {
+    if (typeof File === 'function' && typeof navigator !== 'undefined' && navigator.share && navigator.canShare) {
+      const file = new File([text], filename, { type: 'application/json' });
+      if (navigator.canShare({ files: [file] })) { await navigator.share({ files: [file], title }); return 'shared'; }
+    }
+  } catch (e) { if (e && e.name === 'AbortError') return 'closed'; }
+  return uiDownload(filename, text) ? 'saved' : 'failed';
+}
+
+// P0-4 (fix pass of September 30, 2026): saved data that could not be read on this launch (store.js keeps a copy). The
+// notice sits at the top of every screen until the person has saved the original as a file and chosen Start fresh, or,
+// when the rest of the data was kept, OK.
+export function uiUnreadableNoticeHTML() {
+  const u = storeState.unreadable;
+  if (!u || u.released) return '';
+  const head = u.repaired ? 'Part of your saved data could not be read.' : 'Your saved data could not be read.';
+  const what = u.repaired ? 'Everything else is here, and a copy of the original is kept on this device.'
+    : u.copyFailed ? 'The app could not keep a copy of it, so it will not save anything new until you save the original as a file.'
+      : 'A copy of it is kept on this device, and the app has started with nothing filled in.';
+  const done = u.repaired || uiState.unreadableSaved;
+  return `<div class="notice block unreadable-notice" id="unreadable-notice" role="alert">${uiIcon('stop', { cls: 'notice-icon' })}<div class="notice-head">${head}</div>
+    <div class="notice-body"><p>${uiEsc(u.reason)} ${what} Save it as a file so it is not lost, and give it to whoever looks after this app.</p>
+    <div class="btn-row"><button class="btn primary lite-big" type="button" data-unreadable-save>Save it as a file</button>${done ? `<button class="btn lite-big" type="button" data-unreadable-done>${u.repaired ? 'OK' : 'Start fresh'}</button>` : ''}</div></div></div>`;
+}
+export function uiBindUnreadableNotice(root) {
+  const saveBtn = root.querySelector('[data-unreadable-save]');
+  if (saveBtn) saveBtn.addEventListener('click', async () => {
+    const u = storeState.unreadable;
+    const r = await uiShareFile(`peace-meal-could-not-read-${String(u.at).slice(0, 10)}.json`, u.text, 'Peace Meal: saved data that could not be read');
+    if (r === 'shared' || r === 'saved') { uiState.unreadableSaved = true; uiToast('Saved as a file.'); uiState.rerender(); }
+    else if (r === 'failed') uiToast('The file could not be saved here. The copy is still kept on this device.');
+  });
+  const doneBtn = root.querySelector('[data-unreadable-done]');
+  if (doneBtn) doneBtn.addEventListener('click', () => { releaseUnreadable(); uiPersist(); uiState.rerender(); });
 }
 
 // A removal the person can take back for ten seconds. Only the latest removal can be undone; a new one closes the old window.
@@ -213,6 +254,13 @@ export function uiNoticeHTML(n, opts = {}) {
   return `<div class="notice ${level}" role="${level === 'block' ? 'alert' : 'status'}">${uiIcon(icon, { cls: 'notice-icon' })}<div class="notice-head">${head}</div><div class="notice-body"><div>${uiEsc(n.text)}</div>${ack}${confirm}${link}${acts}</div></div>`;
 }
 
+// Every recipe source and its licence in one sentence, shared by the Recipes screen and Settings, About, so the two cannot
+// disagree (UX pass, October 2026: About left out four collections). Both builds carry every collection since the owner's
+// request of October 8, 2026, so the sentence is the same in both.
+export function uiRecipeSourcesText() {
+  return 'Peace Meal, the NHS website and Parent Club (Open Government Licence v3.0), the NHLBI, the VA, and USDA MyPlate Kitchen (US government works, not copyright protected), the Wikibooks Cookbook (CC BY-SA 4.0), and your own kitchen';
+}
+
 // Recipes the full single-file build reads only when needed (the Wikibooks Cookbook, 2026-09 audit; see appLoadDeferred
 // in app.js). Screens that search recipes call this first. True when it read them now.
 export function uiEnsureAllRecipes() {
@@ -276,6 +324,14 @@ export function uiEnsurePerson(person) {
   return person;
 }
 
+// P3-10 (audit of September 30, 2026): a small save outside the profile (a grocery tick, a display setting, the Home
+// Screen guide's "done" mark) that the device refuses, usually because its storage is full, says so instead of failing
+// silently. The profile itself has its own "Not saved" alert (uiSaveStatus). Returns whether it was saved.
+export function uiSaveSmall(key, value, notSaved) {
+  try { localStorage.setItem(key, value); return true; }
+  catch { uiToast(`${notSaved} This device's storage may be full. Free up some space, then try again.`); return false; }
+}
+
 export function uiToast(msg) {
   const t = document.getElementById('toast');
   if (!t) return;
@@ -283,6 +339,22 @@ export function uiToast(msg) {
   t.classList.add('show');
   clearTimeout(uiToast._t);
   uiToast._t = setTimeout(() => t.classList.remove('show'), 2400);
+}
+
+// P2-3 (fix pass of September 30, 2026): Tab and Shift+Tab stay inside an open sheet. Only Escape was handled, so 21 of
+// 40 Tab presses on the lite symptom sheet reached the screen behind it. Call from the sheet's keydown handler; returns
+// true when it handled the key. Hidden controls (a closed section) are skipped.
+const UI_FOCUSABLE = 'a[href], button:not([disabled]), input:not([disabled]):not([type="hidden"]), select:not([disabled]), textarea:not([disabled]), summary, [tabindex]:not([tabindex="-1"])';
+export function uiTrapTab(e, box) {
+  if (!e || e.key !== 'Tab' || !box) return false;
+  const items = [...box.querySelectorAll(UI_FOCUSABLE)].filter(x => x.getClientRects().length > 0);
+  const at = document.activeElement;
+  if (!items.length) { e.preventDefault(); return true; }
+  const first = items[0], last = items[items.length - 1];
+  if (!items.includes(at)) { e.preventDefault(); (e.shiftKey ? last : first).focus(); return true; }
+  if (e.shiftKey && at === first) { e.preventDefault(); last.focus(); return true; }
+  if (!e.shiftKey && at === last) { e.preventDefault(); first.focus(); return true; }
+  return false;
 }
 
 // A short yes/no pop-up layered over whatever sheet is open, so that sheet stays put. Resolves true only on the confirm button.
@@ -295,7 +367,7 @@ export function uiConfirmSheet({ title, text, confirm = 'Yes', cancel = 'Cancel'
     layer.innerHTML = `<div class="modal confirm" role="alertdialog" aria-modal="true" aria-label="${uiEsc(title || 'Are you sure?')}"><div class="modal-head"><h2>${uiEsc(title || '')}</h2></div><div class="modal-body"><p>${uiEsc(text)}</p><div class="btn-row"><button class="btn primary" type="button" data-yes="1">${uiEsc(confirm)}</button><button class="btn" type="button" data-no="1">${uiEsc(cancel)}</button></div></div></div>`;
     const prev = document.activeElement;
     const done = v => { document.removeEventListener('keydown', onKey, true); layer.remove(); if (prev && prev.focus) prev.focus(); resolve(v); };
-    const onKey = e => { if (e.key === 'Escape') { e.stopPropagation(); done(false); } };
+    const onKey = e => { if (e.key === 'Escape') { e.stopPropagation(); done(false); } else if (e.key === 'Tab') { e.stopPropagation(); uiTrapTab(e, layer.querySelector('.modal')); } };
     layer.addEventListener('click', e => { if (e.target === layer) done(false); });
     layer.querySelector('[data-yes]').addEventListener('click', () => done(true));
     layer.querySelector('[data-no]').addEventListener('click', () => done(false));
@@ -325,7 +397,7 @@ export function uiModal(html, opts = {}) {
     if (opts.onClose) opts.onClose(o);
   };
   uiState.modalClose = close;
-  const onKey = e => { if (e.key === 'Escape') close(); };
+  const onKey = e => { if (e.key === 'Escape') close(); else uiTrapTab(e, backdrop.querySelector('.modal')); };
   // Close on the X button, or on a tap outside the sheet. A tap inside the sheet never closes it.
   backdrop.addEventListener('click', e => { const t = e.target.closest ? e.target.closest('[data-close]') : null; if (!t || !backdrop.contains(t)) return; if (t === backdrop && e.target !== backdrop) return; close(); });
   backdrop.querySelector('.modal-back').addEventListener('click', () => close());
@@ -653,8 +725,12 @@ export function uiEmptyState(sentence, action = '', illo = 'bowl') {
 }
 
 // Switch (a checkbox that looks like a toggle). Returns markup; bind the input by id.
+// A switch says On or Off in words beside the track (owner request, October 2026). The word is drawn by CSS from the
+// checkbox's live state, so it is right after every tap; screen readers hear the switch's own state instead. The
+// static aria-checked attribute went: on a checkbox the native checked state is what assistive technology reads, and a
+// fixed attribute went stale after a tap that did not redraw the screen.
 export function uiSwitch(id, title, desc, checked) {
-  return `<label class="switch" for="${uiEsc(id)}"><span class="switch-text"><span class="switch-title">${uiEsc(title)}</span>${desc ? `<span class="hint">${uiEsc(desc)}</span>` : ''}</span><input type="checkbox" id="${uiEsc(id)}" role="switch" ${checked ? 'checked' : ''} aria-checked="${checked ? 'true' : 'false'}"><span class="switch-track" aria-hidden="true"></span></label>`;
+  return `<label class="switch" for="${uiEsc(id)}"><span class="switch-text"><span class="switch-title">${uiEsc(title)}</span>${desc ? `<span class="hint">${uiEsc(desc)}</span>` : ''}</span><input type="checkbox" id="${uiEsc(id)}" role="switch" ${checked ? 'checked' : ''}><span class="switch-state" aria-hidden="true"></span><span class="switch-track" aria-hidden="true"></span></label>`;
 }
 
 // Time-of-day greeting.
@@ -664,19 +740,32 @@ export function uiGreeting(name) {
   return name ? `${word}, ${uiEsc(name)}` : word;
 }
 
-// ---- UI preferences (theme, large text). Stored under peace-meal:ui; nothing else reads it. ----
+// ---- UI preferences (theme, large text). Each build keeps its own; nothing else reads them. ----
 // Large text is on by default in the lite build until the person sets it (largeTextSet), 2026-09 audit.
-const UI_PREFS_KEY = 'peace-meal:ui';
+// P3-9 (audit of September 30, 2026): both builds used one key, "peace-meal:ui", and on the hosted site they share one
+// web address, so a setting changed in one build changed the other. Each build now has its own key; the shared key from
+// before is copied into it the first time that build runs, and is left in place.
+const UI_PREFS_LEGACY_KEY = 'peace-meal:ui';
 function uiLiteBuild() { return typeof window !== 'undefined' && !!window.__PEACE_MEAL_LITE__; }
+function uiPrefsKey() { return (uiLiteBuild() ? 'peace-meal-lite' : 'peace-meal-full') + ':ui'; }
+function uiPrefsRaw() {
+  const key = uiPrefsKey();
+  const own = localStorage.getItem(key);
+  if (own != null) return own;
+  const legacy = localStorage.getItem(UI_PREFS_LEGACY_KEY);
+  if (legacy != null) { try { localStorage.setItem(key, legacy); } catch { /* storage full: read the old copy again next time */ } }
+  return legacy;
+}
 export function uiLoadUiPrefs() {
   try {
-    const p = JSON.parse(localStorage.getItem(UI_PREFS_KEY) || '{}');
+    const p = JSON.parse(uiPrefsRaw() || '{}');
     return { theme: ['light', 'dark'].includes(p.theme) ? p.theme : 'system', largeText: p.largeTextSet || !uiLiteBuild() ? !!p.largeText : true, largeTextSet: !!p.largeTextSet };
   } catch { return { theme: 'system', largeText: uiLiteBuild(), largeTextSet: false }; }
 }
 export function uiSaveUiPrefs(prefs) {
-  try { localStorage.setItem(UI_PREFS_KEY, JSON.stringify(prefs)); } catch { /* ignore */ }
+  const ok = uiSaveSmall(uiPrefsKey(), JSON.stringify(prefs), 'That setting was not saved; it applies until the app closes.');
   uiApplyUiPrefs(prefs);
+  return ok;
 }
 export function uiApplyUiPrefs(prefs = uiLoadUiPrefs()) {
   if (typeof document === 'undefined') return;

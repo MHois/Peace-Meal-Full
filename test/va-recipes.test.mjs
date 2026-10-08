@@ -45,9 +45,14 @@ test('VA recipes: the titles left out for cultural fit or for not being a dish s
 test('VA recipes: a collection switch in Settings, on by default, in both builds', () => {
   assert.match(R('src/app.js'), /'VA Healthy Teaching Kitchen': 'va'/);
   assert.match(R('src/ui/settings.js'), /uiSwitch\('coll-va'/);
-  assert.match(R('src/store.js'), /recipe_collections: \{[^}]*\bva: true/);
-  // The lite build leaves out only the Wikibooks recipes from recipes-open.json.
-  assert.match(R('tools/bundle.mjs'), /data\['recipes-open'\]\.filter\(r => r\.source !== 'Wikibooks Cookbook'\)/);
+  // Changed on purpose October 1, 2026 (P3-3): the defaults are written once, in RECIPE_COLLECTION_DEFAULTS, instead of
+  // inline in the new-profile object. Same expectation: VA is on by default.
+  assert.match(R('src/store.js'), /RECIPE_COLLECTION_DEFAULTS = Object\.freeze\(\{[^}]*\bva: true/);
+  // Changed on purpose (owner request, October 8, 2026). Old: the lite build leaves out the Wikibooks recipes (the filter
+  // line in tools/bundle.mjs runs). New: that line is kept as a comment and no longer runs; both builds carry every recipe
+  // in recipes-open.json (see test/ux-2026-10-lite-all-recipes.test.mjs). Why: the owner asked for lite to have them all.
+  assert.match(R('tools/bundle.mjs'), /^\/\/ if \(LITE && Array\.isArray\(data\['recipes-open'\]\)\) data\['recipes-open'\] = data\['recipes-open'\]\.filter\(r => r\.source !== 'Wikibooks Cookbook'\);$/m);
+  assert.doesNotMatch(R('tools/bundle.mjs'), /^if \(LITE && Array\.isArray\(data\['recipes-open'\]\)\)/m);
   // The Wikibooks recipes stay together, so the full build can still defer them (tools/bundle.mjs).
   const wb = open.map((r, i) => r.source === 'Wikibooks Cookbook' ? i : -1).filter(i => i >= 0);
   assert.equal(wb[wb.length - 1] - wb[0] + 1, wb.length);

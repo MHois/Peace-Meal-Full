@@ -1,0 +1,946 @@
+{
+ "unusedExports": [
+  {
+   "file": "src/app.js",
+   "name": "loadData",
+   "usedInOwnFile": true,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/app.js",
+   "name": "APP_LITE",
+   "usedInOwnFile": true,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/app.js",
+   "name": "appRender",
+   "usedInOwnFile": true,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/app.js",
+   "name": "APP_COLLECTION_OF_SOURCE",
+   "usedInOwnFile": true,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/app.js",
+   "name": "appCollectionOf",
+   "usedInOwnFile": true,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/app.js",
+   "name": "appDeferredInfo",
+   "usedInOwnFile": true,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/store.js",
+   "name": "LEGACY_KEYS",
+   "usedInOwnFile": true,
+   "usedByTests": true,
+   "usedByTools": false
+  },
+  {
+   "file": "src/store.js",
+   "name": "STORE_KEYS",
+   "usedInOwnFile": true,
+   "usedByTests": true,
+   "usedByTools": false
+  },
+  {
+   "file": "src/store.js",
+   "name": "storeKeyFor",
+   "usedInOwnFile": true,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/store.js",
+   "name": "migrateStorage",
+   "usedInOwnFile": true,
+   "usedByTests": true,
+   "usedByTools": false
+  },
+  {
+   "file": "src/store.js",
+   "name": "migrate",
+   "usedInOwnFile": true,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/engine/checker.js",
+   "name": "planRestricts",
+   "usedInOwnFile": true,
+   "usedByTests": true,
+   "usedByTools": false
+  },
+  {
+   "file": "src/engine/checker.js",
+   "name": "verdictFrom",
+   "usedInOwnFile": true,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/engine/checker.js",
+   "name": "matchOtherAllergies",
+   "usedInOwnFile": true,
+   "usedByTests": true,
+   "usedByTools": false
+  },
+  {
+   "file": "src/engine/crypto.js",
+   "name": "fingerprintOf",
+   "usedInOwnFile": true,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/engine/crypto.js",
+   "name": "passphraseKey",
+   "usedInOwnFile": true,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/engine/cuisine.js",
+   "name": "classifyCuisine",
+   "usedInOwnFile": true,
+   "usedByTests": true,
+   "usedByTools": false
+  },
+  {
+   "file": "src/engine/dictionary.js",
+   "name": "normalizeText",
+   "usedInOwnFile": true,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/engine/dictionary.js",
+   "name": "segmentText",
+   "usedInOwnFile": true,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/engine/dictionary.js",
+   "name": "isNoiseOnly",
+   "usedInOwnFile": true,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "name": "dietNormalize",
+   "usedInOwnFile": true,
+   "usedByTests": true,
+   "usedByTools": false
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "name": "dietAvoidNormalize",
+   "usedInOwnFile": true,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "name": "avoidExampleFor",
+   "usedInOwnFile": true,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "name": "approvedFor",
+   "usedInOwnFile": true,
+   "usedByTests": true,
+   "usedByTools": false
+  },
+  {
+   "file": "src/engine/dietlists.js",
+   "name": "listItemsFor",
+   "usedInOwnFile": false,
+   "usedByTests": true,
+   "usedByTools": false
+  },
+  {
+   "file": "src/engine/energy.js",
+   "name": "restingEnergy",
+   "usedInOwnFile": true,
+   "usedByTests": true,
+   "usedByTools": false
+  },
+  {
+   "file": "src/engine/energy.js",
+   "name": "LB_PER_KG",
+   "usedInOwnFile": true,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/engine/energy.js",
+   "name": "CM_PER_IN",
+   "usedInOwnFile": true,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/engine/grocery.js",
+   "name": "groceryTextKey",
+   "usedInOwnFile": true,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/engine/household.js",
+   "name": "householdDefaults",
+   "usedInOwnFile": true,
+   "usedByTests": true,
+   "usedByTools": false
+  },
+  {
+   "file": "src/engine/household.js",
+   "name": "isRostered",
+   "usedInOwnFile": false,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/engine/household.js",
+   "name": "seatingKey",
+   "usedInOwnFile": true,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/engine/household.js",
+   "name": "seatingPerson",
+   "usedInOwnFile": true,
+   "usedByTests": true,
+   "usedByTools": false
+  },
+  {
+   "file": "src/engine/household.js",
+   "name": "makeSeatingCache",
+   "usedInOwnFile": true,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/engine/plan.js",
+   "name": "PHASE_DEFAULT_CHECK_IN_WEEKS",
+   "usedInOwnFile": true,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/engine/plan.js",
+   "name": "FEATURE_MODULES",
+   "usedInOwnFile": true,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/engine/plan.js",
+   "name": "ELIMINATION_MODULES",
+   "usedInOwnFile": true,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/engine/plan.js",
+   "name": "tier2ParamFor",
+   "usedInOwnFile": true,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/engine/plan.js",
+   "name": "normalizeConditions",
+   "usedInOwnFile": true,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/engine/plan.js",
+   "name": "NUTRIENT_LABELS",
+   "usedInOwnFile": true,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/engine/planner.js",
+   "name": "SNACK_SLOTS",
+   "usedInOwnFile": false,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/engine/planner.js",
+   "name": "plannerHasNutrition",
+   "usedInOwnFile": true,
+   "usedByTests": true,
+   "usedByTools": false
+  },
+  {
+   "file": "src/engine/report.js",
+   "name": "eatenBetween",
+   "usedInOwnFile": true,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/engine/report.js",
+   "name": "eatenBefore",
+   "usedInOwnFile": true,
+   "usedByTests": true,
+   "usedByTools": false
+  },
+  {
+   "file": "src/engine/screen.js",
+   "name": "SCOFF_ITEMS",
+   "usedInOwnFile": false,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/engine/screen.js",
+   "name": "SCOFF_POSITIVE_THRESHOLD",
+   "usedInOwnFile": true,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/engine/screen.js",
+   "name": "scoreScoff",
+   "usedInOwnFile": false,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/engine/screen.js",
+   "name": "SUPPORT_TEXT",
+   "usedInOwnFile": false,
+   "usedByTests": true,
+   "usedByTools": false
+  },
+  {
+   "file": "src/engine/search.js",
+   "name": "searchRank",
+   "usedInOwnFile": true,
+   "usedByTests": true,
+   "usedByTools": false
+  },
+  {
+   "file": "src/engine/spice.js",
+   "name": "SPICE_LABEL",
+   "usedInOwnFile": true,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/engine/spice.js",
+   "name": "spiceResetCache",
+   "usedInOwnFile": false,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/engine/swaps.js",
+   "name": "adaptedApplies",
+   "usedInOwnFile": false,
+   "usedByTests": true,
+   "usedByTools": false
+  },
+  {
+   "file": "src/engine/swaps.js",
+   "name": "adaptRecipe",
+   "usedInOwnFile": true,
+   "usedByTests": true,
+   "usedByTools": false
+  },
+  {
+   "file": "src/engine/sync.js",
+   "name": "loadDeviceIdentity",
+   "usedInOwnFile": true,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/engine/sync.js",
+   "name": "buildSharePackage",
+   "usedInOwnFile": true,
+   "usedByTests": true,
+   "usedByTools": false
+  },
+  {
+   "file": "src/ui/check.js",
+   "name": "checkOcrNote",
+   "usedInOwnFile": true,
+   "usedByTests": true,
+   "usedByTools": false
+  },
+  {
+   "file": "src/ui/check.js",
+   "name": "checkBindResult",
+   "usedInOwnFile": true,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/ui/check.js",
+   "name": "checkHeadline",
+   "usedInOwnFile": true,
+   "usedByTests": true,
+   "usedByTools": false
+  },
+  {
+   "file": "src/ui/check.js",
+   "name": "checkResultHTML",
+   "usedInOwnFile": true,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/ui/common.js",
+   "name": "uiSaveStatus",
+   "usedInOwnFile": true,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/ui/common.js",
+   "name": "uiCloseModal",
+   "usedInOwnFile": false,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/ui/common.js",
+   "name": "uiPctClass",
+   "usedInOwnFile": false,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/ui/common.js",
+   "name": "uiMinutesBucket",
+   "usedInOwnFile": false,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/ui/common.js",
+   "name": "uiVerdictTone",
+   "usedInOwnFile": true,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/ui/common.js",
+   "name": "uiApplyUiPrefs",
+   "usedInOwnFile": true,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/ui/dietlist.js",
+   "name": "dietFamiliesFor",
+   "usedInOwnFile": true,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/ui/grocery.js",
+   "name": "groceryWeekKey",
+   "usedInOwnFile": true,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/ui/grocery.js",
+   "name": "groceryStore",
+   "usedInOwnFile": true,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/ui/grocery.js",
+   "name": "groceryTarget",
+   "usedInOwnFile": true,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/ui/household.js",
+   "name": "householdState",
+   "usedInOwnFile": true,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/ui/household.js",
+   "name": "householdGroceryWeek",
+   "usedInOwnFile": false,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/ui/household.js",
+   "name": "householdBuildList",
+   "usedInOwnFile": false,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/ui/install.js",
+   "name": "installIsIOS",
+   "usedInOwnFile": true,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/ui/install.js",
+   "name": "installIsAndroid",
+   "usedInOwnFile": true,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/ui/install.js",
+   "name": "installIsStandalone",
+   "usedInOwnFile": true,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/ui/learn.js",
+   "name": "learnModuleHTML",
+   "usedInOwnFile": false,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/ui/recipes-edit.js",
+   "name": "recipesEdParseQuantity",
+   "usedInOwnFile": true,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/ui/recipes-edit.js",
+   "name": "recipesEdGramsFor",
+   "usedInOwnFile": true,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/ui/recipes-edit.js",
+   "name": "recipesEdSearchFoods",
+   "usedInOwnFile": true,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/ui/recipes-edit.js",
+   "name": "recipesEdSuggest",
+   "usedInOwnFile": true,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/ui/recipes-edit.js",
+   "name": "recipesEdLinesHTML",
+   "usedInOwnFile": true,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/ui/recipes-edit.js",
+   "name": "recipesEdBindLines",
+   "usedInOwnFile": true,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/ui/recipes-edit.js",
+   "name": "recipesEdPreview",
+   "usedInOwnFile": true,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/ui/recipes-edit.js",
+   "name": "recipesEdParsePaste",
+   "usedInOwnFile": true,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/ui/recipes.js",
+   "name": "recipesHasNutrition",
+   "usedInOwnFile": true,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/ui/recipes.js",
+   "name": "recipesSourceKey",
+   "usedInOwnFile": true,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/ui/recipes.js",
+   "name": "recipesSourceChip",
+   "usedInOwnFile": true,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/ui/recipes.js",
+   "name": "recipesDietChips",
+   "usedInOwnFile": true,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/ui/recipes.js",
+   "name": "recipesCheck",
+   "usedInOwnFile": true,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/ui/recipes.js",
+   "name": "recipesMarkNever",
+   "usedInOwnFile": true,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/ui/recipes.js",
+   "name": "recipesUnmarkNever",
+   "usedInOwnFile": true,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/ui/recipes.js",
+   "name": "recipesAttributionHTML",
+   "usedInOwnFile": true,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/ui/settings.js",
+   "name": "settingsMarkBackup",
+   "usedInOwnFile": true,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/ui/sharing.js",
+   "name": "SHARING_LOCAL_SENTENCE",
+   "usedInOwnFile": true,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/ui/sharing.js",
+   "name": "sharingAvailable",
+   "usedInOwnFile": false,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/ui/sharing.js",
+   "name": "sharingAddGuest",
+   "usedInOwnFile": true,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/ui/today.js",
+   "name": "todayNutrientsFor",
+   "usedInOwnFile": true,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/ui/today.js",
+   "name": "todayWeightHistoryModal",
+   "usedInOwnFile": true,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/ui/today.js",
+   "name": "todayFoodHistoryModal",
+   "usedInOwnFile": true,
+   "usedByTests": false,
+   "usedByTools": false
+  },
+  {
+   "file": "src/ui/today.js",
+   "name": "todayPartQuery",
+   "usedInOwnFile": true,
+   "usedByTests": true,
+   "usedByTools": false
+  },
+  {
+   "file": "src/ui/together.js",
+   "name": "togetherGroupPerson",
+   "usedInOwnFile": false,
+   "usedByTests": false,
+   "usedByTools": false
+  }
+ ],
+ "unusedVars": [
+  {
+   "file": "src/engine/dietlists.js",
+   "line": 36,
+   "message": "'reacts' is assigned a value but never used."
+  },
+  {
+   "file": "src/engine/household.js",
+   "line": 76,
+   "message": "'hasNutrition' is assigned a value but never used."
+  },
+  {
+   "file": "src/engine/household.js",
+   "line": 83,
+   "message": "'favorites' is assigned a value but never used."
+  },
+  {
+   "file": "src/engine/planner.js",
+   "line": 4,
+   "message": "'scaleTotals' is defined but never used."
+  },
+  {
+   "file": "src/ui/household.js",
+   "line": 34,
+   "message": "'week_snapshot' is assigned a value but never used."
+  },
+  {
+   "file": "src/ui/household.js",
+   "line": 34,
+   "message": "'meal_overrides' is assigned a value but never used."
+  },
+  {
+   "file": "src/ui/household.js",
+   "line": 34,
+   "message": "'roster' is assigned a value but never used."
+  },
+  {
+   "file": "src/ui/household.js",
+   "line": 34,
+   "message": "'day_overrides' is assigned a value but never used."
+  },
+  {
+   "file": "src/ui/household.js",
+   "line": 34,
+   "message": "'cook_by_date' is assigned a value but never used."
+  },
+  {
+   "file": "src/ui/household.js",
+   "line": 34,
+   "message": "'built' is assigned a value but never used."
+  },
+  {
+   "file": "src/ui/household.js",
+   "line": 34,
+   "message": "'week_start' is assigned a value but never used."
+  },
+  {
+   "file": "src/ui/lite.js",
+   "line": 5,
+   "message": "'uiEmptyState' is defined but never used."
+  },
+  {
+   "file": "src/ui/owner.js",
+   "line": 3,
+   "message": "'uiState' is defined but never used."
+  },
+  {
+   "file": "src/ui/plan.js",
+   "line": 5,
+   "message": "'uiRatingBadge' is defined but never used."
+  },
+  {
+   "file": "src/ui/recipes.js",
+   "line": 6,
+   "message": "'spicePreference' is defined but never used."
+  },
+  {
+   "file": "src/ui/recipes.js",
+   "line": 18,
+   "message": "'RECIPES_NOT_CUISINE' is assigned a value but never used."
+  },
+  {
+   "file": "src/ui/settings.js",
+   "line": 245,
+   "message": "'m' is assigned a value but never used."
+  },
+  {
+   "file": "src/ui/together.js",
+   "line": 3,
+   "message": "'buildGroupPlan' is defined but never used."
+  },
+  {
+   "file": "src/ui/together.js",
+   "line": 4,
+   "message": "'buildWeekPlan' is defined but never used."
+  },
+  {
+   "file": "src/ui/together.js",
+   "line": 5,
+   "message": "'buildGroceryList' is defined but never used."
+  },
+  {
+   "file": "src/ui/together.js",
+   "line": 7,
+   "message": "'uiIsoDate' is defined but never used."
+  },
+  {
+   "file": "src/ui/together.js",
+   "line": 7,
+   "message": "'uiToday' is defined but never used."
+  },
+  {
+   "file": "src/ui/together.js",
+   "line": 7,
+   "message": "'uiFmtNum' is defined but never used."
+  },
+  {
+   "file": "src/ui/together.js",
+   "line": 7,
+   "message": "'uiNutrientLabel' is defined but never used."
+  },
+  {
+   "file": "src/ui/together.js",
+   "line": 7,
+   "message": "'uiVerdictWord' is defined but never used."
+  },
+  {
+   "file": "src/ui/together.js",
+   "line": 7,
+   "message": "'uiVerdictChip' is defined but never used."
+  },
+  {
+   "file": "src/ui/together.js",
+   "line": 7,
+   "message": "'uiNoticeHTML' is defined but never used."
+  },
+  {
+   "file": "src/ui/together.js",
+   "line": 7,
+   "message": "'uiAvatar' is defined but never used."
+  },
+  {
+   "file": "src/ui/together.js",
+   "line": 7,
+   "message": "'uiEmptyState' is defined but never used."
+  },
+  {
+   "file": "src/ui/together.js",
+   "line": 8,
+   "message": "'weekRecipeModal' is defined but never used."
+  },
+  {
+   "file": "src/ui/together.js",
+   "line": 10,
+   "message": "'groceryIcsForWeek' is defined but never used."
+  },
+  {
+   "file": "src/ui/together.js",
+   "line": 14,
+   "message": "'TOGETHER_SLOT_LABEL' is assigned a value but never used."
+  },
+  {
+   "file": "src/ui/week.js",
+   "line": 2,
+   "message": "'DAYS' is defined but never used."
+  },
+  {
+   "file": "src/ui/week.js",
+   "line": 2,
+   "message": "'isSnackSlot' is defined but never used."
+  }
+ ],
+ "mostComplex": [
+  {
+   "file": "src/engine/plan.js",
+   "line": 119,
+   "n": 302,
+   "what": "Function 'buildPlan'"
+  },
+  {
+   "file": "src/ui/recipes.js",
+   "line": 157,
+   "n": 105,
+   "what": "Function 'recipesDetailModal'"
+  },
+  {
+   "file": "src/engine/planner.js",
+   "line": 96,
+   "n": 63,
+   "what": "Function 'scoreRecipe'"
+  },
+  {
+   "file": "src/engine/plan.js",
+   "line": 67,
+   "n": 60,
+   "what": "Function 'ruleApplies'"
+  },
+  {
+   "file": "src/ui/sharing.js",
+   "line": 58,
+   "n": 51,
+   "what": "Function 'sharingPersonModal'"
+  },
+  {
+   "file": "src/engine/plan.js",
+   "line": 434,
+   "n": 45,
+   "what": "Function 'applyNumber'"
+  },
+  {
+   "file": "src/ui/people.js",
+   "line": 1045,
+   "n": 45,
+   "what": "Function 'peopleStepReview'"
+  },
+  {
+   "file": "src/ui/recipes-edit.js",
+   "line": 380,
+   "n": 41,
+   "what": "Function 'recipesEdParsePaste'"
+  },
+  {
+   "file": "src/engine/checker.js",
+   "line": 121,
+   "n": 40,
+   "what": "Function 'checkRecipe'"
+  },
+  {
+   "file": "src/engine/household.js",
+   "line": 120,
+   "n": 39,
+   "what": "Function 'buildHouseholdWeek'"
+  }
+ ],
+ "functionsMeasured": 2272
+}

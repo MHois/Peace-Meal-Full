@@ -1,0 +1,80 @@
+<!doctype html>
+<!-- Ready to publish; publishing is the owner's decision (tools/old-address/README.md). First proposed by the audit of
+     September 30, 2026 (phase 7, item 31). A one-page "Peace Meal has moved" notice for the retired
+     address mchoisington.github.io/specialty-nutrition-app/ (the same page at /, /lite/ and /full/).
+     Opened inside an old Home Screen icon, it runs in that icon's own storage, where the old data still is, so it can
+     save that data as a backup file for "Bring my data" in the new app. It only reads: it never deletes or changes
+     anything, loads nothing from the internet, and sends nothing anywhere. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-J1by1PUNum6Lebd9aNVouAU8TEUol7BsC0whx1ZVuak='; style-src 'unsafe-inline'; img-src data:; base-uri 'none'; form-action 'none'">
+<title>Peace Meal has moved</title>
+<style>
+  :root { color-scheme: light dark; --bg: #FBFAF7; --fg: #1d2420; --accent: #3D5A3C; --card: #fff; }
+  @media (prefers-color-scheme: dark) { :root { --bg: #151a17; --fg: #eef2ee; --accent: #9cc49a; --card: #1f2621; } }
+  body { margin: 0; background: var(--bg); color: var(--fg); font: 21px/1.5 -apple-system, system-ui, sans-serif; }
+  main { max-width: 34rem; margin: 0 auto; padding: 24px 16px 48px; }
+  h1 { font-size: 1.6rem; line-height: 1.25; margin: 0 0 12px; }
+  ol { padding-left: 1.3em; } li { margin: 0 0 14px; }
+  .card { background: var(--card); border-radius: 14px; padding: 16px; margin: 16px 0; box-shadow: 0 1px 3px rgba(0,0,0,.12); }
+  button, .btn { display: block; width: 100%; box-sizing: border-box; min-height: 56px; margin: 10px 0; border: 0; border-radius: 12px;
+    background: var(--accent); color: #fff; font: inherit; font-weight: 700; text-align: center; text-decoration: none; padding: 14px; }
+  .btn.secondary { background: transparent; color: var(--accent); border: 2px solid var(--accent); }
+  #status { font-weight: 700; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Peace Meal has moved</h1>
+  <div id="has-data" hidden>
+    <p>Your information is still on this phone, inside this old icon. Move it in three steps:</p>
+    <ol>
+      <li><strong>Save it.</strong> Tap the button below, then choose <strong>Save to Files</strong>.
+        <button type="button" id="save">Save my information</button>
+        <span id="status" role="status" aria-live="polite"></span></li>
+      <li><strong>Open the new Peace Meal</strong> and add it to your Home Screen.
+        <a class="btn secondary" id="new-link" href="https://mchoisington.github.io/Peace-Meal-Full/">Open the new Peace Meal</a></li>
+      <li>In the new app, tap <strong>Bring my data</strong> and choose the file you saved.</li>
+    </ol>
+    <p>When your information shows in the new app, you can delete this old icon. Nothing is deleted until you do that.</p>
+  </div>
+  <div id="no-data" hidden>
+    <p>Peace Meal now lives at a new address.</p>
+    <a class="btn" id="new-link-2" href="https://mchoisington.github.io/Peace-Meal-Full/">Open the new Peace Meal</a>
+  </div>
+</main>
+<script>
+(function () {
+  var KEYS = ['peace-meal:v1', 'specialty-nutrition-app:v1'];
+  var raw = null, key = null;
+  try { for (var i = 0; i < KEYS.length && !raw; i++) { var v = localStorage.getItem(KEYS[i]); if (v) { raw = v; key = KEYS[i]; } } } catch (e) { raw = null; }
+  var data = null;
+  try { data = raw ? JSON.parse(raw) : null; } catch (e) { data = null; }
+  var usable = !!(data && Array.isArray(data.people) && data.people.length);
+  // Send the person to the same app they had: /lite/ to lite, /full/ to full, the old front page to the choice page.
+  var here = location.pathname.replace(/\/index\.html$/, '/');
+  var target = /\/lite\/$/.test(here) ? 'lite/' : /\/full\/$/.test(here) ? 'full/' : '';
+  var url = 'https://mchoisington.github.io/Peace-Meal-Full/' + target;
+  document.getElementById('new-link').href = url; document.getElementById('new-link-2').href = url;
+  document.getElementById(usable ? 'has-data' : 'no-data').hidden = false;
+  if (!usable && raw) { var p = document.createElement('p'); p.textContent = 'Something is stored here but it could not be read. Please ask for help before deleting this icon.'; document.getElementById('no-data').appendChild(p); }
+  var status = document.getElementById('status');
+  document.getElementById('save').addEventListener('click', function () {
+    var name = 'peace-meal-backup-' + new Date().toISOString().slice(0, 10) + '.json';
+    var file = null;
+    try { file = new File([raw], name, { type: 'application/json' }); } catch (e) { file = null; }
+    if (file && navigator.canShare && navigator.canShare({ files: [file] }) && navigator.share) {
+      navigator.share({ files: [file], title: name }).then(function () { status.textContent = 'Saved. Now do step 2.'; }, function () { status.textContent = 'Not saved yet. Tap the button again and choose Save to Files.'; });
+      return;
+    }
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([raw], { type: 'application/json' }));
+    a.download = name; document.body.appendChild(a); a.click(); a.remove();
+    status.textContent = 'Saved as ' + name + '. Now do step 2.';
+  });
+})();
+</script>
+</body>
+</html>

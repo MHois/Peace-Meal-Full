@@ -1,11 +1,12 @@
 // Router and top-level state. Loads data from window.__APP_DATA__ (single-file bundle) or fetch('data/*.json') over http.
-import { load, storeState } from './store.js';
+import { load, storeState, recipeCollectionsOn } from './store.js';
 import { buildMatcher } from './engine/dictionary.js';
+import { indexFoodNames } from './engine/checker.js';
 import { annotateCuisines } from './engine/cuisine.js';
 import { buildPlan } from './engine/plan.js';
 import { checkRecipe } from './engine/checker.js';
 import { buildAdaptedRecipes, familiesFor } from './engine/swaps.js';
-import { uiState, uiEsc, uiActivePerson, uiToast, uiPersist, uiEnsurePerson, uiIcon, uiBrandMark, uiAvatar, uiNavRecord, uiCanGoBack, uiGoBack, uiBackButtonHTML } from './ui/common.js';
+import { uiState, uiEsc, uiActivePerson, uiToast, uiPersist, uiEnsurePerson, uiIcon, uiBrandMark, uiAvatar, uiNavRecord, uiCanGoBack, uiGoBack, uiBackButtonHTML, uiUnreadableNoticeHTML, uiBindUnreadableNotice, uiTrapTab } from './ui/common.js';
 import { renderHomeScreen, renderWelcomeScreen } from './ui/home.js';
 import { renderPeopleScreen } from './ui/people.js';
 import { renderPlanScreen } from './ui/plan.js';
@@ -23,7 +24,7 @@ import { renderBreatheScreen } from './ui/breathe.js';
 import { renderRecipesScreen } from './ui/recipes.js';
 import { renderOwnerScreen } from './ui/owner.js';
 import { settingsShareBackup } from './ui/settings.js';
-import { installShouldGuide, installShowGuide } from './ui/install.js';
+import { installShouldGuide, installShowGuide, installBannerHTML, installBindBanner } from './ui/install.js';
 import { getDb, ensureDeviceIdentity, registerDevice, readOwner, isOwner } from './engine/sync.js';
 
 const APP_DATA_FILES = ['sources', 'conditions', 'dictionaries', 'foods', 'recipes', 'recipes-open', 'recipes-usda', 'articles', 'swaps', 'diet-lists'];
@@ -59,7 +60,7 @@ export async function loadData() {
   return { data: out, problems };
 }
 
-function appNormalizeData(data) {
+export function appNormalizeData(data) {
   // conditions.json is { version, notes, modules, proposed_tags, flags } (or a bare array in older fixtures)
   uiState.conditionsMeta = { flags: {}, proposed_tags: [] };
   if (data.conditions && !Array.isArray(data.conditions)) {
@@ -171,7 +172,7 @@ function appRenderNav() {
   document.getElementById('more-btn').addEventListener('click', () => toggleMore(!appMoreOpen));
   sheet.querySelector('#more-close').addEventListener('click', () => toggleMore(false));
   scrim.onclick = () => toggleMore(false);
-  sheet.onkeydown = e => { if (e.key === 'Escape') { e.preventDefault(); toggleMore(false); } };
+  sheet.onkeydown = e => { if (e.key === 'Escape') { e.preventDefault(); toggleMore(false); } else uiTrapTab(e, sheet); };
   sheet.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { appMoreOpen = false; }));
   uiState.closeMoreSheet = () => { if (!appMoreOpen) return false; toggleMore(false); return true; };
   top.querySelectorAll('[data-back]').forEach(b => b.addEventListener('click', uiGoBack));
@@ -227,6 +228,12 @@ export function appRender() {
     main.insertAdjacentHTML('afterbegin', `<div class="backbar">${uiBackButtonHTML('back-desktop')}</div>`);
     main.querySelectorAll('[data-back]').forEach(b => b.addEventListener('click', uiGoBack));
   }
+  // Saved data that could not be read (P0-4) is named at the top of every screen.
+  const unreadable = uiUnreadableNoticeHTML();
+  if (unreadable) { main.insertAdjacentHTML('afterbegin', `<div class="section">${unreadable}</div>`); uiBindUnreadableNotice(main); }
+  // P1-5: in a Safari tab on an iPhone, every screen says the data is not saved safely (src/ui/install.js).
+  const safari = installBannerHTML();
+  if (safari) { main.insertAdjacentHTML('afterbegin', `<div class="section">${safari}</div>`); installBindBanner(main); }
   if (uiState.dataProblems.length && uiState.route.screen !== 'settings') {
     const box = document.createElement('div');
     box.className = 'section';
@@ -254,6 +261,8 @@ export function appCollectionCounts() {
   for (const r of uiState.baseRecipes || []) { const k = appCollectionOf(r); if (k) counts[k]++; }
   const d = appDeferredInfo();
   if (d) counts.wikibooks += d.count;   // not read yet, still part of the collection
+  const u = appDeferredUsdaInfo();
+  if (u) counts.usda += u.count;   // the same for the USDA recipes (P2-14)
   return counts;
 }
 // Adapted copies for one diet family: every base recipe with nutrition that the swap list can fix, re-checked against a plan
@@ -300,7 +309,7 @@ function appPrebuildAdapted() {
 function appAssembleRecipes() {
   const profile = uiState.profile || {};
   const links = profile.recipe_links || {};
-  const on = Object.assign({ nhs: true, parentclub: true, nhlbi: true, va: true, wikibooks: true, usda: false, review_dual: true }, profile.recipe_collections || {});
+  const on = recipeCollectionsOn(profile);
   const out = [];
   for (const r of uiState.baseRecipes || []) {
     const coll = appCollectionOf(r);
@@ -335,7 +344,7 @@ function appNeedsDeferred(profile) {
   const d = appDeferredInfo();
   if (!d || !profile) return false;
   try {
-    const on = Object.assign({ wikibooks: true }, profile.recipe_collections || {});
+    const on = recipeCollectionsOn(profile);
     const text = JSON.stringify({ people: profile.people || [], diary: profile.diary || [], log: profile.log || [], household: profile.household || {}, links: Object.keys(profile.recipe_links || {}) });
     if (text.includes('"' + d.id_prefix)) return true;   // a saved week, diary entry, favorite, or link names one of them
     return !!(on.wikibooks && text.includes('"include_unknown_nutrition":true'));   // the planner may use recipes without numbers
@@ -344,24 +353,48 @@ function appNeedsDeferred(profile) {
 function appLoadDeferred() {
   const d = appDeferredInfo();
   if (!d) return false;
-  const on = Object.assign({ wikibooks: true }, (uiState.profile && uiState.profile.recipe_collections) || {});
+  const on = recipeCollectionsOn(uiState.profile);
   if (!on.wikibooks) return false;   // the collection is switched off in Settings: nothing to show, so nothing to read
+  uiState.deferredLoaded = true;   // once, whatever happened: a failed read is not retried on every keystroke
+  if (!appReadDeferredBlock(d)) { uiToast('The Wikibooks recipes could not be read from this file.'); return false; }
+  appAssembleRecipes();
+  if (uiState.weekCache) uiState.weekCache.clear();
+  return true;
+}
+// Reads one deferred block into the base recipes, after the recipe named in "after" (at the end when there is none).
+// False when the block is missing or cannot be parsed.
+function appReadDeferredBlock(d) {
   const el = typeof document !== 'undefined' ? document.getElementById(d.element) : null;
   let list = null;
   try { list = el ? JSON.parse(el.textContent) : null; } catch (e) { console.error(e); list = null; }
-  uiState.deferredLoaded = true;   // once, whatever happened: a failed read is not retried on every keystroke
-  if (!Array.isArray(list)) { uiToast('The Wikibooks recipes could not be read from this file.'); return false; }
+  if (!Array.isArray(list)) return false;
   const base = uiState.baseRecipes;
   const seen = new Set(base.map(r => r.id));
   const add = list.filter(r => r && r.id && !seen.has(r.id));
   const at = d.after ? base.findIndex(r => r.id === d.after) : -1;
   if (at >= 0) base.splice(at + 1, 0, ...add); else base.push(...add);
   if (el) el.textContent = '';   // the parsed copy is the one in use now
-  appAssembleRecipes();
-  if (uiState.weekCache) uiState.weekCache.clear();
   return true;
 }
-function appRefreshRecipes() {
+// P2-14 (audit of September 30, 2026): the USDA MyPlate Kitchen recipes were off by default (on since October 8, 2026), and
+// both builds keep them in a JSON block (tools/bundle.mjs). They are read when the collection is on: at launch, or when it is
+// switched on in Settings (which calls refreshRecipes). Off, they are never in the recipe pool, so nothing needs them.
+function appDeferredUsdaInfo() {
+  const d = uiState.data && uiState.data.deferred && uiState.data.deferred.usda;
+  return d && !uiState.deferredUsdaLoaded ? d : null;
+}
+function appLoadDeferredUsda() {
+  const d = appDeferredUsdaInfo();
+  if (!d) return false;
+  const on = recipeCollectionsOn(uiState.profile);
+  if (!on.usda) return false;
+  uiState.deferredUsdaLoaded = true;   // once, whatever happened, as for the Wikibooks block
+  if (!appReadDeferredBlock(d)) { uiToast('The USDA recipes could not be read from this file.'); return false; }
+  return true;
+}
+// Exported for test/audit-fix-p2-14-usda-deferred.test.mjs; the bundle strips "export".
+export function appRefreshRecipes() {
+  appLoadDeferredUsda();   // before the pool is put together, so it is put together once
   appAssembleRecipes();
   if (appNeedsDeferred(uiState.profile)) appLoadDeferred();
 }
@@ -389,18 +422,48 @@ async function appBootSync() {
   if (['settings', 'people', 'together', 'owner'].includes(uiState.route.screen) && !uiState.modalClose) uiState.rerender();
 }
 
+// Owner decision (October 8, 2026): USDA MyPlate Kitchen is on from the start, in both builds (it was off until switched
+// on). Profiles saved before carry usda: false; it is switched on once (defaults_v6), and turning it off afterwards sticks.
+// Runs before the recipes are put together at launch, so the USDA recipes are read then. Exported for tests.
+export function appUsdaOnFromStart(profile) {
+  const rc = profile && profile.recipe_collections;
+  if (!rc || rc.defaults_v6) return false;
+  rc.usda = true;
+  rc.defaults_v6 = true;
+  return true;
+}
+// Owner request (October 8, 2026): Peace Meal for one has every recipe collection the full app has. Profiles it saved
+// before carry wikibooks: false (it used to leave that collection out), so the collection is switched on once; turning it
+// off afterwards sticks. USDA MyPlate Kitchen stays off until it is switched on, in both builds. Exported for tests.
+export function appLiteAllRecipes(profile, lite) {
+  const rc = profile && profile.recipe_collections;
+  if (!lite || !rc || rc.lite_all_recipes) return false;
+  rc.wikibooks = true;
+  rc.lite_all_recipes = true;
+  return true;
+}
+
 async function appBoot() {
   uiState.sync = { db: null, identity: null, owner: null, isOwner: false, ready: false };
   uiState.syncRefresh = appBootSync;
   uiState.profile = load();
   uiState.lite = APP_LITE;
-  if (APP_LITE && uiState.profile && !uiState.profile.people.length && uiState.profile.recipe_collections) { uiState.profile.recipe_collections.nhs = true; uiState.profile.recipe_collections.parentclub = true; uiState.profile.recipe_collections.nhlbi = true; uiState.profile.recipe_collections.va = true; uiState.profile.recipe_collections.wikibooks = false; }
+  if (APP_LITE) document.documentElement.classList.add('lite');   // lite-only sizes in app.css (P2-5)
+  // A new lite profile also had wikibooks set to false here, while lite left that collection out; since October 8, 2026 it
+  // carries every collection (appLiteAllRecipes below), so that one setting is no longer written.
+  if (APP_LITE && uiState.profile && !uiState.profile.people.length && uiState.profile.recipe_collections) { uiState.profile.recipe_collections.nhs = true; uiState.profile.recipe_collections.parentclub = true; uiState.profile.recipe_collections.nhlbi = true; uiState.profile.recipe_collections.va = true; }
+  const liteSwitched = appLiteAllRecipes(uiState.profile, APP_LITE);
   // Collections with per-serving nutrition are on by default since v2.3. Profiles saved before that carried nhs: false; switch it on once.
   if (uiState.profile && uiState.profile.recipe_collections && !uiState.profile.recipe_collections.defaults_v3) { uiState.profile.recipe_collections.nhs = true; uiState.profile.recipe_collections.parentclub = true; uiState.profile.recipe_collections.defaults_v3 = true; }
   if (uiState.profile && uiState.profile.recipe_collections && !uiState.profile.recipe_collections.defaults_v4) { uiState.profile.recipe_collections.nhlbi = true; uiState.profile.recipe_collections.defaults_v4 = true; }
   // The September 2026 recipes for low FODMAP and low histamine together were reviewed and switched on September 30, 2026.
   // Profiles saved before that carried review_dual: false; switch it on once. Turning it off afterwards sticks.
   if (uiState.profile && uiState.profile.recipe_collections && !uiState.profile.recipe_collections.defaults_v5) { uiState.profile.recipe_collections.review_dual = true; uiState.profile.recipe_collections.defaults_v5 = true; }
+  const usdaSwitched = appUsdaOnFromStart(uiState.profile);
+  // The two October 8 switch-overs are saved at once, so the stored data matches what a backup holds (audit check a2: they
+  // were in memory only until the next save). A new profile carries both flags, so a fresh start writes nothing, and
+  // save() never writes over saved data this build could not read (P0-4).
+  if (liteSwitched || usdaSwitched) uiPersist();
   // Suggestion notices (for example "add the higher-protein module") act here, once, whatever screen rendered them.
   document.addEventListener('click', e => {
     const b = e.target && e.target.closest ? e.target.closest('[data-notice-action],[data-notice-dismiss]') : null;
@@ -428,6 +491,7 @@ async function appBoot() {
   uiState.dataProblems = problems;
   uiState.matcher = buildMatcher(uiState.data.dictionaries);
   uiState.matcher.dietLists = uiState.data['diet-lists'] || { families: {} };   // approved-food lists for strict mode
+  uiState.matcher.foodNames = indexFoodNames(uiState.data.foods || []);   // typed food names get the food's own tags (P0-3)
   uiState.conditionsById = new Map(uiState.data.conditions.map(m => [m.id, m]));
   uiState.sourcesById = new Map(uiState.data.sources.map(s => [s.id, s]));
   uiState.foodsById = new Map(uiState.data.foods.map(f => [f.id, f]));

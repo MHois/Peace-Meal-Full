@@ -6,7 +6,7 @@ This is a personal tool for one family. It is not a medical device and does not 
 
 ## Two builds
 
-`node tools/bundle.mjs` builds the full app (`dist/nutrition-app.html`); its 2,268 Wikibooks recipes ride along in the same file and are read the first time someone searches recipes, which keeps launch fast. `node tools/bundle.mjs --lite` builds Peace Meal for one (`dist/peace-meal-lite.html`): one person, four tabs (Today, Meals, Recipes, Report), same engine and conditions, smaller recipe set.
+`node tools/bundle.mjs` builds the full app (`dist/nutrition-app.html`); its 2,268 Wikibooks recipes ride along in the same file and are read the first time someone searches recipes, which keeps launch fast, and its 1,043 USDA MyPlate Kitchen recipes (on from the start since October 8, 2026) are read at launch while that collection is on. `node tools/bundle.mjs --lite` builds Peace Meal for one (`dist/peace-meal-lite.html`): one person, four tabs (Today, Meals, Recipes, Report), with the same engine, conditions, and recipe collections. Since October 8, 2026 its Wikibooks and USDA recipes ride along the same way as in the full app, so the two files are about the same size.
 
 ## Run it
 
@@ -15,6 +15,7 @@ No install, no build, no server, no account.
 - **Single file:** open `dist/nutrition-app.html` in any browser, including on a phone. Everything is inside that one file. Save it to your home screen and it works offline.
 - **From the folder:** `npm run serve` then open http://localhost:8123. This mode also registers the offline service worker, which serves its stored copy first: after editing files, change `VERSION` in `sw.js` (or use the browser's "Update on reload") to see the edits.
 - **GitHub Pages:** each push to `main` runs the checks and, when Pages is on for the repository (Settings, Pages, Source: GitHub Actions), publishes a small site: a front page (`site/index.html`), the full app at `/full/`, and Peace Meal for one at `/lite/`. Nothing else from the repository is published.
+- **The only site on its address:** every GitHub Pages site of one account (here, mchoisington.github.io) shares one web origin, and a page from any of them can read and change what Peace Meal saves on a phone. Publish no other Pages site on this account (the one exception is the "Peace Meal has moved" page for the old address, `tools/old-address/`), or move Peace Meal to its own domain. The service worker refuses a saved copy of the app that another page changed (fix of September 30, 2026, audit finding P1-4), but it cannot protect the saved data itself.
 
 All data stays in the browser on that device. Use Settings to export a backup file and import it on another device.
 

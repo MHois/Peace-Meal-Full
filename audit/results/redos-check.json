@@ -1,0 +1,86 @@
+[
+ {
+  "where": "src/engine/spice.js:22",
+  "worstMs": 0.8,
+  "worstInput": "\"1.1\" x 60001",
+  "verdict": "false positive"
+ },
+ {
+  "where": "src/ui/people.js:378",
+  "worstMs": 0.5,
+  "worstInput": "\"½\" x 20001",
+  "verdict": "false positive"
+ },
+ {
+  "where": "src/ui/recipes-edit.js:8",
+  "worstMs": 0.4,
+  "worstInput": "\"2 g \" x 80000",
+  "verdict": "false positive"
+ },
+ {
+  "where": "src/ui/recipes-edit.js:28",
+  "worstMs": 173.1,
+  "worstInput": "\"1\" x 20001",
+  "verdict": "SLOW"
+ },
+ {
+  "where": "src/ui/recipes-edit.js:30",
+  "worstMs": 176.3,
+  "worstInput": "\"1\" x 20000",
+  "verdict": "SLOW"
+ },
+ {
+  "where": "src/ui/recipes-edit.js:32",
+  "worstMs": 166.1,
+  "worstInput": "\"1\" x 20001",
+  "verdict": "SLOW"
+ },
+ {
+  "where": "src/ui/recipes-edit.js:34",
+  "worstMs": 265.5,
+  "worstInput": "\"1\" x 20000",
+  "verdict": "SLOW"
+ },
+ {
+  "where": "src/ui/recipes-edit.js:40",
+  "worstMs": 0.6,
+  "worstInput": "\"Rating: A to B \" x 300000",
+  "verdict": "false positive"
+ },
+ {
+  "where": "src/ui/recipes-edit.js:62",
+  "worstMs": 170.2,
+  "worstInput": "\"1\" x 20001",
+  "verdict": "SLOW"
+ },
+ {
+  "where": "src/ui/recipes-edit.js:375",
+  "worstMs": 0.2,
+  "worstInput": "\"ingredients \" x 240000",
+  "verdict": "false positive"
+ },
+ {
+  "where": "src/ui/recipes-edit.js:376",
+  "worstMs": 0.6,
+  "worstInput": "\"1.1\" x 40001",
+  "verdict": "false positive"
+ },
+ {
+  "where": "src/ui/recipes-edit.js:377",
+  "worstMs": 0.6,
+  "worstInput": "\"*\" x 20000",
+  "verdict": "false positive"
+ },
+ {
+  "where": "src/ui/recipes-edit.js:378",
+  "worstMs": 0.4,
+  "worstInput": "\"2 g \" x 80000",
+  "verdict": "false positive"
+ },
+ {
+  "where": "src/ui/today.js:677",
+  "worstMs": 0.5,
+  "worstInput": "\"2 g \" x 80001",
+  "verdict": "false positive"
+ }
+]
