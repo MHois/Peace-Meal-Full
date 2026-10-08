@@ -80,7 +80,8 @@ export function compareToPlan(totals, plan) {
     const v = nut in d ? d[nut] : totals[nut];
     if (v == null) continue;
     if (v < tg.min) out.under.push({ nutrient: nut, value: round(v, 1), min: tg.min, pct: round(v / tg.min * 100) });
-    else if (tg.max != null && v > tg.max) out.over.push({ nutrient: nut, value: round(v, 1), limit: tg.max, pct: round(v / tg.max * 100) });
+    // Above the top of a usual range (protein, fiber) is not "over" anything: only a cap is (see plan.js, maxIsTop).
+    else if (tg.max != null && v > tg.max && !tg.maxIsTop) out.over.push({ nutrient: nut, value: round(v, 1), limit: tg.max, pct: round(v / tg.max * 100) });
     else out.ok.push({ nutrient: nut, value: round(v, 1), min: tg.min });
   }
   return out;

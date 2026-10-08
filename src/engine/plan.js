@@ -510,11 +510,24 @@ export function buildPlan({ person, conditions, dictionaries, today = new Date()
     } else {
       const cur = targetsMap[nut];
       const max = rule.max != null && !meta.clinician ? (perKg ? Math.round(rule.max * weight * 10) / 10 : rule.max) : null;
-      if (!cur) targetsMap[nut] = { min: v, max, per, rules: [ref], clinician: !!meta.clinician, unit: rule.unit || null };
+      // UX pass, October 2026: a target's upper number is one of two things. For most it is a cap the source sets (the
+      // pregnancy fish advice, kidney-stone calcium, the potassium range with its kidney exception). For protein and
+      // fiber it is only the top of the usual range (rule.upper "range-top"): PROT-AGE says "at least in the range of
+      // 1.0 to 1.2" g/kg, and the fiber range is 25 g for women to 38 g for men (VERIFY-log U1). Two usual ranges
+      // combine to the higher top, a cap always wins over a usual top, and two caps keep the lower one, as before. The
+      // old rule kept the lower top every time: a 72-year-old on a GLP-1 got protein "at least 80, at most 81.6" and
+      // every day of the week marked "over".
+      const top = max != null && rule.upper === 'range-top';
+      if (!cur) targetsMap[nut] = { min: v, max, maxIsTop: top, per, rules: [ref], clinician: !!meta.clinician, unit: rule.unit || null };
       else {
         if (v > cur.min) { cur.min = v; cur.clinician = !!meta.clinician; }
-        if (max != null && (cur.max == null || max < cur.max) && max >= cur.min) cur.max = max;
-        if (cur.max != null && cur.max < cur.min) cur.max = null;
+        if (max != null) {
+          if (cur.max == null) { cur.max = max; cur.maxIsTop = top; }
+          else if (top && cur.maxIsTop) cur.max = Math.max(cur.max, max);
+          else if (!top && cur.maxIsTop) { cur.max = max; cur.maxIsTop = false; }
+          else if (!top && max < cur.max && max >= cur.min) cur.max = max;
+        }
+        if (cur.max != null && cur.max < cur.min) { cur.max = null; cur.maxIsTop = false; }
         cur.rules.push(ref);
       }
     }
