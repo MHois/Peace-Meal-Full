@@ -8,7 +8,7 @@ import lighthouse from 'lighthouse';
 import * as chromeLauncher from 'chrome-launcher';
 import { buildSite, serve, CHROMIUM, ROOT, TMP } from './site.mjs';
 
-// LIVE=1 runs against the live site instead (https://mchoisington.github.io/Peace-Meal-Full/), which GitHub Pages serves
+// LIVE=1 runs against the live site instead (https://mhois.github.io/Peace-Meal-Full/), which GitHub Pages serves
 // gzip-compressed; the local test server does not compress, so its download times are longer than a phone's would be.
 // Behind a proxy (HTTPS_PROXY), Chromium is pointed at it and trusts its certificate authority (key hash computed here).
 import crypto from 'node:crypto';
@@ -17,7 +17,7 @@ const PROXY = process.env.HTTPS_PROXY || '';
 const spki = (() => { const f = '/root/.ccr/agent-proxy-ca.crt'; if (!fs.existsSync(f)) return []; return (fs.readFileSync(f, 'utf8').match(/-----BEGIN CERTIFICATE-----[\s\S]+?-----END CERTIFICATE-----/g) || []).map(p => crypto.createHash('sha256').update(new crypto.X509Certificate(p).publicKey.export({ type: 'spki', format: 'der' })).digest('base64')); })();
 const netFlags = LIVE && PROXY ? ['--proxy-server=' + PROXY, ...(spki.length ? ['--ignore-certificate-errors-spki-list=' + spki.join(',')] : [])] : [];
 if (!LIVE) buildSite();
-const srv = LIVE ? { origin: 'https://mchoisington.github.io', close: async () => {} } : await serve();
+const srv = LIVE ? { origin: 'https://mhois.github.io', close: async () => {} } : await serve();
 const out = { lighthouse: null, target: LIVE ? 'live site (gzip)' : 'local test server (no compression)', runs: {} };
 try {
   for (const build of ['lite', 'full']) {

@@ -3,8 +3,8 @@ const fs = require('fs');
 const path = require('path');
 const { Document, Packer, Paragraph, TextRun, HeadingLevel, AlignmentType, LevelFormat, Table, TableRow, TableCell, WidthType, ShadingType, BorderStyle, PageBreak, Footer, PageNumber } = require('docx');
 
-const LITE_URL = 'https://mchoisington.github.io/Peace-Meal-Full/lite/';
-const FULL_URL = 'https://mchoisington.github.io/Peace-Meal-Full/full/';
+const LITE_URL = 'https://mhois.github.io/Peace-Meal-Full/lite/';
+const FULL_URL = 'https://mhois.github.io/Peace-Meal-Full/full/';
 const OUT = path.join(__dirname, '..', 'docs', 'guides');
 const GREEN = '3D5A3C', PLUM = '8A3E63';
 
@@ -224,7 +224,7 @@ const full = build({
       ['Household meals', 'No', 'Yes. **Together** plans one meal that works for everyone at the table'],
       ['Grocery and pantry', 'Yes', 'Yes, plus household grocery lists'],
       ['Doctor report', 'Yes', 'Yes'],
-      ['Recipes', 'Peace Meal, NHS, Parent Club Scotland, NHLBI', 'All of those, plus the Wikibooks Cookbook (about 2,000 more, mostly without nutrition numbers)'],
+      ['Recipes', 'Peace Meal, NHS, Parent Club Scotland, NHLBI, the VA, USDA MyPlate Kitchen, and the Wikibooks Cookbook (about 2,300, mostly without nutrition numbers)', 'The same'],
       ['Link ends in', '/lite/', '/full/']
     ]),
     gap(),

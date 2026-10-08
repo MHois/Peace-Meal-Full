@@ -11,7 +11,7 @@ import crypto from 'node:crypto';
 const html = fs.readFileSync(new URL('../tools/old-address/index.html', import.meta.url), 'utf8');
 const swCode = fs.readFileSync(new URL('../tools/old-address/sw.js', import.meta.url), 'utf8');
 const script = html.slice(html.indexOf('<script>') + '<script>'.length, html.indexOf('</script>'));
-const NEW = 'https://mchoisington.github.io/Peace-Meal-Full/';
+const NEW = 'https://mhois.github.io/Peace-Meal-Full/';
 
 function runPage({ stored = {}, pathname = '/specialty-nutrition-app/', share = null } = {}) {
   const writes = [];

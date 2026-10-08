@@ -9,7 +9,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-J1by1PUNum6Lebd9aNVouAU8TEUol7BsC0whx1ZVuak='; style-src 'unsafe-inline'; img-src data:; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-qrphK9K4ffsJwyE3RjSA5lcXmbhGaNTMc+hbKKSU/Pc='; style-src 'unsafe-inline'; img-src data:; base-uri 'none'; form-action 'none'">
 <title>Peace Meal has moved</title>
 <style>
   :root { color-scheme: light dark; --bg: #FBFAF7; --fg: #1d2420; --accent: #3D5A3C; --card: #fff; }
@@ -35,14 +35,14 @@
         <button type="button" id="save">Save my information</button>
         <span id="status" role="status" aria-live="polite"></span></li>
       <li><strong>Open the new Peace Meal</strong> and add it to your Home Screen.
-        <a class="btn secondary" id="new-link" href="https://mchoisington.github.io/Peace-Meal-Full/">Open the new Peace Meal</a></li>
+        <a class="btn secondary" id="new-link" href="https://mhois.github.io/Peace-Meal-Full/">Open the new Peace Meal</a></li>
       <li>In the new app, tap <strong>Bring my data</strong> and choose the file you saved.</li>
     </ol>
     <p>When your information shows in the new app, you can delete this old icon. Nothing is deleted until you do that.</p>
   </div>
   <div id="no-data" hidden>
     <p>Peace Meal now lives at a new address.</p>
-    <a class="btn" id="new-link-2" href="https://mchoisington.github.io/Peace-Meal-Full/">Open the new Peace Meal</a>
+    <a class="btn" id="new-link-2" href="https://mhois.github.io/Peace-Meal-Full/">Open the new Peace Meal</a>
   </div>
 </main>
 <script>
@@ -56,7 +56,7 @@
   // Send the person to the same app they had: /lite/ to lite, /full/ to full, the old front page to the choice page.
   var here = location.pathname.replace(/\/index\.html$/, '/');
   var target = /\/lite\/$/.test(here) ? 'lite/' : /\/full\/$/.test(here) ? 'full/' : '';
-  var url = 'https://mchoisington.github.io/Peace-Meal-Full/' + target;
+  var url = 'https://mhois.github.io/Peace-Meal-Full/' + target;
   document.getElementById('new-link').href = url; document.getElementById('new-link-2').href = url;
   document.getElementById(usable ? 'has-data' : 'no-data').hidden = false;
   if (!usable && raw) { var p = document.createElement('p'); p.textContent = 'Something is stored here but it could not be read. Please ask for help before deleting this icon.'; document.getElementById('no-data').appendChild(p); }
