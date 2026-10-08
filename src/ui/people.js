@@ -19,9 +19,9 @@ function peoplePersist(person) {
 
 const PEOPLE_STEPS = [
   { id: 'basics', label: 'Basics', why: 'Who this is. Age, size, and activity feed the calorie estimate; a couple of yes/no questions feed specific guidelines.' },
-  { id: 'allergens', label: 'Allergies', why: 'Hard stops. Anything ticked here is never served, suggested, or overridden.' },
-  { id: 'conditions', label: 'Conditions and diets', why: 'Where the plan comes from. Each one you tick brings its published guidelines; the app merges them and shows conflicts.' },
-  { id: 'preferences', label: 'Likes and dislikes', why: 'Soft choices: foods to steer away from, spice level, cuisines you love or skip. Never overrides an allergy or a condition.' },
+  { id: 'allergens', label: 'Allergies', why: 'The nine major food allergens, and any other food you are allergic to.' },
+  { id: 'conditions', label: 'Conditions and diets', why: 'Where the plan comes from. Each one you tick brings its published guidelines, and the app shows where two of them conflict.' },
+  { id: 'preferences', label: 'Likes and dislikes', why: 'Soft choices that steer which recipes are picked. A recipe that slips through shows a caution. Nothing here loosens an allergy or a condition.' },
   { id: 'medications', label: 'Medications', why: 'Medicines that change what you should eat, like warfarin, levothyroxine, or insulin.' },
   { id: 'clinician', label: 'Numbers from your doctor', why: 'Only asked when a condition needs a number the app must not choose for you, like a protein or potassium limit.' },
   { id: 'cooking', label: 'Cooking', why: 'Your real week: time, days, kitchen, and how you feel about cooking. Meals are chosen to fit.' },
@@ -47,7 +47,7 @@ const PEOPLE_SOFT_AVOID_OPTIONS = [
   { value: 'red-meat', label: 'Red meat' },
   { value: 'processed-meat', label: 'Processed meat' },
   { value: 'poultry', label: 'Poultry' },
-  { value: 'fish', label: 'Fish' },
+  { value: 'fish', label: 'Fish and seafood' },
   { value: 'allergen-milk', label: 'Dairy (preference, not allergy)' },
   { value: 'allergen-egg', label: 'Eggs (preference, not allergy)' },
   { value: 'soy', label: 'Soy (preference, not allergy)' },
@@ -58,7 +58,7 @@ const PEOPLE_SOFT_AVOID_OPTIONS = [
   { value: 'full-fat-dairy', label: 'Full-fat dairy' },
   { value: 'alcohol', label: 'Alcohol' },
   { value: 'caffeine', label: 'Caffeine' },
-  { value: 'non-nutritive-sweetener', label: 'Non-nutritive sweeteners' }
+  { value: 'non-nutritive-sweetener', label: 'Sugar substitutes' }
 ];
 
 // Custom diet builder: tag families a person may pick from, and a fallback list when the dictionary carries no family field.
@@ -249,7 +249,7 @@ function peopleRenderStepper(root, person, stepId, sub) {
   const done = !!person.setup_complete;
   const cur = steps[idx];
   root.innerHTML = `
-    ${uiPageHeader(uiEsc(person.name), done ? `Editing: ${uiEsc(cur.label)}.` : 'Setting up. Use Next to walk through each step; the plan is ready once you save on the Review step.', `<a class="btn small" href="#/people">${uiIcon('people')}All people</a>`)}
+    ${uiPageHeader(uiEsc(person.name), done ? 'Changes save as you go.' : 'Setting up. Use Next to go through each step; the plan is ready once you save on the Review step.', `<a class="btn small" href="#/people">${uiIcon('people')}All people</a>`)}
     <div class="stepper" aria-label="Steps">
       <div class="stepper-status">Step ${idx + 1} of ${steps.length}: ${uiEsc(cur.label)}</div>
       ${cur.why ? `<div class="stepper-why">${uiEsc(cur.why)}</div>` : ''}
@@ -281,7 +281,8 @@ function peopleRefresh(container, person, stepId, focusSel, sub) {
   if (focusSel) { const el = container.querySelector(focusSel); if (el) el.focus({ preventScroll: true }); }
 }
 
-function peopleRenderStep(container, person, stepId, sub) {
+// Exported for tests, which draw one step into a stand-in element.
+export function peopleRenderStep(container, person, stepId, sub) {
   container.dataset.sub = sub || '';
   switch (stepId) {
     case 'basics': return peopleStepBasics(container, person);
@@ -406,7 +407,7 @@ function peopleStepConditions(container, person) {
   const commonList = commonIds.map(id => modules.find(m => m.id === id)).filter(m => m && !selected.has(m.id));
   const allCount = modules.filter(m => groups.some(g => g.key === m.category)).length;
   container.innerHTML = `
-    <p class="step-why">Tick what applies. Each one brings its published guidelines into the plan; the evidence chip says how strong they are. Tap <strong>About</strong> to read before you decide. Allergies are on their own step and are never loosened by anything here.</p>
+    <p class="step-why">Tick what applies. The chip under each name says how strong its evidence is; tap <strong>About</strong> to read more before you decide.</p>
     <div class="cond-selected">
       <h2>${chosen.length ? `Your selections (${chosen.length})` : 'Nothing selected yet'}</h2>
       ${chosen.length ? `<div class="choice-list">${chosen.map(m => row(m) + peopleModulePanelHTML(m, person)).join('')}</div>` : '<p class="cond-none small">No conditions or ways of eating yet. That is fine: the plan will still use your allergies, likes, and cooking answers. Pick from the lists below or search.</p>'}
@@ -503,11 +504,19 @@ export function peopleOptionalRuleHTML(r, person) {
   const on = person.optional_rules.includes(r.id);
   return `<label class="choice"><input type="checkbox" data-optional-rule="${uiEsc(r.id)}" ${on ? 'checked' : ''}><span class="choice-body"><span class="choice-title">${on ? 'On' : 'Off'}: ${uiEsc(r.text)}</span><span class="small muted">Optional. Tick it to apply this rule to the plan; untick it to leave it out.</span></span></label>`;
 }
-function peopleConfigurableRuleHTML(r, person) {
+// Each answer says what it does (UX pass, October 2026). "Exclude" used to mean a hard stop for a soy allergy but only a
+// caution for "may contain" warnings and for celiac oats. Stored values are unchanged ('exclude', 'allow').
+// A short bold title for each choice, with the rule's own sentence below it in normal type (the sentence is unchanged;
+// as a bold label it was a wall of bold text).
+const PEOPLE_SETTING_TITLES = { 'soy-refined-oil-lecithin': 'Refined soybean oil and soy lecithin', 'celiac-oats-gf': 'Certified gluten-free oats', 'allergen-may-contain': '"May contain" warnings' };
+export function peopleConfigurableRuleHTML(r, person, opts = {}) {
   const def = r.default || r.default_for_allergy || (r.kind === 'avoid' ? 'exclude' : 'allow');
   const key = r.setting || r.id;   // two rules can share one choice (P0-2)
   const cur = person.rule_settings[key] || def;
-  return `<div class="field"><span class="label">${uiEsc(r.text)}</span>${uiSegmented('setting-' + key, [{ value: 'allow', label: 'Allow' }, { value: 'exclude', label: 'Exclude' }], cur, { label: r.id })}<div class="hint">Default: ${def}. Your choice: ${cur}.</div></div>`;
+  const words = { exclude: r.hard ? 'Keep out' : 'Mark as caution', allow: 'Allow' };
+  const title = opts.label || PEOPLE_SETTING_TITLES[key] || null;
+  const explain = title && !opts.label ? `<p class="small setting-why">${uiEsc(r.text)}</p>` : '';
+  return `<div class="field"><span class="label">${uiEsc(title || r.text)}</span>${explain}${uiSegmented('setting-' + key, [{ value: 'exclude', label: words.exclude }, { value: 'allow', label: words.allow }], cur, { label: title || r.id })}<div class="hint">Default: ${words[def]}.</div></div>`;
 }
 function peopleGlobalFlagsHTML(person) {
   const flags = Object.entries(uiState.conditionsMeta.flags || {}).filter(([, f]) => !f.module);
@@ -576,7 +585,7 @@ function peopleStepAllergens(container, person) {
   const configurable = ((allergyModule && allergyModule.rules) || []).filter(r => r.configurable && !r.allergen);
   const perAllergy = ((allergyModule && allergyModule.rules) || []).filter(r => r.configurable && r.allergen);
   container.innerHTML = `
-    ${uiNoticeHTML({ level: 'block', text: 'Allergens are hard exclusions. Nothing in this app overrides them: not a preference, not a mode, not an acknowledgment. When an ingredient is not recognized, the app says so and does not assume it is safe.' })}
+    ${uiNoticeHTML({ level: 'block', text: 'Allergies are hard stops: nothing in the app overrides them. An ingredient the app does not recognize is reported, never assumed safe.' })}
     <p>Confirmed food allergies (the nine FDA major allergens):</p>
     <div class="choice-list">
       ${UI_ALLERGENS.map(a => `<label class="choice"><input type="checkbox" data-allergen="${a.tag}" ${sel.has(a.tag) ? 'checked' : ''}><span class="choice-body"><span class="choice-title">${a.label}</span>${a.hint ? `<br><span class="small muted">${uiEsc(a.hint)}</span>` : ''}</span></label>`).join('')}
@@ -584,25 +593,24 @@ function peopleStepAllergens(container, person) {
     <div class="field other-allergies" style="margin-top:1rem">
       <label for="pa-other">Other allergies (foods not in the list above)</label>
       <input id="pa-other" type="text" value="${uiEsc(peopleOtherAllergies(person).join(', '))}" placeholder="kiwi, mustard, buckwheat" autocomplete="off" autocapitalize="none">
-      <div class="hint">Separate them with commas. Each one is a hard stop, the same as the nine above: never planned, and "Not allowed" on recipes and labels. The app looks for the word in ingredient lists, so list every name the food goes by (for example mustard and Dijon, or buckwheat and soba). US labels must always name the nine major allergens, but other foods used as a spice or flavoring can be listed only as "spice" or "natural flavor". While anything is listed here, the app flags those words so you check with the maker.</div>
+      <div class="hint">Separate them with commas. Each is a hard stop, like the nine above. List every name the food goes by (for example mustard and Dijon, or buckwheat and soba): the app looks for the words in ingredient lists. Labels can hide other foods under "spice" or "natural flavor", so while anything is listed here the app flags those words for you to check with the maker.</div>
       <p class="small" id="pa-other-saved" aria-live="polite">${peopleOtherAllergies(person).length ? `Hard stops: <strong>${peopleOtherAllergies(person).map(uiEsc).join(', ')}</strong>` : ''}</p>
     </div>
-    ${perAllergy.map(r => `<div class="card" style="margin-top:1rem"><h3>${uiEsc(UI_ALLERGENS.find(a => a.tag === r.allergen) ? UI_ALLERGENS.find(a => a.tag === r.allergen).label : r.allergen)}: ask your allergist</h3><p class="small muted">Applies only when this allergy is checked above.</p>${peopleConfigurableRuleHTML(r, person)}</div>`).join('')}
-    ${configurable.length ? `<div class="card" style="margin-top:1rem"><h3>"May contain" and shared-facility labels</h3><p class="small muted">Many people with allergies avoid these, and the evidence on the real risk is mixed. A warning that names one of your allergies is always a stop. For warnings about other foods, this is your call. Applies when at least one allergen is listed above.</p>${configurable.map(r => peopleConfigurableRuleHTML(r, person)).join('')}</div>` : ''}`;
+    ${perAllergy.filter(r => sel.has(r.allergen)).map(r => `<div class="card" style="margin-top:1rem"><h3>${uiEsc(UI_ALLERGENS.find(a => a.tag === r.allergen) ? UI_ALLERGENS.find(a => a.tag === r.allergen).label : r.allergen)}: ask your allergist</h3>${peopleConfigurableRuleHTML(r, person)}</div>`).join('')}
+    ${configurable.length && (sel.size || peopleOtherAllergies(person).length) ? `<div class="card" style="margin-top:1rem"><h3>"May contain" and shared-facility labels</h3><p class="small muted">Many people with allergies avoid these; the evidence on the real risk is mixed. A warning that names one of your allergies is always a stop. For warnings that name other foods, you choose.</p>${configurable.map(r => peopleConfigurableRuleHTML(r, person, { label: 'Warnings that name other foods' })).join('')}</div>` : ''}`;
   container.querySelectorAll('[data-allergen]').forEach(inp => inp.addEventListener('change', () => {
     person.allergens = person.allergens || [];
     const t = inp.dataset.allergen;
     if (inp.checked && !person.allergens.includes(t)) person.allergens.push(t);
     if (!inp.checked) person.allergens = person.allergens.filter(x => x !== t);
-    peoplePersist(person);
+    // Redraw, so an allergy's own question (soy) and the "may contain" choice appear only once they apply.
+    peopleRefresh(container, person, 'allergens', `[data-allergen="${t}"]`);
   }));
   const other = container.querySelector('#pa-other');
   if (other) other.addEventListener('change', () => {
     person.allergens_other = peopleParseOtherAllergies(other.value);
     other.value = person.allergens_other.join(', ');
-    const saved = container.querySelector('#pa-other-saved');
-    if (saved) saved.innerHTML = person.allergens_other.length ? `Hard stops: <strong>${person.allergens_other.map(uiEsc).join(', ')}</strong>` : '';
-    peoplePersist(person);
+    peopleRefresh(container, person, 'allergens', '#pa-other');
   });
   peopleBindModulePanels(container, person, 'allergens');
 }
@@ -616,42 +624,47 @@ function peopleOtherAllergies(person) {
 }
 
 // d) Preferences, plus the custom diet builder.
+// Long cuisine lists sit behind a + (owner request, October 8, 2026): two lists of twenty cuisines made this step the
+// longest in setup. Each closed list still shows what is picked; an open one stays open while the step redraws.
+const peopleOpenPickers = new Set();
 function peopleStepPreferences(container, person) {
   person.preferences = person.preferences || { avoid_tags: [], avoid_terms: [], patterns: [] };
   const prefs = person.preferences;
   prefs.avoid_tags = prefs.avoid_tags || []; prefs.avoid_terms = prefs.avoid_terms || []; prefs.patterns = prefs.patterns || [];
   const dictTags = uiState.data.dictionaries.tags || {};
   const hasDict = Object.keys(dictTags).length > 0;
-  const options = PEOPLE_SOFT_AVOID_OPTIONS.filter(o => !hasDict || dictTags[o.value]).map(o => ({ value: o.value, label: hasDict && dictTags[o.value] && dictTags[o.value].label && !/preference/.test(o.label) ? dictTags[o.value].label : o.label }));
+  // The list's own plain labels are shown (UX pass, October 2026); the dictionary's names read like data ("Ultra-processed
+  // marker", "Caffeine source", "Non-nutritive or low-calorie sweetener").
+  const options = PEOPLE_SOFT_AVOID_OPTIONS.filter(o => !hasDict || dictTags[o.value]).map(o => ({ value: o.value, label: o.label }));
   for (const t of prefs.avoid_tags) if (!options.some(o => o.value === t)) options.push({ value: t, label: uiTagLabel(t) });
   const porkTag = peopleFindPorkTag();
   const hasVegModule = uiState.conditionsById.has('vegetarian-vegan');
   const patterns = [
-    ['vegetarian', 'Vegetarian', hasVegModule ? 'Turns on the vegetarian, vegan, and pescatarian module with the vegetarian option: no red meat, poultry, fish, or processed meat.' : 'No vegetarian module is loaded; stored as a pattern only.'],
-    ['vegan', 'Vegan', hasVegModule ? 'Turns on the same module with the vegan option: no animal foods. Eggs and dairy are avoided as a pattern, not as allergies.' : 'No vegetarian module is loaded; stored as a pattern only.'],
-    ['pescatarian', 'Pescatarian', hasVegModule ? 'Turns on the same module with the pescatarian option: no red meat, poultry, or processed meat. Fish and seafood are kept.' : 'No vegetarian module is loaded; stored as a pattern only.'],
-    ['halal', 'Halal', porkTag ? `Avoids pork (tag: ${uiTagLabel(porkTag)}).` : 'No pork tag exists in the dictionary, so pork rules are applied by name matching on ingredient text (pork, bacon, ham, lard, gelatin).'],
-    ['kosher', 'Kosher', porkTag ? `Avoids pork (tag: ${uiTagLabel(porkTag)}) and shellfish by name matching.` : 'No pork tag exists in the dictionary, so pork and shellfish rules are applied by name matching on ingredient text.']
+    ['vegetarian', 'Vegetarian', hasVegModule ? 'No meat, poultry, or fish.' : 'Saved as a choice only.'],
+    ['vegan', 'Vegan', hasVegModule ? 'No animal foods. Eggs and dairy are left out as a choice, not as allergies.' : 'Saved as a choice only.'],
+    ['pescatarian', 'Pescatarian', hasVegModule ? 'Fish and seafood, but no other meat or poultry.' : 'Saved as a choice only.'],
+    ['halal', 'Halal', porkTag ? `Leaves out pork (${uiTagLabel(porkTag)}).` : 'Leaves out pork and foods named for it in ingredient lists (pork, bacon, ham, lard, gelatin).'],
+    ['kosher', 'Kosher', porkTag ? `Leaves out pork (${uiTagLabel(porkTag)}) and shellfish.` : 'Leaves out pork and shellfish, by their names in ingredient lists.']
   ];
+  const cuisineNames = ids => ids.map(id => (CUISINES.find(c => c.id === id) || { label: id }).label).join(', ') || 'None';
   container.innerHTML = `
-    <p class="step-why">These are soft. They steer which recipes get picked and show a caution when one slips through; nothing here loosens an allergy or a condition.</p>
     <h2>Ways of eating</h2>
     <div class="choice-list">
       ${patterns.map(([id, label, hint]) => `<label class="choice"><input type="checkbox" data-pattern="${id}" ${prefs.patterns.includes(id) ? 'checked' : ''}><span class="choice-body"><span class="choice-title">${uiEsc(label)}</span> <span class="small muted">${uiEsc(hint)}</span></span></label>`).join('')}
     </div>
-    <p class="small muted">Halal and kosher rules beyond pork and shellfish (slaughter, certification, meat and dairy separation) are not something this app can check from ingredient text.</p>
+    <p class="small muted">The app cannot check slaughter, certification, or keeping meat and dairy apart.</p>
     <h2>Foods to avoid (soft)</h2>
     ${uiMultiPills('avoid_tags', options, prefs.avoid_tags, { label: 'Soft avoid tags' })}
     <div class="field" style="margin-top:1rem"><label for="pp-terms">Words to avoid in ingredient text</label>
       <input id="pp-terms" type="text" value="${uiEsc(prefs.avoid_terms.join(', '))}" placeholder="cilantro, blue cheese" autocomplete="off">
     </div>
     <h2>Spice</h2>
-    <p class="small muted">How much heat do you want in your food? The app estimates each recipe's heat from its ingredients (chili, hot sauce, cayenne, and so on) and leaves out anything above your level. Black pepper and ginger do not count.</p>
+    <p class="small muted">How much heat do you want? Recipes above your level are left out. Heat comes from chili, hot sauce, cayenne, and the like; black pepper and ginger do not count.</p>
     ${uiBigChoices('spice', SPICE_LEVELS, spicePreference(person), { label: 'Spice level', cols: 2 })}
     <h2>Cuisines</h2>
-    <p class="small muted">Tick the cuisines you want left out; those recipes disappear from the week, search, and Pantry. Ticking a cuisine you love nudges the week plan toward it. Labels come from the recipe source where it has them; otherwise the app guesses from the title and ingredients.</p>
-    <div class="field"><span class="label">Cuisines to skip</span><div class="chip-grid">${CUISINES.filter(c => c.id !== 'other').map(c => `<label class="choice compact"><input type="checkbox" data-cskip="${c.id}" ${(prefs.cuisines_skip || []).includes(c.id) ? 'checked' : ''}><span class="choice-body"><span class="choice-title">${uiEsc(c.label)}</span></span></label>`).join('')}</div></div>
-    <div class="field"><span class="label">Cuisines you love</span><div class="chip-grid">${CUISINES.filter(c => c.id !== 'other').map(c => `<label class="choice compact"><input type="checkbox" data-clove="${c.id}" ${(prefs.cuisines_love || []).includes(c.id) ? 'checked' : ''}><span class="choice-body"><span class="choice-title">${uiEsc(c.label)}</span></span></label>`).join('')}</div></div>
+    <p class="small muted">Skip a cuisine and its recipes leave your week, search, and Pantry. Love one and the week leans toward it. Tap + to choose.</p>
+    <details class="pick-more" data-pick="skip" ${peopleOpenPickers.has('skip') ? 'open' : ''}><summary><span class="pick-title">Cuisines to skip</span><span class="pick-summary" data-pick-summary="skip">${uiEsc(cuisineNames(prefs.cuisines_skip || []))}</span></summary><div class="chip-grid">${CUISINES.filter(c => c.id !== 'other').map(c => `<label class="choice compact"><input type="checkbox" data-cskip="${c.id}" ${(prefs.cuisines_skip || []).includes(c.id) ? 'checked' : ''}><span class="choice-body"><span class="choice-title">${uiEsc(c.label)}</span></span></label>`).join('')}</div></details>
+    <details class="pick-more" data-pick="love" ${peopleOpenPickers.has('love') ? 'open' : ''}><summary><span class="pick-title">Cuisines you love</span><span class="pick-summary" data-pick-summary="love">${uiEsc(cuisineNames(prefs.cuisines_love || []))}</span></summary><div class="chip-grid">${CUISINES.filter(c => c.id !== 'other').map(c => `<label class="choice compact"><input type="checkbox" data-clove="${c.id}" ${(prefs.cuisines_love || []).includes(c.id) ? 'checked' : ''}><span class="choice-body"><span class="choice-title">${uiEsc(c.label)}</span></span></label>`).join('')}</div></details>
     <div class="field" hidden>
       <div class="hint">Comma separated. Matched as plain text in ingredient lists and recipe names. Soft.</div></div>
     <details class="pref-more" id="custom-diet"><summary>A diet that is not on the list (optional)</summary>
@@ -671,15 +684,22 @@ function peopleStepPreferences(container, person) {
   }, { rerender: false });
   peopleBindSeg(container, person, 'preferences', 'spice', v => { prefs.spice = v; uiState.weekCache.clear(); }, { rerender: false });
     prefs.cuisines_skip = prefs.cuisines_skip || []; prefs.cuisines_love = prefs.cuisines_love || [];
+  const cuisineSummaries = () => {
+    const s = container.querySelector('[data-pick-summary="skip"]'), l = container.querySelector('[data-pick-summary="love"]');
+    if (s) s.textContent = cuisineNames(prefs.cuisines_skip); if (l) l.textContent = cuisineNames(prefs.cuisines_love);
+  };
+  container.querySelectorAll('details.pick-more').forEach(d => d.addEventListener('toggle', () => { if (d.open) peopleOpenPickers.add(d.dataset.pick); else peopleOpenPickers.delete(d.dataset.pick); }));
+  // Saved through peoplePersist like every other change here, so a person kept in the shared store is republished
+  // (these two used the bare uiPersist and skipped that).
   container.querySelectorAll('[data-cskip]').forEach(inp => inp.addEventListener('change', () => {
     const id = inp.getAttribute('data-cskip');
     prefs.cuisines_skip = prefs.cuisines_skip.filter(x => x !== id); if (inp.checked) { prefs.cuisines_skip.push(id); prefs.cuisines_love = prefs.cuisines_love.filter(x => x !== id); const other = container.querySelector(`[data-clove="${id}"]`); if (other) other.checked = false; }
-    uiPersist();
+    cuisineSummaries(); peoplePersist(person);
   }));
   container.querySelectorAll('[data-clove]').forEach(inp => inp.addEventListener('change', () => {
     const id = inp.getAttribute('data-clove');
     prefs.cuisines_love = prefs.cuisines_love.filter(x => x !== id); if (inp.checked) { prefs.cuisines_love.push(id); prefs.cuisines_skip = prefs.cuisines_skip.filter(x => x !== id); const other = container.querySelector(`[data-cskip="${id}"]`); if (other) other.checked = false; }
-    uiPersist();
+    cuisineSummaries(); peoplePersist(person);
   }));
   container.querySelector('#pp-terms').addEventListener('change', e => {
     const manual = e.target.value.split(',').map(s => s.trim()).filter(Boolean);
@@ -938,10 +958,10 @@ function peopleStepMedications(container, person) {
   person.medications = person.medications || {};
   const qs = [...seen.values()].sort((a, b) => Number(!!b.global) - Number(!!a.global));
   container.innerHTML = `
-    <p>Some medicines change what you should eat. Answer what applies. A yes turns on the matching food rule, and sets aside any rule the medicine makes unsafe, with the reason shown.</p>
+    <p>A yes turns on the matching food rule and sets aside any rule the medicine makes unsafe, with the reason shown.</p>
     ${qs.length ? qs.map(q => `<div class="card">
       <span class="label">${uiEsc(q.text)}</span>
-      <div class="small muted" style="margin-bottom:.5rem">${q.global ? 'Asked of everyone.' : `Asked by ${uiEsc(q.moduleName)}.`}</div>
+      ${q.global ? '' : `<div class="small muted" style="margin-bottom:.5rem">Asked because of ${uiEsc(q.moduleName)}.</div>`}
       ${uiYesNo('med-' + q.id, person.medications[q.id] === true ? true : person.medications[q.id] === false ? false : null)}
     </div>`).join('') : uiEmptyState('No medication questions apply to the modules you selected.')}`;
   for (const q of qs) peopleBindSeg(container, person, 'medications', 'med-' + q.id, v => { person.medications[q.id] = v === 'yes'; }, { rerender: false });
@@ -973,7 +993,7 @@ function peopleStepClinician(container, person) {
   const list = [...entries.values()];
   const applied = new Map(plan.tier2.applied.map(a => [a.param, a.value]));
   container.innerHTML = `
-    <p>These numbers are Tier 2: the app knows the published range but does not choose a value for you. Until a number is entered, the module runs on its Tier 1 rules only and the plan says so.</p>
+    <p>The app knows the published range for these numbers but will not choose one for you. Until you enter a number, the condition's other rules still apply and the plan says the number is missing.</p>
     ${list.some(t => /per_kg/.test(t.param)) && !person.weight_kg ? uiNoticeHTML({ level: 'warn', text: 'Some of these are per kilogram of body weight. Enter a weight on the Basics step so they can become daily numbers.' }) : ''}
     ${list.length ? list.map(t => `<div class="card">
       <label for="pt-${uiEsc(t.param)}">${uiEsc(t.label || t.param)}${/per_kg/.test(t.param) ? ' ' + uiChip('per kilogram', 'neutral') : ''}</label>
@@ -1004,7 +1024,7 @@ function peopleStepCooking(container, person, sub) {
   if (sub === 'time') {
     container.innerHTML = `<div class="cooking-screen">${progress}
       <h2 class="big-q">How much time do you have to cook?</h2>
-      <p class="muted">Pick what is true most weeks. Meals are chosen to fit this time. You can change it later.</p>
+      <p class="muted">Pick what is true most weeks. You can change it later.</p>
       <h3 class="big-sub">On weekdays</h3>
       ${uiBigChoices('weekday_minutes', PEOPLE_TIME_OPTIONS, peopleTimeBucket(c.weekday_minutes || 20), { label: 'Weekday cooking time', cols: 2 })}
       <h3 class="big-sub">On weekends</h3>
@@ -1096,30 +1116,38 @@ function peopleStepReview(container, person) {
   const c = person.cooking || {};
   const act = ACTIVITY_LEVELS.find(l => l.id === person.activity);
   const wh = uiWeightHeightText(person, { kgToLb, cmToFtIn });
-  const kv = [
+  // Review in plain words (UX pass, October 2026): option and cuisine names instead of stored ids, and a row only when
+  // it has something to say, apart from the ones a person should always see confirmed (allergies, conditions, spice,
+  // cooking). Rows like "Flags: none" and "Options: defaults" read like settings files.
+  const variantLabel = (mid, vid) => { const m = uiState.conditionsById.get(mid); const v = m && (m.variants || []).find(x => x.id === vid); return v ? (v.label || v.id) : vid; };
+  const cuisineLabel = id => (CUISINES.find(x => x.id === id) || { label: id }).label;
+  const optional = (uiState.data.conditions || []).filter(m => (person.modules || []).includes(m.id)).flatMap(m => (m.rules || []).filter(r => (r.optional === true || r.default === 'off') && Array.isArray(r.tags)).map(r => [m.name, optionalRulePicks(r, person)])).filter(([, picks]) => picks.length);
+  const allergies = [...(person.allergens || []).map(peopleAllergenLabel), ...peopleOtherAllergies(person)];
+  const rows = [
     ['Adult', person.adult === false ? 'No (caregiver mode)' : 'Yes'],
     ['Sex, age', `${uiEsc(person.sex || 'not set')}${person.age ? ', ' + uiEsc(person.age) : ''}`],
     ['Weight, height', uiEsc(wh || 'not entered')],
     ['Activity', uiEsc(act ? act.label : 'not set')],
     ['Pregnant or breastfeeding', person.pregnancy || person.breastfeeding ? 'Yes' : 'No'],
+    ['Allergies', allergies.length ? uiEsc(allergies.join(', ')) : 'none'],
     ['Conditions and diets', plan.modules.length ? plan.modules.map(m => m.category === 'custom' ? `${uiEsc(m.name)} ${uiUserDefinedBadge()}` : uiEsc(m.name)).join(', ') : 'none'],
-    ['Turned off', plan.disabledModules.length ? plan.disabledModules.map(d => `${uiEsc(uiModuleName(d.id))} (by ${uiEsc(uiModuleName(d.by))})`).join(', ') : 'none'],
-    ['Options', Object.entries(person.variants || {}).filter(([, v]) => v && v.length).map(([k, v]) => `${uiEsc(uiModuleName(k))}: ${uiEsc([].concat(v).join(', '))}`).join('; ') || 'defaults'],
-    ['Flags', Object.entries(person.flags || {}).filter(([, v]) => v).map(([k]) => uiEsc((uiState.conditionsMeta.flags[k] || { label: k }).label)).join('; ') || 'none'],
-    ['Confirmations', (person.confirmations || []).length ? person.confirmations.map(uiEsc).join(', ') : 'none'],
-    ['Allergens', (person.allergens || []).length ? person.allergens.map(t => uiEsc(peopleAllergenLabel(t))).join(', ') : 'none'],
-    ['Other allergies', peopleOtherAllergies(person).length ? uiEsc(peopleOtherAllergies(person).join(', ')) : 'none'],
-    ['Patterns', uiEsc((prefs.patterns || []).join(', ') || 'none')],
-    ['Your own diets', (person.custom_modules || []).length ? person.custom_modules.map(cm => uiEsc(cm.name)).join(', ') : 'none'],
-    ['Soft avoid', uiEsc((prefs.avoid_tags || []).map(uiTagLabel).join(', ') || 'none')],
-    ['Avoid words', uiEsc((prefs.avoid_terms || []).join(', ') || 'none')],
+    plan.disabledModules.length && ['Turned off by another choice', plan.disabledModules.map(d => `${uiEsc(uiModuleName(d.id))} (by ${uiEsc(uiModuleName(d.by))})`).join(', ')],
+    Object.values(person.variants || {}).some(v => v && v.length) && ['Choices under conditions', Object.entries(person.variants || {}).filter(([, v]) => v && v.length).map(([k, v]) => `${uiEsc(uiModuleName(k))}: ${uiEsc([].concat(v).map(id => variantLabel(k, id)).join(', '))}`).join('; ')],
+    optional.length && ['Foods you picked to avoid', optional.map(([name, picks]) => `${uiEsc(name)}: ${uiEsc(picks.map(uiTagLabel).join(', '))}`).join('; ')],
+    Object.values(person.flags || {}).some(Boolean) && ['Also told us', Object.entries(person.flags || {}).filter(([, v]) => v).map(([k]) => uiEsc((uiState.conditionsMeta.flags[k] || { label: k }).label)).join('; ')],
+    (person.confirmations || []).length && ['Confirmed', person.confirmations.map(uiEsc).join(', ')],
+    (prefs.patterns || []).length && ['Ways of eating', uiEsc(prefs.patterns.map(x => x.charAt(0).toUpperCase() + x.slice(1)).join(', '))],
+    (person.custom_modules || []).length && ['Your own diets', person.custom_modules.map(cm => uiEsc(cm.name)).join(', ')],
+    (prefs.avoid_tags || []).length && ['Foods to avoid (soft)', uiEsc(prefs.avoid_tags.map(uiTagLabel).join(', '))],
+    (prefs.avoid_terms || []).length && ['Words to avoid', uiEsc(prefs.avoid_terms.join(', '))],
     ['Spice', uiEsc((SPICE_LEVELS.find(l => l.value === spicePreference(person)) || SPICE_LEVELS[0]).label)],
-    ['Cuisines', uiEsc(`${(prefs.cuisines_skip || []).length ? 'skip ' + prefs.cuisines_skip.join(', ') : 'nothing skipped'}${(prefs.cuisines_love || []).length ? '; love ' + prefs.cuisines_love.join(', ') : ''}`)],
-    ['Medications', uiEsc(Object.entries(person.medications || {}).filter(([, v]) => v).map(([k]) => k.replace(/_/g, ' ')).join(', ') || 'none flagged')],
-    ['Doctor or dietitian numbers', Object.keys(person.tier2 || {}).length ? uiEsc(Object.entries(person.tier2).map(([k, v]) => `${k}: ${v}`).join(', ')) : 'none entered'],
+    ((prefs.cuisines_skip || []).length || (prefs.cuisines_love || []).length) && ['Cuisines', uiEsc([(prefs.cuisines_skip || []).length ? 'Skip: ' + prefs.cuisines_skip.map(cuisineLabel).join(', ') : '', (prefs.cuisines_love || []).length ? 'Love: ' + prefs.cuisines_love.map(cuisineLabel).join(', ') : ''].filter(Boolean).join('. '))],
+    Object.values(person.medications || {}).some(Boolean) && ['Medicines that change food rules', uiEsc(Object.entries(person.medications || {}).filter(([, v]) => v).map(([k]) => k.replace(/_/g, ' ')).join(', '))],
+    Object.keys(person.tier2 || {}).length && ['Doctor or dietitian numbers', uiEsc(Object.entries(person.tier2).map(([k, v]) => `${k}: ${v}`).join(', '))],
     ['Cooking', uiEsc(`${c.weekday_minutes || 20} min weekdays, ${c.weekend_minutes || 40} min weekends, ${(c.cook_days || []).length} cook days, ${c.interest || 'simple'}, cooking for ${c.household || 1}${c.budget ? ', reuse ingredients to save money' : ''}`)],
     ['Snacks', uiEsc(peopleSnackHint(person))]
   ];
+  const kv = rows.filter(Boolean);
   container.innerHTML = `
     <div class="card"><dl class="kv">${kv.map(([k, v]) => `<dt>${uiEsc(k)}</dt><dd>${v}</dd>`).join('')}</dl></div>
     ${plan.notices.filter(n => n.level !== 'info').length ? `<h2>The plan will show these notices</h2><div class="stack">${plan.notices.filter(n => n.level !== 'info').map(n => uiNoticeHTML(n)).join('')}</div>` : ''}
