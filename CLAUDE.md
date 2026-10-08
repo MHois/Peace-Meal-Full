@@ -44,7 +44,7 @@ The app itself has no dependencies. Everything that needs packages (ESLint, Stry
 | `src/engine/` | Pure logic: `checker.js` (verdicts), `dictionary.js`, `plan.js` (merges modules, conflicts, Tier 2, phases, pregnancy), `dietlists.js`, `planner.js`, `household.js`, `grocery.js`, `nutrition.js`, `report.js`, `crypto.js` and `sync.js` (claude.ai hosting only) |
 | `src/ui/` | One file per screen; `common.js` holds shared helpers; `lite.js` holds the lite Today, Meals, and Report screens |
 | `src/store.js`, `src/app.js` | Storage (load, save, migration, backup import and export, Clear data); boot and routing |
-| `tools/bundle.mjs` | Joins everything into one HTML file; `--lite` drops Wikibooks and USDA recipes; the full build keeps both in JSON blocks the app reads only when needed (`appLoadDeferred`, `appLoadDeferredUsda` in `src/app.js`); `--pages` adds the manifest, icons, and the cache-first service worker (`tools/lib/pages-sw.mjs`). `PM_BUNDLE_OUT` (tests only) writes the single file elsewhere |
+| `tools/bundle.mjs` | Joins everything into one HTML file; both builds keep the Wikibooks and USDA recipes in JSON blocks the app reads only when needed (lite too since October 8, 2026; before that `--lite` dropped them) (`appLoadDeferred`, `appLoadDeferredUsda` in `src/app.js`); `--pages` adds the manifest, icons, and the cache-first service worker (`tools/lib/pages-sw.mjs`). `PM_BUNDLE_OUT` (tests only) writes the single file elsewhere |
 | `tools/validate.mjs`, `tools/import-*.mjs` | Data validator; recipe importers |
 | `test/` | Engine and storage tests (`node --test`) |
 | `site/index.html` | The hosted front page |

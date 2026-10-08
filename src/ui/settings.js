@@ -247,9 +247,10 @@ function settingsRestoreModal(text) {
 // A plain note before the USDA recipes are switched on (owner request, September 30, 2026: the earlier joke text
 // was removed).
 const SETTINGS_USDA_NOTICE = 'These recipes come from USDA MyPlate Kitchen, a free US government collection. The app checks each one against your plan the same way it checks every other recipe, and the nutrition numbers per serving are the ones USDA publishes.';
-// A collection this build does not carry is not listed (owner item 1, October 8, 2026): Peace Meal for one leaves out
-// the Wikibooks Cookbook and USDA MyPlate Kitchen to stay small on a phone, and listing them as "0 recipes" with a
-// switch that did nothing looked broken. One line says where they are instead.
+// A collection this build does not carry is not listed (owner item 1, October 8, 2026): listing one as "0 recipes" with a
+// switch that did nothing looked broken. Peace Meal for one left out the Wikibooks Cookbook and USDA MyPlate Kitchen then;
+// later that day the owner asked for it to carry them, so both builds now list them, and the line below only appears if a
+// copy of the app is ever built without one.
 const SETTINGS_COLLECTION_NAMES = { wikibooks: 'the Wikibooks Cookbook', usda: 'USDA MyPlate Kitchen' };
 export function settingsCollectionsHTML(profile) {
   const on = recipeCollectionsOn(profile);
@@ -264,7 +265,7 @@ export function settingsCollectionsHTML(profile) {
     ${uiSwitch('coll-parentclub', `Parent Club, Scottish Government (${n.parentclub.toLocaleString()} recipes)`, 'Family recipes with full per-serving nutrition, including sodium in milligrams, and ingredient weights in grams. British dishes and measures.', on.parentclub)}
     ${!n.usda ? '' : uiSwitch('coll-usda', `USDA MyPlate Kitchen, United States (${n.usda.toLocaleString()} recipes)`, 'American home cooking with per-serving nutrition. Public domain.', on.usda)}
     ${n.review_dual ? uiSwitch('coll-review_dual', `Peace Meal recipes for low FODMAP and low histamine together (${n.review_dual.toLocaleString()} recipes)`, 'Breakfasts and dinners for someone on both diets at once. Every ingredient is linked to a USDA food and is on both approved lists, and each recipe passes both strict checks.', on.review_dual) : ''}
-    ${missing.length ? `<p class="small muted">${uiState.lite ? 'Peace Meal for one' : 'This copy of Peace Meal'} leaves out ${missing.map(k => SETTINGS_COLLECTION_NAMES[k]).join(' and ')} to stay small and quick on a phone. The full Peace Meal has ${missing.length === 1 ? 'it' : 'them'}.</p>` : ''}
+    ${missing.length ? `<p class="small muted">This copy of Peace Meal does not include ${missing.map(k => SETTINGS_COLLECTION_NAMES[k]).join(' or ')}.</p>` : ''}
   </div>`;
 }
 function settingsBindCollections(root, profile) {

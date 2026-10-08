@@ -24,7 +24,8 @@ function stripModuleSyntax(code) {
     .replace(/^\s*export\s*\{[^}]*\};?\s*$/gm, '');
 }
 
-// --lite builds dist/peace-meal-lite.html: one person, four tabs, and without the Wikibooks recipes (no nutrition data, 4 MB).
+// --lite builds dist/peace-meal-lite.html: one person, four tabs. Since October 8, 2026 (owner request) it carries every recipe
+// collection the full build does, in the same blocks read only when needed, so its first screen does not parse them.
 const LITE = process.argv.includes('--lite');
 // --pages builds the hosted copy for GitHub Pages instead: dist/pages/lite/ (or dist/pages/full/) with index.html, a manifest,
 // PNG icons, and a small service worker, so the page can be added to an iPhone home screen and opened offline.
@@ -34,15 +35,18 @@ for (const f of ['sources', 'conditions', 'dictionaries', 'foods', 'recipes', 'r
   const p = new URL('data/' + f + '.json', root);
   data[f] = fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, 'utf8')) : (f === 'dictionaries' ? { tags: {}, entries: [] } : f === 'articles' ? {} : f === 'swaps' ? { families: {}, swaps: [] } : f === 'diet-lists' ? { families: {} } : []);
 }
-if (LITE && Array.isArray(data['recipes-open'])) data['recipes-open'] = data['recipes-open'].filter(r => r.source !== 'Wikibooks Cookbook');
-if (LITE) data['recipes-usda'] = [];   // the USDA collection stays a full-app opt-in; lite ships Peace Meal's own recipes plus the NHS, Parent Club, NHLBI, and VA sets
-// Full build (2026-09 audit): the 2,268 Wikibooks recipes are a third of the inline data and have no nutrition numbers.
+// Lite used to leave out the Wikibooks and USDA collections to stay small (the two lines below). The owner asked on
+// October 8, 2026 for Peace Meal for one to have all the recipes, so they are kept, not deleted, and no longer run.
+// if (LITE && Array.isArray(data['recipes-open'])) data['recipes-open'] = data['recipes-open'].filter(r => r.source !== 'Wikibooks Cookbook');
+// if (LITE) data['recipes-usda'] = [];   // the USDA collection stayed a full-app opt-in
+// Both builds (2026-09 audit; lite too since October 8, 2026): the 2,268 Wikibooks recipes are a third of the inline data
+// and have no nutrition numbers.
 // They ship in the same file as a JSON block the browser does not run (<script type="application/json">), so launch
 // skips parsing them; src/app.js reads the block the first time someone searches recipes, or at launch when the saved
 // data already needs them. They must sit together in recipes-open.json; the app puts them back after the recipe named
 // in "after", so the recipe order, and with it every week plan, is the same as before.
 let deferredBlock = '';
-if (!LITE && Array.isArray(data['recipes-open'])) {
+if (Array.isArray(data['recipes-open'])) {
   const open = data['recipes-open'];
   const isWb = r => r.source === 'Wikibooks Cookbook';
   const first = open.findIndex(isWb), last = open.length - 1 - [...open].reverse().findIndex(isWb);
@@ -58,11 +62,11 @@ if (!LITE && Array.isArray(data['recipes-open'])) {
     deferredBlock = `<script type="application/json" id="pm-deferred-wikibooks">${JSON.stringify(wb).replace(/</g, '\\u003c')}</script>\n`;
   } else if (wb.length) console.warn('Wikibooks recipes are not together in recipes-open.json; they stay inline (launch is slower).');
 }
-// P2-14 (audit of September 30, 2026): the USDA MyPlate Kitchen recipes (1,043, 2.4 MB) are off by default, so the full
-// build ships them in a JSON block too, and src/app.js reads it only when the collection is switched on. They are last
-// in the recipe order, so the app puts them back at the end and every week plan comes out the same. Lite has none.
+// P2-14 (audit of September 30, 2026): the USDA MyPlate Kitchen recipes (1,043, 2.4 MB) are off by default, so both builds
+// ship them in a JSON block too (lite since October 8, 2026), and src/app.js reads it only when the collection is switched
+// on. They are last in the recipe order, so the app puts them back at the end and every week plan comes out the same.
 let usdaBlock = '';
-if (!LITE && Array.isArray(data['recipes-usda']) && data['recipes-usda'].length) {
+if (Array.isArray(data['recipes-usda']) && data['recipes-usda'].length) {
   const us = data['recipes-usda'];
   data.deferred = { ...(data.deferred || {}), usda: { element: 'pm-deferred-usda', source: 'USDA MyPlate Kitchen', collection: 'usda', count: us.length, id_prefix: 'usda-' } };
   data['recipes-usda'] = [];

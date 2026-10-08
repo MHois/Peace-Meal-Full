@@ -55,7 +55,9 @@ test('Settings, About and the Recipes screen name the same recipe sources, and o
   const lite = common.uiRecipeSourcesText();
   uiState.lite = false;
   const full = common.uiRecipeSourcesText();
-  assert.doesNotMatch(lite, /Wikibooks|USDA/, 'Peace Meal for one carries neither');
+  // Changed on purpose (owner request, October 8, 2026). Old: the lite sentence names neither Wikibooks nor USDA
+  // ("Peace Meal for one carries neither"). New: it is the full sentence. Why: lite now carries every collection.
+  assert.equal(lite, full, 'both builds carry every collection');
   for (const s of ['NHS website', 'Parent Club', 'NHLBI', 'the VA']) { assert.ok(lite.includes(s), s); assert.ok(full.includes(s), s); }
   assert.match(full, /USDA MyPlate Kitchen/);
   assert.match(full, /Wikibooks Cookbook \(CC BY-SA 4\.0\)/);

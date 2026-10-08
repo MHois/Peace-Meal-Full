@@ -79,6 +79,9 @@ test('1: a collection this build does not carry is not listed as "0 recipes"', (
   const html = settings.settingsCollectionsHTML({ recipe_collections: {} });
   assert.doesNotMatch(html, /coll-wikibooks|coll-usda/);
   assert.doesNotMatch(html, /Wikibooks Cookbook \(0 recipes\)|USDA MyPlate Kitchen, United States \(0 recipes\)|Not loaded in this build/);
-  assert.match(html, /Peace Meal for one leaves out the Wikibooks Cookbook and USDA MyPlate Kitchen to stay small and quick on a phone\. The full Peace Meal has them\./);
+  // Changed on purpose (owner request, October 8, 2026). Old: "Peace Meal for one leaves out the Wikibooks Cookbook and USDA
+  // MyPlate Kitchen to stay small and quick on a phone. The full Peace Meal has them." New: "This copy of Peace Meal does
+  // not include ...". Why: lite now carries both, so this line shows only for a copy built without them, in either build.
+  assert.match(html, /This copy of Peace Meal does not include the Wikibooks Cookbook or USDA MyPlate Kitchen\./);
   uiState.lite = false;
 });

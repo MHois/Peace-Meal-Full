@@ -373,7 +373,7 @@ export function renderRecipesScreen(root) {
           ${chip('featured', `${uiIcon('star')}Featured`, recipesUi.featured)}
           ${chip('nutrition', 'Has nutrition', recipesUi.nutrition)}
           <span class="filter-sep" aria-hidden="true"></span>
-          ${['peace-meal', 'nhs', 'parentclub', 'nhlbi', 'va', 'wikibooks', 'usda', 'mine'].filter(s => (s !== 'usda' || uiState.data.recipes.some(r => r.source === 'USDA MyPlate Kitchen')) && !(s === 'wikibooks' && uiState.lite)).map(s => chip('source:' + s, RECIPES_SOURCE_LABEL[s], recipesUi.source === s)).join('')}
+          ${['peace-meal', 'nhs', 'parentclub', 'nhlbi', 'va', 'wikibooks', 'usda', 'mine'].filter(s => s !== 'usda' || uiState.data.recipes.some(r => r.source === 'USDA MyPlate Kitchen')).map(s => chip('source:' + s, RECIPES_SOURCE_LABEL[s], recipesUi.source === s)).join('')}
           <span class="filter-sep" aria-hidden="true"></span>
           ${chip('veg:vegetarian', 'Vegetarian', recipesUi.veg === 'vegetarian')}
           ${chip('veg:vegan', 'Vegan', recipesUi.veg === 'vegan')}

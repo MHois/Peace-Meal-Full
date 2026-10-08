@@ -255,12 +255,10 @@ export function uiNoticeHTML(n, opts = {}) {
 }
 
 // Every recipe source and its licence in one sentence, shared by the Recipes screen and Settings, About, so the two cannot
-// disagree (UX pass, October 2026: About named the Wikibooks Cookbook in Peace Meal for one, which does not carry it,
-// and left out four collections). Peace Meal for one carries neither Wikibooks nor USDA MyPlate Kitchen.
+// disagree (UX pass, October 2026: About left out four collections). Both builds carry every collection since the owner's
+// request of October 8, 2026, so the sentence is the same in both.
 export function uiRecipeSourcesText() {
-  return uiState.lite
-    ? 'Peace Meal, the NHS website and Parent Club (Open Government Licence v3.0), the NHLBI and the VA (US government works, not copyright protected), and your own kitchen'
-    : 'Peace Meal, the NHS website and Parent Club (Open Government Licence v3.0), the NHLBI, the VA, and USDA MyPlate Kitchen (US government works, not copyright protected), the Wikibooks Cookbook (CC BY-SA 4.0), and your own kitchen';
+  return 'Peace Meal, the NHS website and Parent Club (Open Government Licence v3.0), the NHLBI, the VA, and USDA MyPlate Kitchen (US government works, not copyright protected), the Wikibooks Cookbook (CC BY-SA 4.0), and your own kitchen';
 }
 
 // Recipes the full single-file build reads only when needed (the Wikibooks Cookbook, 2026-09 audit; see appLoadDeferred

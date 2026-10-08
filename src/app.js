@@ -422,13 +422,27 @@ async function appBootSync() {
   if (['settings', 'people', 'together', 'owner'].includes(uiState.route.screen) && !uiState.modalClose) uiState.rerender();
 }
 
+// Owner request (October 8, 2026): Peace Meal for one has every recipe collection the full app has. Profiles it saved
+// before carry wikibooks: false (it used to leave that collection out), so the collection is switched on once; turning it
+// off afterwards sticks. USDA MyPlate Kitchen stays off until it is switched on, in both builds. Exported for tests.
+export function appLiteAllRecipes(profile, lite) {
+  const rc = profile && profile.recipe_collections;
+  if (!lite || !rc || rc.lite_all_recipes) return false;
+  rc.wikibooks = true;
+  rc.lite_all_recipes = true;
+  return true;
+}
+
 async function appBoot() {
   uiState.sync = { db: null, identity: null, owner: null, isOwner: false, ready: false };
   uiState.syncRefresh = appBootSync;
   uiState.profile = load();
   uiState.lite = APP_LITE;
   if (APP_LITE) document.documentElement.classList.add('lite');   // lite-only sizes in app.css (P2-5)
-  if (APP_LITE && uiState.profile && !uiState.profile.people.length && uiState.profile.recipe_collections) { uiState.profile.recipe_collections.nhs = true; uiState.profile.recipe_collections.parentclub = true; uiState.profile.recipe_collections.nhlbi = true; uiState.profile.recipe_collections.va = true; uiState.profile.recipe_collections.wikibooks = false; }
+  // A new lite profile also had wikibooks set to false here, while lite left that collection out; since October 8, 2026 it
+  // carries every collection (appLiteAllRecipes below), so that one setting is no longer written.
+  if (APP_LITE && uiState.profile && !uiState.profile.people.length && uiState.profile.recipe_collections) { uiState.profile.recipe_collections.nhs = true; uiState.profile.recipe_collections.parentclub = true; uiState.profile.recipe_collections.nhlbi = true; uiState.profile.recipe_collections.va = true; }
+  appLiteAllRecipes(uiState.profile, APP_LITE);
   // Collections with per-serving nutrition are on by default since v2.3. Profiles saved before that carried nhs: false; switch it on once.
   if (uiState.profile && uiState.profile.recipe_collections && !uiState.profile.recipe_collections.defaults_v3) { uiState.profile.recipe_collections.nhs = true; uiState.profile.recipe_collections.parentclub = true; uiState.profile.recipe_collections.defaults_v3 = true; }
   if (uiState.profile && uiState.profile.recipe_collections && !uiState.profile.recipe_collections.defaults_v4) { uiState.profile.recipe_collections.nhlbi = true; uiState.profile.recipe_collections.defaults_v4 = true; }

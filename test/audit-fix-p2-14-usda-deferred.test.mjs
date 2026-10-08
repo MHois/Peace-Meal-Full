@@ -2,7 +2,8 @@
 // launch data, so every launch parsed them, though the collection is off by default. They now ship in the same file as
 // a JSON block the browser does not run, as the Wikibooks recipes already did, and the app reads them only when the
 // collection is on (at launch, or when it is switched on in Settings). They go back at the end of the recipe order,
-// where they were, so a week plan comes out the same. Lite never carried them. Every person here is made up.
+// where they were, so a week plan comes out the same. Lite never carried them (until October 8, 2026, when the owner asked
+// for Peace Meal for one to have all the recipes; it now carries the same block). Every person here is made up.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -39,8 +40,10 @@ test('P2-14: the full page keeps the USDA recipes out of the launch data, in a b
   assert.equal(d.deferred.usda.count, usda.length);
   assert.equal(d.deferred.usda.element, 'pm-deferred-usda');
   assert.ok(full.html.indexOf('id="pm-deferred-usda"') < full.html.indexOf('window.__APP_DATA__'), 'before the launch data, like the Wikibooks block');
-  // lite never had them
-  assert.ok(!lite.blocks['pm-deferred-usda']);
+  // Changed on purpose (owner request, October 8, 2026). Old: lite had no USDA block ("lite never had them"). New: lite
+  // carries the same block as the full page. Why: the owner asked for Peace Meal for one to have all the recipes. The
+  // second check is unchanged: they stay out of the lite launch data too.
+  assert.deepEqual(JSON.parse(lite.blocks['pm-deferred-usda']), usda, 'lite carries the same block');
   assert.ok(!lite.stmt.includes('"usda-2-step-chicken"'));
 });
 
