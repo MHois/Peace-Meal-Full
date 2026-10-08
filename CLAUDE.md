@@ -62,7 +62,7 @@ The app itself has no dependencies. Everything that needs packages (ESLint, Stry
 - `peace-meal-<lite|full>:home-screen-guide` and `…:safari-banner-hidden`: the Add to Home Screen guide and the Safari-tab banner.
 - `peace-meal:device`: the shared-store device key (claude.ai hosting only). Clear data removes it.
 - Cache Storage `pm-pages-<lite|full>-<commit>`: the offline copy; the service worker checks each saved file against its build's fingerprint (P1-4).
-- The hosted apps share the origin `mchoisington.github.io` with every other GitHub Pages site on the account (see the audit's shared-origin finding).
+- The hosted apps live at `https://mhois.github.io/Peace-Meal-Full/` (repository MHois/Peace-Meal-Full) since October 8, 2026. Their origin, `mhois.github.io`, is shared with every GitHub Pages site of the MHois organization, so the organization hosts no other Pages site (see the audit's shared-origin finding). The first copy, mchoisington/Peace-Meal-Full at `mchoisington.github.io/Peace-Meal-Full/`, stays up until every phone has moved its data.
 
 ## Before calling a change done
 

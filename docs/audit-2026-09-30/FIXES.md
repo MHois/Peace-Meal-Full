@@ -18,6 +18,8 @@ The audit is in `REPORT.md` (same folder). This file says what changed for each 
 
 ### 1. P1-4: give the app its own web address
 
+**Done, October 8, 2026, with option A below:** the repository was copied with its full history to the free organization MHois, and the app now lives at `https://mhois.github.io/Peace-Meal-Full/`. The original repository and its site stay up until every phone has moved its data.
+
 **Why:** every GitHub Pages site of one account shares one web origin (`mchoisington.github.io`). A page from any other Pages site on this account can read and change what Peace Meal saves on a phone. The fix pass closed the worst part in code: the app never runs a saved copy of itself that another site changed (P1-4, commit 7609256). It cannot stop another site on the same origin from reading or changing the saved data. Only a separate origin does that.
 
 **Today, without a move:** publish no other Pages site on this account (the README says so). The one planned exception is the page for the old address (P1-6), which loads nothing and sends nothing.

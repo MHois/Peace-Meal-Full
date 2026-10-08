@@ -8,7 +8,7 @@ import crypto from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 
 const ROOT = path.resolve(new URL('../../', import.meta.url).pathname);
-const LIVE = process.env.PM_LIVE_URL || 'https://mchoisington.github.io/Peace-Meal-Full/';
+const LIVE = process.env.PM_LIVE_URL || 'https://mhois.github.io/Peace-Meal-Full/';
 const sha = b => crypto.createHash('sha256').update(b).digest('hex').slice(0, 16);
 const main = execFileSync('git', ['ls-remote', 'origin', 'refs/heads/main'], { cwd: ROOT }).toString().split(/\s/)[0];
 const out = { checkedAt: new Date().toISOString(), live: LIVE, mainOnGitHub: main.slice(0, 12), builds: {} };
