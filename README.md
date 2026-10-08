@@ -6,7 +6,7 @@ This is a personal tool for one family. It is not a medical device and does not 
 
 ## Two builds
 
-`node tools/bundle.mjs` builds the full app (`dist/nutrition-app.html`); its 2,268 Wikibooks recipes ride along in the same file and are read the first time someone searches recipes, and its 1,043 USDA MyPlate Kitchen recipes (off by default) are read only when that collection is switched on, which keeps launch fast. `node tools/bundle.mjs --lite` builds Peace Meal for one (`dist/peace-meal-lite.html`): one person, four tabs (Today, Meals, Recipes, Report), with the same engine, conditions, and recipe collections. Since October 8, 2026 its Wikibooks and USDA recipes ride along the same way as in the full app, so the two files are about the same size.
+`node tools/bundle.mjs` builds the full app (`dist/nutrition-app.html`); its 2,268 Wikibooks recipes ride along in the same file and are read the first time someone searches recipes, which keeps launch fast, and its 1,043 USDA MyPlate Kitchen recipes (on from the start since October 8, 2026) are read at launch while that collection is on. `node tools/bundle.mjs --lite` builds Peace Meal for one (`dist/peace-meal-lite.html`): one person, four tabs (Today, Meals, Recipes, Report), with the same engine, conditions, and recipe collections. Since October 8, 2026 its Wikibooks and USDA recipes ride along the same way as in the full app, so the two files are about the same size.
 
 ## Run it
 

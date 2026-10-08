@@ -58,7 +58,7 @@ test('a lite profile saved before gets the Wikibooks collection switched on once
   const profile = { people: [{ id: 'p1', name: 'Test Person' }], recipe_collections: { nhs: true, wikibooks: false, usda: false } };
   assert.equal(app.appLiteAllRecipes(profile, true), true);
   assert.equal(profile.recipe_collections.wikibooks, true);
-  assert.equal(profile.recipe_collections.usda, false, 'USDA stays off until it is switched on, as in the full app');
+  assert.equal(profile.recipe_collections.usda, false, 'this step leaves USDA alone (appUsdaOnFromStart switches it on, in both builds)');
   profile.recipe_collections.wikibooks = false;   // the person switches it off in Settings
   assert.equal(app.appLiteAllRecipes(profile, true), false, 'once only');
   assert.equal(profile.recipe_collections.wikibooks, false, 'their choice stays');

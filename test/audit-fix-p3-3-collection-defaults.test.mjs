@@ -10,7 +10,9 @@ globalThis.localStorage = { getItem: () => null, setItem() {}, removeItem() {} }
 const store = await import('../src/store.js');
 
 test('P3-3: the collection defaults are written once, with the same values as before', () => {
-  assert.deepEqual({ ...store.RECIPE_COLLECTION_DEFAULTS }, { nhs: true, parentclub: true, nhlbi: true, va: true, wikibooks: true, usda: false, review_dual: true });
+  // Changed on purpose (owner decision, October 8, 2026). Old: usda: false (USDA MyPlate Kitchen off until switched on).
+  // New: usda: true (on from the start, in both builds). Every other default is unchanged; the rest of this test is too.
+  assert.deepEqual({ ...store.RECIPE_COLLECTION_DEFAULTS }, { nhs: true, parentclub: true, nhlbi: true, va: true, wikibooks: true, usda: true, review_dual: true });
   const p = store.defaultProfile();
   for (const [k, v] of Object.entries(store.RECIPE_COLLECTION_DEFAULTS)) assert.equal(p.recipe_collections[k], v, `a new profile: ${k}`);
 });

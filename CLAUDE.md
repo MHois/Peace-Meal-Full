@@ -39,7 +39,7 @@ The app itself has no dependencies. Everything that needs packages (ESLint, Stry
 | `data/dictionaries.json` | Ingredient terms to tags: how the app recognizes allergens and restricted foods. Since the October 2026 fix pass (P0-3), a typed name of a food in `foods.json` also carries that food's tags (`foodsNamedIn` in `src/engine/checker.js`) |
 | `data/diet-lists.json` | Strict approved and leave-out lists (low FODMAP, low histamine) with portions |
 | `data/foods.json` | USDA FoodData Central subset (never edited by hand; `npm run build:foods`) |
-| `data/recipes.json`, `data/recipes-open.json`, `data/recipes-usda.json` | Own recipes (ingredients linked to foods; nutrients computed), open-licence collections (NHS, Parent Club, NHLBI, VA, Wikibooks), USDA recipes (off by default) |
+| `data/recipes.json`, `data/recipes-open.json`, `data/recipes-usda.json` | Own recipes (ingredients linked to foods; nutrients computed), open-licence collections (NHS, Parent Club, NHLBI, VA, Wikibooks), USDA recipes (on from the start since October 8, 2026; they were off by default) |
 | `data/articles.json`, `data/swaps.json` | Learn articles; recipe swaps |
 | `src/engine/` | Pure logic: `checker.js` (verdicts), `dictionary.js`, `plan.js` (merges modules, conflicts, Tier 2, phases, pregnancy), `dietlists.js`, `planner.js`, `household.js`, `grocery.js`, `nutrition.js`, `report.js`, `crypto.js` and `sync.js` (claude.ai hosting only) |
 | `src/ui/` | One file per screen; `common.js` holds shared helpers; `lite.js` holds the lite Today, Meals, and Report screens |

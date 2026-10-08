@@ -62,9 +62,10 @@ if (Array.isArray(data['recipes-open'])) {
     deferredBlock = `<script type="application/json" id="pm-deferred-wikibooks">${JSON.stringify(wb).replace(/</g, '\\u003c')}</script>\n`;
   } else if (wb.length) console.warn('Wikibooks recipes are not together in recipes-open.json; they stay inline (launch is slower).');
 }
-// P2-14 (audit of September 30, 2026): the USDA MyPlate Kitchen recipes (1,043, 2.4 MB) are off by default, so both builds
-// ship them in a JSON block too (lite since October 8, 2026), and src/app.js reads it only when the collection is switched
-// on. They are last in the recipe order, so the app puts them back at the end and every week plan comes out the same.
+// P2-14 (audit of September 30, 2026): the USDA MyPlate Kitchen recipes (1,043, 2.4 MB) ship in a JSON block too (lite as
+// well since October 8, 2026), and src/app.js reads it only while the collection is on (on from the start since October 8,
+// 2026; it was off). They are last in the recipe order, so the app puts them back at the end and every week plan comes out
+// the same.
 let usdaBlock = '';
 if (Array.isArray(data['recipes-usda']) && data['recipes-usda'].length) {
   const us = data['recipes-usda'];

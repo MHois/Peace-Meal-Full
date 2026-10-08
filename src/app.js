@@ -376,8 +376,8 @@ function appReadDeferredBlock(d) {
   if (el) el.textContent = '';   // the parsed copy is the one in use now
   return true;
 }
-// P2-14 (audit of September 30, 2026): the USDA MyPlate Kitchen recipes are off by default, and the full single-file
-// build keeps them in a JSON block (tools/bundle.mjs). They are read when the collection is on: at launch, or when it is
+// P2-14 (audit of September 30, 2026): the USDA MyPlate Kitchen recipes were off by default (on since October 8, 2026), and
+// both builds keep them in a JSON block (tools/bundle.mjs). They are read when the collection is on: at launch, or when it is
 // switched on in Settings (which calls refreshRecipes). Off, they are never in the recipe pool, so nothing needs them.
 function appDeferredUsdaInfo() {
   const d = uiState.data && uiState.data.deferred && uiState.data.deferred.usda;
@@ -422,6 +422,16 @@ async function appBootSync() {
   if (['settings', 'people', 'together', 'owner'].includes(uiState.route.screen) && !uiState.modalClose) uiState.rerender();
 }
 
+// Owner decision (October 8, 2026): USDA MyPlate Kitchen is on from the start, in both builds (it was off until switched
+// on). Profiles saved before carry usda: false; it is switched on once (defaults_v6), and turning it off afterwards sticks.
+// Runs before the recipes are put together at launch, so the USDA recipes are read then. Exported for tests.
+export function appUsdaOnFromStart(profile) {
+  const rc = profile && profile.recipe_collections;
+  if (!rc || rc.defaults_v6) return false;
+  rc.usda = true;
+  rc.defaults_v6 = true;
+  return true;
+}
 // Owner request (October 8, 2026): Peace Meal for one has every recipe collection the full app has. Profiles it saved
 // before carry wikibooks: false (it used to leave that collection out), so the collection is switched on once; turning it
 // off afterwards sticks. USDA MyPlate Kitchen stays off until it is switched on, in both builds. Exported for tests.
@@ -442,13 +452,18 @@ async function appBoot() {
   // A new lite profile also had wikibooks set to false here, while lite left that collection out; since October 8, 2026 it
   // carries every collection (appLiteAllRecipes below), so that one setting is no longer written.
   if (APP_LITE && uiState.profile && !uiState.profile.people.length && uiState.profile.recipe_collections) { uiState.profile.recipe_collections.nhs = true; uiState.profile.recipe_collections.parentclub = true; uiState.profile.recipe_collections.nhlbi = true; uiState.profile.recipe_collections.va = true; }
-  appLiteAllRecipes(uiState.profile, APP_LITE);
+  const liteSwitched = appLiteAllRecipes(uiState.profile, APP_LITE);
   // Collections with per-serving nutrition are on by default since v2.3. Profiles saved before that carried nhs: false; switch it on once.
   if (uiState.profile && uiState.profile.recipe_collections && !uiState.profile.recipe_collections.defaults_v3) { uiState.profile.recipe_collections.nhs = true; uiState.profile.recipe_collections.parentclub = true; uiState.profile.recipe_collections.defaults_v3 = true; }
   if (uiState.profile && uiState.profile.recipe_collections && !uiState.profile.recipe_collections.defaults_v4) { uiState.profile.recipe_collections.nhlbi = true; uiState.profile.recipe_collections.defaults_v4 = true; }
   // The September 2026 recipes for low FODMAP and low histamine together were reviewed and switched on September 30, 2026.
   // Profiles saved before that carried review_dual: false; switch it on once. Turning it off afterwards sticks.
   if (uiState.profile && uiState.profile.recipe_collections && !uiState.profile.recipe_collections.defaults_v5) { uiState.profile.recipe_collections.review_dual = true; uiState.profile.recipe_collections.defaults_v5 = true; }
+  const usdaSwitched = appUsdaOnFromStart(uiState.profile);
+  // The two October 8 switch-overs are saved at once, so the stored data matches what a backup holds (audit check a2: they
+  // were in memory only until the next save). A new profile carries both flags, so a fresh start writes nothing, and
+  // save() never writes over saved data this build could not read (P0-4).
+  if (liteSwitched || usdaSwitched) uiPersist();
   // Suggestion notices (for example "add the higher-protein module") act here, once, whatever screen rendered them.
   document.addEventListener('click', e => {
     const b = e.target && e.target.closest ? e.target.closest('[data-notice-action],[data-notice-dismiss]') : null;

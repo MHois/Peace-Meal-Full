@@ -78,12 +78,13 @@ export function migrateStorage(lite = storeIsLite(), storage = storeLocal()) {
 
 // P3-3 (audit of September 30, 2026): the recipe collections' standing defaults, written once. A new profile, the app,
 // and Settings all read them from here; before, the same object was written out by hand in five places.
-export const RECIPE_COLLECTION_DEFAULTS = Object.freeze({ nhs: true, parentclub: true, nhlbi: true, va: true, wikibooks: true, usda: false, review_dual: true });
+// usda: true since October 8, 2026 (owner decision: USDA MyPlate Kitchen on from the start, in both builds; it was off).
+export const RECIPE_COLLECTION_DEFAULTS = Object.freeze({ nhs: true, parentclub: true, nhlbi: true, va: true, wikibooks: true, usda: true, review_dual: true });
 // The collections a profile has on: its own choices, and the defaults for any it has not set. A new object every time.
 export function recipeCollectionsOn(profile) { return Object.assign({}, RECIPE_COLLECTION_DEFAULTS, (profile && profile.recipe_collections) || {}); }
 
 export function defaultProfile() {
-  return { version: 2, people: [], log: [], diary: [], weights: [], exercise: [], pantry: [], grocery_adjustments: {}, grocery_changes: {}, custom_recipes: [], recipe_collections: { ...RECIPE_COLLECTION_DEFAULTS, defaults_v3: true, defaults_v4: true, defaults_v5: true }, household: { cook: null, cook_by_date: {}, pattern: {}, roster: {}, snacks_per_day: 1, budget: true, seed: 0, day_overrides: {}, meal_overrides: {}, week_snapshot: null }, activePerson: null, created: new Date().toISOString() };
+  return { version: 2, people: [], log: [], diary: [], weights: [], exercise: [], pantry: [], grocery_adjustments: {}, grocery_changes: {}, custom_recipes: [], recipe_collections: { ...RECIPE_COLLECTION_DEFAULTS, defaults_v3: true, defaults_v4: true, defaults_v5: true, defaults_v6: true, lite_all_recipes: true }, household: { cook: null, cook_by_date: {}, pattern: {}, roster: {}, snacks_per_day: 1, budget: true, seed: 0, day_overrides: {}, meal_overrides: {}, week_snapshot: null }, activePerson: null, created: new Date().toISOString() };
 }
 
 export function newPerson(name = 'Me') {
