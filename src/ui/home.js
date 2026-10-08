@@ -78,15 +78,18 @@ function homeTodayRing(person, plan) {
   const info = todayTargetInfo(person, plan);
   const count = !!(person.goals && person.goals.count_exercise);
   const exerciseKcal = count ? (uiState.profile.exercise || []).filter(e => e.person === person.id && e.date === today).reduce((s, e) => s + (Number(e.kcal) || 0), 0) : 0;
+  // "1 entry today" next to 0 kcal looked like a counting error when the entry had no numbers; it says so now.
+  const noNum = entries.filter(e => !e.nutrients).length;
+  const entryWords = entries.length ? `${entries.length} entr${entries.length === 1 ? 'y' : 'ies'} today${noNum ? `, ${noNum === entries.length ? (noNum === 1 ? 'without' : 'all without') : `${noNum} without`} nutrition numbers` : ''}` : '';
   let ring, text;
   if (info.state === 'ok' && info.kcal > 0) {
     const target = info.kcal + exerciseKcal;
     ring = uiRing({ value: kcal, max: target, kind: 'kcal', unit: 'kcal', label: `of ${uiFmtNum(target)} kcal target`, href: '#/today', size: 120 });
-    text = `<p><strong>${uiFmtNum(kcal)} kcal</strong> logged so far against an estimated target of ${uiFmtNum(target)}.</p><p class="small muted">${entries.length ? `${entries.length} entr${entries.length === 1 ? 'y' : 'ies'} today.` : 'Nothing logged yet today.'} The target is an estimate, not a prescription.</p>`;
+    text = `<p><strong>${uiFmtNum(kcal)} kcal</strong> logged so far today.</p><p class="small muted">${entries.length ? `${entryWords}.` : 'Nothing logged yet today.'} The target is an estimate, not a prescription.</p>`;
   } else if (plan.limits.sodium_mg) {
     const lim = plan.limits.sodium_mg.value;
     ring = uiRing({ value: sodium, max: lim, kind: 'limit', unit: 'mg', label: `sodium of ${uiFmtNum(lim)} mg limit`, href: '#/today', size: 120 });
-    text = `<p><strong>${uiFmtNum(sodium)} mg sodium</strong> logged so far against a limit of ${uiFmtNum(lim)} mg.</p><p class="small muted">${entries.length ? `${entries.length} entr${entries.length === 1 ? 'y' : 'ies'} today, ${uiFmtNum(kcal)} kcal.` : 'Nothing logged yet today.'}${plan.limits.sodium_mg.clinician ? ' Limit set by your doctor or dietitian.' : ''}</p>`;
+    text = `<p><strong>${uiFmtNum(sodium)} mg sodium</strong> logged so far today.</p><p class="small muted">${entries.length ? `${entryWords}; ${uiFmtNum(kcal)} kcal.` : 'Nothing logged yet today.'}${plan.limits.sodium_mg.clinician ? ' Limit set by your doctor or dietitian.' : ''}</p>`;
   } else {
     ring = '';
     text = `<p><strong>${uiFmtNum(kcal)} kcal</strong> logged so far.</p><p class="small muted">No calorie target or sodium limit is active, so there is no ring to fill. ${info.state === 'off' ? '<a href="#/today">Set a calorie target</a> if you want one.' : ''}</p>`;

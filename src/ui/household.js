@@ -7,6 +7,12 @@ import { buildGroceryList } from '../engine/grocery.js';
 import { uiState, uiEsc, uiPersist, uiToast, uiModal, uiIsoDate, uiToday, uiFmtDate, uiFmtNum, uiVerdictWord, uiVerdictChip, uiSection, uiChip, uiIcon, uiAvatar, uiSwitch, uiEmptyState, uiNoticeHTML, uiNavigate, uiPlanFor } from './common.js';
 import { weekRecipeModal } from './week.js';
 
+// A column heading in the roster: the first name, or the whole name when two people share a first name (UX pass,
+// October 2026: two people with the same first name got two columns with the same heading).
+export function hhColumnName(p, people) {
+  const first = n => String(n || '').trim().split(/\s+/)[0];
+  return people.filter(o => first(o.name) === first(p.name)).length > 1 ? String(p.name || '').trim() : first(p.name);
+}
 const HH_DAY_NAMES = { sun: 'Sunday', mon: 'Monday', tue: 'Tuesday', wed: 'Wednesday', thu: 'Thursday', fri: 'Friday', sat: 'Saturday' };
 const HH_DAY_SHORT = { sun: 'Sun', mon: 'Mon', tue: 'Tue', wed: 'Wed', thu: 'Thu', fri: 'Fri', sat: 'Sat' };
 const HH_SLOT_SHORT = { breakfast: 'Breakfast', lunch: 'Lunch', dinner: 'Dinner', 'snack-am': 'AM snack', 'snack-pm': 'PM snack', 'snack-eve': 'Eve snack' };
@@ -129,7 +135,7 @@ export function householdHTML() {
     <div class="roster-people">${people.map(p => `<button class="btn small" type="button" data-pattern="${uiEsc(p.id)}">${uiAvatar(p.name, { tone: p.guest ? 'plum' : '' })} ${uiEsc(p.name)}: usual week</button>`).join('')}</div>
     <div class="roster-days">${dates.map(date => { const day = dayOf(date); const explicit = h.roster[date] && Object.keys(h.roster[date]).length; return `<section class="roster-day" aria-labelledby="rd-${date}">
       <div class="roster-day-head"><h3 id="rd-${date}">${HH_DAY_NAMES[day]} <span class="muted small">${uiFmtDate(date)}</span></h3>${explicit ? `<button class="btn link small" type="button" data-reset-day="${date}">Back to usual</button>` : ''}</div>
-      <div class="table-wrap"><table class="roster-table"><thead><tr><th scope="col"></th>${people.map(p => `<th scope="col"><span class="roster-name">${uiEsc(p.name.split(' ')[0])}</span></th>`).join('')}</tr></thead>
+      <div class="table-wrap"><table class="roster-table"><thead><tr><th scope="col"></th>${people.map(p => `<th scope="col"><span class="roster-name">${uiEsc(hhColumnName(p, people))}</span></th>`).join('')}</tr></thead>
       <tbody>${slots.map(slot => { const inIds = new Set(rosterFor(h, people, date, day, slot).map(p => p.id)); return `<tr><th scope="row">${HH_SLOT_SHORT[slot] || slot}</th>${people.map(p => `<td><button type="button" class="roster-btn ${inIds.has(p.id) ? 'on' : ''}" data-roster="${date}|${slot}|${uiEsc(p.id)}" aria-pressed="${inIds.has(p.id)}" aria-label="${uiEsc(p.name)} at ${HH_SLOT_SHORT[slot] || slot} on ${HH_DAY_NAMES[day]}">${inIds.has(p.id) ? uiIcon('check') : '<span aria-hidden="true">–</span>'}</button></td>`).join('')}</tr>`; }).join('')}</tbody></table></div>
     </section>`; }).join('')}</div>
   </div>`;

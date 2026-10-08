@@ -48,7 +48,9 @@ test('grocery list sums grams across cooked meals and converts to portions', () 
   const g = buildGroceryList(week, new Map(recipes.map(r => [r.id, r])), foods);
   assert.ok(g.items.length > 0);
   const oats = g.items.find(i => i.food === 'f-oats');
-  assert.ok(oats && oats.grams > 0 && /x 1 cup/.test(oats.quantity));
+  // Changed on purpose (UX pass, October 2026). Old: /x 1 cup/ ("3.5 x 1 cup (280 g)"). New: the amount in plain words,
+  // "3½ cups (280 g)". Why: "0.25 x 1 Onion Edible" style amounts were hard to read; see ux-2026-10-grocery.test.mjs.
+  assert.ok(oats && oats.grams > 0 && /^[\d¼⅓½⅔¾]+ cups? \([\d,]+ g\)$/.test(oats.quantity), oats && oats.quantity);
   assert.ok(!g.items.some(i => i.food === 'f-peanut'));
 });
 
@@ -68,7 +70,9 @@ test('text-only ingredients from imported recipes appear on the grocery list by 
   ]);
   const g = buildGroceryList(week, rec, foods);
   const names = g.items.map(i => i.name);
-  assert.ok(names.includes('Onion') && names.includes('Red lentil') && names.includes('Olive oil'), names.join(','));
+  // Changed on purpose (UX pass, October 2026). Old: 'Red lentil', the grouping key with its last "s" cut off. New: 'Red
+  // lentils', the recipe's own word. Why: the same cut showed "Skinles haddock fillet" and "Seedles grape". The key is unchanged.
+  assert.ok(names.includes('Onion') && names.includes('Red lentils') && names.includes('Olive oil'), names.join(','));
   assert.ok(g.items.some(i => i.food === 'f-oats'));
   assert.ok(!g.items.some(i => i.name === 'undefined' || i.food === 'undefined'));
   const onion = g.items.find(i => i.name === 'Onion');

@@ -58,8 +58,8 @@ export function renderTogetherScreen(root) {
       <div class="field"><label for="tg-paste">Paste shared profile</label><textarea id="tg-paste" style="min-height:70px" placeholder='{"shared":true,"name":"..."}'></textarea></div>
       <div class="btn-row"><button class="btn" type="button" id="tg-add-paste">Add guest from text</button><label for="tg-file" class="btn">Choose a file</label><input id="tg-file" type="file" accept="application/json,.json" class="visually-hidden"></div>
     </div>`, { id: 'tg-share-h' })}
-    ${uiSection('Share with someone', `<div class="card" id="tg-store-share">${togetherStoreShellHTML()}</div>`, { id: 'tg-store-h' })}
-    ${uiSection('Shared with me', `<div class="card" id="tg-store-inbox">${togetherStoreShellHTML()}</div>`, { id: 'tg-inbox-h' })}
+    ${togetherLocalOnly() ? uiSection('Sharing between devices', `<div class="card">${sharingLocalHTML()}</div>`, { id: 'tg-store-h' }) : `${uiSection('Share with someone', `<div class="card" id="tg-store-share">${togetherStoreShellHTML()}</div>`, { id: 'tg-store-h' })}
+    ${uiSection('Shared with me', `<div class="card" id="tg-store-inbox">${togetherStoreShellHTML()}</div>`, { id: 'tg-inbox-h' })}`}
   `;
   householdBind(root);
   togetherLoadStore(root);
@@ -99,6 +99,8 @@ export function renderTogetherScreen(root) {
 // ---- Sharing through the shared store (claude.ai version only) ----
 let togetherShareUi = { person: null, device: '', parts: ['rules'], days: [], expiry: 30 };
 
+// With no shared store (every copy outside claude.ai) both sections said the same sentence; one section says it once.
+function togetherLocalOnly() { const s = sharingState(); return !!s.ready && !(s.db && s.identity); }
 function togetherStoreShellHTML() {
   const s = sharingState();
   if (!s.ready) return sharingPendingHTML();

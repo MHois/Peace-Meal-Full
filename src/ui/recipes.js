@@ -5,7 +5,7 @@ import { round } from '../engine/nutrition.js';
 import { CUISINES, CUISINE_LABEL, cuisineSkipped } from '../engine/cuisine.js';
 import { recipeHeat, spiceSkipped, spicePreference } from '../engine/spice.js';
 import { isComponent } from '../engine/planner.js';
-import { uiState, uiEsc, uiActivePerson, uiPlanFor, uiPersist, uiToast, uiModal, uiIsoDate, uiToday, uiFmtDate, uiFmtNum, uiNutrientLabel, uiVerdictWord, uiTagLabel, uiPageHeader, uiChip, uiIcon, uiNoticeHTML, uiEmptyState, uiSourcesHTML, uiConfirmSheet, uiPortionsHTML, uiEnsureAllRecipes, uiDeferredRecipes } from './common.js';
+import { uiState, uiEsc, uiActivePerson, uiPlanFor, uiPersist, uiToast, uiModal, uiIsoDate, uiToday, uiFmtDate, uiFmtNum, uiNutrientLabel, uiVerdictWord, uiTagLabel, uiPageHeader, uiChip, uiIcon, uiNoticeHTML, uiEmptyState, uiSourcesHTML, uiConfirmSheet, uiPortionsHTML, uiEnsureAllRecipes, uiDeferredRecipes, uiRecipeSourcesText } from './common.js';
 import { todayAddDiaryEntry, todayIsFavorite, todayToggleFavorite } from './today.js';
 import { weekGet, weekSetOverride } from './week.js';
 import { recipesEdLinkSheet, recipesEdEditorModal, recipesEdDraftFrom, recipesEdBlankDraft, recipesEdPasteModal, recipesEdDeleteCustom } from './recipes-edit.js';
@@ -17,7 +17,24 @@ const RECIPES_LICENSE_URL = { 'Open Government Licence v3.0': 'https://www.natio
 // Wikibooks categories that are not cuisines (difficulty, course, technique, diet, dish type).
 const RECIPES_NOT_CUISINE = /^(Very Easy|Easy|Medium Difficulty|Difficult|Very Difficult|Vegetarian|Vegan|Gluten-free|Naturally gluten-free|Boiled|Baking|Baked|Inexpensive|Side dish|Pan fried|Deep fried|Fried|Grilled|Kid-friendly|Public domain|Halal|Kosher|Refrigerated|Camping|Roasted|Dumpling|Breakfast|Appetizer|Dessert|Main course|Pescatarian|Steamed|Saut|Stir|Slow cooker|Microwave|Barbecue|Raw|Frozen|Broiled|Smoked|Pressure|Simmered|Braised|Featured|Incomplete|Duplicate|Dal\b|National|Dairy-free|Nut-free|Egg-free|Low|Lacto|Ovo|Lunch|Snack|Brunch|Dinner|Supper|Holiday|Christmas|Thanksgiving|Easter|Halloween|Party|Picnic|Budget|Quick|Student|Diabetic|Heart|Blended|Poached|Fermented|Pickled|Marinated|Toasted|Chilled|Uncooked|No-bake|Canned|Dried|Ground|Mashed|Stuffed|Sweet|Savory|Spicy|Hot|Cold|Historical|Medieval|Traditional|Vintage|Regional|Fusion|Street|Fast food|Comfort|Finger|One-pot|Sheet|Skillet|Wok|Oven|Stovetop|Grill|Rice cooker|Bread machine|Toaster|Air fryer|Instant|Sous|Smoker|Campfire|Dutch|Cast|Clay|Tagine|Recipes|Cookbook|Pages|Meat|Seafood|Fish|Chicken|Beef|Pork|Lamb|Egg|Cheese|Rice|Pasta|Noodle|Potato|Bean|Tofu|Fruit|Vegetable|Nut|Chocolate|Alcohol|Wine|Beer|Cocktail|Drink|Tea|Coffee|Bread|Cake|Cookie|Pie|Pastry|Soup|Salad|Sauce|Sandwich|Stew|Curry|Casserole|Pudding|Pancake|Fritter|Flatbread|Spice|Beverage|Candy|Confection|Jam|Preserve|Condiment|Dip|Spread|Batter|Dough|Filling|Frosting|Icing|Glaze|Marinade|Rub|Brine|Stock|Broth|Gravy|Custard|Ice cream|Sorbet|Smoothie|Juice|Milkshake|Porridge|Cereal|Granola|Muffin|Scone|Biscuit|Waffle|Crepe|Omelet|Quiche|Pizza|Burger|Taco|Burrito|Wrap|Roll|Bun|Loaf|Tart|Crumble|Cobbler|Trifle|Mousse|Souffl|Meringue|Brownie|Fudge|Toffee|Caramel|Nougat|Marshmallow|Gelatin|Jelly|Pickle|Chutney|Relish|Salsa|Guacamole|Hummus|Pesto|Mayonnaise|Ketchup|Mustard|Vinaigrette|Dressing|Kebab|Skewer|Meatball|Sausage|Bacon|Ham|Steak|Roast|Ribs|Wing|Nugget|Cutlet|Schnitzel|Patty|Croquette)/i;
 
-let recipesUi = { q: '', fav: false, featured: false, nutrition: false, fits: false, quick: false, source: '', veg: '', meal: '', cuisine: '', shown: RECIPES_PAGE };
+// What the Recipes screen starts with, and what Clear filters goes back to. Peace Meal for one opens on "Fits my plan"
+// (UX pass, October 2026): a recipe the plan does not allow is one tap away instead of mixed into the first page, and
+// the chip shows that the filter is on.
+function recipesDefaultUi() { return { q: '', fav: false, featured: false, nutrition: false, fits: !!uiState.lite, quick: false, source: '', veg: '', meal: '', cuisine: '', shown: RECIPES_PAGE }; }
+let recipesUi = null;   // set on the first visit, once the app knows which build it is
+// The filters behind "More filters" (UX pass, October 2026): on a phone the full row of chips ran to eight lines above
+// the first recipe. Favorites, Fits my plan, Under 20 minutes, and the meal stay in view; the list opens by itself when
+// one of its filters is on, and its closed line names them.
+let recipesMoreOpen = false;
+function recipesMoreActive() {
+  const on = [];
+  if (recipesUi.featured) on.push('Featured');
+  if (recipesUi.nutrition) on.push('Has nutrition');
+  if (recipesUi.source) on.push(RECIPES_SOURCE_LABEL[recipesUi.source] || recipesUi.source);
+  if (recipesUi.veg) on.push(recipesUi.veg === 'vegan' ? 'Vegan' : 'Vegetarian');
+  if (recipesUi.cuisine) on.push(CUISINE_LABEL[recipesUi.cuisine] || recipesUi.cuisine);
+  return on;
+}
 
 // ---- Pool helpers ----
 export function recipesHasNutrition(r) { return !!(r.nutrition_per_serving && r.nutrition_source) || (r.ingredients || []).some(i => i.food); }
@@ -331,6 +348,7 @@ function recipesCardHTML(r, person, plan) {
 }
 
 export function renderRecipesScreen(root) {
+  if (!recipesUi) recipesUi = recipesDefaultUi();
   const person = uiActivePerson();
   const plan = uiPlanFor(person);
   if (recipesUi.q.trim() || recipesUi.source === 'wikibooks') uiEnsureAllRecipes();
@@ -340,30 +358,35 @@ export function renderRecipesScreen(root) {
   const mine = uiState.data.recipes.filter(r => r.custom).length;
   const chip = (id, label, on) => `<button type="button" class="chip ${on ? 'plum' : 'neutral'} filter-chip" data-filter="${id}" aria-pressed="${on}">${label}</button>`;
   root.innerHTML = `
-    ${uiPageHeader('Recipes', `${uiFmtNum(total)} recipes from Peace Meal, the NHS website, the NHLBI, the VA, Parent Club, ${uiState.lite ? '' : 'the Wikibooks Cookbook, '}and your own kitchen${mine ? ` (${mine} of yours)` : ''}.${later ? ` The ${uiFmtNum(later.count)} Wikibooks Cookbook recipes load when you search.` : ''} Each one is checked against ${uiEsc(person.name)}'s plan when it is on screen.`, `<button class="btn small primary" type="button" id="rc-new">${uiIcon('plus')}New recipe</button><button class="btn small" type="button" id="rc-paste">${uiIcon('paste')}Paste a recipe</button>`)}
+    ${uiPageHeader('Recipes', `${uiFmtNum(total)} recipes${mine ? ` (${mine} of yours)` : ''}, each checked against ${uiEsc(person.name)}'s plan.${later ? ` ${uiFmtNum(later.count)} more Wikibooks Cookbook recipes load when you search.` : ''}`, `<button class="btn small primary" type="button" id="rc-new">${uiIcon('plus')}New recipe</button><button class="btn small" type="button" id="rc-paste">${uiIcon('paste')}Paste a recipe</button>`)}
     <div class="card recipes-toolbar">
       <label for="rc-q" class="visually-hidden">Search recipes</label>
       <div class="search-row">${uiIcon('search')}<input id="rc-q" type="search" placeholder="Search by name or ingredient" value="${uiEsc(recipesUi.q)}" autocomplete="off"></div>
       <div class="filter-bar" role="group" aria-label="Filters">
         ${chip('fav', `${uiIcon('heart')}Favorites`, recipesUi.fav)}
-        ${chip('featured', `${uiIcon('star')}Featured`, recipesUi.featured)}
-        ${chip('nutrition', 'Has nutrition', recipesUi.nutrition)}
         ${chip('fits', 'Fits my plan', recipesUi.fits)}
         ${chip('quick', 'Under 20 minutes', recipesUi.quick)}
-        <span class="filter-sep" aria-hidden="true"></span>
-        ${['peace-meal', 'nhs', 'parentclub', 'nhlbi', 'va', 'wikibooks', 'usda', 'mine'].filter(s => (s !== 'usda' || uiState.data.recipes.some(r => r.source === 'USDA MyPlate Kitchen')) && !(s === 'wikibooks' && uiState.lite)).map(s => chip('source:' + s, RECIPES_SOURCE_LABEL[s], recipesUi.source === s)).join('')}
-        <span class="filter-sep" aria-hidden="true"></span>
-        ${chip('veg:vegetarian', 'Vegetarian', recipesUi.veg === 'vegetarian')}
-        ${chip('veg:vegan', 'Vegan', recipesUi.veg === 'vegan')}
         <label class="filter-select"><span class="visually-hidden">Meal</span><select id="rc-meal"><option value="">Any meal</option>${['breakfast', 'lunch', 'dinner', 'snack', 'component'].map(s => `<option value="${s}" ${recipesUi.meal === s ? 'selected' : ''}>${RECIPES_SLOT_LABEL[s]}</option>`).join('')}</select></label>
-        <label class="filter-select"><span class="visually-hidden">Cuisine</span><select id="rc-cuisine"><option value="">Any cuisine</option>${idx.cuisines.map(c => `<option value="${uiEsc(c)}" ${recipesUi.cuisine === c ? 'selected' : ''}>${uiEsc(CUISINE_LABEL[c] || c)}</option>`).join('')}</select></label>
-        <button type="button" class="btn link small" id="rc-clear">Clear filters</button>
       </div>
+      <details class="pick-more filter-more" ${recipesMoreOpen || recipesMoreActive().length ? 'open' : ''}><summary><span class="pick-title">More filters</span><span class="pick-summary" id="rc-more-summary">${uiEsc(recipesMoreActive().join(', ') || 'None on')}</span></summary>
+        <div class="filter-bar" role="group" aria-label="More filters">
+          ${chip('featured', `${uiIcon('star')}Featured`, recipesUi.featured)}
+          ${chip('nutrition', 'Has nutrition', recipesUi.nutrition)}
+          <span class="filter-sep" aria-hidden="true"></span>
+          ${['peace-meal', 'nhs', 'parentclub', 'nhlbi', 'va', 'wikibooks', 'usda', 'mine'].filter(s => (s !== 'usda' || uiState.data.recipes.some(r => r.source === 'USDA MyPlate Kitchen')) && !(s === 'wikibooks' && uiState.lite)).map(s => chip('source:' + s, RECIPES_SOURCE_LABEL[s], recipesUi.source === s)).join('')}
+          <span class="filter-sep" aria-hidden="true"></span>
+          ${chip('veg:vegetarian', 'Vegetarian', recipesUi.veg === 'vegetarian')}
+          ${chip('veg:vegan', 'Vegan', recipesUi.veg === 'vegan')}
+          <label class="filter-select"><span class="visually-hidden">Cuisine</span><select id="rc-cuisine"><option value="">Any cuisine</option>${idx.cuisines.map(c => `<option value="${uiEsc(c)}" ${recipesUi.cuisine === c ? 'selected' : ''}>${uiEsc(CUISINE_LABEL[c] || c)}</option>`).join('')}</select></label>
+        </div>
+      </details>
+      <button type="button" class="btn link small" id="rc-clear">Clear filters</button>
     </div>
     <div id="rc-list" class="stack-2"></div>
-    <p class="small muted recipes-foot">Recipes come from Peace Meal, the NHS website and Parent Club (Open Government Licence v3.0), the NHLBI and the VA (US government works, not copyright protected), ${uiState.lite ? '' : 'the Wikibooks Cookbook (CC BY-SA 4.0), '}and your own kitchen. <a href="#/learn/sources">Where the recipes come from</a>.</p>
+    <p class="small muted recipes-foot">Recipes come from ${uiRecipeSourcesText()}. <a href="#/learn/sources">Where the recipes come from</a>.</p>
   `;
   const listEl = root.querySelector('#rc-list');
+  const moreSummary = () => { const el = root.querySelector('#rc-more-summary'); if (el) el.textContent = recipesMoreActive().join(', ') || 'None on'; };
   const draw = () => {
     const { rows, exact, more, skippedCount } = recipesFiltered(person, plan);
     const shown = rows.slice(0, recipesUi.shown);
@@ -400,11 +423,14 @@ export function renderRecipesScreen(root) {
       const on = id.startsWith('source:') ? recipesUi.source === id.slice(7) : id.startsWith('veg:') ? recipesUi.veg === id.slice(4) : !!recipesUi[id];
       x.classList.toggle('plum', on); x.classList.toggle('neutral', !on); x.setAttribute('aria-pressed', String(on));
     });
+    moreSummary();
     draw();
   }));
   root.querySelector('#rc-meal').addEventListener('change', e => { recipesUi.meal = e.target.value; recipesUi.shown = RECIPES_PAGE; draw(); });
-  root.querySelector('#rc-cuisine').addEventListener('change', e => { recipesUi.cuisine = e.target.value; recipesUi.shown = RECIPES_PAGE; draw(); });
-  root.querySelector('#rc-clear').addEventListener('click', () => { recipesUi = { q: '', fav: false, featured: false, nutrition: false, fits: false, quick: false, source: '', veg: '', meal: '', cuisine: '', shown: RECIPES_PAGE }; uiState.rerender(); });
+  root.querySelector('#rc-cuisine').addEventListener('change', e => { recipesUi.cuisine = e.target.value; recipesUi.shown = RECIPES_PAGE; moreSummary(); draw(); });
+  const moreBox = root.querySelector('.filter-more');
+  if (moreBox) moreBox.addEventListener('toggle', () => { recipesMoreOpen = moreBox.open; });
+  root.querySelector('#rc-clear').addEventListener('click', () => { recipesUi = recipesDefaultUi(); uiState.rerender(); });
   root.querySelector('#rc-new').addEventListener('click', () => recipesEdEditorModal(recipesEdBlankDraft(), { onSaved: rec => { recipesUi.source = 'mine'; recipesDetailModal(rec.id, person, null, { changed: true }); } }));
   root.querySelector('#rc-paste').addEventListener('click', () => recipesEdPasteModal({ onSaved: rec => { recipesUi.source = 'mine'; recipesDetailModal(rec.id, person, null, { changed: true }); } }));
   draw();

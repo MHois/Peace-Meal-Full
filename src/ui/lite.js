@@ -2,7 +2,7 @@
 // Everything else (Meals, Recipes, Check, Learn, Breathe, setup) is the same code as the full app with fewer controls.
 import { symptomEpisodes, foodsBeforeSymptoms, weightTrend, reportDays, intakeAverages, unintendedWeightLoss } from '../engine/report.js';
 import { lbToKg, kgToLb } from '../engine/energy.js';
-import { uiState, uiEsc, uiActivePerson, uiPlanFor, uiPersist, uiToast, uiModal, uiIsoDate, uiToday, uiFmtDate, uiFmtNum, uiPageHeader, uiSection, uiChip, uiIcon, uiEmptyState, uiNoticeHTML, uiTagLabel, uiSourcesHTML, uiDownload, uiSegmented, uiUndoToast } from './common.js';
+import { uiState, uiEsc, uiActivePerson, uiPlanFor, uiPersist, uiToast, uiModal, uiIsoDate, uiToday, uiFmtDate, uiFmtNum, uiPageHeader, uiSection, uiChip, uiIcon, uiEmptyState, uiNoticeHTML, uiTagLabel, uiSourcesHTML, uiDownload, uiSegmented, uiUndoToast, uiNutrientLabel } from './common.js';
 import { todayAddDiaryEntry, todayAddModal, todayLatestWeightKg, todayChartSVG, todayShiftDate, todayEntryName, todayWeightLossNoticeHTML, todayMealStackingHTML, todayBindHistoryButtons, todayAmountModal } from './today.js';
 import { weekGet, weekCached } from './week.js';
 import { LOG_SYMPTOMS } from './log.js';
@@ -241,6 +241,12 @@ function liteSymptomModal(person, date) {
 }
 
 // ---------- Doctor report ----------
+// "sodium at most 2,300 mg", "saturated fat at most 10% of calories" (it read "sodium mg at most 2,300").
+export function liteLimitText(n, value) {
+  const m = /^(.*?)\s*\((.*)\)\s*$/.exec(uiNutrientLabel(n));
+  const name = (m ? m[1] : uiNutrientLabel(n)).toLowerCase(), unit = m ? m[2] : '';
+  return unit === '% of calories' ? `${name} at most ${uiFmtNum(value, 1)}% of calories` : `${name} at most ${uiFmtNum(value, 1)}${unit ? ' ' + unit : ''}`;
+}
 let liteReportUi = { days: 30, mode: 'all' };
 
 export function renderLiteReportScreen(root) {
@@ -257,6 +263,8 @@ export function renderLiteReportScreen(root) {
   const meds = [];
   for (const mod of uiState.conditionsById.values()) for (const q of mod.medication_questions || []) if (person.medications && person.medications[q.id] && !meds.some(m => m.id === q.id)) meds.push({ id: q.id, text: q.text });
   const intake = intakeAverages(uiState.profile.diary, person.id, from, to);
+  // Food logged without numbers is still food logged: the report said "No food logged" over a diary full of typed meals.
+  const loggedNoNumbers = !intake.days && (uiState.profile.diary || []).some(e => e.person === person.id && e.date >= from && e.date <= to);
   const wl = unintendedWeightLoss(uiState.profile.weights, person.id, to, { intended: !!(person.goals && person.goals.calorie_target === 'loss') });
   const intakeRows = [['kcal', 'Calories', ''], ['protein_g', 'Protein', 'g'], ['carb_g', 'Carbohydrate', 'g'], ['fat_g', 'Fat', 'g'], ['fiber_g', 'Fiber', 'g'], ['sodium_mg', 'Sodium', 'mg'], ['potassium_mg', 'Potassium', 'mg']];
   const body = `
@@ -266,15 +274,15 @@ export function renderLiteReportScreen(root) {
       <h2>Current restrictions</h2>
       ${(person.allergens || []).length || (plan.otherAllergies || []).length ? `<p class="small"><strong>Allergies (never):</strong> ${[...(person.allergens || []).map(uiTagLabel), ...(plan.otherAllergies || [])].map(uiEsc).join(', ')}.</p>` : ''}
       ${plan.modules.length ? `<ul class="report-list">${plan.modules.map(m => { const mod = uiState.conditionsById.get(m.id); const hard = avoid.filter(([, a]) => a.hard && a.rules.some(r => r.module === m.id)).map(([t]) => uiTagLabel(t)); const soft = avoid.filter(([, a]) => !a.hard && a.rules.some(r => r.module === m.id)).map(([t]) => uiTagLabel(t)); const srcs = [...new Set(avoid.flatMap(([, a]) => a.rules.filter(r => r.module === m.id).flatMap(r => r.sources || [])).concat((mod && mod.sources) || []))].slice(0, 2); return `<li><strong>${uiEsc(m.name)}</strong>${hard.length ? `. Never: ${hard.map(uiEsc).join(', ')}` : ''}${soft.length ? `. Avoid: ${soft.map(uiEsc).join(', ')}` : ''}${!hard.length && !soft.length ? '. Guidance only, no foods excluded' : ''}.${srcs.length ? ` <span class="small muted">${uiSourcesHTML(srcs)}</span>` : ''}</li>`; }).join('')}</ul>` : '<p class="small muted">No conditions selected.</p>'}
-      ${Object.keys(plan.limits || {}).length ? `<p class="small"><strong>Daily limits:</strong> ${Object.entries(plan.limits).map(([n, l]) => `${uiEsc(n.replace(/_/g, ' '))} at most ${uiFmtNum(l.value, 1)}`).join('; ')}.</p>` : ''}
+      ${Object.keys(plan.limits || {}).length ? `<p class="small"><strong>Daily limits:</strong> ${Object.entries(plan.limits).map(([n, l]) => uiEsc(liteLimitText(n, l.value))).join('; ')}.</p>` : ''}
       <h2>Weight</h2>
-      ${wt.points.length ? `<p class="small">${wt.points.length} entr${wt.points.length === 1 ? 'y' : 'ies'}. ${kgToLb(wt.first.kg)} lb on ${uiFmtDate(wt.first.date)} to ${kgToLb(wt.last.kg)} lb on ${uiFmtDate(wt.last.date)}: <strong>${wt.changeKg > 0 ? '+' : ''}${kgToLb(Math.abs(wt.changeKg)) * Math.sign(wt.changeKg) || 0} lb</strong>.${person.goals && person.goals.calorie_target === 'gain' ? ' Goal: gain.' : ''}</p>${wt.points.length > 1 ? todayChartSVG(wt.points) : ''}` : '<p class="small muted">No weights logged in this range.</p>'}
+      ${wt.points.length === 1 ? `<p class="small">1 entry: ${kgToLb(wt.first.kg)} lb on ${uiFmtDate(wt.first.date)}.</p>` : wt.points.length ? `<p class="small">${wt.points.length} entries. ${kgToLb(wt.first.kg)} lb on ${uiFmtDate(wt.first.date)} to ${kgToLb(wt.last.kg)} lb on ${uiFmtDate(wt.last.date)}: <strong>${wt.changeKg > 0 ? '+' : ''}${kgToLb(Math.abs(wt.changeKg)) * Math.sign(wt.changeKg) || 0} lb</strong>.${person.goals && person.goals.calorie_target === 'gain' ? ' Goal: gain.' : ''}</p>${wt.points.length > 1 ? todayChartSVG(wt.points) : ''}` : '<p class="small muted">No weights logged in this range.</p>'}
       ${wl ? `<p class="small"><strong>Weight loss flag:</strong> down ${wl.pct}% between ${uiFmtDate(wl.fromDate)} and ${uiFmtDate(wl.toDate)} (${wl.weeks} weeks) with no weight-loss goal set. This meets the GLIM screening threshold for unintended weight loss (more than ${wl.threshold}% over this span).</p>` : ''}
       <h2>Medicines that change the food rules</h2>
       ${meds.length ? `<ul class="report-list">${meds.map(m => `<li>Yes: ${uiEsc(m.text)}</li>`).join('')}</ul>` : '<p class="small muted">None answered yes.</p>'}
       <h2>Average daily intake</h2>
       ${intake.days ? `<p class="small muted">Averaged over the ${intake.days} day${intake.days === 1 ? '' : 's'} in this range with food logged. Amounts come from USDA values by grams or a recipe's published per-serving numbers; anything logged without numbers is not counted.</p>
-      <div class="table-wrap" role="region" aria-label="Average daily intake" tabindex="0"><table class="report-table"><thead><tr><th>Nutrient</th><th class="num">Average per day</th><th class="num">Daily limit in the plan</th></tr></thead><tbody>${intakeRows.map(([k, label, unit]) => `<tr><td>${label}</td><td class="num">${typeof intake.avg[k] === 'number' ? uiFmtNum(Math.round(intake.avg[k])) + (unit ? ' ' + unit : '') : '-'}</td><td class="num">${plan.limits && plan.limits[k] ? uiFmtNum(plan.limits[k].value) + (unit ? ' ' + unit : '') : '-'}</td></tr>`).join('')}</tbody></table></div>` : '<p class="small muted">No food logged in this range.</p>'}
+      <div class="table-wrap" role="region" aria-label="Average daily intake" tabindex="0"><table class="report-table"><thead><tr><th>Nutrient</th><th class="num">Average per day</th><th class="num">Daily limit in the plan</th></tr></thead><tbody>${intakeRows.map(([k, label, unit]) => `<tr><td>${label}</td><td class="num">${typeof intake.avg[k] === 'number' ? uiFmtNum(Math.round(intake.avg[k])) + (unit ? ' ' + unit : '') : '-'}</td><td class="num">${plan.limits && plan.limits[k] ? uiFmtNum(plan.limits[k].value) + (unit ? ' ' + unit : '') : '-'}</td></tr>`).join('')}</tbody></table></div>` : `<p class="small muted">${loggedNoNumbers ? 'Food was logged in this range, but without nutrition numbers, so there is nothing to average.' : 'No food logged in this range.'}</p>`}
       <h2>Symptoms: ${eps.length} episode${eps.length === 1 ? '' : 's'}</h2>
       ${eps.length ? `<p class="small">Most frequent: ${liteTopSymptoms(eps).map(([id, n]) => `${uiEsc(liteSymptomLabel(id))} (${n})`).join(', ')}.</p>` : '<p class="small muted">None logged in this range.</p>'}
       ${foods.length ? `<h2>Foods eaten in the 24 hours before symptoms</h2>

@@ -319,7 +319,9 @@ textarea { min-height: 120px; resize: vertical; line-height: 1.5; }
 .pick-more > summary::after { content: "+"; flex: none; width: 34px; height: 34px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.3em; line-height: 1; border: 1px solid var(--primary); color: var(--primary); }
 .pick-more[open] > summary::after { content: "\2212"; background: var(--primary); color: var(--on-primary); }
 .pick-more > summary:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
-.pick-more > .chip-grid { padding: 0 16px 16px; }
+.pick-more > .chip-grid, .pick-more > .filter-bar { padding: 0 16px 16px; }
+.recipes-toolbar .filter-more { margin-top: 10px; }
+.recipes-toolbar #rc-clear { margin-top: 6px; }
 .seg { display: inline-flex; flex-wrap: wrap; gap: 6px; }
 .seg label { display: inline-flex; align-items: center; min-height: 44px; padding: 6px 14px; border: 1px solid var(--hairline); border-radius: 999px; font-weight: 700; cursor: pointer; background: var(--surface); margin: 0; color: var(--ink); }
 .seg input { position: absolute; opacity: 0; width: 1px; height: 1px; }
@@ -1074,3 +1076,10 @@ html.lite .btn.small.icon, html.lite .heart-btn, html.lite .never-btn { min-widt
 /* With large text on a phone, big choice cards stack in one column, so their words do not wrap one or two to a line
    (UX pass, October 2026). */
 @media (max-width: 520px) { html.large-text .big-choices { grid-template-columns: minmax(0, 1fr); } }
+
+/* Peace Meal for one on a phone (UX pass, October 2026): the brand and the person's name were both cut short ("Peace...",
+   "Samp..."). One person uses this build, so the header shows their initials only (the link still says their name to a
+   screen reader), and the Lite tag gives way to the full name "Peace Meal for one", which already says which build it is. */
+@media (max-width: 439px) { html.lite .topbar .who-name, html.lite .topbar .lite-tag { display: none; } }
+/* A big check box's explanation sits on its own line under the bold title (it ran on: "...the weekThe week leans..."). */
+.choice.big-check .choice-body > .small { display: block; margin-top: 4px; }

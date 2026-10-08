@@ -86,7 +86,7 @@ export function todayMealStackingHTML(plan, list) {
 function todayAmountText(entry) {
   if (entry.kind === 'recipe') return `${uiFmtNum(entry.amount, 2)} serving${Number(entry.amount) === 1 ? '' : 's'}`;
   if (entry.kind === 'food') return entry.unit && entry.unit !== 'g' ? `${uiFmtNum(entry.amount, 2)} x ${entry.unit} (${uiFmtNum(entry.grams)} g)` : `${uiFmtNum(entry.grams)} g`;
-  return 'as entered';
+  return '';   // a typed entry has no amount of its own (it read "as entered")
 }
 
 // Adds a diary entry for a person and persists it. Used here and by the Week screen's "Add to Today".
@@ -208,7 +208,7 @@ function todayTargetCardHTML(person, plan, totals, exerciseKcal) {
     const diff = target - totals.kcal;
     const goalWord = info.manual ? 'your own number' : person.goals.calorie_target === 'loss' ? `weight loss, ${person.goals.deficit || 500} kcal a day below maintenance` : person.goals.calorie_target === 'gain' ? `weight gain, ${person.goals.surplus || 400} kcal a day above maintenance` : 'maintain weight';
     head = `<div class="ring-row">${uiRing({ value: totals.kcal, max: target, kind: 'kcal', unit: 'kcal', label: `of ${uiFmtNum(target)} target`, size: 148 })}
-      <div class="ring-text"><p><strong>${diff >= 0 ? `${uiFmtNum(diff)} kcal under` : `${uiFmtNum(-diff)} kcal over`}</strong> the estimated target of ${uiFmtNum(target)} kcal ${uiChip('estimate', 'neutral')}</p>
+      <div class="ring-text"><p><strong>${diff >= 0 ? `${uiFmtNum(diff)} kcal under` : `${uiFmtNum(-diff)} kcal over`}</strong> the estimated target ${uiChip('estimate', 'neutral')}</p>
       <p class="small muted">Goal: ${goalWord}.${count && exerciseKcal ? ` Includes ${uiFmtNum(exerciseKcal)} kcal of exercise added back today.` : ''} An estimate from a published equation, not a measurement; appetite, sleep, and how you feel matter too.</p>
       <details><summary>How this was estimated</summary><ul class="small">${(info.notes || []).map(n => `<li>${uiEsc(n)}</li>`).join('')}<li>Resting energy: Mifflin-St Jeor equation (Mifflin 1990), multiplied by an activity factor. Errors of 10 percent or more for an individual are normal.</li></ul></details>
       <div><button class="btn small" type="button" id="today-set-target">${uiIcon('edit')}Change target</button></div></div></div>`;
@@ -227,8 +227,8 @@ function todayMealsHTML(person, plan, entries) {
           const n = e.nutrients || {};
           return `<div class="entry-row">
             ${e.kind !== 'custom' ? `<button class="heart-btn ${fav ? 'on' : ''}" type="button" data-fav="${e.kind}:${uiEsc(e.ref)}" aria-pressed="${fav}" aria-label="${fav ? 'Remove from favorites' : 'Add to favorites'}">${uiIcon('heart', { fill: fav })}</button>` : '<span style="width:40px;flex:none"></span>'}
-            <div class="entry-main"><div><span class="entry-name">${uiEsc(todayEntryName(e))}</span> <span class="entry-amount">${uiEsc(todayAmountText(e))}</span></div><div class="entry-kcal">${e.nutrients ? uiFmtNum(n.kcal) + ' kcal' : 'no numbers'}</div>
-              <div class="entry-nut">${uiFmtNum(n.protein_g, 1)} g protein · ${uiFmtNum(n.carb_g, 1)} g carb · ${uiFmtNum(n.fiber_g, 1)} g fiber · ${uiFmtNum(n.sodium_mg)} mg sodium · ${uiFmtNum(n.satfat_g, 1)} g sat fat</div>
+            <div class="entry-main"><div><span class="entry-name">${uiEsc(todayEntryName(e))}</span> <span class="entry-amount">${uiEsc(todayAmountText(e))}</span></div><div class="entry-kcal">${e.nutrients ? uiFmtNum(n.kcal) + ' kcal' : 'no nutrition numbers'}</div>
+              ${e.nutrients ? `<div class="entry-nut">${uiFmtNum(n.protein_g, 1)} g protein · ${uiFmtNum(n.carb_g, 1)} g carb · ${uiFmtNum(n.fiber_g, 1)} g fiber · ${uiFmtNum(n.sodium_mg)} mg sodium · ${uiFmtNum(n.satfat_g, 1)} g sat fat</div>` : ''}
               ${e.note ? `<div class="entry-note">${uiEsc(e.note)}</div>` : ''}</div>
             <div class="entry-acts"><button class="btn small icon" type="button" data-edit="${uiEsc(e.id)}" aria-label="Edit ${uiEsc(todayEntryName(e))}" title="Edit">${uiIcon('edit')}</button><button class="btn small icon danger" type="button" data-remove="${uiEsc(e.id)}" aria-label="Remove ${uiEsc(todayEntryName(e))}" title="Remove">${uiIcon('trash')}</button></div>
           </div>`;
@@ -244,8 +244,8 @@ function todayWeightHTML(person) {
   const chart = all.filter(w => w.date >= cutoff);
   return `<section class="card" aria-labelledby="today-weight-h"><h2 id="today-weight-h">Weight</h2>
     <div class="today-row"><div class="field"><label for="today-weight-lb">Weight (lb)</label><input id="today-weight-lb" type="number" inputmode="decimal" min="50" max="900" step="0.1" placeholder="${all.length ? kgToLb(all[all.length - 1].kg) : '150'}"></div><button class="btn primary" type="button" id="today-log-weight">${uiIcon('scale')}Log weight</button></div>
-    <p class="small muted">Stored in kilograms for the rules that need it; shown in pounds. Logging a weight updates the calorie estimate.</p>
-    ${chart.length ? todayChartSVG(chart) : '<p class="small muted">No weights in the last 90 days to chart.</p>'}
+    <p class="small muted">Logging a weight updates the calorie estimate.</p>
+    ${chart.length > 1 ? todayChartSVG(chart) : chart.length ? '<p class="small muted">The chart starts with your second weight.</p>' : '<p class="small muted">No weights in the last 90 days to chart.</p>'}
     ${all.length ? `<div class="btn-row"><button class="btn" type="button" data-weight-history>${uiIcon('list')}Weight history (${all.length} entr${all.length === 1 ? 'y' : 'ies'})</button></div>` : ''}
   </section>`;
 }
@@ -470,7 +470,6 @@ function todayBind(root, person, plan, date) {
   }));
   root.querySelector('#today-count-ex').addEventListener('change', e => {
     person.goals.count_exercise = e.target.checked;
-    e.target.setAttribute('aria-checked', String(e.target.checked));
     uiPersist(); uiState.rerender();
   });
 }

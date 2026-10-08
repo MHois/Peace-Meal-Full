@@ -34,6 +34,21 @@ function planHasVerify(plan) {
   return rules.some(r => r && (r.verify || (r.sources || []).some(id => { const s = uiState.sourcesById.get(id); return s && s.verify; })));
 }
 
+// The checks that found nothing, in one short list (UX pass, October 2026). Each used to be its own heading with an empty
+// line under it ("No phased protocols are active.", "No two-mode conditions are active."), five in a row on most plans.
+// A check that finds something still gets its own section above. Phases and modes say nothing when none is active.
+// "Protein" and "25 g" instead of "Protein (g)" and "25" in the per-meal rows (UX pass, October 2026).
+function planNutrientName(n) { return uiNutrientLabel(n).replace(/\s*\((.*)\)\s*$/, ''); }
+function planAmount(n, v) { const m = /\((.*)\)\s*$/.exec(uiNutrientLabel(n)); const unit = m ? m[1] : ''; return unit === '% of calories' ? `${uiFmtNum(v, 1)}% of calories` : `${uiFmtNum(v, 1)}${unit ? ' ' + unit : ''}`; }
+export function planAlsoCheckedHTML(plan) {
+  const lines = [];
+  if (!plan.conflicts.length) lines.push('No conflicts between the selected conditions.');
+  if (!plan.suppressed.length) lines.push('No rule was set aside.');
+  if (!plan.tier2.missing.length) lines.push('No number from your doctor or dietitian is missing.');
+  if (!plan.restrictionLoad.count) lines.push(`No diet that cuts out a whole food group is selected (the plan checks in when ${plan.restrictionLoad.threshold || 3} or more run at once).`);
+  return lines.length ? uiSection('Also checked', `<ul class="small muted plan-checked">${lines.map(t => `<li>${uiEsc(t)}</li>`).join('')}</ul>`, { id: 'plan-checked-h' }) : '';
+}
+
 export function renderPlanScreen(root, ctx) {
   if (ctx && ctx.route && ctx.route.parts && ctx.route.parts[0] === 'foods') return renderDietListScreen(root, ctx.route.parts[1]);
   const person = uiActivePerson();
@@ -68,7 +83,7 @@ export function renderPlanScreen(root, ctx) {
     ${customModules.length ? uiSection('Your own diets', `<div class="stack-2">${customModules.map(m => planCustomCard(m, customDefs.get(m.id), plan)).join('')}</div>`, { id: 'plan-custom-h' }) : ''}
 
     ${uiSection('Your numbers', `${planCalorieHTML(person, plan)}${numberMeters.length ? `<div class="numbers-grid">${numberMeters.join('')}</div><p class="small muted">"So far today" is summed from what is logged on the Today screen. Limits are "at most"; targets are "at least".</p>` : uiEmptyState('No daily limits or targets are active. Numbers appear when a module carries one, or when a number from your doctor or dietitian is entered.', `<a class="btn small" href="#/people/${uiEsc(person.id)}/clinician">Enter those numbers</a>`)}
-      ${periodic.map(x => `<h3>Per ${uiEsc(x.per)}</h3><div class="list boxed">${x.limits.map(([n, l]) => { planSheetRules['p:' + x.per + ':' + n] = { title: `${uiNutrientLabel(n)}: at most ${uiFmtNum(l.value, 1)} per ${x.per}`, rules: l.rules, whys: planWhys(l.rules) }; return `<div class="list-row"><div class="list-main"><span class="list-title">${uiEsc(uiNutrientLabel(n))}</span> <span class="num">at most ${uiFmtNum(l.value, 1)}</span> ${l.clinician ? uiChip('doctor or dietitian', 'plum') : ''}${planWhys(l.rules)[0] ? `<div class="meter-why">${uiEsc(planWhys(l.rules)[0])}</div>` : ''}</div><div class="list-actions"><button type="button" class="btn link small" data-sheet="p:${uiEsc(x.per)}:${uiEsc(n)}">Why (${l.rules.length})</button></div></div>`; }).join('')}${x.targets.map(([n, t]) => { planSheetRules['pt:' + x.per + ':' + n] = { title: `${uiNutrientLabel(n)}: at least ${uiFmtNum(t.min, 1)} per ${x.per}`, rules: t.rules, whys: planWhys(t.rules) }; return `<div class="list-row"><div class="list-main"><span class="list-title">${uiEsc(uiNutrientLabel(n))}</span> <span class="num">at least ${uiFmtNum(t.min, 1)}</span>${planWhys(t.rules)[0] ? `<div class="meter-why">${uiEsc(planWhys(t.rules)[0])}</div>` : ''}</div><div class="list-actions"><button type="button" class="btn link small" data-sheet="pt:${uiEsc(x.per)}:${uiEsc(n)}">Why (${t.rules.length})</button></div></div>`; }).join('')}</div>`).join('')}`, { id: 'plan-numbers' })}
+      ${periodic.map(x => `<h3>Per ${uiEsc(x.per)}</h3><div class="list boxed">${x.limits.map(([n, l]) => { planSheetRules['p:' + x.per + ':' + n] = { title: `${planNutrientName(n)}: at most ${planAmount(n, l.value)} per ${x.per}`, rules: l.rules, whys: planWhys(l.rules) }; return `<div class="list-row"><div class="list-main"><span class="list-title">${uiEsc(planNutrientName(n))}</span> <span class="num">at most ${uiEsc(planAmount(n, l.value))}</span> ${l.clinician ? uiChip('doctor or dietitian', 'plum') : ''}${planWhys(l.rules)[0] ? `<div class="meter-why">${uiEsc(planWhys(l.rules)[0])}</div>` : ''}</div><div class="list-actions"><button type="button" class="btn link small" data-sheet="p:${uiEsc(x.per)}:${uiEsc(n)}">Why (${l.rules.length})</button></div></div>`; }).join('')}${x.targets.map(([n, t]) => { planSheetRules['pt:' + x.per + ':' + n] = { title: `${planNutrientName(n)}: at least ${planAmount(n, t.min)} per ${x.per}`, rules: t.rules, whys: planWhys(t.rules) }; return `<div class="list-row"><div class="list-main"><span class="list-title">${uiEsc(planNutrientName(n))}</span> <span class="num">at least ${uiEsc(planAmount(n, t.min))}</span>${planWhys(t.rules)[0] ? `<div class="meter-why">${uiEsc(planWhys(t.rules)[0])}</div>` : ''}</div><div class="list-actions"><button type="button" class="btn link small" data-sheet="pt:${uiEsc(x.per)}:${uiEsc(n)}">Why (${t.rules.length})</button></div></div>`; }).join('')}</div>`).join('')}`, { id: 'plan-numbers' })}
 
     ${uiSection('Avoid', `<h3>Hard stops ${uiChip(String(avoidHard.length + (plan.otherAllergies || []).length), 'stop')}</h3>
       ${avoidHard.length || (plan.otherAllergies || []).length ? `<div class="chip-cloud">${avoidHard.map(([tag, v]) => tagChip(tag, v, 'stop')).join('')}${(plan.otherAllergies || []).map(t => uiChip(t + ' (your allergy)', 'stop')).join('')}</div>` : '<p class="muted small">None.</p>'}
@@ -82,28 +97,29 @@ export function renderPlanScreen(root, ctx) {
     ${uiSection('Habits', `<div class="list boxed">${uiRulesList(plan.behavior)}</div>`, { id: 'plan-habits-h' })}
     ${plan.info.length ? uiSection('Information and pending rules', `<div class="list boxed">${uiRulesList(plan.info)}</div>`, { id: 'plan-info-h' }) : ''}
 
-    ${uiSection('Conflicts', plan.conflicts.length ? `<div class="stack-2">${plan.conflicts.map(c => `<div class="card conflict">
+    ${plan.conflicts.length ? uiSection('Conflicts', `<div class="stack-2">${plan.conflicts.map(c => `<div class="card conflict">
         <div class="conflict-side">${uiEsc(c.aName)}</div><div class="conflict-vs">versus</div><div class="conflict-side">${uiEsc(c.bName)}</div>
         <div class="conflict-foot">${planConflictBadge(c)} <span class="small muted">${uiEsc(c.type)}${c.param ? `, about ${uiEsc(uiNutrientLabel(c.param))}` : ''}. Resolution: ${uiEsc(c.resolution)}.</span></div>
         <div class="conflict-foot">${uiEsc(c.text)}</div>
         ${c.status === 'needs-ack' ? `<div class="conflict-foot"><button class="btn small" type="button" data-ack="${uiEsc(c.ackKey)}">I understand</button></div>` : ''}
-      </div>`).join('')}</div>` : '<p class="muted small">No conflicts between the selected modules.</p>', { id: 'plan-conflicts-h' })}
+      </div>`).join('')}</div>`, { id: 'plan-conflicts-h' }) : ''}
 
-    ${uiSection('Phases', plan.phases.length ? `<div class="stack-2">${plan.phases.map(ph => planPhaseCard(ph)).join('')}</div>` : '<p class="muted small">No phased protocols are active.</p>', { id: 'plan-phases-h' })}
+    ${plan.phases.length ? uiSection('Phases', `<div class="stack-2">${plan.phases.map(ph => planPhaseCard(ph)).join('')}</div>`, { id: 'plan-phases-h' }) : ''}
 
-    ${uiSection('Modes', plan.modes.length ? `<div class="stack-2">${plan.modes.map(md => planModeCard(md, person)).join('')}</div>` : '<p class="muted small">No two-mode conditions are active.</p>', { id: 'plan-modes-h' })}
+    ${plan.modes.length ? uiSection('Modes', `<div class="stack-2">${plan.modes.map(md => planModeCard(md, person)).join('')}</div>`, { id: 'plan-modes-h' }) : ''}
 
-    ${uiSection('Set aside', plan.suppressed.length ? `<div class="list boxed">${plan.suppressed.map(s => `<div class="rule"><div class="rule-text">${uiEsc(s.text || s.rule)}</div><div class="rule-meta">${uiChip(s.moduleName || uiModuleName(s.module), 'neutral')}<span>${uiEsc(planSuppressReason(s))}</span></div>${s.sources && s.sources.length ? uiSourcesDisclosure(s.sources, !!s.verify) : ''}</div>`).join('')}</div>` : '<p class="muted small">Nothing was set aside.</p>', { id: 'plan-aside-h' })}
+    ${plan.suppressed.length ? uiSection('Set aside', `<div class="list boxed">${plan.suppressed.map(s => `<div class="rule"><div class="rule-text">${uiEsc(s.text || s.rule)}</div><div class="rule-meta">${uiChip(s.moduleName || uiModuleName(s.module), 'neutral')}<span>${uiEsc(planSuppressReason(s))}</span></div>${s.sources && s.sources.length ? uiSourcesDisclosure(s.sources, !!s.verify) : ''}</div>`).join('')}</div>`, { id: 'plan-aside-h' }) : ''}
 
-    ${uiSection('Numbers from your doctor or dietitian still missing', plan.tier2.missing.length ? `<div class="list boxed">${plan.tier2.missing.map(t => `<div class="rule"><div class="rule-text"><strong>${uiEsc(t.label)}</strong> ${uiChip('not applied', 'caution')}</div><div class="small muted">${uiEsc(t.moduleName)}. ${t.consensus ? 'Published range: ' + uiEsc(t.consensus) + '.' : ''} ${uiEsc(t.why || '')}</div></div>`).join('')}</div>
-      <div><a class="btn primary" href="#/people/${uiEsc(person.id)}/clinician">Enter those numbers</a></div>` : '<p class="muted small">None. Every rule that needs a number from your doctor has one, or does not apply to you.</p>', { id: 'plan-tier2-h' })}
+    ${plan.tier2.missing.length ? uiSection('Numbers from your doctor or dietitian still missing', `<div class="list boxed">${plan.tier2.missing.map(t => `<div class="rule"><div class="rule-text"><strong>${uiEsc(t.label)}</strong> ${uiChip('not applied', 'caution')}</div><div class="small muted">${uiEsc(t.moduleName)}. ${t.consensus ? 'Published range: ' + uiEsc(t.consensus) + '.' : ''} ${uiEsc(t.why || '')}</div></div>`).join('')}</div>
+      <div><a class="btn primary" href="#/people/${uiEsc(person.id)}/clinician">Enter those numbers</a></div>`, { id: 'plan-tier2-h' }) : ''}
 
-    ${uiSection('Stacked restrictions', `<div class="card tight">
+    ${plan.restrictionLoad.count ? uiSection('Stacked restrictions', `<div class="card tight">
       <div class="row"><strong>${plan.restrictionLoad.count} diet${plan.restrictionLoad.count === 1 ? '' : 's'} that cut out whole food groups</strong> ${plan.restrictionLoad.warn ? uiChip('check in', 'caution') : uiChip('ok', 'pass')}</div>
       ${plan.restrictionLoad.modules.length ? `<div class="small muted">${plan.restrictionLoad.modules.map(m => uiEsc(uiModuleName(m))).join(', ')}</div>` : ''}
       ${loadNotice ? uiNoticeHTML(loadNotice) : `<p class="small muted">The plan checks in when ${plan.restrictionLoad.threshold || 3} or more run at once.</p>`}
-    </div>`, { id: 'plan-load-h' })}
-    <p class="small muted">Every rule above is shown with its source.${planHasVerify(plan) ? ' A VERIFY label means the app\'s maintainer is still confirming that source\'s publication details against the original; nothing is asked of you.' : ''}</p>
+    </div>`, { id: 'plan-load-h' }) : ''}
+    ${planAlsoCheckedHTML(plan)}
+    ${planHasVerify(plan) ? '<p class="small muted">A VERIFY label means the app\'s maintainer is still confirming that source\'s publication details against the original; nothing is asked of you.</p>' : ''}
     ${planPrintSheet(person, plan, limits, targets, avoidHard, avoidSoft)}
   `;
   root.classList.add('print-sheet');

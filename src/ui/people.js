@@ -9,7 +9,7 @@ import { SPICE_LEVELS, spicePreference } from '../engine/spice.js';
 import { snackPlan } from '../engine/planner.js';
 import { optionalRulePicks } from '../engine/plan.js';
 import { listDirectory, openPerson } from '../engine/sync.js';
-import { sharingState, sharingLocalHTML, sharingPendingHTML, sharingSafe, sharingPublishIfShared, sharingPersonModal } from './sharing.js';
+import { sharingState, sharingAvailable, sharingLocalHTML, sharingPendingHTML, sharingSafe, sharingPublishIfShared, sharingPersonModal } from './sharing.js';
 
 // Every save of a person goes through here so a person kept in the shared store is republished (encrypted) after each change.
 function peoplePersist(person) {
@@ -179,7 +179,7 @@ function peopleRenderList(root) {
       const isActive = active && active.id === p.id;
       const mods = (p.modules || []).length + (p.custom_modules || []).length;
       const allergens = [...(p.allergens || []).map(peopleAllergenLabel), ...peopleOtherAllergies(p)];
-      const summary = [`${mods} module${mods === 1 ? '' : 's'}`, allergens.length ? `allergens: ${allergens.join(', ')}` : 'no allergens', p.adult === false ? 'caregiver mode' : ''].filter(Boolean).join(', ');
+      const summary = [mods === 0 ? 'no conditions or diets' : mods === 1 ? '1 condition or diet' : `${mods} conditions and diets`, allergens.length ? `allergies: ${allergens.join(', ')}` : 'no allergies', p.adult === false ? 'caregiver mode' : ''].filter(Boolean).join(', ');
       return `
       <div class="card person-card">
         <div class="person-row">${uiAvatar(p.name, { size: 'lg', tone: p.guest ? 'plum' : '' })}
@@ -195,7 +195,7 @@ function peopleRenderList(root) {
       </div>`;
     }).join('')}</div>` : uiEmptyState('No people yet. Add the first person to build a plan.', `<a class="btn primary" href="#/people/new">Add a person</a>`)}
     ${uiState.lite ? '' : uiSection('Invite someone', peopleInviteHTML(), { id: 'people-invite-h' })}
-    ${uiSection('Other people using Peace Meal', `<div class="card" id="people-directory">${peopleDirectoryShellHTML()}</div>`, { id: 'people-dir-h' })}
+    ${uiState.lite && sharingState().ready && !sharingAvailable() ? '' : uiSection('Other people using Peace Meal', `<div class="card" id="people-directory">${peopleDirectoryShellHTML()}</div>`, { id: 'people-dir-h' })}
   `;
   peopleLoadDirectory(root.querySelector('#people-directory'));
   peopleBindInvite(root);
@@ -312,6 +312,13 @@ function peopleBindMulti(container, person, stepId, name, apply, opts = {}) {
 }
 
 // a) Basics
+// The pregnancy and breastfeeding questions are not asked of a man, or of anyone 55 or older (UX pass, October 2026),
+// the way clinical intake forms limit them to people who could be pregnant. A yes already given stays visible so it
+// can be changed.
+export function peopleReproHidden(person) {
+  if (person.pregnancy || person.breastfeeding) return false;
+  return person.sex === 'male' || Number(person.age) >= 55;
+}
 function peopleStepBasics(container, person) {
   const lb = person.weight_kg > 0 ? kgToLb(person.weight_kg) : '';
   const hi = person.height_cm > 0 ? cmToFtIn(person.height_cm) : { ft: '', inch: '' };
@@ -326,26 +333,26 @@ function peopleStepBasics(container, person) {
       <div class="grid-2">
         <div class="field"><label for="pb-age">Age (years)</label><input id="pb-age" type="number" inputmode="numeric" min="0" max="120" value="${uiEsc(person.age ?? '')}"></div>
         <div class="field"><label for="pb-weight">Weight (lb)</label><input id="pb-weight" type="number" inputmode="decimal" min="1" max="900" step="1" value="${lb}">
-          <div class="hint">Optional. Some rules are written per kilogram of body weight (for example protein in kidney disease); the app converts for you. Without a weight those rules are shown but not turned into a daily number.</div></div>
+          <div class="hint">Optional. A few rules are set per kilogram of body weight, such as protein in kidney disease; with your weight the app turns them into a daily number.</div></div>
         <div class="field"><span class="label" id="pb-height-label">Height (ft / in)</span>
           <div class="height-inputs" role="group" aria-labelledby="pb-height-label">
             <label class="visually-hidden" for="pb-ft">Feet</label><input id="pb-ft" type="number" inputmode="numeric" min="1" max="8" step="1" value="${hi.ft ?? ''}" placeholder="ft"><span class="unit">ft</span>
             <label class="visually-hidden" for="pb-in">Inches</label><input id="pb-in" type="number" inputmode="numeric" min="0" max="11" step="1" value="${hi.inch ?? ''}" placeholder="in"><span class="unit">in</span>
           </div>
-          <div class="hint">Optional. With weight, this gives a body mass index for the few rules that apply only when a guideline ties advice to overweight, and a calorie estimate if you turn one on.</div></div>
+          <div class="hint">Optional. With your weight, it gives a body mass index for the few rules tied to overweight, and a calorie estimate if you turn one on.</div></div>
       </div>
       <div class="field"><h3 class="big-sub">How active are you most weeks?</h3>
         ${uiBigChoices('activity', ACTIVITY_LEVELS.map(l => ({ value: l.id, label: l.label })), person.activity || 'light', { label: 'Activity level' })}
         <div class="hint">Used only for the calorie estimate, and only when you turn that on.</div></div>
       ${person.adult === false ? '' : `
-      <div id="pb-repro" ${person.sex === 'male' ? 'hidden' : ''}><div class="field"><span class="label">Pregnant?</span>${uiYesNo('pregnancy', !!person.pregnancy)}</div>
+      <div id="pb-repro" ${peopleReproHidden(person) ? 'hidden' : ''}><div class="field"><span class="label">Pregnant?</span>${uiYesNo('pregnancy', !!person.pregnancy)}</div>
       <div class="field"><span class="label">Breastfeeding?</span>${uiYesNo('breastfeeding', !!person.breastfeeding)}
-        <div class="hint">Either answer turns on the pregnancy and breastfeeding rules and turns off weight-loss, ketogenic, low-carbohydrate, fasting, and elimination protocols other than allergen and celiac.</div></div></div>`}
+        <div class="hint">A yes to either turns on the pregnancy and breastfeeding rules, and turns off weight-loss, ketogenic, low-carbohydrate, fasting, and elimination diets (allergy and celiac rules stay on).</div></div></div>`}
     </div>
     ${peopleGlobalFlagsHTML(person)}`;
   const bindText = (sel, fn) => container.querySelector(sel).addEventListener('change', e => { fn(e.target.value); peoplePersist(person); });
   bindText('#pb-name', v => { if (v.trim()) person.name = v.trim(); });
-  bindText('#pb-age', v => { person.age = v === '' ? null : Number(v); });
+  bindText('#pb-age', v => { person.age = v === '' ? null : Number(v); const repro = container.querySelector('#pb-repro'); if (repro) repro.hidden = peopleReproHidden(person); });
   bindText('#pb-weight', v => { person.weight_kg = v === '' ? null : lbToKg(v); });
   const height = () => {
     const ft = container.querySelector('#pb-ft').value, inch = container.querySelector('#pb-in').value;
@@ -364,9 +371,9 @@ function peopleStepBasics(container, person) {
   }));
   peopleBindSeg(container, person, 'basics', 'sex', v => {
     person.sex = v;
-    const repro = container.querySelector('#pb-repro');
-    if (repro) repro.hidden = v === 'male';
     if (v === 'male') { person.pregnancy = false; person.breastfeeding = false; container.querySelectorAll('input[data-seg="pregnancy"], input[data-seg="breastfeeding"]').forEach(i => { i.checked = i.value === 'no'; i.closest('label').classList.toggle('on', i.checked); }); }
+    const repro = container.querySelector('#pb-repro');
+    if (repro) repro.hidden = peopleReproHidden(person);
   }, { rerender: false });
   peopleBindSeg(container, person, 'basics', 'activity', v => { person.activity = v; }, { rerender: false });
   peopleBindSeg(container, person, 'basics', 'pregnancy', v => { person.pregnancy = v === 'yes'; }, { rerender: false });
@@ -1072,7 +1079,7 @@ function peopleStepCooking(container, person, sub) {
       <h2 class="big-q" style="margin-top:1.5rem">Where do you shop?</h2>
       ${uiBigChoices('grocery', PEOPLE_SHOP_OPTIONS, c.grocery || 'supermarket', { label: 'Where you shop' })}
       <label class="choice big-check" style="margin-top:1.25rem"><input type="checkbox" id="pc-budget" ${c.budget ? 'checked' : ''}><span class="choice-body"><span class="choice-title">Save money: reuse ingredients across the week</span><span class="small muted">The week leans on recipes that share ingredients, so there is less to buy.</span></span></label>
-      ${peopleTypicalHTML('stove, oven and microwave; some leftovers; cooking for two; a full supermarket')}
+      ${peopleTypicalHTML(uiState.lite ? 'stove, oven and microwave; some leftovers; a full supermarket' : 'stove, oven and microwave; some leftovers; cooking for two; a full supermarket')}
     </div>`;
     peopleBindMulti(container, person, 'cooking', 'equipment', (v, on) => { c.equipment = c.equipment || []; if (on && !c.equipment.includes(v)) c.equipment.push(v); if (!on) c.equipment = c.equipment.filter(x => x !== v); }, { rerender: false });
     peopleBindSeg(container, person, 'cooking', 'leftovers', v => { c.leftovers = v; }, { rerender: false });
@@ -1082,7 +1089,8 @@ function peopleStepCooking(container, person, sub) {
     container.querySelector('#pc-minus').addEventListener('click', () => setHousehold((Number(c.household) || 1) - 1));
     container.querySelector('#pc-plus').addEventListener('click', () => setHousehold((Number(c.household) || 1) + 1));
     container.querySelector('#pc-budget').addEventListener('change', e => { c.budget = !!e.target.checked; peoplePersist(person); });
-    peopleBindTypical(container, person, () => { c.equipment = ['stove', 'oven', 'microwave']; c.leftovers = 'ok'; c.household = Math.max(2, Number(c.household) || 0); c.grocery = 'supermarket'; }, nextHash);
+    // Peace Meal for one leaves the household number as it is (UX pass, October 2026); it used to set two.
+    peopleBindTypical(container, person, () => { c.equipment = ['stove', 'oven', 'microwave']; c.leftovers = 'ok'; c.household = uiState.lite ? Math.max(1, Number(c.household) || 1) : Math.max(2, Number(c.household) || 0); c.grocery = 'supermarket'; }, nextHash);
   }
 }
 // "Two a day (reflux guidance: ...)" for the Cooking step and the Review.
@@ -1125,10 +1133,10 @@ function peopleStepReview(container, person) {
   const allergies = [...(person.allergens || []).map(peopleAllergenLabel), ...peopleOtherAllergies(person)];
   const rows = [
     ['Adult', person.adult === false ? 'No (caregiver mode)' : 'Yes'],
-    ['Sex, age', `${uiEsc(person.sex || 'not set')}${person.age ? ', ' + uiEsc(person.age) : ''}`],
+    ['Sex, age', `${uiEsc({ female: 'Female', male: 'Male', other: 'Other or prefer not to say' }[person.sex] || 'not set')}${person.age ? ', ' + uiEsc(person.age) : ''}`],
     ['Weight, height', uiEsc(wh || 'not entered')],
     ['Activity', uiEsc(act ? act.label : 'not set')],
-    ['Pregnant or breastfeeding', person.pregnancy || person.breastfeeding ? 'Yes' : 'No'],
+    !peopleReproHidden(person) && ['Pregnant or breastfeeding', person.pregnancy || person.breastfeeding ? 'Yes' : 'No'],
     ['Allergies', allergies.length ? uiEsc(allergies.join(', ')) : 'none'],
     ['Conditions and diets', plan.modules.length ? plan.modules.map(m => m.category === 'custom' ? `${uiEsc(m.name)} ${uiUserDefinedBadge()}` : uiEsc(m.name)).join(', ') : 'none'],
     plan.disabledModules.length && ['Turned off by another choice', plan.disabledModules.map(d => `${uiEsc(uiModuleName(d.id))} (by ${uiEsc(uiModuleName(d.by))})`).join(', ')],
@@ -1144,7 +1152,7 @@ function peopleStepReview(container, person) {
     ((prefs.cuisines_skip || []).length || (prefs.cuisines_love || []).length) && ['Cuisines', uiEsc([(prefs.cuisines_skip || []).length ? 'Skip: ' + prefs.cuisines_skip.map(cuisineLabel).join(', ') : '', (prefs.cuisines_love || []).length ? 'Love: ' + prefs.cuisines_love.map(cuisineLabel).join(', ') : ''].filter(Boolean).join('. '))],
     Object.values(person.medications || {}).some(Boolean) && ['Medicines that change food rules', uiEsc(Object.entries(person.medications || {}).filter(([, v]) => v).map(([k]) => k.replace(/_/g, ' ')).join(', '))],
     Object.keys(person.tier2 || {}).length && ['Doctor or dietitian numbers', uiEsc(Object.entries(person.tier2).map(([k, v]) => `${k}: ${v}`).join(', '))],
-    ['Cooking', uiEsc(`${c.weekday_minutes || 20} min weekdays, ${c.weekend_minutes || 40} min weekends, ${(c.cook_days || []).length} cook days, ${c.interest || 'simple'}, cooking for ${c.household || 1}${c.budget ? ', reuse ingredients to save money' : ''}`)],
+    ['Cooking', uiEsc(`${c.weekday_minutes || 20} min weekdays, ${c.weekend_minutes || 40} min weekends, ${(c.cook_days || []).length} cook days, ${((PEOPLE_INTEREST_OPTIONS.find(o => o.value === (c.interest || 'simple')) || { label: c.interest || 'simple' }).label).replace(/^I'll /, '').replace(/^(?!I )./, ch => ch.toLowerCase())}, cooking for ${c.household || 1}${c.budget ? ', reuse ingredients to save money' : ''}`)],
     ['Snacks', uiEsc(peopleSnackHint(person))]
   ];
   const kv = rows.filter(Boolean);

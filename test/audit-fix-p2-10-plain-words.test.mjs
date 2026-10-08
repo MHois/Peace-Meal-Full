@@ -64,7 +64,11 @@ test('P2-10: medicine notices say what to do, not an effect name', () => {
 
 test('P2-10: Plan, Learn, and the allergy setting line use plain words', () => {
   assert.ok(!R('src/ui/plan.js').includes('Every Tier 2 rule either has a number or does not apply.'));
-  assert.ok(R('src/ui/plan.js').includes('None. Every rule that needs a number from your doctor has one, or does not apply to you.'));
+  // Changed on purpose (UX pass, October 2026). Old: the Plan's empty "still missing" section said "None. Every rule that
+  // needs a number from your doctor has one, or does not apply to you." New: empty checks share one "Also checked" list,
+  // where the line reads "No number from your doctor or dietitian is missing." Why: five empty sections in a row on most
+  // plans. The jargon check above is unchanged.
+  assert.ok(R('src/ui/plan.js').includes('No number from your doctor or dietitian is missing.'));
   assert.ok(!R('src/ui/learn.js').includes('no condition-specific dietary evidence'));
   const may = conditions.find(m => m.id === 'food-allergies').rules.find(r => r.id === 'allergen-may-contain');
   assert.doesNotMatch(may.text, JARGON);

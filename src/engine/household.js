@@ -159,7 +159,8 @@ export function buildHouseholdWeek({ people, household, conditions, dictionaries
       dayTotals = addTotals(dayTotals, recipeTotals(pick.r, foodsById).perServing);
       const lt = (cook && cook.cooking && cook.cooking.leftovers) || 'ok';
       const batch = !fresh && !snack && mealCanCook && lt !== 'poor' && (pick.r.leftovers === 'good' || pick.r.leftovers === 'ok');
-      const servingsMade = batch ? Math.max(pick.r.servings || eaters.length, eaters.length * 2) : eaters.length;
+      // Never more than the table can eat in the three-day leftover window (UX pass, October 2026; see planner.js).
+      const servingsMade = batch ? Math.min(Math.max(pick.r.servings || eaters.length, eaters.length * 2), eaters.length * (lt === 'good' ? 6 : 4)) : eaters.length;
       if (servingsMade > eaters.length) leftovers.push({ recipe: pick.r, servings: servingsMade - eaters.length, madeOn: i });
       for (const ing of pick.r.ingredients || []) if (ing.food) weekFoods.add(ing.food);
       meals.push({ slot, recipe: pick.r.id, name: pick.r.name, source: pick.r.assembly_only ? 'assembly' : 'cook', servings: eaters.length, servingsMade, eaters: seating.ids, names: seating.names, seating: seating.key, score: Math.round(pick.score), reasons: pick.reasons, check: summarizeCheck(pick.check), kidsOnly: seating.kidsOnly });
