@@ -16,7 +16,7 @@ function homeBindBringData(root) {
 
 // How many conditions and eating patterns a person can choose: the two groups on the Conditions step.
 function homeConditionCount() {
-  return (uiState.data.conditions || []).filter(m => m.category === 'condition' || m.category === 'pattern').length;
+  return (uiState.data.conditions || []).filter(m => (m.category === 'condition' || m.category === 'pattern') && !m.retired).length;
 }
 
 export function renderWelcomeScreen(root) {

@@ -1258,6 +1258,8 @@
       "id": "mcas",
       "name": "MCAS / mast cell disease (low-histamine trial)",
       "category": "condition",
+      "retired": true,
+      "retired_note": "Owner request, October 11, 2026: taken off both builds. Not offered on the Conditions step, in its search, on the Learn list, or in the welcome count. Kept here, with its low-histamine list in data/diet-lists.json and its article in data/articles.json, so it can be restored by removing these two lines. A person who already had it selected keeps it until they untick it.",
       "phase1_ref": "Part A, 7",
       "evidence": {
         "rating": "limited",
