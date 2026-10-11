@@ -390,9 +390,10 @@ function peopleSummaryText(m) {
 let peopleCondQuery = '';
 let peopleCondShowAll = false;   // "Show all" on a new person's Conditions step, for this session
 function peopleStepConditions(container, person) {
-  let modules = uiState.data.conditions.filter(m => !PEOPLE_META_MODULES.includes(m.id));
-  if (person.adult === false) modules = modules.filter(peopleIsCaregiverModule);
   const selected = new Set((person.modules || []).filter(id => !PEOPLE_META_MODULES.includes(id)));
+  // A retired module (MCAS, owner request October 11, 2026) is not offered, but stays listed for whoever already has it.
+  let modules = uiState.data.conditions.filter(m => !PEOPLE_META_MODULES.includes(m.id) && (!m.retired || selected.has(m.id)));
+  if (person.adult === false) modules = modules.filter(peopleIsCaregiverModule);
   const groups = [
     { key: 'condition', title: 'Medical conditions', hint: 'diabetes, reflux, kidney, heart, celiac, IBS and more' },
     { key: 'pattern', title: 'Ways of eating', hint: 'vegetarian, Mediterranean (anti-inflammatory), DASH, low-carb, low added sugar' }

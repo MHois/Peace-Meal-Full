@@ -21,7 +21,7 @@ export function renderLearnScreen(root, ctx) {
     }
   }
   const groups = [['condition', 'Medical conditions'], ['pattern', 'Eating patterns'], ['restriction', 'Restrictions and safeguards']];
-  const mods = uiState.data.conditions;
+  const mods = uiState.data.conditions.filter(m => !m.retired);   // retired modules (MCAS, October 11, 2026) are not listed
   root.innerHTML = `
     ${uiPageHeader('Learn', 'The evidence behind every module, in plain language, with its sources.')}
     <div class="card"><h2>How this app decides</h2><p>Two tiers, hard conflicts, allergens as absolute, unknown is not safe, no language model in the safety path. Read this first.</p><div><a class="btn" href="#/learn/how">${uiIcon('book')}Read</a></div></div>
